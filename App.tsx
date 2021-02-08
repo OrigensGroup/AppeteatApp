@@ -1,12 +1,32 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import styled from 'styled-components/native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <Wrapper>
-      <Title>Hello World</Title>
-    </Wrapper>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name='Home'
+          component={() => (
+            <Wrapper>
+              <Title>Hello World</Title>
+            </Wrapper>
+          )}
+        />
+        <Tab.Screen
+          name='Settings'
+          component={() => (
+            <Wrapper>
+              <Title>Hello Settings</Title>
+            </Wrapper>
+          )}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
