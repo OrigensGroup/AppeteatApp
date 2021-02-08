@@ -4,11 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Hello from "./src/components/Login/Hello";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Login />
-    </View>
-  );
+  return <View style={styles.container}></View>;
 }
 
 const styles = StyleSheet.create({
