@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 
 export const HomepageContainer = styled.View`
-  display: flex;
+  background-color: #fff;
+  height: 100%;
 `;
