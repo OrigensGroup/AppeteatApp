@@ -36,7 +36,7 @@ const colors: ColorsInterface = {
   },
   util: {
     primaryBackground: '#1b1d23',
-    secondaryBackground: '#1a2b39',
+    secondaryBackground: '#B4AEAC',
     tertiaryBackground: '#0f1f2a',
     inputBorder: '#dce1e7',
     disabled: '#d7e1ea',
