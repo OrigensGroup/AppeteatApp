@@ -1,13 +1,6 @@
 import styled from "styled-components/native";
 
-type TextFieldProps = {
-  label: string;
-  placeholder?: string;
-  textContentType?: "email" | "password" | "text";
-  secureTextEntry?: boolean;
-};
-
-export const TextFieldContainer = styled.TextInput<TextFieldProps>`
+export const TextFieldContainer = styled.TextInput`
   align-items: center;
   border-bottom-color: #0006;
   border-bottom-width: 2px;

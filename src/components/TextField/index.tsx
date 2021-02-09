@@ -6,14 +6,12 @@ interface TextFieldProps {
   label: string;
   placeholder?: string;
   textContentType: "email" | "password" | "text";
-  secureTextEntry?: boolean;
 }
 
 const TextField: React.FunctionComponent<TextFieldProps> = ({
   label,
   placeholder,
   textContentType,
-  secureTextEntry,
 }) => {
   const [text, setText] = useState("");
   return (
@@ -24,7 +22,7 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
       <TextFieldContainer
         placeholder={placeholder}
         textContentType={textContentType}
-        secureTextEntry={textContentType == "password" ? true : false}
+        secureTextEntry={textContentType === "password"}
         onChangeText={(text) => setText(text)}
         defaultValue={text}
       />
