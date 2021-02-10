@@ -26,4 +26,11 @@ export const DrinkDesc = styled.View`
   padding: ${({ theme }) => theme.spacing.double} 0 0
     ${({ theme }) => theme.spacing.double};
 `;
-export const DrinkLike = styled.View``;
+export const DrinkLike = styled.View`
+  padding: ${({ theme }) => theme.spacing.double} 0 0
+    ${({ theme }) => theme.spacing.multiple(5)};
+`;
+export const TextTitle = styled.Text`
+  font-size: 20px;
+  color: black;
+`;

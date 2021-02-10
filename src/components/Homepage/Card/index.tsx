@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { Text } from "react-native";
-import { CardContainer, DrinkImage, DrinkDesc, DrinkLike } from "./styles";
+import Icon from "react-native-vector-icons/Ionicons";
+import {
+  CardContainer,
+  DrinkImage,
+  DrinkDesc,
+  DrinkLike,
+  TextTitle,
+} from "./styles";
 
 interface CardProps {}
 
@@ -9,10 +16,13 @@ const Card: React.FunctionComponent<CardProps> = ({}) => {
     <CardContainer>
       <DrinkImage source={require("../../../img/mojito.jpg")}></DrinkImage>
       <DrinkDesc>
-        <Text style={{ fontSize: 20 }}>Mojito</Text>
+        <TextTitle>Mojito</TextTitle>
         <Text>Long Drink</Text>
       </DrinkDesc>
-      <DrinkLike></DrinkLike>
+      <DrinkLike>
+        <Icon name="heart-outline" size={28} color="#0008" />
+        {/* <Icon name="heart" size={30} color="red" /> */}
+      </DrinkLike>
     </CardContainer>
   );
 };
