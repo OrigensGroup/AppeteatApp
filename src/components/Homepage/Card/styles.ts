@@ -7,7 +7,7 @@ export const CardContainer = styled.View`
   flex-direction: row;
   border-width: 1;
   background-color: #fff;
-  border-radius: 15px;
+  border-radius:${({ theme }) => theme.spacing.double};
   border-color: transparent;
   border-bottom-width: 0;
   shadow-color: #000;
@@ -20,8 +20,8 @@ export const CardContainer = styled.View`
 export const DrinkImage = styled.Image`
   height: 100%;
   width: ${({ theme }) => theme.spacing.multiple(14)};
-  border-bottom-left-radius: ${({ theme }) => theme.spacing.double};
-  border-top-left-radius: ${({ theme }) => theme.spacing.double};
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
 `;
 
 export const DrinkDesc = styled.View`

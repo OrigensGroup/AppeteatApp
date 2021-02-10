@@ -1,13 +1,13 @@
-import React from 'react';
-import { Alert } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import CountDown from 'react-native-countdown-component';
+import React from "react";
+import { Alert } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+import CountDown from "react-native-countdown-component";
 import {
   PromotionContainer,
   PromotionTitle,
   styles,
   TimerWrap,
-} from './styles';
+} from "./styles";
 
 interface PromotionProps {
   endDate: number;
@@ -20,7 +20,7 @@ const Promotion: React.FunctionComponent<PromotionProps> = ({ endDate }) => {
   return (
     <PromotionContainer>
       <LinearGradient
-        colors={['#DEB98E', '#FFB803']}
+        colors={["#DEB98E", "#FFB803"]}
         style={styles.linearGradient}
       >
         <PromotionTitle>Happy Hour</PromotionTitle>
@@ -28,12 +28,12 @@ const Promotion: React.FunctionComponent<PromotionProps> = ({ endDate }) => {
         <TimerWrap>
           <CountDown
             until={secUntilDate}
-            onFinish={() => Alert.alert('finished')}
-            onPress={() => Alert.alert('hello')}
-            digitStyle={{ backgroundColor: '#FFF', width: 104, height: 72 }}
-            digitTxtStyle={{ color: '#000000', fontSize: 40 }}
-            timeLabelStyle={{ color: '#000000', fontSize: 15 }}
-            timeToShow={['H', 'M']}
+            onFinish={() => Alert.alert("finished")}
+            onPress={() => Alert.alert("hello")}
+            digitStyle={{ backgroundColor: "#FFF", width: 104, height: 72 }}
+            digitTxtStyle={{ color: "#000000", fontSize: 40 }}
+            timeLabelStyle={{ color: "#000000", fontSize: 15 }}
+            timeToShow={["H", "M"]}
             size={20}
           />
         </TimerWrap>

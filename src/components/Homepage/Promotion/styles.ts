@@ -6,7 +6,6 @@ export const PromotionContainer = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
   flex-direction: row;
-  border-width: 1;
   background-color: #fff;
   border-radius: ${({ theme }) => theme.spacing.double};
   border-color: transparent;
@@ -15,7 +14,7 @@ export const PromotionContainer = styled.View`
 export const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    borderRadius: 5,
+    borderRadius: 16,
   },
 });
 
