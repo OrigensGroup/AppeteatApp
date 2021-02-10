@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { Text } from 'react-native';
-import { TextFieldContainer, TextFieldLabel } from './styles';
+
+import {
+  TextFieldContainer,
+  TextFieldLabel,
+  TextFieldInput,
+  TextFieldText,
+} from './styles';
 
 interface TextFieldProps {
   label: string;
@@ -13,20 +18,23 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
   placeholder,
   textContentType,
 }) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState<string>('');
+
+  const updateText = (text: string) => setText(text);
+
   return (
-    <>
+    <TextFieldContainer>
       <TextFieldLabel>
-        <Text>{label}</Text>
+        <TextFieldText>{label}</TextFieldText>
       </TextFieldLabel>
-      <TextFieldContainer
+      <TextFieldInput
         placeholder={placeholder}
         textContentType={textContentType}
         secureTextEntry={textContentType === 'password'}
-        onChangeText={(text) => setText(text)}
+        onChangeText={updateText}
         defaultValue={text}
       />
-    </>
+    </TextFieldContainer>
   );
 };
 

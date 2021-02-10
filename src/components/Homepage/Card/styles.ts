@@ -5,7 +5,7 @@ export const CardContainer = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
   flex-direction: row;
-  border-width: 1;
+  border-width: 1px;
   background-color: #fff;
   border-radius:${({ theme }) => theme.spacing.double};
   border-color: transparent;
@@ -13,7 +13,7 @@ export const CardContainer = styled.View`
   shadow-color: #000;
   shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
-  shadow-radius: 2;
+  shadow-radius: 2px;
   elevation: 6;
 `;
 
