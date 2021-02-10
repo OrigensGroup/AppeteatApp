@@ -1,17 +1,22 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity, View, Button } from "react-native";
 
-import { ButtonWrapper} from "./styles";
+import { ButtonContainer, MainWrapper } from "./styles";
 
 interface LoginProps {}
 
+const onPress = () => console.log("Welcome to Oriens Group!");
+
+
 const LogInButton: React.FunctionComponent<LoginProps> = () => {
   return (
-    <ButtonWrapper>
-      <Text>
-        Sign In
-      </Text>
-    </ButtonWrapper>
+    <MainWrapper>
+      <ButtonContainer onPress={onPress}>
+          <Text>
+            Sign In
+          </Text>
+      </ButtonContainer>
+    </MainWrapper>
   );
 };
 
