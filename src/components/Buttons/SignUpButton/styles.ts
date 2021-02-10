@@ -5,24 +5,28 @@ export const HomepageContainer = styled.View`
 `;
 
 export const MainWrapper = styled.View`
-  width: 100%
-  align-items: center;
-  justify-content: center;
+  margin: 0 ${({ theme }) => theme.spacing.multiple(3)}
+  ${({ theme }) => theme.spacing.double}
+  ${({ theme }) => theme.spacing.multiple(3)}; ;
+  width: 100%;
+  height: 127px;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+`;
+
+export const TextWrapper = styled.View`
+  width: 100%;
+  margin-bottom: ${({ theme }) => theme.spacing.double};
+  align-items: flex-start;
+  justify-content: flex-end;
 
 `;
 
 export const ButtonContainer = styled.TouchableOpacity`
-  margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
-  ${({ theme }) => theme.spacing.double};
-  ${({ theme }) => theme.spacing.multiple(3)};
-  background-color: #50494991;
-  width: 40%;
-  height: ${({ theme }) => theme.spacing.multiple(5)};
-  align-items: center;
-  justify-content: center;
-  border-top-right-radius: ${({ theme }) => theme.spacing.single};
-  border-top-left-radius: ${({ theme }) => theme.spacing.single};
-  border-bottom-right-radius: ${({ theme }) => theme.spacing.single};
-  border-bottom-left-radius: ${({ theme }) => theme.spacing.single};
+  margin-bottom: ${({ theme }) => theme.spacing.single}
 `;
 
+export const TextBold = styled.Text`
+  font-weight: bold;
+`;

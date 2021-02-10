@@ -1,23 +1,28 @@
 import React from "react";
 import { Text, TouchableOpacity, View, Button } from "react-native";
 
-import { ButtonContainer, MainWrapper } from "./styles";
+import { ButtonContainer, MainWrapper, TextWrapper, TextBold } from "./styles";
 
 interface LoginProps {}
 
-const onPress = () => console.log("Welcome to Oriens Group!");
+const onPress = () => console.log ('YOU ARE GAE!') ;
 
 
-const LogInButton: React.FunctionComponent<LoginProps> = () => {
+const SignUpButton: React.FunctionComponent<LoginProps> = () => {
   return (
     <MainWrapper>
+      <TextWrapper>
+        <Text>
+          Non hai ancora un account?
+        </Text>
+      </TextWrapper>
       <ButtonContainer onPress={onPress}>
-          <Text>
-            Sign In
-          </Text>
+          <TextBold>
+            Registrati >
+          </TextBold>
       </ButtonContainer>
     </MainWrapper>
   );
 };
 
-export default LogInButton;
+export default SignUpButton;
