@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { Text } from "react-native";
+import React from "react";
+import { Alert } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import CountDown from "react-native-countdown-component";
 import {
   PromotionContainer,
   PromotionTitle,
   styles,
-  PromotionDesc,
   TimerWrap,
 } from "./styles";
-import { TouchableHighlight } from "react-native-gesture-handler";
 
-interface PromotionProps {}
+interface PromotionProps {
+  endDate: number;
+}
 
-const Promotion: React.FunctionComponent<PromotionProps> = ({}) => {
-  const endDate = new Date("Wed Feb 10 2021 20:36:55 GMT+0000").getTime();
+const Promotion: React.FunctionComponent<PromotionProps> = ({ endDate }) => {
   const dateDifference = endDate - new Date().getTime();
   const secUntilDate = dateDifference / 1000;
+
   return (
     <PromotionContainer>
       <LinearGradient
@@ -28,8 +28,8 @@ const Promotion: React.FunctionComponent<PromotionProps> = ({}) => {
         <TimerWrap>
           <CountDown
             until={secUntilDate}
-            onFinish={() => alert("finished")}
-            onPress={() => alert("hello")}
+            onFinish={() => Alert.alert("finished")}
+            onPress={() => Alert.alert("hello")}
             digitStyle={{ backgroundColor: "#FFF", width: 104, height: 72 }}
             digitTxtStyle={{ color: "#000000", fontSize: 40 }}
             timeLabelStyle={{ color: "#000000", fontSize: 15 }}
