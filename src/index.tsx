@@ -2,16 +2,12 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ThemeProvider } from "styled-components/native";
-import Icon from "react-native-vector-icons/Ionicons";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Antdesign from "react-native-vector-icons/AntDesign";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import theme from "./theme";
-import { NavigationLabel } from "./styles";
 
 import Home from "./screens/Home";
-import { StyleSheet, Text } from "react-native";
-import { color } from "react-native-reanimated";
 
 const Tab = createBottomTabNavigator();
 
