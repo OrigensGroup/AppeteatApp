@@ -1,5 +1,5 @@
 // import original module declarations
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from 'styled-components/native';
 
 import colors, { ColorsInterface } from './colors';
 import spacing, { SpacingInterface } from './spacing';
@@ -14,7 +14,7 @@ declare module 'styled-components' {
 
 const theme: DefaultTheme = {
   colors,
-  spacing
+  spacing,
 };
 
 export default theme;

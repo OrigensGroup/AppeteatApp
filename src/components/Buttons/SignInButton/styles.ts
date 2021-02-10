@@ -1,14 +1,13 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const HomepageContainer = styled.View`
   display: flex;
 `;
 
 export const MainWrapper = styled.View`
-  width: 100%
+  width: 100%;
   align-items: center;
   justify-content: center;
-
 `;
 
 export const ButtonContainer = styled.TouchableOpacity`
@@ -25,4 +24,3 @@ export const ButtonContainer = styled.TouchableOpacity`
   border-bottom-right-radius: ${({ theme }) => theme.spacing.single};
   border-bottom-left-radius: ${({ theme }) => theme.spacing.single};
 `;
-

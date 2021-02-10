@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const HomepageContainer = styled.View`
   display: flex;
@@ -6,9 +6,10 @@ export const HomepageContainer = styled.View`
 
 export const MenuWrapper = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(11)};
-  margin: 10px ${({ theme }) => theme.spacing.multiple(3)}
-  ${({ theme }) => theme.spacing.double}
-  ${({ theme }) => theme.spacing.multiple(3)};
+  margin: ${({ theme }) => theme.spacing.single}
+    ${({ theme }) => theme.spacing.multiple(3)}
+    ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.spacing.multiple(3)};
   background-color: #50494991;
   align-content: center;
   justify-content: flex-start;
@@ -17,7 +18,6 @@ export const MenuWrapper = styled.View`
   border-bottom-right-radius: ${({ theme }) => theme.spacing.single};
   border-bottom-left-radius: ${({ theme }) => theme.spacing.single};
 `;
-
 
 export const Img = styled.Image`
   height: ${({ theme }) => theme.spacing.multiple(11)};
