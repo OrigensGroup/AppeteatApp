@@ -14,7 +14,7 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 interface PromotionProps {}
 
 const Promotion: React.FunctionComponent<PromotionProps> = ({}) => {
-  const endDate = new Date("Wed Feb 10 2021 15:36:55 GMT+0000").getTime();
+  const endDate = new Date("Wed Feb 10 2021 20:36:55 GMT+0000").getTime();
   const dateDifference = endDate - new Date().getTime();
   const secUntilDate = dateDifference / 1000;
   return (
