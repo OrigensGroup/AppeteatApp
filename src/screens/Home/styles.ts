@@ -14,13 +14,33 @@ export const LogoImage = styled.Image`
 `;
 
 export const PromotionContainer = styled.View`
-  margin: 0 auto;
+  margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 export const HomepageTitle = styled.Text`
   color: black;
   font-size: 20px;
-  margin-bottom: ${({ theme }) => theme.spacing.double};
+  margin-bottom: ${({ theme }) => theme.spacing.single};
 `;
-export const CocktailContainer = styled.View`
-  padding: ${({ theme }) => theme.spacing.multiple(3)};
+export const CocktailContainer = styled.ScrollView``;
+
+export const CocktailSection = styled.View`
+  margin: ${({ theme }) => theme.spacing.multiple(3)} 0
+    ${({ theme }) => theme.spacing.multiple(3)}
+    ${({ theme }) => theme.spacing.multiple(3)};
+`;
+
+export const BottomContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: ${({ theme }) => theme.spacing.single}
+    ${({ theme }) => theme.spacing.multiple(3)};
+`;
+export const ReservationContainer = styled.View`
+  width: 50%;
+  padding-right: ${({ theme }) => theme.spacing.single};
+`;
+export const LocationContainer = styled.View`
+  width: 50%;
+  padding-left: ${({ theme }) => theme.spacing.single};
 `;

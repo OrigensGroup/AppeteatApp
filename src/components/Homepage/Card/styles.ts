@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
-export const CardContainer = styled.View`
+export const CardContainer = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(35)};
   height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
@@ -10,6 +10,8 @@ export const CardContainer = styled.View`
   border-radius:${({ theme }) => theme.spacing.double};
   border-color: transparent;
   border-bottom-width: 0;
+  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) =>
+  theme.spacing.double} ${({ theme }) => theme.spacing.half} 0};
   shadow-color: #000;
   shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
