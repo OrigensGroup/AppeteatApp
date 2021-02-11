@@ -7,7 +7,6 @@ interface ButtonContainerProps {
 export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
   width: 60%;
   height: ${({ theme }) => theme.spacing.multiple(5)};
-
   display: flex;
   align-items: center;
   justify-content: center;
