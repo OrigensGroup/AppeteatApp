@@ -22,7 +22,7 @@ const SearchBar: React.FunctionComponent<CardProps> = ({ description, onClick })
         <SearchField
         placeholder={loginTranslations.searchField.placeholder}
         textContentType = 'name'
-        ></SearchField>
+        />
       </SearchTextWrapper>
       <SearchButton onPress={onClick}>
         <Icon name='search' size={28} color='#0008' />
