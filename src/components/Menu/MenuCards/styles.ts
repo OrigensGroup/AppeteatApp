@@ -14,7 +14,7 @@ export const CardContainer = styled.View`
   shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
-  elevation: 6;
+  elevation: 5;
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 
@@ -28,10 +28,10 @@ export const ImageWrapper = styled.View`
 export const DrinkImage = styled.Image`
   height: ${({ theme }) => theme.spacing.multiple(11)};
   width: ${({ theme }) => theme.spacing.multiple(11)};
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-bottom-left-radius: ${({ theme }) => theme.spacing.double};
+  border-bottom-right-radius: ${({ theme }) => theme.spacing.double};
+  border-top-left-radius: ${({ theme }) => theme.spacing.double};
+  border-top-right-radius: ${({ theme }) => theme.spacing.double};
 `;
 
 export const DrinkDesc = styled.View`
@@ -62,7 +62,7 @@ export const AddToBasket = styled.TouchableOpacity`
   height:${({ theme }) => theme.spacing.multiple(3)};
   margin-top:${({ theme }) => theme.spacing.multiple(8)};
   background-color: #FC7930;
-  border-radius: 15px;
+  border-radius: ${({ theme }) => theme.spacing.double};
   justify-content: center;
   align-items: center;
 `;

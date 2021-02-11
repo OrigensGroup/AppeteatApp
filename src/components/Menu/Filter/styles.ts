@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 
-export const SearchBarContainer = styled.View`
-  width: ${({ theme }) => theme.spacing.multiple(34)};
+export const FilterButtonContainer = styled.View`
+  width: ${({ theme }) => theme.spacing.multiple(5)};
   height: ${({ theme }) => theme.spacing.multiple(5)};
-  border-radius:${({ theme }) => theme.spacing.double};
+  border-radius:${({ theme }) => theme.spacing.multiple(12)};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
   display: flex;
   flex-direction: row;
@@ -20,21 +20,16 @@ export const SearchBarContainer = styled.View`
 
 `;
 
-export const SearchTextWrapper = styled.View`
-  margin-left: ${({ theme }) => theme.spacing.double};
-  height: 100%;
-  justify-content: center;
-`;
-
-export const SearchButton = styled.TouchableOpacity`
-  width: ${({ theme }) => theme.spacing.multiple(5)};
+export const Button = styled.TouchableOpacity`
+  width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
   margin-right: ${({ theme }) => theme.spacing.single};
 `;
 
-
+export const IconWrapper = styled.View`
+`;
 
 
 

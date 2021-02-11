@@ -1,11 +1,27 @@
 import styled from "styled-components/native";
 
-export const HomepageContainer = styled.View`
+
+export const MenuWrapper = styled.View`
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+`;
+
+export const MenuContainer = styled.View`
+  margin: 0 auto;
   background-color: #fff;
   height: 100%;
 `;
+
+export const TopBarWrapper = styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const LogoContainer = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(10)};
+
 `;
 export const LogoImage = styled.Image`
   margin-top: ${({ theme }) => theme.spacing.single};
@@ -14,12 +30,14 @@ export const LogoImage = styled.Image`
   resize-mode: contain;
 `;
 
-export const CardsContainer = styled.View`
-  margin: 0 auto;
+export const CardsContainer = styled.ScrollView`
+
 `;
 
 export const SearchBarWrapper = styled.View`
-  margin: 0 auto;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const HomepageTitle = styled.Text`

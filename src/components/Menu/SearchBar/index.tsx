@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import SearchField from '../SearchField';
-import loginTranslations from '../../../translations/menu';
+
 
 import {
   SearchBarContainer,
@@ -10,18 +10,19 @@ import {
   SearchButton,
 } from './styles';
 
-interface CardProps {
-  description: string;
+interface SearchBarProps {
   onClick: () => void;
+  placeholder?: string;
+  textContentType: 'name' | 'none';
 }
 
-const SearchBar: React.FunctionComponent<CardProps> = ({ description, onClick }) => {
+const SearchBar: React.FunctionComponent<SearchBarProps> = ({ placeholder, textContentType, onClick }) => {
   return (
     <SearchBarContainer>
       <SearchTextWrapper>
         <SearchField
-        placeholder={loginTranslations.searchField.placeholder}
-        textContentType = 'name'
+        placeholder={placeholder}
+        textContentType = {textContentType}
         />
       </SearchTextWrapper>
       <SearchButton onPress={onClick}>
