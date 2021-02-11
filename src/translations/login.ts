@@ -11,7 +11,7 @@ const loginTranslations = {
     label: 'Log In',
   },
   signUpSection: {
-    label: "Don't have an account?",
+    label: "Non hai ancora un account?",
     buttonLabel: 'Registrati    > ',
   },
 };

@@ -11,6 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import theme from './theme';
 
 import Home from './screens/Home';
+import Menu from './screens/Menu';
 import LoginScreen from './screens/Login';
 
 const Stack = createStackNavigator();
@@ -50,7 +51,7 @@ const App = () => {
       />
       <Tab.Screen
         name='Menu'
-        component={Home}
+        component={Menu}
         options={{
           tabBarLabel: 'Menu',
           tabBarIcon: ({ color, size }) => (
