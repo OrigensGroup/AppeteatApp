@@ -10,14 +10,18 @@ import {
 } from "./styles";
 
 interface LocationCardProps {
+  imageUrl: string;
   title: string;
-  description: string;
+  address: string;
+  phoneNumber: string;
   onClick?: () => void;
 }
 
 const LocationCard: React.FunctionComponent<LocationCardProps> = ({
+  imageUrl,
   title,
-  description,
+  address,
+  phoneNumber,
   onClick,
 }) => {
   return (
@@ -28,7 +32,8 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({
       </ImageContainer>
       <DrinkDesc>
         <TextTitle>{title}</TextTitle>
-        <Text>{description}</Text>
+        <Text>{address}</Text>
+        <Text>{phoneNumber}</Text>
       </DrinkDesc>
     </CardContainer>
   );

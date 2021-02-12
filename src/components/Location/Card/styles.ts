@@ -1,41 +1,45 @@
 import styled from "styled-components/native";
 
 export const CardContainer = styled.TouchableOpacity`
-  width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(28)};
   background-color: #fff;
   border-radius:${({ theme }) => theme.spacing.double};
-  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) =>
-  theme.spacing.double} ${({ theme }) => theme.spacing.half} 0};
+  margin-bottom: ${({ theme }) => theme.spacing.double};
   shadow-color: #000;
   shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
-  elevation: 6;
+  elevation: 5;
+  margin:${({ theme }) => theme.spacing.double} ${({ theme }) =>
+  theme.spacing.multiple(3)};
 `;
 
 export const VenueImage = styled.Image`
   width: 100%;
   height: 100%;
+  border-top-right-radius: ${({ theme }) => theme.spacing.double};
+  border-top-left-radius: ${({ theme }) => theme.spacing.double};
 `;
 export const ImageContainer = styled.View`
   height: 40%;
   position: relative;
+  overflow: hidden;
 `;
 export const Triangle = styled.View`
   position: absolute;
   width: 0;
-  top: 75;
+  z-index: 1;
+  top: 65;
   right: 0;
   height: 0;
   background-color: transparent;
   border-style: solid;
-  border-left-width: 1500;
+  border-left-width: 1000;
   border-right-width: 0;
-  border-bottom-width: 80;
+  border-bottom-width: 70;
   border-left-color: transparent;
   border-right-color: transparent;
-  border-bottom-color: red;
+  border-bottom-color: white;
 `;
 
 export const DrinkDesc = styled.View`
@@ -46,4 +50,5 @@ export const DrinkDesc = styled.View`
 export const TextTitle = styled.Text`
   font-size: 20px;
   color: black;
+  margin-bottom: ${({ theme }) => theme.spacing.half};
 `;

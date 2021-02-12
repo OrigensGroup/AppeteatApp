@@ -21,11 +21,21 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
         <LogoImage source={require("../../img/Logo.png")}></LogoImage>
       </LogoContainer>
       <SearchBarWrapper>
-        <SearchBar description="Cerca nel menu"/>
+        <SearchBar description="Cerca nel menu" />
       </SearchBarWrapper>
       <CardsContainer>
-        <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
-        <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
+        <MenuCard
+          title="Mojito"
+          description="Description"
+          price="£7.5"
+          onClick={console.log("Added to Basket!")}
+        />
+        <MenuCard
+          title="Mojito"
+          description="Description"
+          price="£7.5"
+          onClick={console.log("Added to Basket!")}
+        />
       </CardsContainer>
     </HomepageContainer>
   );

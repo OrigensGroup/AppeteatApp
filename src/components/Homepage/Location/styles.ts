@@ -14,7 +14,7 @@ export const LocationContainer = styled.TouchableOpacity`
   shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
-  elevation: 4;
+  elevation: 5;
 
 `;
 export const CardTitle = styled.Text`
