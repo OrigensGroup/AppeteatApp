@@ -15,6 +15,5 @@ export const DropDownContainer = styled.View`
   shadow-opacity: 0.8;
   shadow-radius: 2px;
   elevation: 6;
-  justify-content: space-between;
 
 `;

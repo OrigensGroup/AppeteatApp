@@ -14,7 +14,7 @@ export const ReservationContainer = styled.TouchableOpacity`
   shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
-  elevation: 6;
+  elevation: 5;
 `;
 
 export const ReservationTitle = styled.Text`

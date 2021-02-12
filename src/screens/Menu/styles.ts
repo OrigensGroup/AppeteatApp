@@ -30,4 +30,3 @@ export const HomepageTitle = styled.Text`
 export const CocktailContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.multiple(3)};
 `;
-
