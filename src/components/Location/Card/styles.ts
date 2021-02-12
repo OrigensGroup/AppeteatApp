@@ -52,3 +52,19 @@ export const TextTitle = styled.Text`
   color: black;
   margin-bottom: ${({ theme }) => theme.spacing.half};
 `;
+
+export const ButtonContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: ${({ theme }) => theme.spacing.single};
+`;
+
+export const LocationButton = styled.TouchableOpacity`
+  width: 40%;
+  padding: ${({ theme }) => theme.spacing.half};
+  align-items: center;
+  border-radius: ${({ theme }) => theme.spacing.double};
+  background-color: #fff;
+  elevation: 3;
+`;

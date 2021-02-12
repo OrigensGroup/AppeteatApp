@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Alert, Text } from "react-native";
 import {
   CardContainer,
   VenueImage,
@@ -7,6 +7,8 @@ import {
   TextTitle,
   ImageContainer,
   Triangle,
+  ButtonContainer,
+  LocationButton,
 } from "./styles";
 
 interface LocationCardProps {
@@ -25,7 +27,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({
   onClick,
 }) => {
   return (
-    <CardContainer onPress={onClick}>
+    <CardContainer onPress={onClick} activeOpacity={0.9}>
       <ImageContainer>
         <VenueImage source={require("../../../img/mojito.jpg")} />
         <Triangle></Triangle>
@@ -35,6 +37,14 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({
         <Text>{address}</Text>
         <Text>{phoneNumber}</Text>
       </DrinkDesc>
+      <ButtonContainer>
+        <LocationButton>
+          <Text>Open Maps</Text>
+        </LocationButton>
+        <LocationButton>
+          <Text>Book a Table</Text>
+        </LocationButton>
+      </ButtonContainer>
     </CardContainer>
   );
 };
