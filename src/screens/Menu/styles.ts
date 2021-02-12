@@ -31,7 +31,6 @@ export const LogoImage = styled.Image`
 `;
 
 export const CardsContainer = styled.ScrollView`
-
 `;
 
 export const SearchBarWrapper = styled.View`
@@ -40,12 +39,16 @@ export const SearchBarWrapper = styled.View`
   align-items: center;
 `;
 
-export const HomepageTitle = styled.Text`
-  color: black;
-  font-size: 20px;
-  margin-bottom: ${({ theme }) => theme.spacing.double};
+
+export const SwiperWrapper = styled.View`
+  background-color: #80244E;
+  align-items: center;
 `;
-export const CocktailContainer = styled.View`
-  padding: ${({ theme }) => theme.spacing.multiple(3)};
+
+export const SwiperWrapper2 = styled.View`
+background-color: #FC7930;
+justify-content: center;
+align-items: center;
 `;
+
 

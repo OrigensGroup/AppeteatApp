@@ -5,6 +5,8 @@ import SearchBar from "../../components/Menu/SearchBar";
 import menuTranslations from '../../translations/menu';
 import Filter from '../../components/Menu/Filter';
 import QrCode from '../../components/Menu/QrCode';
+import Swiper from 'react-native-swiper';
+import SwiperP1 from '../../components/Menu/SwiperP1'
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import {
@@ -12,10 +14,11 @@ import {
   MenuContainer,
   TopBarWrapper,
   CardsContainer,
-  HomepageTitle,
   LogoContainer,
   LogoImage,
   SearchBarWrapper,
+  SwiperWrapper,
+  SwiperWrapper2,
 } from "./styles";
 
 const DATA = [
@@ -53,13 +56,15 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
           onClick={console.log('Hello World!')}/>
         </SearchBarWrapper>
         <CardsContainer>
-          {/* <FlatList></FlatList> */}
-          <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
-          <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
-          <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
-          <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
-          <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
-          <MenuCard title="Mojito" description="Description" price="£7.5" onClick={console.log('Added to Basket!')}/>
+          <Swiper loadMinimal={true} loadMinimalSize={1} loop={false} showsPagination={false}>
+            <SwiperWrapper>
+              <SwiperP1></SwiperP1>
+            </SwiperWrapper>
+            <SwiperWrapper2>
+            <SwiperP1>
+            </SwiperP1>
+            </SwiperWrapper2>
+          </Swiper>
         </CardsContainer>
       </MenuContainer>
     </MenuWrapper>
@@ -67,3 +72,5 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 };
 
 export default Menu;
+
+
