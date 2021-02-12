@@ -4,4 +4,4 @@ export const TextFieldContainer = styled.View`
   width: 100%;
 `;
 
-export const SearchFieldInput = styled.TextInput``;
+export const SearchFieldInput = styled.Picker``;
