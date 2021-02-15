@@ -5,7 +5,9 @@ interface TitleProps {
   color: string;
   fontWeight?: string;
 }
-
+export const TitleContainer = styled.View`
+  justify-content: center;
+`;
 export const TitleText = styled.Text<TitleProps>`
   font-size: ${({ fontSize }) => fontSize}px;
   color: ${({ color }) => color};

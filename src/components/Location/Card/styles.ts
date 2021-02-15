@@ -64,7 +64,7 @@ export const LocationButton = styled.TouchableOpacity`
   width: 40%;
   padding: ${({ theme }) => theme.spacing.half};
   align-items: center;
-  border-radius: ${({ theme }) => theme.spacing.double};
+  border-radius: ${({ theme }) => theme.spacing.single};
   background-color: #fff;
   elevation: 3;
 `;

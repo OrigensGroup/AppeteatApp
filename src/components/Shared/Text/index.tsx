@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TitleText } from "./styles";
+import { TitleText, TitleContainer } from "./styles";
 
 interface TitleProps {
   fontSize: number;
@@ -15,9 +15,11 @@ const Title: React.FunctionComponent<TitleProps> = ({
   children,
 }) => {
   return (
-    <TitleText fontSize={fontSize} color={color} fontWeight={fontWeight}>
-      {children}
-    </TitleText>
+    <TitleContainer>
+      <TitleText fontSize={fontSize} color={color} fontWeight={fontWeight}>
+        {children}
+      </TitleText>
+    </TitleContainer>
   );
 };
 
