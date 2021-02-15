@@ -29,14 +29,14 @@ export const Triangle = styled.View`
   position: absolute;
   width: 0;
   z-index: 1;
-  top: 65;
+  top: 65px;
   right: 0;
   height: 0;
   background-color: transparent;
   border-style: solid;
-  border-left-width: 1000;
+  border-left-width: 1000px;
   border-right-width: 0;
-  border-bottom-width: 70;
+  border-bottom-width: 70px;
   border-left-color: transparent;
   border-right-color: transparent;
   border-bottom-color: white;

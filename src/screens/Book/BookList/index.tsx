@@ -1,13 +1,19 @@
+import { useNavigation, useNavigationState } from "@react-navigation/native";
 import React from "react";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
-import LocationCard from "../../components/Location/Card";
-import SearchBar from "../../components/Menu/SearchBar";
+import LocationCard from "../../../components/Location/Card";
+import SearchBar from "../../../components/Menu/SearchBar";
 import { LocationPageContainer, SearchBarWrapper } from "./styles";
 
-interface LocationProps {}
+interface BookListProps {}
 
-const Location: React.FunctionComponent<LocationProps> = () => {
-  const DATA = [
+type Item = {
+  id: string;
+  title: string;
+};
+
+const BookList: React.FunctionComponent<BookListProps> = () => {
+  const DATA: Item[] = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
       title: "First Item",
@@ -25,13 +31,13 @@ const Location: React.FunctionComponent<LocationProps> = () => {
       title: "Third Item",
     },
   ];
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }: { item: Item }) => (
     <LocationCard
-      imageUrl="../../img/mojito.jpg"
+      imageUrl="../../img/venue.jpg"
       title="Venue1"
       address="42-44 Great Windmill St, Soho, London W1D 7NB"
       phoneNumber="0754 9576820"
-    ></LocationCard>
+    />
   );
   return (
     <LocationPageContainer>
@@ -43,4 +49,4 @@ const Location: React.FunctionComponent<LocationProps> = () => {
   );
 };
 
-export default Location;
+export default BookList;

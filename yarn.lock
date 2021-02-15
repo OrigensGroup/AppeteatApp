@@ -7974,6 +7974,11 @@ react-native-countdown-component@^2.7.1:
     prop-types "^15.5.8"
     sprintf-js "^1.1.1"
 
+react-native-date-picker@^3.2.9:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-3.2.9.tgz#59f90289e6854f1cfa698205e65c06f1c6a0b88f"
+  integrity sha512-D4wj1nDry69DgiNbIhLyMomTIcvJ6ja1R131oKMzzRuVXq5cHp/dHKdnXp1wZELc81KnMpKzfqzTR6uYx3zvkw==
+
 react-native-gesture-handler@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.10.0.tgz#74387a9d56bd192e32ca7a4892b1580e37d66ad4"
@@ -7984,6 +7989,13 @@ react-native-gesture-handler@^1.10.0:
     fbjs "^3.0.0"
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
+    prop-types "^15.7.2"
+
+react-native-input-spinner@^1.4.10:
+  version "1.4.10"
+  resolved "https://registry.yarnpkg.com/react-native-input-spinner/-/react-native-input-spinner-1.4.10.tgz#dfea9a63d225764e5aa4c6deccf9185e87ae7bb9"
+  integrity sha512-GvIfZhE07uG/sor1M3KMVj+KPuV0TRqEc2Tztx2wNBecMEbY8Dss3hzqI75JHNZDp4hP5eE4N0OrKUSYtOt9Zg==
+  dependencies:
     prop-types "^15.7.2"
 
 react-native-iphone-x-helper@^1.3.0:
