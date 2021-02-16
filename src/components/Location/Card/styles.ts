@@ -29,14 +29,14 @@ export const Triangle = styled.View`
   position: absolute;
   width: 0;
   z-index: 1;
-  top: 65;
+  top: ${({ theme }) => theme.spacing.multiple(8)};
   right: 0;
   height: 0;
   background-color: transparent;
   border-style: solid;
-  border-left-width: 1000;
+  border-left-width: 1000px;
   border-right-width: 0;
-  border-bottom-width: 70;
+  border-bottom-width: 70px;
   border-left-color: transparent;
   border-right-color: transparent;
   border-bottom-color: white;
@@ -64,7 +64,7 @@ export const LocationButton = styled.TouchableOpacity`
   width: 40%;
   padding: ${({ theme }) => theme.spacing.half};
   align-items: center;
-  border-radius: ${({ theme }) => theme.spacing.double};
+  border-radius: ${({ theme }) => theme.spacing.single};
   background-color: #fff;
   elevation: 3;
 `;
