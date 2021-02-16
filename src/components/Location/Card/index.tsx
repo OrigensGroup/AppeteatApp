@@ -1,5 +1,7 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Alert, Text } from "react-native";
+import BookTable from "../../../screens/Book/BookATable";
 import {
   CardContainer,
   VenueImage,
@@ -26,6 +28,10 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({
   phoneNumber,
   onClick,
 }) => {
+  const navigation = useNavigation();
+  const navigate = () => {
+    navigation.navigate("BookTable", { title });
+  };
   return (
     <CardContainer onPress={onClick} activeOpacity={0.9}>
       <ImageContainer>
@@ -41,7 +47,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({
         <LocationButton>
           <Text>Open Maps</Text>
         </LocationButton>
-        <LocationButton>
+        <LocationButton onPress={navigate}>
           <Text>Book a Table</Text>
         </LocationButton>
       </ButtonContainer>
