@@ -185,10 +185,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
           />
         </Container>
         <ConfirmContainer>
-          <IconField
-            backgroundColor={"rgba(255, 183, 0, 0.849)"}
-            justifyContent={"center"}
-          >
+          <IconField>
             <Title fontSize={18} color={"#000000"} fontWeight={"bold"}>
               Confirm
             </Title>

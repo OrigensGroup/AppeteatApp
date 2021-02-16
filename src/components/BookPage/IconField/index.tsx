@@ -1,24 +1,10 @@
 import React from "react";
 import { IconFieldContainer } from "./styles";
 
-interface IconFieldProps {
-  backgroundColor: string;
-  justifyContent?: string;
-}
+interface IconFieldProps {}
 
-const IconField: React.FunctionComponent<IconFieldProps> = ({
-  children,
-  backgroundColor,
-  justifyContent,
-}) => {
-  return (
-    <IconFieldContainer
-      backgroundColor={backgroundColor}
-      justifyContent={justifyContent}
-    >
-      {children}
-    </IconFieldContainer>
-  );
+const IconField: React.FunctionComponent<IconFieldProps> = ({ children }) => {
+  return <IconFieldContainer>{children}</IconFieldContainer>;
 };
 
 export default IconField;

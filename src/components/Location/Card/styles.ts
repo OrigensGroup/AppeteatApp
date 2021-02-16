@@ -29,7 +29,7 @@ export const Triangle = styled.View`
   position: absolute;
   width: 0;
   z-index: 1;
-  top: 65px;
+  top: ${({ theme }) => theme.spacing.multiple(8)};
   right: 0;
   height: 0;
   background-color: transparent;
