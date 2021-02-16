@@ -17,6 +17,7 @@ import Book from "./screens/Book";
 import Location from "./screens/Location";
 import SingleItem from "./components/Menu/SingleItemCard"
 
+
 const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -79,7 +80,7 @@ const App = () => {
 
       <Tab.Screen
         name="Account"
-        component={Location}
+        component={Home}
         options={{
           tabBarLabel: "Account",
           tabBarIcon: ({ color, size }) => (

@@ -7986,6 +7986,13 @@ react-native-gesture-handler@^1.10.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-input-spinner@^1.4.10:
+  version "1.4.10"
+  resolved "https://registry.yarnpkg.com/react-native-input-spinner/-/react-native-input-spinner-1.4.10.tgz#dfea9a63d225764e5aa4c6deccf9185e87ae7bb9"
+  integrity sha512-GvIfZhE07uG/sor1M3KMVj+KPuV0TRqEc2Tztx2wNBecMEbY8Dss3hzqI75JHNZDp4hP5eE4N0OrKUSYtOt9Zg==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
