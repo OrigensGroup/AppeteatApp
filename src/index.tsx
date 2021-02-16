@@ -15,6 +15,7 @@ import Menu from "./screens/Menu";
 import LoginScreen from "./screens/Login";
 import Book from "./screens/Book";
 import Location from "./screens/Location";
+import Profile from "./screens/Profile";
 
 const Stack = createStackNavigator();
 
@@ -78,7 +79,7 @@ const App = () => {
 
       <Tab.Screen
         name="Account"
-        component={Location}
+        component={Profile}
         options={{
           tabBarLabel: "Account",
           tabBarIcon: ({ color, size }) => (
