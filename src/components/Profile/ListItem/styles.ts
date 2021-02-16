@@ -13,11 +13,6 @@ export const IconContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
-
-export const LinkWrapper = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(2)};
-`;
-
 export const IconTextWrap = styled.View`
   display: flex;
   flex-direction: row;
