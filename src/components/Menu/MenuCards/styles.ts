@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
-  width: ${({ theme }) => theme.spacing.multiple(42)};
+  width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(14)};
   display: flex;
   flex-direction: row;
@@ -16,6 +16,24 @@ export const CardContainer = styled.TouchableOpacity`
   shadow-radius: 2px;
   elevation: 5;
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
+  justify-content: space-between;
+`;
+export const CardWrapper = styled.View`
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  margin-right: ${({ theme }) => theme.spacing.multiple(3)};
+  justify-content: space-between;
+`;
+
+export const LeftWrapper = styled.View`
+  height: 100%;
+  flex-direction: row;
+`;
+
+export const RightWrapper = styled.View`
+  height: 100%;
+  flex-direction: row;
 `;
 
 export const ImageWrapper = styled.View`
@@ -35,32 +53,21 @@ export const DrinkImage = styled.Image`
 `;
 
 export const DrinkDesc = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0
-    ${({ theme }) => theme.spacing.double};
+  padding-top: ${({ theme }) => theme.spacing.double};
+  padding-left: ${({ theme }) => theme.spacing.double};
 `;
 
-export const DrinkLike = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0
-    ${({ theme }) => theme.spacing.multiple(10)};
-`;
 
 export const TextTitle = styled.Text`
   font-size: 20px;
   color: black;
 `;
 
-export const ButtonWrapper = styled.View`
-  height: 100%;
-  margin-left:${({ theme }) => theme.spacing.multiple(1)};
-  width: ${({ theme }) => theme.spacing.multiple(15)};
-  justify-content: center;
-  align-items: flex-end;
-`;
-
 export const AddToBasket = styled.TouchableOpacity`
   width:${({ theme }) => theme.spacing.multiple(7)};
   height:${({ theme }) => theme.spacing.multiple(3)};
-  margin-top:${({ theme }) => theme.spacing.multiple(8)};
+  margin-top:${({ theme }) => theme.spacing.multiple(9)};
+  margin-right:${({ theme }) => theme.spacing.multiple(2)};
   background-color: #FC7930;
   border-radius: ${({ theme }) => theme.spacing.double};
   justify-content: center;

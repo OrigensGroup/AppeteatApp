@@ -2,12 +2,14 @@ import React from 'react';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
-  ImageWrapper,
   CardContainer,
+  ImageWrapper,
+  CardWrapper,
+  LeftWrapper,
+  RightWrapper,
   DrinkImage,
   DrinkDesc,
   TextTitle,
-  ButtonWrapper,
   AddToBasket,
   Price
 } from './styles';
@@ -22,18 +24,22 @@ interface CardProps {
 const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, price, onClick }) => {
   return (
     <CardContainer>
-      <ImageWrapper>
-      <DrinkImage source={require('../../../img/mojito.jpg')} />
-      </ImageWrapper>
-      <DrinkDesc>
-        <TextTitle>{title}</TextTitle>
-        <Text>{description}</Text>
-      </DrinkDesc>
-      <ButtonWrapper>
-        <AddToBasket onPress={onClick}>
-          <Price>{price}</Price>
-        </AddToBasket>
-      </ButtonWrapper>
+      <CardWrapper>
+        <LeftWrapper>
+          <ImageWrapper>
+            <DrinkImage source={require('../../../img/mojito.jpg')} />
+          </ImageWrapper>
+          <DrinkDesc>
+            <TextTitle>{title}</TextTitle>
+            <Text>{description}</Text>
+          </DrinkDesc>
+        </LeftWrapper>
+        <RightWrapper>
+          <AddToBasket onPress={onClick}>
+            <Price>{price}</Price>
+          </AddToBasket>
+        </RightWrapper>
+      </CardWrapper>
     </CardContainer>
   );
 };

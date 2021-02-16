@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
-export const SearchBarContainer = styled.View`
-  width: ${({ theme }) => theme.spacing.multiple(34)};
+
+export const SearchBarWrapper = styled.View`
+  width: 85%;
   height: ${({ theme }) => theme.spacing.multiple(5)};
   border-radius:${({ theme }) => theme.spacing.double};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};

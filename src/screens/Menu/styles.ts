@@ -11,7 +11,7 @@ export const MenuContainer = styled.View`
   margin: 0 auto;
   background-color: #fff;
   height: 100%;
-  width: 90%;
+  margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const TopBarWrapper = styled.View`
@@ -42,12 +42,12 @@ export const SearchBarWrapper = styled.View`
 
 
 export const SwiperWrapper = styled.View`
-  background-color: #80244E;
+  background-color: #ffffff;
   align-items: center;
 `;
 
 export const SwiperWrapper2 = styled.View`
-background-color: #FC7930;
+background-color: #ffffff;
 justify-content: center;
 align-items: center;
 `;

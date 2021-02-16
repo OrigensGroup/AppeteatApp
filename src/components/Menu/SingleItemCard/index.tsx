@@ -30,8 +30,8 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
     <Wrapper>
       <ItemPic source={require('../../../img/mojito.jpg')}>
         <ButtonsWrapper>
-          <CloseButton onClick={console.log('hello world')}/>
-          <HeartButton onClick={console.log('hello world')}/>
+          <CloseButton onClick={() => console.log('hello world')}/>
+          <HeartButton onClick={() => console.log('hello world')}/>
         </ButtonsWrapper>
       </ItemPic>
       <DetailsContainer>
@@ -60,7 +60,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
             <Text>Sugar</Text>
             <Text>Sugar</Text>
             <Text>Sugar</Text>
-            <AddToBasketButton onClick={console.log('Hello World')}/>
+            <AddToBasketButton onClick={() => console.log('Hello World')}/>
           </IngredientsWrapper>
         </ItemDetails>
       </DetailsContainer>
