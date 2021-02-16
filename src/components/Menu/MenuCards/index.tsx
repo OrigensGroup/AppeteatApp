@@ -6,7 +6,6 @@ import {
   CardContainer,
   DrinkImage,
   DrinkDesc,
-  DrinkLike,
   TextTitle,
   ButtonWrapper,
   AddToBasket,

@@ -11,6 +11,7 @@ export const MenuContainer = styled.View`
   margin: 0 auto;
   background-color: #fff;
   height: 100%;
+  width: 90%;
 `;
 
 export const TopBarWrapper = styled.View`

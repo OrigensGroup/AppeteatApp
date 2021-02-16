@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const CardContainer = styled.View`
+export const CardContainer = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(42)};
   height: ${({ theme }) => theme.spacing.multiple(14)};
   display: flex;
