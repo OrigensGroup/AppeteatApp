@@ -15,7 +15,10 @@ export const IconContainer = styled.View`
 `;
 
 export const LinkWrapper = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(3)};
+  margin: ${({ theme }) => theme.spacing.single}
+    ${({ theme }) => theme.spacing.multiple(3)}
+    ${({ theme }) => theme.spacing.single}
+    ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const IconTextWrap = styled.View`

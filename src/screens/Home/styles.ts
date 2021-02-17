@@ -3,6 +3,8 @@ import styled from "styled-components/native";
 export const HomepageContainer = styled.View`
   background-color: #fff;
   height: 100%;
+  display: flex;
+  justify-content: center;
 `;
 export const LogoContainer = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(10)};

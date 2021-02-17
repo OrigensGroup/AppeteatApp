@@ -23,7 +23,9 @@ const Promotion: React.FunctionComponent<PromotionProps> = ({
   return (
     <PromotionContainer onPress={onClick}>
       <LinearGradient
-        colors={["#DEB98E", "#FFB803"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1.2, y: 0 }}
+        colors={["#FC7930", "#FFE70E"]}
         style={styles.linearGradient}
       >
         <PromotionTitle>Happy Hour</PromotionTitle>
