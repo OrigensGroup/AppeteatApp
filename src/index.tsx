@@ -17,6 +17,8 @@ import Book from "./screens/Book";
 import Location from "./screens/Location";
 import Profile from "./screens/Profile";
 
+import SingleItem from "./components/Menu/SingleItemCard";
+
 const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -68,7 +70,7 @@ const App = () => {
       />
       <Tab.Screen
         name="Cart"
-        component={Home}
+        component={SingleItem}
         options={{
           tabBarLabel: "Cart",
           tabBarIcon: ({ color, size }) => (
