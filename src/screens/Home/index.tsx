@@ -25,8 +25,8 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       <LogoContainer>
         <LogoImage source={require("../../img/Logo.png")}></LogoImage>
       </LogoContainer>
+      <HomepageTitle>Popular Cocktails</HomepageTitle>
       <CocktailSection>
-        <HomepageTitle>Popular Cocktails</HomepageTitle>
         <CocktailContainer
           horizontal={true}
           showsHorizontalScrollIndicator={false}

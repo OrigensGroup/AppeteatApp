@@ -20,7 +20,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, title }) => {
     <ProfileLinkContainer>
       <IconContainer>{icon}</IconContainer>
       <IconTextWrap>
-        <Title color="#000" fontSize={14}>
+        <Title color="#000" fontSize={16}>
           {title}
         </Title>
       </IconTextWrap>

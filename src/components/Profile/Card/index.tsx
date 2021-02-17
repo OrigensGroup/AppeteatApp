@@ -1,11 +1,9 @@
 import React from "react";
 import { Text } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
 import {
   CardContainer,
   DrinkImage,
   DrinkDesc,
-  DrinkLike,
   TextTitle,
   CardWrap,
 } from "./styles";
@@ -29,10 +27,6 @@ const Card: React.FunctionComponent<CardProps> = ({
           <TextTitle>{title}</TextTitle>
           <Text>{description}</Text>
         </DrinkDesc>
-        <DrinkLike>
-          <Icon name="heart-outline" size={28} color="#0008" />
-          {/* <Icon name="heart" size={30} color="red" /> */}
-        </DrinkLike>
       </CardContainer>
     </CardWrap>
   );

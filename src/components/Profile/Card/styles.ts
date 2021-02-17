@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 
 export const CardContainer = styled.TouchableOpacity`
-  width: ${({ theme }) => theme.spacing.multiple(35)};
-  height: ${({ theme }) => theme.spacing.multiple(20)};
+  width: ${({ theme }) => theme.spacing.multiple(30)};
+  height: ${({ theme }) => theme.spacing.multiple(15)};
   display: flex;
   flex-direction: row;
   border-width: 1px;
@@ -14,7 +14,7 @@ export const CardContainer = styled.TouchableOpacity`
   shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
-  elevation: 5;
+  elevation: 4;
 `;
 export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
@@ -30,11 +30,6 @@ export const DrinkImage = styled.Image`
 export const DrinkDesc = styled.View`
   padding: ${({ theme }) => theme.spacing.double} 0 0
     ${({ theme }) => theme.spacing.double};
-`;
-
-export const DrinkLike = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0
-    ${({ theme }) => theme.spacing.multiple(5)};
 `;
 
 export const TextTitle = styled.Text`

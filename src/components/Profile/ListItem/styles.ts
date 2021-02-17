@@ -12,6 +12,7 @@ export const ArrowContainer = styled.View`
 export const IconContainer = styled.View`
   justify-content: center;
   align-items: center;
+  padding: 0 ${({ theme }) => theme.spacing.single};
 `;
 export const IconTextWrap = styled.View`
   display: flex;
