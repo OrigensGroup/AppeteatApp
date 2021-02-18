@@ -2,7 +2,7 @@ import { useNavigation, useNavigationState } from "@react-navigation/native";
 import React from "react";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import LocationCard from "../../../components/Location/Card";
-import SearchBar from "../../../components/Menu/SearchBar";
+import SearchBar from "../../../components/Menu/MenuComponents/SearchBar";
 import { LocationPageContainer, SearchBarWrapper } from "./styles";
 
 interface BookListProps {}

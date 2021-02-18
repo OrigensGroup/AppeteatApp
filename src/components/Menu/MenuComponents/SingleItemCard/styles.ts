@@ -3,6 +3,9 @@ import styled from 'styled-components/native';
 
 
 export const Wrapper = styled.View`
+background-color: #fff;
+height: 100%;
+width: 100%;
 `;
 
 export const ItemPic = styled.ImageBackground`
@@ -19,16 +22,14 @@ export const ButtonsWrapper = styled.View`
 `;
 
 export const DetailsContainer = styled.View`
-height: 100%;
 width: 100%;
 background-color: #fff;
 `;
 
 export const ItemDetails = styled.View`
-  margin: 0 auto;
+  padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
   background-color: #fff;
-  height: 100%;
-  width: 90%;
+  width: 100%;
 `;
 
 export const DetailsTopRow = styled.View`
@@ -94,4 +95,15 @@ export const Text = styled.Text`
   font-size: 14px;
   color: black;
 `;
+
+export const BasketButtonWrapper = styled.View`
+width: 100%;
+height: 100%;
+position: absolute;
+justify-content: flex-end;
+padding-bottom: ${({ theme }) => theme.spacing.multiple(1)};
+padding-left: ${({ theme }) => theme.spacing.multiple(3)};
+padding-right: ${({ theme }) => theme.spacing.multiple(3)};
+`;
+
 

@@ -3,13 +3,9 @@ import styled from 'styled-components/native';
 
 export const MainButtonWrapper = styled.View`
   width: 100%;
-  height: 100%;
-  position: absolute;
-  justify-content: flex-end;
 `;
 
 export const MainButton = styled.TouchableOpacity`
-  width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(7)};
   border-radius:${({ theme }) => theme.spacing.single};
   flex-direction: row;

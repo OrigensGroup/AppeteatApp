@@ -1,6 +1,7 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import {
   CardContainer,
   ImageWrapper,
@@ -11,7 +12,8 @@ import {
   DrinkDesc,
   TextTitle,
   AddToBasket,
-  Price
+  Price,
+  CardMainContainer
 } from './styles';
 
 interface CardProps {
@@ -21,13 +23,19 @@ interface CardProps {
   onClick: () => void;
 }
 
-const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, price, onClick }) => {
+const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, price, onClick,
+  }) => {
+    const navigation = useNavigation();
+    const navigate = () => {
+      navigation.navigate("SingleItem", { title });
+    };
   return (
-    <CardContainer>
+    <CardMainContainer>
+    <CardContainer onPress={navigate}>
       <CardWrapper>
         <LeftWrapper>
           <ImageWrapper>
-            <DrinkImage source={require('../../../img/mojito.jpg')} />
+            <DrinkImage source={require('../../../../img/mojito.jpg')} />
           </ImageWrapper>
           <DrinkDesc>
             <TextTitle>{title}</TextTitle>
@@ -41,6 +49,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, pric
         </RightWrapper>
       </CardWrapper>
     </CardContainer>
+    </CardMainContainer>
   );
 };
 

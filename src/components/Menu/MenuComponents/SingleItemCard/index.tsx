@@ -21,16 +21,24 @@ import {
   OrangeBoldText,
   BoldText,
   Text,
+  BasketButtonWrapper,
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
-interface SingleItemProps {}
+interface SingleItemProps {
+  onClick: () => void;
+}
 
-const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
+const SingleItem: React.FunctionComponent<SingleItemProps> = ( {onClick} ) => {
+  const navigation = useNavigation();
+  const navigate = () => {
+    navigation.navigate("MenuList");
+  };
   return (
     <Wrapper>
-      <ItemPic source={require('../../../img/mojito.jpg')}>
+      <ItemPic source={require('../../../../img/mojito.jpg')}>
         <ButtonsWrapper>
-          <CloseButton onClick={() => console.log('hello world')}/>
+          <CloseButton onClick={navigate}/>
           <HeartButton onClick={() => console.log('hello world')}/>
         </ButtonsWrapper>
       </ItemPic>
@@ -58,12 +66,12 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
             <Text>Sugar</Text>
             <Text>Sugar</Text>
             <Text>Sugar</Text>
-            <Text>Sugar</Text>
-            <Text>Sugar</Text>
-            <AddToBasketButton onClick={() => console.log('Hello World')}/>
           </IngredientsWrapper>
         </ItemDetails>
       </DetailsContainer>
+      <BasketButtonWrapper>
+        <AddToBasketButton onClick={() => console.log('Hello World')}/>
+      </BasketButtonWrapper>
     </Wrapper>
   );
 };

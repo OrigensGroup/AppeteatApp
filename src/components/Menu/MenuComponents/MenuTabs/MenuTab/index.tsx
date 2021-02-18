@@ -1,17 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
+  Text,
   MenuTabContainer,
 } from './styles';
 
 interface MenuTabProps {
+  title: string;
   active: boolean;
   index: number;
   onPress: (index: number ) => void
 }
 
-const MenuTab: React.FunctionComponent<MenuTabProps> = ({active, index, onPress}) => {
+const MenuTab: React.FunctionComponent<MenuTabProps> = ({active, index, onPress, title}) => {
 
   const onMenuPress = () => {
     onPress(index);
@@ -19,7 +20,7 @@ const MenuTab: React.FunctionComponent<MenuTabProps> = ({active, index, onPress}
 
   return (
     <MenuTabContainer active={active} onPress={onMenuPress}>
-      <Text>You are Gae</Text>
+      <Text>{title}</Text>
     </MenuTabContainer>
   );
 };

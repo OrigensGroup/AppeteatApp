@@ -11,14 +11,15 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import theme from "./theme";
 
 import Home from "./screens/Home";
-import Menu from "./screens/Menu";
+import MenuNav from "./screens/Menu";
 import LoginScreen from "./screens/Login";
 import Book from "./screens/Book";
 import Location from "./screens/Location";
 
 import Profile from "./screens/Profile";
 
-import SingleItem from "./components/Menu/SingleItemCard"
+import SingleItem from "./components/Menu/MenuComponents/SingleItemCard"
+import Cart from "./screens/Menu/Cart";
 
 const Stack = createStackNavigator();
 
@@ -57,7 +58,7 @@ const App = () => {
       />
       <Tab.Screen
         name="Menu"
-        component={Menu}
+        component={MenuNav}
         options={{
           tabBarLabel: "Menu",
           tabBarIcon: ({ color, size }) => (
@@ -71,7 +72,7 @@ const App = () => {
       />
       <Tab.Screen
         name="Cart"
-        component={SingleItem}
+        component={Cart}
         options={{
           tabBarLabel: "Cart",
           tabBarIcon: ({ color, size }) => (

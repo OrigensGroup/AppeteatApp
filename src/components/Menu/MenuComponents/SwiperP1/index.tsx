@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { styles } from '../../Homepage/Promotion/styles';
+import { styles } from '../../../Homepage/Promotion/styles';
 import MenuCard from '../MenuCards';
 
 import {
@@ -41,9 +41,9 @@ interface SwiperProps {
 const SwiperP1: React.FunctionComponent<SwiperProps> = () => {
   return (
     <Wrapper>
-      <FlatList data={DATA} keyExtractor={({ index}) => index} renderItem={({item})=>(
+      <FlatList data={DATA} keyExtractor={({index}) => index} renderItem={({item})=>(
         <MenuCard title={item.title} description='Exotic Drink' price='£7.5' onClick={() => console.log('Hello World')} />
-   )}/>
+      )}/>
     </Wrapper>
   );
 };
