@@ -35,7 +35,7 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
     },
   ];
   const renderItem = ({ item }: { item: Item }) => (
-    <FavCard title="Mojito" description="Description" />
+    <FavCard title="Mojito" description="Descriptions" />
   );
   return (
     <FavouriteCocktailsContainer>
@@ -44,7 +44,11 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
         renderItem={renderItem}
         horizontal={false}
         numColumns={2}
-        columnWrapperStyle={{ width: "50%" }}
+        columnWrapperStyle={{
+          backgroundColor: "red",
+          display: "flex",
+          justifyContent: "center",
+        }}
       />
     </FavouriteCocktailsContainer>
   );

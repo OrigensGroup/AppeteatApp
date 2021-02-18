@@ -2,10 +2,12 @@ import styled from "styled-components/native";
 
 export const CardContainer = styled.TouchableOpacity`
   flex: 1;
-  height: ${({ theme }) => theme.spacing.multiple(25)};
+  height: ${({ theme }) => theme.spacing.multiple(11)};
   border-width: 1px;
   background-color: #fff;
-  border-radius:${({ theme }) => theme.spacing.double};
+  display: flex;
+  flex-direction:row;
+  border-radius:${({ theme }) => theme.spacing.multiple(3)};
   border-color: transparent;
   border-bottom-width: 0;
   shadow-color: #000;
@@ -13,18 +15,17 @@ export const CardContainer = styled.TouchableOpacity`
   shadow-opacity: 0.8;
   shadow-radius: 2px;
   elevation: 4;
+  overflow: hidden;
+`;
+export const GreenBorder = styled.View`
+  border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  border-bottom-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  width: 5%;
+  background-color: #11af0e;
 `;
 export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
-
-export const DrinkImage = styled.Image`
-  height: 50%;
-  width: 100%;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-`;
-
 export const DrinkDesc = styled.View`
   padding: ${({ theme }) => theme.spacing.double} 0 0
     ${({ theme }) => theme.spacing.double};
