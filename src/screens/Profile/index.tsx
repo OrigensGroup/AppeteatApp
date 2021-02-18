@@ -6,15 +6,29 @@ const Stack = createStackNavigator();
 import {} from "./styles";
 import ProfileLink from "../../components/Profile/ProfileLink";
 import Account from "./Account";
+import Reservations from "./Reservations";
+import FavouriteCocktails from "./FavouriteCocktails";
+import Orders from "./Orders";
+import Notifications from "./Notifications";
+import Settings from "./Settings";
 
 interface ProfileProps {}
 
 const Profile: React.FunctionComponent<ProfileProps> = () => {
   return (
-    <Stack.Navigator headerMode={"none"}>
-      <Stack.Screen name="Account" component={Account} />
-      <Stack.Screen name="Notifications" component={ProfileLink} />
-      <Stack.Screen name="BookTable" component={ProfileLink} />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Account"
+        options={{
+          headerShown: false,
+        }}
+        component={Account}
+      />
+      <Stack.Screen name="Reservations" component={Reservations} />
+      <Stack.Screen name="FavouriteCocktails" component={FavouriteCocktails} />
+      <Stack.Screen name="Orders" component={Orders} />
+      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 };

@@ -4,14 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
-import {
-  ProfileLinkContainer,
-  IconTextWrap,
-  LinkWrapper,
-  ArrowContainer,
-  IconContainer,
-} from "./styles";
+import { LinkWrapper } from "./styles";
 import ListItem from "../ListItem";
 
 interface ProfileLinkProps {}
@@ -22,6 +15,7 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = ({}) => {
       <ListItem
         icon={<AntDesign name="calendar" size={28} color="#000000" />}
         title="My Reservation"
+        navigateTo="Reservations"
       />
       <ListItem
         icon={
@@ -32,20 +26,24 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = ({}) => {
           />
         }
         title="My Favourite Cocktails"
+        navigateTo="FavouriteCocktails"
       />
 
       <ListItem
         icon={<AntDesign name="shoppingcart" size={28} color="#000000" />}
         title="My Orders"
+        navigateTo="Orders"
       />
 
       <ListItem
         icon={<Icon name="notifications-outline" size={28} color="#000000" />}
         title="Notification"
+        navigateTo="Notifications"
       />
       <ListItem
         icon={<Icon name="settings-outline" size={28} color="#000000" />}
         title="Settings"
+        navigateTo="Settings"
       />
     </LinkWrapper>
   );

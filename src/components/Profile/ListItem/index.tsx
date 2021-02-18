@@ -1,7 +1,5 @@
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {
   ProfileLinkContainer,
   IconContainer,
@@ -9,15 +7,25 @@ import {
   ArrowContainer,
 } from "./styles";
 import Title from "../../Shared/Text";
+import { useNavigation } from "@react-navigation/native";
 
 interface ListItemProps {
   title: string;
   icon: React.ReactElement;
+  navigateTo: string;
 }
 
-const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, title }) => {
+const ListItem: React.FunctionComponent<ListItemProps> = ({
+  icon,
+  title,
+  navigateTo,
+}) => {
+  const navigation = useNavigation();
+  const navigate = (goTo: string) => () => {
+    navigation.navigate(goTo);
+  };
   return (
-    <ProfileLinkContainer>
+    <ProfileLinkContainer onPress={navigate(navigateTo)}>
       <IconContainer>{icon}</IconContainer>
       <IconTextWrap>
         <Title color="#000" fontSize={14}>

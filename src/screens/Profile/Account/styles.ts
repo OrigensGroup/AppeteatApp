@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const ProfileContainer = styled.View`
-  background-color: #ec9869;
+  background-color: #2da59a;
   height: 100%;
 `;
 export const NavigationContainer = styled.View`
@@ -26,7 +26,7 @@ export const ImageContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.multiple(3)};
   justify-content: center;
   align-items: center;
-  background-color: #ec9869;
+  background-color: #2da59a;
 `;
 export const CocktailContainer = styled.ScrollView``;
 export const TitleWrap = styled.View`

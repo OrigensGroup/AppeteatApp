@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const ProfileLinkContainer = styled.View`
+export const ProfileLinkContainer = styled.TouchableOpacity`
   width: 100%;
   display: flex;
   flex-direction: row;
