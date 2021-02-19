@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 
-import {
-  TextFieldContainer,
-  TextFieldLabel,
-  TextFieldInput,
-  TextFieldText,
-} from "./styles";
+import { TextFieldContainer, TextFieldInput } from "./styles";
 
 interface TextField2Props {
   placeholder?: string;
+  icon?: React.ReactElement;
   textContentType: "emailAddress" | "password" | "none";
 }
 
 const TextField2: React.FunctionComponent<TextField2Props> = ({
   placeholder,
+  icon,
   textContentType,
 }) => {
   const [text, setText] = useState<string>("");
@@ -22,6 +19,7 @@ const TextField2: React.FunctionComponent<TextField2Props> = ({
 
   return (
     <TextFieldContainer>
+      {icon}
       <TextFieldInput
         placeholder={placeholder}
         textContentType={textContentType}

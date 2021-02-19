@@ -12,10 +12,22 @@ import TextField from "../../../../components/Menu/SearchField";
 import { Text } from "../../../../components/Menu/SingleItemCard/styles";
 import Title from "../../../../components/Shared/Text";
 import { scale } from "../../../../theme/textScaling";
+import { useNavigation } from "@react-navigation/native";
 
-interface PersonalInformationProps {}
+interface PersonalInformationProps {
+  onClick?: () => void;
+}
 
-const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = () => {
+const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (
+  onClick
+) => {
+  const navigation = useNavigation();
+  const navigate = () => {
+    navigation.navigate("ChangeEmail");
+  };
+  const navigate2 = () => {
+    navigation.navigate("ChangeName");
+  };
   return (
     <PersonalInformationContainer>
       <PersonalInformationWrap>
@@ -25,7 +37,7 @@ const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (
               Email address
             </Title>
           </InfoContainer>
-          <InnerContainer>
+          <InnerContainer onPress={navigate}>
             <Title fontSize={16} color="#000">
               hkdj@hotmail.it
             </Title>
@@ -37,7 +49,7 @@ const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (
               Name
             </Title>
           </InfoContainer>
-          <InnerContainer>
+          <InnerContainer onPress={navigate2}>
             <Title fontSize={scale(14)} color="#000">
               Alessandro Carpanzano
             </Title>

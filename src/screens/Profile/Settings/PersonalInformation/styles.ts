@@ -23,7 +23,7 @@ export const RowContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.multiple(3)} 0;
   width: 100%;
 `;
-export const InnerContainer = styled.View`
+export const InnerContainer = styled.TouchableOpacity`
   border-bottom-color: #000;
   border-color: transparent;
   border-width: 1px;

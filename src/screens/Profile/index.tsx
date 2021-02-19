@@ -13,6 +13,8 @@ import Notifications from "./Notifications";
 import Settings from "./Settings";
 import PersonalInformation from "./Settings/PersonalInformation";
 import Password from "./Settings/Password";
+import ChangeEmail from "./Settings/PersonalInformation/ChangeEmail";
+import ChangeName from "./Settings/PersonalInformation/ChangeName";
 
 interface ProfileProps {}
 
@@ -36,6 +38,8 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={PersonalInformation}
       />
       <Stack.Screen name="Password" component={Password} />
+      <Stack.Screen name="ChangeEmail" component={ChangeEmail} />
+      <Stack.Screen name="ChangeName" component={ChangeName} />
     </Stack.Navigator>
   );
 };
