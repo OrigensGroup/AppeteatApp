@@ -1,17 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { ProfileImageContainer, AccountImage } from "./styles";
+import { ProfileImageContainer, AccountImage } from './styles';
 
 interface ProfileImageProps {
   imageUrl?: string;
 }
 
-const ProfileImage: React.FunctionComponent<ProfileImageProps> = ({
-  imageUrl,
-}) => {
+const ProfileImage: React.FunctionComponent<ProfileImageProps> = ({}) => {
   return (
     <ProfileImageContainer>
-      <AccountImage source={require("../../../img/alex.jpg")}></AccountImage>
+      <AccountImage source={require('../../../img/alex.jpg')} />
     </ProfileImageContainer>
   );
 };

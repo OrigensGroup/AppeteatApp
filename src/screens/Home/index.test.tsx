@@ -1,9 +1,10 @@
-import React from 'react';
-import { render } from '@testing-library/react-native';
-import Home from './';
+import React from "react";
+import { render } from "@testing-library/react-native";
 
-it('displays the example text', () => {
+import Home from ".";
+
+it("displays the example text", () => {
   const { getByText } = render(<Home />);
 
-  expect(getByText('Example')).toBeTruthy();
+  expect(getByText("Example")).toBeTruthy();
 });

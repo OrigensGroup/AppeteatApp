@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(35)};
@@ -13,7 +13,6 @@ export const CardContainer = styled.TouchableOpacity`
   margin: ${({ theme }) => theme.spacing.single} ${({ theme }) =>
   theme.spacing.double} ${({ theme }) => theme.spacing.half} 0};
   shadow-color: #000;
-  shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
   elevation: 6;

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React from "react";
+import { Text } from "react-native";
+
 import {
   CardContainer,
   ImageWrapper,
@@ -11,8 +11,8 @@ import {
   DrinkDesc,
   TextTitle,
   AddToBasket,
-  Price
-} from './styles';
+  Price,
+} from "./styles";
 
 interface CardProps {
   title: string;
@@ -21,13 +21,18 @@ interface CardProps {
   onClick: () => void;
 }
 
-const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, price, onClick }) => {
+const MenuCard: React.FunctionComponent<CardProps> = ({
+  description,
+  onClick,
+  price,
+  title,
+}) => {
   return (
     <CardContainer>
       <CardWrapper>
         <LeftWrapper>
           <ImageWrapper>
-            <DrinkImage source={require('../../../img/mojito.jpg')} />
+            <DrinkImage source={require("../../../img/mojito.jpg")} />
           </ImageWrapper>
           <DrinkDesc>
             <TextTitle>{title}</TextTitle>

@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import {
-  TextFieldContainer,
-  SearchFieldInput,
-} from './styles';
+import { TextFieldContainer, SearchFieldInput } from "./styles";
 
 interface TextFieldProps {
   placeholder?: string;
-  textContentType: 'name' | 'none';
+  textContentType: "name" | "none";
 }
 
 const TextField: React.FunctionComponent<TextFieldProps> = ({
   placeholder,
   textContentType,
 }) => {
-  const [text, setText] = useState<string>('');
+  const [text, setText] = useState<string>("");
 
-  const updateText = (text: string) => setText(text);
+  const updateText = (newText: string) => setText(newText);
 
   return (
     <TextFieldContainer>
       <SearchFieldInput
+        defaultValue={text}
+        onChangeText={updateText}
         placeholder={placeholder}
         textContentType={textContentType}
-        onChangeText={updateText}
-        defaultValue={text}
       />
     </TextFieldContainer>
   );

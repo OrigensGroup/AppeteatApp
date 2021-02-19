@@ -1,5 +1,4 @@
-import styled from 'styled-components/native';
-
+import styled from "styled-components/native";
 
 export const Button = styled.TouchableOpacity`
   justify-content: center;
@@ -11,6 +10,3 @@ export const IconWrapper = styled.View`
   width: 100%;
   height: 100%;
 `;
-
-
-

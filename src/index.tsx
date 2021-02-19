@@ -14,11 +14,10 @@ import Home from "./screens/Home";
 import Menu from "./screens/Menu";
 import LoginScreen from "./screens/Login";
 import Book from "./screens/Book";
-import Location from "./screens/Location";
 
 import Profile from "./screens/Profile";
 
-import SingleItem from "./components/Menu/SingleItemCard"
+import SingleItem from "./components/Menu/SingleItemCard";
 
 const Stack = createStackNavigator();
 
@@ -29,66 +28,65 @@ const App = () => {
     <Tab.Navigator
       initialRouteName="Home"
       tabBarOptions={{
-        style: { height: 55 },
         activeTintColor: "#cf9822",
         inactiveTintColor: "#2c2c2b",
         labelStyle: { fontSize: 10, marginBottom: 6 },
       }}
     >
       <Tab.Screen
-        name="Home"
         component={Home}
+        name="Home"
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="md-home-outline" color={color} size={size} />
+            <Ionicons color={color} name="md-home-outline" size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="Book"
         component={Book}
+        name="Book"
         options={{
           tabBarLabel: "Book",
           tabBarIcon: ({ color, size }) => (
-            <Antdesign name="calendar" color={color} size={size} />
+            <Antdesign color={color} name="calendar" size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="Menu"
         component={Menu}
+        name="Menu"
         options={{
           tabBarLabel: "Menu",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
-              name="glass-cocktail"
               color={color}
+              name="glass-cocktail"
               size={size}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="Cart"
         component={SingleItem}
+        name="Cart"
         options={{
           tabBarLabel: "Cart",
           tabBarIcon: ({ color, size }) => (
-            <Antdesign name="shoppingcart" color={color} size={size} />
+            <Antdesign color={color} name="shoppingcart" size={size} />
           ),
         }}
       />
 
       <Tab.Screen
-        name="Account"
         component={Profile}
+        name="Account"
         options={{
           tabBarLabel: "Account",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
-              name="account-outline"
               color={color}
+              name="account-outline"
               size={size}
             />
           ),
@@ -100,9 +98,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <Stack.Navigator headerMode={"none"}>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="App" component={TabBar} />
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen component={LoginScreen} name="Login" />
+          <Stack.Screen component={TabBar} name="App" />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

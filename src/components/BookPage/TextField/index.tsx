@@ -1,6 +1,7 @@
 import React from "react";
+
 import loginTranslations from "../../../translations/menu";
-import SearchField from "../../Menu/SearchField/";
+import SearchField from "../../Menu/SearchField";
 
 import { SearchFieldContainer } from "./styles";
 
@@ -9,10 +10,7 @@ interface SearchField2Props {
   onClick: () => void;
 }
 
-const SearchField2: React.FunctionComponent<SearchField2Props> = ({
-  description,
-  onClick,
-}) => {
+const SearchField2: React.FunctionComponent<SearchField2Props> = () => {
   return (
     <SearchFieldContainer>
       <SearchField

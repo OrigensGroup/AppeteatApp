@@ -1,11 +1,11 @@
 const menuTranslations = {
   searchField: {
-    label: 'Search',
-    placeholder: 'Cerca nel menu',
+    label: "Search",
+    placeholder: "Cerca nel menu",
   },
   qrField: {
-    label: 'QrCode',
-    placeholder: 'Scan Tavolo',
+    label: "QrCode",
+    placeholder: "Scan Tavolo",
   },
 };
 

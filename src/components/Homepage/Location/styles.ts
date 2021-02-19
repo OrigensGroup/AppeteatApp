@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const LocationContainer = styled.TouchableOpacity`
   width: 100%;
@@ -11,11 +11,9 @@ export const LocationContainer = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   shadow-color: #000;
-  shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
   elevation: 5;
-
 `;
 export const CardTitle = styled.Text`
   font-size: 20px;

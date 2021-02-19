@@ -1,17 +1,16 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(28)};
   background-color: #fff;
-  border-radius:${({ theme }) => theme.spacing.double};
+  border-radius: ${({ theme }) => theme.spacing.double};
   margin-bottom: ${({ theme }) => theme.spacing.double};
   shadow-color: #000;
-  shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
   elevation: 5;
-  margin:${({ theme }) => theme.spacing.double} ${({ theme }) =>
-  theme.spacing.multiple(3)};
+  margin: ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const VenueImage = styled.Image`

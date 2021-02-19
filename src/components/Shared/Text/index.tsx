@@ -9,14 +9,14 @@ interface TitleProps {
 }
 
 const Title: React.FunctionComponent<TitleProps> = ({
-  fontSize,
-  color,
-  fontWeight,
   children,
+  color,
+  fontSize,
+  fontWeight,
 }) => {
   return (
     <TitleContainer>
-      <TitleText fontSize={fontSize} color={color} fontWeight={fontWeight}>
+      <TitleText color={color} fontSize={fontSize} fontWeight={fontWeight}>
         {children}
       </TitleText>
     </TitleContainer>

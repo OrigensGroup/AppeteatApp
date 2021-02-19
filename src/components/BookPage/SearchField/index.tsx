@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 
-import {
-  TextFieldContainer,
-  SearchFieldInput,
-} from './styles';
+import { TextFieldContainer, SearchFieldInput } from './styles';
 
 interface TextFieldProps {
   placeholder?: string;
@@ -16,15 +13,15 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
 }) => {
   const [text, setText] = useState<string>('');
 
-  const updateText = (text: string) => setText(text);
+  const updateText = (newText: string) => setText(newText);
 
   return (
     <TextFieldContainer>
       <SearchFieldInput
+        defaultValue={text}
+        onChangeText={updateText}
         placeholder={placeholder}
         textContentType={textContentType}
-        onChangeText={updateText}
-        defaultValue={text}
       />
     </TextFieldContainer>
   );

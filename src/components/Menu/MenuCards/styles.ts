@@ -7,11 +7,10 @@ export const CardContainer = styled.TouchableOpacity`
   flex-direction: row;
   border-width: 1px;
   background-color: #fff;
-  border-radius:${({ theme }) => theme.spacing.double};
+  border-radius: ${({ theme }) => theme.spacing.double};
   border-color: transparent;
   border-bottom-width: 0;
   shadow-color: #000;
-  shadow-offset: {width: 0, height: 2};
   shadow-opacity: 0.8;
   shadow-radius: 2px;
   elevation: 5;
@@ -57,18 +56,17 @@ export const DrinkDesc = styled.View`
   padding-left: ${({ theme }) => theme.spacing.double};
 `;
 
-
 export const TextTitle = styled.Text`
   font-size: 20px;
   color: black;
 `;
 
 export const AddToBasket = styled.TouchableOpacity`
-  width:${({ theme }) => theme.spacing.multiple(7)};
-  height:${({ theme }) => theme.spacing.multiple(3)};
-  margin-top:${({ theme }) => theme.spacing.multiple(9)};
-  margin-right:${({ theme }) => theme.spacing.multiple(2)};
-  background-color: #FC7930;
+  width: ${({ theme }) => theme.spacing.multiple(7)};
+  height: ${({ theme }) => theme.spacing.multiple(3)};
+  margin-top: ${({ theme }) => theme.spacing.multiple(9)};
+  margin-right: ${({ theme }) => theme.spacing.multiple(2)};
+  background-color: #fc7930;
   border-radius: ${({ theme }) => theme.spacing.double};
   justify-content: center;
   align-items: center;

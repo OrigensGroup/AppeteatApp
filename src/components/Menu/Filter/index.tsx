@@ -1,23 +1,17 @@
-import React from 'react';
-import { Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React from "react";
+import Icon from "react-native-vector-icons/Ionicons";
 
-
-import {
-  FilterButtonContainer,
-  Button,
-  IconWrapper
-} from './styles';
+import { FilterButtonContainer, Button } from "./styles";
 
 interface FilterProps {
   onClick: () => void;
 }
 
-const Filter: React.FunctionComponent<FilterProps> = ( {onClick} ) => {
+const Filter: React.FunctionComponent<FilterProps> = ({ onClick }) => {
   return (
     <FilterButtonContainer>
       <Button onPress={onClick}>
-        <Icon name='ios-filter' size={28} color='#0008'/>
+        <Icon color="#0008" name="ios-filter" size={28} />
       </Button>
     </FilterButtonContainer>
   );

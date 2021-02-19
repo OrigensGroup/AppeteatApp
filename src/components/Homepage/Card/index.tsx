@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+
 import {
   CardContainer,
   DrinkImage,
@@ -16,9 +17,9 @@ interface CardProps {
 }
 
 const Card: React.FunctionComponent<CardProps> = ({
-  title,
   description,
   onClick,
+  title,
 }) => {
   return (
     <CardContainer onPress={onClick}>
@@ -28,7 +29,7 @@ const Card: React.FunctionComponent<CardProps> = ({
         <Text>{description}</Text>
       </DrinkDesc>
       <DrinkLike>
-        <Icon name="heart-outline" size={28} color="#0008" />
+        <Icon color="#0008" name="heart-outline" size={28} />
         {/* <Icon name="heart" size={30} color="red" /> */}
       </DrinkLike>
     </CardContainer>

@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
 
-
 export const MenuWrapper = styled.View`
   background-color: #fff;
   height: 100%;
@@ -22,7 +21,6 @@ export const TopBarWrapper = styled.View`
 
 export const LogoContainer = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(10)};
-
 `;
 export const LogoImage = styled.Image`
   margin-top: ${({ theme }) => theme.spacing.single};
@@ -31,8 +29,7 @@ export const LogoImage = styled.Image`
   resize-mode: contain;
 `;
 
-export const CardsContainer = styled.ScrollView`
-`;
+export const CardsContainer = styled.ScrollView``;
 
 export const SearchBarWrapper = styled.View`
   justify-content: space-between;
@@ -40,16 +37,13 @@ export const SearchBarWrapper = styled.View`
   align-items: center;
 `;
 
-
 export const SwiperWrapper = styled.View`
   background-color: #ffffff;
   align-items: center;
 `;
 
 export const SwiperWrapper2 = styled.View`
-background-color: #ffffff;
-justify-content: center;
-align-items: center;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
 `;
-
-

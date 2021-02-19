@@ -1,4 +1,5 @@
 import React from "react";
+
 import loginTranslations from "../../../translations/menu";
 import SearchField from "../SearchField";
 
@@ -9,10 +10,7 @@ interface DropDownProps {
   onClick: () => void;
 }
 
-const DropDown: React.FunctionComponent<DropDownProps> = ({
-  description,
-  onClick,
-}) => {
+const DropDown: React.FunctionComponent<DropDownProps> = () => {
   return (
     <DropDownContainer>
       <SearchField

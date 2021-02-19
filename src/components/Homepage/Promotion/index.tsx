@@ -1,6 +1,7 @@
 import React from "react";
 import LinearGradient from "react-native-linear-gradient";
 import CountDown from "react-native-countdown-component";
+
 import {
   PromotionContainer,
   PromotionTitle,
@@ -30,12 +31,12 @@ const Promotion: React.FunctionComponent<PromotionProps> = ({
         {/* <PromotionDesc>Pay 1, Get 2</PromotionDesc> */}
         <TimerWrap>
           <CountDown
-            until={secUntilDate}
             digitStyle={{ backgroundColor: "#FFF", width: 104, height: 72 }}
             digitTxtStyle={{ color: "#000000", fontSize: 40 }}
+            size={20}
             timeLabelStyle={{ color: "#000000", fontSize: 15 }}
             timeToShow={["H", "M"]}
-            size={20}
+            until={secUntilDate}
           />
         </TimerWrap>
       </LinearGradient>
