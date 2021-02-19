@@ -1,23 +1,23 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { ThemeProvider } from "styled-components/native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import Antdesign from "react-native-vector-icons/AntDesign";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { ThemeProvider } from 'styled-components/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Antdesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import theme from "./theme";
+import theme from './theme';
 
-import Home from "./screens/Home";
-import Menu from "./screens/Menu";
-import LoginScreen from "./screens/Login";
-import Book from "./screens/Book";
+import Home from './screens/Home';
+import Menu from './screens/Menu';
+import LoginScreen from './screens/Login';
+import Book from './screens/Book';
 
-import Profile from "./screens/Profile";
+import Profile from './screens/Profile';
 
-import SingleItem from "./components/Menu/SingleItemCard";
+import SingleItem from './components/Menu/SingleItemCard';
 
 const Stack = createStackNavigator();
 
@@ -28,8 +28,8 @@ const App = () => {
     <Tab.Navigator
       initialRouteName="Home"
       tabBarOptions={{
-        activeTintColor: "#cf9822",
-        inactiveTintColor: "#2c2c2b",
+        activeTintColor: '#cf9822',
+        inactiveTintColor: '#2c2c2b',
         labelStyle: { fontSize: 10, marginBottom: 6 },
       }}
     >
@@ -37,44 +37,32 @@ const App = () => {
         component={Home}
         name="Home"
         options={{
-          tabBarLabel: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons color={color} name="md-home-outline" size={size} />
-          ),
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => <Ionicons color={color} name="md-home-outline" size={size} />,
         }}
       />
       <Tab.Screen
         component={Book}
         name="Book"
         options={{
-          tabBarLabel: "Book",
-          tabBarIcon: ({ color, size }) => (
-            <Antdesign color={color} name="calendar" size={size} />
-          ),
+          tabBarLabel: 'Book',
+          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
         }}
       />
       <Tab.Screen
         component={Menu}
         name="Menu"
         options={{
-          tabBarLabel: "Menu",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              color={color}
-              name="glass-cocktail"
-              size={size}
-            />
-          ),
+          tabBarLabel: 'Menu',
+          tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="glass-cocktail" size={size} />,
         }}
       />
       <Tab.Screen
         component={SingleItem}
         name="Cart"
         options={{
-          tabBarLabel: "Cart",
-          tabBarIcon: ({ color, size }) => (
-            <Antdesign color={color} name="shoppingcart" size={size} />
-          ),
+          tabBarLabel: 'Cart',
+          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="shoppingcart" size={size} />,
         }}
       />
 
@@ -82,14 +70,8 @@ const App = () => {
         component={Profile}
         name="Account"
         options={{
-          tabBarLabel: "Account",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              color={color}
-              name="account-outline"
-              size={size}
-            />
-          ),
+          tabBarLabel: 'Account',
+          tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="account-outline" size={size} />,
         }}
       />
     </Tab.Navigator>

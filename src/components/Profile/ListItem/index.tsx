@@ -1,14 +1,9 @@
-import React from "react";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import React from 'react';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import Title from "../../Shared/Text";
+import Title from '../../Shared/Text';
 
-import {
-  ProfileLinkContainer,
-  IconContainer,
-  IconTextWrap,
-  ArrowContainer,
-} from "./styles";
+import { ProfileLinkContainer, IconContainer, IconTextWrap, ArrowContainer } from './styles';
 
 interface ListItemProps {
   title: string;

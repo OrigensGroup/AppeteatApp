@@ -43,10 +43,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
           <LogoContainer>
             <LogoImage source={require('../../img/Logo.png')} />
           </LogoContainer>
-          <QrCode
-            onClick={() => console.log('Hello World!')}
-            title={menuTranslations.qrField.placeholder}
-          />
+          <QrCode onClick={() => console.log('Hello World!')} title={menuTranslations.qrField.placeholder} />
         </TopBarWrapper>
         <MenuTabs index={menuIndex} onChange={onSwipe} />
         <SearchBarWrapper>
@@ -54,16 +51,11 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
           <SearchBar
             onClick={() => console.log('Hello World!')}
             placeholder={menuTranslations.searchField.placeholder}
-            textContentType='name'
+            textContentType="name"
           />
         </SearchBarWrapper>
         <CardsContainer>
-          <Swiper
-            loop={false}
-            onIndexChanged={onSwipe}
-            ref={ref}
-            showsPagination={false}
-          >
+          <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
             <SwiperWrapper>
               <SwiperP1 />
             </SwiperWrapper>

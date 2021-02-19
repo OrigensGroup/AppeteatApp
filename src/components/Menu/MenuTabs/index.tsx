@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import MenuTab from "./MenuTab";
-import { MenuTabsContainer } from "./styles";
+import MenuTab from './MenuTab';
+import { MenuTabsContainer } from './styles';
 
 interface MenuTabProps {
   index: number;
   onChange: (index: number) => void;
 }
 
-const MenuTabs: React.FunctionComponent<MenuTabProps> = ({
-  index,
-  onChange,
-}) => {
+const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ index, onChange }) => {
   return (
     <MenuTabsContainer>
       <MenuTab active={0 === index} index={0} onPress={onChange} />

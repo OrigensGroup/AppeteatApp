@@ -30,17 +30,17 @@ const Location: React.FunctionComponent<LocationProps> = () => {
 
   const renderItem = () => (
     <LocationCard
-      address='42-44 Great Windmill St, Soho, London W1D 7NB'
-      imageUrl='../../img/mojito.jpg'
-      phoneNumber='0754 9576820'
-      title='Venue1'
+      address="42-44 Great Windmill St, Soho, London W1D 7NB"
+      imageUrl="../../img/mojito.jpg"
+      phoneNumber="0754 9576820"
+      title="Venue1"
     />
   );
 
   return (
     <LocationPageContainer>
       <SearchBarWrapper>
-        <SearchBar placeholder='Da fixare' />
+        <SearchBar placeholder="Da fixare" />
       </SearchBarWrapper>
       <FlatList data={DATA} renderItem={renderItem} />
     </LocationPageContainer>

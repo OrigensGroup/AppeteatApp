@@ -1,15 +1,15 @@
-import { useRoute } from "@react-navigation/native";
-import React, { useState } from "react";
-import Icon from "react-native-vector-icons/Ionicons";
+import { useRoute } from '@react-navigation/native';
+import React, { useState } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-import DateTimePicker from "@react-native-community/datetimepicker";
-import InputSpinner from "react-native-input-spinner";
+import DateTimePicker from '@react-native-community/datetimepicker';
+import InputSpinner from 'react-native-input-spinner';
 
-import { Platform } from "react-native";
+import { Platform } from 'react-native';
 
-import Button from "../../../components/BookPage/Button";
-import Title from "../../../components/Shared/Text";
-import IconField from "../../../components/BookPage/IconField";
+import Button from '../../../components/Book/Button';
+import Title from '../../../components/Shared/Text';
+import IconField from '../../../components/Book/IconField';
 
 import {
   BookTableContainer,
@@ -25,7 +25,7 @@ import {
   ConfirmContainer,
   DateWrap,
   VenueWrap,
-} from "./styles";
+} from './styles';
 
 type Months = {
   [key: number]: string;
@@ -39,76 +39,76 @@ interface BookTableProps {}
 const BookTable: React.FunctionComponent<BookTableProps> = () => {
   const route = useRoute();
   const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState<"date" | "time" | undefined>("date");
+  const [mode, setMode] = useState<'date' | 'time' | undefined>('date');
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios");
+    setShow(Platform.OS === 'ios');
     setDate(currentDate);
   };
 
-  const showMode = (currentMode: "date" | "time" | undefined) => {
+  const showMode = (currentMode: 'date' | 'time' | undefined) => {
     setShow(true);
     setMode(currentMode);
   };
 
   const showDatepicker = () => {
-    showMode("date");
+    showMode('date');
   };
 
   const showTimepicker = () => {
-    showMode("time");
+    showMode('time');
   };
 
   const months: Months = {
-    0: "January",
-    1: "February",
-    2: "March",
-    3: "April",
-    4: "May",
-    5: "June",
-    6: "July",
-    7: "August",
-    8: "September",
-    9: "October",
-    10: "November",
-    11: "December",
+    0: 'January',
+    1: 'February',
+    2: 'March',
+    3: 'April',
+    4: 'May',
+    5: 'June',
+    6: 'July',
+    7: 'August',
+    8: 'September',
+    9: 'October',
+    10: 'November',
+    11: 'December',
   };
 
   const minutes: Minutes = {
-    0: "12",
-    1: "1",
-    2: "2",
-    3: "3",
-    4: "4",
-    5: "5",
-    6: "6",
-    7: "7",
-    8: "8",
-    9: "9",
-    10: "10",
-    11: "11",
-    12: "12",
-    13: "1",
-    14: "2",
-    15: "3",
-    16: "4",
-    17: "5",
-    18: "6",
-    19: "7",
-    20: "8",
-    21: "9",
-    22: "10",
-    23: "11",
-    24: "12",
+    0: '12',
+    1: '1',
+    2: '2',
+    3: '3',
+    4: '4',
+    5: '5',
+    6: '6',
+    7: '7',
+    8: '8',
+    9: '9',
+    10: '10',
+    11: '11',
+    12: '12',
+    13: '1',
+    14: '2',
+    15: '3',
+    16: '4',
+    17: '5',
+    18: '6',
+    19: '7',
+    20: '8',
+    21: '9',
+    22: '10',
+    23: '11',
+    24: '12',
   };
 
   return (
     <BookTableContainer>
       {/* <Text>{JSON.stringify(route.params)}</Text> */}
       <ImageContainer>
-        <VenueImage source={require("../../../img/venue.jpg")} />
+        <VenueImage source={require('../../../img/venue.jpg')} />
       </ImageContainer>
       <FieldsContainer>
         <VenueWrap>

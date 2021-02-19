@@ -16,15 +16,7 @@
       "jsx": true
     }
   },
-  "plugins": [
-    "jest",
-    "@typescript-eslint",
-    "react",
-    "sort-destructure-keys",
-    "prettier",
-    "import",
-    "react-hooks"
-  ],
+  "plugins": ["jest", "@typescript-eslint", "react", "sort-destructure-keys", "prettier", "import", "react-hooks"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -46,19 +38,12 @@
     "@typescript-eslint/ban-ts-ignore": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-use-before-define": [
-      "error",
-      { "functions": false }
-    ],
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": false }],
     "@typescript-eslint/no-var-requires": "off",
     "consistent-this": ["error", "DO_NOT_USE"],
-    "import/default": "error",
+    "import/default": "off",
     "import/export": "error",
-    "import/extensions": [
-      "error",
-      "always",
-      { "js": "never", "ts": "never", "tsx": "never" }
-    ],
+    "import/extensions": ["error", "always", { "js": "never", "ts": "never", "tsx": "never" }],
     "import/named": "error",
     "import/newline-after-import": "error",
     "import/no-absolute-path": "error",
@@ -69,7 +54,7 @@
     "import/no-extraneous-dependencies": "error",
     "import/no-mutable-exports": "error",
     "import/no-named-as-default-member": "error",
-    "import/no-named-as-default": "error",
+    "import/no-named-as-default": "off",
     "import/no-named-default": "error",
     "import/no-self-import": "error",
     "import/no-unresolved": "error",
@@ -78,18 +63,11 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "newlines-between": "always-and-inside-groups"
       }
     ],
-    "init-declarations": ["error", "always"],
+    "init-declarations": ["off", "always"],
     "no-console": "off",
     "no-use-before-define": ["off", { "functions": false }],
     "no-restricted-globals": [
@@ -153,7 +131,7 @@
       "toolbar",
       "top"
     ],
-    "no-shadow": "error",
+    "no-shadow": "off",
     "no-useless-constructor": "error",
     "padding-line-between-statements": [
       "error",
@@ -187,6 +165,7 @@
     "react/sort-comp": "error",
     "react/sort-prop-types": "error",
     "sort-destructure-keys/sort-destructure-keys": "error",
-    "@typescript-eslint/no-empty-interface": "off"
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }

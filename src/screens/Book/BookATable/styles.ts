@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const BookTableContainer = styled.View`
   background-color: #fff;
@@ -25,8 +25,7 @@ export const FieldsContainer = styled.View`
   background-color: white;
 `;
 export const Container = styled.View`
-  padding: ${({ theme }) => theme.spacing.multiple(3)}
-    ${({ theme }) => theme.spacing.multiple(5)};
+  padding: ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.multiple(5)};
   width: 60%;
 `;
 export const DateContainer = styled.View`
@@ -44,18 +43,15 @@ export const TimeContainer = styled.View`
 export const DateWrap = styled.View`
   display: flex;
   flex-direction: row;
-  padding: ${({ theme }) => theme.spacing.multiple(3)}
-    ${({ theme }) => theme.spacing.multiple(5)};
+  padding: ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.multiple(5)};
 `;
 export const VenueWrap = styled.View`
   display: flex;
   flex-direction: row;
-  padding: ${({ theme }) => theme.spacing.multiple(3)}
-    ${({ theme }) => theme.spacing.multiple(5)};
+  padding: ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.multiple(5)};
 `;
 export const ConfirmContainer = styled.View`
-  padding: ${({ theme }) => theme.spacing.multiple(3)}
-    ${({ theme }) => theme.spacing.multiple(12)};
+  padding: ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.multiple(12)};
 `;
 export const IconContainer = styled.View`
   justify-content: center;

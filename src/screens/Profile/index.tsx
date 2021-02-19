@@ -1,12 +1,11 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-import {} from "./styles";
-import ProfileLink from "../../components/Profile/ProfileLink";
+import ProfileLink from '../../components/Profile/ProfileLink';
 
-import Account from "./Account";
+import Account from './Account';
 
 interface ProfileProps {}
 

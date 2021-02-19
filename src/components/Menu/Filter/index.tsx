@@ -1,7 +1,7 @@
-import React from "react";
-import Icon from "react-native-vector-icons/Ionicons";
+import React from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-import { FilterButtonContainer, Button } from "./styles";
+import { FilterButtonContainer, Button } from './styles';
 
 interface FilterProps {
   onClick: () => void;

@@ -1,7 +1,7 @@
-import React from "react";
-import { Text } from "react-native";
+import React from 'react';
+import { Text } from 'react-native';
 
-import { MenuTabContainer } from "./styles";
+import { MenuTabContainer } from './styles';
 
 interface MenuTabProps {
   active: boolean;
@@ -9,11 +9,7 @@ interface MenuTabProps {
   onPress: (index: number) => void;
 }
 
-const MenuTab: React.FunctionComponent<MenuTabProps> = ({
-  active,
-  index,
-  onPress,
-}) => {
+const MenuTab: React.FunctionComponent<MenuTabProps> = ({ active, index, onPress }) => {
   const onMenuPress = () => {
     onPress(index);
   };

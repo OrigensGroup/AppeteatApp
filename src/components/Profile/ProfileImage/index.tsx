@@ -6,7 +6,7 @@ interface ProfileImageProps {
   imageUrl?: string;
 }
 
-const ProfileImage: React.FunctionComponent<ProfileImageProps> = ({}) => {
+const ProfileImage: React.FunctionComponent<ProfileImageProps> = () => {
   return (
     <ProfileImageContainer>
       <AccountImage source={require('../../../img/alex.jpg')} />

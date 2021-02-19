@@ -9,8 +9,7 @@ export const CardContainer = styled.TouchableOpacity`
   shadow-opacity: 0.8;
   shadow-radius: 2px;
   elevation: 5;
-  margin: ${({ theme }) => theme.spacing.double}
-    ${({ theme }) => theme.spacing.multiple(3)};
+  margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const VenueImage = styled.Image`
@@ -42,8 +41,7 @@ export const Triangle = styled.View`
 `;
 
 export const DrinkDesc = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0
-    ${({ theme }) => theme.spacing.double};
+  padding: ${({ theme }) => theme.spacing.double} 0 0 ${({ theme }) => theme.spacing.double};
 `;
 
 export const TextTitle = styled.Text`

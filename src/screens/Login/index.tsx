@@ -1,18 +1,12 @@
-import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
-import LogInButton from "../../components/Login/Buttons/LogInButton";
-import TextField from "../../components/TextField";
+import LogInButton from '../../components/Login/Buttons/LogInButton';
+import TextField from '../../components/Shared/TextField';
 
-import loginTranslations from "../../translations/login";
+import loginTranslations from '../../translations/login';
 
-import {
-  TextFieldWrapper,
-  LoginContainer,
-  LogInContainer,
-  RegisterContainer,
-  RegisterText,
-} from "./styles";
+import { TextFieldWrapper, LoginContainer, LogInContainer, RegisterContainer, RegisterText } from './styles';
 
 interface LoginProps {}
 
@@ -20,7 +14,7 @@ const Login: React.FunctionComponent<LoginProps> = () => {
   const navigation = useNavigation();
 
   const login = () => {
-    navigation.navigate("App");
+    navigation.navigate('App');
   };
 
   return (
@@ -40,18 +34,11 @@ const Login: React.FunctionComponent<LoginProps> = () => {
         />
       </TextFieldWrapper>
       <LogInContainer>
-        <LogInButton
-          onClick={login}
-          text={loginTranslations.loginButton.label}
-        />
+        <LogInButton onClick={login} text={loginTranslations.loginButton.label} />
       </LogInContainer>
       <RegisterContainer>
         <RegisterText>{loginTranslations.signUpSection.label}</RegisterText>
-        <LogInButton
-          onClick={login}
-          secondary
-          text={loginTranslations.signUpSection.buttonLabel}
-        />
+        <LogInButton onClick={login} secondary text={loginTranslations.signUpSection.buttonLabel} />
       </RegisterContainer>
     </LoginContainer>
   );

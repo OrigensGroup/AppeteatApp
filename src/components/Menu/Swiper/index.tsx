@@ -42,9 +42,9 @@ const SwiperP1: React.FunctionComponent<SwiperProps> = () => {
         keyExtractor={(_, index) => String(index)}
         renderItem={({ item }) => (
           <MenuCard
-            description='Exotic Drink'
+            description="Exotic Drink"
             onClick={() => console.log('Hello World')}
-            price='£7.5'
+            price="£7.5"
             title={item.title}
           />
         )}

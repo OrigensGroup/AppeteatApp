@@ -1,18 +1,18 @@
 const loginTranslations = {
   emailField: {
-    label: "E-mail",
-    placeholder: "mail@mail.com",
+    label: 'E-mail',
+    placeholder: 'mail@mail.com',
   },
   passwordField: {
-    label: "Password",
-    placeholder: "********",
+    label: 'Password',
+    placeholder: '********',
   },
   loginButton: {
-    label: "Log In",
+    label: 'Log In',
   },
   signUpSection: {
-    label: "Non hai ancora un account?",
-    buttonLabel: "Registrati    > ",
+    label: 'Non hai ancora un account?',
+    buttonLabel: 'Registrati    > ',
   },
 };
 

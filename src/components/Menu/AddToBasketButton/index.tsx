@@ -1,19 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import {
-  MainButtonWrapper,
-  MainButton,
-  TextWrapper,
-  ButtonText,
-} from "./styles";
+import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
 
 interface BasketButtonProps {
   onClick: () => void;
 }
 
-const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({
-  onClick,
-}) => {
+const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick }) => {
   return (
     <MainButtonWrapper>
       <MainButton onPress={onClick}>
