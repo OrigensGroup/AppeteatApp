@@ -4,33 +4,43 @@ export const CardContainer = styled.TouchableOpacity`
   flex: 1;
   height: ${({ theme }) => theme.spacing.multiple(11)};
   border-width: 1px;
-  background-color: #fff;
   display: flex;
-  flex-direction:row;
-  border-radius:${({ theme }) => theme.spacing.multiple(3)};
+  flex-direction: row;
   border-color: transparent;
-  border-bottom-width: 0;
-  shadow-color: #000;
-  shadow-offset: {width: 0, height: 2};
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
-  elevation: 4;
-  overflow: hidden;
-`;
-export const GreenBorder = styled.View`
-  border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  border-bottom-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  width: 5%;
-  background-color: #11af0e;
+  border-bottom-color: #000;
 `;
 export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
 export const DrinkDesc = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0
-    ${({ theme }) => theme.spacing.double};
+  padding: ${({ theme }) => theme.spacing.double} 0 0 0;
+  width: 60%;
 `;
-
+export const DateContainer = styled.View`
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const Circle = styled.View`
+  width: 65%;
+  height: 65%;
+  background-color: #fff;
+  elevation: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const PriceContainer = styled.View`
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const ViewWrap = styled.TouchableOpacity`
+  padding-top: ${({ theme }) => theme.spacing.double};
+`;
 export const TextTitle = styled.Text`
   font-size: 20px;
   color: black;

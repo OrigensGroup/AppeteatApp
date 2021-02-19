@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import OrderCard from "../../../components/Profile/OrderCard";
-import { OrdersContainer } from "./styles";
+import { OrdersContainer, OrdersWrap } from "./styles";
 
 type Item = {
   id: string;
@@ -30,11 +30,13 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
     },
   ];
   const renderItem = ({ item }: { item: Item }) => (
-    <OrderCard items="Mojito" date="11 May 2020 at 21:12" />
+    <OrderCard items="1x Mojito" date="11MAY" price={10} />
   );
   return (
     <OrdersContainer>
-      <FlatList data={DATA} renderItem={renderItem} horizontal={false} />
+      <OrdersWrap>
+        <FlatList data={DATA} renderItem={renderItem} horizontal={false} />
+      </OrdersWrap>
     </OrdersContainer>
   );
 };

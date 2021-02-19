@@ -2,6 +2,8 @@ import styled from "styled-components/native";
 
 export const FavouriteCocktailsContainer = styled.View`
   width: 100%;
+  background-color: #fff;
+  height: 100%;
 `;
 
 export const CocktailContainer = styled.ScrollView`

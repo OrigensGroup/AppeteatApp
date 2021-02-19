@@ -1,5 +1,5 @@
 import React from "react";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+
 import {
   ProfileLinkContainer,
   IconContainer,
@@ -11,12 +11,14 @@ import { useNavigation } from "@react-navigation/native";
 
 interface ListItemProps {
   title: string;
-  icon: React.ReactElement;
+  icon?: React.ReactElement;
+  icon2: React.ReactElement;
   navigateTo: string;
 }
 
 const ListItem: React.FunctionComponent<ListItemProps> = ({
   icon,
+  icon2,
   title,
   navigateTo,
 }) => {
@@ -28,13 +30,11 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
     <ProfileLinkContainer onPress={navigate(navigateTo)}>
       <IconContainer>{icon}</IconContainer>
       <IconTextWrap>
-        <Title color="#000" fontSize={14}>
+        <Title color="#000" fontSize={15}>
           {title}
         </Title>
       </IconTextWrap>
-      <ArrowContainer>
-        <MaterialIcons name="keyboard-arrow-right" size={28} color="#818181" />
-      </ArrowContainer>
+      <ArrowContainer>{icon2}</ArrowContainer>
     </ProfileLinkContainer>
   );
 };

@@ -11,6 +11,8 @@ import FavouriteCocktails from "./FavouriteCocktails";
 import Orders from "./Orders";
 import Notifications from "./Notifications";
 import Settings from "./Settings";
+import PersonalInformation from "./Settings/PersonalInformation";
+import Password from "./Settings/Password";
 
 interface ProfileProps {}
 
@@ -29,6 +31,11 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
       <Stack.Screen name="Orders" component={Orders} />
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen
+        name="PersonalInformation"
+        component={PersonalInformation}
+      />
+      <Stack.Screen name="Password" component={Password} />
     </Stack.Navigator>
   );
 };

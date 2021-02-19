@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 
-import { TextFieldContainer, SearchFieldInput } from "./styles";
+import {
+  TextFieldContainer,
+  TextFieldLabel,
+  TextFieldInput,
+  TextFieldText,
+} from "./styles";
 
-interface TextFieldProps {
+interface TextField2Props {
   placeholder?: string;
-  textContentType: "emailAddress" | "name" | "password" | "none";
+  textContentType: "emailAddress" | "password" | "none";
 }
 
-const TextField: React.FunctionComponent<TextFieldProps> = ({
+const TextField2: React.FunctionComponent<TextField2Props> = ({
   placeholder,
   textContentType,
 }) => {
@@ -17,9 +22,10 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
 
   return (
     <TextFieldContainer>
-      <SearchFieldInput
+      <TextFieldInput
         placeholder={placeholder}
         textContentType={textContentType}
+        secureTextEntry={textContentType === "password"}
         onChangeText={updateText}
         defaultValue={text}
       />
@@ -27,4 +33,4 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
   );
 };
 
-export default TextField;
+export default TextField2;

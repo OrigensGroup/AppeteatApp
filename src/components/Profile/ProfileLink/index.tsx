@@ -14,6 +14,13 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = ({}) => {
     <LinkWrapper>
       <ListItem
         icon={<AntDesign name="calendar" size={28} color="#000000" />}
+        icon2={
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={28}
+            color="#818181"
+          />
+        }
         title="My Reservation"
         navigateTo="Reservations"
       />
@@ -25,23 +32,51 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = ({}) => {
             color="#000000"
           />
         }
+        icon2={
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={28}
+            color="#818181"
+          />
+        }
         title="My Favourite Cocktails"
         navigateTo="FavouriteCocktails"
       />
 
       <ListItem
         icon={<AntDesign name="shoppingcart" size={28} color="#000000" />}
+        icon2={
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={28}
+            color="#818181"
+          />
+        }
         title="My Orders"
         navigateTo="Orders"
       />
 
       <ListItem
         icon={<Icon name="notifications-outline" size={28} color="#000000" />}
+        icon2={
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={28}
+            color="#818181"
+          />
+        }
         title="Notification"
         navigateTo="Notifications"
       />
       <ListItem
         icon={<Icon name="settings-outline" size={28} color="#000000" />}
+        icon2={
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={28}
+            color="#818181"
+          />
+        }
         title="Settings"
         navigateTo="Settings"
       />
