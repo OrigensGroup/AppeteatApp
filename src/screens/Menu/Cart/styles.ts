@@ -105,6 +105,11 @@ margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 
+
+
+
+
+
 export const ItemsNumber = styled.Text`
   font-size: 18px;
   color: #FC7930;
@@ -145,6 +150,11 @@ export const ItemName = styled.Text`
   margin-left: ${({ theme }) => theme.spacing.multiple(6)};
 `;
 
+
+
+
+
+
 export const ButtonA1 = styled.TouchableOpacity`
 margin-bottom: ${({ theme }) => theme.spacing.multiple(1)};
 `
@@ -161,12 +171,12 @@ export const BottomCartWrapper = styled.View`
 
 export const SparatorLineDiv = styled.View`
   border-top-color: #000000; 
-  border-top-width: 1.3px;
+  border-top-width: 1px;
 `;
 
 export const BottomCartOverlay = styled.View`
     justify-content: flex-end;
-    background-color: #ffffff
+    background-color: #ffffff;
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
@@ -209,5 +219,6 @@ export const TipCounterWrapper = styled.View`
 flex-direction: row;
 align-items: center;
 justify-content: center;
+width: ${({ theme }) => theme.spacing.multiple(10)};
 `;
 

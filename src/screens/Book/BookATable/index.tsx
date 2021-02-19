@@ -6,6 +6,7 @@ import IconField from "../../../components/BookPage/IconField";
 import Title from "../../../components/Shared/Text";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import InputSpinner from "react-native-input-spinner";
+
 import {
   BookTableContainer,
   ImageContainer,
@@ -23,7 +24,6 @@ import {
 } from "./styles";
 import Button from "../../../components/BookPage/Button";
 import { Alert, Platform } from "react-native";
-import RNDateTimePicker from "@react-native-community/datetimepicker";
 
 type Months = {
   [key: number]: string;
@@ -32,7 +32,7 @@ type Minutes = {
   [key: number]: string;
 };
 
-interface BookTableProps {}
+interface BookTableProps { }
 
 const BookTable: React.FunctionComponent<BookTableProps> = () => {
   const route = useRoute();

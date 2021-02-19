@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 
 
 export const Wrapper = styled.View`
+/* padding-bottom: ${({ theme }) => theme.spacing.multiple(1)}; */
 `;
 
 export const Page1 = styled.View`
