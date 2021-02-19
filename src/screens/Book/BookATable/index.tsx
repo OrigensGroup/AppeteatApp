@@ -1,5 +1,6 @@
-import { useRoute } from '@react-navigation/native';
+
 import React, { useState } from 'react';
+import { useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -34,7 +35,7 @@ type Minutes = {
   [key: number]: string;
 };
 
-interface BookTableProps {}
+interface BookTableProps { }
 
 const BookTable: React.FunctionComponent<BookTableProps> = () => {
   const route = useRoute();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import MenuCard from '../MenuCards';
+import MenuCard from '../MenuComponents/MenuCards';
 
 import { Wrapper } from './styles';
 
@@ -32,7 +32,7 @@ const DATA = [
   },
 ];
 
-interface SwiperProps {}
+interface SwiperProps { }
 
 const SwiperP1: React.FunctionComponent<SwiperProps> = () => {
   return (

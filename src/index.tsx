@@ -17,7 +17,7 @@ import Book from './screens/Book';
 
 import Profile from './screens/Profile';
 
-import SingleItem from './components/Menu/SingleItemCard';
+import Cart from "./screens/Cart";
 
 const Stack = createStackNavigator();
 
@@ -58,8 +58,8 @@ const App = () => {
         }}
       />
       <Tab.Screen
-        component={SingleItem}
         name="Cart"
+        component={Cart}
         options={{
           tabBarLabel: 'Cart',
           tabBarIcon: ({ color, size }) => <Antdesign color={color} name="shoppingcart" size={size} />,

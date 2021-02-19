@@ -1,5 +1,10 @@
 import styled from 'styled-components/native';
 
+export const CardMainContainer = styled.View`
+padding-left: ${({ theme }) => theme.spacing.multiple(3)};
+padding-right: ${({ theme }) => theme.spacing.multiple(3)};
+`
+
 export const CardContainer = styled.TouchableOpacity`
   width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(14)};

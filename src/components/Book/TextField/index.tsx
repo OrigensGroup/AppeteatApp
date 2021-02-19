@@ -1,7 +1,7 @@
 import React from 'react';
 
 import loginTranslations from '../../../translations/menu';
-import SearchField from '../../Menu/SearchField';
+import SearchField from '../SearchField';
 
 import { SearchFieldContainer } from './styles';
 

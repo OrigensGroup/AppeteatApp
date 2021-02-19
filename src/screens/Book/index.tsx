@@ -6,7 +6,7 @@ import LocationsList from './LocationsList';
 
 const Stack = createStackNavigator();
 
-interface BookProps {}
+interface BookProps { }
 
 const Book: React.FunctionComponent<BookProps> = () => {
   return (

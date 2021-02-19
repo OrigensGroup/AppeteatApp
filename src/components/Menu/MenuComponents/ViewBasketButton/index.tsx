@@ -1,18 +1,23 @@
 import React from 'react';
 
-import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
+import {
+  MainButtonWrapper,
+  MainButton,
+  TextWrapper,
+  ButtonText,
+} from './styles';
 
-interface BasketButtonProps {
+interface ViewBasketButtonProps {
   onClick: () => void;
 }
 
-const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick }) => {
+const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onClick }) => {
   return (
     <MainButtonWrapper>
       <MainButton onPress={onClick}>
         <TextWrapper>
           <ButtonText>(3)</ButtonText>
-          <ButtonText>Add To Basket</ButtonText>
+          <ButtonText>View Basket</ButtonText>
           <ButtonText>£7.5</ButtonText>
         </TextWrapper>
       </MainButton>
@@ -20,4 +25,4 @@ const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick
   );
 };
 
-export default AddToBasketButton;
+export default ViewBasketButton;

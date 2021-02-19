@@ -1,8 +1,8 @@
-import React from 'react';
-
-import CloseButton from '../CloseButton';
-import HeartButton from '../HeartButton';
-import AddToBasketButton from '../AddToBasketButton';
+import React, { useCallback } from 'react';
+import CloseButton from '../MenuComponents/CloseButton';
+import HeartButton from '../MenuComponents/HeartButton';
+import AddToBasketButton from './AddToBasketButton'
+import singleDrinkTranslations from '../../../translations/singleDrink'
 
 import {
   Wrapper,
@@ -22,51 +22,72 @@ import {
   OrangeBoldText,
   BoldText,
   Text,
+  BasketButtonWrapper,
+  PicWrapper,
+  TitleWrapper,
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import Ingredients from './Ingredients';
 
-interface SingleItemProps {}
 
-const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
+const INGREDIENTS_DATA = [
+  "Acqua",
+  "ide",
+  "dniadn"
+];
+
+
+interface SingleItemProps {
+  onClick: () => void;
+}
+
+const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
+  const navigation = useNavigation();
+  const navigate = () => {
+    navigation.navigate("MenuList");
+  };
+
+  const ingredients = useCallback(() =>
+    INGREDIENTS_DATA.map((item) => <Ingredients key={item} ingredient={item} />)
+    , [INGREDIENTS_DATA]);
+
   return (
     <Wrapper>
-      <ItemPic source={require('../../../img/mojito.jpg')}>
-        <ButtonsWrapper>
-          <CloseButton onClick={() => console.log('hello world')} />
-          <HeartButton onClick={() => console.log('hello world')} />
-        </ButtonsWrapper>
-      </ItemPic>
-      <DetailsContainer>
-        <ItemDetails>
-          <DetailsTopRow>
-            <Title>Mojito</Title>
-            <Price>£7.5</Price>
-          </DetailsTopRow>
-          <ItemDescription>
-            The mojito is the epitome of the refreshing cocktail, stripped down to just the bare essentials of rum, lime
-            juice, sugar, soda water, and mint. Each ingredient is seemingly specifically selected to cure hot
-            weather-induced pangs of thirst — it is in turns sweet, acidic, minty, and sparkling.
-          </ItemDescription>
-          <AllertWrapper>
-            <AllergiesAllert>Make sure to let us know if you have any allergies</AllergiesAllert>
-          </AllertWrapper>
-          <IngredientsWrapper>
-            <IngredientsTopRow>
-              <BoldText>Ingredients</BoldText>
-              <CustomiseItem>
-                <OrangeBoldText>Customise Item</OrangeBoldText>
-              </CustomiseItem>
-            </IngredientsTopRow>
-            <Text>White & Golden Rum</Text>
-            <Text>Sugar</Text>
-            <Text>Sugar</Text>
-            <Text>Sugar</Text>
-            <Text>Sugar</Text>
-            <Text>Sugar</Text>
-            <Text>Sugar</Text>
-            <AddToBasketButton onClick={() => console.log('Hello World')} />
-          </IngredientsWrapper>
-        </ItemDetails>
-      </DetailsContainer>
+      <ButtonsWrapper>
+        <CloseButton onClick={navigate} />
+        <TitleWrapper>
+          <Title>Mojito</Title>
+        </TitleWrapper>
+        <HeartButton onClick={() => console.log('hello world')} />
+      </ButtonsWrapper>
+      <ScrollView>
+        <PicWrapper>
+          <ItemPic source={require('../../../img/mojito.jpg')} />
+        </PicWrapper>
+        <DetailsContainer>
+          <ItemDetails>
+            <ItemDescription>
+              {singleDrinkTranslations.descriptionField.placeholder}
+            </ItemDescription>
+            <AllertWrapper>
+              <AllergiesAllert>
+                {singleDrinkTranslations.alergiesField.placeholder}
+              </AllergiesAllert>
+            </AllertWrapper>
+            <IngredientsWrapper>
+              <IngredientsTopRow>
+                <BoldText>{singleDrinkTranslations.ingredientsField.placeholder}</BoldText>
+                <CustomiseItem><OrangeBoldText>{singleDrinkTranslations.customiseField.placeholder}</OrangeBoldText></CustomiseItem>
+              </IngredientsTopRow>
+              {ingredients()}
+            </IngredientsWrapper>
+          </ItemDetails>
+        </DetailsContainer>
+      </ScrollView>
+      <BasketButtonWrapper>
+        <AddToBasketButton onClick={() => console.log('Hello World')} />
+      </BasketButtonWrapper>
     </Wrapper>
   );
 };
