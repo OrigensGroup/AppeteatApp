@@ -1,30 +1,41 @@
 import React from "react";
-import QrCode from "../../../components/Menu/MenuComponents/QrCode";
-import menuTranslations from "../../../translations/menu";
-import GoToCheckout from "../../../components/Menu/CartComponents/AddToBasketButton"
+import cartTranslations from "../../translations/cart";
+import QrCode from "../../components/Menu/MenuComponents/QrCode";
+import GoToCheckout from "../../components/Menu/CartComponents/AddToBasketButton";
 import Icon from 'react-native-vector-icons/Ionicons';
-import cartTranslations from '../../../translations/cart'
 import InputSpinner from "react-native-input-spinner";
+import CartItem from '../../components/Menu/CartComponents/CartItem';
+import { FlatList } from "react-native-gesture-handler";
+import menuTranslations from "../../translations/menu";
 
 
-const DATA = [
+const CART_ITEMS = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'Mojito',
+    quantity: 'x3',
+    price: '£7.5',
+    custom1: 'No mint',
+    custom2: 'Less sugar',
+    custom3: 'White Rum only',
+  },
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     title: 'First Item',
+    quantity: 'x7',
     price: '£7.5',
-    quantity: 'x3'
+    custom1: 'No mint',
+    custom4: 'h',
+    custom5: 'p',
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Spring Water',
-    price: '£6.23',
-    quantity: 'x7'
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-    price: '£9.33',
-    quantity: 'x1'
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+    quantity: 'x1',
+    price: '£7.5',
+    custom1: 'No mint',
+    custom2: 'Less sugar',
+    custom3: 'White Rum only',
   },
 ];
 
@@ -66,8 +77,7 @@ import {
   MinusIconButton,
   PlusIconButton,
 } from "./styles";
-import CartItem from "../../../components/Menu/CartComponents/CartItem";
-import { FlatList } from "react-native-gesture-handler";
+
 
 
 interface CartProps {
@@ -80,7 +90,7 @@ const Cart: React.FunctionComponent<CartProps> = ({ price }) => {
       <TopCartWrapper>
         <TopBarWrapper>
           <LogoContainer>
-            <LogoImage source={require("../../../img/Logo.png")}></LogoImage>
+            <LogoImage source={require("../../img/Logo.png")}></LogoImage>
           </LogoContainer>
           <QrCode onClick={() => console.log('Hello World!')} title={menuTranslations.qrField.placeholder}></QrCode>
         </TopBarWrapper>
@@ -90,8 +100,10 @@ const Cart: React.FunctionComponent<CartProps> = ({ price }) => {
           </TitleInfoWrapper>
         </TitleWrapper>
         <ListWrapper>
-          <FlatList data={DATA} renderItem={({ item }) => (
-            <CartItem title={item.title} quantity={item.quantity} price={item.price} />
+          <FlatList data={CART_ITEMS} renderItem={({ item }) => (
+            <CartItem title={item.title} quantity={item.quantity} price={item.price}
+              custom1={item.custom1} custom2={item.custom2} custom3={item.custom3}
+              custom4={item.custom4} custom5={item.custom5} />
           )} />
         </ListWrapper>
         <SubTotWrapper>

@@ -1,11 +1,11 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import Menu from "./MenuList"
-import SingleItem from "../../components/Menu/MenuComponents/SingleItemCard";
+import SingleItem from "../../components/Menu/SingleItemCard";
 
 const Stack = createStackNavigator();
 
-interface MenuNavProps {}
+interface MenuNavProps { }
 
 const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   return (

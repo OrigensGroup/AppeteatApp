@@ -18,8 +18,8 @@ import Location from "./screens/Location";
 
 import Profile from "./screens/Profile";
 
-import SingleItem from "./components/Menu/MenuComponents/SingleItemCard"
-import Cart from "./screens/Menu/Cart";
+import SingleItem from "./components/Menu/SingleItemCard"
+import Cart from "./screens/Cart";
 
 const Stack = createStackNavigator();
 
