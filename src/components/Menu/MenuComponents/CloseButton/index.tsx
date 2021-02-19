@@ -1,10 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-
-import {
-  BackButtonContainer,
-} from './styles';
+import { CloseButtonContainer } from './styles';
 
 interface CloseButtonProps {
   onClick: () => void;
@@ -12,9 +9,9 @@ interface CloseButtonProps {
 
 const CloseButton: React.FunctionComponent<CloseButtonProps> = ({ onClick }) => {
   return (
-    <BackButtonContainer onPress={onClick}>
-      <Icon name='ios-chevron-back-outline' size={40} color='#0008' />
-    </BackButtonContainer>
+    <CloseButtonContainer onPress={onClick}>
+      <Icon color="#0008" name="ios-close" size={28} />
+    </CloseButtonContainer>
   );
 };
 

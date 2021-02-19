@@ -1,4 +1,5 @@
 declare module 'react-native-countdown-component' {
-  const Countdown: any = () => {};
+  //eslint-disable init-declarations
+  const Countdown: any;
   export default Countdown;
 }

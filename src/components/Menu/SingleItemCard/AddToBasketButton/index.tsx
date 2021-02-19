@@ -1,15 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import singleDrinkTranslations from '../../../../translations/singleDrink';
 
-
-import {
-  MainButtonWrapper,
-  MainButton,
-  TextWrapper,
-  ButtonText,
-} from './styles';
+import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
 
 interface BasketButtonProps {
   onClick: () => void;

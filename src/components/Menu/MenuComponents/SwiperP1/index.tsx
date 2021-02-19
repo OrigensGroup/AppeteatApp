@@ -1,7 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { styles } from '../../../Homepage/Promotion/styles';
 import MenuCard from '../MenuCards';
 
 import {

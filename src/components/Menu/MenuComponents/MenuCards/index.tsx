@@ -13,7 +13,7 @@ import {
   TextTitle,
   AddToBasket,
   Price,
-  CardMainContainer
+  CardMainContainer,
 } from './styles';
 
 interface CardProps {
@@ -24,31 +24,31 @@ interface CardProps {
 }
 
 const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, price, onClick,
-  }) => {
-    const navigation = useNavigation();
-    const navigate = () => {
-      navigation.navigate("SingleItem", { title });
-    };
+}) => {
+  const navigation = useNavigation();
+  const navigate = () => {
+    navigation.navigate("SingleItem", { title });
+  };
   return (
     <CardMainContainer>
-    <CardContainer onPress={navigate}>
-      <CardWrapper>
-        <LeftWrapper>
-          <ImageWrapper>
-            <DrinkImage source={require('../../../../img/mojito.jpg')} />
-          </ImageWrapper>
-          <DrinkDesc>
-            <TextTitle>{title}</TextTitle>
-            <Text>{description}</Text>
-          </DrinkDesc>
-        </LeftWrapper>
-        <RightWrapper>
-          <AddToBasket onPress={onClick}>
-            <Price>{price}</Price>
-          </AddToBasket>
-        </RightWrapper>
-      </CardWrapper>
-    </CardContainer>
+      <CardContainer onPress={navigate}>
+        <CardWrapper>
+          <LeftWrapper>
+            <ImageWrapper>
+              <DrinkImage source={require('../../../../img/mojito.jpg')} />
+            </ImageWrapper>
+            <DrinkDesc>
+              <TextTitle>{title}</TextTitle>
+              <Text>{description}</Text>
+            </DrinkDesc>
+          </LeftWrapper>
+          <RightWrapper>
+            <AddToBasket onPress={onClick}>
+              <Price>{price}</Price>
+            </AddToBasket>
+          </RightWrapper>
+        </CardWrapper>
+      </CardContainer>
     </CardMainContainer>
   );
 };

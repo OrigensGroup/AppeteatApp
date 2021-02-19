@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ButtonContainer, ButtonText } from './styles';
 
 interface LoginProps {
@@ -7,11 +8,7 @@ interface LoginProps {
   secondary?: boolean;
 }
 
-const LogInButton: React.FunctionComponent<LoginProps> = ({
-  text,
-  onClick,
-  secondary,
-}) => {
+const LogInButton: React.FunctionComponent<LoginProps> = ({ onClick, secondary, text }) => {
   return (
     <ButtonContainer onPress={onClick} secondary={secondary}>
       <ButtonText secondary={secondary}>{text}</ButtonText>

@@ -1,7 +1,7 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Alert, Text } from "react-native";
-import BookTable from "../../../screens/Book/BookATable";
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Text } from 'react-native';
+
 import {
   CardContainer,
   VenueImage,
@@ -11,7 +11,7 @@ import {
   Triangle,
   ButtonContainer,
   LocationButton,
-} from "./styles";
+} from './styles';
 
 interface LocationCardProps {
   imageUrl: string;
@@ -21,22 +21,18 @@ interface LocationCardProps {
   onClick?: () => void;
 }
 
-const LocationCard: React.FunctionComponent<LocationCardProps> = ({
-  imageUrl,
-  title,
-  address,
-  phoneNumber,
-  onClick,
-}) => {
+const LocationCard: React.FunctionComponent<LocationCardProps> = ({ address, onClick, phoneNumber, title }) => {
   const navigation = useNavigation();
+
   const navigate = () => {
-    navigation.navigate("BookTable", { title });
+    navigation.navigate('BookTable', { title });
   };
+
   return (
-    <CardContainer onPress={onClick} activeOpacity={0.9}>
+    <CardContainer activeOpacity={0.9} onPress={onClick}>
       <ImageContainer>
-        <VenueImage source={require("../../../img/mojito.jpg")} />
-        <Triangle></Triangle>
+        <VenueImage source={require('../../../img/mojito.jpg')} />
+        <Triangle />
       </ImageContainer>
       <DrinkDesc>
         <TextTitle>{title}</TextTitle>

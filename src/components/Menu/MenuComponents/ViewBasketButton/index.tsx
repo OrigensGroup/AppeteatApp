@@ -1,7 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-
 
 import {
   MainButtonWrapper,
@@ -14,7 +11,7 @@ interface ViewBasketButtonProps {
   onClick: () => void;
 }
 
-const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ( {onClick} ) => {
+const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onClick }) => {
   return (
     <MainButtonWrapper>
       <MainButton onPress={onClick}>

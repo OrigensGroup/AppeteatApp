@@ -1,19 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import LogInButton from '../../components/Login/Buttons/LogInButton';
-import TextField from '../../components/TextField';
+import TextField from '../../components/Shared/TextField';
 
 import loginTranslations from '../../translations/login';
 
-import {
-  TextFieldWrapper,
-  LoginContainer,
-  LogInContainer,
-  RegisterContainer,
-  RegisterText,
-} from './styles';
+import { TextFieldWrapper, LoginContainer, LogInContainer, RegisterContainer, RegisterText } from './styles';
 
 interface LoginProps {}
 
@@ -30,29 +23,22 @@ const Login: React.FunctionComponent<LoginProps> = () => {
         <TextField
           label={loginTranslations.emailField.label}
           placeholder={loginTranslations.emailField.placeholder}
-          textContentType='emailAddress'
-        ></TextField>
+          textContentType="emailAddress"
+        />
       </TextFieldWrapper>
       <TextFieldWrapper>
         <TextField
           label={loginTranslations.passwordField.label}
           placeholder={loginTranslations.passwordField.placeholder}
-          textContentType='password'
-        ></TextField>
+          textContentType="password"
+        />
       </TextFieldWrapper>
       <LogInContainer>
-        <LogInButton
-          text={loginTranslations.loginButton.label}
-          onClick={login}
-        />
+        <LogInButton onClick={login} text={loginTranslations.loginButton.label} />
       </LogInContainer>
       <RegisterContainer>
         <RegisterText>{loginTranslations.signUpSection.label}</RegisterText>
-        <LogInButton
-          text={loginTranslations.signUpSection.buttonLabel}
-          onClick={login}
-          secondary
-        />
+        <LogInButton onClick={login} secondary text={loginTranslations.signUpSection.buttonLabel} />
       </RegisterContainer>
     </LoginContainer>
   );

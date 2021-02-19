@@ -1,5 +1,10 @@
-import React from "react";
-import Promotion from "../../components/Homepage/Promotion";
+import React from 'react';
+
+import Promotion from '../../components/Home/Promotion';
+
+import Location from '../../components/Home/Location';
+import Card from '../../components/Home/Card';
+import Reservation from '../../components/Home/Reservation';
 
 import {
   CocktailContainer,
@@ -12,10 +17,7 @@ import {
   CocktailSection,
   ReservationContainer,
   LocationContainer,
-} from "./styles";
-import Location from "../../components/Homepage/Location";
-import Card from "../../components/Homepage/Card";
-import Reservation from "../../components/Homepage/Reservation";
+} from './styles';
 
 interface HomeProps {}
 
@@ -23,30 +25,25 @@ const Home: React.FunctionComponent<HomeProps> = () => {
   return (
     <HomepageContainer>
       <LogoContainer>
-        <LogoImage source={require("../../img/Logo.png")}></LogoImage>
+        <LogoImage source={require('../../img/Logo.png')} />
       </LogoContainer>
       <CocktailSection>
         <HomepageTitle>Popular Cocktails</HomepageTitle>
-        <CocktailContainer
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        >
-          <Card title="Mojito" description="Description" />
-          <Card title="Daiquiri" description="Description" />
-          <Card title="Negroni" description="Description" />
+        <CocktailContainer horizontal showsHorizontalScrollIndicator={false}>
+          <Card description="Description" title="Mojito" />
+          <Card description="Description" title="Daiquiri" />
+          <Card description="Description" title="Negroni" />
         </CocktailContainer>
       </CocktailSection>
       <PromotionContainer>
-        <Promotion
-          endDate={new Date("Wed Feb 10 2021 15:36:55 GMT+0000").getTime()}
-        />
+        <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} />
       </PromotionContainer>
       <BottomContainer>
         <ReservationContainer>
-          <Reservation></Reservation>
+          <Reservation />
         </ReservationContainer>
         <LocationContainer>
-          <Location></Location>
+          <Location />
         </LocationContainer>
       </BottomContainer>
     </HomepageContainer>

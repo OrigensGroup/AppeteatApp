@@ -1,7 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/Ionicons';
 import MenuTab from './MenuTab';
 import {
   MenuTabsContainer,

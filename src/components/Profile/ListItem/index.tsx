@@ -1,14 +1,9 @@
-import React from "react";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {
-  ProfileLinkContainer,
-  IconContainer,
-  IconTextWrap,
-  ArrowContainer,
-} from "./styles";
-import Title from "../../Shared/Text";
+import React from 'react';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+import Title from '../../Shared/Text';
+
+import { ProfileLinkContainer, IconContainer, IconTextWrap, ArrowContainer } from './styles';
 
 interface ListItemProps {
   title: string;
@@ -25,7 +20,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, title }) => {
         </Title>
       </IconTextWrap>
       <ArrowContainer>
-        <MaterialIcons name="keyboard-arrow-right" size={28} color="#818181" />
+        <MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />
       </ArrowContainer>
     </ProfileLinkContainer>
   );

@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const ProfileImageContainer = styled.View`
   width: ${({ theme }) => theme.spacing.multiple(18)};
