@@ -27,7 +27,7 @@ import {
   TitleWrapper,
 } from './styles';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Ingredients from './Ingredients';
 
 
@@ -61,28 +61,30 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
         </TitleWrapper>
         <HeartButton onClick={() => console.log('hello world')} />
       </ButtonsWrapper>
-      <PicWrapper>
-        <ItemPic source={require('../../../img/mojito.jpg')} />
-      </PicWrapper>
-      <DetailsContainer>
-        <ItemDetails>
-          <ItemDescription>
-            {singleDrinkTranslations.descriptionField.placeholder}
-          </ItemDescription>
-          <AllertWrapper>
-            <AllergiesAllert>
-              {singleDrinkTranslations.alergiesField.placeholder}
-            </AllergiesAllert>
-          </AllertWrapper>
-          <IngredientsWrapper>
-            <IngredientsTopRow>
-              <BoldText>{singleDrinkTranslations.ingredientsField.placeholder}</BoldText>
-              <CustomiseItem><OrangeBoldText>{singleDrinkTranslations.customiseField.placeholder}</OrangeBoldText></CustomiseItem>
-            </IngredientsTopRow>
-            {ingredients()}
-          </IngredientsWrapper>
-        </ItemDetails>
-      </DetailsContainer>
+      <ScrollView>
+        <PicWrapper>
+          <ItemPic source={require('../../../img/mojito.jpg')} />
+        </PicWrapper>
+        <DetailsContainer>
+          <ItemDetails>
+            <ItemDescription>
+              {singleDrinkTranslations.descriptionField.placeholder}
+            </ItemDescription>
+            <AllertWrapper>
+              <AllergiesAllert>
+                {singleDrinkTranslations.alergiesField.placeholder}
+              </AllergiesAllert>
+            </AllertWrapper>
+            <IngredientsWrapper>
+              <IngredientsTopRow>
+                <BoldText>{singleDrinkTranslations.ingredientsField.placeholder}</BoldText>
+                <CustomiseItem><OrangeBoldText>{singleDrinkTranslations.customiseField.placeholder}</OrangeBoldText></CustomiseItem>
+              </IngredientsTopRow>
+              {ingredients()}
+            </IngredientsWrapper>
+          </ItemDetails>
+        </DetailsContainer>
+      </ScrollView>
       <BasketButtonWrapper>
         <AddToBasketButton onClick={() => console.log('Hello World')} />
       </BasketButtonWrapper>
