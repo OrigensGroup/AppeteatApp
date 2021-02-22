@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
   flex: 1;
@@ -26,7 +26,7 @@ export const DateContainer = styled.View`
 export const Circle = styled.View`
   width: 65%;
   height: 65%;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   elevation: 3;
   display: flex;
   justify-content: center;

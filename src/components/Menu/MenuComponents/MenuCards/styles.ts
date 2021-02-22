@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 
 export const CardMainContainer = styled.View`
-padding-left: ${({ theme }) => theme.spacing.multiple(3)};
-padding-right: ${({ theme }) => theme.spacing.multiple(3)};
-`
+  padding-left: ${({ theme }) => theme.spacing.multiple(3)};
+  padding-right: ${({ theme }) => theme.spacing.multiple(3)};
+`;
 
 export const CardContainer = styled.TouchableOpacity`
   width: 100%;
@@ -11,7 +11,7 @@ export const CardContainer = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   border-width: 1px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
   border-color: transparent;
   border-bottom-width: 0;

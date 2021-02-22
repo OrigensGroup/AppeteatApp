@@ -6,9 +6,8 @@ export const PromotionContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
-  border-color: transparent;
 `;
 
 export const styles = StyleSheet.create({
@@ -19,13 +18,13 @@ export const styles = StyleSheet.create({
 });
 
 export const PromotionTitle = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.colors.textSecondary};
   text-align: center;
   font-size: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const PromotionDesc = styled.Text`
-  color: #828588;
+  color: ${({ theme }) => theme.colors.inactive};
   text-align: center;
   font-size: ${({ theme }) => theme.spacing.double};
 `;

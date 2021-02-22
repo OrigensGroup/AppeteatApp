@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const BookTableContainer = styled.View`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
 `;
 

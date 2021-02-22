@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(28)};
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
   margin-bottom: ${({ theme }) => theme.spacing.double};
   shadow-color: #000;
@@ -61,6 +61,6 @@ export const LocationButton = styled.TouchableOpacity`
   padding: 0 ${({ theme }) => theme.spacing.double};
   align-items: center;
   border-radius: ${({ theme }) => theme.spacing.single};
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   elevation: 3;
 `;

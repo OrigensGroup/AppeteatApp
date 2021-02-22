@@ -1,12 +1,11 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const PersonalInformationContainer = styled.View`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
 `;
 export const PersonalInformationWrap = styled.View`
-  margin: 0 ${({ theme }) => theme.spacing.multiple(2)} 0
-    ${({ theme }) => theme.spacing.multiple(2)};
+  margin: 0 ${({ theme }) => theme.spacing.multiple(2)} 0 ${({ theme }) => theme.spacing.multiple(2)};
   display: flex;
   justify-content: center;
   align-items: center;

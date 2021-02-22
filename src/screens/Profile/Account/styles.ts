@@ -10,14 +10,13 @@ export const NavigationContainer = styled.View`
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
 `;
 export const CardWrap = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(3)} 0
-    ${({ theme }) => theme.spacing.double}
+  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.double}
     ${({ theme }) => theme.spacing.double};
 `;
 export const Content = styled.ScrollView`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
 `;
 

@@ -8,7 +8,7 @@ export const SearchBarWrapper = styled.View`
   display: flex;
   flex-direction: row;
   border-width: 1px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   border-color: transparent;
   border-bottom-width: 0;
   shadow-color: #000;

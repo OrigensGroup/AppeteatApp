@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const ChangeEmailContainer = styled.View`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
 `;
 export const ChangeEmailWrap = styled.View`
