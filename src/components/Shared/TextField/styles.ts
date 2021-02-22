@@ -1,10 +1,13 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
 export const TextFieldContainer = styled.View`
   width: 100%;
 `;
 
-export const TextFieldLabel = styled.View``;
+export const TextFieldLabel = styled.View`
+  width: auto;
+  height: auto;
+`;
 
 export const TextFieldText = styled.Text`
   font-size: 18px;

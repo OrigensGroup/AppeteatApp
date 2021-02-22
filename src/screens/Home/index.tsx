@@ -27,12 +27,15 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       <LogoContainer>
         <LogoImage source={require('../../img/Logo.png')} />
       </LogoContainer>
+      <HomepageTitle>Popular Cocktails</HomepageTitle>
       <CocktailSection>
-        <HomepageTitle>Popular Cocktails</HomepageTitle>
-        <CocktailContainer horizontal showsHorizontalScrollIndicator={false}>
-          <Card description="Description" title="Mojito" />
-          <Card description="Description" title="Daiquiri" />
-          <Card description="Description" title="Negroni" />
+        <CocktailContainer
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          <Card title="Mojito" description="Description" />
+          <Card title="Daiquiri" description="Description" />
+          <Card title="Negroni" description="Description" />
         </CocktailContainer>
       </CocktailSection>
       <PromotionContainer>

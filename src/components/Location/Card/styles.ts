@@ -58,8 +58,7 @@ export const ButtonContainer = styled.View`
 `;
 
 export const LocationButton = styled.TouchableOpacity`
-  width: 40%;
-  padding: ${({ theme }) => theme.spacing.half};
+  padding: 0 ${({ theme }) => theme.spacing.double};
   align-items: center;
   border-radius: ${({ theme }) => theme.spacing.single};
   background-color: #fff;

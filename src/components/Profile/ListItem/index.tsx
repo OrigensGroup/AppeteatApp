@@ -1,27 +1,40 @@
-import React from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import React from "react";
 
-import Title from '../../Shared/Text';
-
-import { ProfileLinkContainer, IconContainer, IconTextWrap, ArrowContainer } from './styles';
+import {
+  ProfileLinkContainer,
+  IconContainer,
+  IconTextWrap,
+  ArrowContainer,
+} from "./styles";
+import Title from "../../Shared/Text";
+import { useNavigation } from "@react-navigation/native";
 
 interface ListItemProps {
   title: string;
-  icon: React.ReactElement;
+  icon?: React.ReactElement;
+  icon2: React.ReactElement;
+  navigateTo: string;
 }
 
-const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, title }) => {
+const ListItem: React.FunctionComponent<ListItemProps> = ({
+  icon,
+  icon2,
+  title,
+  navigateTo,
+}) => {
+  const navigation = useNavigation();
+  const navigate = (goTo: string) => () => {
+    navigation.navigate(goTo);
+  };
   return (
-    <ProfileLinkContainer>
+    <ProfileLinkContainer onPress={navigate(navigateTo)}>
       <IconContainer>{icon}</IconContainer>
       <IconTextWrap>
-        <Title color="#000" fontSize={14}>
+        <Title color="#000" fontSize={15}>
           {title}
         </Title>
       </IconTextWrap>
-      <ArrowContainer>
-        <MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />
-      </ArrowContainer>
+      <ArrowContainer>{icon2}</ArrowContainer>
     </ProfileLinkContainer>
   );
 };

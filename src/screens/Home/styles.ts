@@ -3,6 +3,8 @@ import styled from 'styled-components/native';
 export const HomepageContainer = styled.View`
   background-color: #fff;
   height: 100%;
+  display: flex;
+  justify-content: center;
 `;
 export const LogoContainer = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(10)};
@@ -19,13 +21,15 @@ export const PromotionContainer = styled.View`
 export const HomepageTitle = styled.Text`
   color: black;
   font-size: 20px;
-  margin-bottom: ${({ theme }) => theme.spacing.single};
+  margin: ${({ theme }) => theme.spacing.multiple(3)}
+    ${({ theme }) => theme.spacing.multiple(3)} 0
+    ${({ theme }) => theme.spacing.multiple(3)};
 `;
 export const CocktailContainer = styled.ScrollView``;
 
 export const CocktailSection = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.multiple(3)}
-    ${({ theme }) => theme.spacing.multiple(3)};
+  margin: 0 0 ${({ theme }) => theme.spacing.multiple(3)}
+    ${({ theme }) => theme.spacing.double};
 `;
 
 export const BottomContainer = styled.View`
