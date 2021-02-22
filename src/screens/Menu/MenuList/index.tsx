@@ -1,12 +1,12 @@
-import React, { useCallback, useRef, useState } from "react";
-import SearchBar from "../../../components/Menu/MenuComponents/SearchBar";
+import React, { useCallback, useRef, useState } from 'react';
+import SearchBar from '../../../components/Menu/MenuComponents/SearchBar';
 import menuTranslations from '../../../translations/menu';
 import Filter from '../../../components/Menu/MenuComponents/Filter';
 import QrCode from '../../../components/Menu/MenuComponents/QrCode';
 import Swiper from 'react-native-swiper';
-import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1'
-import MenuTabs from "../../../components/Menu/MenuComponents/MenuTabs";
-import ViewBasketButton from "../../../components/Menu/MenuComponents/ViewBasketButton"
+import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1';
+import MenuTabs from '../../../components/Menu/MenuComponents/MenuTabs';
+import ViewBasketButton from '../../../components/Menu/MenuComponents/ViewBasketButton';
 
 import {
   MenuWrapper,
@@ -20,9 +20,7 @@ import {
   TopContainer,
   BottomContainer,
   BasketButtonWrapper,
-} from "./styles";
-
-
+} from './styles';
 
 const MENU_DATA: any = {
   Drinks: [
@@ -38,7 +36,8 @@ const MENU_DATA: any = {
       title: 'Second Item',
       shortDescription: 'nonono',
       price: '£2.5',
-      longDescription: 'The mojito is the epitome of the refreshing cocktail, stripped down to just the bare essentials of rum, lime juice, sugar, soda water, and mint. Each ingredient is seemingly specifically selected to cure hot weather-induced pangs of thirst — it is in turns sweet, acidic, minty, and sparkling.',
+      longDescription:
+        'The mojito is the epitome of the refreshing cocktail, stripped down to just the bare essentials of rum, lime juice, sugar, soda water, and mint. Each ingredient is seemingly specifically selected to cure hot weather-induced pangs of thirst — it is in turns sweet, acidic, minty, and sparkling.',
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
@@ -97,7 +96,6 @@ const MENU_DATA: any = {
       title: 'Second Item 2',
       shortDescription: 'Nonoono',
       longDescription: 'Nonoono',
-
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
@@ -172,10 +170,9 @@ const MENU_DATA: any = {
       title: 'Second Item 2',
     },
   ],
-}
+};
 
-
-interface MenuProps { }
+interface MenuProps {}
 
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
@@ -186,26 +183,28 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       ref.current.scrollBy(index - menuIndex, true);
     }
     setMenuIndex(index);
-  }
+  };
 
-  const menuTabsContent = useCallback(() =>
-    Object.keys(MENU_DATA).map((item) => <SwiperP1 key={item} menuItems={MENU_DATA[item]} />)
-    , [MENU_DATA]);
+  const menuTabsContent = useCallback(
+    () => Object.keys(MENU_DATA).map((item) => <SwiperP1 key={item} menuItems={MENU_DATA[item]} />),
+    [MENU_DATA]
+  );
 
   return (
     <MenuWrapper>
       <TopContainer>
         <TopBarWrapper>
           <LogoContainer>
-            <LogoImage source={require("../../../img/Logo.png")}></LogoImage>
+            <LogoImage source={require('../../../img/Logo.png')}></LogoImage>
           </LogoContainer>
           <QrCode onClick={() => console.log('Hello World!')} title={menuTranslations.qrField.placeholder}></QrCode>
         </TopBarWrapper>
         <SearchBarWrapper>
           <SearchBar
             placeholder={menuTranslations.searchField.placeholder}
-            textContentType='name'
-            onClick={() => console.log('Hello World!')} />
+            textContentType="name"
+            onClick={() => console.log('Hello World!')}
+          />
           <Filter onClick={() => console.log('Hello World!')}></Filter>
         </SearchBarWrapper>
         <MenuTabs menuTabs={Object.keys(MENU_DATA)} tabActive={menuIndex} onChange={onSwipe} />
@@ -218,12 +217,10 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
         </CardsContainer>
       </BottomContainer>
       <BasketButtonWrapper>
-        <ViewBasketButton onClick={() => console.log("Hello")}></ViewBasketButton>
+        <ViewBasketButton onClick={() => console.log('Hello')}></ViewBasketButton>
       </BasketButtonWrapper>
     </MenuWrapper>
   );
 };
 
 export default Menu;
-
-

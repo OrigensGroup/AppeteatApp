@@ -1,7 +1,9 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useRef } from 'react';
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import analytics from '@react-native-firebase/analytics';
 
 import { ThemeProvider } from 'styled-components/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,19 +19,30 @@ import Book from './screens/Book';
 
 import Profile from './screens/Profile';
 
-import Cart from "./screens/Cart";
-
 const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
+function getActiveRouteName(navigationState) {
+  if (!navigationState) return null;
+  const route = navigationState.routes[navigationState.index];
+  // Parse the nested navigators
+  if (route.routes) return getActiveRouteName(route);
+  return route.routeName;
+}
+
 const App = () => {
+  const navigationRef = useRef<NavigationContainerRef | null>();
+
   const TabBar = () => (
     <Tab.Navigator
       initialRouteName="Home"
+      lazy={false}
+      backBehavior="none"
       tabBarOptions={{
-        activeTintColor: '#cf9822',
-        inactiveTintColor: '#2c2c2b',
+        showLabel: false,
+        activeTintColor: theme.colors.active,
+        inactiveTintColor: theme.colors.inactive,
         labelStyle: { fontSize: 10, marginBottom: 6 },
       }}
     >
@@ -42,17 +55,8 @@ const App = () => {
         }}
       />
       <Tab.Screen
-        component={Book}
-        name="Book"
-        options={{
-          tabBarLabel: 'Book',
-          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
-        }}
-      />
-      <Tab.Screen
         component={Menu}
         name="Menu"
-
         options={{
           tabBarVisible: false,
           tabBarLabel: 'Menu',
@@ -60,14 +64,13 @@ const App = () => {
         }}
       />
       <Tab.Screen
-        name="Cart"
-        component={Cart}
+        component={Book}
+        name="Book"
         options={{
-          tabBarLabel: 'Cart',
-          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="shoppingcart" size={size} />,
+          tabBarLabel: 'Book',
+          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
         }}
       />
-
       <Tab.Screen
         component={Profile}
         name="Account"
@@ -80,23 +83,34 @@ const App = () => {
   );
 
   TabBar.navigationOptions = ({ navigation }) => {
-
     let tabBarVisible = true;
 
-    let routeName = navigation.state.routes[navigation.state.index].routeName
+    let routeName = navigation.state.routes[navigation.state.index].routeName;
 
     if (routeName == 'Menu') {
-      tabBarVisible = false
+      tabBarVisible = false;
     }
 
     return {
       tabBarVisible,
-    }
-  }
+    };
+  };
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
+      <NavigationContainer
+        onNavigationStateChange={async (prevState, currentState) => {
+          const currentScreen = getActiveRouteName(currentState);
+          const prevScreen = getActiveRouteName(prevState);
+          if (prevScreen !== currentScreen) {
+            // Update Firebase with the name of your screen
+            await analytics().logScreenView({
+              screen_name: currentScreen,
+              screen_class: currentScreen,
+            });
+          }
+        }}
+      >
         <Stack.Navigator headerMode="none">
           <Stack.Screen component={LoginScreen} name="Login" />
           <Stack.Screen component={TabBar} name="App" />

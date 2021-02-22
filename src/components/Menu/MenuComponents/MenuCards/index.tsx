@@ -22,11 +22,10 @@ interface CardProps {
   onClick: () => void;
 }
 
-const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick,
-}) => {
+const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   const navigation = useNavigation();
   const navigate = () => {
-    navigation.navigate("SingleItem", { item });
+    navigation.navigate('SingleItem', { item });
   };
   return (
     <CardMainContainer>

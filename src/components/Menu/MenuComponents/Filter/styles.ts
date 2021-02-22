@@ -8,9 +8,13 @@ export const FilterButtonContainer = styled.View`
   display: flex;
   flex-direction: row;
   border-width: 1px;
-  background-color: #fff;
-  border-color: #C2C2C2;
-  border-width: 1px;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
+  border-color: transparent;
+  border-bottom-width: 0;
+  shadow-color: #000;
+  shadow-opacity: 0.8;
+  shadow-radius: 2px;
+  elevation: 6;
   justify-content: space-between;
 `;
 

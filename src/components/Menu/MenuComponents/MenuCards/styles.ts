@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 
 export const CardMainContainer = styled.View`
-padding-left: ${({ theme }) => theme.spacing.multiple(3)};
-padding-right: ${({ theme }) => theme.spacing.multiple(3)};
-`
+  padding-left: ${({ theme }) => theme.spacing.multiple(3)};
+  padding-right: ${({ theme }) => theme.spacing.multiple(3)};
+`;
 
 export const CardContainer = styled.TouchableOpacity`
   width: 100%;
@@ -13,7 +13,7 @@ export const CardContainer = styled.TouchableOpacity`
   border-width: 1px;
   background-color: #fff;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  border-color: #C2C2C2;
+  border-color: #c2c2c2;
   border-bottom-width: 1px;
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
   justify-content: space-between;
@@ -64,24 +64,23 @@ export const TextTitle = styled.Text`
 
 export const SubTitle = styled.Text`
   font-size: 14px;
-  color: #AFAFAF;
+  color: #afafaf;
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 
 export const Price = styled.Text`
   font-size: 20px;
-  color: #F69019;
+  color: #f69019;
 `;
 
-export const PriceWrapper = styled.View`
-`
+export const PriceWrapper = styled.View``;
 
 export const LikeButton = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(4)};
   height: ${({ theme }) => theme.spacing.multiple(4)};
   margin-top: ${({ theme }) => theme.spacing.multiple(9)};
   margin-right: ${({ theme }) => theme.spacing.multiple(2)};
-  background-color: #ECEBEBE6;
+  background-color: #ecebebe6;
   border-radius: ${({ theme }) => theme.spacing.multiple(4)};
   justify-content: center;
   align-items: center;
