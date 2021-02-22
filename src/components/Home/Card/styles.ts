@@ -8,14 +8,12 @@ export const CardContainer = styled.TouchableOpacity`
   border-width: 1px;
   background-color: #fff;
   border-radius:${({ theme }) => theme.spacing.multiple(3)};
-  border-color: transparent;
-  border-bottom-width: 0;
+  border-color: #C2C2C2;
   margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} ${({ theme }) =>
   theme.spacing.half} 0};
   shadow-color: #000;
   shadow-opacity: 0.8;
   shadow-radius: 2px;
-  elevation: 1;
 `;
 
 export const DrinkImage = styled.Image`

@@ -7,31 +7,31 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import Promotion from '../Home/Promotion';
 import Promotion2 from '../Home/Promotion2';
 
-import { CarouselContainer } from './styles';
+import { CarouselContainer, Container } from './styles';
 
 interface CarouselPromoProps {}
 type Item = {
   id: string;
   title: string;
+  type: 'image' | 'discount' | 'happyhour';
 };
 const sliderWidth = Dimensions.get('window').width;
 
 const DATA: Item[] = [
   {
-    id: '7',
+    id: '17',
     title: 'First Item',
+    type: 'image',
   },
   {
     id: '8',
     title: 'Second Item',
+    type: 'discount',
   },
   {
     id: '9',
     title: 'Third Item',
-  },
-  {
-    id: '10',
-    title: 'Third Item',
+    type: 'happyhour',
   },
 ];
 
@@ -42,16 +42,16 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
     return (
       <Pagination
         activeDotIndex={activeSlide}
-        containerStyle={{ backgroundColor: 'transparent' }}
+        containerStyle={{ backgroundColor: 'transparent', paddingVertical: 15 }}
         dotStyle={{
-          width: 40,
+          width: 50,
           height: 5,
-          marginHorizontal: 8,
+          borderRadius: 5,
           backgroundColor: '#EE6F00',
         }}
         dotsLength={DATA.length}
         inactiveDotOpacity={0.4}
-        inactiveDotScale={0.6}
+        inactiveDotScale={1}
         inactiveDotStyle={{
           backgroundColor: '#9D9891',
         }}
@@ -59,7 +59,30 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
     );
   };
 
-  const renderItem = () => <Promotion endDate={new Date().getTime()} />;
+  const renderItem = ({ item }: { item: Item }) => {
+    if (item.type === 'discount') {
+      return (
+        <Container>
+          <Promotion2 description="Discount on all selected drinks!" title="15% off all drink!" />
+        </Container>
+      );
+    }
+
+    if (item.type === 'image') {
+      return (
+        <Container>
+          <Promotion endDate={new Date().getTime()} />
+        </Container>
+      );
+    } else {
+      return (
+        <Container>
+          <Promotion endDate={new Date().getTime()} />
+        </Container>
+      );
+    }
+  };
+
   return (
     <CarouselContainer>
       <Carousel

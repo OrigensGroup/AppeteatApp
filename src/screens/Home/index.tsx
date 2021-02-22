@@ -19,6 +19,7 @@ import {
   ReservationContainer,
   LocationContainer,
 } from './styles';
+import { Text } from '../../components/Menu/SingleItemCard/styles';
 
 interface HomeProps {}
 
@@ -40,7 +41,7 @@ const Home: React.FunctionComponent<HomeProps> = () => {
         <CarouselPromo />
       </PromotionContainer>
       <BottomContainer>
-        <Map />
+        <Text>c</Text>
       </BottomContainer>
     </HomepageContainer>
   );

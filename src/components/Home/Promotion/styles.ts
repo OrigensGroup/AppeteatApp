@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 export const PromotionContainer = styled.TouchableOpacity`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(20)};
+  height: ${({ theme }) => theme.spacing.multiple(22)};
   display: flex;
   flex-direction: row;
   background-color: #fff;
