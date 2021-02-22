@@ -1,9 +1,5 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-
-const Stack = createStackNavigator();
-
-import {} from "./styles";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import ProfileLink from "../../components/Profile/ProfileLink";
 import Account from "./Account";
 import Reservations from "./Reservations";
@@ -17,7 +13,7 @@ import ChangeEmail from "./Settings/PersonalInformation/ChangeEmail";
 import ChangeName from "./Settings/PersonalInformation/ChangeName";
 
 interface ProfileProps {}
-
+const Stack = createStackNavigator();
 const Profile: React.FunctionComponent<ProfileProps> = () => {
   return (
     <Stack.Navigator>

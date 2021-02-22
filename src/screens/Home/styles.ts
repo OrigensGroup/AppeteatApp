@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const HomepageContainer = styled.View`
   background-color: #fff;
@@ -36,8 +36,7 @@ export const BottomContainer = styled.View`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: ${({ theme }) => theme.spacing.single}
-    ${({ theme }) => theme.spacing.multiple(3)};
+  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.multiple(3)};
 `;
 export const ReservationContainer = styled.View`
   width: 50%;

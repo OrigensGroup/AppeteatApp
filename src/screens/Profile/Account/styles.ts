@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const ProfileContainer = styled.View`
   background-color: #2da59a;
@@ -20,6 +20,7 @@ export const Content = styled.ScrollView`
   background-color: #fff;
   height: 100%;
 `;
+
 export const ImageContainer = styled.View`
   width: 100%;
   display: flex;

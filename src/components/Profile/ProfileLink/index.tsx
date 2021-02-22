@@ -9,7 +9,7 @@ import ListItem from "../ListItem";
 
 interface ProfileLinkProps {}
 
-const ProfileLink: React.FunctionComponent<ProfileLinkProps> = ({}) => {
+const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
   return (
     <LinkWrapper>
       <ListItem
