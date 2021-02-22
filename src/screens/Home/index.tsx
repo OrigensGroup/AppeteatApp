@@ -1,56 +1,19 @@
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import HappyHourMenu from '../Menu/HappyHourMenu';
+import Home from './HomePage';
 
-import Promotion from '../../components/Home/Promotion';
+const Stack = createStackNavigator();
 
-import Location from '../../components/Home/Location';
-import Card from '../../components/Home/Card';
-import Reservation from '../../components/Home/Reservation';
+interface MenuNavProps {}
 
-import {
-  CocktailContainer,
-  HomepageContainer,
-  PromotionContainer,
-  HomepageTitle,
-  LogoContainer,
-  LogoImage,
-  BottomContainer,
-  CocktailSection,
-  ReservationContainer,
-  LocationContainer,
-} from './styles';
-
-interface HomeProps {}
-
-const Home: React.FunctionComponent<HomeProps> = () => {
+const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   return (
-    <HomepageContainer>
-      <LogoContainer>
-        <LogoImage source={require('../../img/Logo.png')} />
-      </LogoContainer>
-      <HomepageTitle>Popular Cocktails</HomepageTitle>
-      <CocktailSection>
-        <CocktailContainer
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        >
-          <Card title="Mojito" description="Description" />
-          <Card title="Daiquiri" description="Description" />
-          <Card title="Negroni" description="Description" />
-        </CocktailContainer>
-      </CocktailSection>
-      <PromotionContainer>
-        <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} />
-      </PromotionContainer>
-      <BottomContainer>
-        <ReservationContainer>
-          <Reservation />
-        </ReservationContainer>
-        <LocationContainer>
-          <Location />
-        </LocationContainer>
-      </BottomContainer>
-    </HomepageContainer>
+    <Stack.Navigator headerMode={'none'}>
+      <Stack.Screen name="HomePage" component={Home} />
+      <Stack.Screen name="HappyHourMenu" component={HappyHourMenu} />
+    </Stack.Navigator>
   );
 };
 
-export default Home;
+export default MenuNav;

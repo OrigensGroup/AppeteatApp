@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const FilterButtonContainer = styled.View`
   width: ${({ theme }) => theme.spacing.multiple(5)};
   height: ${({ theme }) => theme.spacing.multiple(5)};
-  border-radius: ${({ theme }) => theme.spacing.multiple(12)};
+  border-radius: ${({ theme }) => theme.spacing.single};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
   display: flex;
   flex-direction: row;

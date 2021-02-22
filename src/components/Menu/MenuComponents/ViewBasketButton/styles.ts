@@ -9,14 +9,7 @@ export const MainButton = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(7)};
   border-radius: ${({ theme }) => theme.spacing.single};
   flex-direction: row;
-  border-width: 1px;
-  background-color: #fc7930;
-  border-color: transparent;
-  border-bottom-width: 0;
-  shadow-color: #000;
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
-  elevation: 6;
+  background-color: #f69019;
   justify-content: center;
 `;
 
@@ -24,8 +17,9 @@ export const TextWrapper = styled.View`
   flex-direction: row;
   align-items: center;
   height: 100%;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
+  padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const ButtonText = styled.Text`

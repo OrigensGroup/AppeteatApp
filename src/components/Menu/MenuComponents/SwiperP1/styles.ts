@@ -17,7 +17,7 @@ export const Page2 = styled.View`
 `;
 
 export const Page3 = styled.View`
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
 `;

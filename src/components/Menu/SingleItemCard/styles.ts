@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Wrapper = styled.View`
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: #fff;
   height: 100%;
   width: 100%;
 `;
@@ -35,12 +35,12 @@ export const ButtonsWrapper = styled.View`
 
 export const DetailsContainer = styled.View`
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: #fff;
 `;
 
 export const ItemDetails = styled.View`
   padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: #fff;
   width: 100%;
 `;
 

@@ -1,13 +1,13 @@
 import styled from 'styled-components/native';
 
 export const CartContainer = styled.View`
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: #fff;
   height: 100%;
   width: 100%;
 `;
 
 export const TopCartWrapper = styled.View`
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: #fff;
 `;
 
 export const BottomTotContainer = styled.View`
@@ -157,7 +157,7 @@ export const SparatorLineDiv = styled.View`
 
 export const BottomCartOverlay = styled.View`
   justify-content: flex-end;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: #ffffff;
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
