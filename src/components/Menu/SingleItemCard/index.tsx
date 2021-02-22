@@ -29,6 +29,7 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Ingredients from './Ingredients';
+import useCart from '../../../hooks/useCart';
 
 const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
@@ -39,6 +40,7 @@ interface SingleItemProps {
 
 const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
   const route = useRoute();
+  const { addItemToCart } = useCart();
 
   const { item } = route.params;
 
@@ -86,7 +88,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
         </DetailsContainer>
       </ScrollView>
       <BasketButtonWrapper>
-        <AddToBasketButton onClick={() => console.log('Hello World')} price={item.price} />
+        <AddToBasketButton onClick={() => addItemToCart({ ...item, quantity: 1 })} price={item.price} />
       </BasketButtonWrapper>
     </Wrapper>
   );

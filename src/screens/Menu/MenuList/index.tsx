@@ -21,6 +21,7 @@ import {
   BottomContainer,
   BasketButtonWrapper,
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const MENU_DATA: any = {
   Drinks: [
@@ -28,40 +29,43 @@ const MENU_DATA: any = {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'Mojito',
       shortDescription: 'nonono',
-      price: '£7.5',
+      price: 7.5,
       longDescription: 'Hello World!',
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
       title: 'Second Item',
       shortDescription: 'nonono',
-      price: '£2.5',
+      price: 7.5,
       longDescription:
         'The mojito is the epitome of the refreshing cocktail, stripped down to just the bare essentials of rum, lime juice, sugar, soda water, and mint. Each ingredient is seemingly specifically selected to cure hot weather-induced pangs of thirst — it is in turns sweet, acidic, minty, and sparkling.',
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
       title: 'Third Item',
+      price: 7.5,
     },
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
       title: 'SecondToLast Item',
+      price: 7.5,
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
       title: 'Last Item',
-      price: '£7.5',
+      price: 7.5,
     },
   ],
   Burgers: [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item 1',
-      price: '£7.5',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -82,14 +86,14 @@ const MENU_DATA: any = {
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
       title: 'Third Item 1',
-      price: '£7.5',
+      price: 7.5,
     },
   ],
   Pizza: [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item 2',
-      price: '£7.5',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -112,14 +116,14 @@ const MENU_DATA: any = {
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
       title: 'Third Item 2',
-      price: '£7.5',
+      price: 7.5,
     },
   ],
   Dessert: [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item 2',
-      price: '£7.5',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -130,7 +134,7 @@ const MENU_DATA: any = {
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item 2',
-      price: '£7.5',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -141,7 +145,7 @@ const MENU_DATA: any = {
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item 2',
-      price: '£7.5',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -152,7 +156,7 @@ const MENU_DATA: any = {
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item 2',
-      price: '£7.5',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -163,7 +167,7 @@ const MENU_DATA: any = {
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'First Item 2',
-      price: '£7.5',
+      price: 7.5,
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -176,6 +180,7 @@ interface MenuProps {}
 
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
+  const navigation = useNavigation();
   const [menuIndex, setMenuIndex] = useState(0);
 
   const onSwipe = (index: number) => {
@@ -183,6 +188,10 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       ref.current.scrollBy(index - menuIndex, true);
     }
     setMenuIndex(index);
+  };
+
+  const navigate = () => {
+    navigation.navigate('Cart');
   };
 
   const menuTabsContent = useCallback(
@@ -217,7 +226,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
         </CardsContainer>
       </BottomContainer>
       <BasketButtonWrapper>
-        <ViewBasketButton onClick={() => console.log('Hello')}></ViewBasketButton>
+        <ViewBasketButton onClick={navigate} />
       </BasketButtonWrapper>
     </MenuWrapper>
   );

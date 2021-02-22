@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import Menu from './MenuList';
 import SingleItem from '../../components/Menu/SingleItemCard';
-import HappyHourMenu from './HappyHourMenu';
+import Cart from '../Cart';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +13,7 @@ const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
     <Stack.Navigator headerMode={'none'}>
       <Stack.Screen name="MenuList" component={Menu} />
       <Stack.Screen name="SingleItem" component={SingleItem} />
+      <Stack.Screen name="Cart" component={Cart} />
     </Stack.Navigator>
   );
 };

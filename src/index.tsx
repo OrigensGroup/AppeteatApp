@@ -18,6 +18,7 @@ import LoginScreen from './screens/Login';
 import Book from './screens/Book';
 
 import Profile from './screens/Profile';
+import CartProvider from './contexts/Cart';
 
 const Stack = createStackNavigator();
 
@@ -82,40 +83,28 @@ const App = () => {
     </Tab.Navigator>
   );
 
-  TabBar.navigationOptions = ({ navigation }) => {
-    let tabBarVisible = true;
-
-    let routeName = navigation.state.routes[navigation.state.index].routeName;
-
-    if (routeName == 'Menu') {
-      tabBarVisible = false;
-    }
-
-    return {
-      tabBarVisible,
-    };
-  };
-
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer
-        onNavigationStateChange={async (prevState, currentState) => {
-          const currentScreen = getActiveRouteName(currentState);
-          const prevScreen = getActiveRouteName(prevState);
-          if (prevScreen !== currentScreen) {
-            // Update Firebase with the name of your screen
-            await analytics().logScreenView({
-              screen_name: currentScreen,
-              screen_class: currentScreen,
-            });
-          }
-        }}
-      >
-        <Stack.Navigator headerMode="none">
-          <Stack.Screen component={LoginScreen} name="Login" />
-          <Stack.Screen component={TabBar} name="App" />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <CartProvider>
+        <NavigationContainer
+          onNavigationStateChange={async (prevState, currentState) => {
+            const currentScreen = getActiveRouteName(currentState);
+            const prevScreen = getActiveRouteName(prevState);
+            if (prevScreen !== currentScreen) {
+              // Update Firebase with the name of your screen
+              await analytics().logScreenView({
+                screen_name: currentScreen,
+                screen_class: currentScreen,
+              });
+            }
+          }}
+        >
+          <Stack.Navigator headerMode="none">
+            <Stack.Screen component={LoginScreen} name="Login" />
+            <Stack.Screen component={TabBar} name="App" />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </CartProvider>
     </ThemeProvider>
   );
 };
