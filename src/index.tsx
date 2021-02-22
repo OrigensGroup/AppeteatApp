@@ -52,7 +52,9 @@ const App = () => {
       <Tab.Screen
         component={Menu}
         name="Menu"
+
         options={{
+          tabBarVisible: false,
           tabBarLabel: 'Menu',
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="glass-cocktail" size={size} />,
         }}
@@ -76,6 +78,21 @@ const App = () => {
       />
     </Tab.Navigator>
   );
+
+  TabBar.navigationOptions = ({ navigation }) => {
+
+    let tabBarVisible = true;
+
+    let routeName = navigation.state.routes[navigation.state.index].routeName
+
+    if (routeName == 'Menu') {
+      tabBarVisible = false
+    }
+
+    return {
+      tabBarVisible,
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>

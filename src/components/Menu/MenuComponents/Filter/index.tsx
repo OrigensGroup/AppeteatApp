@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { FilterButtonContainer, Button } from './styles';
 
@@ -11,7 +11,7 @@ const Filter: React.FunctionComponent<FilterProps> = ({ onClick }) => {
   return (
     <FilterButtonContainer>
       <Button onPress={onClick}>
-        <Icon color="#0008" name="ios-filter" size={28} />
+        <Icon color="#0008" name="sliders" size={24} />
       </Button>
     </FilterButtonContainer>
   );

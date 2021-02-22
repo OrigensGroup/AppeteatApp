@@ -7,18 +7,14 @@ padding-right: ${({ theme }) => theme.spacing.multiple(3)};
 
 export const CardContainer = styled.TouchableOpacity`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(14)};
+  height: ${({ theme }) => theme.spacing.multiple(15)};
   display: flex;
   flex-direction: row;
   border-width: 1px;
   background-color: #fff;
-  border-radius: ${({ theme }) => theme.spacing.double};
-  border-color: transparent;
-  border-bottom-width: 0;
-  shadow-color: #000;
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
-  elevation: 5;
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  border-color: #C2C2C2;
+  border-bottom-width: 1px;
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
   justify-content: space-between;
 `;
@@ -41,19 +37,19 @@ export const RightWrapper = styled.View`
 `;
 
 export const ImageWrapper = styled.View`
-  width: ${({ theme }) => theme.spacing.multiple(13)};
+  width: ${({ theme }) => theme.spacing.multiple(15)};
   height: 100%;
   align-items: center;
   justify-content: center;
 `;
 
 export const DrinkImage = styled.Image`
-  height: ${({ theme }) => theme.spacing.multiple(11)};
-  width: ${({ theme }) => theme.spacing.multiple(11)};
-  border-bottom-left-radius: ${({ theme }) => theme.spacing.double};
-  border-bottom-right-radius: ${({ theme }) => theme.spacing.double};
-  border-top-left-radius: ${({ theme }) => theme.spacing.double};
-  border-top-right-radius: ${({ theme }) => theme.spacing.double};
+  height: ${({ theme }) => theme.spacing.multiple(13)};
+  width: ${({ theme }) => theme.spacing.multiple(13)};
+  border-bottom-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  border-bottom-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  border-top-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const DrinkDesc = styled.View`
@@ -63,21 +59,30 @@ export const DrinkDesc = styled.View`
 
 export const TextTitle = styled.Text`
   font-size: 20px;
-  color: black;
+  color: #000000;
 `;
 
-export const AddToBasket = styled.TouchableOpacity`
-  width: ${({ theme }) => theme.spacing.multiple(7)};
-  height: ${({ theme }) => theme.spacing.multiple(3)};
-  margin-top: ${({ theme }) => theme.spacing.multiple(9)};
-  margin-right: ${({ theme }) => theme.spacing.multiple(2)};
-  background-color: #fc7930;
-  border-radius: ${({ theme }) => theme.spacing.double};
-  justify-content: center;
-  align-items: center;
+export const SubTitle = styled.Text`
+  font-size: 14px;
+  color: #AFAFAF;
+  margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 
 export const Price = styled.Text`
-  font-size: 12px;
-  color: white;
+  font-size: 20px;
+  color: #F69019;
+`;
+
+export const PriceWrapper = styled.View`
+`
+
+export const LikeButton = styled.TouchableOpacity`
+  width: ${({ theme }) => theme.spacing.multiple(4)};
+  height: ${({ theme }) => theme.spacing.multiple(4)};
+  margin-top: ${({ theme }) => theme.spacing.multiple(9)};
+  margin-right: ${({ theme }) => theme.spacing.multiple(2)};
+  background-color: #ECEBEBE6;
+  border-radius: ${({ theme }) => theme.spacing.multiple(4)};
+  justify-content: center;
+  align-items: center;
 `;

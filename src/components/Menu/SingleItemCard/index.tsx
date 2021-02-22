@@ -26,7 +26,7 @@ import {
   PicWrapper,
   TitleWrapper,
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Ingredients from './Ingredients';
 
@@ -40,13 +40,22 @@ const INGREDIENTS_DATA = [
 
 interface SingleItemProps {
   onClick: () => void;
+  title: string;
 }
 
 const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
+
+  const route = useRoute();
+
+  const { item } = route.params;
+
   const navigation = useNavigation();
+
   const navigate = () => {
     navigation.navigate("MenuList");
   };
+
+  // const addToCart = 
 
   const ingredients = useCallback(() =>
     INGREDIENTS_DATA.map((item) => <Ingredients key={item} ingredient={item} />)
@@ -57,7 +66,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
       <ButtonsWrapper>
         <CloseButton onClick={navigate} />
         <TitleWrapper>
-          <Title>Mojito</Title>
+          <Title>{item.title}</Title>
         </TitleWrapper>
         <HeartButton onClick={() => console.log('hello world')} />
       </ButtonsWrapper>
@@ -68,7 +77,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
         <DetailsContainer>
           <ItemDetails>
             <ItemDescription>
-              {singleDrinkTranslations.descriptionField.placeholder}
+              {item.longDescription}
             </ItemDescription>
             <AllertWrapper>
               <AllergiesAllert>
@@ -86,7 +95,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
         </DetailsContainer>
       </ScrollView>
       <BasketButtonWrapper>
-        <AddToBasketButton onClick={() => console.log('Hello World')} />
+        <AddToBasketButton onClick={() => console.log('Hello World')} price={item.price} />
       </BasketButtonWrapper>
     </Wrapper>
   );

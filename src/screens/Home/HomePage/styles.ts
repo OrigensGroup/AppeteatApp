@@ -24,8 +24,7 @@ export const HomepageTitle = styled.Text`
 export const CocktailContainer = styled.ScrollView``;
 
 export const CocktailSection = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.multiple(3)}
-    ${({ theme }) => theme.spacing.multiple(3)};
+  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const BottomContainer = styled.View`

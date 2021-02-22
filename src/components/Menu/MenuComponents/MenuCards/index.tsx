@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Text } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
   CardContainer,
@@ -11,23 +11,22 @@ import {
   DrinkImage,
   DrinkDesc,
   TextTitle,
-  AddToBasket,
-  Price,
+  LikeButton,
   CardMainContainer,
+  Price,
+  SubTitle,
 } from './styles';
 
 interface CardProps {
-  title: string;
-  description: string;
-  price: string;
+  item: any;
   onClick: () => void;
 }
 
-const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, price, onClick,
+const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick,
 }) => {
   const navigation = useNavigation();
   const navigate = () => {
-    navigation.navigate("SingleItem", { title });
+    navigation.navigate("SingleItem", { item });
   };
   return (
     <CardMainContainer>
@@ -38,14 +37,15 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, pric
               <DrinkImage source={require('../../../../img/mojito.jpg')} />
             </ImageWrapper>
             <DrinkDesc>
-              <TextTitle>{title}</TextTitle>
-              <Text>{description}</Text>
+              <TextTitle>{item.title}</TextTitle>
+              <SubTitle>{item.shortDescription}</SubTitle>
+              <Price>{item.price}</Price>
             </DrinkDesc>
           </LeftWrapper>
           <RightWrapper>
-            <AddToBasket onPress={onClick}>
-              <Price>{price}</Price>
-            </AddToBasket>
+            <LikeButton onPress={onClick}>
+              <Icon color="#0008" name="heart-outline" size={20} />
+            </LikeButton>
           </RightWrapper>
         </CardWrapper>
       </CardContainer>

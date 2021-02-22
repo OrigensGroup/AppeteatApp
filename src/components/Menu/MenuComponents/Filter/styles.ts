@@ -3,18 +3,14 @@ import styled from 'styled-components/native';
 export const FilterButtonContainer = styled.View`
   width: ${({ theme }) => theme.spacing.multiple(5)};
   height: ${({ theme }) => theme.spacing.multiple(5)};
-  border-radius: ${({ theme }) => theme.spacing.multiple(12)};
+  border-radius: ${({ theme }) => theme.spacing.single};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
   display: flex;
   flex-direction: row;
   border-width: 1px;
   background-color: #fff;
-  border-color: transparent;
-  border-bottom-width: 0;
-  shadow-color: #000;
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
-  elevation: 6;
+  border-color: #C2C2C2;
+  border-width: 1px;
   justify-content: space-between;
 `;
 
