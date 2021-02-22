@@ -17,8 +17,6 @@ import Book from './screens/Book';
 
 import Profile from './screens/Profile';
 
-import Cart from "./screens/Cart";
-
 const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -27,9 +25,12 @@ const App = () => {
   const TabBar = () => (
     <Tab.Navigator
       initialRouteName="Home"
+      lazy={false}
+      backBehavior="none"
       tabBarOptions={{
-        activeTintColor: '#cf9822',
-        inactiveTintColor: '#2c2c2b',
+        showLabel: false,
+        activeTintColor: theme.colors.active,
+        inactiveTintColor: theme.colors.inactive,
         labelStyle: { fontSize: 10, marginBottom: 6 },
       }}
     >
@@ -42,14 +43,6 @@ const App = () => {
         }}
       />
       <Tab.Screen
-        component={Book}
-        name="Book"
-        options={{
-          tabBarLabel: 'Book',
-          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
-        }}
-      />
-      <Tab.Screen
         component={Menu}
         name="Menu"
         options={{
@@ -58,14 +51,13 @@ const App = () => {
         }}
       />
       <Tab.Screen
-        name="Cart"
-        component={Cart}
+        component={Book}
+        name="Book"
         options={{
-          tabBarLabel: 'Cart',
-          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="shoppingcart" size={size} />,
+          tabBarLabel: 'Book',
+          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
         }}
       />
-
       <Tab.Screen
         component={Profile}
         name="Account"
