@@ -7,17 +7,12 @@ import { ThemeProvider } from 'styled-components/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Antdesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import theme from './theme';
-
 import Home from './screens/Home';
 import Menu from './screens/Menu';
 import LoginScreen from './screens/Login';
 import Book from './screens/Book';
-
 import Profile from './screens/Profile';
-
-import Cart from "./screens/Cart";
 
 const Stack = createStackNavigator();
 
@@ -37,7 +32,7 @@ const App = () => {
         component={Home}
         name="Home"
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => <Ionicons color={color} name="md-home-outline" size={size} />,
         }}
       />
@@ -45,7 +40,7 @@ const App = () => {
         component={Book}
         name="Book"
         options={{
-          tabBarLabel: 'Book',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
         }}
       />
@@ -53,24 +48,15 @@ const App = () => {
         component={Menu}
         name="Menu"
         options={{
-          tabBarLabel: 'Menu',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="glass-cocktail" size={size} />,
         }}
       />
       <Tab.Screen
-        name="Cart"
-        component={Cart}
-        options={{
-          tabBarLabel: 'Cart',
-          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="shoppingcart" size={size} />,
-        }}
-      />
-
-      <Tab.Screen
         component={Profile}
         name="Account"
         options={{
-          tabBarLabel: 'Account',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="account-outline" size={size} />,
         }}
       />

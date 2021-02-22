@@ -1,7 +1,4 @@
 import React from 'react';
-
-import Promotion from '../../components/Home/Promotion';
-
 import Location from '../../components/Home/Location';
 import Card from '../../components/Home/Card';
 import Reservation from '../../components/Home/Reservation';
@@ -18,6 +15,8 @@ import {
   ReservationContainer,
   LocationContainer,
 } from './styles';
+import CarouselPromo from '../../components/Carousel';
+import Map from '../../components/Map';
 
 interface HomeProps {}
 
@@ -36,15 +35,10 @@ const Home: React.FunctionComponent<HomeProps> = () => {
         </CocktailContainer>
       </CocktailSection>
       <PromotionContainer>
-        <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} />
+        <CarouselPromo />
       </PromotionContainer>
       <BottomContainer>
-        <ReservationContainer>
-          <Reservation />
-        </ReservationContainer>
-        <LocationContainer>
-          <Location />
-        </LocationContainer>
+        <Map />
       </BottomContainer>
     </HomepageContainer>
   );

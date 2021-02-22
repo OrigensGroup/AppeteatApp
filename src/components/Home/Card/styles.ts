@@ -1,13 +1,13 @@
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
-  width: ${({ theme }) => theme.spacing.multiple(35)};
+  width: ${({ theme }) => theme.spacing.multiple(30)};
   height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
   flex-direction: row;
   border-width: 1px;
   background-color: #fff;
-  border-radius:${({ theme }) => theme.spacing.double};
+  border-radius:${({ theme }) => theme.spacing.multiple(3)};
   border-color: transparent;
   border-bottom-width: 0;
   margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} ${({ theme }) =>
@@ -15,22 +15,26 @@ export const CardContainer = styled.TouchableOpacity`
   shadow-color: #000;
   shadow-opacity: 0.8;
   shadow-radius: 2px;
-  elevation: 6;
+  elevation: 1;
 `;
 
 export const DrinkImage = styled.Image`
   height: 100%;
   width: ${({ theme }) => theme.spacing.multiple(14)};
-  border-bottom-left-radius: 15px;
-  border-top-left-radius: 15px;
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
+`;
+export const ImageContainer = styled.View`
+  padding: ${({ theme }) => theme.spacing.single};
 `;
 
 export const DrinkDesc = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0 ${({ theme }) => theme.spacing.double};
+  padding-top: ${({ theme }) => theme.spacing.single};
 `;
 
 export const DrinkLike = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0 ${({ theme }) => theme.spacing.multiple(5)};
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: ${({ theme }) => theme.spacing.single};
 `;
 
 export const TextTitle = styled.Text`

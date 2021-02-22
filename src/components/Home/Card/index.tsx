@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { CardContainer, DrinkImage, DrinkDesc, DrinkLike, TextTitle } from './styles';
+import { CardContainer, DrinkImage, DrinkDesc, DrinkLike, TextTitle, ImageContainer } from './styles';
 
 interface CardProps {
   title: string;
@@ -13,7 +13,9 @@ interface CardProps {
 const Card: React.FunctionComponent<CardProps> = ({ description, onClick, title }) => {
   return (
     <CardContainer onPress={onClick}>
-      <DrinkImage source={require('../../../img/mojito.jpg')} />
+      <ImageContainer>
+        <DrinkImage source={require('../../../img/mojito.jpg')} />
+      </ImageContainer>
       <DrinkDesc>
         <TextTitle>{title}</TextTitle>
         <Text>{description}</Text>
