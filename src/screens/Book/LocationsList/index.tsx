@@ -6,7 +6,7 @@ import LocationCard from '../../../components/Location/Card';
 
 import { LocationPageContainer, SearchBarWrapper } from './styles';
 
-interface LocationsListProps { }
+interface LocationsListProps {}
 
 type Item = {
   id: string;
@@ -44,9 +44,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
 
   return (
     <LocationPageContainer>
-      <SearchBarWrapper>
-        {/* <SearchBar placeholder="Da fixare" /> */}
-      </SearchBarWrapper>
+      <SearchBarWrapper>{/* <SearchBar placeholder="Da fixare" /> */}</SearchBarWrapper>
       <FlatList data={DATA} renderItem={renderItem} />
     </LocationPageContainer>
   );

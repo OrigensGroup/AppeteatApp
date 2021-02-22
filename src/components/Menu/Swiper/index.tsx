@@ -32,7 +32,7 @@ const DATA = [
   },
 ];
 
-interface SwiperProps { }
+interface SwiperProps {}
 
 const SwiperP1: React.FunctionComponent<SwiperProps> = () => {
   return (

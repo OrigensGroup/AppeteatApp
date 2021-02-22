@@ -1,11 +1,6 @@
 import React from 'react';
 
-import {
-  MainButtonWrapper,
-  MainButton,
-  TextWrapper,
-  ButtonText,
-} from './styles';
+import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
 
 interface ViewBasketButtonProps {
   onClick: () => void;

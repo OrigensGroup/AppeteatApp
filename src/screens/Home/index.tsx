@@ -1,7 +1,11 @@
 import React from 'react';
+
 import Location from '../../components/Home/Location';
 import Card from '../../components/Home/Card';
 import Reservation from '../../components/Home/Reservation';
+
+import CarouselPromo from '../../components/Carousel';
+import Map from '../../components/Map';
 
 import {
   CocktailContainer,
@@ -15,8 +19,6 @@ import {
   ReservationContainer,
   LocationContainer,
 } from './styles';
-import CarouselPromo from '../../components/Carousel';
-import Map from '../../components/Map';
 
 interface HomeProps {}
 

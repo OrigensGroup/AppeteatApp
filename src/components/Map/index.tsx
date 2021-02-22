@@ -1,5 +1,6 @@
 import React from 'react';
 import MapView from 'react-native-maps';
+
 import { MapContainer } from './styles';
 
 interface MapProps {

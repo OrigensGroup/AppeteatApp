@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Antdesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import theme from './theme';
 import Home from './screens/Home';
 import Menu from './screens/Menu';

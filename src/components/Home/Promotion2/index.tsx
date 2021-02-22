@@ -9,7 +9,7 @@ interface Promotion2Props {
 }
 
 const Promotion2: React.FunctionComponent<Promotion2Props> = ({ onClick }) => {
-  return <PromotionContainer onPress={onClick}></PromotionContainer>;
+  return <PromotionContainer onPress={onClick} />;
 };
 
 export default Promotion2;

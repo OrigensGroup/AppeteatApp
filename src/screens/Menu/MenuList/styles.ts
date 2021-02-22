@@ -1,11 +1,9 @@
-import styled from "styled-components/native";
-
+import styled from 'styled-components/native';
 
 export const MenuWrapper = styled.View`
   background-color: #fff;
   height: 100%;
   width: 100%;
-
 `;
 
 export const TopContainer = styled.View`
@@ -16,7 +14,6 @@ export const TopContainer = styled.View`
 export const BottomContainer = styled.View`
   background-color: #fff;
 `;
-
 
 export const TopBarWrapper = styled.View`
   justify-content: space-between;
@@ -35,8 +32,7 @@ export const LogoImage = styled.Image`
   resize-mode: contain;
 `;
 
-export const CardsContainer = styled.ScrollView`
-`;
+export const CardsContainer = styled.ScrollView``;
 
 export const SearchBarWrapper = styled.View`
   justify-content: space-between;
@@ -44,37 +40,32 @@ export const SearchBarWrapper = styled.View`
   align-items: center;
 `;
 
-
 export const SwiperWrapper = styled.View`
   background-color: #ffffff;
   align-items: center;
 `;
 
 export const SwiperWrapper2 = styled.View`
-background-color: #ffffff;
-justify-content: center;
-align-items: center;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const xxx = styled.View`
-background-color: #ffffff;
-justify-content: center;
-align-items: center;
-margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
-position: absolute;
-margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
+  position: absolute;
+  margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const BasketButtonWrapper = styled.View`
-width: 100%;
-height: 100%;
-position: absolute;
-justify-content: flex-end;
-padding-bottom: ${({ theme }) => theme.spacing.multiple(2)};
-padding-left: ${({ theme }) => theme.spacing.multiple(3)};
-padding-right: ${({ theme }) => theme.spacing.multiple(3)};
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  justify-content: flex-end;
+  padding-bottom: ${({ theme }) => theme.spacing.multiple(2)};
+  padding-left: ${({ theme }) => theme.spacing.multiple(3)};
+  padding-right: ${({ theme }) => theme.spacing.multiple(3)};
 `;
-
-
-
-

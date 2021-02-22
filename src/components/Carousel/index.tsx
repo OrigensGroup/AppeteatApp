@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Text } from 'react-native';
+import { Text, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { CarouselContainer } from './styles';
-import { Dimensions } from 'react-native';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+
 import Promotion from '../Home/Promotion';
 import Promotion2 from '../Home/Promotion2';
+
+import { CarouselContainer } from './styles';
 
 interface CarouselPromoProps {}
 type Item = {
@@ -14,6 +15,7 @@ type Item = {
   title: string;
 };
 const sliderWidth = Dimensions.get('window').width;
+
 const DATA: Item[] = [
   {
     id: '7',
@@ -39,7 +41,6 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
   const pagination = () => {
     return (
       <Pagination
-        dotsLength={DATA.length}
         activeDotIndex={activeSlide}
         containerStyle={{ backgroundColor: 'transparent' }}
         dotStyle={{
@@ -48,11 +49,12 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
           marginHorizontal: 8,
           backgroundColor: '#EE6F00',
         }}
+        dotsLength={DATA.length}
+        inactiveDotOpacity={0.4}
+        inactiveDotScale={0.6}
         inactiveDotStyle={{
           backgroundColor: '#9D9891',
         }}
-        inactiveDotOpacity={0.4}
-        inactiveDotScale={0.6}
       />
     );
   };
@@ -62,10 +64,10 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
     <CarouselContainer>
       <Carousel
         data={DATA}
-        renderItem={renderItem}
-        sliderWidth={sliderWidth}
         itemWidth={sliderWidth}
         onSnapToItem={(index) => setActiveSlide(index)}
+        renderItem={renderItem}
+        sliderWidth={sliderWidth}
       />
       {pagination()}
     </CarouselContainer>

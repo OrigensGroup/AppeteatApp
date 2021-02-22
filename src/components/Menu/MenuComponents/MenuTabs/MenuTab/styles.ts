@@ -14,4 +14,4 @@ export const Text = styled.Text`
   font-size: 18px;
   color: black;
   font-weight: bold;
-`
+`;

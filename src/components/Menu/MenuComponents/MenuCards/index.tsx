@@ -23,12 +23,13 @@ interface CardProps {
   onClick: () => void;
 }
 
-const MenuCard: React.FunctionComponent<CardProps> = ({ title, description, price, onClick,
-}) => {
+const MenuCard: React.FunctionComponent<CardProps> = ({ description, onClick, price, title }) => {
   const navigation = useNavigation();
+
   const navigate = () => {
-    navigation.navigate("SingleItem", { title });
+    navigation.navigate('SingleItem', { title });
   };
+
   return (
     <CardMainContainer>
       <CardContainer onPress={navigate}>
