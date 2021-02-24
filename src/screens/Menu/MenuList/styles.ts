@@ -23,6 +23,7 @@ export const TopBarWrapper = styled.View`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  margin: ${({ theme }) => theme.spacing.multiple(2)} 0;
 `;
 
 export const LogoContainer = styled.View`

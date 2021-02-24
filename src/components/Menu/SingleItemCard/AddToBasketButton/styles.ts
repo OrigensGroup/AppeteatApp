@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 
 export const MainButtonWrapper = styled.View`
-  width: 100%;
 `;
 
 export const MainButton = styled.TouchableOpacity`
@@ -15,10 +14,9 @@ export const MainButton = styled.TouchableOpacity`
 
 export const TextWrapper = styled.View`
 flex-direction: row;
-align-items:center;
-height: 100%;
-width: 90%;
-justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const ButtonText = styled.Text`

@@ -112,9 +112,12 @@ export const Text = styled.Text`
 `;
 
 export const BasketButtonWrapper = styled.View`
-padding-bottom: ${({ theme }) => theme.spacing.multiple(1)};
-padding-left: ${({ theme }) => theme.spacing.multiple(3)};
-padding-right: ${({ theme }) => theme.spacing.multiple(3)};
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: ${({ theme }) => theme.spacing.multiple(1)};
+  padding-left: ${({ theme }) => theme.spacing.multiple(3)};
+  padding-right: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 

@@ -13,7 +13,6 @@ const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick
     <MainButtonWrapper>
       <MainButton onPress={onClick}>
         <TextWrapper>
-          <ButtonText>(3)</ButtonText>
           <ButtonText>{singleDrinkTranslations.viewBasketButtonField.placeholder}</ButtonText>
           <ButtonText>+ {price}</ButtonText>
         </TextWrapper>

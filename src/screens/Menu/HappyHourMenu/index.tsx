@@ -2,8 +2,9 @@ import React, { useCallback, useRef, useState } from "react";
 import Swiper from "react-native-swiper";
 import Promotion from '../../../components/Home/Promotion'
 import { useNavigation } from "@react-navigation/native";
-import QrCode from "../../../components/Menu/MenuComponents/QrCode";
-import menuTranslations from "../../../translations/menu";
+import SwiperP1 from "../../../components/Menu/MenuComponents/SwiperP1";
+import CloseButton from "../../../components/Menu/MenuComponents/CloseButton";
+import HeartButton from "../../../components/Menu/MenuComponents/HeartButton";
 
 const HAPPYHOUR_DATA: any = {
   Drinks: [
@@ -62,9 +63,9 @@ import {
   BottomContainer,
   CardsContainer,
   TopContainer,
+  ButtonsWrapper
 } from './styles';
 
-import SwiperP1 from "../../../components/Menu/MenuComponents/SwiperP1";
 
 interface HappyHourMenuProps {
 }
@@ -85,9 +86,20 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
     Object.keys(HAPPYHOUR_DATA).map((item) => <SwiperP1 key={item} menuItems={HAPPYHOUR_DATA[item]} />)
     , [HAPPYHOUR_DATA]);
 
+
+  const navigation = useNavigation();
+
+  const navigate = () => {
+    navigation.navigate('HomePage');
+  };
+
   return (
     <MainWrapper>
       <TopContainer>
+        <ButtonsWrapper>
+          <CloseButton onClick={navigate} />
+          <HeartButton onClick={() => console.log('hello world')} />
+        </ButtonsWrapper>
         <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} />
       </TopContainer>
       <BottomContainer>

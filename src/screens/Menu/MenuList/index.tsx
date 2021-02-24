@@ -22,6 +22,9 @@ import {
   BasketButtonWrapper,
 } from "./styles";
 
+import { useNavigation } from '@react-navigation/native';
+import CloseButton from '../../../components/Menu/MenuComponents/CloseButton';
+
 
 
 const MENU_DATA: any = {
@@ -180,6 +183,7 @@ interface MenuProps { }
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
   const [menuIndex, setMenuIndex] = useState(0);
+  const navigation = useNavigation();
 
   const onSwipe = (index: number) => {
     if (ref.current && index !== menuIndex) {
@@ -192,13 +196,17 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     Object.keys(MENU_DATA).map((item) => <SwiperP1 key={item} menuItems={MENU_DATA[item]} />)
     , [MENU_DATA]);
 
+
+
+  const navigateBack = () => {
+    navigation.navigate('HomePage');
+  };
+
   return (
     <MenuWrapper>
       <TopContainer>
         <TopBarWrapper>
-          <LogoContainer>
-            <LogoImage source={require("../../../img/Logo.png")}></LogoImage>
-          </LogoContainer>
+          <CloseButton onClick={navigateBack} />
           <QrCode onClick={() => console.log('Hello World!')} title={menuTranslations.qrField.placeholder}></QrCode>
         </TopBarWrapper>
         <SearchBarWrapper>
@@ -209,7 +217,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
           <Filter onClick={() => console.log('Hello World!')}></Filter>
         </SearchBarWrapper>
         <MenuTabs menuTabs={Object.keys(MENU_DATA)} tabActive={menuIndex} onChange={onSwipe} />
-      </TopContainer>
+      </TopContainer >
       <BottomContainer>
         <CardsContainer>
           <Swiper ref={ref} loop={false} showsPagination={false} onIndexChanged={onSwipe}>
@@ -220,10 +228,8 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <BasketButtonWrapper>
         <ViewBasketButton onClick={() => console.log("Hello")}></ViewBasketButton>
       </BasketButtonWrapper>
-    </MenuWrapper>
+    </MenuWrapper >
   );
 };
 
 export default Menu;
-
-

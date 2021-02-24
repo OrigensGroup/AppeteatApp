@@ -1,8 +1,13 @@
 import React, { useCallback } from 'react';
 import CloseButton from '../MenuComponents/CloseButton';
 import HeartButton from '../MenuComponents/HeartButton';
-import AddToBasketButton from './AddToBasketButton'
-import singleDrinkTranslations from '../../../translations/singleDrink'
+import AddToBasketButton from './AddToBasketButton';
+import singleDrinkTranslations from '../../../translations/singleDrink';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import Ingredients from './Ingredients';
+import useCart from '../../../hooks/useCart';
+import QuantityCounter from './Counter';
 
 import {
   Wrapper,
@@ -26,9 +31,6 @@ import {
   PicWrapper,
   TitleWrapper,
 } from './styles';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import Ingredients from './Ingredients';
 
 
 const INGREDIENTS_DATA = [
@@ -96,6 +98,8 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
       </ScrollView>
       <BasketButtonWrapper>
         <AddToBasketButton onClick={() => console.log('Hello World')} price={item.price} />
+        <QuantityCounter></QuantityCounter>
+        <AddToBasketButton onClick={() => addItemToCart({ ...item, quantity: 1 })} price={item.price} />
       </BasketButtonWrapper>
     </Wrapper>
   );
