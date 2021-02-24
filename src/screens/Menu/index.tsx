@@ -14,7 +14,6 @@ interface MenuNavProps { }
 const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   return (
     <Stack.Navigator headerMode={'none'}>
-      <Stack.Screen name="HomePage" component={Home} />
       <Stack.Screen name="MenuList" component={Menu} />
       <Stack.Screen name="SingleItem" component={SingleItem} />
     </Stack.Navigator>
