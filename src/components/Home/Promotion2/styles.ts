@@ -34,7 +34,3 @@ export const OrderButton = styled.TouchableOpacity`
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   background-color: #F69019;
 `;
-export const TextTitle = styled.Text`
-  font-size: 20px;
-  color: black;
-`;

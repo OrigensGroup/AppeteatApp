@@ -1,4 +1,5 @@
 import React from 'react';
+import useCart from '../../../../hooks/useCart';
 
 import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
 
@@ -7,13 +8,17 @@ interface ViewBasketButtonProps {
 }
 
 const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onClick }) => {
+  const { cart } = useCart();
+
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
   return (
     <MainButtonWrapper>
       <MainButton onPress={onClick}>
         <TextWrapper>
-          <ButtonText>(3)</ButtonText>
+          <ButtonText>{cart.length}</ButtonText>
           <ButtonText>View Basket</ButtonText>
-          <ButtonText>£7.5</ButtonText>
+          <ButtonText>£{total}</ButtonText>
         </TextWrapper>
       </MainButton>
     </MainButtonWrapper>

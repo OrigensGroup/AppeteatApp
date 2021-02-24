@@ -12,7 +12,8 @@ export const TopContainer = styled.View`
 `;
 
 export const BottomContainer = styled.View`
-  background-color: #fff;
+  background-color: transparent;
+  margin-bottom: 250px;
 `;
 
 export const TopBarWrapper = styled.View`
@@ -32,7 +33,9 @@ export const LogoImage = styled.Image`
   resize-mode: contain;
 `;
 
-export const CardsContainer = styled.ScrollView``;
+export const CardsContainer = styled.View`
+  height: 100%;
+`;
 
 export const SearchBarWrapper = styled.View`
   justify-content: space-between;

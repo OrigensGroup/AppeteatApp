@@ -5,13 +5,13 @@ import { TitleText, TitleContainer } from './styles';
 interface TitleProps {
   fontSize: number;
   color: string;
-  fontWeight?: string;
+  bold?: boolean;
 }
 
-const Title: React.FunctionComponent<TitleProps> = ({ children, color, fontSize, fontWeight }) => {
+const Title: React.FunctionComponent<TitleProps> = ({ children, color, fontSize, bold }) => {
   return (
     <TitleContainer>
-      <TitleText color={color} fontSize={fontSize} fontWeight={fontWeight}>
+      <TitleText color={color} fontSize={fontSize} bold={bold}>
         {children}
       </TitleText>
     </TitleContainer>

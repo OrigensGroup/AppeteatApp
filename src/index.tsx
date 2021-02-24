@@ -1,7 +1,9 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useRef } from 'react';
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useFonts } from 'expo-font';
+import analytics from '@react-native-firebase/analytics';
 
 import { ThemeProvider } from 'styled-components/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -14,18 +16,39 @@ import Menu from './screens/Menu';
 import LoginScreen from './screens/Login';
 import Book from './screens/Book';
 import Profile from './screens/Profile';
+import CartProvider from './contexts/Cart';
 
 const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
+function getActiveRouteName(navigationState) {
+  if (!navigationState) return null;
+  const route = navigationState.routes[navigationState.index];
+  // Parse the nested navigators
+  if (route.routes) return getActiveRouteName(route);
+  return route.routeName;
+}
+
 const App = () => {
+  const navigationRef = useRef<NavigationContainerRef | null>();
+   const [loaded] = useFonts({
+    Comfortaa: require('./theme/fonts/Comfortaa-Regular.ttf'),
+    ComfortaaBold: require('./theme/fonts/Comfortaa-Bold.ttf'),
+    ComfortaaLight: require('./theme/fonts/Comfortaa-Light.ttf'),
+  });
+  
+  if (!loaded) {
+    return null;
+  }
   const TabBar = () => (
     <Tab.Navigator
       initialRouteName="Home"
+      backBehavior="none"
       tabBarOptions={{
-        activeTintColor: '#cf9822',
-        inactiveTintColor: '#2c2c2b',
+        showLabel: false,
+        activeTintColor: theme.colors.active,
+        inactiveTintColor: theme.colors.inactive,
         labelStyle: { fontSize: 10, marginBottom: 6 },
       }}
     >
@@ -38,19 +61,20 @@ const App = () => {
         }}
       />
       <Tab.Screen
-        component={Book}
-        name="Book"
-        options={{
-          tabBarLabel: '',
-          tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
-        }}
-      />
-      <Tab.Screen
         component={Menu}
         name="Menu"
         options={{
-          tabBarLabel: '',
+          tabBarVisible: false,
+          tabBarLabel: 'Menu',
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="glass-cocktail" size={size} />,
+        }}
+      />
+      <Tab.Screen
+        component={Book}
+        name="Book"
+        options={{
+          tabBarLabel: 'Book',
+          tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="calendar" size={size} />,
         }}
       />
       <Tab.Screen
@@ -66,12 +90,26 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Stack.Navigator headerMode="none">
-          <Stack.Screen component={LoginScreen} name="Login" />
-          <Stack.Screen component={TabBar} name="App" />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <CartProvider>
+        <NavigationContainer
+          onNavigationStateChange={async (prevState, currentState) => {
+            const currentScreen = getActiveRouteName(currentState);
+            const prevScreen = getActiveRouteName(prevState);
+            if (prevScreen !== currentScreen) {
+              // Update Firebase with the name of your screen
+              await analytics().logScreenView({
+                screen_name: currentScreen,
+                screen_class: currentScreen,
+              });
+            }
+          }}
+        >
+          <Stack.Navigator headerMode="none">
+            <Stack.Screen component={LoginScreen} name="Login" />
+            <Stack.Screen component={TabBar} name="App" />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </CartProvider>
     </ThemeProvider>
   );
 };

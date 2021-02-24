@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const HomepageContainer = styled.View`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
 `;
 export const LogoContainer = styled.View`
@@ -16,9 +16,8 @@ export const LogoImage = styled.Image`
 `;
 
 export const PromotionContainer = styled.View``;
-export const HomepageTitle = styled.Text`
-  color: black;
-  font-size: 20px;
+export const HomepageTitle = styled.View`
+  margin-left: ${({ theme }) => theme.spacing.half};
 `;
 export const CocktailContainer = styled.ScrollView``;
 
@@ -31,7 +30,7 @@ export const BottomContainer = styled.View`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.multiple(3)};
+  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double};
 `;
 export const ReservationContainer = styled.View`
   width: 50%;
@@ -41,3 +40,19 @@ export const LocationContainer = styled.View`
   width: 50%;
   padding-left: ${({ theme }) => theme.spacing.single};
 `;
+export const MapContainer = styled.TouchableOpacity`
+  width: 100%;
+  height: ${({ theme }) => theme.spacing.multiple(17)}};
+  border-width: 1px;
+  background-color: #fff;
+  border-radius: ${({ theme }) => theme.spacing.double};
+  border-color: transparent;
+  border-bottom-width: 0;
+  justify-content: center;
+  align-items: center;
+  shadow-color: #000;
+  shadow-opacity: 0.8;
+  shadow-radius: 2px;
+  overflow: hidden;
+`;
+

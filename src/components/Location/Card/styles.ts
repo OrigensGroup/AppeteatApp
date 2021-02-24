@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
-  height: ${({ theme }) => theme.spacing.multiple(28)};
-  background-color: #fff;
+  height: ${({ theme }) => theme.spacing.multiple(27)};
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
   margin-bottom: ${({ theme }) => theme.spacing.double};
   shadow-color: #000;
@@ -19,49 +19,39 @@ export const VenueImage = styled.Image`
   border-top-left-radius: ${({ theme }) => theme.spacing.double};
 `;
 export const ImageContainer = styled.View`
-  height: 40%;
-  position: relative;
+  height: 50%;
   overflow: hidden;
 `;
-export const Triangle = styled.View`
-  position: absolute;
-  width: 0;
-  z-index: 1;
-  top: ${({ theme }) => theme.spacing.multiple(8)};
-  right: 0;
-  height: 0;
-  background-color: transparent;
-  border-style: solid;
-  border-left-width: 1000px;
-  border-right-width: 0;
-  border-bottom-width: 70px;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: white;
-`;
-
 export const DrinkDesc = styled.View`
-  padding: ${({ theme }) => theme.spacing.double} 0 0 ${({ theme }) => theme.spacing.double};
+  padding:  ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} 0 ${({ theme }) => theme.spacing.single};
 `;
-
-export const TextTitle = styled.Text`
-  font-size: 20px;
-  color: black;
-  margin-bottom: ${({ theme }) => theme.spacing.half};
+export const Content = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 `;
-
+export const Circle = styled.View`
+  height: 15px;
+  width: 15px;
+  border-radius: 7.5px;
+  background-color: ${({ theme }) => theme.colors.active};;
+  margin:  ${({ theme }) => theme.spacing.single} 0 0 ${({ theme }) => theme.spacing.double};
+`;
 export const ButtonContainer = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  padding: ${({ theme }) => theme.spacing.single};
+  align-items: center;
+  flex: 1;
+  padding: ${({ theme }) => theme.spacing.single} 0;
 `;
 
 export const LocationButton = styled.TouchableOpacity`
-  width: 40%;
-  padding: ${({ theme }) => theme.spacing.half};
+  padding: 0 ${({ theme }) => theme.spacing.double};
   align-items: center;
-  border-radius: ${({ theme }) => theme.spacing.single};
-  background-color: #fff;
-  elevation: 3;
+  display: flex;
+`;
+export const LocationButton2 = styled.TouchableOpacity`
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
 `;

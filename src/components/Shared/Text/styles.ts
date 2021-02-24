@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
+import CartProvider from '../../../contexts/Cart';
 
 interface TitleProps {
   fontSize: number;
   color: string;
-  fontWeight?: string;
+  bold?: boolean;
 }
 export const TitleContainer = styled.View`
   justify-content: center;
@@ -11,5 +12,5 @@ export const TitleContainer = styled.View`
 export const TitleText = styled.Text<TitleProps>`
   font-size: ${({ fontSize }) => fontSize}px;
   color: ${({ color }) => color};
-  ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight} `};
+  ${({bold }) => bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'"}
 `;

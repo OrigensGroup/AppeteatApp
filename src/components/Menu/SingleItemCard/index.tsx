@@ -2,14 +2,12 @@ import React, { useCallback } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 
 import CloseButton from '../MenuComponents/CloseButton';
 import HeartButton from '../MenuComponents/HeartButton';
-
-import singleDrinkTranslations from '../../../translations/singleDrink';
-
 import AddToBasketButton from './AddToBasketButton';
+import singleDrinkTranslations from '../../../translations/singleDrink';
 
 import {
   Wrapper,
@@ -33,23 +31,32 @@ import {
   PicWrapper,
   TitleWrapper,
 } from './styles';
-
+import {  useRoute } from '@react-navigation/native';
 import Ingredients from './Ingredients';
+import useCart from '../../../hooks/useCart';
 
 const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
 interface SingleItemProps {
   onClick: () => void;
+  title: string;
 }
 
 const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
+  const route = useRoute();
+  const { addItemToCart } = useCart();
+
+  const { item } = route.params;
+
   const navigation = useNavigation();
 
   const navigate = () => {
     navigation.navigate('MenuList');
   };
 
-  const ingredients = useCallback(() => INGREDIENTS_DATA.map((item) => <Ingredients ingredient={item} key={item} />), [
+  // const addToCart =
+
+  const ingredients = useCallback(() => INGREDIENTS_DATA.map((item) => <Ingredients key={item} ingredient={item} />), [
     INGREDIENTS_DATA,
   ]);
 
@@ -58,7 +65,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
       <ButtonsWrapper>
         <CloseButton onClick={navigate} />
         <TitleWrapper>
-          <Title>Mojito</Title>
+          <Title>{item.title}</Title>
         </TitleWrapper>
         <HeartButton onClick={() => console.log('hello world')} />
       </ButtonsWrapper>
@@ -85,7 +92,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
         </DetailsContainer>
       </ScrollView>
       <BasketButtonWrapper>
-        <AddToBasketButton onClick={() => console.log('Hello World')} />
+        <AddToBasketButton onClick={() => addItemToCart({ ...item, quantity: 1 })} price={item.price} />
       </BasketButtonWrapper>
     </Wrapper>
   );

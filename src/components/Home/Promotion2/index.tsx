@@ -7,7 +7,6 @@ import {
   PromotionImage,
   PromotionDesc,
   PromotionButton,
-  TextTitle,
   ImageContainer,
   OrderButton,
 } from './styles';
@@ -25,12 +24,12 @@ const Promotion2: React.FunctionComponent<Promotion2Props> = ({ description, onC
         <PromotionImage source={require('../../../img/martini.png')} />
       </ImageContainer>
       <PromotionDesc>
-        <TextTitle>{title}</TextTitle>
-        <Text>{description}</Text>
+        <Title fontSize={18} color='#000' bold>{title}</Title>
+        <Title fontSize={12} color='#c2c2c2' bold>{description}</Title>
       </PromotionDesc>
       <PromotionButton>
         <OrderButton>
-          <Title color="#fff" fontSize={14}>
+          <Title color="#fff" fontSize={14} bold>
             Order Now
           </Title>
         </OrderButton>

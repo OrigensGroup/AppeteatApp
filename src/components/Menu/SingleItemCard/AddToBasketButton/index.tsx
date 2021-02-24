@@ -6,16 +6,17 @@ import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles
 
 interface BasketButtonProps {
   onClick: () => void;
+  price: any;
 }
 
-const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick }) => {
+const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick, price }) => {
   return (
     <MainButtonWrapper>
       <MainButton onPress={onClick}>
         <TextWrapper>
           <ButtonText>(3)</ButtonText>
           <ButtonText>{singleDrinkTranslations.viewBasketButtonField.placeholder}</ButtonText>
-          <ButtonText>+ £7.5</ButtonText>
+          <ButtonText>+ {price}</ButtonText>
         </TextWrapper>
       </MainButton>
     </MainButtonWrapper>

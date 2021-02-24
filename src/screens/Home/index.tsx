@@ -1,50 +1,19 @@
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import HappyHourMenu from '../Menu/HappyHourMenu';
+import Home from './HomePage';
 
-import Location from '../../components/Home/Location';
-import Card from '../../components/Home/Card';
-import Reservation from '../../components/Home/Reservation';
+const Stack = createStackNavigator();
 
-import CarouselPromo from '../../components/Carousel';
-import Map from '../../components/Map';
+interface MenuNavProps {}
 
-import {
-  CocktailContainer,
-  HomepageContainer,
-  PromotionContainer,
-  HomepageTitle,
-  LogoContainer,
-  LogoImage,
-  BottomContainer,
-  CocktailSection,
-  ReservationContainer,
-  LocationContainer,
-} from './styles';
-import { Text } from '../../components/Menu/SingleItemCard/styles';
-
-interface HomeProps {}
-
-const Home: React.FunctionComponent<HomeProps> = () => {
+const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   return (
-    <HomepageContainer>
-      <LogoContainer>
-        <LogoImage source={require('../../img/Logo.png')} />
-      </LogoContainer>
-      <CocktailSection>
-        <HomepageTitle>Popular Cocktails</HomepageTitle>
-        <CocktailContainer horizontal showsHorizontalScrollIndicator={false}>
-          <Card description="Description" title="Mojito" />
-          <Card description="Description" title="Daiquiri" />
-          <Card description="Description" title="Negroni" />
-        </CocktailContainer>
-      </CocktailSection>
-      <PromotionContainer>
-        <CarouselPromo />
-      </PromotionContainer>
-      <BottomContainer>
-        <Text>c</Text>
-      </BottomContainer>
-    </HomepageContainer>
+    <Stack.Navigator headerMode={'none'}>
+      <Stack.Screen name="HomePage" component={Home} />
+      <Stack.Screen name="HappyHourMenu" component={HappyHourMenu} />
+    </Stack.Navigator>
   );
 };
 
-export default Home;
+export default MenuNav;
