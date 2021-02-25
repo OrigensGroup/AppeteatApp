@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useRef } from 'react';
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import analytics from '@react-native-firebase/analytics';
@@ -16,33 +16,33 @@ import TabBar from './components/Shared/TabBar';
 
 const Stack = createStackNavigator();
 
-// const getActiveRouteName = (navigationState: any) => {
-//   if (!navigationState) return null;
-//   const route = navigationState.routes[navigationState.index];
-//   // Parse the nested navigators
-//   if (route.routes) return getActiveRouteName(route);
-//   return route.routeName;
-// };
-
-// onNavigationStateChange={(prevState, currentState) => {
-//   const currentScreen = getActiveRouteName(currentState);
-//   const prevScreen = getActiveRouteName(prevState);
-
-//   if (prevScreen !== currentScreen) {
-//     // Update Firebase with the name of your screen
-//     analytics().logScreenView({
-//       screen_name: currentScreen,
-//       screen_class: currentScreen,
-//     });
-//   }
-// }}
-
 const App = () => {
+  const navigationRef = useRef<NavigationContainerRef>(null);
+  const routeNameRef = useRef<string>('');
+
   return (
     <ThemeProvider theme={theme}>
       <MenuProvider>
         <CartProvider>
-          <NavigationContainer>
+          <NavigationContainer
+            ref={navigationRef}
+            //@ts-ignore
+            onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
+            onStateChange={async () => {
+              const previousRouteName = routeNameRef.current;
+              //@ts-ignore
+              const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+              if (previousRouteName !== currentRouteName) {
+                await analytics().logScreenView({
+                  screen_name: currentRouteName,
+                  screen_class: currentRouteName,
+                });
+              }
+
+              routeNameRef.current = currentRouteName;
+            }}
+          >
             <Stack.Navigator headerMode="none">
               <Stack.Screen component={LoginScreen} name="Login" />
               <Stack.Screen component={TabBar} name="App" />
