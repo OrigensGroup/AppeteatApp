@@ -9,7 +9,7 @@ export const MainButton = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(7)};
   border-radius: ${({ theme }) => theme.spacing.single};
   flex-direction: row;
-  background-color: #F69019;
+  background-color: #f69019;
   justify-content: center;
 `;
 

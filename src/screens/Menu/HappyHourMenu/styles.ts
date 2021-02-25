@@ -1,5 +1,4 @@
-import Animated from "react-native-reanimated";
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const MainWrapper = styled.View`
   background-color: #fff;
@@ -15,10 +14,11 @@ export const TopContainer = styled.View`
   background-color: #fff;
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
+  margin-top: ${({ theme }) => theme.spacing.multiple(8)};
 `;
 
 export const CardsContainer = styled.View`
-height: 100%;
+  height: 100%;
 `;
 
 export const ButtonsWrapper = styled.View`
@@ -30,5 +30,3 @@ export const ButtonsWrapper = styled.View`
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
   margin-top: ${({ theme }) => theme.spacing.multiple(3)};
 `;
-
-

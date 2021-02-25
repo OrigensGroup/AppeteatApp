@@ -4,7 +4,7 @@ import { TextFieldContainer, SearchFieldInput } from './styles';
 
 interface TextFieldProps {
   placeholder?: string;
-  textContentType: 'name' | 'none';
+  textContentType: 'emailAddress' | 'name' | 'password' | 'none';
 }
 
 const TextField: React.FunctionComponent<TextFieldProps> = ({ placeholder, textContentType }) => {

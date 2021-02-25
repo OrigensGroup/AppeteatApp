@@ -1,13 +1,19 @@
 import React, { useCallback } from 'react';
+
+import { useNavigation, useRoute } from '@react-navigation/native';
+
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+
 import CloseButton from '../MenuComponents/CloseButton';
 import HeartButton from '../MenuComponents/HeartButton';
-import AddToBasketButton from './AddToBasketButton';
+
 import singleDrinkTranslations from '../../../translations/singleDrink';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import Ingredients from './Ingredients';
+
 import useCart from '../../../hooks/useCart';
-import QuantityCounter from './Counter';
+
+import AddToBasketButton from './AddToBasketButton';
+
+import Ingredients from './Ingredients';
 
 import {
   Wrapper,
@@ -32,13 +38,7 @@ import {
   TitleWrapper,
 } from './styles';
 
-
-const INGREDIENTS_DATA = [
-  "Acqua",
-  "ide",
-  "dniadn"
-];
-
+const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
 interface SingleItemProps {
   onClick: () => void;
@@ -46,22 +46,22 @@ interface SingleItemProps {
 }
 
 const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
-
   const route = useRoute();
+  const { addItemToCart } = useCart();
 
   const { item } = route.params;
 
   const navigation = useNavigation();
 
   const navigate = () => {
-    navigation.navigate("MenuList");
+    navigation.navigate('MenuList');
   };
 
-  // const addToCart = 
+  // const addToCart =
 
-  const ingredients = useCallback(() =>
-    INGREDIENTS_DATA.map((item) => <Ingredients key={item} ingredient={item} />)
-    , [INGREDIENTS_DATA]);
+  const ingredients = useCallback(() => INGREDIENTS_DATA.map((item) => <Ingredients ingredient={item} key={item} />), [
+    INGREDIENTS_DATA,
+  ]);
 
   return (
     <Wrapper>
@@ -78,18 +78,16 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
         </PicWrapper>
         <DetailsContainer>
           <ItemDetails>
-            <ItemDescription>
-              {item.longDescription}
-            </ItemDescription>
+            <ItemDescription>{item.longDescription}</ItemDescription>
             <AllertWrapper>
-              <AllergiesAllert>
-                {singleDrinkTranslations.alergiesField.placeholder}
-              </AllergiesAllert>
+              <AllergiesAllert>{singleDrinkTranslations.alergiesField.placeholder}</AllergiesAllert>
             </AllertWrapper>
             <IngredientsWrapper>
               <IngredientsTopRow>
                 <BoldText>{singleDrinkTranslations.ingredientsField.placeholder}</BoldText>
-                <CustomiseItem><OrangeBoldText>{singleDrinkTranslations.customiseField.placeholder}</OrangeBoldText></CustomiseItem>
+                <CustomiseItem>
+                  <OrangeBoldText>{singleDrinkTranslations.customiseField.placeholder}</OrangeBoldText>
+                </CustomiseItem>
               </IngredientsTopRow>
               {ingredients()}
             </IngredientsWrapper>
@@ -97,8 +95,6 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
         </DetailsContainer>
       </ScrollView>
       <BasketButtonWrapper>
-        <AddToBasketButton onClick={() => console.log('Hello World')} price={item.price} />
-        <QuantityCounter></QuantityCounter>
         <AddToBasketButton onClick={() => addItemToCart({ ...item, quantity: 1 })} price={item.price} />
       </BasketButtonWrapper>
     </Wrapper>

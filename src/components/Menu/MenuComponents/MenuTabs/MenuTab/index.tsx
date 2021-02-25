@@ -11,7 +11,6 @@ interface MenuTabProps {
 }
 
 const MenuTab: React.FunctionComponent<MenuTabProps> = ({ active, index, onPress, title }) => {
-
   const onMenuPress = () => {
     onPress(index);
   };

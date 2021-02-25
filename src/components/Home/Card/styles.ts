@@ -6,16 +6,15 @@ export const CardContainer = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   border-width: 1px;
-  background-color: #fff;
-  border-radius:${({ theme }) => theme.spacing.double};
-  border-color: transparent;
-  border-bottom-width: 0;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
+  border-radius: ${({ theme }) => theme.spacing.double};
+
   margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} ${({ theme }) =>
   theme.spacing.half} 0};
-  shadow-color: #000;
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
-  elevation: 6;
+`;
+
+export const CardWrap = styled.View`
+  padding: ${({ theme }) => theme.spacing.single};
 `;
 
 export const DrinkImage = styled.Image`
@@ -35,5 +34,5 @@ export const DrinkLike = styled.View`
 
 export const TextTitle = styled.Text`
   font-size: 20px;
-  color: black;
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;

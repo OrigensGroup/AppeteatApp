@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import Promotion from '../../../components/Home/Promotion';
 
 import Location from '../../../components/Home/Location';
@@ -18,16 +20,14 @@ import {
   ReservationContainer,
   LocationContainer,
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
 
-interface HomeProps {
-}
+interface HomeProps {}
 
 const Home: React.FunctionComponent<HomeProps> = () => {
-
   const navigation = useNavigation();
+
   const navigate = () => {
-    navigation.navigate("HappyHourMenu");
+    navigation.navigate('HappyHourMenu');
   };
 
   return (

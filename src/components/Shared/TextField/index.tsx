@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TextFieldContainer, TextFieldLabel, TextFieldInput, TextFieldText } from './styles';
 
 interface TextFieldProps {
-  label: string;
+  label?: string;
   placeholder?: string;
   textContentType: 'emailAddress' | 'password' | 'none';
 }

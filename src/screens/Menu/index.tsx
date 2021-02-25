@@ -1,21 +1,24 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
-import Menu from "./MenuList"
-import SingleItem from "../../components/Menu/SingleItemCard";
-import HappyHourMenu from "./HappyHourMenu";
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+
+import SingleItem from '../../components/Menu/SingleItemCard';
+
 import Cart from '../Cart';
 import Home from '../Home/HomePage';
 
+import HappyHourMenu from './HappyHourMenu';
+import Menu from './MenuList';
 
 const Stack = createStackNavigator();
 
-interface MenuNavProps { }
+interface MenuNavProps {}
 
 const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   return (
-    <Stack.Navigator headerMode={'none'}>
-      <Stack.Screen name="MenuList" component={Menu} />
-      <Stack.Screen name="SingleItem" component={SingleItem} />
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen component={Menu} name="MenuList" />
+      <Stack.Screen component={SingleItem} name="SingleItem" />
+      <Stack.Screen component={Cart} name="Cart" />
     </Stack.Navigator>
   );
 };

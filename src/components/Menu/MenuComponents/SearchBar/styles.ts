@@ -9,7 +9,7 @@ export const SearchBarWrapper = styled.View`
   flex-direction: row;
   border-width: 1px;
   background-color: #fff;
-  border-color: #C2C2C2;
+  border-color: #c2c2c2;
   border-width: 1px;
   justify-content: flex-start;
   align-items: center;
