@@ -8,12 +8,11 @@ export type MenuItem = {
   title: string;
   price: number;
   quantity: number;
+  belongsTo: string;
+  image: string;
   smallDesc: string;
   description: string;
   allergyCustomisations: string[];
   extras: Extra[];
-  tabBar: string;
   promoted: boolean;
-  belongsTo: string;
-  image: string;
 };
