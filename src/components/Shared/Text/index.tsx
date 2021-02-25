@@ -6,16 +6,17 @@ interface TitleProps {
   fontSize: number;
   color: string;
   fontWeight?: string;
+  align?: string;
 }
 
-const Title: React.FunctionComponent<TitleProps> = ({ children, color, fontSize, fontWeight }) => {
+const Text: React.FunctionComponent<TitleProps> = ({ children, color, fontSize, fontWeight, align = 'left' }) => {
   return (
     <TitleContainer>
-      <TitleText color={color} fontSize={fontSize} fontWeight={fontWeight}>
+      <TitleText align={align} color={color} fontSize={fontSize} fontWeight={fontWeight}>
         {children}
       </TitleText>
     </TitleContainer>
   );
 };
 
-export default Title;
+export default Text;

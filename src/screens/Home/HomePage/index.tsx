@@ -4,24 +4,24 @@ import { useNavigation } from '@react-navigation/native';
 
 import { FlatList } from 'react-native';
 
-import Promotion from '../../../components/Home/Promotion';
+import HappyHourPromotionCard from '../../../components/Home/HappyHourPromotionCard';
 
 import Location from '../../../components/Home/Location';
-import Card from '../../../components/Home/Card';
+import PromotionCard from '../../../components/Home/PromotionCard';
 import Reservation from '../../../components/Home/Reservation';
 
 import useMenu from '../../../hooks/useMenu';
 
 import { MenuItem } from '../../../types/MenuItem';
 
+import Text from '../../../components/Shared/Text';
+
 import {
-  HomepageContainer,
-  PromotionContainer,
-  HomepageTitle,
-  LogoContainer,
+  HomeContainer,
+  HomeLogoContainer,
+  HomeSection,
   LogoImage,
-  BottomContainer,
-  CocktailSection,
+  MarketingSection,
   ReservationContainer,
   LocationContainer,
 } from './styles';
@@ -38,29 +38,33 @@ const Home: React.FunctionComponent<HomeProps> = () => {
     navigation.navigate('HappyHourMenu');
   };
 
-  const flatlistItem = ({ item }: { item: MenuItem }) => <Card item={item} />;
+  const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionCard item={item} />;
 
   return (
-    <HomepageContainer>
-      <LogoContainer>
+    <HomeContainer>
+      <HomeLogoContainer>
         <LogoImage source={require('../../../img/Logo.png')} />
-      </LogoContainer>
-      <CocktailSection>
-        <HomepageTitle>Popular Cocktails</HomepageTitle>
+      </HomeLogoContainer>
+      <HomeSection>
+        <Text fontSize={20} color="#000000">
+          Popular Cocktails
+        </Text>
         <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
-      </CocktailSection>
-      <PromotionContainer>
-        <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} onClick={navigate} />
-      </PromotionContainer>
-      <BottomContainer>
-        <ReservationContainer>
-          <Reservation />
-        </ReservationContainer>
-        <LocationContainer>
-          <Location />
-        </LocationContainer>
-      </BottomContainer>
-    </HomepageContainer>
+      </HomeSection>
+      <HomeSection>
+        <HappyHourPromotionCard endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} onClick={navigate} />
+      </HomeSection>
+      <HomeSection>
+        <MarketingSection>
+          <ReservationContainer>
+            <Reservation />
+          </ReservationContainer>
+          <LocationContainer>
+            <Location />
+          </LocationContainer>
+        </MarketingSection>
+      </HomeSection>
+    </HomeContainer>
   );
 };
 

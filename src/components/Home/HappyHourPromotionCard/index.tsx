@@ -4,25 +4,27 @@ import CountDown from 'react-native-countdown-component';
 
 import { useTheme } from 'styled-components';
 
-import { PromotionContainer, PromotionTitle, styles, TimerWrap } from './styles';
+import { HappyHourPromotionCardContainer, HappyHourPromotionCardTimerContainer, styles } from './styles';
+import Text from '../../Shared/Text';
 
-interface PromotionProps {
+interface HappyHourPromotionCardProps {
   endDate: number;
   onClick?: () => void;
 }
 
-const Promotion: React.FunctionComponent<PromotionProps> = ({ endDate, onClick }) => {
+const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({ endDate, onClick }) => {
   const theme = useTheme();
 
   const dateDifference = endDate - new Date().getTime();
   const secUntilDate = dateDifference / 1000;
 
   return (
-    <PromotionContainer onPress={onClick}>
+    <HappyHourPromotionCardContainer onPress={onClick}>
       <LinearGradient colors={['#DEB98E', '#FFB803']} style={styles.linearGradient}>
-        <PromotionTitle>Happy Hour</PromotionTitle>
-        {/* <PromotionDesc>Pay 1, Get 2</PromotionDesc> */}
-        <TimerWrap>
+        <Text fontSize={24} color="#ffffff" align="center">
+          Happy Hour
+        </Text>
+        <HappyHourPromotionCardTimerContainer>
           <CountDown
             digitStyle={{ backgroundColor: theme.colors.textSecondary, width: 104, height: 72 }}
             digitTxtStyle={{ color: theme.colors.textPrimary, fontSize: 40 }}
@@ -31,10 +33,10 @@ const Promotion: React.FunctionComponent<PromotionProps> = ({ endDate, onClick }
             timeToShow={['H', 'M']}
             until={secUntilDate}
           />
-        </TimerWrap>
+        </HappyHourPromotionCardTimerContainer>
       </LinearGradient>
-    </PromotionContainer>
+    </HappyHourPromotionCardContainer>
   );
 };
 
-export default Promotion;
+export default HappyHourPromotionCard;
