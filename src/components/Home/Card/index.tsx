@@ -2,24 +2,24 @@ import React from 'react';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
+import { MenuItem } from '../../../types/MenuItem';
 
 import { CardContainer, DrinkImage, DrinkDesc, DrinkLike, TextTitle } from './styles';
 
 interface CardProps {
-  title: string;
-  description: string;
+  item: MenuItem;
   onClick?: () => void;
 }
 
-const Card: React.FunctionComponent<CardProps> = ({ description, onClick, title }) => {
+const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   const theme = useTheme();
 
   return (
     <CardContainer onPress={onClick}>
-      <DrinkImage source={require('../../../img/mojito.jpg')} />
+      <DrinkImage source={{ uri: item.image }} />
       <DrinkDesc>
-        <TextTitle>{title}</TextTitle>
-        <Text>{description}</Text>
+        <TextTitle>{item.title}</TextTitle>
+        <Text>{item.description}</Text>
       </DrinkDesc>
       <DrinkLike>
         <Icon color={theme.colors.textPrimary} name="heart-outline" size={28} />

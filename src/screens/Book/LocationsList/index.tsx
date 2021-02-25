@@ -1,12 +1,11 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import LocationCard from '../../../components/Location/Card';
-// import SearchBar from '../../../components/Menu/SearchBar';
+import LocationCard from '../../../components/Book/LocationCard';
 
 import { LocationPageContainer, SearchBarWrapper } from './styles';
 
-interface LocationsListProps { }
+interface LocationsListProps {}
 
 type Item = {
   id: string;
@@ -44,9 +43,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
 
   return (
     <LocationPageContainer>
-      <SearchBarWrapper>
-        {/* <SearchBar placeholder="Da fixare" /> */}
-      </SearchBarWrapper>
+      <SearchBarWrapper>{/* <SearchBar placeholder="Da fixare" /> */}</SearchBarWrapper>
       <FlatList data={DATA} renderItem={renderItem} />
     </LocationPageContainer>
   );

@@ -19,16 +19,23 @@ import {
   LocationContainer,
 } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import useMenu from '../../../hooks/useMenu';
+import { FlatList } from 'react-native';
+import { MenuItem } from '../../../types/MenuItem';
 
-interface HomeProps {
-}
+interface HomeProps {}
 
 const Home: React.FunctionComponent<HomeProps> = () => {
-
   const navigation = useNavigation();
+  const { menu } = useMenu();
+
+  const promotedItems = menu.items.filter((menuItem) => menuItem.promoted);
+
   const navigate = () => {
-    navigation.navigate("HappyHourMenu");
+    navigation.navigate('HappyHourMenu');
   };
+
+  const flatlistItem = ({ item }: { item: MenuItem }) => <Card item={item} />;
 
   return (
     <HomepageContainer>
@@ -37,11 +44,7 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       </LogoContainer>
       <CocktailSection>
         <HomepageTitle>Popular Cocktails</HomepageTitle>
-        <CocktailContainer horizontal showsHorizontalScrollIndicator={false}>
-          <Card description="Description" title="Mojito" />
-          <Card description="Description" title="Daiquiri" />
-          <Card description="Description" title="Negroni" />
-        </CocktailContainer>
+        <FlatList data={promotedItems} horizontal showsHorizontalScrollIndicator={false} renderItem={flatlistItem} />
       </CocktailSection>
       <PromotionContainer>
         <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} onClick={navigate} />

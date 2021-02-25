@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-
-type Item = {
-  id: string;
-  price: number;
-  quantity: number;
-};
+import { MenuItem } from '../../types/MenuItem';
 
 interface CartContext {
-  cart: Item[];
-  addItemToCart: (item: Item) => void;
+  cart: MenuItem[];
+  addItemToCart: (item: MenuItem) => void;
   deleteItemFromCart: (item: string) => void;
 }
 
@@ -21,9 +16,9 @@ export const CartContext = React.createContext<CartContext>({
 interface CartProviderProps {}
 
 const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) => {
-  const [cart, setCart] = useState<Item[]>([]);
+  const [cart, setCart] = useState<MenuItem[]>([]);
 
-  const addItemToCart = (item: Item) => {
+  const addItemToCart = (item: MenuItem) => {
     setCart((oldCart) => [...oldCart, item]);
   };
 

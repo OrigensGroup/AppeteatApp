@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import HappyHourMenu from '../Menu/HappyHourMenu';
+import HappyHourMenu from './HappyHourMenu';
 import Home from './HomePage';
 
 const Stack = createStackNavigator();
