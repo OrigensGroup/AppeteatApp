@@ -1,7 +1,10 @@
-import React from "react";
-import ListItem from "../../../components/Profile/ListItem";
-import { SettingsContainer, SettingsWrap } from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import React from 'react';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+import ListItem from '../../../components/Profile/ListItem';
+
+import { SettingsContainer, SettingsWrap } from './styles';
 
 interface SettingsProps {}
 
@@ -10,37 +13,19 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
     <SettingsContainer>
       <SettingsWrap>
         <ListItem
-          title="Personal Information"
+          icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
           navigateTo="PersonalInformation"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          title="Personal Information"
         />
         <ListItem
-          title="My Cards"
+          icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
           navigateTo="Notifications"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          title="My Cards"
         />
         <ListItem
-          title="Password"
+          icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
           navigateTo="Password"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          title="Password"
         />
       </SettingsWrap>
     </SettingsContainer>

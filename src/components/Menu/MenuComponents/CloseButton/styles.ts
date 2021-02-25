@@ -6,7 +6,3 @@ export const CloseButtonContainer = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
-
-
-
-

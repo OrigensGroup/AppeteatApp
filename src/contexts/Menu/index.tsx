@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
+
 import { MenuItem } from '../../types/MenuItem';
 import { Tab } from '../../types/Tab';
 

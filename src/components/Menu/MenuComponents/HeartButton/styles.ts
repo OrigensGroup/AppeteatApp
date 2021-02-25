@@ -6,8 +6,3 @@ export const HeartButtonContainer = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
-
-
-
-
-

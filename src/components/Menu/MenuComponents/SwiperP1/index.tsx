@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
+
 import { MenuItem } from '../../../../types/MenuItem';
 import MenuCard from '../MenuCards';
 

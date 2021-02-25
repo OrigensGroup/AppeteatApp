@@ -1,13 +1,20 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
+import { FlatList } from 'react-native';
+
 import Promotion from '../../../components/Home/Promotion';
 
 import Location from '../../../components/Home/Location';
 import Card from '../../../components/Home/Card';
 import Reservation from '../../../components/Home/Reservation';
 
+import useMenu from '../../../hooks/useMenu';
+
+import { MenuItem } from '../../../types/MenuItem';
+
 import {
-  CocktailContainer,
   HomepageContainer,
   PromotionContainer,
   HomepageTitle,
@@ -18,10 +25,6 @@ import {
   ReservationContainer,
   LocationContainer,
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
-import useMenu from '../../../hooks/useMenu';
-import { FlatList } from 'react-native';
-import { MenuItem } from '../../../types/MenuItem';
 
 interface HomeProps {}
 
@@ -44,7 +47,7 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       </LogoContainer>
       <CocktailSection>
         <HomepageTitle>Popular Cocktails</HomepageTitle>
-        <FlatList data={promotedItems} horizontal showsHorizontalScrollIndicator={false} renderItem={flatlistItem} />
+        <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
       </CocktailSection>
       <PromotionContainer>
         <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} onClick={navigate} />

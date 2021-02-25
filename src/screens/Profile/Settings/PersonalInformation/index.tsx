@@ -1,56 +1,56 @@
-import React from "react";
+import React from 'react';
+
+import { useNavigation } from '@react-navigation/native';
+
+import Title from '../../../../components/Shared/Text';
+import { scale } from '../../../../theme/textScaling';
+
 import {
   PersonalInformationContainer,
   RowContainer,
   InnerContainer,
   InfoContainer,
   PersonalInformationWrap,
-} from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import loginTranslations from "../../../../translations/login";
-import TextField from "../../../../components/Menu/SearchField";
-import { Text } from "../../../../components/Menu/SingleItemCard/styles";
-import Title from "../../../../components/Shared/Text";
-import { scale } from "../../../../theme/textScaling";
-import { useNavigation } from "@react-navigation/native";
+} from './styles';
 
 interface PersonalInformationProps {
   onClick?: () => void;
 }
 
-const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (
-  onClick
-) => {
+const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = () => {
   const navigation = useNavigation();
+
   const navigate = () => {
-    navigation.navigate("ChangeEmail");
+    navigation.navigate('ChangeEmail');
   };
+
   const navigate2 = () => {
-    navigation.navigate("ChangeName");
+    navigation.navigate('ChangeName');
   };
+
   return (
     <PersonalInformationContainer>
       <PersonalInformationWrap>
         <RowContainer>
           <InfoContainer>
-            <Title fontSize={14} color="#000">
+            <Title color="#000" fontSize={14}>
               Email address
             </Title>
           </InfoContainer>
           <InnerContainer onPress={navigate}>
-            <Title fontSize={16} color="#000">
+            <Title color="#000" fontSize={16}>
               hkdj@hotmail.it
             </Title>
           </InnerContainer>
         </RowContainer>
         <RowContainer>
           <InfoContainer>
-            <Title fontSize={scale(14)} color="#000">
+            <Title color="#000" fontSize={scale(14)}>
               Name
             </Title>
           </InfoContainer>
           <InnerContainer onPress={navigate2}>
-            <Title fontSize={scale(14)} color="#000">
+            <Title color="#000" fontSize={scale(14)}>
               Alessandro Carpanzano
             </Title>
           </InnerContainer>

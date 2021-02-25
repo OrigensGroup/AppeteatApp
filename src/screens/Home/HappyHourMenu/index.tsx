@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
-import Swiper from 'react-native-swiper';
-import Promotion from '../../../components/Home/Promotion';
+import React from 'react';
 
-import { MainWrapper, BottomContainer, CardsContainer, TopContainer } from './styles';
+import { FlatList } from 'react-native';
 
 import useMenu from '../../../hooks/useMenu';
-import { FlatList } from 'react-native';
+import Promotion from '../../../components/Home/Promotion';
 import { MenuItem } from '../../../types/MenuItem';
 import MenuCard from '../../../components/Menu/MenuComponents/MenuCards';
+
+import { MainWrapper, BottomContainer, CardsContainer, TopContainer } from './styles';
 
 interface HappyHourMenuProps {}
 

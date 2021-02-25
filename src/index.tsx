@@ -25,7 +25,6 @@ const App = () => {
       <MenuProvider>
         <CartProvider>
           <NavigationContainer
-            ref={navigationRef}
             //@ts-ignore
             onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
             onStateChange={async () => {
@@ -42,6 +41,7 @@ const App = () => {
 
               routeNameRef.current = currentRouteName;
             }}
+            ref={navigationRef}
           >
             <Stack.Navigator headerMode="none">
               <Stack.Screen component={LoginScreen} name="Login" />

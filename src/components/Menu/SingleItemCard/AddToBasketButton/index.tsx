@@ -1,4 +1,5 @@
 import React from 'react';
+
 import singleDrinkTranslations from '../../../../translations/singleDrink';
 
 import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';

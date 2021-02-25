@@ -1,16 +1,9 @@
-import React from "react";
-import { Dimensions, Text } from "react-native";
-import Title from "../../Shared/Text";
-import {
-  CardContainer,
-  DrinkDesc,
-  TextTitle,
-  CardWrap,
-  DateContainer,
-  Circle,
-  PriceContainer,
-  ViewWrap,
-} from "./styles";
+import React from 'react';
+import { Dimensions } from 'react-native';
+
+import Title from '../../Shared/Text';
+
+import { CardContainer, DrinkDesc, CardWrap, DateContainer, Circle, PriceContainer, ViewWrap } from './styles';
 
 interface OrderCardProps {
   items: string;
@@ -19,36 +12,31 @@ interface OrderCardProps {
   onClick?: () => void;
 }
 
-const OrderCard: React.FunctionComponent<OrderCardProps> = ({
-  items,
-  date,
-  price,
-  onClick,
-}) => {
+const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onClick, price }) => {
   return (
     <CardWrap>
-      <CardContainer onPress={onClick} activeOpacity={1}>
+      <CardContainer activeOpacity={1} onPress={onClick}>
         <DateContainer>
-          <Circle style={{ borderRadius: Dimensions.get("window").width / 2 }}>
-            <Title fontSize={14} color="#F69019" fontWeight="bold">
+          <Circle style={{ borderRadius: Dimensions.get('window').width / 2 }}>
+            <Title color="#F69019" fontSize={14} fontWeight="bold">
               {date}
             </Title>
-            <Title fontSize={12} color="#F69019">
+            <Title color="#F69019" fontSize={12}>
               2021
             </Title>
           </Circle>
         </DateContainer>
         <DrinkDesc>
-          <Title fontSize={16} color="#000">
+          <Title color="#000" fontSize={16}>
             {items}
           </Title>
         </DrinkDesc>
         <PriceContainer>
-          <Title fontSize={16} color="#000" fontWeight="bold">
+          <Title color="#000" fontSize={16} fontWeight="bold">
             {price}$
           </Title>
           <ViewWrap>
-            <Title fontSize={16} color="#F69019">
+            <Title color="#F69019" fontSize={16}>
               View
             </Title>
           </ViewWrap>

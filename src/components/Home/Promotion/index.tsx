@@ -2,8 +2,9 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import CountDown from 'react-native-countdown-component';
 
-import { PromotionContainer, PromotionTitle, styles, TimerWrap } from './styles';
 import { useTheme } from 'styled-components';
+
+import { PromotionContainer, PromotionTitle, styles, TimerWrap } from './styles';
 
 interface PromotionProps {
   endDate: number;

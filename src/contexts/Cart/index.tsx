@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { MenuItem } from '../../types/MenuItem';
 
 interface CartContext {

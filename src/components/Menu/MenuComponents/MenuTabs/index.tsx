@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import MenuTab from './MenuTab';
 
 import { Tab } from '../../../../types/Tab';
+
+import MenuTab from './MenuTab';
 
 import { MenuTabsContainer } from './styles';
 
@@ -12,14 +13,14 @@ interface MenuTabProps {
   onChange: (index: number) => void;
 }
 
-const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, tabActive, onChange }) => {
+const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, tabActive }) => {
   return (
     <MenuTabsContainer>
       <FlatList
-        horizontal={true}
         data={menuTabs}
+        horizontal
         keyExtractor={(item) => item.id}
-        renderItem={({ item, index }) => (
+        renderItem={({ index, item }) => (
           <MenuTab active={index === tabActive} index={index} onPress={onChange} title={item.name} />
         )}
       />

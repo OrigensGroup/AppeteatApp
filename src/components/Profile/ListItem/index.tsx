@@ -1,13 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import {
-  ProfileLinkContainer,
-  IconContainer,
-  IconTextWrap,
-  ArrowContainer,
-} from "./styles";
-import Title from "../../Shared/Text";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
+
+import Title from '../../Shared/Text';
+
+import { ProfileLinkContainer, IconContainer, IconTextWrap, ArrowContainer } from './styles';
 
 interface ListItemProps {
   title: string;
@@ -16,16 +13,13 @@ interface ListItemProps {
   navigateTo: string;
 }
 
-const ListItem: React.FunctionComponent<ListItemProps> = ({
-  icon,
-  icon2,
-  title,
-  navigateTo,
-}) => {
+const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigateTo, title }) => {
   const navigation = useNavigation();
+
   const navigate = (goTo: string) => () => {
     navigation.navigate(goTo);
   };
+
   return (
     <ProfileLinkContainer onPress={navigate(navigateTo)}>
       <IconContainer>{icon}</IconContainer>

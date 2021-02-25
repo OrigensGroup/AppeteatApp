@@ -31,7 +31,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ address, onC
   return (
     <CardContainer activeOpacity={0.9} onPress={onClick}>
       <ImageContainer>
-        <VenueImage source={require('../../../img/mojito.jpg')} />
+        <VenueImage source={require('../../../img/venue.jpg')} />
         <Triangle />
       </ImageContainer>
       <DrinkDesc>

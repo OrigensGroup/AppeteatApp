@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 import { TextFieldContainer, TextFieldLabel, TextFieldInput, TextFieldText } from './styles';
 
 interface TextFieldProps {
   label?: string;
   placeholder?: string;
-  textContentType: "emailAddress" | "password" | "none";
+  textContentType: 'emailAddress' | 'password' | 'none';
 }
 
 const TextField: React.FunctionComponent<TextFieldProps> = ({ label, placeholder, textContentType }) => {

@@ -5,11 +5,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Antdesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { useTheme } from 'styled-components';
+
 import Home from '../../../screens/Home';
 import Menu from '../../../screens/Menu';
 import Book from '../../../screens/Book';
 import Profile from '../../../screens/Profile';
-import { useTheme } from 'styled-components';
 
 interface TabBarProps {}
 
@@ -20,8 +21,8 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
       backBehavior="none"
+      initialRouteName="Home"
       tabBarOptions={{
         showLabel: false,
         activeTintColor: theme.colors.active,

@@ -1,8 +1,17 @@
 import React, { useCallback } from 'react';
+
+import { useNavigation, useRoute } from '@react-navigation/native';
+
+import { ScrollView } from 'react-native-gesture-handler';
+
 import CloseButton from '../MenuComponents/CloseButton';
 import HeartButton from '../MenuComponents/HeartButton';
-import AddToBasketButton from './AddToBasketButton';
+
 import singleDrinkTranslations from '../../../translations/singleDrink';
+
+import useCart from '../../../hooks/useCart';
+
+import AddToBasketButton from './AddToBasketButton';
 
 import {
   Wrapper,
@@ -10,9 +19,7 @@ import {
   ButtonsWrapper,
   DetailsContainer,
   ItemDetails,
-  DetailsTopRow,
   Title,
-  Price,
   ItemDescription,
   AllertWrapper,
   AllergiesAllert,
@@ -21,15 +28,12 @@ import {
   CustomiseItem,
   OrangeBoldText,
   BoldText,
-  Text,
   BasketButtonWrapper,
   PicWrapper,
   TitleWrapper,
 } from './styles';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+
 import Ingredients from './Ingredients';
-import useCart from '../../../hooks/useCart';
 
 const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
@@ -38,7 +42,7 @@ interface SingleItemProps {
   title: string;
 }
 
-const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
+const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const route = useRoute();
   const { addItemToCart } = useCart();
 
@@ -52,7 +56,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
 
   // const addToCart =
 
-  const ingredients = useCallback(() => INGREDIENTS_DATA.map((item) => <Ingredients key={item} ingredient={item} />), [
+  const ingredients = useCallback(() => INGREDIENTS_DATA.map((item) => <Ingredients ingredient={item} key={item} />), [
     INGREDIENTS_DATA,
   ]);
 
@@ -67,7 +71,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
       </ButtonsWrapper>
       <ScrollView>
         <PicWrapper>
-          <ItemPic source={require('../../../img/mojito.jpg')} />
+          <ItemPic source={require('../../../img/venue.jpg')} />
         </PicWrapper>
         <DetailsContainer>
           <ItemDetails>

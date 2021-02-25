@@ -5,10 +5,6 @@ export const CardContainer = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
   margin-bottom: ${({ theme }) => theme.spacing.double};
-  shadow-color: #000;
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
-  elevation: 5;
   margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
@@ -62,5 +58,4 @@ export const LocationButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: ${({ theme }) => theme.spacing.single};
   background-color: ${({ theme }) => theme.colors.textSecondary};
-  elevation: 3;
 `;

@@ -1,54 +1,33 @@
-import React from "react";
-import { FlatList } from "react-native-gesture-handler";
-import { Text } from "../../../components/Menu/SingleItemCard/styles";
-import FavCard from "../../../components/Profile/FavCard";
-import {
-  FavouriteCocktailsContainer,
-  CocktailContainer,
-  CocktailWrap,
-} from "./styles";
+import React from 'react';
+import { FlatList } from 'react-native-gesture-handler';
 
-type Item = {
-  id: string;
-  title: string;
-};
+import Card from '../../../components/Profile/Card';
+import useMenu from '../../../hooks/useMenu';
+import { MenuItem } from '../../../types/MenuItem';
+
+import { FavouriteCocktailsContainer } from './styles';
 
 interface FavouriteCocktailsProps {}
 
 const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () => {
-  const DATA: Item[] = [
-    {
-      id: "1",
-      title: "First Item",
-    },
-    {
-      id: "2",
-      title: "Second Item",
-    },
-    {
-      id: "3",
-      title: "Third Item",
-    },
-    {
-      id: "4",
-      title: "Fourth Item",
-    },
-  ];
-  const renderItem = ({ item }: { item: Item }) => (
-    <FavCard title="Mojito" description="Descriptions" />
-  );
+  const { menu } = useMenu();
+
+  const favoriteCocktails = menu.items.filter((menuItem) => menuItem.promoted);
+
+  const renderItem = ({ item }: { item: MenuItem }) => <Card item={item} />;
+
   return (
     <FavouriteCocktailsContainer>
       <FlatList
-        data={DATA}
-        renderItem={renderItem}
+        columnWrapperStyle={{
+          backgroundColor: 'red',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+        data={favoriteCocktails}
         horizontal={false}
         numColumns={2}
-        columnWrapperStyle={{
-          backgroundColor: "red",
-          display: "flex",
-          justifyContent: "center",
-        }}
+        renderItem={renderItem}
       />
     </FavouriteCocktailsContainer>
   );

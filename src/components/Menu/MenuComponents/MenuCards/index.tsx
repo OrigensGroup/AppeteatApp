@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import { MenuItem } from '../../../../types/MenuItem';
 
 import {
@@ -25,6 +26,7 @@ interface CardProps {
 
 const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   const navigation = useNavigation();
+
   const navigate = () => {
     navigation.navigate('SingleItem', { item });
   };

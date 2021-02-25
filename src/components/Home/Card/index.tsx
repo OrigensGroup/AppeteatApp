@@ -2,6 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
+
 import { MenuItem } from '../../../types/MenuItem';
 
 import { CardContainer, DrinkImage, DrinkDesc, DrinkLike, TextTitle } from './styles';

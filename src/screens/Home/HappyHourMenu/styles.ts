@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const MainWrapper = styled.View`
   background-color: #fff;
@@ -18,5 +18,5 @@ export const TopContainer = styled.View`
 `;
 
 export const CardsContainer = styled.View`
-height: 100%;
+  height: 100%;
 `;
