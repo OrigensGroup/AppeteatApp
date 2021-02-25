@@ -25,7 +25,7 @@ const Card: React.FunctionComponent<CardProps> = ({ description, onClick, title 
         <Title fontSize={14} color='#c2c2c2'>{description}</Title>
       </DrinkDesc>
       <DrinkLike>
-        <Icon color={theme.colors.textPrimary} name="heart-outline" size={28} />
+        <Icon color='#c2c2c2' name="heart-outline" size={28} />
         {/* <Icon name="heart" size={30} color="red" /> */}
       </DrinkLike>
     </CardContainer>

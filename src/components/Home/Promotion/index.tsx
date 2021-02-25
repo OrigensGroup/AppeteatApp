@@ -5,6 +5,7 @@ import CountDown from 'react-native-countdown-component';
 import { PromotionContainer, PromotionTitle, styles, TimerWrap } from './styles';
 import { useTheme } from 'styled-components';
 import Title from '../../Shared/Text';
+import { CurrentRenderContext } from '@react-navigation/native';
 
 interface PromotionProps {
   endDate: number;
@@ -24,13 +25,16 @@ const Promotion: React.FunctionComponent<PromotionProps> = ({ endDate, onClick }
         {/* <PromotionDesc>Pay 1, Get 2</PromotionDesc> */}
         <TimerWrap>
           <CountDown
-            digitStyle={{ backgroundColor: theme.colors.textSecondary, width: 104, height: 72 }}
-            digitTxtStyle={{ color: theme.colors.textPrimary, fontSize: 40 }}
-            size={20}
-            timeLabelStyle={{ color: theme.colors.textPrimary, fontSize: 15 }}
-            timeToShow={['H', 'M']}
-            until={secUntilDate}
-          />
+        size={30}
+        until={1000}
+        digitStyle={{ backgroundColor: theme.colors.textSecondary, width: 102, height: 80, borderRadius: 24, borderWidth: 1, borderColor: '#c2c2c2' }}
+        digitTxtStyle={{ color: theme.colors.textPrimary, fontSize: 40 }}
+        timeLabelStyle={{ color: theme.colors.textSecondary, fontSize: 15}}
+        separatorStyle={{color: '#fff', fontSize: 50}}
+        timeToShow={['H', 'M']}
+        timeLabels={{h: 'Hours', m: 'Minutes'}}
+        showSeparator
+      />
         </TimerWrap>
       </LinearGradient>
     </PromotionContainer>

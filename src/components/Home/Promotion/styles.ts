@@ -8,12 +8,14 @@ export const PromotionContainer = styled.TouchableOpacity`
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
+  border-width: 1;
+  border-color: #c2c2c2;
 `;
 
 export const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    borderRadius: 16,
+    borderRadius: 15,
   },
 });
 

@@ -1,10 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import MapView, { UrlTile } from 'react-native-maps';
 
 
 interface MapProps {
-  
+ 
 }
 const mapStyle = [
   {
@@ -172,13 +173,14 @@ const Map: React.FunctionComponent<MapProps> = ({  }) => {
   return (
     
      <MapView
-          style={{...StyleSheet.absoluteFillObject, borderRadius: 24}}
+          style={{...StyleSheet.absoluteFillObject,}}
           initialRegion={{
             latitude: 37.78825,
             longitude: -122.4324,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }} 
+          pitchEnabled={false} rotateEnabled={false} zoomEnabled={false} scrollEnabled={false} 
           customMapStyle={mapStyle}
           />
  

@@ -11,8 +11,7 @@ import {
   LogoImage,
   BottomContainer,
   CocktailSection,
-  ReservationContainer,
-  LocationContainer,
+  FindButton,
   MapContainer,
 } from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -22,14 +21,12 @@ import Map from '../../../components/Map';
 import Title from '../../../components/Shared/Text';
 
 interface HomeProps {
+  onClick?: () => void;
 }
 
-const Home: React.FunctionComponent<HomeProps> = () => {
+const Home: React.FunctionComponent<HomeProps> = (onClick) => {
 
-  const navigation = useNavigation();
-  const navigate = () => {
-    navigation.navigate("HappyHourMenu");
-  };
+ const navigation = useNavigation();
 
   return (
     <HomepageContainer>
@@ -48,8 +45,9 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       </CocktailSection>
       <CarouselPromo />
       <BottomContainer>
-        <MapContainer>
+        <MapContainer onPress={() => navigation.navigate('LocationsList')}>
     <Map />
+    <FindButton><Title fontSize={18} color='#000' >Find us!</Title></FindButton>
     </MapContainer>
       </BottomContainer>
     </HomepageContainer>

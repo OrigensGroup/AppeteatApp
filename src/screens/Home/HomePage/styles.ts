@@ -5,16 +5,26 @@ export const HomepageContainer = styled.View`
   height: 100%;
 `;
 export const LogoContainer = styled.View`
-  height: ${({ theme }) => theme.spacing.multiple(10)};
+  height: ${({ theme }) => theme.spacing.multiple(8)};
   border-bottom-width: 0.5px;
   border-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const LogoImage = styled.Image`
-  width: ${({ theme }) => theme.spacing.multiple(15)};
-  height: ${({ theme }) => theme.spacing.multiple(10)};
-  resize-mode: contain;
+  width: ${({ theme }) => theme.spacing.multiple(18)};
+  height: ${({ theme }) => theme.spacing.multiple(8)};
+  resize-mode: cover;
 `;
-
+export const FindButton = styled.View`
+  background-color: #c2c2c2;
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  position: absolute;
+  bottom: ${({ theme }) => theme.spacing.double};;
+  left: ${({ theme }) => theme.spacing.double};
+  padding: ${({ theme }) => theme.spacing.half};
+`;
 export const PromotionContainer = styled.View``;
 export const HomepageTitle = styled.View`
   margin-left: ${({ theme }) => theme.spacing.half};
@@ -50,9 +60,6 @@ export const MapContainer = styled.TouchableOpacity`
   border-bottom-width: 0;
   justify-content: center;
   align-items: center;
-  shadow-color: #000;
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
   overflow: hidden;
 `;
 

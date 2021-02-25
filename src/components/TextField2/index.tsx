@@ -26,6 +26,7 @@ const TextField2: React.FunctionComponent<TextField2Props> = ({
         secureTextEntry={textContentType === "password"}
         onChangeText={updateText}
         defaultValue={text}
+        placeholderTextColor="#c2c2c2" 
       />
     </TextFieldContainer>
   );

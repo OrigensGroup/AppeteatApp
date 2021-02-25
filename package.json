@@ -16,6 +16,7 @@
     "test:coverage": "yarn jest --coverage"
   },
   "dependencies": {
+    "@invertase/react-native-apple-authentication": "^2.1.0",
     "@react-native-community/datetimepicker": "^3.0.9",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-firebase/analytics": "^10.8.1",
