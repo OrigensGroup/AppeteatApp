@@ -11,7 +11,7 @@ const colors: ColorsInterface = {
   inactive: '#9D9891',
   border: '#C2C2C2',
   textPrimary: '#000000',
-  textSecondary: '${({ theme }) => theme.colors.textSecondary};',
+  textSecondary: '#ffffff',
 };
 
 export default colors;
