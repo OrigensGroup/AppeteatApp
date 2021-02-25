@@ -3,11 +3,11 @@ import styled from 'styled-components/native';
 export const CardContainer = styled.TouchableOpacity`
   flex: 1;
   height: ${({ theme }) => theme.spacing.multiple(11)};
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-width: 1px;
   display: flex;
   flex-direction: row;
-  border-color: transparent;
-  border-bottom-color: #000;
+  border-color: #c2c2c2;
 `;
 export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
@@ -26,8 +26,7 @@ export const DateContainer = styled.View`
 export const Circle = styled.View`
   width: 65%;
   height: 65%;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
-  elevation: 3;
+  background-color: #EE6F00;
   display: flex;
   justify-content: center;
   align-items: center;

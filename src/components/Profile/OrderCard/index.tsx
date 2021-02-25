@@ -30,10 +30,10 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({
       <CardContainer onPress={onClick} activeOpacity={1}>
         <DateContainer>
           <Circle style={{ borderRadius: Dimensions.get("window").width / 2 }}>
-            <Title fontSize={14} color="#F69019" bold>
+            <Title fontSize={14} color="#fff" bold>
               {date}
             </Title>
-            <Title fontSize={12} color="#F69019">
+            <Title fontSize={12} color="#fff" bold>
               2021
             </Title>
           </Circle>

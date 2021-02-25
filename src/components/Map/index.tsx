@@ -173,7 +173,7 @@ const Map: React.FunctionComponent<MapProps> = ({  }) => {
   return (
     
      <MapView
-          style={{...StyleSheet.absoluteFillObject,}}
+          style={{...StyleSheet.absoluteFillObject, bottom: -30}}
           initialRegion={{
             latitude: 37.78825,
             longitude: -122.4324,

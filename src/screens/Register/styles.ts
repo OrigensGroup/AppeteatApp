@@ -6,7 +6,7 @@ export const LoginContainer = styled.SafeAreaView`
 `;
 
 export const TextFieldWrapper = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(4)};
+  margin: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 export const LogoImage = styled.Image`
   width: 100%

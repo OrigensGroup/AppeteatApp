@@ -10,13 +10,13 @@ import { AppleButton } from '@invertase/react-native-apple-authentication';
 import { TextFieldWrapper, LoginContainer, LogInContainer, RegisterContainer, RegisterText, UpperContent, BottomContent, LogoImage, LogoContainer, IconWrap, SocialLogin } from './styles';
 import { Alert } from 'react-native';
 
-interface LoginProps {}
+interface RegisterProps {}
 
-const Login: React.FunctionComponent<LoginProps> = () => {
+const Register: React.FunctionComponent<RegisterProps> = () => {
   const navigation = useNavigation();
 
   const login = () => {
-    navigation.navigate('App');
+    navigation.navigate('Login');
   };
 
   return (
@@ -44,15 +44,23 @@ const Login: React.FunctionComponent<LoginProps> = () => {
           textContentType="password"
         />
       </TextFieldWrapper>
+       <TextFieldWrapper>
+        <TextField2
+          icon={<IconWrap><Feather name="lock" size={28} color="#fff" /></IconWrap>}
+          placeholder={loginTranslations.passwordField.placeholder}
+          textContentType="password"
+        />
+      </TextFieldWrapper>
       <LogInContainer>
-        <LogInButton onClick={login} text={loginTranslations.loginButton.label} />
+        <LogInButton onClick={login} text={loginTranslations.RegisterButton.label} />
       </LogInContainer>
       <RegisterContainer>
-        <RegisterText>{loginTranslations.signUpSection.label}<LogInButton onClick={() => navigation.navigate('Register')} secondary text={loginTranslations.signUpSection.buttonLabel} /></RegisterText>
+        <RegisterText>{loginTranslations.SignInSection.label}</RegisterText>
+        <LogInButton onClick={login} secondary text={loginTranslations.SignInSection.buttonLabel} />
       </RegisterContainer>
       </BottomContent>
     </LoginContainer>
   );
 };
 
-export default Login;
+export default Register;

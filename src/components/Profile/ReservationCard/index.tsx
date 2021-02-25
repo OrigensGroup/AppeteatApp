@@ -11,6 +11,7 @@ import {
   TextWrap,
   BottomContainer,
   BookingInfo,
+  IconWrap
 } from "./styles";
 
 interface ReservationCardProps {
@@ -38,19 +39,19 @@ const ReservationCard: React.FunctionComponent<ReservationCardProps> = ({
         <TextWrap><Title fontSize={16} color='#000' bold>{title}</Title></TextWrap>
         </Content>
       <DrinkDesc>   
-        <Title fontSize={12} color='#000'>{address}</Title>
+        <Title fontSize={13} color='#000'>{address}</Title>
       </DrinkDesc>
       <BottomContainer>
         <BookingInfo>
       <AntDesign name="calendar" size={20} color="#c2c2c2" />
-      <Title fontSize={12} color='#c2c2c2' >{date}</Title>
+      <IconWrap><Title fontSize={12} color='#c2c2c2' >{date}</Title></IconWrap>
       </BookingInfo>
       <BookingInfo>
-      <Ionicons name="time-outline" size={20} color="#c2c2c2" />
+      <IconWrap><Ionicons name="time-outline" size={20} color="#c2c2c2" /></IconWrap>
       <Title fontSize={12} color='#c2c2c2' >{time}</Title>
       </BookingInfo>
       <BookingInfo>
-      <Ionicons name="people" size={20} color="#c2c2c2" />
+      <IconWrap><Ionicons name="people" size={20} color="#c2c2c2" /></IconWrap>
       <Title fontSize={12} color='#c2c2c2' >{people}</Title>
       </BookingInfo>
       </BottomContainer>

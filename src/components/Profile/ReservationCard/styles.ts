@@ -13,6 +13,10 @@ export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
 
+export const IconWrap = styled.View`
+  padding: 0 ${({ theme }) => theme.spacing.half};
+`;
+
 export const Content = styled.View`
   display: flex;
   flex-direction: row;

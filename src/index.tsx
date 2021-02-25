@@ -17,6 +17,7 @@ import LoginScreen from './screens/Login';
 import Book from './screens/Book';
 import Profile from './screens/Profile';
 import CartProvider from './contexts/Cart';
+import Register from './screens/Register';
 
 const Stack = createStackNavigator();
 
@@ -106,6 +107,7 @@ const App = () => {
         >
           <Stack.Navigator headerMode="none">
             <Stack.Screen component={LoginScreen} name="Login" />
+            <Stack.Screen component={Register} name="Register" />
             <Stack.Screen component={TabBar} name="App" />
           </Stack.Navigator>
         </NavigationContainer>

@@ -8,7 +8,7 @@ export const PromotionContainer = styled.TouchableOpacity`
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
-  border-width: 1;
+  border-width: 1px;
   border-color: #c2c2c2;
 `;
 
