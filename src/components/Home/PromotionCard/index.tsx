@@ -1,14 +1,14 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
+import { Marker } from '../../../screens/Book/LocationsList/useMarkers';
 
-import { MenuItem } from '../../../types/MenuItem';
 import Text from '../../Shared/Text';
 
 import { PromotionCardContainer, PromotionCardImage, PromotionCardDescription, PromotionCardLike } from './styles';
 
 interface CardProps {
-  item: MenuItem;
+  item: Marker;
   onClick?: () => void;
 }
 

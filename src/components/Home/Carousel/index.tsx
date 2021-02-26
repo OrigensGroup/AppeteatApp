@@ -3,8 +3,8 @@ import { Text, Dimensions } from 'react-native';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
-import HappyHourPromotionCard from '../Home/HappyHourPromotionCard';
-import Promotion2 from '../Home/Promotion2';
+import HappyHourPromotionCard from '../HappyHourPromotionCard';
+import Promotion2 from '../Promotion2';
 
 import { CarouselContainer, Container } from './styles';
 

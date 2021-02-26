@@ -17,9 +17,9 @@ import {
   LogoImage,
   BottomContainer,
   MapContainer,
-  FindButton
+  FindButton,
 } from './styles';
-import CarouselPromo from '../../../components/Carousel';
+import CarouselPromo from '../../../components/Home/Carousel';
 import Map from '../../../components/Map';
 
 interface HomeProps {}
@@ -50,9 +50,13 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       <CarouselPromo />
       <BottomContainer>
         <MapContainer onPress={() => navigation.navigate('LocationsList')}>
-    <Map />
-    <FindButton><Text fontSize={18} color='#000' >Find us!</Text></FindButton>
-    </MapContainer>
+          <Map />
+          <FindButton>
+            <Text fontSize={18} color="#000">
+              Find us!
+            </Text>
+          </FindButton>
+        </MapContainer>
       </BottomContainer>
     </HomeContainer>
   );

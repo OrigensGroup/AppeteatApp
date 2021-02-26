@@ -20,6 +20,15 @@ const Stack = createStackNavigator();
 const App = () => {
   const navigationRef = useRef<NavigationContainerRef>(null);
   const routeNameRef = useRef<string>('');
+  const [loaded] = useFonts({
+    Comfortaa: require('./theme/fonts/Comfortaa-Regular.ttf'),
+    ComfortaaBold: require('./theme/fonts/Comfortaa-Bold.ttf'),
+    ComfortaaLight: require('./theme/fonts/Comfortaa-Light.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <ThemeProvider theme={theme}>
