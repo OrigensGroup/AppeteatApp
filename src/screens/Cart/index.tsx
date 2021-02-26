@@ -60,7 +60,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
       <TopCartWrapper>
         <TopBarWrapper>
           <LogoContainer>
-            <LogoImage source={require('../../img/Logo.png')} />
+            <LogoImage source={require('../../img/Logo.png')}></LogoImage>
           </LogoContainer>
           <QrCode onClick={() => console.log('Hello World!')} title={menuTranslations.qrField.placeholder} />
         </TopBarWrapper>

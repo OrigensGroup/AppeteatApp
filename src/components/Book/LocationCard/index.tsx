@@ -1,27 +1,33 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import Icon from 'react-native-vector-icons/Entypo';
+import { useTheme } from 'styled-components';
+
 import { Text } from 'react-native';
 
 import {
   CardContainer,
   VenueImage,
   DrinkDesc,
-  TextTitle,
   ImageContainer,
-  Triangle,
   ButtonContainer,
   LocationButton,
+  Content,
+  LocationButton2,
+  Circle
 } from './styles';
+import theme from '../../../theme';
+import Title from '../../Shared/Text';
 
 interface LocationCardProps {
   imageUrl: string;
   title: string;
-  address: string;
+  description: string;
   phoneNumber: string;
   onClick?: () => void;
 }
 
-const LocationCard: React.FunctionComponent<LocationCardProps> = ({ address, onClick, phoneNumber, title }) => {
+const LocationCard: React.FunctionComponent<LocationCardProps> = ({ description, onClick, phoneNumber, title }) => {
   const navigation = useNavigation();
 
   const navigate = () => {
@@ -31,21 +37,23 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ address, onC
   return (
     <CardContainer activeOpacity={0.9} onPress={onClick}>
       <ImageContainer>
-        <VenueImage source={require('../../../img/venue.jpg')} />
-        <Triangle />
+        <VenueImage source={require('../../../img/jack.jpg')} />
       </ImageContainer>
+      <Content>
+        <Circle />
       <DrinkDesc>
-        <TextTitle>{title}</TextTitle>
-        <Text>{address}</Text>
-        <Text>{phoneNumber}</Text>
+        <Title fontSize={16} color='#000' bold>{title}</Title>
+        <Title fontSize={12} color='#000'>{description}</Title>
+        <Title fontSize={12} color='#c2c2c2'>{phoneNumber}</Title>
       </DrinkDesc>
+      </Content>
       <ButtonContainer>
         <LocationButton>
-          <Text>Open Maps</Text>
+         <Icon color={theme.colors.textPrimary} name="share" size={28} />
         </LocationButton>
-        <LocationButton onPress={navigate}>
-          <Text>Book a Table</Text>
-        </LocationButton>
+        <LocationButton2 onPress={navigate}>
+          <Title fontSize={12} color='#F69019' bold>BOOK A TABLE</Title>
+        </LocationButton2>
       </ButtonContainer>
     </CardContainer>
   );

@@ -2,17 +2,17 @@ import React from 'react';
 
 import { TitleText, TitleContainer } from './styles';
 
-interface TitleProps {
+interface TextProps {
   fontSize: number;
   color: string;
-  fontWeight?: string;
+  bold?: boolean;
   align?: string;
 }
 
-const Text: React.FunctionComponent<TitleProps> = ({ children, color, fontSize, fontWeight, align = 'left' }) => {
+const Text: React.FunctionComponent<TextProps> = ({ children, color, fontSize, bold, align = 'left' }) => {
   return (
     <TitleContainer>
-      <TitleText align={align} color={color} fontSize={fontSize} fontWeight={fontWeight}>
+      <TitleText  color={color} fontSize={fontSize} align={align} bold={bold}>
         {children}
       </TitleText>
     </TitleContainer>

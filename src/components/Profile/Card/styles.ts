@@ -7,11 +7,9 @@ export const CardContainer = styled.TouchableOpacity`
   flex-direction: row;
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.textSecondary};
-  border-radius: ${({ theme }) => theme.spacing.double};
-  border-color: transparent;
-  border-bottom-width: 0;
+  border-radius:${({ theme }) => theme.spacing.double};
+  border-color: #c2c2c2;
 `;
-
 export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;

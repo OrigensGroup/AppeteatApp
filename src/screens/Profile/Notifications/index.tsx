@@ -24,27 +24,39 @@ const Notifications: React.FunctionComponent<NotificationsProps> = () => {
     <NotificationsContainer>
       <NotificationsWrap>
         <ListItem
-          icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
-          navigateTo="Notifications"
           title="Menu Promotions"
-        />
-        <ListItem
-          icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
           navigateTo="Notifications"
-          title="Event Promotions"
+          icon2={
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={28}
+              color="#818181"
+            />
+          }
         />
         <ListItem
+          title="Event Promotions"
+          navigateTo="Notifications"
+          icon2={
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={28}
+              color="#818181"
+            />
+          }
+        />
+        <ListItem
+          title="Pause All"
+          navigateTo="Notifications"
           icon2={
             <Switch
               checked={state.checkedB}
-              color="primary"
-              inputProps={{ 'aria-label': 'primary checkbox' }}
-              name="checkedB"
               onChange={handleChange}
+              color="primary"
+              name="checkedB"
+              inputProps={{ "aria-label": "primary checkbox" }}
             />
           }
-          navigateTo="Notifications"
-          title="Pause All"
         />
       </NotificationsWrap>
     </NotificationsContainer>

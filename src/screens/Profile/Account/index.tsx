@@ -19,6 +19,7 @@ import {
   TitleWrap2,
   Content,
 } from './styles';
+import Text from '../../../components/Shared/Text';
 
 interface AccountProps {}
 
@@ -43,9 +44,9 @@ const Account: React.FunctionComponent<AccountProps> = () => {
       <ImageContainer>
         <ProfileImage />
         <TitleWrap2>
-          <Title color="#000" fontSize={20}>
+          <Text color="#000" fontSize={20}>
             {username}
-          </Title>
+          </Text>
         </TitleWrap2>
       </ImageContainer>
       <Content

@@ -3,13 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { FlatList } from 'react-native';
-
-import HappyHourPromotionCard from '../../../components/Home/HappyHourPromotionCard';
-
-import Location from '../../../components/Home/Location';
 import PromotionCard from '../../../components/Home/PromotionCard';
-import Reservation from '../../../components/Home/Reservation';
-
 import useMenu from '../../../hooks/useMenu';
 
 import { MenuItem } from '../../../types/MenuItem';
@@ -21,10 +15,12 @@ import {
   HomeLogoContainer,
   HomeSection,
   LogoImage,
-  MarketingSection,
-  ReservationContainer,
-  LocationContainer,
+  BottomContainer,
+  MapContainer,
+  FindButton
 } from './styles';
+import CarouselPromo from '../../../components/Carousel';
+import Map from '../../../components/Map';
 
 interface HomeProps {}
 
@@ -51,19 +47,13 @@ const Home: React.FunctionComponent<HomeProps> = () => {
         </Text>
         <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
       </HomeSection>
-      <HomeSection>
-        <HappyHourPromotionCard endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} onClick={navigate} />
-      </HomeSection>
-      <HomeSection>
-        <MarketingSection>
-          <ReservationContainer>
-            <Reservation />
-          </ReservationContainer>
-          <LocationContainer>
-            <Location />
-          </LocationContainer>
-        </MarketingSection>
-      </HomeSection>
+      <CarouselPromo />
+      <BottomContainer>
+        <MapContainer onPress={() => navigation.navigate('LocationsList')}>
+    <Map />
+    <FindButton><Text fontSize={18} color='#000' >Find us!</Text></FindButton>
+    </MapContainer>
+      </BottomContainer>
     </HomeContainer>
   );
 };

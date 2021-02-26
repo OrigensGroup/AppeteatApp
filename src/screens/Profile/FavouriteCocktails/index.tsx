@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dimensions, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import Card from '../../../components/Profile/Card';
@@ -10,11 +11,13 @@ import { FavouriteCocktailsContainer } from './styles';
 interface FavouriteCocktailsProps {}
 
 const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () => {
-  const { menu } = useMenu();
+  const { width }=Dimensions.get("window")
+ const { menu } = useMenu();
+  const renderItem = ({ item }: { item: MenuItem }) => (
+    <View style={{width: width/2}}><Card item={item} /></View>
+  );
 
   const favoriteCocktails = menu.items.filter((menuItem) => menuItem.promoted);
-
-  const renderItem = ({ item }: { item: MenuItem }) => <Card item={item} />;
 
   return (
     <FavouriteCocktailsContainer>

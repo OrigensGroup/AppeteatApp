@@ -1,24 +1,36 @@
+import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-import { StyleSheet } from 'react-native';
-
 export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
+  width: 100%;
+  height: ${({ theme }) => theme.spacing.multiple(22)};
   display: flex;
   flex-direction: row;
-
-  width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(20)};
-
   background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.double};
+  border-width: 1px;
+  border-color: #c2c2c2;
 `;
 
 export const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    borderRadius: 16,
+    borderRadius: 15,
   },
 });
+
+export const PromotionTitle = styled.View`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PromotionDesc = styled.Text`
+  color: ${({ theme }) => theme.colors.inactive};
+  text-align: center;
+  font-size: ${({ theme }) => theme.spacing.double};
+`;
 
 export const HappyHourPromotionCardTimerContainer = styled.View`
   display: flex;

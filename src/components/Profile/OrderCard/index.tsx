@@ -1,9 +1,15 @@
-import React from 'react';
-import { Dimensions } from 'react-native';
-
-import Title from '../../Shared/Text';
-
-import { CardContainer, DrinkDesc, CardWrap, DateContainer, Circle, PriceContainer, ViewWrap } from './styles';
+import React from "react";
+import { Dimensions } from "react-native";
+import Text from "../../Shared/Text";
+import {
+  CardContainer,
+  DrinkDesc,
+  CardWrap,
+  DateContainer,
+  Circle,
+  PriceContainer,
+  ViewWrap,
+} from "./styles";
 
 interface OrderCardProps {
   items: string;
@@ -12,33 +18,38 @@ interface OrderCardProps {
   onClick?: () => void;
 }
 
-const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onClick, price }) => {
+const OrderCard: React.FunctionComponent<OrderCardProps> = ({
+  items,
+  date,
+  price,
+  onClick,
+}) => {
   return (
     <CardWrap>
-      <CardContainer activeOpacity={1} onPress={onClick}>
+      <CardContainer onPress={onClick} activeOpacity={1}>
         <DateContainer>
-          <Circle style={{ borderRadius: Dimensions.get('window').width / 2 }}>
-            <Title color="#F69019" fontSize={14} fontWeight="bold">
+          <Circle style={{ borderRadius: Dimensions.get("window").width / 2 }}>
+            <Text fontSize={14} color="#fff" bold>
               {date}
-            </Title>
-            <Title color="#F69019" fontSize={12}>
+            </Text>
+            <Text fontSize={12} color="#fff" bold>
               2021
-            </Title>
+            </Text>
           </Circle>
         </DateContainer>
         <DrinkDesc>
-          <Title color="#000" fontSize={16}>
+          <Text fontSize={16} color="#000">
             {items}
-          </Title>
+          </Text>
         </DrinkDesc>
         <PriceContainer>
-          <Title color="#000" fontSize={16} fontWeight="bold">
+          <Text fontSize={16} color="#000" bold>
             {price}$
-          </Title>
+          </Text>
           <ViewWrap>
-            <Title color="#F69019" fontSize={16}>
+            <Text fontSize={16} color="#F69019">
               View
-            </Title>
+            </Text>
           </ViewWrap>
         </PriceContainer>
       </CardContainer>

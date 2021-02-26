@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import { useFonts } from 'expo-font';
 import analytics from '@react-native-firebase/analytics';
 
 import { ThemeProvider } from 'styled-components/native';
@@ -13,6 +13,7 @@ import MenuProvider from './contexts/Menu';
 import LoginScreen from './screens/Login';
 
 import TabBar from './components/Shared/TabBar';
+import Register from './screens/Register';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,7 @@ const App = () => {
           >
             <Stack.Navigator headerMode="none">
               <Stack.Screen component={LoginScreen} name="Login" />
+              <Stack.Screen component={Register} name="Register" />
               <Stack.Screen component={TabBar} name="App" />
             </Stack.Navigator>
           </NavigationContainer>

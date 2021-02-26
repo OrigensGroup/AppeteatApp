@@ -1,16 +1,10 @@
 import React, { useCallback } from 'react';
-
 import { useNavigation, useRoute } from '@react-navigation/native';
-
 import { ScrollView } from 'react-native-gesture-handler';
-
 import CloseButton from '../MenuComponents/CloseButton';
 import HeartButton from '../MenuComponents/HeartButton';
-
 import singleDrinkTranslations from '../../../translations/singleDrink';
-
 import useCart from '../../../hooks/useCart';
-
 import AddToBasketButton from './AddToBasketButton';
 
 import {
@@ -75,7 +69,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
         </PicWrapper>
         <DetailsContainer>
           <ItemDetails>
-            <ItemDescription>{item.longDescription}</ItemDescription>
+            <ItemDescription>{singleDrinkTranslations.descriptionField.placeholder}</ItemDescription>
             <AllertWrapper>
               <AllergiesAllert>{singleDrinkTranslations.alergiesField.placeholder}</AllergiesAllert>
             </AllertWrapper>

@@ -11,7 +11,6 @@ import QrCode from '../../../components/Menu/MenuComponents/QrCode';
 import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1';
 import MenuTabs from '../../../components/Menu/MenuComponents/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/MenuComponents/ViewBasketButton';
-
 import useMenu from '../../../hooks/useMenu';
 
 import {
@@ -25,7 +24,6 @@ import {
   BottomContainer,
   BasketButtonWrapper,
 } from './styles';
-
 interface MenuProps {}
 
 const Menu: React.FunctionComponent<MenuProps> = () => {
