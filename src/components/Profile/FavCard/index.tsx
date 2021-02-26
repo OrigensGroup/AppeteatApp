@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
-
-import { CardContainer, DrinkImage, DrinkDesc, TextTitle, CardWrap } from './styles';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Text from '../../Shared/Text';
+import { CardContainer, DrinkImage, DrinkDesc, IconWrap, CardWrap, ImageContainer } from './styles';
 
 interface FavCardProps {
   title: string;
@@ -9,14 +9,23 @@ interface FavCardProps {
   onClick?: () => void;
 }
 
-const FavCard: React.FunctionComponent<FavCardProps> = ({ description, onClick, title }) => {
+const FavCard: React.FunctionComponent<FavCardProps> = ({ title, description, onClick }) => {
   return (
     <CardWrap>
       <CardContainer onPress={onClick}>
-        <DrinkImage source={require('../../../img/mojito.jpg')} />
+        <ImageContainer>
+          <DrinkImage source={require('../../../img/venue.jpg')} />
+        </ImageContainer>
         <DrinkDesc>
-          <TextTitle>{title}</TextTitle>
-          <Text>{description}</Text>
+          <Text fontSize={18} color="primary">
+            {title}
+          </Text>
+          <Text fontSize={14} color="tertiary">
+            {description}
+          </Text>
+          <IconWrap>
+            <Entypo name="heart" size={25} color="red" />
+          </IconWrap>
         </DrinkDesc>
       </CardContainer>
     </CardWrap>

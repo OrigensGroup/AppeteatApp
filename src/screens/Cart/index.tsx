@@ -12,9 +12,7 @@ import useCart from '../../hooks/useCart';
 import CloseButton from '../../components/Menu/MenuComponents/CloseButton';
 import Title from '../../components/Shared/Text';
 import UpdateModal from '../../components/Menu/UpdateModal';
-import SwipeableItem, { UnderlayParams } from 'react-native-swipeable-item'
-
-
+import SwipeableItem, { UnderlayParams } from 'react-native-swipeable-item';
 
 import {
   CartContainer,
@@ -56,7 +54,7 @@ import {
   DivLineContainer,
 } from './styles';
 
-interface CartProps { }
+interface CartProps {}
 
 const Cart: React.FunctionComponent<CartProps> = () => {
   const { cart } = useCart();
@@ -77,7 +75,6 @@ const Cart: React.FunctionComponent<CartProps> = () => {
   const closeModal = () => {
     setModalVisible(false);
   };
-
 
   return (
     <CartContainer>
@@ -156,7 +153,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
               <PrimaryInfo>£{totalPlusCharge}</PrimaryInfo>
             </OrderTotalWrapper>
             <BasketButtonWrapper>
-              <GoToCheckout onClick={() => { }} />
+              <GoToCheckout price={totalPlusCharge} onClick={() => {}} />
             </BasketButtonWrapper>
           </BottomCartOverlay>
         </SparatorLineDiv>

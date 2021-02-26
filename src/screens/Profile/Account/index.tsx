@@ -1,18 +1,20 @@
 import React from 'react';
 
-import { Text } from 'react-native';
+import { FlatList } from 'react-native';
 
 import ProfileImage from '../../../components/Profile/ProfileImage';
 import ProfileLink from '../../../components/Profile/ProfileLink';
 import Card from '../../../components/Profile/Card';
-import Title from '../../../components/Shared/Text';
+import Text from '../../../components/Shared/Text';
+import useMenu from '../../../hooks/useMenu';
+import { MenuItem } from '../../../types/MenuItem';
+import accountTranslations from '../../../translations/account';
 
 import {
   ProfileContainer,
   ImageContainer,
   NavigationContainer,
   CardWrap,
-  CocktailContainer,
   TitleWrap,
   TitleWrap2,
   Content,
@@ -21,14 +23,29 @@ import {
 interface AccountProps {}
 
 const Account: React.FunctionComponent<AccountProps> = () => {
+  const { menu } = useMenu();
+
+  const favoriteCocktails = menu.items.filter((favoriteItem) => favoriteItem.promoted);
+
+  const flatlistRenderItem = ({ item }: { item: MenuItem }) => (
+    <Card
+      item={item}
+      onClick={() => {
+        return {};
+      }}
+    />
+  );
+
+  const username = 'Alessandro Carpanzano';
+
   return (
     <ProfileContainer>
       <ImageContainer>
         <ProfileImage />
         <TitleWrap2>
-          <Title color="#000" fontSize={20}>
-            Alessandro Carpanzano
-          </Title>
+          <Text color="primary" fontSize={20}>
+            {username}
+          </Text>
         </TitleWrap2>
       </ImageContainer>
       <Content
@@ -43,15 +60,16 @@ const Account: React.FunctionComponent<AccountProps> = () => {
         </NavigationContainer>
         <CardWrap>
           <TitleWrap>
-            <Title color="#000" fontSize={20}>
-              My Favourite Cocktails
-            </Title>
+            <Text color="primary" fontSize={20}>
+              {accountTranslations.accountPage.favoriteCocktails}
+            </Text>
           </TitleWrap>
-          <CocktailContainer horizontal showsHorizontalScrollIndicator={false}>
-            <Card description="Description" title="Mojito" />
-            <Card description="Description" title="Daiquiri" />
-            <Card description="Description" title="Negroni" />
-          </CocktailContainer>
+          <FlatList
+            data={favoriteCocktails}
+            horizontal
+            renderItem={flatlistRenderItem}
+            showsHorizontalScrollIndicator={false}
+          />
         </CardWrap>
       </Content>
     </ProfileContainer>

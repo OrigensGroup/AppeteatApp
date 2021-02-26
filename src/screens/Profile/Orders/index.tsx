@@ -32,8 +32,7 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
     },
   ];
 
-  const renderItem = ({ item }: { item: Item }) => <OrderCard date="11MAY" items="1x Mojito" price={10} />;
-
+  const renderItem = () => <OrderCard date="11MAY" items="1x Mojito" price={10} />;
   return (
     <OrdersContainer>
       <OrdersWrap>

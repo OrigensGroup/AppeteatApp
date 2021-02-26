@@ -1,5 +1,4 @@
 import React from 'react';
-
 import useCart from '../../../../hooks/useCart';
 
 import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';

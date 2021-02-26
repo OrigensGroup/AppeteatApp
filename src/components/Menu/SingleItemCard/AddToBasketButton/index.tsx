@@ -3,12 +3,7 @@ import React from 'react';
 import singleDrinkTranslations from '../../../../translations/singleDrink';
 import QuantityCounter from '../Counter';
 
-import {
-  MainButton,
-  TextWrapper,
-  ButtonText,
-  BottomButtonsWrapper
-} from './styles';
+import { MainButton, TextWrapper, ButtonText, BottomButtonsWrapper } from './styles';
 
 interface BasketButtonProps {
   onClick: () => void;

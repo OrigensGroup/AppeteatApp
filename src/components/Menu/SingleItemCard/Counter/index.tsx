@@ -3,22 +3,14 @@ import InputSpinner from 'react-native-input-spinner';
 import Icon from 'react-native-vector-icons/Ionicons';
 import useCart from '../../../../hooks/useCart';
 
-
-import {
-  CounterWrapper,
-  InfoWrapper,
-  MainCoutnerWrapper,
-  ModalCounterWrapper,
-  ModalCounterContainer
-} from './styles';
+import { CounterWrapper, InfoWrapper, MainCoutnerWrapper, ModalCounterWrapper, ModalCounterContainer } from './styles';
 
 interface QuantityCounterProps {
-  item: any;
-  onChange: () => void;
+  item?: any;
+  onChange?: () => void;
 }
 
 const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ onChange, item }) => {
-
   const { updateItemQuantity } = useCart();
 
   const updateQuantity = (number: number) => {
@@ -59,6 +51,5 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ onChan
     </MainCoutnerWrapper>
   );
 };
-
 
 export default QuantityCounter;

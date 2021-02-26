@@ -1,12 +1,13 @@
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
+import { MenuItem } from '../../../../types/MenuItem';
 import MenuCard from '../MenuCards';
 
 import { Wrapper } from './styles';
 
 interface SwiperProps {
-  menuItems: any;
+  menuItems: MenuItem[];
 }
 
 const SwiperP1: React.FunctionComponent<SwiperProps> = ({ menuItems }) => {

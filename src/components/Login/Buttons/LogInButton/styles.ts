@@ -10,12 +10,9 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: #50494991;
 
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
-  ${({ theme }) => theme.spacing.double};
-  ${({ theme }) => theme.spacing.multiple(3)};
 
   border-top-right-radius: ${({ theme }) => theme.spacing.single};
   border-top-left-radius: ${({ theme }) => theme.spacing.single};
@@ -42,4 +39,5 @@ export const ButtonText = styled.Text<ButtonContainerProps>`
     font-size: ${theme.spacing.double};
     font-weight: bold;
   `};
+  color: #fff;
 `;

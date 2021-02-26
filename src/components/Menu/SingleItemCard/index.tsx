@@ -1,19 +1,11 @@
 import React, { useCallback } from 'react';
-
 import { useNavigation, useRoute } from '@react-navigation/native';
-
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-
+import { ScrollView } from 'react-native-gesture-handler';
 import CloseButton from '../MenuComponents/CloseButton';
 import HeartButton from '../MenuComponents/HeartButton';
-
 import singleDrinkTranslations from '../../../translations/singleDrink';
-
 import useCart from '../../../hooks/useCart';
-
 import AddToBasketButton from './AddToBasketButton';
-
-import Ingredients from './Ingredients';
 
 import {
   Wrapper,
@@ -21,9 +13,7 @@ import {
   ButtonsWrapper,
   DetailsContainer,
   ItemDetails,
-  DetailsTopRow,
   Title,
-  Price,
   ItemDescription,
   AllertWrapper,
   AllergiesAllert,
@@ -32,11 +22,12 @@ import {
   CustomiseItem,
   OrangeBoldText,
   BoldText,
-  Text,
   BasketButtonWrapper,
   PicWrapper,
   TitleWrapper,
 } from './styles';
+
+import Ingredients from './Ingredients';
 
 const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
@@ -45,7 +36,7 @@ interface SingleItemProps {
   title: string;
 }
 
-const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
+const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const route = useRoute();
   const { addItemToCart } = useCart();
 
@@ -74,11 +65,11 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = ({ onClick }) => {
       </ButtonsWrapper>
       <ScrollView>
         <PicWrapper>
-          <ItemPic source={require('../../../img/mojito.jpg')} />
+          <ItemPic source={require('../../../img/venue.jpg')} />
         </PicWrapper>
         <DetailsContainer>
           <ItemDetails>
-            <ItemDescription>{item.longDescription}</ItemDescription>
+            <ItemDescription>{singleDrinkTranslations.descriptionField.placeholder}</ItemDescription>
             <AllertWrapper>
               <AllergiesAllert>{singleDrinkTranslations.alergiesField.placeholder}</AllergiesAllert>
             </AllertWrapper>

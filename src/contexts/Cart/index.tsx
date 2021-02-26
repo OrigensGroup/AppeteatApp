@@ -15,12 +15,12 @@ interface CartContext {
 
 export const CartContext = React.createContext<CartContext>({
   cart: [],
-  addItemToCart: () => { },
-  deleteItemFromCart: () => { },
-  updateItemQuantity: () => { },
+  addItemToCart: () => {},
+  deleteItemFromCart: () => {},
+  updateItemQuantity: () => {},
 });
 
-interface CartProviderProps { }
+interface CartProviderProps {}
 
 const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Item[]>([]);

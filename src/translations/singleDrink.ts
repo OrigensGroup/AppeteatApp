@@ -18,7 +18,7 @@ const singleDrinkTranslations = {
   },
   viewBasketButtonField: {
     label: 'AddToBasket',
-    placeholder: 'Add to cart',
+    placeholder: 'Add To Basket',
   },
 };
 

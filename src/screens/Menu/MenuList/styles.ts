@@ -11,7 +11,6 @@ export const TopContainer = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
-
 export const TopBarWrapper = styled.View`
   justify-content: space-between;
   flex-direction: row;

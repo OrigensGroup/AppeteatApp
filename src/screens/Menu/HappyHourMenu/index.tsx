@@ -1,12 +1,9 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Swiper from 'react-native-swiper';
-
+import Promotion from '../../../components/Home/PromotionCards/HappyHourPromotionCard';
 import { useNavigation } from '@react-navigation/native';
-
-import Promotion from '../../../components/Home/Promotion';
-import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1';
-import CloseButton from '../../../components/Menu/MenuComponents/CloseButton';
-import HeartButton from '../../../components/Menu/MenuComponents/HeartButton';
+import QrCode from '../../../components/Menu/MenuComponents/QrCode';
+import menuTranslations from '../../../translations/menu';
 
 const HAPPYHOUR_DATA: any = {
   Drinks: [
@@ -62,6 +59,10 @@ const HAPPYHOUR_DATA: any = {
 
 import { MainWrapper, BottomContainer, CardsContainer, TopContainer, ButtonsWrapper } from './styles';
 
+import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1';
+import CloseButton from '../../../components/Menu/MenuComponents/CloseButton';
+import HeartButton from '../../../components/Menu/MenuComponents/HeartButton';
+
 interface HappyHourMenuProps {}
 
 const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
@@ -72,7 +73,6 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
     if (ref.current && index !== menuIndex) {
       ref.current.scrollBy(index - menuIndex, true);
     }
-
     setMenuIndex(index);
   };
 

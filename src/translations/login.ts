@@ -10,9 +10,16 @@ const loginTranslations = {
   loginButton: {
     label: 'Log In',
   },
+  RegisterButton: {
+    label: 'Registrati',
+  },
   signUpSection: {
     label: 'Non hai ancora un account?',
-    buttonLabel: 'Registrati    > ',
+    buttonLabel: 'Registrati  > ',
+  },
+  SignInSection: {
+    label: 'Hai giá un account?',
+    buttonLabel: 'Accedi  > ',
   },
 };
 

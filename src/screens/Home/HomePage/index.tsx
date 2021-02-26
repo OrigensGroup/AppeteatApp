@@ -2,59 +2,63 @@ import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import Promotion from '../../../components/Home/Promotion';
+import { FlatList } from 'react-native';
+import PromotionCard from '../../../components/Home/PromotionItemCard';
+import useMenu from '../../../hooks/useMenu';
 
-import Location from '../../../components/Home/Location';
-import Card from '../../../components/Home/Card';
-import Reservation from '../../../components/Home/Reservation';
+import { MenuItem } from '../../../types/MenuItem';
+
+import Text from '../../../components/Shared/Text';
 
 import {
-  CocktailContainer,
-  HomepageContainer,
-  PromotionContainer,
-  HomepageTitle,
-  LogoContainer,
-  LogoImage,
+  HomeContainer,
+  HomeLogoContainer,
+  HomeSection,
+  HomeLogoImage,
   BottomContainer,
-  CocktailSection,
-  ReservationContainer,
-  LocationContainer,
+  MapContainer,
+  FindButton,
 } from './styles';
+import CarouselPromo from '../../../components/Home/Carousel';
+import Map from '../../../components/Map';
 
 interface HomeProps {}
 
 const Home: React.FunctionComponent<HomeProps> = () => {
   const navigation = useNavigation();
+  const { menu } = useMenu();
+
+  const promotedItems = menu.items.filter((menuItem) => menuItem.promoted);
 
   const navigate = () => {
     navigation.navigate('HappyHourMenu');
   };
 
+  const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionCard item={item} />;
+
   return (
-    <HomepageContainer>
-      <LogoContainer>
-        <LogoImage source={require('../../../img/Logo.png')} />
-      </LogoContainer>
-      <CocktailSection>
-        <HomepageTitle>Popular Cocktails</HomepageTitle>
-        <CocktailContainer horizontal showsHorizontalScrollIndicator={false}>
-          <Card description="Description" title="Mojito" />
-          <Card description="Description" title="Daiquiri" />
-          <Card description="Description" title="Negroni" />
-        </CocktailContainer>
-      </CocktailSection>
-      <PromotionContainer>
-        <Promotion endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} onClick={navigate} />
-      </PromotionContainer>
+    <HomeContainer>
+      <HomeLogoContainer>
+        <HomeLogoImage source={require('../../../img/Logo.png')} />
+      </HomeLogoContainer>
+      <HomeSection>
+        <Text fontSize={20} color="primary">
+          Popular Cocktails
+        </Text>
+        <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
+      </HomeSection>
+      <CarouselPromo />
       <BottomContainer>
-        <ReservationContainer>
-          <Reservation />
-        </ReservationContainer>
-        <LocationContainer>
-          <Location />
-        </LocationContainer>
+        <MapContainer onPress={() => navigation.navigate('LocationsList')}>
+          <Map />
+          <FindButton>
+            <Text fontSize={18} color="primary">
+              Find us!
+            </Text>
+          </FindButton>
+        </MapContainer>
       </BottomContainer>
-    </HomepageContainer>
+    </HomeContainer>
   );
 };
 

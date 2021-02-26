@@ -8,7 +8,7 @@ import InputSpinner from 'react-native-input-spinner';
 import { Platform } from 'react-native';
 
 import Button from '../../../components/Book/Button';
-import Title from '../../../components/Shared/Text';
+import Text from '../../../components/Shared/Text';
 import IconField from '../../../components/Book/IconField';
 
 import {
@@ -114,51 +114,51 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         <VenueWrap>
           <VenueContainer>
             <TextContainer>
-              <Title color="#000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 Venue
-              </Title>
+              </Text>
             </TextContainer>
             <Button>
               <IconContainer>
                 <Icon color="#000000" name="location-outline" size={28} />
               </IconContainer>
-              <Title color="#000000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 {route.params.title}
-              </Title>
+              </Text>
             </Button>
           </VenueContainer>
         </VenueWrap>
         <DateWrap>
           <DateContainer>
             <TextContainer>
-              <Title color="#000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 Date
-              </Title>
+              </Text>
             </TextContainer>
             <Button onPress={showDatepicker}>
               <IconContainer>
                 <Icon color="#000000" name="ios-time-outline" size={28} />
               </IconContainer>
-              <Title color="#000000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 {date.getDate()} {months[date.getMonth()]}
-              </Title>
+              </Text>
             </Button>
           </DateContainer>
           <TimeContainer>
             <TextContainer>
-              <Title color="#000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 Time
-              </Title>
+              </Text>
             </TextContainer>
             <Button onPress={showTimepicker}>
               <IconContainer>
                 <Icon color="#000000" name="ios-time-outline" size={28} />
               </IconContainer>
-              <Title color="#000000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 {date.getHours() > 11
                   ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
                   : `${minutes[date.getHours()]}:${date.getMinutes()} AM`}
-              </Title>
+              </Text>
             </Button>
           </TimeContainer>
           {show && (
@@ -175,9 +175,9 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         </DateWrap>
         <Container>
           <TextContainer>
-            <Title color="black" fontSize={15}>
+            <Text color="primary" fontSize={15}>
               No of member
-            </Title>
+            </Text>
           </TextContainer>
           <InputSpinner
             color="#ffab004f"
@@ -191,9 +191,9 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         </Container>
         <ConfirmContainer>
           <IconField>
-            <Title color="#000000" fontSize={18} fontWeight="bold">
+            <Text color="primary" fontSize={18} bold>
               Confirm
-            </Title>
+            </Text>
           </IconField>
         </ConfirmContainer>
       </FieldsContainer>

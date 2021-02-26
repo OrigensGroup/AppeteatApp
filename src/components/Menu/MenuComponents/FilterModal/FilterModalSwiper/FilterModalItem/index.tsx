@@ -1,10 +1,7 @@
-import React from "react";
-import Title from "../../../../../Shared/Text";
+import React from 'react';
+import Title from '../../../../../Shared/Text';
 
-import {
-  ModalItemContainer,
-  ModalItemTextWrapper,
-} from './styles';
+import { ModalItemContainer, ModalItemTextWrapper } from './styles';
 
 interface FilterModalItemProps {
   item: any;
@@ -15,7 +12,9 @@ const FilterModalItem: React.FunctionComponent<FilterModalItemProps> = ({ item, 
   return (
     <ModalItemContainer>
       <ModalItemTextWrapper>
-        <Title color="black" fontSize={18} fontWeight="bold">{item.title}</Title>
+        <Title color="primary" fontSize={18} bold>
+          {item.title}
+        </Title>
       </ModalItemTextWrapper>
     </ModalItemContainer>
   );
