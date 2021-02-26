@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { FlatList } from 'react-native';
-import PromotionCard from '../../../components/Home/PromotionCard';
+import PromotionCard from '../../../components/Home/PromotionItemCard';
 import useMenu from '../../../hooks/useMenu';
 
 import { MenuItem } from '../../../types/MenuItem';

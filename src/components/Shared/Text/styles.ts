@@ -3,7 +3,7 @@ import CartProvider from '../../../contexts/Cart';
 
 interface TitleProps {
   fontSize: number;
-  color: string;
+  color: 'primary' | 'secondary' | 'tertiary';
   bold?: boolean;
   align: string;
 }
@@ -13,7 +13,23 @@ export const TitleContainer = styled.View`
 
 export const TitleText = styled.Text<TitleProps>`
   font-size: ${({ fontSize }) => fontSize}px;
-  color: ${({ color }) => color};
-  ${({bold }) => bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'"}
+  color: ${({ theme, color }) => {
+    switch (color) {
+      case 'primary': {
+        return theme.colors.textPrimary;
+      }
+      case 'secondary': {
+        return theme.colors.textSecondary;
+      }
+      case 'tertiary': {
+        return theme.colors.border;
+      }
+
+      default:
+        return theme.colors.textPrimary;
+    }
+  }};
+
+  ${({ bold }) => (bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'")}
   text-align: ${({ align }) => align};
 `;

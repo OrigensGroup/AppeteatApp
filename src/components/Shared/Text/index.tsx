@@ -4,7 +4,7 @@ import { TitleText, TitleContainer } from './styles';
 
 interface TextProps {
   fontSize: number;
-  color: string;
+  color: 'primary' | 'secondary' | 'tertiary';
   bold?: boolean;
   align?: string;
 }
@@ -12,7 +12,7 @@ interface TextProps {
 const Text: React.FunctionComponent<TextProps> = ({ children, color, fontSize, bold, align = 'left' }) => {
   return (
     <TitleContainer>
-      <TitleText  color={color} fontSize={fontSize} align={align} bold={bold}>
+      <TitleText color={color} fontSize={fontSize} align={align} bold={bold}>
         {children}
       </TitleText>
     </TitleContainer>

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const PromotionCardContainer = styled.TouchableOpacity`
+export const PromotionItemCardContainer = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(30)};
   height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
@@ -17,17 +17,17 @@ export const PromotionCardContainer = styled.TouchableOpacity`
   theme.spacing.half} 0};
 `;
 
-export const PromotionCardImage = styled.Image`
+export const PromotionItemCardImage = styled.Image`
   height: 100%;
   width: ${({ theme }) => theme.spacing.multiple(14)};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
-export const PromotionCardDescription = styled.View`
+export const PromotionItemCardDescription = styled.View`
   padding-top: ${({ theme }) => theme.spacing.single};
 `;
 
-export const PromotionCardLike = styled.View`
+export const PromotionItemCardLike = styled.View`
   position: absolute;
   bottom: ${({ theme }) => theme.spacing.single};
   right: ${({ theme }) => theme.spacing.single};

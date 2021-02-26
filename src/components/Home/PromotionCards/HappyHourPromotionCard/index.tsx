@@ -5,7 +5,7 @@ import CountDown from 'react-native-countdown-component';
 import { useTheme } from 'styled-components';
 
 import { HappyHourPromotionCardContainer, HappyHourPromotionCardTimerContainer, styles } from './styles';
-import Text from '../../Shared/Text';
+import Text from '../../../Shared/Text';
 
 interface HappyHourPromotionCardProps {
   endDate: number;

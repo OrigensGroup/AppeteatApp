@@ -1,9 +1,9 @@
-import React, { useCallback, useRef, useState } from "react";
-import Swiper from "react-native-swiper";
-import Promotion from '../../../components/Home/HappyHourPromotionCard'
-import { useNavigation } from "@react-navigation/native";
-import QrCode from "../../../components/Menu/MenuComponents/QrCode";
-import menuTranslations from "../../../translations/menu";
+import React, { useCallback, useRef, useState } from 'react';
+import Swiper from 'react-native-swiper';
+import Promotion from '../../../components/Home/PromotionCards/HappyHourPromotionCard';
+import { useNavigation } from '@react-navigation/native';
+import QrCode from '../../../components/Menu/MenuComponents/QrCode';
+import menuTranslations from '../../../translations/menu';
 
 const HAPPYHOUR_DATA: any = {
   Drinks: [
@@ -19,7 +19,8 @@ const HAPPYHOUR_DATA: any = {
       title: 'Second Item',
       shortDescription: 'nonono',
       price: '£2.5',
-      longDescription: 'The mojito is the epitome of the refreshing cocktail, stripped down to just the bare essentials of rum, lime juice, sugar, soda water, and mint. Each ingredient is seemingly specifically selected to cure hot weather-induced pangs of thirst — it is in turns sweet, acidic, minty, and sparkling.',
+      longDescription:
+        'The mojito is the epitome of the refreshing cocktail, stripped down to just the bare essentials of rum, lime juice, sugar, soda water, and mint. Each ingredient is seemingly specifically selected to cure hot weather-induced pangs of thirst — it is in turns sweet, acidic, minty, and sparkling.',
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
@@ -54,23 +55,15 @@ const HAPPYHOUR_DATA: any = {
       title: 'Third Item 1',
     },
   ],
-}
+};
 
+import { MainWrapper, BottomContainer, CardsContainer, TopContainer } from './styles';
 
-import {
-  MainWrapper,
-  BottomContainer,
-  CardsContainer,
-  TopContainer,
-} from './styles';
+import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1';
 
-import SwiperP1 from "../../../components/Menu/MenuComponents/SwiperP1";
-
-interface HappyHourMenuProps {
-}
+interface HappyHourMenuProps {}
 
 const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
-
   const ref = useRef<Swiper | null>(null);
   const [menuIndex, setMenuIndex] = useState(0);
 
@@ -79,11 +72,12 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
       ref.current.scrollBy(index - menuIndex, true);
     }
     setMenuIndex(index);
-  }
+  };
 
-  const happyhourTabsContent = useCallback(() =>
-    Object.keys(HAPPYHOUR_DATA).map((item) => <SwiperP1 key={item} menuItems={HAPPYHOUR_DATA[item]} />)
-    , [HAPPYHOUR_DATA]);
+  const happyhourTabsContent = useCallback(
+    () => Object.keys(HAPPYHOUR_DATA).map((item) => <SwiperP1 key={item} menuItems={HAPPYHOUR_DATA[item]} />),
+    [HAPPYHOUR_DATA]
+  );
 
   return (
     <MainWrapper>

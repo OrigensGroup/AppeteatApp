@@ -5,32 +5,37 @@ import { Marker } from '../../../screens/Book/LocationsList/useMarkers';
 
 import Text from '../../Shared/Text';
 
-import { PromotionCardContainer, PromotionCardImage, PromotionCardDescription, PromotionCardLike } from './styles';
+import {
+  PromotionItemCardContainer,
+  PromotionItemCardImage,
+  PromotionItemCardDescription,
+  PromotionItemCardLike,
+} from './styles';
 
 interface CardProps {
   item: Marker;
   onClick?: () => void;
 }
 
-const PromotionCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
+const PromotionItemCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   const theme = useTheme();
 
   return (
-    <PromotionCardContainer onPress={onClick}>
-      <PromotionCardImage source={{ uri: item.image }} />
-      <PromotionCardDescription>
+    <PromotionItemCardContainer onPress={onClick}>
+      <PromotionItemCardImage source={{ uri: item.image }} />
+      <PromotionItemCardDescription>
         <Text fontSize={20} color="#000000">
           {item.title}
         </Text>
         <Text fontSize={16} color="#000000">
           {item.description}
         </Text>
-      </PromotionCardDescription>
-      <PromotionCardLike>
+      </PromotionItemCardDescription>
+      <PromotionItemCardLike>
         <Icon color={theme.colors.textPrimary} name="heart-outline" size={28} />
-      </PromotionCardLike>
-    </PromotionCardContainer>
+      </PromotionItemCardLike>
+    </PromotionItemCardContainer>
   );
 };
 
-export default PromotionCard;
+export default PromotionItemCard;
