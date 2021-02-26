@@ -21,7 +21,7 @@ const Promotion2: React.FunctionComponent<Promotion2Props> = ({ description, onC
   return (
     <PromotionContainer onPress={onClick}>
       <ImageContainer>
-        <PromotionImage source={require('../../../img/martini.png')} />
+        <PromotionImage source={require('../../../img/venue.jpg')} />
       </ImageContainer>
       <PromotionDesc>
         <Title fontSize={18} color='#000' bold>{title}</Title>

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const PromotionContainer = styled.TouchableOpacity`
+export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
   width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(22)};
   display: flex;
@@ -32,10 +32,11 @@ export const PromotionDesc = styled.Text`
   font-size: ${({ theme }) => theme.spacing.double};
 `;
 
-export const TimerWrap = styled.View`
+export const HappyHourPromotionCardTimerContainer = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
   margin-top: ${({ theme }) => theme.spacing.double};
 `;

@@ -6,7 +6,7 @@ import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles
 
 interface BasketButtonProps {
   onClick: () => void;
-  price: any;
+  price: number;
 }
 
 const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick, price }) => {

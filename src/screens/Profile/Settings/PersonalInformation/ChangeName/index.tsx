@@ -1,8 +1,10 @@
-import React from "react";
-import { ChangeNameContainer, ChangeNameWrap } from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import TextField2 from "../../../../../components/TextField2";
+import React from 'react';
+
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import TextField2 from '../../../../../components/TextField2';
+
+import { ChangeNameContainer, ChangeNameWrap } from './styles';
 
 interface ChangeNameProps {}
 

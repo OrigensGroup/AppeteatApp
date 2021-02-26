@@ -1,7 +1,10 @@
-import React from "react";
-import ListItem from "../../../components/Profile/ListItem";
-import { SettingsContainer, SettingsWrap } from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import React from 'react';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+import ListItem from '../../../components/Profile/ListItem';
+
+import { SettingsContainer, SettingsWrap } from './styles';
 
 interface SettingsProps {}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import LocationCard from '../../components/Location/Card';
+import LocationCard from '../../components/Home/PromotionCard';
 // import SearchBar from '../../components/Menu/SearchBar';
 
 import { LocationPageContainer, SearchBarWrapper } from './styles';

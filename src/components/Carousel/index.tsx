@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Text, Dimensions } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
-import Promotion from '../Home/Promotion';
+import HappyHourPromotionCard from '../Home/HappyHourPromotionCard';
 import Promotion2 from '../Home/Promotion2';
 
 import { CarouselContainer, Container } from './styles';
@@ -71,13 +70,13 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
     if (item.type === 'image') {
       return (
         <Container>
-          <Promotion endDate={new Date().getTime()} />
+          <HappyHourPromotionCard endDate={new Date().getTime()} />
         </Container>
       );
     } else {
       return (
         <Container>
-          <Promotion endDate={new Date().getTime()} />
+          <HappyHourPromotionCard endDate={new Date().getTime()} />
         </Container>
       );
     }

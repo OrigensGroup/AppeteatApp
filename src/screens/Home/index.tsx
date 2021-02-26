@@ -6,9 +6,9 @@ import Home from './HomePage';
 
 const Stack = createStackNavigator();
 
-interface MenuNavProps {}
+interface HomeNavProps {}
 
-const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
+const HomeNav: React.FunctionComponent<HomeNavProps> = () => {
   return (
     <Stack.Navigator headerMode={'none'}>
       <Stack.Screen name="HomePage" component={Home} />
@@ -18,4 +18,4 @@ const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   );
 };
 
-export default MenuNav;
+export default HomeNav;

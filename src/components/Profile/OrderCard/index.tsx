@@ -1,10 +1,9 @@
 import React from "react";
-import { Dimensions, Text } from "react-native";
-import Title from "../../Shared/Text";
+import { Dimensions } from "react-native";
+import Text from "../../Shared/Text";
 import {
   CardContainer,
   DrinkDesc,
-  TextTitle,
   CardWrap,
   DateContainer,
   Circle,
@@ -30,27 +29,27 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({
       <CardContainer onPress={onClick} activeOpacity={1}>
         <DateContainer>
           <Circle style={{ borderRadius: Dimensions.get("window").width / 2 }}>
-            <Title fontSize={14} color="#fff" bold>
+            <Text fontSize={14} color="#fff" bold>
               {date}
-            </Title>
-            <Title fontSize={12} color="#fff" bold>
+            </Text>
+            <Text fontSize={12} color="#fff" bold>
               2021
-            </Title>
+            </Text>
           </Circle>
         </DateContainer>
         <DrinkDesc>
-          <Title fontSize={16} color="#000">
+          <Text fontSize={16} color="#000">
             {items}
-          </Title>
+          </Text>
         </DrinkDesc>
         <PriceContainer>
-          <Title fontSize={16} color="#000" bold>
+          <Text fontSize={16} color="#000" bold>
             {price}$
-          </Title>
+          </Text>
           <ViewWrap>
-            <Title fontSize={16} color="#F69019">
+            <Text fontSize={16} color="#F69019">
               View
-            </Title>
+            </Text>
           </ViewWrap>
         </PriceContainer>
       </CardContainer>

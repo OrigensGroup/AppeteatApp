@@ -8,7 +8,7 @@ import InputSpinner from 'react-native-input-spinner';
 import { Platform } from 'react-native';
 
 import Button from '../../../components/Book/Button';
-import Title from '../../../components/Shared/Text';
+import Text from '../../../components/Shared/Text';
 import IconField from '../../../components/Book/IconField';
 
 import {
@@ -191,9 +191,9 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         </Container>
         <ConfirmContainer>
           <IconField>
-            <Title color="#000000" fontSize={18} fontWeight="bold">
+            <Text color="#000000" fontSize={18} fontWeight="bold">
               Confirm
-            </Title>
+            </Text>
           </IconField>
         </ConfirmContainer>
       </FieldsContainer>

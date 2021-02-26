@@ -1,56 +1,60 @@
 import React from 'react';
-import Card from '../../../components/Home/Card';
 
+import { useNavigation } from '@react-navigation/native';
+
+import { FlatList } from 'react-native';
+import PromotionCard from '../../../components/Home/PromotionCard';
+import useMenu from '../../../hooks/useMenu';
+
+import { MenuItem } from '../../../types/MenuItem';
+
+import Text from '../../../components/Shared/Text';
 
 import {
-  CocktailContainer,
-  HomepageContainer,
-  PromotionContainer,
-  HomepageTitle,
-  LogoContainer,
+  HomeContainer,
+  HomeLogoContainer,
+  HomeSection,
   LogoImage,
   BottomContainer,
-  CocktailSection,
-  FindButton,
   MapContainer,
+  FindButton
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
 import CarouselPromo from '../../../components/Carousel';
-import { Text } from 'react-native';
 import Map from '../../../components/Map';
-import Title from '../../../components/Shared/Text';
 
-interface HomeProps {
-  onClick?: () => void;
-}
+interface HomeProps {}
 
-const Home: React.FunctionComponent<HomeProps> = (onClick) => {
+const Home: React.FunctionComponent<HomeProps> = () => {
+  const navigation = useNavigation();
+  const { menu } = useMenu();
 
- const navigation = useNavigation();
+  const promotedItems = menu.items.filter((menuItem) => menuItem.promoted);
+
+  const navigate = () => {
+    navigation.navigate('HappyHourMenu');
+  };
+
+  const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionCard item={item} />;
 
   return (
-    <HomepageContainer>
-      <LogoContainer>
+    <HomeContainer>
+      <HomeLogoContainer>
         <LogoImage source={require('../../../img/Logo.png')} />
-      </LogoContainer>
-      <CocktailSection>
-        <HomepageTitle>
-          <Title fontSize={20} color='#000' bold>Popular Cocktails</Title>
-        </HomepageTitle>
-        <CocktailContainer horizontal showsHorizontalScrollIndicator={false}>
-          <Card description="Description" title="Mojito" />
-          <Card description="Description" title="Daiquiri" />
-          <Card description="Description" title="Negroni" />
-        </CocktailContainer>
-      </CocktailSection>
+      </HomeLogoContainer>
+      <HomeSection>
+        <Text fontSize={20} color="#000000">
+          Popular Cocktails
+        </Text>
+        <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
+      </HomeSection>
       <CarouselPromo />
       <BottomContainer>
         <MapContainer onPress={() => navigation.navigate('LocationsList')}>
     <Map />
-    <FindButton><Title fontSize={18} color='#000' >Find us!</Title></FindButton>
+    <FindButton><Text fontSize={18} color='#000' >Find us!</Text></FindButton>
     </MapContainer>
       </BottomContainer>
-    </HomepageContainer>
+    </HomeContainer>
   );
 };
 

@@ -10,10 +10,10 @@ interface MenuNavProps {}
 
 const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   return (
-    <Stack.Navigator headerMode={'none'}>
-      <Stack.Screen name="MenuList" component={Menu} />
-      <Stack.Screen name="SingleItem" component={SingleItem} />
-      <Stack.Screen name="Cart" component={Cart} />
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen component={Menu} name="MenuList" />
+      <Stack.Screen component={SingleItem} name="SingleItem" />
+      <Stack.Screen component={Cart} name="Cart" />
     </Stack.Navigator>
   );
 };

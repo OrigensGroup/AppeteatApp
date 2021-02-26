@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import Swiper from "react-native-swiper";
-import Promotion from '../../../components/Home/Promotion'
+import Promotion from '../../../components/Home/HappyHourPromotionCard'
 import { useNavigation } from "@react-navigation/native";
 import QrCode from "../../../components/Menu/MenuComponents/QrCode";
 import menuTranslations from "../../../translations/menu";

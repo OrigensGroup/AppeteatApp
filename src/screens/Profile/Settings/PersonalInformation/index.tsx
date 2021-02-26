@@ -1,4 +1,9 @@
-import React from "react";
+import React from 'react';
+
+import { useNavigation } from '@react-navigation/native';
+
+import Title from '../../../../components/Shared/Text';
+
 import {
   PersonalInformationContainer,
   RowContainer,
@@ -6,14 +11,7 @@ import {
   InfoContainer,
   PersonalInformationWrap,
 } from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import loginTranslations from "../../../../translations/login";
-import TextField from "../../../../components/Menu/SearchField";
-import { Text } from "../../../../components/Menu/SingleItemCard/styles";
-import Title from "../../../../components/Shared/Text";
 import { scale } from "../../../../theme/textScaling";
-import { useNavigation } from "@react-navigation/native";
-
 interface PersonalInformationProps {
   onClick?: () => void;
 }

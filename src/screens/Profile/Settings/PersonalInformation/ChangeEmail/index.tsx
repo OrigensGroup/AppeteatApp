@@ -1,7 +1,10 @@
-import React from "react";
-import { ChangeEmailContainer, ChangeEmailWrap } from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import TextField2 from "../../../../../components/TextField2";
+import React from 'react';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+import TextField2 from '../../../../../components/TextField2';
+
+import { ChangeEmailContainer, ChangeEmailWrap } from './styles';
 
 interface ChangeEmailProps {}
 

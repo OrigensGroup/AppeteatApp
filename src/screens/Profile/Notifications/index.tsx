@@ -1,8 +1,12 @@
-import React from "react";
-import ListItem from "../../../components/Profile/ListItem";
-import { NotificationsContainer, NotificationsWrap } from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { Switch } from "react-native-gesture-handler";
+import React from 'react';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+import { Switch } from 'react-native-gesture-handler';
+
+import ListItem from '../../../components/Profile/ListItem';
+
+import { NotificationsContainer, NotificationsWrap } from './styles';
 
 interface NotificationsProps {}
 

@@ -6,6 +6,11 @@ export const FavouriteCocktailsContainer = styled.View`
   height: 100%;
 `;
 
-export const Container = styled.ScrollView`
-margin:  ${({ theme }) => theme.spacing.single};
-`
+export const CocktailContainer = styled.ScrollView`
+  width: 100%;
+`;
+export const CocktailWrap = styled.View`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;

@@ -1,31 +1,23 @@
-import React from "react";
-import { Text } from "react-native";
-import {
-  CardContainer,
-  DrinkImage,
-  DrinkDesc,
-  TextTitle,
-  CardWrap,
-} from "./styles";
+import React from 'react';
+import { Text } from 'react-native';
+
+import { MenuItem } from '../../../types/MenuItem';
+
+import { CardContainer, DrinkImage, DrinkDesc, TextTitle, CardWrap } from './styles';
 
 interface CardProps {
-  title: string;
-  description: string;
+  item: MenuItem;
   onClick?: () => void;
 }
 
-const Card: React.FunctionComponent<CardProps> = ({
-  title,
-  description,
-  onClick,
-}) => {
+const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   return (
     <CardWrap>
       <CardContainer onPress={onClick}>
-        <DrinkImage source={require("../../../img/mojito.jpg")} />
+        <DrinkImage source={{ uri: item.image }} />
         <DrinkDesc>
-          <TextTitle>{title}</TextTitle>
-          <Text>{description}</Text>
+          <TextTitle>{item.title}</TextTitle>
+          <Text>{item.description}</Text>
         </DrinkDesc>
       </CardContainer>
     </CardWrap>

@@ -178,7 +178,7 @@ import {
 } from "react-native";
 
 import MapView from "react-native-maps";
-import LocationCard from "../../../components/Location/Card";
+import LocationCard from "../../../components/Home/PromotionCard";
 
 const { width, height } = Dimensions.get("window");
 

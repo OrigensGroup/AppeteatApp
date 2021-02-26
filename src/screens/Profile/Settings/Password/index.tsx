@@ -1,7 +1,8 @@
-import React from "react";
-import { PasswordContainer, PasswordWrap } from "./styles";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import TextField2 from "../../../../components/TextField2";
+import React from 'react';
+
+import TextField2 from '../../../../components/TextField2';
+
+import { PasswordContainer, PasswordWrap } from './styles';
 
 interface PasswordProps {}
 

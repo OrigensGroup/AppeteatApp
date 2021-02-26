@@ -12,11 +12,7 @@ export const LogoContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
-export const LogoImage = styled.Image`
-  width: ${({ theme }) => theme.spacing.multiple(18)};
-  height: ${({ theme }) => theme.spacing.multiple(8)};
-  resize-mode: cover;
-`;
+
 export const FindButton = styled.View`
   background-color: #c2c2c2;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
@@ -52,7 +48,7 @@ export const LocationContainer = styled.View`
 `;
 export const MapContainer = styled.TouchableOpacity`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(17)}};
+  height: ${({ theme }) => theme.spacing.multiple(17)};
   border-width: 1px;
   background-color: #fff;
   border-radius: ${({ theme }) => theme.spacing.double};
@@ -63,3 +59,29 @@ export const MapContainer = styled.TouchableOpacity`
   overflow: hidden;
 `;
 
+export const HomeContainer = styled.View`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
+`;
+
+export const HomeLogoContainer = styled.View`
+  height: ${({ theme }) => theme.spacing.multiple(10)};
+`;
+
+export const LogoImage = styled.Image`
+  width: ${({ theme }) => theme.spacing.multiple(15)};
+  height: ${({ theme }) => theme.spacing.multiple(15)};
+  resize-mode: contain;
+`;
+
+export const HomeSection = styled.View`
+  margin: ${({ theme }) => theme.spacing.multiple(3)};
+`;
+
+export const MarketingSection = styled.View`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;

@@ -1,11 +1,14 @@
 import React from 'react';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native';
+
+import { Tab } from '../../../../types/Tab';
 
 import MenuTab from './MenuTab';
+
 import { MenuTabsContainer } from './styles';
 
 interface MenuTabProps {
-  menuTabs: any;
+  menuTabs: Tab[];
   tabActive: number;
   onChange: (index: number) => void;
 }
@@ -16,9 +19,9 @@ const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, t
       <FlatList
         data={menuTabs}
         horizontal
-        keyExtractor={({ index }) => index}
+        keyExtractor={(item) => item.id}
         renderItem={({ index, item }) => (
-          <MenuTab active={index === tabActive} index={index} onPress={onChange} title={item} />
+          <MenuTab active={index === tabActive} index={index} onPress={onChange} title={item.name} />
         )}
       />
     </MenuTabsContainer>

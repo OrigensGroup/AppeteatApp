@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import { MenuItem } from '../../../../types/MenuItem';
+
 import {
   CardContainer,
   ImageWrapper,
@@ -18,7 +20,7 @@ import {
 } from './styles';
 
 interface CardProps {
-  item: any;
+  item: MenuItem;
   onClick: () => void;
 }
 
@@ -35,12 +37,12 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
         <CardWrapper>
           <LeftWrapper>
             <ImageWrapper>
-              <DrinkImage source={require('../../../../img/mojito.jpg')} />
+              <DrinkImage source={{ uri: item.image }} />
             </ImageWrapper>
             <DrinkDesc>
-              <TextTitle>cc</TextTitle>
-              <SubTitle>cc</SubTitle>
-              <Price>cc</Price>
+              <TextTitle>{item.title}</TextTitle>
+              <SubTitle>{item.smallDesc}</SubTitle>
+              <Price>£ {item.price}</Price>
             </DrinkDesc>
           </LeftWrapper>
           <RightWrapper>
