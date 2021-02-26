@@ -14,7 +14,7 @@ import {
   HomeContainer,
   HomeLogoContainer,
   HomeSection,
-  LogoImage,
+  HomeLogoImage,
   BottomContainer,
   MapContainer,
   FindButton,
@@ -39,10 +39,10 @@ const Home: React.FunctionComponent<HomeProps> = () => {
   return (
     <HomeContainer>
       <HomeLogoContainer>
-        <LogoImage source={require('../../../img/Logo.png')} />
+        <HomeLogoImage source={require('../../../img/Logo.png')} />
       </HomeLogoContainer>
       <HomeSection>
-        <Text fontSize={20} color="#000000">
+        <Text fontSize={20} color="primary">
           Popular Cocktails
         </Text>
         <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
@@ -52,7 +52,7 @@ const Home: React.FunctionComponent<HomeProps> = () => {
         <MapContainer onPress={() => navigation.navigate('LocationsList')}>
           <Map />
           <FindButton>
-            <Text fontSize={18} color="#000">
+            <Text fontSize={18} color="primary">
               Find us!
             </Text>
           </FindButton>

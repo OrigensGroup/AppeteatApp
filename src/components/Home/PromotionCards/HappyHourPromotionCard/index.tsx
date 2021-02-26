@@ -21,7 +21,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   return (
     <HappyHourPromotionCardContainer onPress={onClick}>
       <LinearGradient colors={['#DEB98E', '#FFB803']} style={styles.linearGradient}>
-        <Text fontSize={24} color="#ffffff" align="center">
+        <Text fontSize={24} color="secondary" align="center">
           Happy Hour
         </Text>
         <HappyHourPromotionCardTimerContainer>

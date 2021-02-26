@@ -12,22 +12,22 @@ import {
   PromotionItemCardLike,
 } from './styles';
 
-interface CardProps {
+interface PromotionItemCardProps {
   item: Marker;
   onClick?: () => void;
 }
 
-const PromotionItemCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
+const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ item, onClick }) => {
   const theme = useTheme();
 
   return (
     <PromotionItemCardContainer onPress={onClick}>
       <PromotionItemCardImage source={{ uri: item.image }} />
       <PromotionItemCardDescription>
-        <Text fontSize={20} color="#000000">
+        <Text fontSize={20} color="primary">
           {item.title}
         </Text>
-        <Text fontSize={16} color="#000000">
+        <Text fontSize={16} color="primary">
           {item.description}
         </Text>
       </PromotionItemCardDescription>

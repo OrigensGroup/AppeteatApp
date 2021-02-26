@@ -12,10 +12,7 @@ const ChangeEmail: React.FunctionComponent<ChangeEmailProps> = () => {
   return (
     <ChangeEmailContainer>
       <ChangeEmailWrap>
-        <TextField2
-          textContentType="none"
-          icon={<MaterialIcons name="email" size={28} color="#818181" />}
-        ></TextField2>
+        <TextField2 textContentType="none" icon={<MaterialIcons name="email" size={28} color="#818181" />}></TextField2>
       </ChangeEmailWrap>
     </ChangeEmailContainer>
   );

@@ -1,25 +1,26 @@
 import React from 'react';
 
 import singleDrinkTranslations from '../../../../translations/singleDrink';
+import QuantityCounter from '../Counter';
 
-import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
+import { MainButton, TextWrapper, ButtonText, BottomButtonsWrapper } from './styles';
 
 interface BasketButtonProps {
   onClick: () => void;
-  price: number;
+  price: any;
 }
 
 const AddToBasketButton: React.FunctionComponent<BasketButtonProps> = ({ onClick, price }) => {
   return (
-    <MainButtonWrapper>
+    <BottomButtonsWrapper>
+      <QuantityCounter />
       <MainButton onPress={onClick}>
         <TextWrapper>
-          <ButtonText>(3)</ButtonText>
           <ButtonText>{singleDrinkTranslations.viewBasketButtonField.placeholder}</ButtonText>
           <ButtonText>+ {price}</ButtonText>
         </TextWrapper>
       </MainButton>
-    </MainButtonWrapper>
+    </BottomButtonsWrapper>
   );
 };
 

@@ -5,7 +5,7 @@ import { FlatList } from 'react-native';
 import ProfileImage from '../../../components/Profile/ProfileImage';
 import ProfileLink from '../../../components/Profile/ProfileLink';
 import Card from '../../../components/Profile/Card';
-import Title from '../../../components/Shared/Text';
+import Text from '../../../components/Shared/Text';
 import useMenu from '../../../hooks/useMenu';
 import { MenuItem } from '../../../types/MenuItem';
 import accountTranslations from '../../../translations/account';
@@ -19,7 +19,6 @@ import {
   TitleWrap2,
   Content,
 } from './styles';
-import Text from '../../../components/Shared/Text';
 
 interface AccountProps {}
 
@@ -44,7 +43,7 @@ const Account: React.FunctionComponent<AccountProps> = () => {
       <ImageContainer>
         <ProfileImage />
         <TitleWrap2>
-          <Text color="#000" fontSize={20}>
+          <Text color="primary" fontSize={20}>
             {username}
           </Text>
         </TitleWrap2>
@@ -61,9 +60,9 @@ const Account: React.FunctionComponent<AccountProps> = () => {
         </NavigationContainer>
         <CardWrap>
           <TitleWrap>
-            <Title color="#000" fontSize={20}>
+            <Text color="primary" fontSize={20}>
               {accountTranslations.accountPage.favoriteCocktails}
-            </Title>
+            </Text>
           </TitleWrap>
           <FlatList
             data={favoriteCocktails}

@@ -10,45 +10,43 @@ import {
   InnerContainer,
   InfoContainer,
   PersonalInformationWrap,
-} from "./styles";
-import { scale } from "../../../../theme/textScaling";
+} from './styles';
+import { scale } from '../../../../theme/textScaling';
 interface PersonalInformationProps {
   onClick?: () => void;
 }
 
-const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (
-  onClick
-) => {
+const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (onClick) => {
   const navigation = useNavigation();
   const navigate = () => {
-    navigation.navigate("ChangeEmail");
+    navigation.navigate('ChangeEmail');
   };
   const navigate2 = () => {
-    navigation.navigate("ChangeName");
+    navigation.navigate('ChangeName');
   };
   return (
     <PersonalInformationContainer>
       <PersonalInformationWrap>
         <RowContainer>
           <InfoContainer>
-            <Title fontSize={14} color="#000">
+            <Title fontSize={14} color="primary">
               Email address
             </Title>
           </InfoContainer>
           <InnerContainer onPress={navigate}>
-            <Title fontSize={16} color="#000">
+            <Title fontSize={16} color="primary">
               hkdj@hotmail.it
             </Title>
           </InnerContainer>
         </RowContainer>
         <RowContainer>
           <InfoContainer>
-            <Title fontSize={scale(14)} color="#000">
+            <Title fontSize={scale(14)} color="primary">
               Name
             </Title>
           </InfoContainer>
           <InnerContainer onPress={navigate2}>
-            <Title fontSize={scale(14)} color="#000">
+            <Title fontSize={scale(14)} color="primary">
               Alessandro Carpanzano
             </Title>
           </InnerContainer>

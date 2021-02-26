@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import analytics from '@react-native-firebase/analytics';

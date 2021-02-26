@@ -25,3 +25,10 @@ export const ButtonText = styled.Text`
   color: black;
   font-weight: bold;
 `;
+
+export const BottomButtonsWrapper = styled.View`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;

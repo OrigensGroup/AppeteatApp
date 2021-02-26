@@ -15,35 +15,17 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
         <ListItem
           title="Personal Information"
           navigateTo="PersonalInformation"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          icon2={<MaterialIcons name="keyboard-arrow-right" size={28} color="#818181" />}
         />
         <ListItem
           title="My Cards"
           navigateTo="Notifications"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          icon2={<MaterialIcons name="keyboard-arrow-right" size={28} color="#818181" />}
         />
         <ListItem
           title="Password"
           navigateTo="Password"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          icon2={<MaterialIcons name="keyboard-arrow-right" size={28} color="#818181" />}
         />
       </SettingsWrap>
     </SettingsContainer>

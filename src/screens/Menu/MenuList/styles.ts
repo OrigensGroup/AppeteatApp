@@ -11,15 +11,11 @@ export const TopContainer = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
-export const BottomContainer = styled.View`
-  background-color: transparent;
-  margin-bottom: 250px;
-`;
-
 export const TopBarWrapper = styled.View`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  margin: ${({ theme }) => theme.spacing.multiple(2)} 0;
 `;
 
 export const LogoContainer = styled.View`
@@ -31,10 +27,6 @@ export const LogoImage = styled.Image`
   width: ${({ theme }) => theme.spacing.multiple(12)};
   height: ${({ theme }) => theme.spacing.multiple(6)};
   resize-mode: contain;
-`;
-
-export const CardsContainer = styled.View`
-  height: 100%;
 `;
 
 export const SearchBarWrapper = styled.View`

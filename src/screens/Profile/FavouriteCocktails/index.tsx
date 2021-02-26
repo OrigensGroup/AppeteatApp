@@ -11,10 +11,12 @@ import { FavouriteCocktailsContainer } from './styles';
 interface FavouriteCocktailsProps {}
 
 const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () => {
-  const { width }=Dimensions.get("window")
- const { menu } = useMenu();
+  const { width } = Dimensions.get('window');
+  const { menu } = useMenu();
   const renderItem = ({ item }: { item: MenuItem }) => (
-    <View style={{width: width/2}}><Card item={item} /></View>
+    <View style={{ width: width / 2 }}>
+      <Card item={item} />
+    </View>
   );
 
   const favoriteCocktails = menu.items.filter((menuItem) => menuItem.promoted);

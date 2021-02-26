@@ -14,9 +14,7 @@ const ChangeName: React.FunctionComponent<ChangeNameProps> = () => {
       <ChangeNameWrap>
         <TextField2
           textContentType="none"
-          icon={
-            <MaterialCommunityIcons name="account" size={28} color="#818181" />
-          }
+          icon={<MaterialCommunityIcons name="account" size={28} color="#818181" />}
         ></TextField2>
       </ChangeNameWrap>
     </ChangeNameContainer>

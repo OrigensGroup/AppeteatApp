@@ -1,15 +1,18 @@
-import React from "react";
-import { Dimensions } from "react-native";
-import Text from "../../Shared/Text";
+import React from 'react';
+import { Dimensions, Text } from 'react-native';
+
+import Title from '../../Shared/Text';
+
 import {
   CardContainer,
   DrinkDesc,
+  TextTitle,
   CardWrap,
   DateContainer,
   Circle,
   PriceContainer,
   ViewWrap,
-} from "./styles";
+} from './styles';
 
 interface OrderCardProps {
   items: string;
@@ -18,38 +21,33 @@ interface OrderCardProps {
   onClick?: () => void;
 }
 
-const OrderCard: React.FunctionComponent<OrderCardProps> = ({
-  items,
-  date,
-  price,
-  onClick,
-}) => {
+const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onClick, price }) => {
   return (
     <CardWrap>
-      <CardContainer onPress={onClick} activeOpacity={1}>
+      <CardContainer activeOpacity={1} onPress={onClick}>
         <DateContainer>
-          <Circle style={{ borderRadius: Dimensions.get("window").width / 2 }}>
-            <Text fontSize={14} color="#fff" bold>
+          <Circle style={{ borderRadius: Dimensions.get('window').width / 2 }}>
+            <Title color="#F69019" fontSize={14} bold>
               {date}
-            </Text>
-            <Text fontSize={12} color="#fff" bold>
+            </Title>
+            <Title color="#F69019" fontSize={12}>
               2021
-            </Text>
+            </Title>
           </Circle>
         </DateContainer>
         <DrinkDesc>
-          <Text fontSize={16} color="#000">
+          <Title color="primary" fontSize={16}>
             {items}
-          </Text>
+          </Title>
         </DrinkDesc>
         <PriceContainer>
-          <Text fontSize={16} color="#000" bold>
+          <Title color="primary" fontSize={16} bold>
             {price}$
-          </Text>
+          </Title>
           <ViewWrap>
-            <Text fontSize={16} color="#F69019">
+            <Title color="#F69019" fontSize={16}>
               View
-            </Text>
+            </Title>
           </ViewWrap>
         </PriceContainer>
       </CardContainer>
