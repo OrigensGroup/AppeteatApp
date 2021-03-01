@@ -5,7 +5,6 @@ import { FlatList } from 'react-native';
 import ProfileImage from '../../../components/Profile/ProfileImage';
 import ProfileLink from '../../../components/Profile/ProfileLink';
 import Card from '../../../components/Profile/Card';
-import Text from '../../../components/Shared/Text';
 import useMenu from '../../../hooks/useMenu';
 import { MenuItem } from '../../../types/MenuItem';
 import accountTranslations from '../../../translations/account';
@@ -14,11 +13,14 @@ import {
   ProfileContainer,
   ImageContainer,
   NavigationContainer,
-  CardWrap,
-  TitleWrap,
-  TitleWrap2,
+  FavouriteCocktailsContainer,
+  TitleContainer,
+  NameContainer,
   Content,
+  ShowButton
 } from './styles';
+import Text from '../../../components/Shared/Text';
+import { useNavigation } from '@react-navigation/native';
 
 interface AccountProps {}
 
@@ -26,6 +28,12 @@ const Account: React.FunctionComponent<AccountProps> = () => {
   const { menu } = useMenu();
 
   const favoriteCocktails = menu.items.filter((favoriteItem) => favoriteItem.promoted);
+
+  
+   const navigation = useNavigation();
+  const navigate = () => {
+    navigation.navigate('FavouriteCocktails');
+  };
 
   const flatlistRenderItem = ({ item }: { item: MenuItem }) => (
     <Card
@@ -42,11 +50,11 @@ const Account: React.FunctionComponent<AccountProps> = () => {
     <ProfileContainer>
       <ImageContainer>
         <ProfileImage />
-        <TitleWrap2>
+        <NameContainer>
           <Text color="primary" fontSize={20}>
             {username}
           </Text>
-        </TitleWrap2>
+        </NameContainer>
       </ImageContainer>
       <Content
         contentContainerStyle={{
@@ -58,19 +66,24 @@ const Account: React.FunctionComponent<AccountProps> = () => {
         <NavigationContainer>
           <ProfileLink />
         </NavigationContainer>
-        <CardWrap>
-          <TitleWrap>
+        <FavouriteCocktailsContainer>
+          <TitleContainer>
             <Text color="primary" fontSize={20}>
-              {accountTranslations.accountPage.favoriteCocktails}
+              {accountTranslations.accountPage.myFavouriteCoctails}
             </Text>
-          </TitleWrap>
+            <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
+              <Text color="tertiary" fontSize={16}>
+                {accountTranslations.accountPage.showButton}
+              </Text>
+            </ShowButton>
+          </TitleContainer>
           <FlatList
             data={favoriteCocktails}
             horizontal
             renderItem={flatlistRenderItem}
             showsHorizontalScrollIndicator={false}
           />
-        </CardWrap>
+        </FavouriteCocktailsContainer>
       </Content>
     </ProfileContainer>
   );

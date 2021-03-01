@@ -1,17 +1,16 @@
 import React from 'react';
-import { Dimensions, Text } from 'react-native';
+import { Dimensions, } from 'react-native';
 
-import Title from '../../Shared/Text';
+import Text from '../../Shared/Text';
 
 import {
-  CardContainer,
+  Container,
   DrinkDesc,
-  TextTitle,
-  CardWrap,
+  OrderCardContainer,
   DateContainer,
   Circle,
   PriceContainer,
-  ViewWrap,
+  Button,
 } from './styles';
 
 interface OrderCardProps {
@@ -23,35 +22,35 @@ interface OrderCardProps {
 
 const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onClick, price }) => {
   return (
-    <CardWrap>
-      <CardContainer activeOpacity={1} onPress={onClick}>
+    <OrderCardContainer>
+      <Container activeOpacity={1} onPress={onClick}>
         <DateContainer>
           <Circle style={{ borderRadius: Dimensions.get('window').width / 2 }}>
-            <Title color="#F69019" fontSize={14} bold>
+            <Text color="secondary" fontSize={14} bold>
               {date}
-            </Title>
-            <Title color="#F69019" fontSize={12}>
+            </Text>
+            <Text color="secondary" fontSize={12} bold>
               2021
-            </Title>
+            </Text>
           </Circle>
         </DateContainer>
         <DrinkDesc>
-          <Title color="primary" fontSize={16}>
+          <Text color="primary" fontSize={16}>
             {items}
-          </Title>
+          </Text>
         </DrinkDesc>
         <PriceContainer>
-          <Title color="primary" fontSize={16} bold>
+          <Text color="primary" fontSize={16} bold>
             {price}$
-          </Title>
-          <ViewWrap>
-            <Title color="#F69019" fontSize={16}>
+          </Text>
+          <Button>
+            <Text color="tertiary" fontSize={16}>
               View
-            </Title>
-          </ViewWrap>
+            </Text>
+          </Button>
         </PriceContainer>
-      </CardContainer>
-    </CardWrap>
+      </Container>
+    </OrderCardContainer>
   );
 };
 
