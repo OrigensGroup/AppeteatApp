@@ -5,6 +5,7 @@ interface TitleProps {
   fontSize: number;
   color: 'primary' | 'secondary' | 'tertiary';
   bold?: boolean;
+  light?: boolean;
   align: string;
 }
 export const TitleContainer = styled.View`
@@ -30,6 +31,7 @@ export const TitleText = styled.Text<TitleProps>`
     }
   }};
 
-  ${({ bold }) => (bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'")}
+  ${({ bold }) => (bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'")};
+  ${({ light }) => (light ? "font-family: 'ComfortaaLight'" : "font-family: 'Comfortaa'")};
   text-align: ${({ align }) => align};
 `;

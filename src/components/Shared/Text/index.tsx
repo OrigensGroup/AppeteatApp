@@ -6,13 +6,14 @@ interface TextProps {
   fontSize: number;
   color: 'primary' | 'secondary' | 'tertiary';
   bold?: boolean;
+  light?: boolean;
   align?: string;
 }
 
-const Text: React.FunctionComponent<TextProps> = ({ children, color, fontSize, bold, align = 'left' }) => {
+const Text: React.FunctionComponent<TextProps> = ({ children, color, fontSize, light, bold, align = 'left' }) => {
   return (
     <TitleContainer>
-      <TitleText color={color} fontSize={fontSize} align={align} bold={bold}>
+      <TitleText color={color} fontSize={fontSize} align={align} bold={bold} light={light}>
         {children}
       </TitleText>
     </TitleContainer>

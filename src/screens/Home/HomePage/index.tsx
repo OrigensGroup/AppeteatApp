@@ -21,6 +21,7 @@ import {
 } from './styles';
 import CarouselPromo from '../../../components/Home/Carousel';
 import Map from '../../../components/Map';
+import homeTranslations from '../../../translations/home';
 
 interface HomeProps {}
 
@@ -43,7 +44,7 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       </HomeLogoContainer>
       <HomeSection>
         <Text fontSize={20} color="primary">
-          Popular Cocktails
+          {homeTranslations.homepageScreen.popularItems.title}
         </Text>
         <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
       </HomeSection>

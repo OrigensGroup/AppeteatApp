@@ -7,6 +7,7 @@ import HappyHourPromotionCard from '../PromotionCards/HappyHourPromotionCard';
 import DiscountPromotionCard from '../PromotionCards/DiscountPromotionCard';
 
 import { CarouselContainer, Container } from './styles';
+import { useTheme } from 'styled-components';
 
 interface CarouselPromoProps {}
 
@@ -34,6 +35,7 @@ const DATA: any[] = [
 ];
 
 const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
+  const theme = useTheme();
   const [activeSlide, setActiveSlide] = useState(0);
 
   const pagination = () => {
@@ -45,13 +47,13 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
           width: 50,
           height: 5,
           borderRadius: 5,
-          backgroundColor: '#EE6F00',
+          backgroundColor: theme.colors.active,
         }}
         dotsLength={DATA.length}
         inactiveDotOpacity={0.4}
         inactiveDotScale={1}
         inactiveDotStyle={{
-          backgroundColor: '#9D9891',
+          backgroundColor: theme.colors.inactive,
         }}
       />
     );

@@ -24,8 +24,6 @@ const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ children }) 
 
   const getMenu = async () => {
     const firebaseMenu = (await (await firestore().collection('menus').doc('menu').get()).data()) as Menu;
-    
-    console.log(firebaseMenu);
     setMenu(firebaseMenu);
   };
 
