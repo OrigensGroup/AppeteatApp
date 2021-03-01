@@ -9,7 +9,7 @@ import accountTranslations from '../../../../../translations/account';
 
 
 
-interface ChangeNameProps {}
+interface ChangeNameProps { }
 
 const ChangeName: React.FunctionComponent<ChangeNameProps> = () => {
   

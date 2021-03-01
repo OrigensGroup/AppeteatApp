@@ -8,7 +8,7 @@ import CustomButton from '../../../../../components/Shared/Button';
 import accountTranslations from '../../../../../translations/account';
 
 
-interface ChangeEmailProps {}
+interface ChangeEmailProps { }
 
 const ChangeEmail: React.FunctionComponent<ChangeEmailProps> = () => {
   const navigation = useNavigation();

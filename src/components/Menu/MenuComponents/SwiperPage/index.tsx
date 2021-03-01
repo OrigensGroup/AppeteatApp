@@ -10,7 +10,7 @@ interface SwiperProps {
   menuItems: MenuItem[];
 }
 
-const SwiperP1: React.FunctionComponent<SwiperProps> = ({ menuItems }) => {
+const SwiperPage: React.FunctionComponent<SwiperProps> = ({ menuItems }) => {
   return (
     <Wrapper>
       <FlatList
@@ -22,4 +22,4 @@ const SwiperP1: React.FunctionComponent<SwiperProps> = ({ menuItems }) => {
   );
 };
 
-export default SwiperP1;
+export default SwiperPage;

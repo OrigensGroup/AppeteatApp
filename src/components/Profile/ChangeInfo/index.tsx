@@ -1,5 +1,5 @@
 import React from 'react';
-import TextField from '../../Shared/TextField';
+import TextField from '../../Shared/LoginTextField';
 
 import { ChangeInfoContainer, Container } from './styles';
 

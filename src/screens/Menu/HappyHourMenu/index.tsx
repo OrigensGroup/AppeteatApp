@@ -2,8 +2,9 @@ import React, { useCallback, useRef, useState } from 'react';
 import Swiper from 'react-native-swiper';
 import Promotion from '../../../components/Home/PromotionCards/HappyHourPromotionCard';
 import { useNavigation } from '@react-navigation/native';
-import QrCode from '../../../components/Menu/MenuComponents/QrCode';
-import menuTranslations from '../../../translations/menu';
+import SwiperPage from '../../../components/Menu/MenuComponents/SwiperPage';
+import CloseButton from '../../../components/Menu/MenuComponents/CloseButton';
+import HeartButton from '../../../components/Menu/MenuComponents/HeartButton';
 
 const HAPPYHOUR_DATA: any = {
   Drinks: [
@@ -59,11 +60,8 @@ const HAPPYHOUR_DATA: any = {
 
 import { MainWrapper, BottomContainer, CardsContainer, TopContainer, ButtonsWrapper } from './styles';
 
-import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1';
-import CloseButton from '../../../components/Menu/MenuComponents/CloseButton';
-import HeartButton from '../../../components/Menu/MenuComponents/HeartButton';
 
-interface HappyHourMenuProps {}
+interface HappyHourMenuProps { }
 
 const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
@@ -77,7 +75,7 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
   };
 
   const happyhourTabsContent = useCallback(
-    () => Object.keys(HAPPYHOUR_DATA).map((item) => <SwiperP1 key={item} menuItems={HAPPYHOUR_DATA[item]} />),
+    () => Object.keys(HAPPYHOUR_DATA).map((item) => <SwiperPage key={item} menuItems={HAPPYHOUR_DATA[item]} />),
     [HAPPYHOUR_DATA]
   );
 

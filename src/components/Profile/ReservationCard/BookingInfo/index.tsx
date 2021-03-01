@@ -14,7 +14,7 @@ const BookingInfo: React.FunctionComponent<BookingInfoProps> = ({ data, icon }) 
   return (
         <BookingInfoContainer>
       <IconContainer>{icon}</IconContainer>
-      <Text fontSize={12} color='tertiary' >{data}</Text>
+      <Text fontSize={12} color='quartiary' >{data}</Text>
       </BookingInfoContainer>
   );
 };

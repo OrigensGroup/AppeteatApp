@@ -17,7 +17,7 @@ const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
         <DrinkImage source={{ uri: item.image }} />
         <DrinkDesc>
           <Text color="primary" fontSize={20}>{item.title}</Text>
-          <Text color="primary" fontSize={16}>{item.description}</Text>
+          <Text color="quartiary" fontSize={12}>{item.description}</Text>
         </DrinkDesc>
       </Container>
     </CardContainer>

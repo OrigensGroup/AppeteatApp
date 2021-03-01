@@ -33,6 +33,6 @@ export const DrinkDesc = styled.View`
 export const IconWrap = styled.View`
 display: flex;
 align-items: flex-end;
-padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
+padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.single};
 
 `;

@@ -9,7 +9,8 @@ export const TextFieldContainer = styled.View`
 `;
 
 export const TextFieldInput = styled.TextInput`
-  border-bottom-color: #000;
-  border-bottom-width: 1px;
+ border-bottom-color: ${({ theme }) => theme.colors.border};
+  border-color: transparent;
+  border-width: 1px;
   flex: 1;
 `;
