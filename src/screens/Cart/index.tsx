@@ -1,18 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import InputSpinner from 'react-native-input-spinner';
 import { FlatList } from 'react-native-gesture-handler';
-import Modal from 'react-native-modal';
 import cartTranslations from '../../translations/cart';
 import QrCode from '../../components/Menu/MenuComponents/QrCode';
-import GoToCheckout from '../../components/Menu/CartComponents/AddToBasketButton';
-import CartItem from '../../components/Menu/CartComponents/CartItem';
+import GoToCheckout from '../../components/Cart/AddToBasketButton';
+import CartItem from '../../components/Cart/CartItem';
 import menuTranslations from '../../translations/menu';
 import useCart from '../../hooks/useCart';
-import CloseButton from '../../components/Menu/MenuComponents/CloseButton';
-import Title from '../../components/Shared/Text';
 import UpdateModal from '../../components/Menu/UpdateModal';
-import SwipeableItem, { UnderlayParams } from 'react-native-swipeable-item';
 
 import {
   CartContainer,
@@ -26,7 +22,6 @@ import {
   PrimaryInfo,
   SubTotal,
   SecondaryInfo,
-  ItemName,
   ServiceFee,
   InfoIconWrapper,
   ServiceFeeRightWrapper,
@@ -35,7 +30,6 @@ import {
   SubTotWrapper,
   ButtonA1,
   ButtonA2,
-  ItemInfoWrapper,
   TitleInfoWrapper,
   BasketButtonWrapper,
   AddTipWrapper,
@@ -43,18 +37,9 @@ import {
   BottomCartOverlay,
   SparatorLineDiv,
   TipCounterWrapper,
-  TipCounter,
-  MinusIconButton,
-  PlusIconButton,
-  PopUpContainer,
-  UpdateWrapper,
-  ModalContainer,
-  ModalTitle,
-  DivLine,
-  DivLineContainer,
 } from './styles';
 
-interface CartProps {}
+interface CartProps { }
 
 const Cart: React.FunctionComponent<CartProps> = () => {
   const { cart } = useCart();
@@ -153,7 +138,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
               <PrimaryInfo>£{totalPlusCharge}</PrimaryInfo>
             </OrderTotalWrapper>
             <BasketButtonWrapper>
-              <GoToCheckout price={totalPlusCharge} onClick={() => {}} />
+              <GoToCheckout price={totalPlusCharge} onClick={() => { }} />
             </BasketButtonWrapper>
           </BottomCartOverlay>
         </SparatorLineDiv>
