@@ -14,6 +14,8 @@ import ChangeName from './Settings/PersonalInformation/ChangeName';
 import Text from '../../components/Shared/Text';
 import { ButtonContainer } from '../../screens/Profile/Settings/PersonalInformation/styles';
 import accountTranslations from '../../translations/account';
+import { Alert } from 'react-native';
+import CustomButton from '../../components/Shared/Button';
 
 const Stack = createStackNavigator();
 
@@ -35,33 +37,9 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
       <Stack.Screen component={Notifications} name="Notifications" options={{ title: 'Notifications' }} />
       <Stack.Screen component={Settings} name="Settings" options={{ title: 'Settings' }} />
       <Stack.Screen component={PersonalInformation} name="PersonalInformation"  options={{ title: 'Personal Information' }}/>
-      <Stack.Screen component={Password} name="Password" options={{
-          headerRight: () => (
-            <ButtonContainer>
-            <Text
-              fontSize={20}
-              color='#000'
-            >{accountTranslations.accountPage.save}</Text></ButtonContainer>
-          ),
-          title: 'Change Password'
-        }} />
-      <Stack.Screen component={ChangeName} name="ChangeName" options={{
-          headerRight: () => (
-            <ButtonContainer>
-            <Text
-              fontSize={20}
-              color='#000'
-            >{accountTranslations.accountPage.save}</Text></ButtonContainer>
-          ),
-          title: 'Change Name'
-        }} />
-      <Stack.Screen component={ChangeEmail} name="ChangeEmail"  options={{ headerRight: () => (
-            <ButtonContainer>
-            <Text
-              fontSize={20}
-              color='#000'
-            >{accountTranslations.accountPage.save}</Text></ButtonContainer>
-          ), title: 'Change Email' }} />
+      <Stack.Screen component={Password} name="Password"  />
+      <Stack.Screen component={ChangeName} name="ChangeName" />
+      <Stack.Screen component={ChangeEmail} name="ChangeEmail" />
     </Stack.Navigator>
   );
 };

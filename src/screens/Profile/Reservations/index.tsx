@@ -31,7 +31,7 @@ const Reservations: React.FunctionComponent<ReservationsProps> = () => {
   ];
 
   const renderItem = ({ item }: { item: Item }) => (
-    <ReservationCard title="Be at One" address="12 Upper St, The Angel, London N1 0PQ" date='22 March 2021' time='9 PM' people='3' />
+    <ReservationCard venue="Be at One" address="12 Upper St, The Angel, London N1 0PQ" date='22 March 2021' time='9 PM' people='3' />
   );
   return <ReservationsContainer>
     <FlatList

@@ -9,9 +9,8 @@ export const NavigationContainer = styled.View`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
 `;
-export const CardWrap = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.double}
-    ${({ theme }) => theme.spacing.double};
+export const FavouriteCocktailsContainer = styled.View`
+  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
 `;
 export const Content = styled.ScrollView`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
@@ -29,13 +28,13 @@ export const ImageContainer = styled.View`
   background-color: #2da59a;
 `;
 export const CocktailContainer = styled.ScrollView``;
-export const TitleWrap = styled.View`
+export const TitleContainer = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.single};
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   `;
-export const TitleWrap2 = styled.View`
+export const NameContainer = styled.View`
   margin-top: ${({ theme }) => theme.spacing.single};
 `;
 export const ShowButton = styled.TouchableOpacity`

@@ -1,6 +1,5 @@
 const accountTranslations = {
   accountPage: {
-    favoriteCocktails: 'My Favourite Cocktails',
     myReservation: 'My Reservations',
     myFavouriteCoctails: 'My Favourite Cocktails',
     myOrders: 'My Orders',

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const CardContainer = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(30)};
   height: ${({ theme }) => theme.spacing.multiple(15)};
   display: flex;
@@ -15,7 +15,7 @@ export const CardContainer = styled.TouchableOpacity`
   theme.spacing.half} 0};
 `;
 
-export const CardWrap = styled.View`
+export const CardContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
 
@@ -30,7 +30,3 @@ export const DrinkDesc = styled.View`
   padding: ${({ theme }) => theme.spacing.double} 0 0 ${({ theme }) => theme.spacing.double};
 `;
 
-export const TextTitle = styled.Text`
-  font-size: 20px;
-  color: ${({ theme }) => theme.colors.textPrimary};
-`;

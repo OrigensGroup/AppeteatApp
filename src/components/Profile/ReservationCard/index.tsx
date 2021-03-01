@@ -4,17 +4,17 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import BookingInfo from "../../Profile/ReservationCard/BookingInfo"
 import {
-  CardContainer,
-  DrinkDesc,
-  Content,
+  Container,
+  VenueDesc,
+  VenueName,
   Circle,
-  CardWrap,
-  TextWrap,
+  ReservationCardContainer,
+  TextContainer,
   BottomContainer,
 } from "./styles";
 
 interface ReservationCardProps {
-  title: string;
+  venue: string;
   address: string;
   date: string;
   time: string;
@@ -23,7 +23,7 @@ interface ReservationCardProps {
 }
 
 const ReservationCard: React.FunctionComponent<ReservationCardProps> = ({
-  title,
+  venue,
   address,
   date,
   time,
@@ -31,22 +31,22 @@ const ReservationCard: React.FunctionComponent<ReservationCardProps> = ({
   onClick,
 }) => {
   return (
-    <CardWrap>
-      <CardContainer onPress={onClick}>
-        <Content>
+    <ReservationCardContainer>
+      <Container onPress={onClick}>
+        <VenueName>
         <Circle />
-        <TextWrap><Title fontSize={16} color='#000' bold>{title}</Title></TextWrap>
-        </Content>
-      <DrinkDesc>   
-        <Title fontSize={13} color='#000'>{address}</Title>
-      </DrinkDesc>
+        <TextContainer><Title fontSize={16} color='primary' bold>{venue}</Title></TextContainer>
+        </VenueName>
+      <VenueDesc>   
+        <Title fontSize={13} color='primary'>{address}</Title>
+      </VenueDesc>
       <BottomContainer>
       <BookingInfo icon={<AntDesign name="calendar" size={20} color="#c2c2c2" />} data={date} />
       <BookingInfo icon={<Ionicons name="time-outline" size={20} color="#c2c2c2" />} data={time} />
       <BookingInfo icon={<Ionicons name="people" size={20} color="#c2c2c2" />} data={people} />
       </BottomContainer>
-      </CardContainer>
-    </CardWrap>
+      </Container>
+    </ReservationCardContainer>
   );
 };
 

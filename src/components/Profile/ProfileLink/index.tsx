@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { LinkWrapper } from "./styles";
+import { LinksContainer } from "./styles";
 import ListItem from "../ListItem";
 import accountTranslations from "../../../translations/account";
 
@@ -12,7 +12,7 @@ interface ProfileLinkProps {}
 
 const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
   return (
-    <LinkWrapper>
+    <LinksContainer>
       <ListItem
         icon={<AntDesign name="calendar" size={28} color="#000000" />}
         icon2={
@@ -81,7 +81,7 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
         title={accountTranslations.accountPage.settings}
         navigateTo="Settings"
       />
-    </LinkWrapper>
+    </LinksContainer>
   );
 };
 

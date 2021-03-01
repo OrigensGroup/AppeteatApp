@@ -3,9 +3,9 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import {
-  RowContainer,
-  InnerContainer,
   InfoContainer,
+  ValueContainer,
+  FieldContainer,
 } from "./styles";
 import Text from '../../Shared/Text';
 import { scale } from '../../../theme/textScaling';
@@ -24,18 +24,18 @@ const PersonalInfo: React.FunctionComponent<PersonalInfoProps> = ({onClick, navi
     navigation.navigate(goTo);
   };
   return (
-        <RowContainer >
-          <InfoContainer>
-            <Text fontSize={scale(14)} color="#000">
+        <InfoContainer >
+          <FieldContainer>
+            <Text fontSize={scale(14)} color="primary">
               {field}
             </Text>
-          </InfoContainer>
-          <InnerContainer onPress={navigate(navigateTo)}>
-            <Text fontSize={scale(16)} color="#000">
+          </FieldContainer>
+          <ValueContainer onPress={navigate(navigateTo)}>
+            <Text fontSize={scale(16)} color="primary">
               {value}
             </Text>
-          </InnerContainer>
-        </RowContainer>
+          </ValueContainer>
+        </InfoContainer>
   );
 };
 

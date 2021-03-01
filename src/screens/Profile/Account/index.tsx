@@ -13,9 +13,9 @@ import {
   ProfileContainer,
   ImageContainer,
   NavigationContainer,
-  CardWrap,
-  TitleWrap,
-  TitleWrap2,
+  FavouriteCocktailsContainer,
+  TitleContainer,
+  NameContainer,
   Content,
   ShowButton
 } from './styles';
@@ -50,11 +50,11 @@ const Account: React.FunctionComponent<AccountProps> = () => {
     <ProfileContainer>
       <ImageContainer>
         <ProfileImage />
-        <TitleWrap2>
+        <NameContainer>
           <Text color="primary" fontSize={20}>
             {username}
           </Text>
-        </TitleWrap2>
+        </NameContainer>
       </ImageContainer>
       <Content
         contentContainerStyle={{
@@ -66,24 +66,24 @@ const Account: React.FunctionComponent<AccountProps> = () => {
         <NavigationContainer>
           <ProfileLink />
         </NavigationContainer>
-        <CardWrap>
-          <TitleWrap>
+        <FavouriteCocktailsContainer>
+          <TitleContainer>
             <Text color="primary" fontSize={20}>
-              {accountTranslations.accountPage.favoriteCocktails}
+              {accountTranslations.accountPage.myFavouriteCoctails}
             </Text>
             <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
               <Text color="tertiary" fontSize={16}>
                 {accountTranslations.accountPage.showButton}
               </Text>
             </ShowButton>
-          </TitleWrap>
+          </TitleContainer>
           <FlatList
             data={favoriteCocktails}
             horizontal
             renderItem={flatlistRenderItem}
             showsHorizontalScrollIndicator={false}
           />
-        </CardWrap>
+        </FavouriteCocktailsContainer>
       </Content>
     </ProfileContainer>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
 
 import { MenuItem } from '../../../types/MenuItem';
+import Text from '../../Shared/Text';
 
-import { CardContainer, DrinkImage, DrinkDesc, TextTitle, CardWrap } from './styles';
+import { CardContainer, DrinkImage, DrinkDesc, TextTitle, Container } from './styles';
 
 interface CardProps {
   item: MenuItem;
@@ -12,15 +12,15 @@ interface CardProps {
 
 const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   return (
-    <CardWrap>
-      <CardContainer onPress={onClick}>
+    <CardContainer>
+      <Container onPress={onClick}>
         <DrinkImage source={{ uri: item.image }} />
         <DrinkDesc>
-          <TextTitle>{item.title}</TextTitle>
-          <Text>{item.description}</Text>
+          <Text color="primary" fontSize={20}>{item.title}</Text>
+          <Text color="primary" fontSize={16}>{item.description}</Text>
         </DrinkDesc>
-      </CardContainer>
-    </CardWrap>
+      </Container>
+    </CardContainer>
   );
 };
 
