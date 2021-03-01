@@ -21,6 +21,7 @@ import styled from 'styled-components/native';
 
 export const ModalItemContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(6)};
+  display: flex;
   align-items: center;
   justify-content: center;
   border-width: 1px;
@@ -32,6 +33,7 @@ export const ModalItemContainer = styled.TouchableOpacity`
 
 export const ModalItemTextWrapper = styled.View`
   height: ${({ theme }) => theme.spacing.multiple(7)};
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 ${({ theme }) => theme.spacing.multiple(2)};

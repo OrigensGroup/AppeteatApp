@@ -1,9 +1,11 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Modal from 'react-native-modal';
-import filterTransaltions from '../../../../translations/filter';
-import Title from '../../../Shared/Text';
+import filterTransaltions from '../../../translations/filter';
+import Text from '../../Shared/Text';
 import FilterModalTabs from './FilterModalTabs';
 import Swiper from 'react-native-swiper';
+import FilterModalSwiper from './FilterModalSwiper';
+import { useTheme } from 'styled-components';
 
 import {
   FilterModalContainer,
@@ -19,7 +21,7 @@ import {
   AllergyInfoWrapper,
   FilterModalTbasContainer,
 } from './styles';
-import FilterModalSwiper from './FilterModalSwiper';
+
 
 const FILTERS_DATA: any = {
   Spirits: [
@@ -222,6 +224,8 @@ interface FilterModalProps {
 }
 
 const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible, onClose }) => {
+  const theme = useTheme();
+
   const ref = useRef<Swiper | null>(null);
   const [filterIndex, setFilterIndex] = useState(0);
 
@@ -252,9 +256,9 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
       <FilterModalContainer>
         <FilterPopUpContainer>
           <TitleWrapper>
-            <Title color="primary" fontSize={18} fontWeight="bold">
+            <Text color="primary" fontSize={18} bold>
               {filterTransaltions.titleField.placeholder}
-            </Title>
+            </Text>
           </TitleWrapper>
           <FilterModalTbasContainer>
             <FilterModalTabs
@@ -268,25 +272,25 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
             {filterTabsContent()}
           </Swiper>
           <AllergyInfoWrapper>
-            <Title color="#F69019" fontSize={18}>
+            <Text color='primary' fontSize={18}>
               {filterTransaltions.allergyField.placeholder}
-            </Title>
+            </Text>
           </AllergyInfoWrapper>
           <FilterModalBottomBar>
             <DivLine />
             <FilterModalBottomBarWrapper>
               <BottomButtonContainer>
                 <BottomButtonWrapperLeft>
-                  <Title color="secondary" fontSize={18} bold>
+                  <Text color="secondary" fontSize={18} bold>
                     {filterTransaltions.clearAllField.placeholder}
-                  </Title>
+                  </Text>
                 </BottomButtonWrapperLeft>
               </BottomButtonContainer>
               <BottomButtonContainer>
                 <BottomButtonWrapperRight>
-                  <Title color="secondary" fontSize={18} bold>
+                  <Text color="secondary" fontSize={18} bold>
                     {filterTransaltions.doneField.placeholder}
-                  </Title>
+                  </Text>
                 </BottomButtonWrapperRight>
               </BottomButtonContainer>
             </FilterModalBottomBarWrapper>

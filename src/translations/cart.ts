@@ -27,6 +27,14 @@ const cartTranslations = {
     label: 'OrderTotal',
     placeholder: 'Order Total',
   },
+  updateModalField: {
+    label: 'Update',
+    placeholder: 'Update',
+  },
+  priceModalField: {
+    label: 'Price',
+    placeholder: 'Price £',
+  },
 };
 
 export default cartTranslations;

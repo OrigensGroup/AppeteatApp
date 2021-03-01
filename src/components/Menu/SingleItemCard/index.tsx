@@ -6,6 +6,7 @@ import HeartButton from '../MenuComponents/HeartButton';
 import singleDrinkTranslations from '../../../translations/singleDrink';
 import useCart from '../../../hooks/useCart';
 import AddToBasketButton from './AddToBasketButton';
+import Text from '../../Shared/Text'
 
 import {
   Wrapper,
@@ -13,7 +14,6 @@ import {
   ButtonsWrapper,
   DetailsContainer,
   ItemDetails,
-  Title,
   ItemDescription,
   AllertWrapper,
   AllergiesAllert,
@@ -59,7 +59,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
       <ButtonsWrapper>
         <CloseButton onClick={navigate} />
         <TitleWrapper>
-          <Title>{item.title}</Title>
+          <Text color='primary' fontSize={18} bold>{item.title}</Text>
         </TitleWrapper>
         <HeartButton onClick={() => console.log('hello world')} />
       </ButtonsWrapper>
@@ -69,15 +69,15 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
         </PicWrapper>
         <DetailsContainer>
           <ItemDetails>
-            <ItemDescription>{singleDrinkTranslations.descriptionField.placeholder}</ItemDescription>
+            <Text color='primary' fontSize={14}>{singleDrinkTranslations.descriptionField.placeholder}</Text>
             <AllertWrapper>
-              <AllergiesAllert>{singleDrinkTranslations.alergiesField.placeholder}</AllergiesAllert>
+              <Text color='quartiary' fontSize={14}>{singleDrinkTranslations.alergiesField.placeholder}</Text>
             </AllertWrapper>
             <IngredientsWrapper>
               <IngredientsTopRow>
-                <BoldText>{singleDrinkTranslations.ingredientsField.placeholder}</BoldText>
+                <Text color='primary' fontSize={14} bold>{singleDrinkTranslations.ingredientsField.placeholder}</Text>
                 <CustomiseItem>
-                  <OrangeBoldText>{singleDrinkTranslations.customiseField.placeholder}</OrangeBoldText>
+                  <Text color='quartiary' fontSize={14} bold>{singleDrinkTranslations.customiseField.placeholder}</Text>
                 </CustomiseItem>
               </IngredientsTopRow>
               {ingredients()}

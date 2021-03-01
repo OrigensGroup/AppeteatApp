@@ -8,7 +8,7 @@ import GoToCheckout from '../../components/Cart/AddToBasketButton';
 import CartItem from '../../components/Cart/CartItem';
 import menuTranslations from '../../translations/menu';
 import useCart from '../../hooks/useCart';
-import UpdateModal from '../../components/Menu/UpdateModal';
+import UpdateModal from '../../components/Cart/UpdateModal';
 
 import {
   CartContainer,

@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import SwiperPage from '../../../components/Menu/MenuComponents/SwiperPage';
 import MenuTabs from '../../../components/Menu/MenuComponents/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/MenuComponents/ViewBasketButton';
-import FilterModal from '../../../components/Menu/MenuComponents/FilterModal';
+import FilterModal from '../../../components/Menu/FilterModal';
 import Filter from '../../../components/Menu/MenuComponents/Filter'
 import CloseButton from '../../../components/Menu/MenuComponents/CloseButton'
 import useMenu from '../../../hooks/useMenu';

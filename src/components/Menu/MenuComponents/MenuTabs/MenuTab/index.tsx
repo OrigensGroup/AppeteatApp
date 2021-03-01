@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import Text from '../../../../Shared/Text'
 
 import { MenuTabContainer } from './styles';
 
@@ -17,7 +17,7 @@ const MenuTab: React.FunctionComponent<MenuTabProps> = ({ active, index, onPress
 
   return (
     <MenuTabContainer active={active} onPress={onMenuPress}>
-      <Text>{title}</Text>
+      <Text color='primary' fontSize={18} bold>{title}</Text>
     </MenuTabContainer>
   );
 };

@@ -1,8 +1,9 @@
 import React from "react";
+import Text from '../../../../Shared/Text'
+
 
 import {
     FilterTabContainer,
-    Text
 } from './styles'
 
 interface FilterModalTabProps {
@@ -20,7 +21,7 @@ const FilterModalTab: React.FunctionComponent<FilterModalTabProps> = ({ active, 
 
     return (
         <FilterTabContainer active={active} onPress={onFilterPress}>
-            <Text>{title}</Text>
+            <Text color='primary' fontSize={18} bold>{title}</Text>
         </FilterTabContainer>);
 };
 

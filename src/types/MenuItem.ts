@@ -11,7 +11,8 @@ export type MenuItem = {
   belongsTo: string;
   image: string;
   smallDesc: string;
-  description: string;
+  shortDescription: string;
+  longDescription: string;
   allergyCustomisations: string[];
   extras: Extra[];
   promoted: boolean;

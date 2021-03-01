@@ -1,12 +1,12 @@
 import styled from 'styled-components/native';
 
 export const Wrapper = styled.View`
-  background-color: #fff;
   height: 100%;
   width: 100%;
 `;
 
 export const PicWrapper = styled.View`
+  display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -26,6 +26,7 @@ export const ItemPic = styled.Image`
 export const ButtonsWrapper = styled.View`
   margin-top: ${({ theme }) => theme.spacing.multiple(2)};
   width: 100%;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -47,70 +48,39 @@ export const ItemDetails = styled.View`
 export const DetailsTopRow = styled.View`
   margin-top: ${({ theme }) => theme.spacing.single};
   margin-bottom: ${({ theme }) => theme.spacing.single};
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
 
 export const TitleWrapper = styled.View`
+display: flex;
   justify-content: center;
   align-items: center;
   border-bottom-color: #fc7930;
   border-bottom-width: 3px;
 `;
 
-export const Title = styled.Text`
-  font-size: 20px;
-  color: black;
-  font-weight: bold;
-`;
 
-export const Price = styled.Text`
-  font-size: 20px;
-  color: black;
-  font-weight: bold;
-`;
+export const AllertWrapper = styled.TouchableOpacity`
+margin-top: ${({ theme }) => theme.spacing.single};`;
 
-export const ItemDescription = styled.Text`
-  font-size: 14px;
-  color: black;
-  margin-bottom: ${({ theme }) => theme.spacing.single};
-`;
-
-export const AllertWrapper = styled.TouchableOpacity``;
-
-export const AllergiesAllert = styled.Text`
-  font-size: 14px;
-  color: orange;
-`;
 
 export const IngredientsWrapper = styled.View`
   margin-top: ${({ theme }) => theme.spacing.multiple(5)};
 `;
 
 export const IngredientsTopRow = styled.View`
+display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
-export const CustomiseItem = styled.TouchableOpacity``;
 
-export const OrangeBoldText = styled.Text`
-  font-size: 14px;
-  color: orange;
-  font-weight: bold;
-`;
-
-export const BoldText = styled.Text`
-  font-size: 14px;
-  color: black;
-  font-weight: bold;
-`;
-
-export const Text = styled.Text`
-  font-size: 14px;
-  color: black;
+export const CustomiseItem = styled.TouchableOpacity`
 `;
 
 export const BasketButtonWrapper = styled.View`
+display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

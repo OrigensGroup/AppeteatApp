@@ -1,8 +1,10 @@
 import React from 'react';
 import InputSpinner from 'react-native-input-spinner';
 import Modal from 'react-native-modal';
-
 import useCart from '../../../hooks/useCart';
+import { useTheme } from 'styled-components';
+import cartTranslations from '../../../translations/cart';
+
 import {
     ModalCounterContainer,
     DivLine,
@@ -14,6 +16,8 @@ import {
     UpdateWrapper,
 } from './styles';
 import Title from '../../Shared/Text';
+import Text from '../../Shared/Text';
+
 
 interface UpdateModalProps {
     item: any;
@@ -23,6 +27,7 @@ interface UpdateModalProps {
 
 const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible, item, onClose }) => {
     const { updateItemQuantity } = useCart();
+    const theme = useTheme();
 
     const updateQuantity = (number: number) => {
         updateItemQuantity(item, number);
@@ -42,9 +47,9 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
             <ModalContainer>
                 <PopUpContainer>
                     <ModalTitle>
-                        <Title color="black" fontSize={18} fontWeight="bold">
+                        <Text color='primary' fontSize={18} bold>
                             {item.title}
-                        </Title>
+                        </Text>
                     </ModalTitle>
                     <ModalCounterContainer>
                         <ModalCounterWrapper>
@@ -71,17 +76,17 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
                         </ModalCounterWrapper>
                     </ModalCounterContainer>
                     <ModalTitle>
-                        <Title color="#c2c2c2" fontSize={18} fontWeight="normal">
-                            Price £{item.price}
-                        </Title>
+                        <Text color='tertiary' fontSize={18}>
+                            {cartTranslations.priceModalField.placeholder}{item.price}
+                        </Text>
                     </ModalTitle>
                     <DivLineContainer>
                         <DivLine />
                     </DivLineContainer>
                     <UpdateWrapper onPress={onClose}>
-                        <Title color="#F69019" fontSize={18} fontWeight="bold">
-                            Update
-            </Title>
+                        <Title color='quartiary' fontSize={18} bold>
+                            {cartTranslations.updateModalField.placeholder}
+                        </Title>
                     </UpdateWrapper>
                 </PopUpContainer>
             </ModalContainer>

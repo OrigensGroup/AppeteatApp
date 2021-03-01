@@ -3,7 +3,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import SearchField from '../SearchField';
 
-import { SearchBarWrapper, SearchTextWrapper, SearchButton, SearchButtonWrapper } from './styles';
+import {
+  SearchBarWrapper,
+  SearchBarTextWrapper,
+  SearchButton,
+  SearchButtonWrapper
+} from './styles';
 
 interface SearchBarProps {
   onClick: () => void;
@@ -19,9 +24,9 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = ({ onClick, placehold
           <Icon color="#0008" name="search" size={28} />
         </SearchButton>
       </SearchButtonWrapper>
-      <SearchTextWrapper>
+      <SearchBarTextWrapper>
         <SearchField placeholder={placeholder} textContentType={textContentType} />
-      </SearchTextWrapper>
+      </SearchBarTextWrapper>
     </SearchBarWrapper>
   );
 };

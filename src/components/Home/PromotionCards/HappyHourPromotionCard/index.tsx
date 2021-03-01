@@ -1,6 +1,7 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import CountDown from 'react-native-countdown-component';
+import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from 'styled-components';
 
@@ -14,12 +15,18 @@ interface HappyHourPromotionCardProps {
 
 const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({ endDate, onClick }) => {
   const theme = useTheme();
+  const navigation = useNavigation();
 
   const dateDifference = endDate - new Date().getTime();
   const secUntilDate = dateDifference / 1000;
 
+
+  const navigateHappyHour = () => {
+    navigation.navigate('HappyHourMenu');
+  };
+
   return (
-    <HappyHourPromotionCardContainer onPress={onClick}>
+    <HappyHourPromotionCardContainer onPress={navigateHappyHour}>
       <LinearGradient colors={['#DEB98E', '#FFB803']} style={styles.linearGradient}>
         <Text fontSize={24} color="secondary" align="center">
           Happy Hour

@@ -10,7 +10,7 @@ interface HeartButtonProps {
 const HeartButton: React.FunctionComponent<HeartButtonProps> = ({ onClick }) => {
   return (
     <HeartButtonContainer onPress={onClick}>
-      <Icon color="#0008" name="heart-outline" size={28} />
+      <Icon color="#000000" name="heart-outline" size={28} />
     </HeartButtonContainer>
   );
 };

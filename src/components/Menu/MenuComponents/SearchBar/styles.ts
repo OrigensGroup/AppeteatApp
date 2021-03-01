@@ -15,9 +15,10 @@ export const SearchBarWrapper = styled.View`
   align-items: center;
 `;
 
-export const SearchTextWrapper = styled.View`
+export const SearchBarTextWrapper = styled.View`
   margin-left: ${({ theme }) => theme.spacing.single};
   height: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
 `;
@@ -25,6 +26,7 @@ export const SearchTextWrapper = styled.View`
 export const SearchButton = styled.TouchableOpacity`
   width: 100%;
   height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
@@ -32,6 +34,7 @@ export const SearchButton = styled.TouchableOpacity`
 export const SearchButtonWrapper = styled.View`
   width: ${({ theme }) => theme.spacing.multiple(5)};
   height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;

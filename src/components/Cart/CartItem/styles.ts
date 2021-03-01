@@ -6,10 +6,12 @@ export const SingleCartItem = styled.TouchableOpacity`
 `;
 
 export const CartItemLeftWrapper = styled.View`
+  display: flex;
   flex-direction: row;
 `;
 
 export const ItemInfoWrapper = styled.View`
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-top: ${({ theme }) => theme.spacing.multiple(1)};

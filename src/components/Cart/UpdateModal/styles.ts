@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 
 export const ModalCounterContainer = styled.View`
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -9,6 +10,7 @@ export const ModalCounterContainer = styled.View`
 `;
 
 export const ModalCounterWrapper = styled.View`
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -16,13 +18,15 @@ export const ModalCounterWrapper = styled.View`
 `;
 
 export const ModalContainer = styled.View`
+  display: flex;
   height: 100%;
   align-items: center;
   justify-content: flex-end;
 `;
 
 export const PopUpContainer = styled.View`
-  background-color: #ffffff;
+  display: flex;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   align-items: center;
   height: 40%;
   width: 100%;
@@ -39,6 +43,7 @@ export const UpdateWrapper = styled.TouchableOpacity`
 `;
 
 export const DivLineContainer = styled.View`
+  display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -48,8 +53,9 @@ export const DivLineContainer = styled.View`
 `;
 
 export const DivLine = styled.View`
+  display: flex;
   width: 100%;
-  border-bottom-color: black;
+  border-bottom-color: ${({ theme }) => theme.colors.textPrimary};
   border-bottom-width: 1px;
   margin-top: ${({ theme }) => theme.spacing.multiple(2)};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};

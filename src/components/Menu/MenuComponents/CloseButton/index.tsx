@@ -10,7 +10,7 @@ interface CloseButtonProps {
 const CloseButton: React.FunctionComponent<CloseButtonProps> = ({ onClick }) => {
   return (
     <CloseButtonContainer onPress={onClick}>
-      <Icon color="#0008" name="ios-close" size={28} />
+      <Icon color="#000000" name="ios-close" size={28} />
     </CloseButtonContainer>
   );
 };

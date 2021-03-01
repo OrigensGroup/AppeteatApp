@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import Text from '../../../Shared/Text'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Button } from './styles';
@@ -13,7 +13,7 @@ const QrCode: React.FunctionComponent<FilterProps> = ({ onClick, title }) => {
   return (
     <Button onPress={onClick}>
       <Icon color="#0008" name="ios-qr-code-outline" size={28} />
-      <Text>{title}</Text>
+      <Text color='primary' fontSize={12}>{title}</Text>
     </Button>
   );
 };

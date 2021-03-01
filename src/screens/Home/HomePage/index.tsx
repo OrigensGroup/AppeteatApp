@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useNavigation } from '@react-navigation/native';
-
 import { FlatList } from 'react-native';
 import PromotionCard from '../../../components/Home/PromotionItemCard';
 import useMenu from '../../../hooks/useMenu';
@@ -22,17 +20,12 @@ import {
 import CarouselPromo from '../../../components/Home/Carousel';
 import Map from '../../../components/Map';
 
-interface HomeProps {}
+interface HomeProps { }
 
 const Home: React.FunctionComponent<HomeProps> = () => {
-  const navigation = useNavigation();
   const { menu } = useMenu();
 
   const promotedItems = menu.items.filter((menuItem) => menuItem.promoted);
-
-  const navigate = () => {
-    navigation.navigate('HappyHourMenu');
-  };
 
   const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionCard item={item} />;
 

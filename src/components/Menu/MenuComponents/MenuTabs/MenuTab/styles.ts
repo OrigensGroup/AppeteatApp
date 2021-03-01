@@ -12,6 +12,7 @@ export const MenuTabContainer = styled.TouchableOpacity<MenuTabContainerProps>`
 
 export const Text = styled.Text`
   font-size: 18px;
+  display: flex;
   color: black;
   font-weight: bold;
 `;

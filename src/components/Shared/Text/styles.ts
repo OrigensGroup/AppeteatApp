@@ -8,6 +8,7 @@ interface TitleProps {
   align: string;
 }
 export const TitleContainer = styled.View`
+  display: flex;
   justify-content: center;
 `;
 
@@ -22,10 +23,10 @@ export const TitleText = styled.Text<TitleProps>`
         return theme.colors.textSecondary;
       }
       case 'tertiary': {
-        return theme.colors.active;
+        return theme.colors.border;
       }
       case 'quartiary': {
-        return theme.colors.border;
+        return theme.colors.active;
       }
 
       default:

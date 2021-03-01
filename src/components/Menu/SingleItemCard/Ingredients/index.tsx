@@ -1,6 +1,7 @@
 import React from 'react';
+import Text from '../../../Shared/Text'
 
-import { IngredientText, IngredientWrapper } from './styles';
+import { IngredientWrapper } from './styles';
 
 interface IngredientsProps {
   ingredient: string;
@@ -9,7 +10,7 @@ interface IngredientsProps {
 const Ingredients: React.FunctionComponent<IngredientsProps> = ({ ingredient }) => {
   return (
     <IngredientWrapper>
-      <IngredientText>{ingredient}</IngredientText>
+      <Text color='primary' fontSize={14}>{ingredient}</Text>
     </IngredientWrapper>
   );
 };

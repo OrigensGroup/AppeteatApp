@@ -12,10 +12,3 @@ export const FilterTabContainer = styled.TouchableOpacity<MenuTabContainerProps>
     padding: ${({ theme }) => theme.spacing.multiple(1)};
 `;
 
-
-export const Text = styled.Text`
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-`;
-

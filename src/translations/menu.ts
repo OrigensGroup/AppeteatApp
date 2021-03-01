@@ -7,6 +7,10 @@ const menuTranslations = {
     label: 'QrCode',
     placeholder: 'Scan Tavolo',
   },
+  viewBasketField: {
+    label: 'ViewBasket',
+    placeholder: 'View Basket',
+  },
 };
 
 export default menuTranslations;
