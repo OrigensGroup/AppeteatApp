@@ -8,7 +8,7 @@ export const MenuWrapper = styled.View`
 
 export const TopContainer = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
-  margin-top: ${({ theme }) => theme.spacing.multiple(1)};
+  margin-top: ${({ theme }) => theme.spacing.single};
 `;
 
 export const TopBarWrapper = styled.View`
