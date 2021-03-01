@@ -11,7 +11,7 @@ interface TextProps {
 
 const Text: React.FunctionComponent<TextProps> = ({ children, color, fontSize, bold, align = 'left' }) => {
   return (
-    <TitleContainer>
+    <TitleContainer >
       <TitleText  color={color} fontSize={fontSize} align={align} bold={bold}>
         {children}
       </TitleText>

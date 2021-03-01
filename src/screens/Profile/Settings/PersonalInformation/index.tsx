@@ -1,17 +1,12 @@
 import React from 'react';
 
-import { useNavigation } from '@react-navigation/native';
-
-import Title from '../../../../components/Shared/Text';
 
 import {
   PersonalInformationContainer,
-  RowContainer,
-  InnerContainer,
-  InfoContainer,
-  PersonalInformationWrap,
+
 } from "./styles";
-import { scale } from "../../../../theme/textScaling";
+import PersonalInfo from '../../../../components/Profile/PersonalInfo';
+import accountTranslations from '../../../../translations/account';
 interface PersonalInformationProps {
   onClick?: () => void;
 }
@@ -19,41 +14,11 @@ interface PersonalInformationProps {
 const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (
   onClick
 ) => {
-  const navigation = useNavigation();
-  const navigate = () => {
-    navigation.navigate("ChangeEmail");
-  };
-  const navigate2 = () => {
-    navigation.navigate("ChangeName");
-  };
+
   return (
     <PersonalInformationContainer>
-      <PersonalInformationWrap>
-        <RowContainer>
-          <InfoContainer>
-            <Title fontSize={14} color="#000">
-              Email address
-            </Title>
-          </InfoContainer>
-          <InnerContainer onPress={navigate}>
-            <Title fontSize={16} color="#000">
-              hkdj@hotmail.it
-            </Title>
-          </InnerContainer>
-        </RowContainer>
-        <RowContainer>
-          <InfoContainer>
-            <Title fontSize={scale(14)} color="#000">
-              Name
-            </Title>
-          </InfoContainer>
-          <InnerContainer onPress={navigate2}>
-            <Title fontSize={scale(14)} color="#000">
-              Alessandro Carpanzano
-            </Title>
-          </InnerContainer>
-        </RowContainer>
-      </PersonalInformationWrap>
+        <PersonalInfo navigateTo='ChangeEmail' field={accountTranslations.accountPage.email} value='hkdj@hotmail.it'></PersonalInfo>
+      <PersonalInfo navigateTo='ChangeName' field={accountTranslations.accountPage.name} value='Alessandro Carpanzano'></PersonalInfo>
     </PersonalInformationContainer>
   );
 };

@@ -31,7 +31,15 @@ export const ImageContainer = styled.View`
 export const CocktailContainer = styled.ScrollView``;
 export const TitleWrap = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.single};
-`;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  `;
 export const TitleWrap2 = styled.View`
   margin-top: ${({ theme }) => theme.spacing.single};
+`;
+export const ShowButton = styled.TouchableOpacity`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: ${({ theme }) => theme.spacing.single};
 `;

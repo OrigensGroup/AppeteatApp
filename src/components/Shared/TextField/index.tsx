@@ -15,9 +15,10 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({ label, placeholder
 
   return (
     <TextFieldContainer>
+      {label && 
       <TextFieldLabel>
         <TextFieldText>{label}</TextFieldText>
-      </TextFieldLabel>
+      </TextFieldLabel>}
       <TextFieldInput
         defaultValue={text}
         onChangeText={updateText}

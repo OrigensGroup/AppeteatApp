@@ -6,6 +6,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinkWrapper } from "./styles";
 import ListItem from "../ListItem";
+import accountTranslations from "../../../translations/account";
 
 interface ProfileLinkProps {}
 
@@ -21,7 +22,7 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
             color="#818181"
           />
         }
-        title="My Reservation"
+        title={accountTranslations.accountPage.myReservation}
         navigateTo="Reservations"
       />
       <ListItem
@@ -39,7 +40,7 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
             color="#818181"
           />
         }
-        title="My Favourite Cocktails"
+        title={accountTranslations.accountPage.myFavouriteCoctails}
         navigateTo="FavouriteCocktails"
       />
 
@@ -52,7 +53,7 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
             color="#818181"
           />
         }
-        title="My Orders"
+        title={accountTranslations.accountPage.myOrders}
         navigateTo="Orders"
       />
 
@@ -65,7 +66,7 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
             color="#818181"
           />
         }
-        title="Notification"
+        title={accountTranslations.accountPage.notifications}
         navigateTo="Notifications"
       />
       <ListItem
@@ -77,7 +78,7 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
             color="#818181"
           />
         }
-        title="Settings"
+        title={accountTranslations.accountPage.settings}
         navigateTo="Settings"
       />
     </LinkWrapper>

@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 
 export const CardContainer = styled.TouchableOpacity`
-  height: ${({ theme }) => theme.spacing.multiple(25)};
+  height: ${({ theme }) => theme.spacing.multiple(28)};
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius:${({ theme }) => theme.spacing.multiple(3)};
@@ -16,24 +16,25 @@ export const CardWrap = styled.View`
 export const DrinkImage = styled.Image`
   height: 100%;
   width: 100%;
-  border-radius:${({ theme }) => theme.spacing.multiple(3)};
+  border-top-left-radius:${({ theme }) => theme.spacing.multiple(3)};
+  border-top-right-radius:${({ theme }) => theme.spacing.multiple(3)};
+  border-bottom-left-radius:${({ theme }) => theme.spacing.multiple(3)};
+  border-bottom-right-radius:${({ theme }) => theme.spacing.multiple(3)};
+
 `;
 export const ImageContainer = styled.View`
-  flex:1;
-  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.single};
+  height: 60%;
+  padding: ${({ theme }) => theme.spacing.single};
 
 `;
 
 export const DrinkDesc = styled.View`
-  flex:1;
-  padding: ${({ theme }) => theme.spacing.single} 0 0 ${({ theme }) => theme.spacing.double};
+  flex: 1;
+  padding: 0 ${({ theme }) => theme.spacing.double} ;
 `;
 export const IconWrap = styled.View`
- position: absolute;
- bottom: 16px;
- right: 16px;
-`;
-export const TextTitle = styled.Text`
-  font-size: 20px;
-  color: black;
+display: flex;
+align-items: flex-end;
+padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
+
 `;

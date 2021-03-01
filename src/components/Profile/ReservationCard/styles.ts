@@ -12,11 +12,6 @@ export const CardContainer = styled.TouchableOpacity`
 export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
-
-export const IconWrap = styled.View`
-  padding: 0 ${({ theme }) => theme.spacing.half};
-`;
-
 export const Content = styled.View`
   display: flex;
   flex-direction: row;
@@ -43,8 +38,4 @@ margin:${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.dou
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-`;
-export const BookingInfo = styled.View`
-display: flex;
-flex-direction: row;
 `;

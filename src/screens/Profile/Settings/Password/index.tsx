@@ -1,28 +1,27 @@
 import React from 'react';
 
 import TextField2 from '../../../../components/TextField2';
+import accountTranslations from '../../../../translations/account';
 
-import { PasswordContainer, PasswordWrap } from './styles';
+import { PasswordContainer } from './styles';
 
 interface PasswordProps {}
 
 const Password: React.FunctionComponent<PasswordProps> = () => {
   return (
     <PasswordContainer>
-      <PasswordWrap>
         <TextField2
-          placeholder="Current password"
+          placeholder={accountTranslations.accountPage.currentPassword}
           textContentType="password"
         ></TextField2>
         <TextField2
-          placeholder="New password"
+          placeholder={accountTranslations.accountPage.newPassword}
           textContentType="password"
         ></TextField2>
         <TextField2
-          placeholder="Re-enter new password"
+          placeholder={accountTranslations.accountPage.reNewPassword}
           textContentType="password"
         ></TextField2>
-      </PasswordWrap>
     </PasswordContainer>
   );
 };
