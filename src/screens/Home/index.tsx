@@ -13,7 +13,6 @@ const HomeNav: React.FunctionComponent<HomeNavProps> = () => {
     <Stack.Navigator headerMode={'none'}>
       <Stack.Screen name="HomePage" component={Home} />
       <Stack.Screen name="HappyHourMenu" component={HappyHourMenu} />
-      <Stack.Screen name="LocationsList" component={LocationsList} />
     </Stack.Navigator>
   );
 };

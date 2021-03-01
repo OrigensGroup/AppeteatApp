@@ -3,33 +3,24 @@ import styled from 'styled-components/native';
 
 export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(22)};
+  height: ${({ theme }) => theme.spacing.multiple(30)};
+
   display: flex;
   flex-direction: row;
+
   background-color: ${({ theme }) => theme.colors.textSecondary};
-  border-radius: ${({ theme }) => theme.spacing.double};
+
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-width: 1px;
-  border-color: #c2c2c2;
+  border-color: ${({ theme }) => theme.colors.border};
 `;
 
 export const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    borderRadius: 15,
+    borderRadius: 16,
   },
 });
-
-export const PromotionTitle = styled.Text`
-  color: ${({ theme }) => theme.colors.textSecondary};
-  text-align: center;
-  font-size: ${({ theme }) => theme.spacing.multiple(3)};
-`;
-
-export const PromotionDesc = styled.Text`
-  color: ${({ theme }) => theme.colors.inactive};
-  text-align: center;
-  font-size: ${({ theme }) => theme.spacing.double};
-`;
 
 export const HappyHourPromotionCardTimerContainer = styled.View`
   display: flex;
@@ -37,5 +28,48 @@ export const HappyHourPromotionCardTimerContainer = styled.View`
   justify-content: center;
   align-items: center;
 
+  margin: auto;
+`;
+
+export const HappyHourTitleContainer = styled.View`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: ${({ theme }) => theme.spacing.double};
+`;
+
+export const DigitCounter = styled.View`
+  display: flex;
+  align-items: center;
+`;
+
+export const DigitBackground = styled.View`
+  width: ${({ theme }) => theme.spacing.multiple(12)};
+  height: ${({ theme }) => theme.spacing.multiple(10)};
+  background: ${({ theme }) => theme.colors.textSecondary};
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-color: ${({ theme }) => theme.colors.border};
+  border-width: 1px;
+`;
+
+export const DigitTitle = styled.View``;
+
+export const TimerDots = styled.View``;
+
+export const TimerDot = styled.View`
+  width: ${({ theme }) => theme.spacing.oneAndHalf};
+  height: ${({ theme }) => theme.spacing.oneAndHalf};
+  background: ${({ theme }) => theme.colors.textSecondary};
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
+
+  margin: 0 ${({ theme }) => theme.spacing.oneAndHalf} ${({ theme }) => theme.spacing.multiple(3)};
+
+  border-color: ${({ theme }) => theme.colors.border};
+  border-width: 1px;
 `;

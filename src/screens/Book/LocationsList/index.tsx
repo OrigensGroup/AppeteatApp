@@ -2,7 +2,7 @@ import React, { Component, useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, Animated, Dimensions } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
-import LocationCard from '../../../components/Home/PromotionItemCard';
+import LocationCard from '../../../components/Home/FeaturedItems/PromotionItemCard';
 
 import { mapStyle } from '../../../utils/mapstyle';
 

@@ -11,6 +11,7 @@ import {
   ImageContainer,
   DiscountPromotionOrderButton,
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 type DiscountCardItem = {
   title: string;
@@ -20,14 +21,19 @@ type DiscountCardItem = {
 
 interface DiscountPromotionCardProps {
   item: DiscountCardItem;
-  onClick?: () => void;
 }
 
 //MAX DESCRIPTION 163 chars
 
-const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps> = ({ item, onClick }) => {
+const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps> = ({ item }) => {
+  const navigation = useNavigation();
+
+  const navigate = () => {
+    navigation.navigate('Menu');
+  };
+
   return (
-    <DiscountPromotionContainer onPress={onClick}>
+    <DiscountPromotionContainer onPress={navigate}>
       <ImageContainer>
         <DiscountPromotionImage source={{ uri: item.image }} />
       </ImageContainer>

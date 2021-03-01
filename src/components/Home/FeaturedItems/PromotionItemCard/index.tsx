@@ -1,15 +1,17 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
-import { MenuItem } from '../../../types/MenuItem';
+import { MenuItem } from '../../../../types/MenuItem';
 
-import Text from '../../Shared/Text';
+import HeartLike from '../../../Shared/HeartLike';
+
+import Text from '../../../Shared/Text';
 
 import {
   PromotionItemCardContainer,
+  PromotionItemCardImageContainer,
   PromotionItemCardImage,
   PromotionItemCardDescription,
-  PromotionItemCardLike,
+  PromotionItemCardLikeContainer,
 } from './styles';
 
 interface PromotionItemCardProps {
@@ -22,18 +24,20 @@ const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ it
 
   return (
     <PromotionItemCardContainer onPress={onClick}>
-      <PromotionItemCardImage source={{ uri: item.image }} />
+      <PromotionItemCardImageContainer>
+        <PromotionItemCardImage source={{ uri: item.image }} />
+      </PromotionItemCardImageContainer>
       <PromotionItemCardDescription>
         <Text fontSize={20} color="primary">
           {item.title}
         </Text>
-        <Text fontSize={16} color="primary">
+        <Text fontSize={16} color="primary" light>
           {item.description}
         </Text>
       </PromotionItemCardDescription>
-      <PromotionItemCardLike>
-        <Icon color={theme.colors.textPrimary} name="heart-outline" size={28} />
-      </PromotionItemCardLike>
+      <PromotionItemCardLikeContainer>
+        <HeartLike />
+      </PromotionItemCardLikeContainer>
     </PromotionItemCardContainer>
   );
 };

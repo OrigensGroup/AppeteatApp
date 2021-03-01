@@ -1,5 +1,6 @@
 export interface ColorsInterface {
   active: string;
+  secondaryActive: string;
   inactive: string;
   border: string;
   textPrimary: string;
@@ -7,9 +8,10 @@ export interface ColorsInterface {
 }
 
 const colors: ColorsInterface = {
-  active: '#F69019',
-  inactive: '#9D9891',
-  border: '#C2C2C2',
+  active: '#f69019',
+  secondaryActive: '#f1b8ff',
+  inactive: '#9d9891',
+  border: '#c2c2c2',
   textPrimary: '#000000',
   textSecondary: '#ffffff',
 };

@@ -8,8 +8,13 @@ interface TitleProps {
   light?: boolean;
   align: string;
 }
+
 export const TitleContainer = styled.View`
-  justify-content: center;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 `;
 
 export const TitleText = styled.Text<TitleProps>`

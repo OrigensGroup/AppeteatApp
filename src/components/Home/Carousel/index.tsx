@@ -8,6 +8,7 @@ import DiscountPromotionCard from '../PromotionCards/DiscountPromotionCard';
 
 import { CarouselContainer, Container } from './styles';
 import { useTheme } from 'styled-components';
+import ImagePromotion from '../PromotionCards/ImagePromotion';
 
 interface CarouselPromoProps {}
 
@@ -15,8 +16,15 @@ const sliderWidth = Dimensions.get('window').width;
 
 const DATA: any[] = [
   {
+    id: '9',
+    title: 'Third Item',
+    endDate: 'March 1 2021 18:30:00 GMT+0000',
+    type: 'happyhour',
+  },
+  {
     id: '17',
     title: 'First Item',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToUP1IEZFfaiwUAZtPSwqKvPBUNNF-emr-DA&usqp=CAU',
     type: 'image',
   },
   {
@@ -26,11 +34,6 @@ const DATA: any[] = [
     image:
       'https://www.liquor.com/thmb/WjB8S0yKOpreI1-WHrcdWToVAN8=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/neighborhood-negroni-720x720-primary-727f7dc3a5d04a298d63977679efe856.jpg',
     type: 'discount',
-  },
-  {
-    id: '9',
-    title: 'Third Item',
-    type: 'happyhour',
   },
 ];
 
@@ -68,19 +71,19 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
       );
     }
 
-    if (item.type === 'image') {
+    if (item.type === 'happyhour') {
       return (
         <Container>
-          <HappyHourPromotionCard endDate={new Date().getTime()} />
-        </Container>
-      );
-    } else {
-      return (
-        <Container>
-          <HappyHourPromotionCard endDate={new Date().getTime()} />
+          <HappyHourPromotionCard endDate={item.endDate} />
         </Container>
       );
     }
+
+    return (
+      <Container>
+        <ImagePromotion image={item.image} />
+      </Container>
+    );
   };
 
   const setIndex = (index: number) => {

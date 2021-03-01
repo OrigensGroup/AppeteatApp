@@ -5,7 +5,7 @@ export const DiscountPromotionContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(30)};
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};

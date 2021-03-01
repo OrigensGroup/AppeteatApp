@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
 
 export const PromotionItemCardContainer = styled.TouchableOpacity`
+  min-width: ${({ theme }) => theme.spacing.multiple(30)};
   width: ${({ theme }) => theme.spacing.multiple(30)};
-  height: ${({ theme }) => theme.spacing.multiple(20)};
+  min-height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
   flex-direction: row;
 
@@ -10,11 +11,14 @@ export const PromotionItemCardContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(20)};
 
   border-width: 1px;
-  border-color: #C2C2C2;
+  border-color: ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} ${({ theme }) =>
-  theme.spacing.half} 0};
+  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} 0 0;
+`;
+
+export const PromotionItemCardImageContainer = styled.View`
+  padding: ${({ theme }) => theme.spacing.oneAndHalf};
 `;
 
 export const PromotionItemCardImage = styled.Image`
@@ -24,11 +28,13 @@ export const PromotionItemCardImage = styled.Image`
 `;
 
 export const PromotionItemCardDescription = styled.View`
-  padding-top: ${({ theme }) => theme.spacing.single};
+  flex: 1;
+  padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double} 0 0;
 `;
 
-export const PromotionItemCardLike = styled.View`
+export const PromotionItemCardLikeContainer = styled.View`
   position: absolute;
-  bottom: ${({ theme }) => theme.spacing.single};
-  right: ${({ theme }) => theme.spacing.single};
+  bottom: ${({ theme }) => theme.spacing.oneAndHalf};
+  right: ${({ theme }) => theme.spacing.oneAndHalf};
+  z-index: 99;
 `;
