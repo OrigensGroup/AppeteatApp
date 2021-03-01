@@ -8,7 +8,6 @@ import LoginTextField from '../../components/Shared/LoginTextField';
 import loginTranslations from '../../translations/login';
 import { AppleButton } from '@invertase/react-native-apple-authentication';
 import { TextFieldWrapper, LoginContainer, LogInContainer, RegisterContainer, RegisterText, UpperContent, BottomContent, LogoImage, LogoContainer, IconWrap, SocialLogin } from './styles';
-import { Alert } from 'react-native';
 
 interface RegisterProps { }
 

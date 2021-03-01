@@ -1,29 +1,25 @@
 import styled from 'styled-components/native';
 
-export const BookTableContainer = styled.View`
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+
+export const ModalContainer = styled.View`
   height: 100%;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
-export const VenueImage = styled.Image`
-  width: 100%;
-  height: 100%;
-`;
-export const ImageContainer = styled.View`
-  width: 100%;
-  height: 40%;
-  z-index: 1;
-`;
-export const FieldsContainer = styled.View`
-  top: 30%;
+export const PopUpContainer = styled.View`
+  background-color: #ffffff;
+  align-items: center;
   height: 70%;
   width: 100%;
-  border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
-  border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
-  position: absolute;
-  z-index: 2;
-  background-color: white;
+  border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  border-top-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
 `;
+
+export const UpdateWrapper = styled.TouchableOpacity`
+  padding-top: ${({ theme }) => theme.spacing.multiple(3)};
+`;
+
 export const Container = styled.View`
   padding: ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.multiple(5)};
   width: 60%;
@@ -60,3 +56,5 @@ export const IconContainer = styled.View`
 export const TextContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single} 0;
 `;
+
+

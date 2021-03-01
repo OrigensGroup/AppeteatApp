@@ -12,7 +12,6 @@ const Book: React.FunctionComponent<BookProps> = () => {
   return (
     <Stack.Navigator headerMode="none">
       <Stack.Screen component={LocationsList} name="LocationsList" />
-      <Stack.Screen component={BookTable} name="BookTable" />
     </Stack.Navigator>
   );
 };

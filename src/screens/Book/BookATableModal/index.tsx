@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
-import { useRoute } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import InputSpinner from 'react-native-input-spinner';
+import Modal from 'react-native-modal';
+
 
 import DateTimePicker from '@react-native-community/datetimepicker';
-import InputSpinner from 'react-native-input-spinner';
-
-import { Platform } from 'react-native';
-
-import Button from '../../../components/Book/Button';
-import Text from '../../../components/Shared/Text';
-import IconField from '../../../components/Book/IconField';
-
 import {
-  BookTableContainer,
-  ImageContainer,
-  FieldsContainer,
-  VenueImage,
-  Container,
-  IconContainer,
-  TextContainer,
-  DateContainer,
-  TimeContainer,
-  VenueContainer,
-  ConfirmContainer,
-  DateWrap,
-  VenueWrap,
+    ConfirmContainer,
+    Container,
+    DateContainer,
+    DateWrap,
+    IconContainer,
+    ModalContainer,
+    PopUpContainer,
+    TextContainer,
+    TimeContainer,
+    UpdateWrapper,
+    VenueContainer,
+    VenueWrap,
 } from './styles';
+import Text from '../../../components/Shared/Text';
+import Button from '../../../components/Book/Button';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useRoute } from '@react-navigation/native';
+import { Platform } from 'react-native';
+import { useTheme } from 'styled-components';
 
 type Months = {
   [key: number]: string;
@@ -34,10 +32,17 @@ type Minutes = {
   [key: number]: string;
 };
 
-interface BookTableProps {}
+interface BookATableModalProps {
+    venue?: any;
+    isModalVisible: boolean;
+    onClose: () => void;
+}
 
-const BookTable: React.FunctionComponent<BookTableProps> = () => {
-  const route = useRoute();
+const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, venue, onClose }) => {
+
+const theme = useTheme();
+
+    const route = useRoute();
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState<'date' | 'time' | undefined>('date');
   const [show, setShow] = useState(false);
@@ -104,14 +109,20 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
     24: '12',
   };
 
-  return (
-    <BookTableContainer>
-      {/* <Text>{JSON.stringify(route.params)}</Text> */}
-      <ImageContainer>
-        <VenueImage source={require('../../../img/venue.jpg')} />
-      </ImageContainer>
-      <FieldsContainer>
-        <VenueWrap>
+    return (
+        <Modal
+            animationInTiming={600}
+            animationOutTiming={450}
+            isVisible={isModalVisible}
+            onBackdropPress={onClose}
+            avoidKeyboard={true}
+            style={{
+                margin: 0,
+            }}
+        >
+            <ModalContainer>
+                <PopUpContainer>
+                    <VenueWrap>
           <VenueContainer>
             <TextContainer>
               <Text color="primary" fontSize={15}>
@@ -123,7 +134,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
                 <Icon color="#000000" name="location-outline" size={28} />
               </IconContainer>
               <Text color="primary" fontSize={15}>
-                {route.params.title}
+                {venue.name}
               </Text>
             </Button>
           </VenueContainer>
@@ -180,7 +191,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
             </Text>
           </TextContainer>
           <InputSpinner
-            color="#ffab004f"
+            color={theme.colors.active}
             max={50}
             min={1}
             onChange={(num) => {
@@ -190,15 +201,16 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
           />
         </Container>
         <ConfirmContainer>
-          <IconField>
-            <Text color="primary" fontSize={18} bold>
-              Confirm
+          <UpdateWrapper onPress={onClose}>
+                        <Text color="tertiary" fontSize={18} bold>
+              Confirm Booking
             </Text>
-          </IconField>
+        </UpdateWrapper>
         </ConfirmContainer>
-      </FieldsContainer>
-    </BookTableContainer>
-  );
+                </PopUpContainer>
+            </ModalContainer>
+        </Modal>
+    );
 };
 
-export default BookTable;
+export default BookATableModal;

@@ -15,6 +15,7 @@ import LoginScreen from './screens/Login';
 
 import TabBar from './components/Shared/TabBar';
 import Register from './screens/Register';
+import LocationsProvider from './contexts/Locations';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <MenuProvider>
+        <LocationsProvider>
         <CartProvider>
           <NavigationContainer
             //@ts-ignore
@@ -61,6 +63,7 @@ const App = () => {
             </Stack.Navigator>
           </NavigationContainer>
         </CartProvider>
+        </LocationsProvider>
       </MenuProvider>
     </ThemeProvider>
   );

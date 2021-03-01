@@ -3,7 +3,6 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Entypo';
 import { useTheme } from 'styled-components';
 
-import { Text } from 'react-native';
 
 import {
   CardContainer,
@@ -15,52 +14,51 @@ import {
   Content,
   LocationButton2,
   Circle,
+  TextContainer
 } from './styles';
 import theme from '../../../theme';
-import Title from '../../Shared/Text';
+import Text from '../../Shared/Text';
+import { Venue } from '../../../types/Venue';
 
 interface LocationCardProps {
-  imageUrl: string;
-  title: string;
-  description: string;
-  phoneNumber: string;
-  onClick?: () => void;
+  venue: Venue;
+  onClick: (venue: Venue) => () => void;
 }
 
-const LocationCard: React.FunctionComponent<LocationCardProps> = ({ description, onClick, phoneNumber, title }) => {
+const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, venue }) => {
   const navigation = useNavigation();
 
   const navigate = () => {
-    navigation.navigate('BookTable', { title });
+    navigation.navigate('Book');
   };
 
   return (
-    <CardContainer activeOpacity={0.9} onPress={onClick}>
+    <CardContainer activeOpacity={0.9} onPress={onClick(venue)}>
       <ImageContainer>
-        <VenueImage source={require('../../../img/jack.jpg')} />
+        <VenueImage source={{ uri: venue.image }} />
       </ImageContainer>
       <Content>
         <Circle />
         <DrinkDesc>
-          <Title fontSize={16} color="primary" bold>
-            {title}
-          </Title>
-          <Title fontSize={12} color="primary">
-            {description}
-          </Title>
-          <Title fontSize={12} color="tertiary">
-            {phoneNumber}
-          </Title>
+          <Text fontSize={16} color="primary" bold>
+            {venue.name}
+          </Text>
+          <TextContainer><Text fontSize={12} color="primary">{venue.address}
+          </Text></TextContainer>
+            
+          <Text fontSize={12} color="quartiary">
+            {venue.phoneNumber}
+          </Text>
         </DrinkDesc>
       </Content>
       <ButtonContainer>
         <LocationButton>
           <Icon color={theme.colors.textPrimary} name="share" size={28} />
         </LocationButton>
-        <LocationButton2 onPress={navigate}>
-          <Title fontSize={12} color="#F69019" bold>
+        <LocationButton2 onPress={onClick(venue)}>
+          <Text fontSize={12} color="tertiary" bold>
             BOOK A TABLE
-          </Title>
+          </Text>
         </LocationButton2>
       </ButtonContainer>
     </CardContainer>
