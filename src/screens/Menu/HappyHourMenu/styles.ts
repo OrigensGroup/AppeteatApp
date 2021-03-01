@@ -22,6 +22,7 @@ export const CardsContainer = styled.View`
 `;
 
 export const ButtonsWrapper = styled.View`
+  display: flex;
   width: 100%;
   flex-direction: row;
   align-items: center;
