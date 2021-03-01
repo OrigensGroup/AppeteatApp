@@ -1,17 +1,17 @@
 import styled from 'styled-components/native';
 
 export const CartContainer = styled.View`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
   width: 100%;
 `;
 
 export const TopCartWrapper = styled.View`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};;
 `;
 
 export const BottomTotContainer = styled.View`
-  border-top-color: #000000;
+  border-top-color: ${({ theme }) => theme.colors.textPrimary};;
   border-top-width: 2px;
 `;
 
@@ -39,7 +39,7 @@ export const ListWrapper = styled.View`
 
 export const TitleWrapper = styled.View`
   padding-bottom: ${({ theme }) => theme.spacing.multiple(3)};
-  border-bottom-color: #afafaf;
+  border-bottom-color: ${({ theme }) => theme.colors.border};
   border-bottom-width: 1px;
 `;
 
@@ -48,7 +48,7 @@ export const TitleInfoWrapper = styled.View`
 `;
 
 export const SingleCartItem = styled.View`
-  border-bottom-color: #afafaf;
+  border-bottom-color: ${({ theme }) => theme.colors.border};
   border-bottom-width: 1px;
 `;
 
@@ -92,30 +92,30 @@ export const AllertWrapper = styled.View`
 
 export const ItemsNumber = styled.Text`
   font-size: 18px;
-  color: #fc7930;
+  color: ${({ theme }) => theme.colors.active};
   font-weight: bold;
 `;
 
 export const Price = styled.Text`
   font-size: 18px;
-  color: black;
+  color: ${({ theme }) => theme.colors.textSecondary};
   font-weight: bold;
 `;
 
 export const Allert = styled.Text`
   font-size: 16px;
-  color: #fc7930;
+  color: ${({ theme }) => theme.colors.active};
 `;
 
 export const SecondaryInfo = styled.Text`
   font-size: 16px;
-  color: #afafaf;
+  color: ${({ theme }) => theme.colors.inactive};
 `;
 
 
 export const PrimaryInfo = styled.Text`
   font-size: 18px;
-  color: black;
+  color: ${({ theme }) => theme.colors.textSecondary};
   font-weight: bold;
 `;
 
@@ -132,13 +132,13 @@ export const BottomCartWrapper = styled.View`
 `;
 
 export const SparatorLineDiv = styled.View`
-  border-top-color: #000000;
+  border-top-color: ${({ theme }) => theme.colors.border};
   border-top-width: 1px;
 `;
 
 export const BottomCartOverlay = styled.View`
   justify-content: flex-end;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
