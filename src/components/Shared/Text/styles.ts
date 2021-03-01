@@ -3,7 +3,7 @@ import CartProvider from '../../../contexts/Cart';
 
 interface TitleProps {
   fontSize: number;
-  color: 'primary' | 'secondary' | 'tertiary';
+  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary';
   bold?: boolean;
   light?: boolean;
   align: string;
@@ -23,6 +23,9 @@ export const TitleText = styled.Text<TitleProps>`
         return theme.colors.textSecondary;
       }
       case 'tertiary': {
+        return theme.colors.active;
+      }
+      case 'quartiary': {
         return theme.colors.border;
       }
 

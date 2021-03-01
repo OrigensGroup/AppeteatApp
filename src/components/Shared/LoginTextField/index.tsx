@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import { TextFieldContainer, TextFieldInput } from './styles';
 
-interface TextField2Props {
+interface LoginTextFieldProps {
   placeholder?: string;
   icon?: React.ReactElement;
   textContentType: 'emailAddress' | 'password' | 'none';
 }
 
-const TextField2: React.FunctionComponent<TextField2Props> = ({ icon, placeholder, textContentType }) => {
+const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ icon, placeholder, textContentType }) => {
   const [text, setText] = useState<string>('');
 
   const updateText = (text: string) => setText(text);
@@ -27,4 +27,4 @@ const TextField2: React.FunctionComponent<TextField2Props> = ({ icon, placeholde
   );
 };
 
-export default TextField2;
+export default LoginTextField;
