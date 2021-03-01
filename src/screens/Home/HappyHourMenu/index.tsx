@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import useMenu from '../../../hooks/useMenu';
-import HappyHourPromotionCard from '../../../components/Home/HappyHourPromotionCard';
+import HappyHourPromotionCard from '../../../components/Home/PromotionCards/HappyHourPromotionCard';
 import { MenuItem } from '../../../types/MenuItem';
 import MenuCard from '../../../components/Menu/MenuComponents/MenuCards';
 

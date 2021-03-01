@@ -26,7 +26,7 @@ export const DateContainer = styled.View`
 export const Circle = styled.View`
   width: 65%;
   height: 65%;
-  background-color: #EE6F00;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   display: flex;
   justify-content: center;
   align-items: center;

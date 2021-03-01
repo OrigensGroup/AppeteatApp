@@ -114,7 +114,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         <VenueWrap>
           <VenueContainer>
             <TextContainer>
-              <Text color="#000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 Venue
               </Text>
             </TextContainer>
@@ -122,7 +122,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
               <IconContainer>
                 <Icon color="#000000" name="location-outline" size={28} />
               </IconContainer>
-              <Text color="#000000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 {route.params.title}
               </Text>
             </Button>
@@ -131,7 +131,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         <DateWrap>
           <DateContainer>
             <TextContainer>
-              <Text color="#000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 Date
               </Text>
             </TextContainer>
@@ -139,14 +139,14 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
               <IconContainer>
                 <Icon color="#000000" name="ios-time-outline" size={28} />
               </IconContainer>
-              <Text color="#000000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 {date.getDate()} {months[date.getMonth()]}
               </Text>
             </Button>
           </DateContainer>
           <TimeContainer>
             <TextContainer>
-              <Text color="#000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 Time
               </Text>
             </TextContainer>
@@ -154,7 +154,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
               <IconContainer>
                 <Icon color="#000000" name="ios-time-outline" size={28} />
               </IconContainer>
-              <Text color="#000000" fontSize={15}>
+              <Text color="primary" fontSize={15}>
                 {date.getHours() > 11
                   ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
                   : `${minutes[date.getHours()]}:${date.getMinutes()} AM`}
@@ -175,7 +175,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         </DateWrap>
         <Container>
           <TextContainer>
-            <Text color="black" fontSize={15}>
+            <Text color="primary" fontSize={15}>
               No of member
             </Text>
           </TextContainer>
@@ -191,7 +191,7 @@ const BookTable: React.FunctionComponent<BookTableProps> = () => {
         </Container>
         <ConfirmContainer>
           <IconField>
-            <Text color="#000000" fontSize={18}>
+            <Text color="primary" fontSize={18} bold>
               Confirm
             </Text>
           </IconField>

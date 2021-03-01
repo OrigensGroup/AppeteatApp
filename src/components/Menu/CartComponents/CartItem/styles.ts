@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const SingleCartItem = styled.View`
+export const SingleCartItem = styled.TouchableOpacity`
   border-bottom-color: #afafaf;
   border-bottom-width: 1px;
 `;

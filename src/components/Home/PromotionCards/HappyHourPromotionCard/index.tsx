@@ -5,7 +5,7 @@ import CountDown from 'react-native-countdown-component';
 import { useTheme } from 'styled-components';
 
 import { HappyHourPromotionCardContainer, HappyHourPromotionCardTimerContainer, styles } from './styles';
-import Text from '../../Shared/Text';
+import Text from '../../../Shared/Text';
 
 interface HappyHourPromotionCardProps {
   endDate: number;
@@ -21,7 +21,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   return (
     <HappyHourPromotionCardContainer onPress={onClick}>
       <LinearGradient colors={['#DEB98E', '#FFB803']} style={styles.linearGradient}>
-        <Text fontSize={24} color="#ffffff" align="center">
+        <Text fontSize={24} color="secondary" align="center">
           Happy Hour
         </Text>
         <HappyHourPromotionCardTimerContainer>

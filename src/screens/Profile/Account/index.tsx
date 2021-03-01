@@ -51,7 +51,7 @@ const Account: React.FunctionComponent<AccountProps> = () => {
       <ImageContainer>
         <ProfileImage />
         <TitleWrap2>
-          <Text color="#000" fontSize={20}>
+          <Text color="primary" fontSize={20}>
             {username}
           </Text>
         </TitleWrap2>
@@ -68,11 +68,11 @@ const Account: React.FunctionComponent<AccountProps> = () => {
         </NavigationContainer>
         <CardWrap>
           <TitleWrap>
-            <Text color="#000" fontSize={20}>
+            <Text color="primary" fontSize={20}>
               {accountTranslations.accountPage.favoriteCocktails}
             </Text>
             <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
-              <Text color='#F69019' fontSize={16}>
+              <Text color="tertiary" fontSize={16}>
                 {accountTranslations.accountPage.showButton}
               </Text>
             </ShowButton>

@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { Text, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
-import HappyHourPromotionCard from '../Home/HappyHourPromotionCard';
-import Promotion2 from '../Home/Promotion2';
+import HappyHourPromotionCard from '../PromotionCards/HappyHourPromotionCard';
+import DiscountPromotionCard from '../PromotionCards/DiscountPromotionCard';
 
 import { CarouselContainer, Container } from './styles';
 
 interface CarouselPromoProps {}
-type Item = {
-  id: string;
-  title: string;
-  type: 'image' | 'discount' | 'happyhour';
-};
+
 const sliderWidth = Dimensions.get('window').width;
 
-const DATA: Item[] = [
+const DATA: any[] = [
   {
     id: '17',
     title: 'First Item',
@@ -24,7 +20,10 @@ const DATA: Item[] = [
   },
   {
     id: '8',
-    title: 'Second Item',
+    description: 'Discount on all selected drinks!',
+    title: '15% off all drink!',
+    image:
+      'https://www.liquor.com/thmb/WjB8S0yKOpreI1-WHrcdWToVAN8=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/neighborhood-negroni-720x720-primary-727f7dc3a5d04a298d63977679efe856.jpg',
     type: 'discount',
   },
   {
@@ -58,11 +57,11 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
     );
   };
 
-  const renderItem = ({ item }: { item: Item }) => {
+  const renderItem = ({ item }: { item: any }) => {
     if (item.type === 'discount') {
       return (
         <Container>
-          <Promotion2 description="Discount on all selected drinks!" title="15% off all drink!" />
+          <DiscountPromotionCard item={item} />
         </Container>
       );
     }
@@ -82,12 +81,16 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
     }
   };
 
+  const setIndex = (index: number) => {
+    setActiveSlide(index);
+  };
+
   return (
     <CarouselContainer>
       <Carousel
         data={DATA}
         itemWidth={sliderWidth}
-        onSnapToItem={(index) => setActiveSlide(index)}
+        onSnapToItem={setIndex}
         renderItem={renderItem}
         sliderWidth={sliderWidth}
       />

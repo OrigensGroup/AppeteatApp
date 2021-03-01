@@ -17,24 +17,12 @@ const Notifications: React.FunctionComponent<NotificationsProps> = () => {
         <ListItem
           title="Menu Promotions"
           navigateTo="Notifications"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          icon2={<MaterialIcons name="keyboard-arrow-right" size={28} color="#818181" />}
         />
         <ListItem
           title="Event Promotions"
           navigateTo="Notifications"
-          icon2={
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={28}
-              color="#818181"
-            />
-          }
+          icon2={<MaterialIcons name="keyboard-arrow-right" size={28} color="#818181" />}
         />
         <ListItem
           title="Pause All"

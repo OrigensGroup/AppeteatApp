@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { FlatList } from 'react-native';
-import PromotionCard from '../../../components/Home/PromotionCard';
+import PromotionCard from '../../../components/Home/PromotionItemCard';
 import useMenu from '../../../hooks/useMenu';
 
 import { MenuItem } from '../../../types/MenuItem';
@@ -14,12 +14,12 @@ import {
   HomeContainer,
   HomeLogoContainer,
   HomeSection,
-  LogoImage,
+  HomeLogoImage,
   BottomContainer,
   MapContainer,
-  FindButton
+  FindButton,
 } from './styles';
-import CarouselPromo from '../../../components/Carousel';
+import CarouselPromo from '../../../components/Home/Carousel';
 import Map from '../../../components/Map';
 
 interface HomeProps {}
@@ -39,10 +39,10 @@ const Home: React.FunctionComponent<HomeProps> = () => {
   return (
     <HomeContainer>
       <HomeLogoContainer>
-        <LogoImage source={require('../../../img/Logo.png')} />
+        <HomeLogoImage source={require('../../../img/Logo.png')} />
       </HomeLogoContainer>
       <HomeSection>
-        <Text fontSize={20} color="#000000">
+        <Text fontSize={20} color="primary">
           Popular Cocktails
         </Text>
         <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
@@ -50,9 +50,13 @@ const Home: React.FunctionComponent<HomeProps> = () => {
       <CarouselPromo />
       <BottomContainer>
         <MapContainer onPress={() => navigation.navigate('LocationsList')}>
-    <Map />
-    <FindButton><Text fontSize={18} color='#000' >Find us!</Text></FindButton>
-    </MapContainer>
+          <Map />
+          <FindButton>
+            <Text fontSize={18} color="primary">
+              Find us!
+            </Text>
+          </FindButton>
+        </MapContainer>
       </BottomContainer>
     </HomeContainer>
   );

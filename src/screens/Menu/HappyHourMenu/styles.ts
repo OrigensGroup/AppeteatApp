@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const MainWrapper = styled.View`
   background-color: #fff;
@@ -18,5 +18,15 @@ export const TopContainer = styled.View`
 `;
 
 export const CardsContainer = styled.View`
-height: 100%;
+  height: 100%;
+`;
+
+export const ButtonsWrapper = styled.View`
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 ${({ theme }) => theme.spacing.single};
+  margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
+  margin-top: ${({ theme }) => theme.spacing.multiple(3)};
 `;

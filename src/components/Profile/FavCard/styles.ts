@@ -1,13 +1,11 @@
 import styled from 'styled-components/native';
 
-
 export const CardContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(28)};
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.textSecondary};
-  border-radius:${({ theme }) => theme.spacing.multiple(3)};
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-color: #c2c2c2;
- 
 `;
 export const CardWrap = styled.View`
   padding: ${({ theme }) => theme.spacing.single};

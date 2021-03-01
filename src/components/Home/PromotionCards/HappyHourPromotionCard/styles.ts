@@ -19,11 +19,10 @@ export const styles = StyleSheet.create({
   },
 });
 
-export const PromotionTitle = styled.View`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const PromotionTitle = styled.Text`
+  color: ${({ theme }) => theme.colors.textSecondary};
+  text-align: center;
+  font-size: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const PromotionDesc = styled.Text`

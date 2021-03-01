@@ -6,30 +6,33 @@ import { useNavigation } from '@react-navigation/native';
 
 import SearchBar from '../../../components/Menu/MenuComponents/SearchBar';
 import menuTranslations from '../../../translations/menu';
-import Filter from '../../../components/Menu/MenuComponents/Filter';
+import Filter from '../../../components/Menu/MenuComponents/FilterButton';
 import QrCode from '../../../components/Menu/MenuComponents/QrCode';
 import SwiperP1 from '../../../components/Menu/MenuComponents/SwiperP1';
 import MenuTabs from '../../../components/Menu/MenuComponents/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/MenuComponents/ViewBasketButton';
+import FilterModal from '../../../components/Menu/MenuComponents/FilterModal';
+
 import useMenu from '../../../hooks/useMenu';
 
 import {
   MenuWrapper,
   TopBarWrapper,
-  CardsContainer,
   LogoContainer,
   LogoImage,
   SearchBarWrapper,
   TopContainer,
-  BottomContainer,
   BasketButtonWrapper,
 } from './styles';
+
 interface MenuProps {}
 
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
-  const navigation = useNavigation();
   const [menuIndex, setMenuIndex] = useState(0);
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const navigation = useNavigation();
   const { menu } = useMenu();
 
   const onSwipe = (index: number) => {
@@ -53,6 +56,14 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     [menu.tabs, menu.items]
   );
 
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <MenuWrapper>
       <TopContainer>
@@ -62,23 +73,20 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
           </LogoContainer>
           <QrCode onClick={() => console.log('Hello World!')} title={menuTranslations.qrField.placeholder} />
         </TopBarWrapper>
+        <FilterModal isModalVisible={isModalVisible} onClose={closeModal} />
         <SearchBarWrapper>
           <SearchBar
             onClick={() => console.log('Hello World!')}
             placeholder={menuTranslations.searchField.placeholder}
             textContentType="name"
           />
-          <Filter onClick={() => console.log('Hello World!')} />
+          <Filter onClick={toggleModal} />
         </SearchBarWrapper>
         <MenuTabs menuTabs={menu.tabs} onChange={onSwipe} tabActive={menuIndex} />
       </TopContainer>
-      <BottomContainer>
-        <CardsContainer>
-          <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
-            {menuTabsContent()}
-          </Swiper>
-        </CardsContainer>
-      </BottomContainer>
+      <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
+        {menuTabsContent()}
+      </Swiper>
       <BasketButtonWrapper>
         <ViewBasketButton onClick={navigate} />
       </BasketButtonWrapper>

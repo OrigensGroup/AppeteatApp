@@ -14,7 +14,7 @@ import {
   LocationButton,
   Content,
   LocationButton2,
-  Circle
+  Circle,
 } from './styles';
 import theme from '../../../theme';
 import Title from '../../Shared/Text';
@@ -41,18 +41,26 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ description,
       </ImageContainer>
       <Content>
         <Circle />
-      <DrinkDesc>
-        <Title fontSize={16} color='#000' bold>{title}</Title>
-        <Title fontSize={12} color='#000'>{description}</Title>
-        <Title fontSize={12} color='#c2c2c2'>{phoneNumber}</Title>
-      </DrinkDesc>
+        <DrinkDesc>
+          <Title fontSize={16} color="primary" bold>
+            {title}
+          </Title>
+          <Title fontSize={12} color="primary">
+            {description}
+          </Title>
+          <Title fontSize={12} color="tertiary">
+            {phoneNumber}
+          </Title>
+        </DrinkDesc>
       </Content>
       <ButtonContainer>
         <LocationButton>
-         <Icon color={theme.colors.textPrimary} name="share" size={28} />
+          <Icon color={theme.colors.textPrimary} name="share" size={28} />
         </LocationButton>
         <LocationButton2 onPress={navigate}>
-          <Title fontSize={12} color='#F69019' bold>BOOK A TABLE</Title>
+          <Title fontSize={12} color="#F69019" bold>
+            BOOK A TABLE
+          </Title>
         </LocationButton2>
       </ButtonContainer>
     </CardContainer>

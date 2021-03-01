@@ -1,523 +1,138 @@
-// import React from 'react';
-// import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
-// import { Marker, AnimatedRegion } from 'react-native-maps';
-// import Animated from 'react-native-reanimated';
-// import LocationCard from '../../../components/Location/Card';
-// import Map from '../../../components/Map';
-// import { LocationPageContainer, MapImage } from './styles';
+import React, { Component, useEffect, useRef, useState } from 'react';
+import { StyleSheet, View, Animated, Dimensions } from 'react-native';
 
-// interface LocationsListProps { }
+import MapView, { Marker } from 'react-native-maps';
+import LocationCard from '../../../components/Home/PromotionItemCard';
 
-// type Item = {
-//   id: string;
-//   title: string;
-// };
+import { mapStyle } from '../../../utils/mapstyle';
 
+import useMarkers from './useMarkers';
 
-// const Images = [
-//   { uri: "https://i.imgur.com/sNam9iJ.jpg" },
-//   { uri: "https://i.imgur.com/N7rlQYt.jpg" },
-//   { uri: "https://i.imgur.com/UDrH0wm.jpg" },
-//   { uri: "https://i.imgur.com/Ka8kNST.jpg" },
-// ];
-
-// const { width, height } = Dimensions.get("window");
-
-// const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
-//   const animation = new Animated.Value(0);
-//   const index = 0;
-
-// const { width, height } = Dimensions.get("window");
-
-// const CARD_HEIGHT = height / 4;
-// const CARD_WIDTH = CARD_HEIGHT - 50;
-
- 
-
-//   const renderItem = ({ item, index }) => {
-    
-//     return (
-//       <Marker key={index} coordinate={item.coordinate}>
-//         <Animated.View style={[styles.markerWrap]}>
-//           <Animated.View style={[styles.ring]} />
-//           <View style={styles.marker} />
-//         </Animated.View>
-//       </Marker>);
-//   };
-//   const state = {
-//     markers: [
-//       {
-//         coordinate: {
-//           latitude: 45.524548,
-//           longitude: -122.6749817,
-//         },
-//         title: "Best Place",
-//         description: "This is the best place in Portland",
-//       },
-//       {
-//         coordinate: {
-//           latitude: 45.524698,
-//           longitude: -122.6655507,
-//         },
-//         title: "Second Best Place",
-//         description: "This is the second best place in Portland",
-//       },
-//       {
-//         coordinate: {
-//           latitude: 45.5230786,
-//           longitude: -122.6701034,
-//         },
-//         title: "Third Best Place",
-//         description: "This is the third best place in Portland",
-//       },
-//       {
-//         coordinate: {
-//           latitude: 45.521016,
-//           longitude: -122.6561917,
-//         },
-//         title: "Fourth Best Place",
-//         description: "This is the fourth best place in Portland",
-//       },
-//     ],
-//     region: {
-//       latitude: 45.52220671242907,
-//       longitude: -122.6653281029795,
-//       latitudeDelta: 0.04864195044303443,
-//       longitudeDelta: 0.040142817690068,
-//     },
-//   };
-
-
-//   return (
-//     <LocationPageContainer>
-//       <Map />
-//       <FlatList horizontal={true} data={DATA} renderItem={renderItem} style={{ position: 'absolute', width: '100%', bottom: 16 }} />
-//     </LocationPageContainer>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//   },
-//   scrollView: {
-//     position: "absolute",
-//     bottom: 30,
-//     left: 0,
-//     right: 0,
-//     paddingVertical: 10,
-//   },
-//   endPadding: {
-//     paddingRight: width - CARD_WIDTH,
-//   },
-//   card: {
-//     padding: 10,
-//     elevation: 2,
-//     backgroundColor: "#FFF",
-//     marginHorizontal: 10,
-//     shadowColor: "#000",
-//     shadowRadius: 5,
-//     shadowOpacity: 0.3,
-//     shadowOffset: { x: 2, y: -2 },
-//     height: CARD_HEIGHT,
-//     width: CARD_WIDTH,
-//     overflow: "hidden",
-//   },
-//   cardImage: {
-//     flex: 3,
-//     width: "100%",
-//     height: "100%",
-//     alignSelf: "center",
-//   },
-//   textContent: {
-//     flex: 1,
-//   },
-//   cardtitle: {
-//     fontSize: 12,
-//     marginTop: 5,
-//     fontWeight: "bold",
-//   },
-//   cardDescription: {
-//     fontSize: 12,
-//     color: "#444",
-//   },
-//   markerWrap: {
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   marker: {
-//     width: 8,
-//     height: 8,
-//     borderRadius: 4,
-//     backgroundColor: "rgba(130,4,150, 0.9)",
-//   },
-//   ring: {
-//     width: 24,
-//     height: 24,
-//     borderRadius: 12,
-//     backgroundColor: "rgba(130,4,150, 0.3)",
-//     position: "absolute",
-//     borderWidth: 1,
-//     borderColor: "rgba(130,4,150, 0.5)",
-//   },
-// });
-
-// export default LocationsList;
-  
-import React, { Component } from "react";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Animated,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
-
-import MapView from "react-native-maps";
-import LocationCard from "../../../components/Book/LocationCard";
-
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
-const mapStyle = [
-  {
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#242f3e"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#746855"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#242f3e"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.locality",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#d59563"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#d59563"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#263c3f"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#6b9a76"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#38414e"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#212a37"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#9ca5b3"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#746855"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#1f2835"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#f3d19c"
-      }
-    ]
-  },
-  {
-    "featureType": "transit",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#2f3948"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#d59563"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#17263c"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#515c6d"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#17263c"
-      }
-    ]
-  }
-]
 
-export default class LocationsList extends Component {
-  state = {
-    markers: [
-      {
-        coordinate: {
-          latitude: 45.524548,
-          longitude: -122.6749817,
-        },
-        title: "Be At One",
-        description: "12 Upper St, The Angel, London N1 0PQ",
-      
-      },
-      {
-        coordinate: {
-          latitude: 45.524698,
-          longitude: -122.6655507,
-        },
-        title: "Jack Solomon",
-        description: "12 Upper St, The Angel, London N1 0PQ",
-    
-      },
-      {
-        coordinate: {
-          latitude: 45.5230786,
-          longitude: -122.6701034,
-        },
-        title: "Third Best Place",
-        description: "This is the third best place in Portland",
-     
-      },
-      {
-        coordinate: {
-          latitude: 45.521016,
-          longitude: -122.6561917,
-        },
-        title: "Fourth Best Place",
-        description: "This is the fourth best place in Portland",
- 
-      },
-    ],
-    region: {
-      latitude: 45.52220671242907,
-      longitude: -122.6653281029795,
-      latitudeDelta: 0.04864195044303443,
-      longitudeDelta: 0.040142817690068,
-    },
+interface LocationsListProps {
+  markers: Marker[];
+}
+
+const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
+  const mapRef = useRef<MapView>(null);
+  const [animation] = useState(new Animated.Value(0));
+  //@ts-ignore
+  const timeoutRef = useRef<NodeJS.Timeout>(0);
+  const [index, setIndex] = useState(0);
+  const markers = useMarkers();
+  const region = {
+    latitude: 45.52220671242907,
+    longitude: -122.6653281029795,
+    latitudeDelta: 0.04864195044303443,
+    longitudeDelta: 0.040142817690068,
   };
 
-  componentWillMount() {
-    this.index = 0;
-    this.animation = new Animated.Value(0);
-  }
-  componentDidMount() {
-    // We should detect when scrolling has stopped then animate
-    // We should just debounce the event listener here
-    this.animation.addListener(({ value }) => {
-      let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
-      if (index >= this.state.markers.length) {
-        index = this.state.markers.length - 1;
+  const interpolations = markers.map((_, index) => {
+    const inputRange = [(index - 1) * CARD_WIDTH, index * CARD_WIDTH, (index + 1) * CARD_WIDTH];
+    const scale = animation.interpolate({
+      inputRange,
+      outputRange: [1, 2.5, 1],
+      extrapolate: 'clamp',
+    });
+    const opacity = animation.interpolate({
+      inputRange,
+      outputRange: [0.35, 1, 0.35],
+      extrapolate: 'clamp',
+    });
+    return { scale, opacity };
+  });
+
+  useEffect(() => {
+    animation.addListener(({ value }) => {
+      let localIndex = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
+      if (index >= markers.length) {
+        localIndex = markers.length - 1;
       }
       if (index <= 0) {
-        index = 0;
+        localIndex = 0;
       }
 
-      clearTimeout(this.regionTimeout);
-      this.regionTimeout = setTimeout(() => {
-        if (this.index !== index) {
-          this.index = index;
-          const { coordinate } = this.state.markers[index];
-          this.map.animateToRegion(
-            {
-              ...coordinate,
-              latitudeDelta: this.state.region.latitudeDelta,
-              longitudeDelta: this.state.region.longitudeDelta,
-            },
-            350
-          );
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        if (index !== localIndex) {
+          setIndex(index);
+          const { coordinate } = markers[index];
+          if (mapRef.current)
+            mapRef.current.animateToRegion(
+              {
+                ...coordinate,
+                latitudeDelta: region.latitudeDelta,
+                longitudeDelta: region.longitudeDelta,
+              },
+              350
+            );
         }
       }, 10);
     });
-  }
+  }, [animation]);
 
-  render() {
-    const interpolations = this.state.markers.map((marker, index) => {
-      const inputRange = [
-        (index - 1) * CARD_WIDTH,
-        index * CARD_WIDTH,
-        ((index + 1) * CARD_WIDTH),
-      ];
-      const scale = this.animation.interpolate({
-        inputRange,
-        outputRange: [1, 2.5, 1],
-        extrapolate: "clamp",
-      });
-      const opacity = this.animation.interpolate({
-        inputRange,
-        outputRange: [0.35, 1, 0.35],
-        extrapolate: "clamp",
-      });
-      return { scale, opacity };
-    });
-
-    return (
-      <View style={styles.container}>
-        <MapView
-          ref={map => this.map = map}
-          initialRegion={this.state.region}
-          style={styles.container}
-          customMapStyle={mapStyle}
-        >
-          {this.state.markers.map((marker, index) => {
-            const scaleStyle = {
-              transform: [
-                {
-                  scale: interpolations[index].scale,
-                },
-              ],
-            };
-            const opacityStyle = {
-              opacity: interpolations[index].opacity,
-            };
-            return (
-              <MapView.Marker key={index} coordinate={marker.coordinate} >
-                <Animated.View style={[styles.markerWrap, opacityStyle]}>
-                  <Animated.View style={[styles.ring, scaleStyle]} />
-                  <View style={styles.marker} />
-                </Animated.View>
-              </MapView.Marker>
-            );
-          })}
-        </MapView>
-        <Animated.ScrollView
-          horizontal
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          snapToInterval={CARD_WIDTH}
-          onScroll={Animated.event(
-            [
+  return (
+    <View style={styles.container}>
+      <MapView ref={mapRef} showsUserLocation style={styles.container} customMapStyle={mapStyle}>
+        {markers.map((marker, index) => {
+          const scaleStyle = {
+            transform: [
               {
-                nativeEvent: {
-                  contentOffset: {
-                    x: this.animation,
-                  },
-                },
+                scale: interpolations[index].scale,
               },
             ],
-            { useNativeDriver: true }
-          )}
-          style={styles.scrollView}
-          contentContainerStyle={styles.endPadding}
-        >
-          {this.state.markers.map((marker, index) => (
-            <LocationCard
-      description={marker.description}
-      imageUrl="../../img/venue.jpg"
-      phoneNumber="0754 9576820"
-      title={marker.title}
-    />
-
-          ))}
-        </Animated.ScrollView>
-      </View>
-    );
-  }
-}
+          };
+          const opacityStyle = {
+            opacity: interpolations[index].opacity,
+          };
+          return (
+            <Marker key={index} coordinate={marker.coordinate}>
+              <Animated.View style={[styles.markerWrap, opacityStyle]}>
+                <Animated.View style={[styles.ring, scaleStyle]} />
+                <View style={styles.marker} />
+              </Animated.View>
+            </Marker>
+          );
+        })}
+      </MapView>
+      <Animated.ScrollView
+        horizontal
+        scrollEventThrottle={1}
+        showsHorizontalScrollIndicator={false}
+        snapToInterval={CARD_WIDTH}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  x: animation,
+                },
+              },
+            },
+          ],
+          { useNativeDriver: true }
+        )}
+        style={styles.scrollView}
+        contentContainerStyle={styles.endPadding}
+      >
+        {markers.map((marker) => (
+          <LocationCard item={marker} />
+        ))}
+      </Animated.ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   scrollView: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 30,
     left: 0,
     right: 0,
@@ -527,24 +142,24 @@ const styles = StyleSheet.create({
     paddingRight: width - CARD_WIDTH,
   },
   markerWrap: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   marker: {
     width: 15,
     height: 15,
     borderRadius: 7.5,
-    backgroundColor: "#F69019",
+    backgroundColor: '#F69019',
   },
   ring: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: "#F69019",
-    position: "absolute",
+    backgroundColor: '#F69019',
+    position: 'absolute',
     borderWidth: 1,
-    borderColor: "#F69019",
+    borderColor: '#F69019',
   },
 });
 
-
+export default LocationsList;
