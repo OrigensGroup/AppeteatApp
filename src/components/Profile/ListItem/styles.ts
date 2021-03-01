@@ -14,7 +14,7 @@ export const IconContainer = styled.View`
   align-items: center;
   padding: 0 ${({ theme }) => theme.spacing.single};
 `;
-export const IconTextWrap = styled.View`
+export const TextContainer = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;

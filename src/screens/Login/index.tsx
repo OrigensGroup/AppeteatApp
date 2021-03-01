@@ -4,7 +4,7 @@ import LogInButton from '../../components/Login/Buttons/LogInButton';
 import Fontisto from "react-native-vector-icons/Fontisto";
 import Feather from "react-native-vector-icons/Feather";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import LoginTextField from '../../components/Shared/LoginTextField';
+import TextField from '../../components/Shared/LoginTextField';
 import loginTranslations from '../../translations/login';
 import { AppleButton } from '@invertase/react-native-apple-authentication';
 import { TextFieldWrapper, LoginContainer, LogInContainer, RegisterContainer, RegisterText, UpperContent, BottomContent, LogoImage, LogoContainer, IconWrap, SocialLogin } from './styles';
@@ -31,14 +31,14 @@ const Login: React.FunctionComponent<LoginProps> = () => {
       </UpperContent>
       <BottomContent>
         <TextFieldWrapper>
-          <LoginTextField
+          <TextField
             icon={<IconWrap><Fontisto name="email" size={28} color="#fff" /></IconWrap>}
             placeholder={loginTranslations.emailField.placeholder}
             textContentType="emailAddress"
           />
         </TextFieldWrapper>
         <TextFieldWrapper>
-          <LoginTextField
+          <TextField
             icon={<IconWrap><Feather name="lock" size={28} color="#fff" /></IconWrap>}
             placeholder={loginTranslations.passwordField.placeholder}
             textContentType="password"

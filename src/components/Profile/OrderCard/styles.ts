@@ -1,15 +1,15 @@
 import styled from 'styled-components/native';
 
-export const CardContainer = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity`
   flex: 1;
   height: ${({ theme }) => theme.spacing.multiple(11)};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-width: 1px;
   display: flex;
   flex-direction: row;
-  border-color: #c2c2c2;
+  border-color: ${({ theme }) => theme.colors.border};
 `;
-export const CardWrap = styled.View`
+export const OrderCardContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
 export const DrinkDesc = styled.View`
@@ -26,7 +26,7 @@ export const DateContainer = styled.View`
 export const Circle = styled.View`
   width: 65%;
   height: 65%;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.active};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,10 +37,7 @@ export const PriceContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
-export const ViewWrap = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity`
   padding-top: ${({ theme }) => theme.spacing.double};
 `;
-export const TextTitle = styled.Text`
-  font-size: 20px;
-  color: black;
-`;
+

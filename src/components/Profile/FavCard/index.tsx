@@ -1,34 +1,32 @@
 import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { MenuItem } from '../../../types/MenuItem';
 import Text from '../../Shared/Text';
-import { CardContainer, DrinkImage, DrinkDesc, IconWrap, CardWrap, ImageContainer } from './styles';
+import { Container, DrinkImage, DrinkDesc, IconWrap, FavouriteCoctailsCard, ImageContainer } from './styles';
 
 interface FavCardProps {
-  title: string;
-  description: string;
+  item: MenuItem;
   onClick?: () => void;
 }
 
-const FavCard: React.FunctionComponent<FavCardProps> = ({ title, description, onClick }) => {
+const FavCard: React.FunctionComponent<FavCardProps> = ({
+  item,
+  onClick,
+}) => {
   return (
-    <CardWrap>
-      <CardContainer onPress={onClick}>
-        <ImageContainer>
-          <DrinkImage source={require('../../../img/venue.jpg')} />
-        </ImageContainer>
+    <FavouriteCoctailsCard>
+      <Container onPress={onClick}>
+        <ImageContainer><DrinkImage source={{ uri: item.image }} /></ImageContainer>
         <DrinkDesc>
-          <Text fontSize={18} color="primary">
-            {title}
-          </Text>
-          <Text fontSize={14} color="tertiary">
-            {description}
-          </Text>
-          <IconWrap>
-            <Entypo name="heart" size={25} color="red" />
-          </IconWrap>
+          <Text fontSize={18} color='primary'>{item.title}</Text>
+          <Text fontSize={14} color='quartiary'>Rum,  Juice, Beown sugar</Text>
         </DrinkDesc>
-      </CardContainer>
-    </CardWrap>
+        <IconWrap>
+            <Entypo name="heart" size={25}
+            color="red"/>
+          </IconWrap>
+      </Container>
+    </FavouriteCoctailsCard>
   );
 };
 
