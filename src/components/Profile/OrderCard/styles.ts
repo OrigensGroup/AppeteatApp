@@ -7,7 +7,7 @@ export const Container = styled.TouchableOpacity`
   border-width: 1px;
   display: flex;
   flex-direction: row;
-  border-color: #c2c2c2;
+  border-color: ${({ theme }) => theme.colors.border};
 `;
 export const OrderCardContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
