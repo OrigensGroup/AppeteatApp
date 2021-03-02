@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 
-type Item = {
-  id: string;
-  price: number;
-  quantity: number;
-};
+import { OrderItem } from '../../types/OrderItem';
 
 interface CartContext {
-  cart: Item[];
-  addItemToCart: (item: Item) => void;
+  cart: OrderItem[];
+  addItemToCart: (item: OrderItem) => void;
   deleteItemFromCart: (item: string) => void;
-  updateItemQuantity: (item: Item, amount: number) => void;
+  updateItemQuantity: (item: OrderItem, amount: number) => void;
 }
 
 export const CartContext = React.createContext<CartContext>({
@@ -23,9 +19,9 @@ export const CartContext = React.createContext<CartContext>({
 interface CartProviderProps {}
 
 const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) => {
-  const [cart, setCart] = useState<Item[]>([]);
+  const [cart, setCart] = useState<OrderItem[]>([]);
 
-  const addItemToCart = (item: Item) => {
+  const addItemToCart = (item: OrderItem) => {
     setCart((oldCart) => [...oldCart, item]);
   };
 
@@ -34,7 +30,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
   };
 
   //Update quantity, on setCart! +1 on press, and -1 on press with min value set to 1.
-  const updateItemQuantity = (newItem: Item, amount: number) => {
+  const updateItemQuantity = (newItem: OrderItem, amount: number) => {
     setCart((oldCart) => oldCart.map((item) => (newItem.id === item.id ? { ...item, quantity: amount } : item)));
   };
 
