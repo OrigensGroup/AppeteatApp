@@ -1,0 +1,34 @@
+import styled from 'styled-components/native';
+
+
+
+export const ButtonContainer = styled.View`
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+margin-top: ${({ theme }) => theme.spacing.multiple(5)};
+`;
+
+export const IconWrapper = styled.TouchableOpacity`
+display: flex;
+justify-content: center;
+align-items: center;
+`;
+
+
+// interface ButtonContainerProps {
+//   secondary?: boolean;
+// }
+
+// export const ButtonText = styled.Text<ButtonContainerProps>`
+//   ${({ secondary, theme }) =>
+//     secondary &&
+//     `
+//     font-size: ${theme.spacing.double};
+//     font-weight: bold;
+//   `};
+//   color: #ffffff;
+// `;
+

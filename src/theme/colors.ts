@@ -4,6 +4,7 @@ export interface ColorsInterface {
   border: string;
   textPrimary: string;
   textSecondary: string;
+  loginBottom: string;
 }
 
 const colors: ColorsInterface = {
@@ -12,6 +13,7 @@ const colors: ColorsInterface = {
   border: '#C2C2C2',
   textPrimary: '#000000',
   textSecondary: '#ffffff',
+  loginBottom: '#181822',
 };
 
 export default colors;

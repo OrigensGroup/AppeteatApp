@@ -5,6 +5,7 @@ const loginTranslations = {
   },
   passwordField: {
     label: 'Password',
+    secondaryLabel: 'Reinsert password',
     placeholder: '********',
   },
   loginButton: {
