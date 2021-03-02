@@ -26,7 +26,7 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
   return (
     <HappyHourMenuContainer>
       <HappyHourMenuHeader>
-        <HappyHourPromotionCard endDate={new Date('Wed Feb 10 2021 15:36:55 GMT+0000').getTime()} />
+        <HappyHourPromotionCard endDate={'Wed Feb 10 2021 15:36:55 GMT+0000'} />
       </HappyHourMenuHeader>
       <HappyHourMenuSection>
         <HappyHourMenuItemsContainer>
