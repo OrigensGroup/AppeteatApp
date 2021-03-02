@@ -7,11 +7,11 @@ export const CartContainer = styled.View`
 `;
 
 export const TopCartWrapper = styled.View`
-  background-color: ${({ theme }) => theme.colors.textSecondary};;
+  background-color: ${({ theme }) => theme.colors.textSecondary}; ;
 `;
 
 export const BottomTotContainer = styled.View`
-  border-top-color: ${({ theme }) => theme.colors.textPrimary};;
+  border-top-color: ${({ theme }) => theme.colors.textPrimary};
   border-top-width: 2px;
 `;
 
@@ -112,7 +112,6 @@ export const SecondaryInfo = styled.Text`
   color: ${({ theme }) => theme.colors.inactive};
 `;
 
-
 export const PrimaryInfo = styled.Text`
   font-size: 18px;
   color: ${({ theme }) => theme.colors.textSecondary};
@@ -159,10 +158,8 @@ export const OrderTotalWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: ${({ theme }) => theme.spacing.multiple(2)};
+  padding-bottom: ${({ theme }) => theme.spacing.double};
 `;
-
-
 
 export const TipCounterWrapper = styled.View`
   flex-direction: row;

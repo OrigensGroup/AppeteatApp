@@ -12,7 +12,7 @@ export type MenuItem = {
   image: string;
   smallDesc: string;
   description: string;
-  allergyCustomisations: string[];
+  customisations: string[];
   extras: Extra[];
   promoted: boolean;
 };

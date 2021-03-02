@@ -3,10 +3,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import InputSpinner from 'react-native-input-spinner';
 import { FlatList } from 'react-native-gesture-handler';
 import cartTranslations from '../../translations/cart';
-import QrCode from '../../components/Menu/MenuComponents/QrCode';
 import GoToCheckout from '../../components/Cart/AddToBasketButton';
-import CartItem from '../../components/Cart/CartItem';
-import menuTranslations from '../../translations/menu';
+import CartItem from '../../components/Cart/ItemSummary/CartItem';
 import useCart from '../../hooks/useCart';
 import UpdateModal from '../../components/Menu/UpdateModal';
 
@@ -15,8 +13,6 @@ import {
   TopCartWrapper,
   BottomCartWrapper,
   TopBarWrapper,
-  LogoContainer,
-  LogoImage,
   ListWrapper,
   TitleWrapper,
   PrimaryInfo,
@@ -39,7 +35,10 @@ import {
   TipCounterWrapper,
 } from './styles';
 
-interface CartProps { }
+import Logo from '../../components/Shared/Logo';
+import ItemSummary from '../../components/Cart/ItemSummary';
+
+interface CartProps {}
 
 const Cart: React.FunctionComponent<CartProps> = () => {
   const { cart } = useCart();
@@ -64,29 +63,16 @@ const Cart: React.FunctionComponent<CartProps> = () => {
   return (
     <CartContainer>
       <UpdateModal isModalVisible={isModalVisible} item={itemToUpdate} onClose={closeModal} />
+      <Logo />
+      <ItemSummary onUpdate={toggleModal} />
       <TopCartWrapper>
-        <TopBarWrapper>
-          <LogoContainer>
-            <LogoImage source={require('../../img/Logo.png')} />
-          </LogoContainer>
-          <QrCode onClick={() => console.log('Hello World')} title={menuTranslations.qrField.placeholder} />
-        </TopBarWrapper>
-        <TitleWrapper>
-          <TitleInfoWrapper>
-            <PrimaryInfo>Cart</PrimaryInfo>
-          </TitleInfoWrapper>
-        </TitleWrapper>
-        <ListWrapper>
-          <FlatList data={cart} renderItem={({ item }) => <CartItem item={item} onClick={toggleModal} />} />
-          {/* <SwipeableItem data={cart} renderItem={({ item }) => <CartItem item={item} onClick={toggleModal} />}></SwipeableItem> */}
-        </ListWrapper>
         <SubTotWrapper>
           <SubTotal>
-            <SecondaryInfo>{cartTranslations.totalField.placeholder}</SecondaryInfo>
+            <SecondaryInfo>{cartTranslations.totalField.title}</SecondaryInfo>
             <SecondaryInfo>£{total}</SecondaryInfo>
           </SubTotal>
           <ServiceFee>
-            <SecondaryInfo>{cartTranslations.serviceFeeField.placeholder}</SecondaryInfo>
+            <SecondaryInfo>{cartTranslations.serviceFeeField.title}</SecondaryInfo>
             <ServiceFeeRightWrapper>
               <InfoIconWrapper>
                 <Icon color="#AFAFAF" name="information-circle-outline" size={24} />
@@ -97,10 +83,10 @@ const Cart: React.FunctionComponent<CartProps> = () => {
         </SubTotWrapper>
         <AllertWrapper>
           <ButtonA1>
-            <Allert>{cartTranslations.allergiesField.placeholder}</Allert>
+            <Allert>{cartTranslations.allergiesField.title}</Allert>
           </ButtonA1>
           <ButtonA2>
-            <Allert>{cartTranslations.voucherField.placeholder}</Allert>
+            <Allert>{cartTranslations.voucherField.title}</Allert>
           </ButtonA2>
         </AllertWrapper>
       </TopCartWrapper>
@@ -108,7 +94,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
         <SparatorLineDiv>
           <BottomCartOverlay>
             <AddTipWrapper>
-              <SecondaryInfo>{cartTranslations.tipField.placeholder}</SecondaryInfo>
+              <SecondaryInfo>{cartTranslations.tipField.title}</SecondaryInfo>
               <TipCounterWrapper>
                 <InputSpinner
                   buttonStyle={{
@@ -134,11 +120,11 @@ const Cart: React.FunctionComponent<CartProps> = () => {
               </TipCounterWrapper>
             </AddTipWrapper>
             <OrderTotalWrapper>
-              <PrimaryInfo>{cartTranslations.orderTotField.placeholder}</PrimaryInfo>
+              <PrimaryInfo>{cartTranslations.orderTotField.title}</PrimaryInfo>
               <PrimaryInfo>£{totalPlusCharge}</PrimaryInfo>
             </OrderTotalWrapper>
             <BasketButtonWrapper>
-              <GoToCheckout price={totalPlusCharge} onClick={() => { }} />
+              <GoToCheckout price={totalPlusCharge} onClick={() => {}} />
             </BasketButtonWrapper>
           </BottomCartOverlay>
         </SparatorLineDiv>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { MenuItem } from '../../../../types/MenuItem';
 
 import {
   SingleCartItem,
@@ -12,13 +13,13 @@ import {
 } from './styles';
 
 interface CartItemProps {
-  item: any;
+  item: MenuItem;
   onClick: (id: string) => () => void;
 }
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
   return (
-    <SingleCartItem onPress={onClick(item)}>
+    <SingleCartItem onPress={onClick(item.id)}>
       <ItemInfoWrapper>
         <CartItemLeftWrapper>
           <ItemsNumber>{item.quantity}</ItemsNumber>
@@ -27,11 +28,9 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
         <Price>£ {item.price * item.quantity}</Price>
       </ItemInfoWrapper>
       <Customisation>
-        {item.custom1 && <ItemCustom>{item.custom1}</ItemCustom>}
-        {item.custom2 && <ItemCustom>{item.custom2}</ItemCustom>}
-        {item.custom3 && <ItemCustom>{item.custom3}</ItemCustom>}
-        {item.custom4 && <ItemCustom>{item.custom4}</ItemCustom>}
-        {item.custom5 && <ItemCustom>{item.custom5}</ItemCustom>}
+        {item.customisations.map((customisation) => (
+          <ItemCustom>{customisation}</ItemCustom>
+        ))}
       </Customisation>
     </SingleCartItem>
   );

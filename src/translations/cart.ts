@@ -1,31 +1,24 @@
 const cartTranslations = {
   titleField: {
-    label: 'title',
-    placeholder: 'Cart',
+    title: 'Cart',
   },
   totalField: {
-    label: 'total',
-    placeholder: 'Total',
+    title: 'Total',
   },
   serviceFeeField: {
-    label: 'ServiceFee',
-    placeholder: 'Service Fee',
+    title: 'Service Fee',
   },
   allergiesField: {
-    label: 'Allergies',
-    placeholder: 'Any allergies we should be aware of?',
+    title: 'Any allergies we should be aware of?',
   },
   voucherField: {
-    label: 'AddVoucher',
-    placeholder: 'Add voucher code',
+    title: 'Add voucher code',
   },
   tipField: {
-    label: 'Tip',
-    placeholder: 'Add Tip',
+    title: 'Add Tip',
   },
   orderTotField: {
-    label: 'OrderTotal',
-    placeholder: 'Order Total',
+    title: 'Order Total',
   },
 };
 
