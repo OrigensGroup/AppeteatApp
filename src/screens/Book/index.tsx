@@ -1,7 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-
-import BookTable from './BookATable';
 import LocationsList from './LocationsList';
 
 const Stack = createStackNavigator();

@@ -29,10 +29,10 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   const timeoutRef = useRef<NodeJS.Timeout>(0);
   const [index, setIndex] = useState(0);
   const region = {
-    latitude: -0.128955,
-    longitude: 51.492889,
-    latitudeDelta: 0.04864195044303443,
-    longitudeDelta: 0.040142817690068,
+    latitude: 51.51085,
+    longitude: -0.13401,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
   };
 
   const interpolations = venues.map((_, index) => {
@@ -94,7 +94,6 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   const closeModal = () => {
     setModalVisible(false);
   };
-
   return (
     <View style={styles.container}>
       <BookATableModal isModalVisible={isModalVisible} venue={venueToBook} onClose={closeModal} />
