@@ -9,7 +9,7 @@ import { MenuItem } from '../../../types/MenuItem';
 import Text from '../../Shared/Text';
 import PromotionItemCard from './PromotionItemCard';
 
-import { FeaturedItemsSection } from './styles';
+import { FeaturedItemsSection, FeaturedItemsTextContainer } from './styles';
 
 interface FeaturedItemsProps {}
 
@@ -22,10 +22,18 @@ const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = () => {
 
   return (
     <FeaturedItemsSection>
-      <Text fontSize={20} color="primary">
-        {homeTranslations.homepageScreen.popularItems.title}
-      </Text>
-      <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
+      <FeaturedItemsTextContainer>
+        <Text fontSize={20} color="primary">
+          {homeTranslations.homepageScreen.popularItems.title}
+        </Text>
+      </FeaturedItemsTextContainer>
+      <FlatList
+        data={promotedItems}
+        horizontal
+        renderItem={flatlistItem}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingRight: 16 }}
+      />
     </FeaturedItemsSection>
   );
 };

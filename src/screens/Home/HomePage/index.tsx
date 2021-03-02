@@ -12,8 +12,9 @@ interface HomeProps {}
 const Home: React.FunctionComponent<HomeProps> = () => {
   return (
     <HomeContainer
+      alwaysBounceVertical
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ display: 'flex', justifyContent: 'center', height: '100%' }}
+      contentContainerStyle={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}
     >
       <Logo />
       <FeaturedItems />
