@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 import { Region } from 'react-native-maps';
 
-import { mapStyle } from '../../utils/mapstyle';
+import { mapStyle } from '../../../utils/mapstyle';
 
 interface MapProps {
   initial: Region;

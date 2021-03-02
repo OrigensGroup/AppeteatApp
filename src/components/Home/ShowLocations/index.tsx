@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import Map from '../../Map';
+import Map from '../../Shared/Map';
 import Text from '../../Shared/Text';
 
 import homeTranslations from '../../../translations/home';
