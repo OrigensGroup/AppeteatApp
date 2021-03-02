@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'styled-components';
@@ -19,11 +20,11 @@ import {
 
 interface HappyHourPromotionCardProps {
   endDate: string;
-  onClick?: () => void;
 }
 
-const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({ endDate, onClick }) => {
+const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({ endDate }) => {
   const theme = useTheme();
+  const navigation = useNavigation();
   const interval = useRef<NodeJS.Timeout>();
   const [countdown, setCountdown] = useState(() => {
     const end = Date.parse(endDate);
@@ -35,7 +36,11 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
     return end - now;
   });
 
-  function getTimeRemaining() {
+  const navigate = () => {
+    navigation.navigate('HappyHourMenu');
+  };
+
+  const getTimeRemaining = () => {
     const end = Date.parse(endDate);
     const now = Date.parse(new Date().toString());
 
@@ -54,9 +59,9 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
       minutes,
       seconds,
     };
-  }
+  };
 
-  function startTimer() {
+  const startTimer = () => {
     interval.current = setInterval(() => {
       if (countdown <= 0) {
         if (interval.current) clearInterval(interval.current);
@@ -64,7 +69,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
 
       const t = getTimeRemaining();
     }, 1000);
-  }
+  };
 
   useEffect(() => {
     startTimer();
@@ -75,7 +80,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   }, []);
 
   return (
-    <HappyHourPromotionCardContainer onPress={onClick}>
+    <HappyHourPromotionCardContainer onPress={navigate}>
       <LinearGradient
         colors={[theme.colors.active, theme.colors.secondaryActive]}
         style={styles.linearGradient}

@@ -8,18 +8,13 @@ import SwiperPage from '../../../components/Menu/MenuComponents/SwiperPage';
 import MenuTabs from '../../../components/Menu/MenuComponents/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/MenuComponents/ViewBasketButton';
 import FilterModal from '../../../components/Menu/MenuComponents/FilterModal';
-import Filter from '../../../components/Menu/MenuComponents/Filter'
-import CloseButton from '../../../components/Menu/MenuComponents/CloseButton'
+import Filter from '../../../components/Menu/MenuComponents/Filter';
+import CloseButton from '../../../components/Menu/MenuComponents/CloseButton';
 import useMenu from '../../../hooks/useMenu';
 
-import {
-  MenuWrapper,
-  TopBarWrapper,
-  TopContainer,
-  BasketButtonWrapper,
-} from './styles';
+import { MenuWrapper, TopBarWrapper, TopContainer, BasketButtonWrapper } from './styles';
 
-interface MenuProps { }
+interface MenuProps {}
 
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
@@ -75,9 +70,9 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
         {menuTabsContent()}
       </Swiper>
-      <BasketButtonWrapper>
+      {/* <BasketButtonWrapper>
         <ViewBasketButton onClick={navigate} />
-      </BasketButtonWrapper>
+      </BasketButtonWrapper> */}
     </MenuWrapper>
   );
 };
