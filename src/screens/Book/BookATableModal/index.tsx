@@ -5,25 +5,21 @@ import Modal from 'react-native-modal';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {
-    ConfirmContainer,
-    Container,
-    DateContainer,
-    DateWrap,
-    IconContainer,
+    SpinnerContainer,
     ModalContainer,
     PopUpContainer,
-    TextContainer,
-    TimeContainer,
-    UpdateWrapper,
-    VenueContainer,
-    VenueWrap,
+    DateContainer,
+    ConfirmButton,
+    PickerContainer,
+
 } from './styles';
 import Text from '../../../components/Shared/Text';
-import Button from '../../../components/Book/Button';
+import Picker from '../../../components/Book/Picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useRoute } from '@react-navigation/native';
 import { Platform } from 'react-native';
 import { useTheme } from 'styled-components';
+import Spinner from '../../../components/Book/Spinner';
 
 type Months = {
   [key: number]: string;
@@ -122,56 +118,10 @@ const theme = useTheme();
         >
             <ModalContainer>
                 <PopUpContainer>
-                    <VenueWrap>
-          <VenueContainer>
-            <TextContainer>
-              <Text color="primary" fontSize={15}>
-                Venue
-              </Text>
-            </TextContainer>
-            <Button>
-              <IconContainer>
-                <Icon color="#000000" name="location-outline" size={28} />
-              </IconContainer>
-              <Text color="primary" fontSize={15}>
-                {venue.name}
-              </Text>
-            </Button>
-          </VenueContainer>
-        </VenueWrap>
-        <DateWrap>
-          <DateContainer>
-            <TextContainer>
-              <Text color="primary" fontSize={15}>
-                Date
-              </Text>
-            </TextContainer>
-            <Button onPress={showDatepicker}>
-              <IconContainer>
-                <Icon color="#000000" name="ios-time-outline" size={28} />
-              </IconContainer>
-              <Text color="primary" fontSize={15}>
-                {date.getDate()} {months[date.getMonth()]}
-              </Text>
-            </Button>
-          </DateContainer>
-          <TimeContainer>
-            <TextContainer>
-              <Text color="primary" fontSize={15}>
-                Time
-              </Text>
-            </TextContainer>
-            <Button onPress={showTimepicker}>
-              <IconContainer>
-                <Icon color="#000000" name="ios-time-outline" size={28} />
-              </IconContainer>
-              <Text color="primary" fontSize={15}>
-                {date.getHours() > 11
-                  ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
-                  : `${minutes[date.getHours()]}:${date.getMinutes()} AM`}
-              </Text>
-            </Button>
-          </TimeContainer>
+            <Picker title='Venue' icon={<Icon color="#000000" name="location-outline" size={28} />} textValue={venue.name} />
+        <DateContainer>
+            <PickerContainer><Picker title='Date' onPress={showDatepicker} icon={<Icon color="#000000" name="ios-time-outline" size={28} />} dayValue={date.getDate()} monthValue={months[date.getMonth()]} /></PickerContainer>
+          <PickerContainer><Picker title='Time' onPress={showTimepicker} icon={<Icon color="#000000" name="ios-time-outline" size={28} />} timeValue={date.getHours() > 11 ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`: `${minutes[date.getHours()]}:${date.getMinutes()} AM` } /></PickerContainer>
           {show && (
             <DateTimePicker
               display="default"
@@ -183,30 +133,15 @@ const theme = useTheme();
               value={date}
             />
           )}
-        </DateWrap>
-        <Container>
-          <TextContainer>
-            <Text color="primary" fontSize={15}>
-              No of member
-            </Text>
-          </TextContainer>
-          <InputSpinner
-            color={theme.colors.active}
-            max={50}
-            min={1}
-            onChange={(num) => {
-              console.log(num);
-            }}
-            step={1}
-          />
-        </Container>
-        <ConfirmContainer>
-          <UpdateWrapper onPress={onClose}>
-                        <Text color="tertiary" fontSize={18} bold>
+        </DateContainer>
+        <SpinnerContainer>
+         <Spinner title='No of member' />
+        </SpinnerContainer>
+          <ConfirmButton onPress={onClose}>
+            <Text color="tertiary" fontSize={18} bold>
               Confirm Booking
             </Text>
-        </UpdateWrapper>
-        </ConfirmContainer>
+        </ConfirmButton>
                 </PopUpContainer>
             </ModalContainer>
         </Modal>

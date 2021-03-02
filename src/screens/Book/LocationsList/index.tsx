@@ -29,8 +29,8 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   const timeoutRef = useRef<NodeJS.Timeout>(0);
   const [index, setIndex] = useState(0);
   const region = {
-    latitude: 45.52220671242907,
-    longitude: -122.6653281029795,
+    latitude: -0.128955,
+    longitude: 51.492889,
     latitudeDelta: 0.04864195044303443,
     longitudeDelta: 0.040142817690068,
   };
@@ -98,7 +98,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   return (
     <View style={styles.container}>
       <BookATableModal isModalVisible={isModalVisible} venue={venueToBook} onClose={closeModal} />
-      <MapView ref={mapRef} showsUserLocation style={styles.container} customMapStyle={mapStyle}>
+      <MapView region={region} ref={mapRef} showsUserLocation style={styles.container} customMapStyle={mapStyle}>
         {venues.map((marker, index) => {
           const scaleStyle = {
             transform: [
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   endPadding: {
-    paddingRight: width - CARD_WIDTH,
+    
   },
   markerWrap: {
     alignItems: 'center',

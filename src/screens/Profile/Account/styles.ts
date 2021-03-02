@@ -10,7 +10,7 @@ export const NavigationContainer = styled.View`
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
 `;
 export const FavouriteCocktailsContainer = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
+  margin: ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
 `;
 export const Content = styled.ScrollView`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
