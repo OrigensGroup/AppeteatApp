@@ -5,24 +5,29 @@ export const DiscountPromotionContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(30)};
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.spacing.double};
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const DiscountPromotionImage = styled.Image`
   height: 100%;
-  width: ${({ theme }) => theme.spacing.multiple(14)};
+  width: 100%;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  resize-mode: cover;
 `;
 
 export const ImageContainer = styled.View`
+  height: 100%;
+  width: 40%;
   padding: ${({ theme }) => theme.spacing.oneAndHalf};
 `;
 
 export const DiscountPromotionDescription = styled.View`
-  padding-top: ${({ theme }) => theme.spacing.oneAndHalf};
+  flex: 1;
+  flex-wrap: wrap;
+  padding: ${({ theme }) => theme.spacing.triple} ${({ theme }) => theme.spacing.oneAndHalf} 0 0;
 `;
 
 export const DiscountPromotionButton = styled.View`
@@ -32,7 +37,7 @@ export const DiscountPromotionButton = styled.View`
 `;
 
 export const DiscountPromotionOrderButton = styled.TouchableOpacity`
-  padding: ${({ theme }) => theme.spacing.single};
+  padding: ${({ theme }) => theme.spacing.half} ${({ theme }) => theme.spacing.oneAndHalf};
   align-items: center;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   background-color: ${({ theme }) => theme.colors.active};

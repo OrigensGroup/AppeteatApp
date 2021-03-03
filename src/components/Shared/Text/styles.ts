@@ -5,10 +5,16 @@ interface TitleProps {
   fontSize: number;
   color: 'primary' | 'secondary' | 'tertiary' | 'quartiary';
   bold?: boolean;
+  light?: boolean;
   align: string;
 }
+
 export const TitleContainer = styled.View`
-  justify-content: center;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 `;
 
 export const TitleText = styled.Text<TitleProps>`
@@ -33,6 +39,7 @@ export const TitleText = styled.Text<TitleProps>`
     }
   }};
 
-  ${({ bold }) => (bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'")}
+  ${({ bold }) => (bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'")};
+  ${({ light }) => (light ? "font-family: 'ComfortaaLight'" : "font-family: 'Comfortaa'")};
   text-align: ${({ align }) => align};
 `;

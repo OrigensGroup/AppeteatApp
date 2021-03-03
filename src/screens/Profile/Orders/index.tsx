@@ -3,7 +3,7 @@ import { FlatList } from 'react-native-gesture-handler';
 
 import OrderCard from '../../../components/Profile/OrderCard';
 
-import { OrdersContainer, OrdersWrap } from './styles';
+import { OrdersContainer } from './styles';
 
 type Item = {
   id: string;
@@ -35,9 +35,7 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
   const renderItem = () => <OrderCard date="11MAY" items="1x Mojito" price={10} />;
   return (
     <OrdersContainer>
-      <OrdersWrap>
         <FlatList data={DATA} horizontal={false} renderItem={renderItem} />
-      </OrdersWrap>
     </OrdersContainer>
   );
 };
