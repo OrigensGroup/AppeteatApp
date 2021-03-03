@@ -3,12 +3,14 @@ import { useNavigation } from '@react-navigation/native';
 import LogInButton from '../../components/Login/Buttons/LogInButton';
 import Fontisto from "react-native-vector-icons/Fontisto";
 import Feather from "react-native-vector-icons/Feather";
-import AntDesign from "react-native-vector-icons/AntDesign";
 import TextField from '../../components/Shared/LoginTextField';
 import loginTranslations from '../../translations/login';
-import { AppleButton } from '@invertase/react-native-apple-authentication';
 import { TextFieldWrapper, LoginContainer, LogInContainer, RegisterContainer, RegisterText, UpperContent, BottomContent, LogoImage, LogoContainer, IconWrap, SocialLogin } from './styles';
-import { Alert } from 'react-native';
+
+import FacebookButton from '../../components/Shared/FacebookButton';
+import GoogleButton from '../../components/Shared/GoogleButton';
+import AppleButton from '../../components/Shared/AppleButton';
+
 
 interface LoginProps { }
 
@@ -18,15 +20,15 @@ const Login: React.FunctionComponent<LoginProps> = () => {
   const login = () => {
     navigation.navigate('App');
   };
-
+  
   return (
     <LoginContainer>
       <UpperContent>
         <LogoContainer><LogoImage source={require('../../img/Logo.png')} /></LogoContainer>
         <SocialLogin>
-          <AntDesign name="apple1" size={40} color="#000" />
-          <AntDesign name="google" size={40} color="#000" />
-          <AntDesign name="facebook-square" size={40} color="#000" />
+          <AppleButton />
+          <GoogleButton />
+          <FacebookButton />
         </SocialLogin>
       </UpperContent>
       <BottomContent>
