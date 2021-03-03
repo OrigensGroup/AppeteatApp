@@ -631,8 +631,35 @@ PODS:
     - RNFBApp
   - RNGestureHandler (1.10.0):
     - React-Core
-  - RNReanimated (1.13.2):
+  - RNReanimated (2.0.0-rc.3):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - Folly
+    - glog
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - React-callinvoker
     - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - React-RCTVibration
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (2.17.1):
     - React-Core
   - RNVectorIcons (8.0.0):
@@ -947,7 +974,7 @@ SPEC CHECKSUMS:
   RNFBApp: 02bde3edecf2e9694b908a5d3504e03449980f20
   RNFBFirestore: 337b96bf5b1b2d32bb9fc4735afd47b16532dde8
   RNGestureHandler: 03f587ba19a7e2d9fe48fb9aa6e33ace5fd07dd5
-  RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
+  RNReanimated: ca4f28c765329144d68bdad126bf6b0b1afc7a5a
   RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
   RNVectorIcons: f67a1abce2ec73e62fe4606e8110e95a832bc859
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78

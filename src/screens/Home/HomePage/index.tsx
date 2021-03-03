@@ -1,56 +1,25 @@
 import React from 'react';
 
-import { FlatList } from 'react-native';
-import PromotionCard from '../../../components/Home/PromotionItemCard';
-import useMenu from '../../../hooks/useMenu';
-
-import { MenuItem } from '../../../types/MenuItem';
-
-import Text from '../../../components/Shared/Text';
-
-import {
-  HomeContainer,
-  HomeLogoContainer,
-  HomeSection,
-  HomeLogoImage,
-  BottomContainer,
-  MapContainer,
-  FindButton,
-} from './styles';
 import CarouselPromo from '../../../components/Home/Carousel';
-import Map from '../../../components/Map';
+
+import { HomeContainer } from './styles';
+import ShowLocations from '../../../components/Home/ShowLocations';
+import FeaturedItems from '../../../components/Home/FeaturedItems';
+import Logo from '../../../components/Home/Logo';
 
 interface HomeProps { }
 
 const Home: React.FunctionComponent<HomeProps> = () => {
-  const { menu } = useMenu();
-
-  const promotedItems = menu.items.filter((menuItem) => menuItem.promoted);
-
-  const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionCard item={item} />;
-
   return (
-    <HomeContainer>
-      <HomeLogoContainer>
-        <HomeLogoImage source={require('../../../img/Logo.png')} />
-      </HomeLogoContainer>
-      <HomeSection>
-        <Text fontSize={20} color="primary">
-          Popular Cocktails
-        </Text>
-        <FlatList data={promotedItems} horizontal renderItem={flatlistItem} showsHorizontalScrollIndicator={false} />
-      </HomeSection>
+    <HomeContainer
+      alwaysBounceVertical
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}
+    >
+      <Logo />
+      <FeaturedItems />
       <CarouselPromo />
-      <BottomContainer>
-        <MapContainer onPress={() => navigation.navigate('LocationsList')}>
-          <Map />
-          <FindButton>
-            <Text fontSize={18} color="primary">
-              Find us!
-            </Text>
-          </FindButton>
-        </MapContainer>
-      </BottomContainer>
+      <ShowLocations />
     </HomeContainer>
   );
 };

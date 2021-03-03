@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ProfileLinkContainer, IconContainer, IconTextWrap, ArrowContainer } from './styles';
+import { ProfileLinkContainer, IconContainer, TextContainer, ArrowContainer } from './styles';
 import Text from '../../Shared/Text';
 
 interface ListItemProps {
@@ -20,11 +20,11 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigat
   return (
     <ProfileLinkContainer onPress={navigate(navigateTo)}>
       <IconContainer>{icon}</IconContainer>
-      <IconTextWrap>
+      <TextContainer>
         <Text color="primary" fontSize={15}>
           {title}
         </Text>
-      </IconTextWrap>
+      </TextContainer>
       <ArrowContainer>{icon2}</ArrowContainer>
     </ProfileLinkContainer>
   );

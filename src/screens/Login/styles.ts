@@ -9,12 +9,12 @@ export const TextFieldWrapper = styled.View`
   margin: ${({ theme }) => theme.spacing.multiple(4)};
 `;
 export const LogoImage = styled.Image`
-  width: 100%
+  width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(25)};
   resize-mode: contain;
 `;
 export const LogoContainer = styled.View`
-  width: 100%
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

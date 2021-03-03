@@ -12,12 +12,7 @@ import Filter from '../../../components/Menu/MenuComponents/Filter'
 import CloseButton from '../../../components/Menu/MenuComponents/CloseButton'
 import useMenu from '../../../hooks/useMenu';
 
-import {
-  MenuWrapper,
-  TopBarWrapper,
-  TopContainer,
-  BasketButtonWrapper,
-} from './styles';
+import { MenuWrapper, TopBarWrapper, TopContainer, BasketButtonWrapper } from './styles';
 
 interface MenuProps { }
 
@@ -75,9 +70,9 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
         {menuTabsContent()}
       </Swiper>
-      <BasketButtonWrapper>
+      {/* <BasketButtonWrapper>
         <ViewBasketButton onClick={navigate} />
-      </BasketButtonWrapper>
+      </BasketButtonWrapper> */}
     </MenuWrapper>
   );
 };

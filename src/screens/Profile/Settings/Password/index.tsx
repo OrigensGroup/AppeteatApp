@@ -1,19 +1,33 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { Alert, Button } from 'react-native';
+import CustomButton from '../../../../components/Shared/Button';
 
-import LoginTextField from '../../../../components/Shared/LoginTextField';
+import TextField from '../../../../components/Shared/LoginTextField';
+import accountTranslations from '../../../../translations/account';
 
-import { PasswordContainer, PasswordWrap } from './styles';
+import { PasswordContainer } from './styles';
 
 interface PasswordProps { }
 
+
+
 const Password: React.FunctionComponent<PasswordProps> = () => {
+
+  const navigation = useNavigation();
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <CustomButton onClick={() => Alert.alert('Successfully saved')}  title={accountTranslations.accountPage.save} />
+      ),
+      title: 'Password',
+    });
+  }, [navigation]);
   return (
     <PasswordContainer>
-      <PasswordWrap>
-        <LoginTextField placeholder="Current password" textContentType="password"></LoginTextField>
-        <LoginTextField placeholder="New password" textContentType="password"></LoginTextField>
-        <LoginTextField placeholder="Re-enter new password" textContentType="password"></LoginTextField>
-      </PasswordWrap>
+        <TextField placeholder={accountTranslations.accountPage.currentPassword} textContentType="password"></TextField>
+        <TextField placeholder={accountTranslations.accountPage.newPassword} textContentType="password"></TextField>
+        <TextField placeholder={accountTranslations.accountPage.reNewPassword} textContentType="password"></TextField>
     </PasswordContainer>
   );
 };
