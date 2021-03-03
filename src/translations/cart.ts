@@ -20,6 +20,16 @@ const cartTranslations = {
   orderTotField: {
     title: 'Order Total',
   },
+  subtotal: {
+    title: 'Subtotal',
+  },
+  goToCheckoutCta: {
+    title: 'Go To Checkout',
+  },
+  updateModal: {
+    price: 'Price:',
+    cta: 'Update',
+  },
 };
 
 export default cartTranslations;

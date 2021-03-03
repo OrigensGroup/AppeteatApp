@@ -1,42 +1,52 @@
 import React from 'react';
-import { MenuItem } from '../../../../types/MenuItem';
+
+import { OrderItem } from '../../../../types/OrderItem';
+import Text from '../../../Shared/Text';
 
 import {
-  SingleCartItem,
-  CartItemLeftWrapper,
-  ItemInfoWrapper,
-  ItemName,
-  ItemsNumber,
-  Price,
-  Customisation,
-  ItemCustom,
+  CartItemContainer,
+  CartItemInfo,
+  CartItemCustomisation,
+  CartItemQuantity,
+  CartItemTitle,
+  CartItemPrice,
 } from './styles';
 
 interface CartItemProps {
-  item: MenuItem;
-  onClick: (id: string) => () => void;
+  item: OrderItem;
+  onClick: (id: OrderItem) => () => void;
 }
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
   return (
-    <SingleCartItem onPress={onClick(item.id)}>
-      <ItemInfoWrapper>
-        <CartItemLeftWrapper>
-          <ItemsNumber>{item.quantity}</ItemsNumber>
-          <ItemName>{item.title}</ItemName>
-        </CartItemLeftWrapper>
-        <Price>£ {item.price * item.quantity}</Price>
-      </ItemInfoWrapper>
-      <Customisation>
-        {item.customisations.map((customisation) => (
-          <ItemCustom>{customisation}</ItemCustom>
-        ))}
-      </Customisation>
-    </SingleCartItem>
+    <CartItemContainer onPress={onClick(item)}>
+      <CartItemInfo>
+        <CartItemQuantity>
+          <Text bold fontSize={20} color="tertiary">
+            {item.quantity} x
+          </Text>
+        </CartItemQuantity>
+        <CartItemTitle>
+          <Text bold fontSize={20} color="primary">
+            {item.title}
+          </Text>
+          <CartItemCustomisation>
+            {item.customisations &&
+              item.customisations.map((customisation) => (
+                <Text light fontSize={14} color="tertiary">
+                  {customisation}
+                </Text>
+              ))}
+          </CartItemCustomisation>
+        </CartItemTitle>
+        <CartItemPrice>
+          <Text bold fontSize={20} color="primary">
+            £ {item.price * item.quantity}
+          </Text>
+        </CartItemPrice>
+      </CartItemInfo>
+    </CartItemContainer>
   );
 };
 
 export default CartItem;
-
-// need to implement a function that checks
-// if <ItemCustom> has anything inside, if not then do not display it

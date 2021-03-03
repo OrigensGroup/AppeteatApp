@@ -6,6 +6,7 @@ type Extra = {
 };
 
 export interface OrderItem extends MenuItem {
+  orderItemId: string;
   customisations: string[];
   extras: Extra[];
 }

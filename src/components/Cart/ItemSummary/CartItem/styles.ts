@@ -1,48 +1,30 @@
 import styled from 'styled-components/native';
 
-export const SingleCartItem = styled.TouchableOpacity`
-  border-bottom-color: #afafaf;
+export const CartItemContainer = styled.TouchableOpacity`
+  width: 100%;
+`;
+
+export const CartItemInfo = styled.View`
+  flex-direction: row;
+  margin: ${({ theme }) => theme.spacing.triple} ${({ theme }) => theme.spacing.triple} 0
+    ${({ theme }) => theme.spacing.triple};
   border-bottom-width: 1px;
+  border-color: ${({ theme }) => theme.colors.border};
 `;
 
-export const CartItemLeftWrapper = styled.View`
-  flex-direction: row;
+export const CartItemQuantity = styled.View`
+  flex: 1;
 `;
 
-export const ItemInfoWrapper = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: ${({ theme }) => theme.spacing.multiple(1)};
-  margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
+export const CartItemTitle = styled.View`
+  flex: 3;
+  display: flex;
+  flex-direction: column;
 `;
 
-export const ItemName = styled.Text`
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-  margin-left: ${({ theme }) => theme.spacing.multiple(6)};
+export const CartItemCustomisation = styled.View`
+  margin-top: ${({ theme }) => theme.spacing.single};
+  padding-bottom: ${({ theme }) => theme.spacing.double};
 `;
 
-export const Price = styled.Text`
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-`;
-
-export const ItemsNumber = styled.Text`
-  font-size: 18px;
-  color: #fc7930;
-  font-weight: bold;
-`;
-
-export const Customisation = styled.View`
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-left: ${({ theme }) => theme.spacing.multiple(11.5)};
-  padding-bottom: ${({ theme }) => theme.spacing.single};
-`;
-
-export const ItemCustom = styled.Text`
-  font-size: 16px;
-  color: #fc7930;
-`;
+export const CartItemPrice = styled.View``;

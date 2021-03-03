@@ -8,9 +8,7 @@ interface ViewBasketButtonProps {
 }
 
 const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onClick }) => {
-  const { cart } = useCart();
-
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const { cart, pricing } = useCart();
 
   return (
     <MainButtonWrapper>
@@ -18,7 +16,7 @@ const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onCl
         <TextWrapper>
           <ButtonText>{cart.length}</ButtonText>
           <ButtonText>View Basket</ButtonText>
-          <ButtonText>£{total}</ButtonText>
+          <ButtonText>£ {pricing.subtotal}</ButtonText>
         </TextWrapper>
       </MainButton>
     </MainButtonWrapper>
