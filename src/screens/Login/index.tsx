@@ -9,7 +9,6 @@ import {
   SafeAreaViewBottom,
   Background,
 } from './styles';
-import { Platform } from 'react-native';
 
 
 interface LoginProps { }

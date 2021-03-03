@@ -14,7 +14,3 @@ export const Background = styled.View`
 flex: 1;
 background-color: ${({ theme }) => theme.colors.textSecondary};
 `;
-
-export const SafeView = styled.KeyboardAvoidingView`
-flex: 1;
-`;
