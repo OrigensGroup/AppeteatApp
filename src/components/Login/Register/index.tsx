@@ -15,7 +15,6 @@ import {
     LoginButtonContainer,
     RegisterContainer,
 } from './styles';
-import { Platform } from "react-native";
 
 interface RegisterManualProps {
 }
@@ -68,7 +67,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
                     <LogInButton onClick={enter} text={loginTranslations.RegisterButton.label} />
                 </LoginButtonContainer>
                 <RegisterContainer>
-                    <SignUpButton onClick={login} text={loginTranslations.RegisterButton.label} buttonText={loginTranslations.SignInSection.buttonLabel} />
+                    <SignUpButton onClick={login} text={loginTranslations.SignInSection.label} buttonText={loginTranslations.SignInSection.buttonLabel} />
                 </RegisterContainer>
             </ButtonsWrapper>
         </ManualLogInContainer>

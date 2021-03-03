@@ -11,6 +11,10 @@ background-color: ${({ theme }) => theme.colors.loginBottom};
 `;
 
 export const Background = styled.View`
-height: 100%;
+flex: 1;
 background-color: ${({ theme }) => theme.colors.textSecondary};
+`;
+
+export const SafeView = styled.KeyboardAvoidingView`
+flex: 1;
 `;

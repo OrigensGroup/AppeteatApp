@@ -18,17 +18,3 @@ align-items: center;
 `;
 
 
-// interface ButtonContainerProps {
-//   secondary?: boolean;
-// }
-
-// export const ButtonText = styled.Text<ButtonContainerProps>`
-//   ${({ secondary, theme }) =>
-//     secondary &&
-//     `
-//     font-size: ${theme.spacing.double};
-//     font-weight: bold;
-//   `};
-//   color: #ffffff;
-// `;
-

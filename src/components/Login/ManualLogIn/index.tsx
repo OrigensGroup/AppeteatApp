@@ -15,7 +15,7 @@ import {
     LoginButtonContainer,
     RegisterContainer,
 } from './styles';
-
+import { Platform } from "react-native";
 
 interface ManualLogInProps {
 }
@@ -30,8 +30,9 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
 
 
     return (
+
         <ManualLogInContainer>
-            <TextFieldsWrapper>
+            <TextFieldsWrapper behavior={Platform.OS === "ios" ? "padding" : "height"}>
                 <TextFieldWrapper>
                     <TitleWrapper>
                         <Text color='secondary' fontSize={14} bold>{loginTranslations.emailField.label}</Text>
@@ -41,7 +42,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
                         textContentType="emailAddress"
                     />
                 </TextFieldWrapper>
-                <TextFieldWrapper>
+                <TextFieldWrapper secondary>
                     <TitleWrapper>
                         <Text color='secondary' fontSize={14} bold>{loginTranslations.passwordField.label}</Text>
                     </TitleWrapper>
@@ -60,6 +61,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
                 </RegisterContainer>
             </ButtonsWrapper>
         </ManualLogInContainer>
+
     );
 };
 

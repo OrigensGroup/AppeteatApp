@@ -7,9 +7,9 @@ import ManualLogIn from '../../components/Login/ManualLogIn'
 import {
   SafeAreaViewTop,
   SafeAreaViewBottom,
-  Background
+  Background,
 } from './styles';
-
+import { Platform } from 'react-native';
 
 
 interface LoginProps { }
