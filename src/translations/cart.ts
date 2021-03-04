@@ -1,24 +1,37 @@
 const cartTranslations = {
   titleField: {
-    placeholder: 'Cart',
+    title: 'Cart',
   },
   totalField: {
-    placeholder: 'Total',
+    title: 'Total',
   },
   serviceFeeField: {
-    placeholder: 'Service Fee',
+    title: 'Service Fee',
   },
   allergiesField: {
-    placeholder: 'Any allergies we should be aware of?',
+    title: 'Any allergies we should be aware of?',
   },
   voucherField: {
-    placeholder: 'Add voucher code',
+    title: 'Add voucher code',
   },
   tipField: {
-    placeholder: 'Add Tip',
+    title: 'Add Tip',
   },
   orderTotField: {
-    placeholder: 'Order Total',
+    title: 'Order Total',
+  },
+  subtotal: {
+    title: 'Subtotal',
+  },
+  goToCheckoutCta: {
+    title: 'Go To Checkout',
+  },
+  updateModal: {
+    price: 'Price:',
+    cta: 'Update',
+  },
+  removeItemSwipe: {
+    title: 'Remove',
   },
 };
 

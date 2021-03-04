@@ -11,10 +11,9 @@ interface SignUpButtonProps {
   text: string;
   buttonText: string;
   onClick: () => void;
-  secondary?: boolean;
 }
 
-const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ onClick, secondary, text, buttonText }) => {
+const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ onClick, text, buttonText }) => {
   return (
     <ButtonContainer>
       <Text color='secondary' fontSize={14}>{text}</Text>

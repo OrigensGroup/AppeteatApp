@@ -5,11 +5,10 @@ import { TextFieldContainer, TextFieldInput } from './styles';
 
 interface LoginTextFieldProps {
   placeholder?: string;
-  tertiary?: boolean;
   textContentType: 'emailAddress' | 'password' | 'none';
 }
 
-const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ placeholder, textContentType, tertiary }) => {
+const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ placeholder, textContentType }) => {
   const [text, setText] = useState<string>('');
   const theme = useTheme();
 
@@ -24,7 +23,6 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ placehol
         secureTextEntry={textContentType === 'password'}
         textContentType={textContentType}
         placeholderTextColor={theme.colors.border}
-        tertiary={tertiary}
       />
     </TextFieldContainer>
   );

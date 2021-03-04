@@ -14,6 +14,7 @@ justify-content: space-between;
 align-items: center;
 bottom: 0;
 flex: 1;
+padding: 0 ${({ theme }) => theme.spacing.multiple(4)};
 `;
 
 export const TextFieldsWrapper = styled.KeyboardAvoidingView`
@@ -49,17 +50,5 @@ flex: 1;
 display: flex;
 justify-content: space-around;
 margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
-`;
-
-export const LoginButtonContainer = styled.SafeAreaView`
-  width:100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
-`;
-
-export const RegisterContainer = styled.View`
-margin: 0 ${({ theme }) => theme.spacing.multiple(5)};
 `;
 

@@ -9,13 +9,12 @@ import {
 
 interface LogInInputFieldProps {
     secondary?: boolean;
-    placeholder: any;
-    textContentType: any;
-    label: any;
-    tertiary?: boolean;
+    placeholder: string;
+    textContentType: "emailAddress" | "password" | "none";
+    label: string;
 }
 
-const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({ secondary, placeholder, textContentType, label, tertiary }) => {
+const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({ secondary, placeholder, textContentType, label }) => {
     return (
         <TextFieldWrapper secondary={secondary}>
             <TitleWrapper>
@@ -24,7 +23,6 @@ const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({ second
             <LoginTextField
                 placeholder={placeholder}
                 textContentType={textContentType}
-                tertiary={tertiary}
             />
         </TextFieldWrapper>
     );

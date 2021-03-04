@@ -4,7 +4,6 @@ import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles
 
 interface GoToCheckoutProps {
   onClick: () => void;
-  price: number;
 }
 
 const GoToCheckout: React.FunctionComponent<GoToCheckoutProps> = ({ onClick }) => {

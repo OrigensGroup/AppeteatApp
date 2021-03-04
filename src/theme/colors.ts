@@ -6,6 +6,7 @@ export interface ColorsInterface {
   textPrimary: string;
   textSecondary: string;
   loginBottom: string;
+  activeRed: string;
 }
 
 const colors: ColorsInterface = {
@@ -16,6 +17,7 @@ const colors: ColorsInterface = {
   textPrimary: '#000000',
   textSecondary: '#ffffff',
   loginBottom: '#111111',
+  activeRed: '#f54e4e',
 };
 
 export default colors;

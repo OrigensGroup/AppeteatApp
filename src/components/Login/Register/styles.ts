@@ -14,6 +14,7 @@ justify-content: space-between;
 align-items: center;
 bottom: 0;
 flex: 1;
+padding: 0 ${({ theme }) => theme.spacing.multiple(4)};
 `;
 
 export const TextFieldsWrapper = styled.KeyboardAvoidingView`
@@ -26,8 +27,8 @@ justify-content: space-around;
 
 export const TextFieldWrapper = styled.View<ButtonContainerProps>`
   margin: 0 ${({ theme }) => theme.spacing.multiple(5)};
-  margin-bottom: ${({ theme }) => theme.spacing.multiple(1)};
-  margin-top: ${({ theme }) => theme.spacing.multiple(1)};
+  margin-bottom: ${({ theme }) => theme.spacing.single};
+  margin-top: ${({ theme }) => theme.spacing.single};
   ${({ secondary }) =>
     secondary &&
     `
@@ -41,24 +42,25 @@ margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 
 
+export const PasswordsWrapper = styled.View`
+flex: 1;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+`;
+
+export const PasswordSeparator = styled.View`
+width: ${({ theme }) => theme.spacing.double};
+`;
+
+
+
 ///////////////////// Buttons /////////////////////
 
-export const ButtonsWrapper = styled.View`
+export const LogInSection = styled.View`
 width: 100%;
 flex: 1;
 display: flex;
 justify-content: space-around;
 margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
-`;
-
-export const LoginButtonContainer = styled.SafeAreaView`
-  width:100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
-`;
-
-export const RegisterContainer = styled.View`
-margin: 0 ${({ theme }) => theme.spacing.multiple(5)};
 `;

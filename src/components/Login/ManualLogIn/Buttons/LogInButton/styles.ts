@@ -8,7 +8,6 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-padding: 0 ${({ theme }) => theme.spacing.multiple(5)};
 margin-top: ${({ theme }) => theme.spacing.multiple(3)};
 margin-bottom: ${({ theme }) => theme.spacing.multiple(1)};
 `;

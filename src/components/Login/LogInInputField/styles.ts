@@ -5,7 +5,7 @@ interface ButtonContainerProps {
 }
 
 export const TextFieldWrapper = styled.View<ButtonContainerProps>`
-  margin: 0 ${({ theme }) => theme.spacing.multiple(5)};
+flex: 1;
   margin-bottom: ${({ theme }) => theme.spacing.multiple(1)};
   margin-top: ${({ theme }) => theme.spacing.multiple(1)};
   ${({ secondary }) =>

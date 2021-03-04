@@ -8,7 +8,9 @@ import LogInInputField from '../LogInInputField'
 import {
     ManualLogInContainer,
     TextFieldsWrapper,
-    ButtonsWrapper,
+    LogInSection,
+    PasswordsWrapper,
+    PasswordSeparator
 } from './styles';
 
 interface RegisterManualProps {
@@ -39,23 +41,24 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
                     placeholder={loginTranslations.emailField.placeholder}
                     textContentType="emailAddress"
                 />
-                <LogInInputField
-                    label={loginTranslations.passwordField.label}
-                    placeholder={loginTranslations.passwordField.placeholder}
-                    textContentType="password"
-                    tertiary
-                />
-                <LogInInputField
-                    label={loginTranslations.passwordField.secondaryLabel}
-                    placeholder={loginTranslations.passwordField.placeholder}
-                    textContentType="password"
-                    tertiary
-                />
+                <PasswordsWrapper>
+                    <LogInInputField
+                        label={loginTranslations.passwordField.label}
+                        placeholder={loginTranslations.passwordField.placeholder}
+                        textContentType="password"
+                    />
+                    <PasswordSeparator />
+                    <LogInInputField
+                        label={loginTranslations.passwordField.secondaryLabel}
+                        placeholder={loginTranslations.passwordField.placeholder}
+                        textContentType="password"
+                    />
+                </PasswordsWrapper>
             </TextFieldsWrapper>
-            <ButtonsWrapper>
+            <LogInSection>
                 <LogInButton onClick={enter} text={loginTranslations.RegisterButton.label} />
                 <SignUpButton onClick={login} text={loginTranslations.SignInSection.label} buttonText={loginTranslations.SignInSection.buttonLabel} />
-            </ButtonsWrapper>
+            </LogInSection>
         </ManualLogInContainer>
     );
 };
