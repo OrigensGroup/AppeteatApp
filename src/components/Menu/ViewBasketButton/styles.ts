@@ -2,6 +2,10 @@ import styled from 'styled-components/native';
 
 export const MainButtonWrapper = styled.View`
   width: 100%;
+  display: flex;
+  position: absolute;
+  bottom: ${({ theme }) => theme.spacing.double};
+  padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const MainButton = styled.TouchableOpacity`

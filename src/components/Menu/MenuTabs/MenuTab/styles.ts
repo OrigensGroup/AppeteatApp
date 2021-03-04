@@ -5,9 +5,10 @@ interface MenuTabContainerProps {
 }
 
 export const MenuTabContainer = styled.TouchableOpacity<MenuTabContainerProps>`
-  ${({ active }) => active && `border-bottom-color: #FC7930; border-bottom-width: 3px;`}
-  margin-right: ${({ theme }) => theme.spacing.multiple(3)};
+  ${({ active }) => active && `border-color: #FC7930; border-width: 1px; border-radius: 8px;`}
+  margin-left: ${({ theme }) => theme.spacing.triple};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
+  padding: 8px;
 `;
 
 export const Text = styled.Text`

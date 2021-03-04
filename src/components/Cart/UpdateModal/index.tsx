@@ -4,6 +4,7 @@ import Modal from 'react-native-modal';
 import useCart from '../../../hooks/useCart';
 import { useTheme } from 'styled-components';
 import cartTranslations from '../../../translations/cart';
+import Text from '../../Shared/Text';
 
 import {
     ModalCounterContainer,
@@ -15,8 +16,7 @@ import {
     ModalCounterWrapper,
     UpdateWrapper,
 } from './styles';
-import Title from '../../Shared/Text';
-import Text from '../../Shared/Text';
+
 
 
 interface UpdateModalProps {
@@ -84,9 +84,9 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
                         <DivLine />
                     </DivLineContainer>
                     <UpdateWrapper onPress={onClose}>
-                        <Title color='quartiary' fontSize={18} bold>
+                        <Text color='quartiary' fontSize={18} bold>
                             {cartTranslations.updateModalField.placeholder}
-                        </Title>
+                        </Text>
                     </UpdateWrapper>
                 </PopUpContainer>
             </ModalContainer>

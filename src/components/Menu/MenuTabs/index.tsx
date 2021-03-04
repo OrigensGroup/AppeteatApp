@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import { Tab } from '../../../../types/Tab';
+import { Tab } from '../../../types/Tab';
 
 import MenuTab from './MenuTab';
 

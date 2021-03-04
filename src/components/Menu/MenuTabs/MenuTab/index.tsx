@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../../../../Shared/Text'
+import Text from '../../../Shared/Text'
 
 import { MenuTabContainer } from './styles';
 

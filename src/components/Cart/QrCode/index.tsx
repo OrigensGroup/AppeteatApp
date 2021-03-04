@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../../../Shared/Text'
+import Text from '../../Shared/Text'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Button } from './styles';

@@ -5,7 +5,6 @@ import Text from '../../Shared/Text';
 import FilterModalTabs from './FilterModalTabs';
 import Swiper from 'react-native-swiper';
 import FilterModalSwiper from './FilterModalSwiper';
-import { useTheme } from 'styled-components';
 
 import {
   FilterModalContainer,
@@ -221,10 +220,10 @@ const FILTERS_DATA: any = {
 interface FilterModalProps {
   isModalVisible: boolean;
   onClose: () => void;
+  onClick: () => void;
 }
 
-const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible, onClose }) => {
-  const theme = useTheme();
+const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible, onClose, onClick }) => {
 
   const ref = useRef<Swiper | null>(null);
   const [filterIndex, setFilterIndex] = useState(0);
@@ -241,6 +240,7 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
     () => Object.keys(FILTERS_DATA).map((item) => <FilterModalSwiper key={item} filterItems={FILTERS_DATA[item]} />),
     [FILTERS_DATA]
   );
+
 
   return (
     <Modal
@@ -286,7 +286,7 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
                   </Text>
                 </BottomButtonWrapperLeft>
               </BottomButtonContainer>
-              <BottomButtonContainer>
+              <BottomButtonContainer onPress={onClick}>
                 <BottomButtonWrapperRight>
                   <Text color="secondary" fontSize={18} bold>
                     {filterTransaltions.doneField.placeholder}

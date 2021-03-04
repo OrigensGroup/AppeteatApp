@@ -1,7 +1,7 @@
 import React from 'react';
-import useCart from '../../../../hooks/useCart';
-import currencyTranslations from '../../../../translations/currency'
-import menuTranslations from '../../../../translations/menu'
+import useCart from '../../../hooks/useCart';
+import currencyTranslations from '../../../translations/currency'
+import menuTranslations from '../../../translations/menu'
 import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
 
 interface ViewBasketButtonProps {

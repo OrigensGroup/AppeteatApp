@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
-import CloseButton from '../MenuComponents/CloseButton';
-import HeartButton from '../MenuComponents/HeartButton';
+import CloseButton from '../MenuTopBar/CloseButton';
+import HeartButton from './HeartButton';
 import singleDrinkTranslations from '../../../translations/singleDrink';
 import useCart from '../../../hooks/useCart';
 import AddToBasketButton from './AddToBasketButton';
@@ -14,14 +14,10 @@ import {
   ButtonsWrapper,
   DetailsContainer,
   ItemDetails,
-  ItemDescription,
   AllertWrapper,
-  AllergiesAllert,
   IngredientsWrapper,
   IngredientsTopRow,
   CustomiseItem,
-  OrangeBoldText,
-  BoldText,
   BasketButtonWrapper,
   PicWrapper,
   TitleWrapper,
