@@ -10,15 +10,16 @@ import {
   DrinkDesc,
   ImageContainer,
   ButtonContainer,
-  LocationButton,
+  ShareButton,
   Content,
-  LocationButton2,
+  BookATableButton,
   Circle,
   TextContainer
 } from './styles';
 import theme from '../../../theme';
 import Text from '../../Shared/Text';
 import { Venue } from '../../../types/Venue';
+import bookTranslations from '../../../translations/book';
 
 interface LocationCardProps {
   venue: Venue;
@@ -45,21 +46,20 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
           </Text>
           <TextContainer><Text fontSize={12} color="primary">{venue.address}
           </Text></TextContainer>
-            
           <Text fontSize={12} color="quartiary">
             {venue.phoneNumber}
           </Text>
         </DrinkDesc>
       </Content>
       <ButtonContainer>
-        <LocationButton>
+        <ShareButton>
           <Icon color={theme.colors.textPrimary} name="share" size={28} />
-        </LocationButton>
-        <LocationButton2 onPress={onClick(venue)}>
+        </ShareButton>
+        <BookATableButton onPress={onClick(venue)}>
           <Text fontSize={12} color="tertiary" bold>
-            BOOK A TABLE
+            {bookTranslations.bookPage.bookTableButton}
           </Text>
-        </LocationButton2>
+        </BookATableButton>
       </ButtonContainer>
     </CardContainer>
   );

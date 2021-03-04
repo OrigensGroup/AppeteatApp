@@ -20,6 +20,7 @@ import { useRoute } from '@react-navigation/native';
 import { Platform } from 'react-native';
 import { useTheme } from 'styled-components';
 import Spinner from '../../../components/Book/Spinner';
+import bookTranslations from '../../../translations/book';
 
 type Months = {
   [key: number]: string;
@@ -139,7 +140,7 @@ const theme = useTheme();
         </SpinnerContainer>
           <ConfirmButton onPress={onClose}>
             <Text color="tertiary" fontSize={18} bold>
-              Confirm Booking
+              {bookTranslations.bookPage.confirmBookingButton}
             </Text>
         </ConfirmButton>
                 </PopUpContainer>

@@ -45,12 +45,12 @@ export const ButtonContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single} 0;
 `;
 
-export const LocationButton = styled.TouchableOpacity`
+export const ShareButton = styled.TouchableOpacity`
   padding: 0 ${({ theme }) => theme.spacing.double};
   align-items: center;
   display: flex;
 `;
-export const LocationButton2 = styled.TouchableOpacity`
+export const BookATableButton = styled.TouchableOpacity`
   position: absolute;
   bottom: 16px;
   right: 16px;
