@@ -5,7 +5,7 @@ import CarouselPromo from '../../../components/Home/Carousel';
 import { HomeContainer } from './styles';
 import ShowLocations from '../../../components/Home/ShowLocations';
 import FeaturedItems from '../../../components/Home/FeaturedItems';
-import Logo from '../../../components/Home/Logo';
+import Logo from '../../../components/Shared/Logo';
 
 interface HomeProps { }
 

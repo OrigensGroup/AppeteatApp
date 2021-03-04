@@ -39,7 +39,7 @@ export const TitleText = styled.Text<TitleProps>`
     }
   }};
 
-  ${({ bold }) => (bold ? "font-family: 'ComfortaaBold'" : "font-family: 'Comfortaa'")};
-  ${({ light }) => (light ? "font-family: 'ComfortaaLight'" : "font-family: 'Comfortaa'")};
+  ${({ bold, light }) =>
+    bold ? "font-family: 'ComfortaaBold'" : light ? "font-family: 'ComfortaaLight'" : "font-family: 'Comfortaa'"};
   text-align: ${({ align }) => align};
 `;

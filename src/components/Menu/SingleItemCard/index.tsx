@@ -28,6 +28,7 @@ import {
 } from './styles';
 
 import Ingredients from './Ingredients';
+import { MenuItem } from '../../../types/MenuItem';
 
 const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
@@ -40,7 +41,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const route = useRoute();
   const { addItemToCart } = useCart();
 
-  const { item } = route.params;
+  const { item } = route.params as { item: MenuItem };
 
   const navigation = useNavigation();
 

@@ -15,7 +15,7 @@ const SwiperPage: React.FunctionComponent<SwiperProps> = ({ menuItems }) => {
     <Wrapper>
       <FlatList
         data={menuItems}
-        keyExtractor={({ index }) => index}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => <MenuCard item={item} onClick={() => console.log('Hello World')} />}
       />
     </Wrapper>

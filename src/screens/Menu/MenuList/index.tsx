@@ -13,6 +13,7 @@ import CloseButton from '../../../components/Menu/MenuComponents/CloseButton'
 import useMenu from '../../../hooks/useMenu';
 
 import { MenuWrapper, TopBarWrapper, TopContainer, BasketButtonWrapper } from './styles';
+import useCart from '../../../hooks/useCart';
 
 interface MenuProps { }
 
@@ -23,6 +24,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   const navigation = useNavigation();
   const { menu } = useMenu();
+  const { cart } = useCart();
 
   const onSwipe = (index: number) => {
     if (ref.current && index !== menuIndex) {
@@ -70,9 +72,11 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
         {menuTabsContent()}
       </Swiper>
-      {/* <BasketButtonWrapper>
-        <ViewBasketButton onClick={navigate} />
-      </BasketButtonWrapper> */}
+      {cart.length > 0 && (
+        <BasketButtonWrapper>
+          <ViewBasketButton onClick={navigate} />
+        </BasketButtonWrapper>
+      )}
     </MenuWrapper>
   );
 };
