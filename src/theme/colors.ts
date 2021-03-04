@@ -15,7 +15,7 @@ const colors: ColorsInterface = {
   border: '#c2c2c2',
   textPrimary: '#000000',
   textSecondary: '#ffffff',
-  loginBottom: '#181822',
+  loginBottom: '#111111',
 };
 
 export default colors;

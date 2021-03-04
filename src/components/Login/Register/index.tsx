@@ -1,19 +1,14 @@
 import React from "react";
-import LoginTextField from '../../../components/Shared/LoginTextField';
 import loginTranslations from '../../../translations/login';
-import Text from '../../../components/Shared/Text';
 import LogInButton from '../ManualLogIn/Buttons/LogInButton';
 import SignUpButton from '../ManualLogIn/Buttons/SignUpButton';
 import { useNavigation } from "@react-navigation/native";
+import LogInInputField from '../LogInInputField'
 
 import {
     ManualLogInContainer,
-    TitleWrapper,
     TextFieldsWrapper,
-    TextFieldWrapper,
     ButtonsWrapper,
-    LoginButtonContainer,
-    RegisterContainer,
 } from './styles';
 
 interface RegisterManualProps {
@@ -34,41 +29,32 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
     return (
         <ManualLogInContainer>
             <TextFieldsWrapper>
-                <TextFieldWrapper>
-                    <TitleWrapper>
-                        <Text color='secondary' fontSize={14} bold>{loginTranslations.emailField.label}</Text>
-                    </TitleWrapper>
-                    <LoginTextField
-                        placeholder={loginTranslations.emailField.placeholder}
-                        textContentType="emailAddress"
-                    />
-                </TextFieldWrapper>
-                <TextFieldWrapper>
-                    <TitleWrapper>
-                        <Text color='secondary' fontSize={14} bold>{loginTranslations.passwordField.label}</Text>
-                    </TitleWrapper>
-                    <LoginTextField
-                        placeholder={loginTranslations.passwordField.placeholder}
-                        textContentType="password"
-                    />
-                </TextFieldWrapper>
-                <TextFieldWrapper>
-                    <TitleWrapper>
-                        <Text color='secondary' fontSize={14} bold>{loginTranslations.passwordField.secondaryLabel}</Text>
-                    </TitleWrapper>
-                    <LoginTextField
-                        placeholder={loginTranslations.passwordField.placeholder}
-                        textContentType="password"
-                    />
-                </TextFieldWrapper>
+                <LogInInputField
+                    label={loginTranslations.nameField.label}
+                    placeholder={loginTranslations.nameField.placeholder}
+                    textContentType="none"
+                />
+                <LogInInputField
+                    label={loginTranslations.emailField.label}
+                    placeholder={loginTranslations.emailField.placeholder}
+                    textContentType="emailAddress"
+                />
+                <LogInInputField
+                    label={loginTranslations.passwordField.label}
+                    placeholder={loginTranslations.passwordField.placeholder}
+                    textContentType="password"
+                    tertiary
+                />
+                <LogInInputField
+                    label={loginTranslations.passwordField.secondaryLabel}
+                    placeholder={loginTranslations.passwordField.placeholder}
+                    textContentType="password"
+                    tertiary
+                />
             </TextFieldsWrapper>
             <ButtonsWrapper>
-                <LoginButtonContainer>
-                    <LogInButton onClick={enter} text={loginTranslations.RegisterButton.label} />
-                </LoginButtonContainer>
-                <RegisterContainer>
-                    <SignUpButton onClick={login} text={loginTranslations.SignInSection.label} buttonText={loginTranslations.SignInSection.buttonLabel} />
-                </RegisterContainer>
+                <LogInButton onClick={enter} text={loginTranslations.RegisterButton.label} />
+                <SignUpButton onClick={login} text={loginTranslations.SignInSection.label} buttonText={loginTranslations.SignInSection.buttonLabel} />
             </ButtonsWrapper>
         </ManualLogInContainer>
     );

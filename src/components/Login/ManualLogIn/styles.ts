@@ -6,7 +6,6 @@ interface ButtonContainerProps {
 
 export const ManualLogInContainer = styled.View`
 width: 100%;
-height: 55%;
 background-color: ${({ theme }) => theme.colors.loginBottom};
 border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
 border-top-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
@@ -14,7 +13,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 bottom: 0;
-position:absolute;
+flex: 1;
 `;
 
 export const TextFieldsWrapper = styled.KeyboardAvoidingView`
@@ -28,7 +27,7 @@ justify-content: space-around;
 export const TextFieldWrapper = styled.View<ButtonContainerProps>`
   margin: 0 ${({ theme }) => theme.spacing.multiple(5)};
   margin-bottom: ${({ theme }) => theme.spacing.multiple(5)};
-  ${({ secondary, theme }) =>
+  ${({ secondary }) =>
     secondary &&
     `
     margin-bottom: 0; 
@@ -37,10 +36,12 @@ export const TextFieldWrapper = styled.View<ButtonContainerProps>`
 
 
 export const TitleWrapper = styled.View`
-margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
+margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
-//Buttons
+
+
+///////////////////// Buttons /////////////////////
 
 export const ButtonsWrapper = styled.View`
 width: 100%;

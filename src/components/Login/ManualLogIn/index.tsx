@@ -5,6 +5,7 @@ import Text from '../../../components/Shared/Text';
 import LogInButton from './Buttons/LogInButton';
 import SignUpButton from './Buttons/SignUpButton';
 import { useNavigation } from "@react-navigation/native";
+import LogInTextField from "../LogInInputField";
 
 import {
     ManualLogInContainer,
@@ -12,10 +13,9 @@ import {
     TextFieldsWrapper,
     TextFieldWrapper,
     ButtonsWrapper,
-    LoginButtonContainer,
-    RegisterContainer,
 } from './styles';
 import { Platform } from "react-native";
+
 
 interface ManualLogInProps {
 }
@@ -33,32 +33,21 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
 
         <ManualLogInContainer>
             <TextFieldsWrapper behavior={Platform.OS === "ios" ? "padding" : "height"}>
-                <TextFieldWrapper>
-                    <TitleWrapper>
-                        <Text color='secondary' fontSize={14} bold>{loginTranslations.emailField.label}</Text>
-                    </TitleWrapper>
-                    <LoginTextField
-                        placeholder={loginTranslations.emailField.placeholder}
-                        textContentType="emailAddress"
-                    />
-                </TextFieldWrapper>
-                <TextFieldWrapper secondary>
-                    <TitleWrapper>
-                        <Text color='secondary' fontSize={14} bold>{loginTranslations.passwordField.label}</Text>
-                    </TitleWrapper>
-                    <LoginTextField
-                        placeholder={loginTranslations.passwordField.placeholder}
-                        textContentType="password"
-                    />
-                </TextFieldWrapper>
+                <LogInTextField
+                    label={loginTranslations.emailField.label}
+                    placeholder={loginTranslations.emailField.placeholder}
+                    textContentType="emailAddress"
+                />
+                <LogInTextField
+                    label={loginTranslations.passwordField.label}
+                    placeholder={loginTranslations.passwordField.placeholder}
+                    textContentType="password"
+                    secondary
+                />
             </TextFieldsWrapper>
             <ButtonsWrapper>
-                <LoginButtonContainer>
-                    <LogInButton onClick={login} text={loginTranslations.loginButton.label} />
-                </LoginButtonContainer>
-                <RegisterContainer>
-                    <SignUpButton onClick={() => navigation.navigate('Register')} text={loginTranslations.signUpSection.label} buttonText={loginTranslations.signUpSection.buttonLabel} />
-                </RegisterContainer>
+                <LogInButton onClick={login} text={loginTranslations.loginButton.label} />
+                <SignUpButton onClick={() => navigation.navigate('Register')} text={loginTranslations.signUpSection.label} buttonText={loginTranslations.signUpSection.buttonLabel} />
             </ButtonsWrapper>
         </ManualLogInContainer>
 

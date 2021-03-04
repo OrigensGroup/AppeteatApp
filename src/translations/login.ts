@@ -1,4 +1,8 @@
 const loginTranslations = {
+  nameField: {
+    label: 'Full Name',
+    placeholder: 'Name Surname',
+  },
   emailField: {
     label: 'E-mail',
     placeholder: 'mail@mail.com',
