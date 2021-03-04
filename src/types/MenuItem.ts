@@ -8,4 +8,5 @@ export type MenuItem = {
   smallDesc: string;
   description: string;
   promoted: boolean;
+  type: 'customisableItem' | 'itemWithExtras';
 };

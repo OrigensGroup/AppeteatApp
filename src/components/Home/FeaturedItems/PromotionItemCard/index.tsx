@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
 import { MenuItem } from '../../../../types/MenuItem';
 
 import Text from '../../../Shared/Text';
@@ -17,8 +16,6 @@ interface PromotionItemCardProps {
 }
 
 const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ item, onClick }) => {
-  const theme = useTheme();
-
   return (
     <PromotionItemCardContainer onPress={onClick}>
       <PromotionItemCardImageContainer>
