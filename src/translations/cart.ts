@@ -30,6 +30,9 @@ const cartTranslations = {
     price: 'Price:',
     cta: 'Update',
   },
+  removeItemSwipe: {
+    title: 'Remove',
+  },
 };
 
 export default cartTranslations;
