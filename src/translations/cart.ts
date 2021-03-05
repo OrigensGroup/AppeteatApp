@@ -33,6 +33,14 @@ const cartTranslations = {
   removeItemSwipe: {
     title: 'Remove',
   },
+  updateModalField: {
+    label: 'Update',
+    placeholder: 'Update',
+  },
+  priceModalField: {
+    label: 'Price',
+    placeholder: 'Price £',
+  },
 };
 
 export default cartTranslations;

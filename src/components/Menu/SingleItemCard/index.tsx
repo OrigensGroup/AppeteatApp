@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, useTheme } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
-import CloseButton from '../MenuComponents/CloseButton';
-import HeartButton from '../MenuComponents/HeartButton';
+import IconButton from '../../Shared/IconButton';
 import singleDrinkTranslations from '../../../translations/singleDrink';
 import useCart from '../../../hooks/useCart';
-import AddToBasketButton from './AddToBasketButton';
+import AddToBasketButton from '../SingleItemCards/AddToBasketButton';
+import Text from '../../Shared/Text'
 import { SharedElement } from 'react-navigation-shared-element';
 
 
@@ -15,20 +15,15 @@ import {
   ButtonsWrapper,
   DetailsContainer,
   ItemDetails,
-  Title,
-  ItemDescription,
   AllertWrapper,
-  AllergiesAllert,
   IngredientsWrapper,
   IngredientsTopRow,
   CustomiseItem,
-  OrangeBoldText,
-  BoldText,
   BasketButtonWrapper,
   TitleWrapper,
 } from './styles';
 
-import Ingredients from './Ingredients';
+import Ingredients from '../SingleItemCards/Ingredients';
 
 const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
@@ -38,6 +33,7 @@ interface SingleItemProps {
 }
 
 const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
+  const theme = useTheme();
   const route = useRoute();
   const { addItemToCart } = useCart();
 
@@ -57,27 +53,27 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   return (
     <Wrapper>
       <ButtonsWrapper>
-        <CloseButton onClick={navigate} />
+        <IconButton onClick={navigate} iconName='ios-close' size={28} color={theme.colors.primary} />
         <TitleWrapper>
-          <Title>{item.title}</Title>
+          <Text color='primary' fontSize={18} bold>{item.title}</Text>
         </TitleWrapper>
-        <HeartButton onClick={() => console.log('hello world')} />
+        <IconButton onClick={navigate} iconName='heart-outline' size={28} color={theme.colors.primary} />
       </ButtonsWrapper>
       <ScrollView>
-         <SharedElement id={`item.${item.id}.image`} style={{flex:1, height: 320, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, marginBottom: 16   }}> 
-          <ItemPic source={{uri: item.image}} />
-          </SharedElement> 
+        <SharedElement id={`item.${item.id}.image`} style={{ flex: 1, height: 320, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, marginBottom: 16 }}>
+          <ItemPic source={{ uri: item.image }} />
+        </SharedElement>
         <DetailsContainer>
           <ItemDetails>
-            <ItemDescription>{singleDrinkTranslations.descriptionField.placeholder}</ItemDescription>
+            <Text color='primary' fontSize={14}>{singleDrinkTranslations.descriptionField.placeholder}</Text>
             <AllertWrapper>
-              <AllergiesAllert>{singleDrinkTranslations.alergiesField.placeholder}</AllergiesAllert>
+              <Text color='quartiary' fontSize={14}>{singleDrinkTranslations.alergiesField.placeholder}</Text>
             </AllertWrapper>
             <IngredientsWrapper>
               <IngredientsTopRow>
-                <BoldText>{singleDrinkTranslations.ingredientsField.placeholder}</BoldText>
+                <Text color='primary' fontSize={14} bold>{singleDrinkTranslations.ingredientsField.placeholder}</Text>
                 <CustomiseItem>
-                  <OrangeBoldText>{singleDrinkTranslations.customiseField.placeholder}</OrangeBoldText>
+                  <Text color='quartiary' fontSize={14} bold>{singleDrinkTranslations.customiseField.placeholder}</Text>
                 </CustomiseItem>
               </IngredientsTopRow>
               {ingredients()}

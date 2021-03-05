@@ -18,10 +18,3 @@ export const TopBarWrapper = styled.View`
   align-items: center;
   margin: ${({ theme }) => theme.spacing.multiple(2)} 0;
 `;
-
-export const BasketButtonWrapper = styled.View`
-  display: flex;
-  position: absolute;
-  bottom: ${({ theme }) => theme.spacing.double};
-  margin: 0 ${({ theme }) => theme.spacing.triple};
-`;
