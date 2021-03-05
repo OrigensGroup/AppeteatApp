@@ -16,7 +16,7 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({ title}) => {
               </Text>
             </TextContainer>
             <InputSpinner
-            color={theme.colors.active}
+            color='#EEEBE8'
             max={50}
             min={1}
             onChange={(num) => {

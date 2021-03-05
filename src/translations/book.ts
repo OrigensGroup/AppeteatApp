@@ -1,6 +1,6 @@
 const bookTranslations = {
   bookPage: {
-    bookTableButton: 'Book a Table',
+    bookTableButton: 'BOOK A TABLE',
     confirmBookingButton: 'Confirm Booking'
   },
 };

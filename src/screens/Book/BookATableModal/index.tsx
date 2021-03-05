@@ -139,7 +139,7 @@ const theme = useTheme();
          <Spinner title='No of member' />
         </SpinnerContainer>
           <ConfirmButton onPress={onClose}>
-            <Text color="tertiary" fontSize={18} bold>
+            <Text color="secondary" fontSize={18} bold>
               {bookTranslations.bookPage.confirmBookingButton}
             </Text>
         </ConfirmButton>

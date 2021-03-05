@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 export const PickerContainer = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
-  background-color: ${({ theme }) => theme.colors.active};
+  background-color: #EEEBE8;
   border-radius: ${({ theme }) => theme.spacing.double};
   padding: ${({ theme }) => theme.spacing.single};
 `;

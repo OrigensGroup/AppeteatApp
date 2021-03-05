@@ -9,7 +9,7 @@ export const ModalContainer = styled.View`
 
 export const PopUpContainer = styled.View`
   background-color: #ffffff;
-  height: 70%;
+  height: 60%;
   width: 100%;
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
@@ -26,11 +26,13 @@ export const PickerContainer = styled.View`
  flex:1;
 `;
 export const ConfirmButton = styled.TouchableOpacity`
-  flex:1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: ${({ theme }) => theme.spacing.single};
+  background-color: ${({ theme }) => theme.colors.active};
+  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
+  margin: ${({ theme }) => theme.spacing.double}; ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 
