@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { SharedElement } from 'react-navigation-shared-element';
 
 import { MenuItem } from '../../../../types/MenuItem';
 
@@ -38,9 +37,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
         <CardWrapper>
           <LeftWrapper>
             <ImageWrapper>
-              <SharedElement id={`item.${item.id}.image`} style={{borderRadius:24, position: 'absolute', backgroundColor: 'red'}}>
               <DrinkImage source={{ uri: item.image }} />
-               </SharedElement>
             </ImageWrapper>
             <DrinkDesc>
               <TextTitle>{item.title}</TextTitle>
