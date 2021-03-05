@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import Filter from './Filter'
-import CloseButton from './CloseButton'
+import IconButton from '../../Shared/IconButton'
+import { useTheme } from 'styled-components';
 
 import {
     TopContainer,
@@ -13,6 +13,7 @@ interface MenuTopBarProps {
 }
 
 const MenuTopBar: React.FunctionComponent<MenuTopBarProps> = ({ onClick }) => {
+    const theme = useTheme();
     const navigation = useNavigation();
 
     const navigateBack = () => {
@@ -22,8 +23,8 @@ const MenuTopBar: React.FunctionComponent<MenuTopBarProps> = ({ onClick }) => {
     return (
         <TopContainer>
             <TopBarWrapper>
-                <CloseButton onClick={navigateBack} />
-                <Filter onClick={onClick} />
+                <IconButton onClick={navigateBack} iconName='ios-close' size={28} color={theme.colors.textPrimary} />
+                <IconButton onClick={onClick} iconName='sliders' size={24} color={theme.colors.textPrimary} />
             </TopBarWrapper>
         </TopContainer>
     );

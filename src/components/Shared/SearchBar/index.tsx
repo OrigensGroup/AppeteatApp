@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
-
+import { useTheme } from 'styled-components';
+import IconButton from '../IconButton';
 import SearchField from '../SearchField';
 
 import {
@@ -17,12 +17,12 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FunctionComponent<SearchBarProps> = ({ onClick, placeholder, textContentType }) => {
+  const theme = useTheme();
+
   return (
     <SearchBarWrapper>
       <SearchButtonWrapper>
-        <SearchButton onPress={onClick}>
-          <Icon color="#0008" name="search" size={28} />
-        </SearchButton>
+        <IconButton onClick={onClick} iconName='sliders' size={24} color={theme.colors.textPrimary} />
       </SearchButtonWrapper>
       <SearchBarTextWrapper>
         <SearchField placeholder={placeholder} textContentType={textContentType} />

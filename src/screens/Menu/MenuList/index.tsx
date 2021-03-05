@@ -12,7 +12,6 @@ import useMenu from '../../../hooks/useMenu';
 import MenuTopBar from '../../../components/Menu/MenuTopBar'
 
 import {
-  SafeAreaViewTop,
   SafeAreaViewBottom,
   MenuWrapper,
 } from './styles';
@@ -60,7 +59,6 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   return (
     <>
-      <SafeAreaViewTop />
       <SafeAreaViewBottom>
         <MenuWrapper>
           <MenuTopBar onClick={toggleModal} />

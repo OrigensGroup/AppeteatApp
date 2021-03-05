@@ -28,9 +28,3 @@ export const TextWrapper = styled.View`
   padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
-export const ButtonText = styled.Text`
-  font-size: 18px;
-  display: flex;
-  color: black;
-  font-weight: bold;
-`;

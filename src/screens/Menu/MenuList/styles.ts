@@ -1,10 +1,5 @@
 import styled from 'styled-components/native';
 
-export const SafeAreaViewTop = styled.SafeAreaView`
-flex: 0;
-background-color: ${({ theme }) => theme.colors.textSecondary};
-`;
-
 export const SafeAreaViewBottom = styled.SafeAreaView`
 flex: 1;
 background-color: ${({ theme }) => theme.colors.textSecondary};
@@ -12,7 +7,7 @@ margin: 0;
 `;
 
 export const MenuWrapper = styled.View`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
   flex: 1;
 `;
 

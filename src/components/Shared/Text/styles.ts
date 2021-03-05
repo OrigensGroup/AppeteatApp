@@ -28,10 +28,10 @@ export const TitleText = styled.Text<TitleProps>`
         return theme.colors.textSecondary;
       }
       case 'tertiary': {
-        return theme.colors.border;
+        return theme.colors.active;
       }
       case 'quartiary': {
-        return theme.colors.active;
+        return theme.colors.border;
       }
 
       default:

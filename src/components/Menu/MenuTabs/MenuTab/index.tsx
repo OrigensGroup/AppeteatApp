@@ -1,7 +1,9 @@
 import React from 'react';
 import Text from '../../../Shared/Text'
 
-import { MenuTabContainer } from './styles';
+import {
+  MenuTabContainer
+} from './styles';
 
 interface MenuTabProps {
   title: string;
