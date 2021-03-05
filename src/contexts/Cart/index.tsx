@@ -10,9 +10,11 @@ type Pricing = {
   tip: number;
   total: number;
 };
+
+type AddItem = Omit<OrderItem, 'orderItemId'>;
 interface CartContext {
   cart: OrderItem[];
-  addItemToCart: (item: OrderItem) => void;
+  addItemToCart: (item: AddItem) => void;
   deleteItemFromCart: (item: string) => void;
   updateItemQuantity: (item: OrderItem, amount: number) => void;
   pricing: Pricing;
@@ -45,7 +47,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     total: 0,
   });
 
-  const addItemToCart = (item: OrderItem) => {
+  const addItemToCart = (item: AddItem) => {
     setCart((oldCart) => [...oldCart, { ...item, orderItemId: v4() }]);
   };
 

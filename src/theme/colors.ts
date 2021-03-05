@@ -7,6 +7,7 @@ export interface ColorsInterface {
   textSecondary: string;
   loginBottom: string;
   activeRed: string;
+  quantityUpdate: string;
 }
 
 const colors: ColorsInterface = {
@@ -18,6 +19,7 @@ const colors: ColorsInterface = {
   textSecondary: '#ffffff',
   loginBottom: '#111111',
   activeRed: '#f54e4e',
+  quantityUpdate: '#f1f1f1',
 };
 
 export default colors;
