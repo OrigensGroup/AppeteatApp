@@ -79,6 +79,11 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
     };
   }, []);
 
+
+  const navigateHappyHour = () => {
+    navigation.navigate('HappyHourMenu');
+  };
+
   return (
     <HappyHourPromotionCardContainer onPress={navigate}>
       <LinearGradient

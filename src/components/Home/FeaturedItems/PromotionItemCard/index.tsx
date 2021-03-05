@@ -16,6 +16,7 @@ interface PromotionItemCardProps {
 }
 
 const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ item, onClick }) => {
+
   return (
     <PromotionItemCardContainer onPress={onClick}>
       <PromotionItemCardImageContainer>

@@ -1,30 +1,31 @@
+import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
 
 import { TextFieldContainer, TextFieldInput } from './styles';
 
-interface TextFieldProps {
+interface LoginTextFieldProps {
   placeholder?: string;
-  icon?: React.ReactElement;
   textContentType: 'emailAddress' | 'password' | 'none';
 }
 
-const TextField: React.FunctionComponent<TextFieldProps> = ({ icon, placeholder, textContentType }) => {
+const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ placeholder, textContentType }) => {
   const [text, setText] = useState<string>('');
+  const theme = useTheme();
 
   const updateText = (text: string) => setText(text);
 
   return (
     <TextFieldContainer>
-      {icon}
       <TextFieldInput
         defaultValue={text}
         onChangeText={updateText}
         placeholder={placeholder}
         secureTextEntry={textContentType === 'password'}
         textContentType={textContentType}
+        placeholderTextColor={theme.colors.border}
       />
     </TextFieldContainer>
   );
 };
 
-export default TextField;
+export default LoginTextField;

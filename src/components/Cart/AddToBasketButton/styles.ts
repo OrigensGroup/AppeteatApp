@@ -7,24 +7,17 @@ export const MainButtonWrapper = styled.View`
 export const MainButton = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(7)};
   border-radius: ${({ theme }) => theme.spacing.single};
+  display: flex;
   flex-direction: row;
-  background-color: #fc7930;
-  border-color: transparent;
-  border-bottom-width: 0;
-  background-color: #fc7930;
+  background-color: ${({ theme }) => theme.colors.active};
   justify-content: center;
   align-items: center;
 `;
 
 export const TextWrapper = styled.View`
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-`;
-
-export const ButtonText = styled.Text`
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
 `;
