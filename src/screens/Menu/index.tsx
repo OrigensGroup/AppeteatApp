@@ -1,7 +1,7 @@
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import React from 'react';
 import Menu from './MenuList';
-import SingleItem from '../../components/Menu/SingleItemCard';
+import SingleItem from './SingleItem';
 import Cart from '../Cart';
 
 
@@ -11,7 +11,7 @@ interface MenuNavProps {}
 
 const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
   return (
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator headerMode="none" initialRouteName="MenuList">
       <Stack.Screen component={Menu} name="MenuList" />
       <Stack.Screen component={SingleItem} name="SingleItem"  sharedElementsConfig={(route, otherRoute, showing) => {
             const { item } = route.params;

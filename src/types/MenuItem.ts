@@ -1,8 +1,3 @@
-type Extra = {
-  title: string;
-  extraPrice: number;
-};
-
 export type MenuItem = {
   id: string;
   title: string;
@@ -12,7 +7,6 @@ export type MenuItem = {
   image: string;
   smallDesc: string;
   description: string;
-  allergyCustomisations: string[];
-  extras: Extra[];
   promoted: boolean;
+  type: 'customisableItem' | 'itemWithExtras';
 };
