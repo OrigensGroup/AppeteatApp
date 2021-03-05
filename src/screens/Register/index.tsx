@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../components/Login/Logo'
 import SocialLogin from '../../components/Login/SocialLogin'
-import RegisterManual from '../../components/Login/Register/'
+import RegisterManual from '../../components/Login/ManualRegister'
 import { Platform } from 'react-native';
 
 import {

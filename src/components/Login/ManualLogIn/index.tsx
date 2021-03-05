@@ -28,6 +28,9 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
         navigation.navigate('App');
     };
 
+    const register = () => {
+        navigation.navigate('Register');
+    };
 
     return (
 
@@ -47,7 +50,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
             </TextFieldsWrapper>
             <ButtonsWrapper>
                 <LogInButton onClick={login} text={loginTranslations.loginButton.label} />
-                <SignUpButton onClick={() => navigation.navigate('Register')} text={loginTranslations.signUpSection.label} buttonText={loginTranslations.signUpSection.buttonLabel} />
+                <SignUpButton onClick={register} text={loginTranslations.signUpSection.label} buttonText={loginTranslations.signUpSection.buttonLabel} />
             </ButtonsWrapper>
         </ManualLogInContainer>
 

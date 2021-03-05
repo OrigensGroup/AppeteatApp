@@ -14,5 +14,5 @@ export const TextFieldInput = styled.TextInput`
   border-bottom-width: 1px;
   flex: 1;
   padding: 0;
-  padding-bottom: ${({ theme }) => theme.spacing.multiple(0.5)};
+  padding-bottom: ${({ theme }) => theme.spacing.half};
 `;
