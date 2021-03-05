@@ -7,7 +7,7 @@ import ShowLocations from '../../../components/Home/ShowLocations';
 import FeaturedItems from '../../../components/Home/FeaturedItems';
 import Logo from '../../../components/Shared/Logo';
 
-interface HomeProps {}
+interface HomeProps { }
 
 const Home: React.FunctionComponent<HomeProps> = () => {
   return (
