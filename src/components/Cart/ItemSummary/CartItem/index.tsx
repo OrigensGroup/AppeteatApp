@@ -19,7 +19,7 @@ interface CartItemProps {
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
   return (
-    <CartItemContainer onPress={onClick(item)}>
+    <CartItemContainer onPress={onClick(item)} activeOpacity={1}>
       <CartItemInfo>
         <CartItemQuantity>
           <Text bold fontSize={20} color="tertiary">

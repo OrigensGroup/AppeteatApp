@@ -6,6 +6,8 @@ import HeartButton from '../MenuComponents/HeartButton';
 import singleDrinkTranslations from '../../../translations/singleDrink';
 import useCart from '../../../hooks/useCart';
 import AddToBasketButton from './AddToBasketButton';
+import { SharedElement } from 'react-navigation-shared-element';
+
 
 import {
   Wrapper,
@@ -23,12 +25,10 @@ import {
   OrangeBoldText,
   BoldText,
   BasketButtonWrapper,
-  PicWrapper,
   TitleWrapper,
 } from './styles';
 
 import Ingredients from './Ingredients';
-import { MenuItem } from '../../../types/MenuItem';
 
 const INGREDIENTS_DATA = ['Acqua', 'ide', 'dniadn'];
 
@@ -41,12 +41,12 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const route = useRoute();
   const { addItemToCart } = useCart();
 
-  const { item } = route.params as { item: MenuItem };
+  const { item } = route.params;
 
   const navigation = useNavigation();
 
   const navigate = () => {
-    navigation.navigate('MenuList');
+    navigation.goBack();
   };
 
   // const addToCart =
@@ -54,7 +54,6 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const ingredients = useCallback(() => INGREDIENTS_DATA.map((item) => <Ingredients ingredient={item} key={item} />), [
     INGREDIENTS_DATA,
   ]);
-
   return (
     <Wrapper>
       <ButtonsWrapper>
@@ -65,9 +64,9 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
         <HeartButton onClick={() => console.log('hello world')} />
       </ButtonsWrapper>
       <ScrollView>
-        <PicWrapper>
-          <ItemPic source={require('../../../img/venue.jpg')} />
-        </PicWrapper>
+         <SharedElement id={`item.${item.id}.image`} style={{flex:1, height: 320, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, marginBottom: 16   }}> 
+          <ItemPic source={{uri: item.image}} />
+          </SharedElement> 
         <DetailsContainer>
           <ItemDetails>
             <ItemDescription>{singleDrinkTranslations.descriptionField.placeholder}</ItemDescription>
