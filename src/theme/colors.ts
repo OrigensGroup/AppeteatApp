@@ -6,6 +6,7 @@ export interface ColorsInterface {
   textPrimary: string;
   textSecondary: string;
   activeRed: string;
+  quantityUpdate: string;
 }
 
 const colors: ColorsInterface = {
@@ -16,6 +17,7 @@ const colors: ColorsInterface = {
   textPrimary: '#000000',
   textSecondary: '#ffffff',
   activeRed: '#f54e4e',
+  quantityUpdate: '#f1f1f1',
 };
 
 export default colors;

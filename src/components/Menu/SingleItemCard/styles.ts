@@ -5,14 +5,14 @@ export const Wrapper = styled.View`
   width: 100%;
 `;
 
-export const PicWrapper = styled.View`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
-  margin-bottom: ${({ theme }) => theme.spacing.double};
-`;
+// export const PicWrapper = styled.View`
+//   width: 100%;
+//   height: ${({ theme }) => theme.spacing.multiple(40)};
+//   align-items: center;
+//   justify-content: center;
+//   padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
+//   margin-bottom: ${({ theme }) => theme.spacing.double};
+// `;
 
 export const ItemPic = styled.Image`
   height: ${({ theme }) => theme.spacing.multiple(40)};
