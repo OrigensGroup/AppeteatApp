@@ -1,14 +1,14 @@
 import styled from 'styled-components/native';
 
-export const SafeAreaViewBottom = styled.SafeAreaView`
-flex: 1;
-background-color: ${({ theme }) => theme.colors.textSecondary};
-margin: 0;
+export const MenuWrapper = styled.View`
+  height: 100%;
+  width: 100%;
 `;
 
-export const MenuWrapper = styled.View`
-  background-color: ${({ theme }) => theme.colors.textSecondary};
-  flex: 1;
+export const TopContainer = styled.View`
+  margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
+  margin-top: ${({ theme }) => theme.spacing.multiple(3)};
+  margin-bottom: ${({ theme }) => theme.spacing.single};
 `;
 
 export const TopBarWrapper = styled.View`
