@@ -314,7 +314,7 @@ PODS:
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.7.0):
+  - FirebaseCoreDiagnostics (7.6.0):
     - GoogleDataTransport (~> 8.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
@@ -331,7 +331,7 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30907.0)
-  - FirebaseInstallations (7.7.0):
+  - FirebaseInstallations (7.6.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
@@ -705,8 +705,6 @@ PODS:
     - Yoga
   - RNScreens (2.18.0):
     - React-Core
-  - RNSharedElement (0.7.0):
-    - React
   - RNVectorIcons (8.1.0):
     - React-Core
   - UMAppLoader (1.4.0)
@@ -785,7 +783,6 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNSharedElement (from `../node_modules/react-native-shared-element`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - UMAppLoader (from `../node_modules/unimodules-app-loader/ios`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
@@ -936,8 +933,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNSharedElement:
-    :path: "../node_modules/react-native-shared-element"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   UMAppLoader:
@@ -998,9 +993,9 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 9f8f4feab1f3fddf4e4515f8f022fe6aa9e51043
   FirebaseAuth: 0a1df88dc32569db509e6269c3e4bf2a168e8ae8
   FirebaseCore: 0a43b7f1c5b36f3358cd703011ca4c7e0df55870
-  FirebaseCoreDiagnostics: 179bf3831213451c8addd036aca7fcf5492ec154
+  FirebaseCoreDiagnostics: ee1184d51da3293335b83355aad20f537acc24cf
   FirebaseFirestore: b860346d5095c741528efac94995bab39275d0bf
-  FirebaseInstallations: 42c86e7b02ff75b7f27f85833bf5dcb5f38a9774
+  FirebaseInstallations: 6e4e77396559bc2ae0504823837ed737b1c7e47f
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   GoogleAppMeasurement: c542a2feaac9ab98fd074e8f1a02c3585bbfbd47
@@ -1045,9 +1040,8 @@ SPEC CHECKSUMS:
   RNFBFirestore: 337b96bf5b1b2d32bb9fc4735afd47b16532dde8
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: ca4f28c765329144d68bdad126bf6b0b1afc7a5a
-  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
-  RNSharedElement: 00b1a1420d213a34459bb9a5aacabb38107d7948
-  RNVectorIcons: f67a1abce2ec73e62fe4606e8110e95a832bc859
+  RNScreens: f0d7a2a440a8ba9f4574ca1ddb3368f473891be4
+  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78
   UMBarCodeScannerInterface: 3f6c1b09ef4b867ce752b8c0b3893bcf9cd85f32
   UMCameraInterface: d516032121192fee9a6c93bdfff0bb2cc7282796
