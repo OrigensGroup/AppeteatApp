@@ -1,20 +1,15 @@
-import React from "react";
+import React from 'react';
 
+import { LogoContainer, LogoImage } from './styles';
 
-import {
-    LogoContainer,
-    LogoImage,
-} from './styles'
-
-interface LogoProps {
-}
+interface LogoProps {}
 
 const Logo: React.FunctionComponent<LogoProps> = () => {
-    return (
-        <LogoContainer>
-            <LogoImage source={require('../../../img/Logo.png')} />
-        </LogoContainer>
-    );
+  return (
+    <LogoContainer>
+      <LogoImage source={require('../../../img/logo.png')} />
+    </LogoContainer>
+  );
 };
 
 export default Logo;
