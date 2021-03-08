@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "462697324514",
+    "firebase_url": "https://bar-demo-ec4b4-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "bar-demo-ec4b4",
     "storage_bucket": "bar-demo-ec4b4.appspot.com"
   },
@@ -9,10 +10,18 @@
       "client_info": {
         "mobilesdk_app_id": "1:462697324514:android:c01d7aa979eaf350f763bb",
         "android_client_info": {
-          "package_name": "com.appfe"
+          "package_name": "com.oriensgroup.stg"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "462697324514-6sgrpl1mmk3s9r86ln009olj3osehrdb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oriensgroup.stg",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
         {
           "client_id": "462697324514-ukkeh7qnmf3gvc14e0klftv2h5onquf2.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +38,13 @@
             {
               "client_id": "462697324514-ukkeh7qnmf3gvc14e0klftv2h5onquf2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "462697324514-232nnjuoh8m61isfqss4lolac1kpqr67.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oriensgroup.app"
+              }
             }
           ]
         }

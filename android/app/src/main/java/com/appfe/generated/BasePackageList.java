@@ -1,4 +1,4 @@
-package com.appfe.generated;
+package com.oriensgroup.stg.generated;
 
 import java.util.Arrays;
 import java.util.List;

@@ -3,12 +3,17 @@ import Entypo from "react-native-vector-icons/Entypo";
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import auth from '@react-native-firebase/auth';
 import {  ButtonContainer } from './styles';
+import { useNavigation } from '@react-navigation/core';
 
 interface FacebookButtonProps {
    onClick?: () => void;
 }
 
 const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ onClick }) => {
+   const navigation = useNavigation();
+  const login = () => {
+        navigation.navigate('App');
+    };
 
   async function onFacebookButtonPress() {
   // Attempt login with permissions
@@ -33,7 +38,7 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ onClick 
 }
 
   return (
-    <ButtonContainer onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}>
+    <ButtonContainer onPress={() => onFacebookButtonPress().then(() => login())}>
       <Entypo name="facebook" size={50} color="#4267B2" />
     </ButtonContainer>
   );
