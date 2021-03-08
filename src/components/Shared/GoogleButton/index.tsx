@@ -1,7 +1,7 @@
 import React from 'react';
 import auth from '@react-native-firebase/auth';
-import {  ButtonContainer, GoogleImage } from './styles';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import { ButtonContainer, GoogleImage } from './styles';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from '@react-navigation/core';
 
 GoogleSignin.configure({
@@ -9,24 +9,25 @@ GoogleSignin.configure({
 });
 
 interface GoogleButtonProps {
-   onClick?: () => void;
+  onClick?: () => void;
 }
 
 const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ onClick }) => {
   const navigation = useNavigation();
   const login = () => {
-        navigation.navigate('App');
-    };
-async function onGoogleButtonPress() {
-  // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
+    navigation.navigate('App');
+  };
 
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  async function onGoogleButtonPress() {
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
 
-  // Sign-in the user with the credential
-  return auth().signInWithCredential(googleCredential);
-}
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  }
 
   return (
     <ButtonContainer onPress={() => onGoogleButtonPress().then(() => login())}>
