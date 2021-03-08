@@ -1,5 +1,5 @@
 import { useTheme } from 'styled-components';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Text from '../../../../Shared/Text';
 
@@ -7,7 +7,6 @@ import {
   ButtonContainer,
   IconWrapper
 } from './styles';
-
 
 interface LoginProps {
   text: string;
