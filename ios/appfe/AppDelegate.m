@@ -13,6 +13,8 @@
 
 #import <Firebase.h>
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #if defined(FB_SONARKIT_ENABLED) && __has_include(<FlipperKit/FlipperClient.h>)
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -96,23 +98,24 @@ static void InitializeFlipper(UIApplication *application) {
  #endif
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
+
 - (void)appController:(EXUpdatesAppController *)appController didStartWithSuccess:(BOOL)success {
   appController.bridge = [self initializeReactNativeApp];
   EXSplashScreenService *splashScreenService = (EXSplashScreenService *)[UMModuleRegistryProvider getSingletonModuleForClass:[EXSplashScreenService class]];
   [splashScreenService showSplashScreenFor:self.window.rootViewController];
 }
 
-// Linking API
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-  if ([[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options]) {
-    return YES;
-  }
-
-  if ([RCTLinkingManager application:app openURL:url options:options]) {
-    return YES;
-  }
-
-  return NO;
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                         openURL:url
+                                               sourceApplication:sourceApplication
+                                                      annotation:annotation];
 }
 
 // Universal Links
