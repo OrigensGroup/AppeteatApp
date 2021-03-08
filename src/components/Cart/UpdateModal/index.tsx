@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-native-modal';
 
 import Text from '../../Shared/Text';
@@ -9,20 +9,39 @@ import useCart from '../../../hooks/useCart';
 
 import ViewCta from '../../Shared/ViewCta';
 
-import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper } from './styles';
+import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper, DeleteButton } from './styles';
 
 interface UpdateModalProps {
   item: OrderItem | null;
   isModalVisible: boolean;
   onClose: () => void;
+  data: any,
+  rowMap: any
+  itemId: string;
 }
 
 const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible, item, onClose }) => {
-  const { updateItemQuantity } = useCart();
+
+  const [localQuantity, setLocalQuantity] = useState(item ? item.quantity : 1);
+  const { updateItemQuantity, deleteItemFromCart } = useCart();
 
   const updateQuantity = (number: number) => {
-    if (item) updateItemQuantity(item, number);
+    setLocalQuantity(number);
+
   };
+
+
+  const update = () => {
+    if (item && localQuantity == 0) deleteItemFromCart(item.orderItemId);
+    if (localQuantity != 0) { if (item) updateItemQuantity(item, localQuantity); }
+    onClose();
+  }
+
+  useEffect(() => {
+    setLocalQuantity(item ? item.quantity : 1);
+  }, [item])
+
+
 
   return (
     <Modal
@@ -43,7 +62,7 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         </ModalTitle>
         <ModalCounterContainer>
           <ModalCounterWrapper>
-            <Spinner initialValue={item ? item.quantity : 1} onChange={updateQuantity} />
+            <Spinner initialValue={localQuantity} onChange={updateQuantity} />
           </ModalCounterWrapper>
         </ModalCounterContainer>
         <ModalTitle>
@@ -52,9 +71,10 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
           </Text>
         </ModalTitle>
         <DivLine />
-        <ViewCta onClick={onClose}>
+
+        <ViewCta redDelete={localQuantity === 0} onClick={update}>
           <Text color="secondary" fontSize={18} bold>
-            {cartTranslations.updateModal.cta}
+            {localQuantity === 0 ? cartTranslations.removeItemModal.title : cartTranslations.updateModalField.label}
           </Text>
         </ViewCta>
       </PopUpContainer>
