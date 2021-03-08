@@ -1,3 +1,13 @@
+export type UpgradeItem = {
+  title: string;
+  data: {
+    title: string;
+    price: number;
+    selected: boolean;
+  };
+  selection: 'single' | 'multiple';
+};
+
 export type MenuItem = {
   id: string;
   title: string;
@@ -9,4 +19,7 @@ export type MenuItem = {
   description: string;
   promoted: boolean;
   type: 'customisableItem' | 'itemWithExtras';
+  ingredients?: string[];
+  customisations?: string[];
+  upgradableItems?: UpgradeItem[];
 };

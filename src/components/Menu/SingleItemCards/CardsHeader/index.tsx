@@ -31,7 +31,7 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
       </TitleWrapper>
       <IconButton
         size={24}
-        iconName="heart"
+        iconName="md-heart-outline"
         color={theme.colors.textPrimary}
         onClick={() => Alert.alert('You like this!')}
       />

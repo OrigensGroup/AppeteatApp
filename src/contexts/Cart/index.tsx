@@ -37,7 +37,7 @@ export const CartContext = React.createContext<CartContext>({
 
 interface CartProviderProps {}
 
-const fixDecimals = (n: number) => Math.round(n * 100) / 100;
+export const fixDecimals = (n: number) => Math.round(n * 100) / 100;
 const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<OrderItem[]>([]);
   const [pricing, setPricing] = useState<Pricing>({

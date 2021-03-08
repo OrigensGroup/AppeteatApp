@@ -9,6 +9,14 @@ const menuTranslations = {
     label: 'ViewBasket',
     placeholder: 'View Basket',
   },
+  singleItem: {
+    ingredients: {
+      title: 'Ingredients',
+    },
+    customise: {
+      title: 'Customise item',
+    },
+  },
 };
 
 export default menuTranslations;

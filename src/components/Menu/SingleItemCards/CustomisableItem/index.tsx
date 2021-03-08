@@ -6,6 +6,7 @@ import ItemDescription from '../ItemDescription';
 import AddToBasketButton from '../AddToBasketButton';
 
 import { CustomisableItemContainer } from './styles';
+import CustomiseSection from '../CustomiseSection';
 
 interface CustomisableItemProps {
   item: MenuItem;
@@ -18,6 +19,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ item
       <ItemPicture item={item} />
       <ItemDescription item={item} />
       <AddToBasketButton item={item} />
+      <CustomiseSection item={item} />
     </CustomisableItemContainer>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { fixDecimals } from '../../../../contexts/Cart';
 import useCart from '../../../../hooks/useCart';
 
 import singleDrinkTranslations from '../../../../translations/singleDrink';
@@ -11,6 +12,7 @@ import { AddToBasketButtonWrapper, ViewCtaButton, QuantityButton } from './style
 
 interface AddToBasketButtonProps {
   item: MenuItem;
+  extras?: any[];
 }
 
 const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ item }) => {
@@ -22,7 +24,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
   };
 
   const onClick = () => {
-    addItemToCart({ ...item, quantity: amount, customisations: [], extras: [] });
+    addItemToCart({ ...item, quantity: amount, customisations: [] });
   };
 
   return (
@@ -36,7 +38,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
             {singleDrinkTranslations.viewBasketButtonField.placeholder}
           </Text>
           <Text fontSize={18} bold color="secondary">
-            + {item.price * amount}
+            + {fixDecimals(item.price * amount)}
           </Text>
         </ViewCta>
       </ViewCtaButton>

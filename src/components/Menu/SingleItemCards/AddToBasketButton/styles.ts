@@ -8,6 +8,7 @@ export const AddToBasketButtonWrapper = styled.View`
   width: 100%;
   flex-direction: row;
   padding: 0 ${({ theme }) => theme.spacing.triple};
+  z-index: 99;
 `;
 
 export const QuantityButton = styled.View`
