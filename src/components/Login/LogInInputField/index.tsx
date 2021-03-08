@@ -12,15 +12,17 @@ interface LogInInputFieldProps {
     placeholder: string;
     textContentType: "emailAddress" | "password" | "none";
     label: string;
+    updateValue?: (value: string) => void
 }
 
-const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({ secondary, placeholder, textContentType, label }) => {
+const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({ secondary, placeholder, textContentType, label, updateValue }) => {
     return (
         <TextFieldWrapper secondary={secondary}>
             <TitleWrapper>
                 <Text color='secondary' fontSize={14} bold>{label}</Text>
             </TitleWrapper>
             <LoginTextField
+                updateValue={updateValue}
                 placeholder={placeholder}
                 textContentType={textContentType}
             />
