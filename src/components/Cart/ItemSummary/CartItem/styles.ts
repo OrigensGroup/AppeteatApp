@@ -7,8 +7,9 @@ export const CartItemContainer = styled.TouchableOpacity`
 
 export const CartItemInfo = styled.View`
   flex-direction: row;
-  margin: ${({ theme }) => theme.spacing.triple} ${({ theme }) => theme.spacing.triple} 0
-    ${({ theme }) => theme.spacing.triple};
+  margin-top: ${({ theme }) => theme.spacing.triple};
+  margin-left:${({ theme }) => theme.spacing.triple};
+  padding-right:${({ theme }) => theme.spacing.triple};
   border-bottom-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
 `;

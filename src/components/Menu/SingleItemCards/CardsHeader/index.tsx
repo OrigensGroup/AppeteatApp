@@ -25,7 +25,7 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
     <CardsHeaderContainer>
       <IconButton size={24} iconName="ios-close" color={theme.colors.textPrimary} onClick={navigate} />
       <TitleWrapper>
-        <Text color="primary" fontSize={20}>
+        <Text color="primary" fontSize={20} bold>
           {item.title}
         </Text>
       </TitleWrapper>
