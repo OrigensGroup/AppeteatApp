@@ -27,7 +27,7 @@ const cartTranslations = {
     title: 'Go To Checkout',
   },
   updateModal: {
-    price: 'Price:',
+    price: 'Price per Item:',
     cta: 'Update',
   },
   removeItemSwipe: {
@@ -36,6 +36,9 @@ const cartTranslations = {
   updateModalField: {
     label: 'Update',
     placeholder: 'Update',
+  },
+  removeItemModal: {
+    title: 'Remove Item',
   },
   priceModalField: {
     label: 'Price',

@@ -27,7 +27,7 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ initialValue, hid
       }
       buttonTextColor={theme.colors.textPrimary}
       fontSize={22}
-      initialValue={initialValue}
+      value={initialValue}
       min={0.0}
       onChange={onChange}
       step={1}

@@ -39,3 +39,14 @@ export const DivLine = styled.View`
   background-color: ${({ theme }) => theme.colors.textPrimary};
   margin: ${({ theme }) => theme.spacing.double};
 `;
+
+export const DeleteButton = styled.TouchableOpacity`
+  width: 100%;
+  height: ${({ theme }) => theme.spacing.multiple(7)};
+  border-radius: ${({ theme }) => theme.spacing.single};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+

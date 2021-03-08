@@ -11,10 +11,11 @@ import { OrderItem } from '../../types/OrderItem';
 
 import { CartContainer, CartSummarySection } from './styles';
 
-interface CartProps {}
+interface CartProps { }
 
 const Cart: React.FunctionComponent<CartProps> = () => {
   const { pricing } = useCart();
+  const { cart, deleteItemFromCart } = useCart();
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [itemToUpdate, setItemToUpdate] = useState<OrderItem | null>(null);
@@ -26,6 +27,13 @@ const Cart: React.FunctionComponent<CartProps> = () => {
 
   const closeModal = () => {
     setModalVisible(false);
+  };
+
+  const onSwipeValueChange = (itemData: any) => {
+    const { key } = itemData;
+    {
+      deleteItemFromCart(key);
+    }
   };
 
   return (
