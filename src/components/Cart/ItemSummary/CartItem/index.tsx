@@ -1,4 +1,5 @@
 import React from 'react';
+import currencyTranslations from '../../../../translations/currency';
 
 import { OrderItem } from '../../../../types/OrderItem';
 import Text from '../../../Shared/Text';
@@ -41,7 +42,8 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
         </CartItemTitle>
         <CartItemPrice>
           <Text bold fontSize={20} color="primary">
-            £ {item.price * item.quantity}
+            {currencyTranslations.currencyField.placeholder}
+            {item.price * item.quantity}
           </Text>
         </CartItemPrice>
       </CartItemInfo>

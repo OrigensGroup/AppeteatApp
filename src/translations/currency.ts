@@ -1,7 +1,6 @@
 const currencyTranslations = {
   currencyField: {
-    label: 'Currency',
-    placeholder: '£',
+    placeholder: '£ ',
   },
 };
 

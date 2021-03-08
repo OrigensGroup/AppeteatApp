@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import currencyTranslations from '../../../translations/currency';
 import Text from '../../Shared/Text';
 import { ValueItemContainer, ValueItemInfoContainer } from './styles';
 
@@ -20,7 +21,8 @@ const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, title, valu
         {icon && icon}
         {typeof value !== 'undefined' && (
           <Text color={color} fontSize={16}>
-            £ {value}
+            {currencyTranslations.currencyField.placeholder}
+            {value}
           </Text>
         )}
       </ValueItemInfoContainer>

@@ -7,6 +7,7 @@ import Text from '../../../Shared/Text';
 
 import { MenuItem, UpgradeItem } from '../../../../types/MenuItem';
 import { ItemRow, TitleItem, UpgradeSectionContainer, PriceItem } from './styles';
+import currencyTranslations from '../../../../translations/currency';
 
 interface UpgradeSectionProps {
   item: MenuItem;
@@ -36,7 +37,8 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
         {item.price > -1 && (
           <PriceItem>
             <Text fontSize={14} bold color="primary">
-              ( + £ {item.price})
+              ( + {currencyTranslations.currencyField.placeholder}
+              {item.price})
             </Text>
           </PriceItem>
         )}
