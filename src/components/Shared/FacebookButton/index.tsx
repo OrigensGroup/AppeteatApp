@@ -10,10 +10,6 @@ interface FacebookButtonProps {
 }
 
 const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ onClick }) => {
-   const navigation = useNavigation();
-  const login = () => {
-        navigation.navigate('App');
-    };
 
   async function onFacebookButtonPress() {
   // Attempt login with permissions
@@ -38,7 +34,7 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ onClick 
 }
 
   return (
-    <ButtonContainer onPress={() => onFacebookButtonPress().then(() => login())}>
+    <ButtonContainer onPress={onFacebookButtonPress}>
       <Entypo name="facebook" size={50} color="#4267B2" />
     </ButtonContainer>
   );

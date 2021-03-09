@@ -13,10 +13,7 @@ interface GoogleButtonProps {
 }
 
 const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ onClick }) => {
-  const navigation = useNavigation();
-  const login = () => {
-    navigation.navigate('App');
-  };
+
 
   async function onGoogleButtonPress() {
     // Get the users ID token
@@ -30,7 +27,7 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ onClick }) =
   }
 
   return (
-    <ButtonContainer onPress={() => onGoogleButtonPress().then(() => login())}>
+    <ButtonContainer onPress={onGoogleButtonPress}>
       <GoogleImage source={require('./../../../img/google.png')} />
     </ButtonContainer>
   );

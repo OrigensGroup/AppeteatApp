@@ -27,9 +27,6 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
 
     const navigation = useNavigation();
 
-    const login = () => {
-        navigation.navigate('App');
-    };
 
     const register = () => {
         navigation.navigate('Register');
@@ -38,9 +35,6 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
     const singIn = () => {
         auth()
             .signInWithEmailAndPassword(email, password)
-            .then(() => {
-                return login();
-            })
             .catch(error => {
                 if (error.code === 'auth/invalid-email') {
                     console.log('That email address is invalid!');
