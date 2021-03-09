@@ -9,6 +9,8 @@ import useMenu from '../../../hooks/useMenu';
 import { MenuItem } from '../../../types/MenuItem';
 import accountTranslations from '../../../translations/account';
 
+import Text from '../../../components/shared/Text';
+
 import {
   ProfileContainer,
   ImageContainer,
@@ -19,8 +21,6 @@ import {
   Content,
   ShowButton,
 } from './styles';
-import Text from '../../../components/shared/Text';
-import { useNavigation } from '@react-navigation/native';
 
 interface AccountProps {}
 
@@ -28,11 +28,6 @@ const Account: React.FunctionComponent<AccountProps> = () => {
   const { menu } = useMenu();
 
   const favoriteCocktails = menu.items.filter((favoriteItem) => favoriteItem.promoted);
-
-  const navigation = useNavigation();
-  const navigate = () => {
-    navigation.navigate('FavouriteCocktails');
-  };
 
   const flatlistRenderItem = ({ item }: { item: MenuItem }) => (
     <Card

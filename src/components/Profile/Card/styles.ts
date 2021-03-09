@@ -27,7 +27,6 @@ export const DrinkImage = styled.Image`
 `;
 
 export const DrinkDesc = styled.View`
-  flex:1;
+  flex: 1;
   padding: ${({ theme }) => theme.spacing.single} 0 0 ${({ theme }) => theme.spacing.double};
 `;
-

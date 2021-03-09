@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { useNavigation } from '@react-navigation/native';
+
 import Text from '../../../shared/Text';
 
 import homeTranslations from '../../../../translations/home';
@@ -11,7 +14,6 @@ import {
   ImageContainer,
   DiscountPromotionOrderButton,
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
 
 type DiscountCardItem = {
   title: string;
@@ -38,10 +40,10 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
         <DiscountPromotionImage source={{ uri: item.image }} />
       </ImageContainer>
       <DiscountPromotionDescription>
-        <Text fontSize={20} color="primary" bold>
+        <Text bold color="primary" fontSize={20}>
           {item.title}
         </Text>
-        <Text fontSize={16} color="primary" light>
+        <Text color="primary" fontSize={16} light>
           {item.description}
         </Text>
       </DiscountPromotionDescription>

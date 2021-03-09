@@ -6,23 +6,23 @@ export const LogInContainer = styled.ScrollView`
 `;
 
 export const SafeAreaViewTop = styled.SafeAreaView`
-flex: 0;
-background-color: ${({ theme }) => theme.colors.textSecondary};
+  flex: 0;
+  background-color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 export const SafeAreaViewBottom = styled.SafeAreaView`
-flex: 1;
-background-color: ${({ theme }) => theme.colors.loginBottom};//
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.loginBottom}; //
 `;
 
 export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
-flex: 1;
-bottom: 0;
+  flex: 1;
+  bottom: 0;
 `;
 
 export const EnclosingView = styled.View`
-height: 100%;
-display: flex;
-justify-content: space-between;
-bottom: 0;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
 `;

@@ -1,13 +1,15 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
+import { useTheme } from 'styled-components';
+
 import { MenuItem } from '../../../../types/MenuItem';
 
 import IconButton from '../../../shared/IconButton';
 import Text from '../../../shared/Text';
 
 import { TitleWrapper, CardsHeaderContainer } from './styles';
-import { useTheme } from 'styled-components';
 
 interface CardsHeaderProps {
   item: MenuItem;
@@ -23,17 +25,17 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
 
   return (
     <CardsHeaderContainer>
-      <IconButton size={24} iconName="ios-close" color={theme.colors.textPrimary} onClick={navigate} />
+      <IconButton color={theme.colors.textPrimary} iconName="ios-close" onClick={navigate} size={24} />
       <TitleWrapper>
-        <Text color="primary" fontSize={20} bold>
+        <Text bold color="primary" fontSize={20}>
           {item.title}
         </Text>
       </TitleWrapper>
       <IconButton
-        size={24}
-        iconName="md-heart-outline"
         color={theme.colors.textPrimary}
+        iconName="md-heart-outline"
         onClick={() => Alert.alert('You like this!')}
+        size={24}
       />
     </CardsHeaderContainer>
   );

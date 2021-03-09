@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'styled-components';
+
 import homeTranslations from '../../../../translations/home';
 
 import Text from '../../../shared/Text';
@@ -26,6 +27,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   const theme = useTheme();
   const navigation = useNavigation();
   const interval = useRef<NodeJS.Timeout>();
+
   const [countdown, setCountdown] = useState(() => {
     const end = Date.parse(endDate);
     const now = Date.parse(new Date().toString());
@@ -33,6 +35,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
     if (end < now) {
       return 0;
     }
+
     return end - now;
   });
 
@@ -67,7 +70,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
         if (interval.current) clearInterval(interval.current);
       }
 
-      const t = getTimeRemaining();
+      getTimeRemaining();
     }, 1000);
   };
 
@@ -77,34 +80,30 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
     return () => {
       if (interval.current) clearInterval(interval.current);
     };
-  }, []);
-
-  const navigateHappyHour = () => {
-    navigation.navigate('HappyHourMenu');
-  };
+  });
 
   return (
     <HappyHourPromotionCardContainer onPress={navigate}>
       <LinearGradient
         colors={[theme.colors.active, theme.colors.secondaryActive]}
-        style={styles.linearGradient}
-        start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
+        start={{ x: 0, y: 0 }}
+        style={styles.linearGradient}
       >
         <HappyHourTitleContainer>
-          <Text fontSize={24} color="secondary" align="center">
+          <Text align="center" color="secondary" fontSize={24}>
             {homeTranslations.happyHourCard.title}
           </Text>
         </HappyHourTitleContainer>
         <HappyHourPromotionCardTimerContainer>
           <DigitCounter>
             <DigitBackground>
-              <Text color="primary" bold fontSize={36}>
+              <Text bold color="primary" fontSize={36}>
                 {String(Math.floor((countdown / (1000 * 60 * 60)) % 24)).padStart(2, '0')}
               </Text>
             </DigitBackground>
             <DigitTitle>
-              <Text color="secondary" light fontSize={16}>
+              <Text color="secondary" fontSize={16} light>
                 {homeTranslations.happyHourCard.hourDigit}
               </Text>
             </DigitTitle>
@@ -115,12 +114,12 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
           </TimerDots>
           <DigitCounter>
             <DigitBackground>
-              <Text color="primary" bold fontSize={36}>
+              <Text bold color="primary" fontSize={36}>
                 {String(Math.floor((countdown / 1000 / 60) % 60)).padStart(2, '0')}
               </Text>
             </DigitBackground>
             <DigitTitle>
-              <Text color="secondary" light fontSize={16}>
+              <Text color="secondary" fontSize={16} light>
                 {homeTranslations.happyHourCard.minutesDigit}
               </Text>
             </DigitTitle>

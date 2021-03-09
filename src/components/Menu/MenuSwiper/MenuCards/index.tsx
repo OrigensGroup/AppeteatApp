@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import currencyTranslations from '../../../../translations/currency';
 import Text from '../../../shared/Text';
 
@@ -27,13 +28,13 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
           <DrinkImage source={{ uri: item.image }} />
         </ImageWrapper>
         <DrinkDesc>
-          <Text color="primary" fontSize={18} bold>
+          <Text bold color="primary" fontSize={18}>
             {item.title}
           </Text>
           <Text color="tertiary" fontSize={14}>
             {item.smallDesc}
           </Text>
-          <Text color="quartiary" fontSize={18} bold>
+          <Text bold color="quartiary" fontSize={18}>
             {currencyTranslations.currencyField.placeholder} {item.price}
           </Text>
         </DrinkDesc>

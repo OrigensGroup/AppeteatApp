@@ -5,8 +5,8 @@ import styled from 'styled-components/native';
 // }
 
 // export const ModalItemContainer = styled.TouchableOpacity<FilterTabContainerProps>`
-//   ${({ active }) => active && `border-color: #F69019; 
-//   border-width: 1px; 
+//   ${({ active }) => active && `border-color: #F69019;
+//   border-width: 1px;
 //   border-radius: 16px;`}
 //   height: ${({ theme }) => theme.spacing.multiple(6)};
 //   align-items: center;
@@ -17,7 +17,6 @@ import styled from 'styled-components/native';
 //   margin-top: ${({ theme }) => theme.spacing.multiple(2)};
 //   margin-right: ${({ theme }) => theme.spacing.multiple(3)};
 // `;
-
 
 export const ModalItemContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(6)};
@@ -38,4 +37,3 @@ export const ModalItemTextWrapper = styled.View`
   justify-content: center;
   padding: 0 ${({ theme }) => theme.spacing.multiple(2)};
 `;
-

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Text from '../../shared/Text';
 
 import { MainButtonWrapper, MainButton, TextWrapper } from './styles';
@@ -12,7 +13,7 @@ const GoToCheckout: React.FunctionComponent<GoToCheckoutProps> = ({ onClick }) =
     <MainButtonWrapper>
       <MainButton onPress={onClick}>
         <TextWrapper>
-          <Text color="primary" fontSize={18} bold>
+          <Text bold color="primary" fontSize={18}>
             Go to Checkout
           </Text>
         </TextWrapper>

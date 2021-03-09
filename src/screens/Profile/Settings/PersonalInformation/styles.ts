@@ -8,5 +8,5 @@ export const PersonalInformationContainer = styled.View`
   align-items: center;
 `;
 export const ButtonContainer = styled.TouchableOpacity`
- padding: ${({ theme }) => theme.spacing.single};
+  padding: ${({ theme }) => theme.spacing.single};
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import currencyTranslations from '../../../../translations/currency';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
@@ -13,16 +14,16 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ item }
   return (
     <ItemDescriptionContainer>
       <ItemDescriptionTitle>
-        <Text bold fontSize={18} color="primary">
+        <Text bold color="primary" fontSize={18}>
           {item.title}
         </Text>
-        <Text bold fontSize={18} color="primary">
+        <Text bold color="primary" fontSize={18}>
           {currencyTranslations.currencyField.placeholder}
           {item.price}
         </Text>
       </ItemDescriptionTitle>
       <ItemDescriptionDesc>
-        <Text fontSize={16} color="primary">
+        <Text color="primary" fontSize={16}>
           {item.description}
         </Text>
       </ItemDescriptionDesc>

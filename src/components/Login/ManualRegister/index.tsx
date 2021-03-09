@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+
+import { useNavigation } from '@react-navigation/native';
+
+import auth from '@react-native-firebase/auth';
+
+import { Alert } from 'react-native';
+
 import loginTranslations from '../../../translations/login';
 import LogInButton from '../ManualLogIn/Buttons/LogInButton';
 import SignUpButton from '../ManualLogIn/Buttons/SignUpButton';
-import { useNavigation } from '@react-navigation/native';
 import LogInInputField from '../LogInInputField';
-import auth from '@react-native-firebase/auth';
-import { Alert } from 'react-native';
 
 import { ManualLogInContainer, TextFieldsWrapper, LogInSection, PasswordsWrapper, PasswordSeparator } from './styles';
 
@@ -45,6 +49,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
         ...oldErrors,
         ['username']: null,
       }));
+
       errorCounter = errorCounter - 1;
     }
 
@@ -58,6 +63,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
         ...oldErrors,
         ['passwordLenght']: null,
       }));
+
       errorCounter = errorCounter - 1;
     }
 
@@ -71,6 +77,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
         ...oldErrors,
         ['confirmPassword']: null,
       }));
+
       errorCounter = errorCounter - 1;
     }
 
@@ -84,6 +91,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
         ...oldErrors,
         ['passwordSpecialCharacters']: null,
       }));
+
       errorCounter = errorCounter - 1;
     }
 
@@ -111,42 +119,42 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
     <ManualLogInContainer>
       <TextFieldsWrapper>
         <LogInInputField
-          updateValue={setUsername}
+          error={errors['username']}
           label={loginTranslations.nameField.label}
           placeholder={loginTranslations.nameField.placeholder}
           textContentType="none"
-          error={errors['username']}
+          updateValue={setUsername}
         />
         <LogInInputField
-          updateValue={setEmail}
           label={loginTranslations.emailField.label}
           placeholder={loginTranslations.emailField.placeholder}
           textContentType="emailAddress"
+          updateValue={setEmail}
         />
         <PasswordsWrapper>
           <LogInInputField
-            updateValue={setPassword}
+            error={errors['passwordLenght'] || errors['passwordSpecialCharacters']}
             label={loginTranslations.passwordField.label}
             placeholder={loginTranslations.passwordField.placeholder}
             textContentType="password"
-            error={errors['passwordLenght'] || errors['passwordSpecialCharacters']}
+            updateValue={setPassword}
           />
           <PasswordSeparator />
           <LogInInputField
-            updateValue={setConfirmPassword}
+            error={errors['confirmPassword']}
             label={loginTranslations.passwordField.secondaryLabel}
             placeholder={loginTranslations.passwordField.placeholder}
             textContentType="password"
-            error={errors['confirmPassword']}
+            updateValue={setConfirmPassword}
           />
         </PasswordsWrapper>
       </TextFieldsWrapper>
       <LogInSection>
         <LogInButton onClick={createUser} text={loginTranslations.RegisterButton.label} />
         <SignUpButton
+          buttonText={loginTranslations.SignInSection.buttonLabel}
           onClick={login}
           text={loginTranslations.SignInSection.label}
-          buttonText={loginTranslations.SignInSection.buttonLabel}
         />
       </LogInSection>
     </ManualLogInContainer>

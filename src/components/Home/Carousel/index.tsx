@@ -3,12 +3,14 @@ import { Dimensions } from 'react-native';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
+import { useTheme } from 'styled-components';
+
 import HappyHourPromotionCard from '../PromotionCards/HappyHourPromotionCard';
 import DiscountPromotionCard from '../PromotionCards/DiscountPromotionCard';
 
-import { CarouselContainer, Container } from './styles';
-import { useTheme } from 'styled-components';
 import ImagePromotion from '../PromotionCards/ImagePromotion';
+
+import { CarouselContainer, Container } from './styles';
 
 interface CarouselPromoProps {}
 
@@ -37,7 +39,7 @@ const DATA: any[] = [
   },
 ];
 
-const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({}) => {
+const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
   const theme = useTheme();
   const [activeSlide, setActiveSlide] = useState(0);
 

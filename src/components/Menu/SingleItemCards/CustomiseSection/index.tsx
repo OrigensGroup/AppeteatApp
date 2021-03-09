@@ -1,7 +1,9 @@
 import React from 'react';
+
 import menuTranslations from '../../../../translations/menu';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
+
 import {
   CustomiseSectionContainer,
   CustomiseTitle,
@@ -18,7 +20,7 @@ interface CustomiseSectionProps {
 const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item }) => {
   const ingredientRender = ({ item }: { item: string }) => (
     <Ingredient>
-      <Text fontSize={14} color="primary">
+      <Text color="primary" fontSize={14}>
         {item}
       </Text>
     </Ingredient>
@@ -28,18 +30,18 @@ const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item
     <CustomiseSectionContainer>
       <TitleRow>
         <IngredientsTitle>
-          <Text fontSize={14} bold color="primary">
+          <Text bold color="primary" fontSize={14}>
             {menuTranslations.singleItem.ingredients.title}
           </Text>
         </IngredientsTitle>
         <CustomiseTitle>
-          <Text fontSize={14} color="tertiary">
+          <Text color="tertiary" fontSize={14}>
             {menuTranslations.singleItem.customise.title}
           </Text>
         </CustomiseTitle>
       </TitleRow>
       {item.ingredients && (
-        <IngredientsList keyExtractor={(item) => item} data={item.ingredients} renderItem={ingredientRender} />
+        <IngredientsList data={item.ingredients} keyExtractor={(item) => item} renderItem={ingredientRender} />
       )}
     </CustomiseSectionContainer>
   );

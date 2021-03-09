@@ -34,11 +34,6 @@ const App = () => {
   const [menu, setMenu] = useState<Menu>({ items: [], tabs: [] });
   const [locations, setLocations] = useState<Locations>({ list: [] });
 
-  useEffect(() => {
-    SplashScreen.preventAutoHideAsync();
-    loadStuff();
-  }, []);
-
   const loadStuff = async () => {
     try {
       await Font.loadAsync({
@@ -73,6 +68,11 @@ const App = () => {
       SplashScreen.hideAsync();
     }
   };
+
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+    loadStuff();
+  }, []);
 
   if (!appReady) {
     return null;

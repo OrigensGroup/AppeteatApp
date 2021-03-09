@@ -35,7 +35,7 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
   const renderItem = () => <OrderCard date="11MAY" items="1x Mojito" price={10} />;
   return (
     <OrdersContainer>
-        <FlatList data={DATA} horizontal={false} renderItem={renderItem} />
+      <FlatList data={DATA} horizontal={false} renderItem={renderItem} />
     </OrdersContainer>
   );
 };

@@ -1,14 +1,10 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
+
 import IconButton from '../IconButton';
 import SearchField from '../SearchField';
 
-import {
-  SearchBarWrapper,
-  SearchBarTextWrapper,
-  SearchButton,
-  SearchButtonWrapper
-} from './styles';
+import { SearchBarWrapper, SearchBarTextWrapper, SearchButtonWrapper } from './styles';
 
 interface SearchBarProps {
   onClick: () => void;
@@ -22,7 +18,7 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = ({ onClick, placehold
   return (
     <SearchBarWrapper>
       <SearchButtonWrapper>
-        <IconButton onClick={onClick} iconName='sliders' size={24} color={theme.colors.textPrimary} />
+        <IconButton color={theme.colors.textPrimary} iconName="sliders" onClick={onClick} size={24} />
       </SearchButtonWrapper>
       <SearchBarTextWrapper>
         <SearchField placeholder={placeholder} textContentType={textContentType} />

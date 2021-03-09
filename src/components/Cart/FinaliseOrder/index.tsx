@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+
 import useCart from '../../../hooks/useCart';
 import cartTranslations from '../../../translations/cart';
 import Spinner from '../../shared/Spinner';
@@ -12,24 +12,21 @@ import { FinaliseOrderContainer, TipCounterWrapper, Separator } from './styles';
 interface FinaliseOrderProps {}
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = () => {
-  const { pricing, addTips } = useCart();
-  const navigation = useNavigation();
-
-  const navigate = () => {};
+  const { addTips, pricing } = useCart();
 
   return (
     <FinaliseOrderContainer>
       <ValueItem
-        title={cartTranslations.tipField.title}
-        value={pricing.tip}
+        color="quartiary"
         icon={
           <TipCounterWrapper>
             <Spinner hideInput initialValue={0} onChange={addTips} />
           </TipCounterWrapper>
         }
-        color="quartiary"
+        title={cartTranslations.tipField.title}
+        value={pricing.tip}
       />
-      <ValueItem title={cartTranslations.orderTotField.title} value={pricing.total} color="primary" />
+      <ValueItem color="primary" title={cartTranslations.orderTotField.title} value={pricing.total} />
       <Separator />
       <ViewCta onClick={navigate}>
         <Text bold color="secondary" fontSize={20}>

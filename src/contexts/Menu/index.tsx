@@ -20,7 +20,7 @@ interface MenuProviderProps {
   loadedMenu: Menu;
 }
 
-const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ loadedMenu, children }) => {
+const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ children, loadedMenu }) => {
   const [menu] = useState<Menu>(loadedMenu);
 
   return (

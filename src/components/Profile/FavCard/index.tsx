@@ -1,7 +1,9 @@
 import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
+
 import { MenuItem } from '../../../types/MenuItem';
 import Text from '../../shared/Text';
+
 import { Container, DrinkImage, DrinkDesc, IconWrap, FavouriteCoctailsCard, ImageContainer } from './styles';
 
 interface FavCardProps {
@@ -17,15 +19,15 @@ const FavCard: React.FunctionComponent<FavCardProps> = ({ item, onClick }) => {
           <DrinkImage source={{ uri: item.image }} />
         </ImageContainer>
         <DrinkDesc>
-          <Text fontSize={18} color="primary">
+          <Text color="primary" fontSize={18}>
             {item.title}
           </Text>
-          <Text fontSize={14} color="quartiary">
+          <Text color="quartiary" fontSize={14}>
             Rum, Juice, Beown sugar
           </Text>
         </DrinkDesc>
         <IconWrap>
-          <Entypo name="heart" size={25} color="red" />
+          <Entypo color="red" name="heart" size={25} />
         </IconWrap>
       </Container>
     </FavouriteCoctailsCard>

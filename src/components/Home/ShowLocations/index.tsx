@@ -29,7 +29,7 @@ const ShowLocations: React.FunctionComponent<ShowLocationsProps> = () => {
           }}
         />
         <FindButton>
-          <Text fontSize={18} color="primary">
+          <Text color="primary" fontSize={18}>
             {homeTranslations.showLocations.cta}
           </Text>
         </FindButton>

@@ -1,6 +1,7 @@
 import React from 'react';
 import InputSpinner from 'react-native-input-spinner';
 import { useTheme } from 'styled-components';
+
 import Text from '../../shared/Text';
 
 import { TextContainer, Container } from './styles';

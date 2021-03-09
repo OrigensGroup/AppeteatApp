@@ -13,7 +13,8 @@
     "jest": "jest --silent",
     "test": "yarn jest",
     "test:watch": "yarn jest --watch",
-    "test:coverage": "yarn jest --coverage"
+    "test:coverage": "yarn jest --coverage",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@invertase/react-native-apple-authentication": "^2.1.0",
@@ -100,17 +101,6 @@
   },
   "jest": {
     "preset": "react-native"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "yarn lint:fix",
-      "git add"
-    ]
   },
   "private": true
 }

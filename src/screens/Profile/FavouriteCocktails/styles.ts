@@ -4,5 +4,5 @@ export const FavouriteCocktailsContainer = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
-   padding-top:  ${({ theme }) => theme.spacing.single};
+  padding-top: ${({ theme }) => theme.spacing.single};
 `;

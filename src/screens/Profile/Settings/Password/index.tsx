@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Alert, Button } from 'react-native';
+import { Alert } from 'react-native';
+
 import CustomButton from '../../../../components/shared/Button';
 
 import TextField from '../../../../components/shared/LoginTextField';
@@ -12,6 +13,7 @@ interface PasswordProps {}
 
 const Password: React.FunctionComponent<PasswordProps> = () => {
   const navigation = useNavigation();
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -20,11 +22,12 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
       title: 'Password',
     });
   }, [navigation]);
+
   return (
     <PasswordContainer>
-      <TextField placeholder={accountTranslations.accountPage.currentPassword} textContentType="password"></TextField>
-      <TextField placeholder={accountTranslations.accountPage.newPassword} textContentType="password"></TextField>
-      <TextField placeholder={accountTranslations.accountPage.reNewPassword} textContentType="password"></TextField>
+      <TextField placeholder={accountTranslations.accountPage.currentPassword} textContentType="password" />
+      <TextField placeholder={accountTranslations.accountPage.newPassword} textContentType="password" />
+      <TextField placeholder={accountTranslations.accountPage.reNewPassword} textContentType="password" />
     </PasswordContainer>
   );
 };

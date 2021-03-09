@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 
-
 export const CardContainer = styled.TouchableOpacity`
   width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(15)};
@@ -15,7 +14,6 @@ export const CardContainer = styled.TouchableOpacity`
   margin-right: ${({ theme }) => theme.spacing.multiple(3)};
   justify-content: space-between;
 `;
-
 
 export const LeftWrapper = styled.View`
   height: 100%;
@@ -51,8 +49,7 @@ export const DrinkDesc = styled.View`
   padding-left: ${({ theme }) => theme.spacing.double};
 `;
 
-export const PriceWrapper = styled.View`
-`;
+export const PriceWrapper = styled.View``;
 
 export const LikeButton = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(4)};

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SectionList } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import { useTheme } from 'styled-components';
@@ -6,37 +6,31 @@ import { useTheme } from 'styled-components';
 import Text from '../../../shared/Text';
 
 import { MenuItem, UpgradeItem } from '../../../../types/MenuItem';
-import { ItemRow, TitleItem, UpgradeSectionContainer, PriceItem } from './styles';
+
 import currencyTranslations from '../../../../translations/currency';
+
+import { ItemRow, TitleItem, UpgradeSectionContainer, PriceItem } from './styles';
 
 interface UpgradeSectionProps {
   item: MenuItem;
   updateExtras: any;
 }
 
-const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, updateExtras }) => {
+const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item }) => {
   const theme = useTheme();
-  const [selectedItem, setSelectedItem] = useState(0);
+  //const [selectedItem, setSelectedItem] = useState(0);
 
-  const upgradeItemRow = ({
-    item,
-    index,
-    section,
-  }: {
-    item: UpgradeItem['data'];
-    index: number;
-    section: UpgradeItem;
-  }) => {
+  const upgradeItemRow = ({ item }: { item: UpgradeItem['data']; index: number; section: UpgradeItem }) => {
     return (
       <ItemRow>
         <TitleItem>
-          <Text fontSize={16} bold color="primary">
+          <Text bold color="primary" fontSize={16}>
             {item.title}
           </Text>
         </TitleItem>
         {item.price > -1 && (
           <PriceItem>
-            <Text fontSize={14} bold color="primary">
+            <Text bold color="primary" fontSize={14}>
               ( + {currencyTranslations.currencyField.placeholder}
               {item.price})
             </Text>
@@ -46,13 +40,13 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
         <CheckBox
           boxType="square"
           disabled={false}
-          value={item.selected}
-          onTintColor={theme.colors.active}
           onCheckColor={theme.colors.active}
+          onTintColor={theme.colors.active}
           tintColors={{
             false: theme.colors.active,
             true: theme.colors.active,
           }}
+          value={item.selected}
         />
       </ItemRow>
     );
@@ -60,7 +54,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
 
   const sectionHeader = ({ section: { title } }: { section: { title: string } }) => (
     <ItemRow>
-      <Text fontSize={20} bold color="primary">
+      <Text bold color="primary" fontSize={20}>
         {title}
       </Text>
     </ItemRow>
@@ -70,12 +64,12 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     <UpgradeSectionContainer>
       {item.upgradableItems && (
         <SectionList
-          stickySectionHeadersEnabled
+          keyExtractor={(item) => item.title}
+          renderItem={upgradeItemRow}
+          renderSectionHeader={sectionHeader}
           //@ts-ignore
           sections={item.upgradableItems}
-          renderItem={upgradeItemRow}
-          keyExtractor={(item) => item.title}
-          renderSectionHeader={sectionHeader}
+          stickySectionHeadersEnabled
         />
       )}
     </UpgradeSectionContainer>

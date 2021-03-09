@@ -1,6 +1,7 @@
 import React from 'react';
-import Text from '../../Shared/Text';
-import LoginTextField from '../../Shared/LoginTextField';
+
+import Text from '../../shared/Text';
+import LoginTextField from '../../shared/LoginTextField';
 
 import { TextFieldWrapper, TitleWrapper, ErrorContainer } from './styles';
 
@@ -14,24 +15,24 @@ interface LogInInputFieldProps {
 }
 
 const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({
-  secondary,
-  placeholder,
-  textContentType,
-  label,
-  updateValue,
   error,
+  label,
+  placeholder,
+  secondary,
+  textContentType,
+  updateValue,
 }) => {
   return (
     <TextFieldWrapper secondary={secondary}>
       <TitleWrapper>
-        <Text color="secondary" fontSize={14} bold>
+        <Text bold color="secondary" fontSize={14}>
           {label}
         </Text>
       </TitleWrapper>
-      <LoginTextField updateValue={updateValue} placeholder={placeholder} textContentType={textContentType} />
+      <LoginTextField placeholder={placeholder} textContentType={textContentType} updateValue={updateValue} />
       {error && (
         <ErrorContainer>
-          <Text color="errorColor" fontSize={14} bold>
+          <Text bold color="errorColor" fontSize={14}>
             *{error}
           </Text>
         </ErrorContainer>

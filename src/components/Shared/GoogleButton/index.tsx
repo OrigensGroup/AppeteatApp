@@ -1,8 +1,11 @@
 import React from 'react';
 import auth from '@react-native-firebase/auth';
-import { ButtonContainer, GoogleImage } from './styles';
+
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { useNavigation } from '@react-navigation/core';
+
+import { useNavigation } from '@react-navigation/native';
+
+import { ButtonContainer, GoogleImage } from './styles';
 
 GoogleSignin.configure({
   webClientId: '462697324514-ukkeh7qnmf3gvc14e0klftv2h5onquf2.apps.googleusercontent.com',
@@ -12,8 +15,9 @@ interface GoogleButtonProps {
   onClick?: () => void;
 }
 
-const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ onClick }) => {
+const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
   const navigation = useNavigation();
+
   const login = () => {
     navigation.navigate('App');
   };

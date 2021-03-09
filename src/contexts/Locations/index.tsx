@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Venue } from '../../types/Venue';
 
@@ -18,7 +18,7 @@ interface LocationsProviderProps {
   loadedLocations: Locations;
 }
 
-const LocationsProvider: React.FunctionComponent<LocationsProviderProps> = ({ loadedLocations, children }) => {
+const LocationsProvider: React.FunctionComponent<LocationsProviderProps> = ({ children, loadedLocations }) => {
   const [locations] = useState<Locations>(loadedLocations);
 
   return (

@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
-import InputSpinner from 'react-native-input-spinner';
 import Modal from 'react-native-modal';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {
-  SpinnerContainer,
-  ModalContainer,
-  PopUpContainer,
-  DateContainer,
-  ConfirmButton,
-  PickerContainer,
-} from './styles';
-import Text from '../../shared/Text';
-import Picker from '../Picker';
+
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useRoute } from '@react-navigation/native';
 import { Platform } from 'react-native';
 import { useTheme } from 'styled-components';
+
+import Picker from '../Picker';
+import Text from '../../shared/Text';
 import Spinner from '../Spinner';
 import bookTranslations from '../../../translations/book';
 import ViewCta from '../../shared/ViewCta';
+
+import { SpinnerContainer, PopUpContainer, DateContainer, ConfirmButton, PickerContainer } from './styles';
 
 type Months = {
   [key: number]: string;
@@ -77,7 +71,7 @@ const months: Months = {
   11: 'December',
 };
 
-const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, venue, onClose }) => {
+const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, onClose, venue }) => {
   const theme = useTheme();
 
   const [date, setDate] = useState(new Date(1598051730000));
@@ -107,38 +101,38 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
     <Modal
       animationInTiming={600}
       animationOutTiming={450}
+      avoidKeyboard
       isVisible={isModalVisible}
       onBackdropPress={onClose}
-      avoidKeyboard={true}
       style={{
         margin: 0,
       }}
     >
       <PopUpContainer>
         <Picker
-          title="Venue"
           icon={<Icon color={theme.colors.textPrimary} name="location-outline" size={28} />}
           textValue={venue.name}
+          title="Venue"
         />
         <DateContainer>
           <PickerContainer>
             <Picker
-              title="Date"
-              onPress={showDatepicker}
               icon={<Icon color={theme.colors.textPrimary} name="ios-time-outline" size={28} />}
+              onPress={showDatepicker}
               textValue={`${date.getDate()} ${months[date.getMonth()]}`}
+              title="Date"
             />
           </PickerContainer>
           <PickerContainer>
             <Picker
-              title="Time"
-              onPress={showTimepicker}
               icon={<Icon color={theme.colors.textPrimary} name="ios-time-outline" size={28} />}
+              onPress={showTimepicker}
               textValue={
                 date.getHours() > 11
                   ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
                   : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
               }
+              title="Time"
             />
           </PickerContainer>
           {show && (
@@ -158,7 +152,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
         </SpinnerContainer>
         <ConfirmButton>
           <ViewCta onClick={onClose}>
-            <Text color="secondary" fontSize={18} bold>
+            <Text bold color="secondary" fontSize={18}>
               {bookTranslations.bookPage.confirmBookingButton}
             </Text>
           </ViewCta>

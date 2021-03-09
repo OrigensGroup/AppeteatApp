@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Text from '../../shared/Text';
 
 import { PickerContainer, IconContainer, TextContainer, Container, PickerTextContainer } from './styles';
@@ -11,7 +12,7 @@ interface PickerProps {
   onPress?: () => void;
 }
 
-const Picker: React.FunctionComponent<PickerProps> = ({ onPress, icon, textValue, title }) => {
+const Picker: React.FunctionComponent<PickerProps> = ({ icon, onPress, textValue, title }) => {
   return (
     <Container>
       <TextContainer>

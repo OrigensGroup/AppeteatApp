@@ -1,4 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
+
 import { Locations } from '../contexts/Locations';
 
 const getLocations = async () => {

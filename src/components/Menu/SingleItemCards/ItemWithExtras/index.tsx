@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { MenuItem } from '../../../../types/MenuItem';
 import CardsHeader from '../CardsHeader';
 import ItemPicture from '../ItemPicture';
@@ -21,7 +22,7 @@ const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ item }) 
       <ItemPicture item={item} />
       <ItemDescription item={item} />
       <UpgradeSection item={item} updateExtras={setExtras} />
-      <AddToBasketButton item={item} extras={extras} />
+      <AddToBasketButton extras={extras} item={item} />
     </ItemWithExtrasContainer>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { MenuItem } from '../../../../types/MenuItem';
 
 import Text from '../../../shared/Text';
@@ -22,10 +23,10 @@ const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ it
         <PromotionItemCardImage source={{ uri: item.image }} />
       </PromotionItemCardImageContainer>
       <PromotionItemCardDescription>
-        <Text fontSize={20} color="primary">
+        <Text color="primary" fontSize={20}>
           {item.title}
         </Text>
-        <Text fontSize={16} color="primary" light>
+        <Text color="primary" fontSize={16} light>
           {item.description}
         </Text>
       </PromotionItemCardDescription>

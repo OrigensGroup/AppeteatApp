@@ -1,19 +1,15 @@
 const filterTransaltions = {
   titleField: {
-    placeholder:
-      'Filters',
+    placeholder: 'Filters',
   },
   doneField: {
-    placeholder:
-      'Done',
+    placeholder: 'Done',
   },
   clearAllField: {
-    placeholder:
-      'Clear all',
+    placeholder: 'Clear all',
   },
   allergyField: {
-    placeholder:
-      'Allergy information',
+    placeholder: 'Allergy information',
   },
 };
 

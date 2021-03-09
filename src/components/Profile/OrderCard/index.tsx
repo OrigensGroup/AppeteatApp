@@ -18,10 +18,10 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onCli
       <Container activeOpacity={1} onPress={onClick}>
         <DateContainer>
           <Circle style={{ borderRadius: Dimensions.get('window').width / 2 }}>
-            <Text color="secondary" fontSize={14} bold>
+            <Text bold color="secondary" fontSize={14}>
               {date}
             </Text>
-            <Text color="secondary" fontSize={12} bold>
+            <Text bold color="secondary" fontSize={12}>
               2021
             </Text>
           </Circle>
@@ -32,7 +32,7 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onCli
           </Text>
         </DrinkDesc>
         <PriceContainer>
-          <Text color="primary" fontSize={16} bold>
+          <Text bold color="primary" fontSize={16}>
             {price}$
           </Text>
           <Button>

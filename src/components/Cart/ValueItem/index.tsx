@@ -1,6 +1,8 @@
 import React, { ReactElement } from 'react';
+
 import currencyTranslations from '../../../translations/currency';
 import Text from '../../shared/Text';
+
 import { ValueItemContainer, ValueItemInfoContainer } from './styles';
 
 interface ValueItemProps {
@@ -11,7 +13,7 @@ interface ValueItemProps {
   color: 'primary' | 'secondary' | 'tertiary' | 'quartiary';
 }
 
-const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, title, value, icon, onItemClick }) => {
+const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, icon, onItemClick, title, value }) => {
   return (
     <ValueItemContainer onPress={onItemClick}>
       <Text color={color} fontSize={16}>

@@ -51,8 +51,6 @@ const loginTranslations = {
   emailAlreayInUse: {
     label: 'That email address is already in use!',
   },
-
-
 };
 
 export default loginTranslations;

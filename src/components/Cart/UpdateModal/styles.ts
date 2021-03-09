@@ -49,4 +49,3 @@ export const DeleteButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
-

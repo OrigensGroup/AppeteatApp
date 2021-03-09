@@ -2,6 +2,10 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Entypo';
 import { useTheme } from 'styled-components';
 
+import Text from '../../shared/Text';
+import { Venue } from '../../../types/Venue';
+import bookTranslations from '../../../translations/book';
+
 import {
   CardContainer,
   VenueImage,
@@ -15,10 +19,6 @@ import {
   TextContainer,
 } from './styles';
 
-import Text from '../../shared/Text';
-import { Venue } from '../../../types/Venue';
-import bookTranslations from '../../../translations/book';
-
 interface LocationCardProps {
   venue: Venue;
   onClick: (venue: Venue) => () => void;
@@ -30,20 +30,20 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
   return (
     <CardContainer activeOpacity={0.9} onPress={onClick(venue)}>
       <ImageContainer>
-        <VenueImage source={{ uri: venue.image }} resizeMode="cover" />
+        <VenueImage resizeMode="cover" source={{ uri: venue.image }} />
       </ImageContainer>
       <Content>
         <Circle />
         <DrinkDesc>
-          <Text fontSize={16} color="primary" bold>
+          <Text bold color="primary" fontSize={16}>
             {venue.name}
           </Text>
           <TextContainer>
-            <Text fontSize={12} color="primary">
+            <Text color="primary" fontSize={12}>
               {venue.address}
             </Text>
           </TextContainer>
-          <Text fontSize={12} color="quartiary">
+          <Text color="quartiary" fontSize={12}>
             {venue.phoneNumber}
           </Text>
         </DrinkDesc>
@@ -53,7 +53,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
           <Icon color={theme.colors.textPrimary} name="share" size={28} />
         </ShareButton>
         <BookATableButton onPress={onClick(venue)}>
-          <Text fontSize={12} color="tertiary" bold>
+          <Text bold color="tertiary" fontSize={12}>
             {bookTranslations.bookPage.bookTableButton}
           </Text>
         </BookATableButton>

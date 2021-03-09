@@ -10,12 +10,14 @@ interface QuantityCounterProps {
   onChange: (amount: number) => void;
 }
 
-const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ onChange, amount }) => {
+const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount, onChange }) => {
   const theme = useTheme();
 
   return (
     <MainCoutnerWrapper>
       <InputSpinner
+        buttonLeftImage={<Icon color={theme.colors.textPrimary} name="remove" size={24} />}
+        buttonRightImage={<Icon color={theme.colors.textPrimary} name="add" size={24} />}
         buttonStyle={{
           backgroundColor: 'transparent',
           width: 32,
@@ -25,12 +27,10 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ onChan
         initialValue={amount}
         max={99}
         min={1}
-        precision={2}
         onChange={onChange}
+        precision={2}
         step={1}
         textColor={theme.colors.textPrimary}
-        buttonRightImage={<Icon color={theme.colors.textPrimary} name="add" size={24} />}
-        buttonLeftImage={<Icon color={theme.colors.textPrimary} name="remove" size={24} />}
       />
     </MainCoutnerWrapper>
   );

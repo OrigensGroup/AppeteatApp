@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import loginTranslations from '../../../translations/login';
-import LogInButton from './Buttons/LogInButton';
-import SignUpButton from './Buttons/SignUpButton';
+
 import { useNavigation } from '@react-navigation/native';
-import LogInTextField from '../LogInInputField';
-import { Platform } from 'react-native';
+
+import { Platform, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { Alert } from 'react-native';
+
+import LogInTextField from '../LogInInputField';
+import loginTranslations from '../../../translations/login';
+
+import SignUpButton from './Buttons/SignUpButton';
+import LogInButton from './Buttons/LogInButton';
 
 import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper } from './styles';
 
@@ -50,29 +53,29 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
     <ManualLogInContainer>
       <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <LogInTextField
-          updateValue={setEmail}
           label={loginTranslations.emailField.label}
           placeholder={loginTranslations.emailField.placeholder}
           textContentType="emailAddress"
+          updateValue={setEmail}
         />
         <LogInTextField
-          updateValue={setPassword}
           label={loginTranslations.passwordField.label}
           placeholder={loginTranslations.passwordField.placeholder}
-          textContentType="password"
           secondary
+          textContentType="password"
+          updateValue={setPassword}
         />
       </TextFieldsWrapper>
       <ButtonsWrapper>
         <LogInButton onClick={singIn} text={loginTranslations.loginButton.label} />
         <SignUpButton
+          buttonText={loginTranslations.signUpSection.buttonLabel}
           onClick={register}
           text={loginTranslations.signUpSection.label}
-          buttonText={loginTranslations.signUpSection.buttonLabel}
         />
       </ButtonsWrapper>
     </ManualLogInContainer>
   );
 };
 
-export  ÷default ManualLogIn;
+export default ManualLogIn;
