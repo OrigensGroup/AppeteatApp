@@ -3,8 +3,8 @@ import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MenuItem } from '../../../../types/MenuItem';
 
-import IconButton from '../../../Shared/IconButton';
-import Text from '../../../Shared/Text';
+import IconButton from '../../../shared/IconButton';
+import Text from '../../../shared/Text';
 
 import { TitleWrapper, CardsHeaderContainer } from './styles';
 import { useTheme } from 'styled-components';

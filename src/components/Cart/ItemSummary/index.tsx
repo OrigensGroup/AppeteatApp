@@ -4,7 +4,7 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import useCart from '../../../hooks/useCart';
 import cartTranslations from '../../../translations/cart';
 import { OrderItem } from '../../../types/OrderItem';
-import Text from '../../Shared/Text';
+import Text from '../../shared/Text';
 import CartItem from './CartItem';
 
 import { ItemSummaryContainer, CartTitleContainer, DeleteButton } from './styles';

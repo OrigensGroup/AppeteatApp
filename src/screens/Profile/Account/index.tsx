@@ -17,9 +17,9 @@ import {
   TitleContainer,
   NameContainer,
   Content,
-  ShowButton
+  ShowButton,
 } from './styles';
-import Text from '../../../components/Shared/Text';
+import Text from '../../../components/shared/Text';
 import { useNavigation } from '@react-navigation/native';
 
 interface AccountProps {}
@@ -29,8 +29,7 @@ const Account: React.FunctionComponent<AccountProps> = () => {
 
   const favoriteCocktails = menu.items.filter((favoriteItem) => favoriteItem.promoted);
 
-  
-   const navigation = useNavigation();
+  const navigation = useNavigation();
   const navigate = () => {
     navigation.navigate('FavouriteCocktails');
   };

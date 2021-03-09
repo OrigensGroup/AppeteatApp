@@ -3,7 +3,7 @@ import cartTranslations from '../../translations/cart';
 import useCart from '../../hooks/useCart';
 import UpdateModal from '../../components/Cart/UpdateModal';
 
-import Logo from '../../components/Shared/Logo';
+import Logo from '../../components/shared/Logo';
 import ItemSummary from '../../components/Cart/ItemSummary';
 import ValueItem from '../../components/Cart/ValueItem';
 import FinaliseOrder from '../../components/Cart/FinaliseOrder';

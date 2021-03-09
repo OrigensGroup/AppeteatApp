@@ -1,8 +1,8 @@
-import React from "react";
-import Title from "../../Shared/Text";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import BookingInfo from "../../Profile/ReservationCard/BookingInfo"
+import React from 'react';
+import Title from '../../shared/Text';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import BookingInfo from '../../Profile/ReservationCard/BookingInfo';
 import {
   Container,
   VenueDesc,
@@ -11,7 +11,7 @@ import {
   ReservationCardContainer,
   TextContainer,
   BottomContainer,
-} from "./styles";
+} from './styles';
 
 interface ReservationCardProps {
   venue: string;
@@ -34,17 +34,23 @@ const ReservationCard: React.FunctionComponent<ReservationCardProps> = ({
     <ReservationCardContainer>
       <Container onPress={onClick}>
         <VenueName>
-        <Circle />
-        <TextContainer><Title fontSize={16} color='primary' bold>{venue}</Title></TextContainer>
+          <Circle />
+          <TextContainer>
+            <Title fontSize={16} color="primary" bold>
+              {venue}
+            </Title>
+          </TextContainer>
         </VenueName>
-      <VenueDesc>   
-        <Title fontSize={13} color='primary'>{address}</Title>
-      </VenueDesc>
-      <BottomContainer>
-      <BookingInfo icon={<AntDesign name="calendar" size={20} color="#c2c2c2" />} data={date} />
-      <BookingInfo icon={<Ionicons name="time-outline" size={20} color="#c2c2c2" />} data={time} />
-      <BookingInfo icon={<Ionicons name="people" size={20} color="#c2c2c2" />} data={people} />
-      </BottomContainer>
+        <VenueDesc>
+          <Title fontSize={13} color="primary">
+            {address}
+          </Title>
+        </VenueDesc>
+        <BottomContainer>
+          <BookingInfo icon={<AntDesign name="calendar" size={20} color="#c2c2c2" />} data={date} />
+          <BookingInfo icon={<Ionicons name="time-outline" size={20} color="#c2c2c2" />} data={time} />
+          <BookingInfo icon={<Ionicons name="people" size={20} color="#c2c2c2" />} data={people} />
+        </BottomContainer>
       </Container>
     </ReservationCardContainer>
   );

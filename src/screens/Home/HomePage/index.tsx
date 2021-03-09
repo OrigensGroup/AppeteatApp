@@ -5,9 +5,9 @@ import CarouselPromo from '../../../components/Home/Carousel';
 import { HomeContainer } from './styles';
 import ShowLocations from '../../../components/Home/ShowLocations';
 import FeaturedItems from '../../../components/Home/FeaturedItems';
-import Logo from '../../../components/Shared/Logo';
+import Logo from '../../../components/shared/Logo';
 
-interface HomeProps { }
+interface HomeProps {}
 
 const Home: React.FunctionComponent<HomeProps> = () => {
   return (

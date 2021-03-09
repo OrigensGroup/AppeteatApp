@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import currencyTranslations from '../../../translations/currency';
-import Text from '../../Shared/Text';
+import Text from '../../shared/Text';
 import { ValueItemContainer, ValueItemInfoContainer } from './styles';
 
 interface ValueItemProps {

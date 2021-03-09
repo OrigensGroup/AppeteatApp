@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Modal from 'react-native-modal';
 import filterTransaltions from '../../../translations/filter';
-import Text from '../../Shared/Text';
+import Text from '../../shared/Text';
 import FilterModalTabs from './FilterModalTabs';
 import Swiper from 'react-native-swiper';
 import FilterModalSwiper from './FilterModalSwiper';
@@ -20,7 +20,6 @@ import {
   AllergyInfoWrapper,
   FilterModalTbasContainer,
 } from './styles';
-
 
 const FILTERS_DATA: any = {
   Spirits: [
@@ -224,7 +223,6 @@ interface FilterModalProps {
 }
 
 const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible, onClose, onClick }) => {
-
   const ref = useRef<Swiper | null>(null);
   const [filterIndex, setFilterIndex] = useState(0);
 
@@ -240,7 +238,6 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
     () => Object.keys(FILTERS_DATA).map((item) => <FilterModalSwiper key={item} filterItems={FILTERS_DATA[item]} />),
     [FILTERS_DATA]
   );
-
 
   return (
     <Modal
@@ -272,7 +269,7 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
             {filterTabsContent()}
           </Swiper>
           <AllergyInfoWrapper>
-            <Text color='primary' fontSize={18}>
+            <Text color="primary" fontSize={18}>
               {filterTransaltions.allergyField.placeholder}
             </Text>
           </AllergyInfoWrapper>

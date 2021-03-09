@@ -1,6 +1,6 @@
 const menuTranslations = {
-  searchField: {
-    placeholder: 'Cerca nel menu',
+  menu: {
+    title: 'Menu',
   },
   qrField: {
     placeholder: 'Scan Tavolo',

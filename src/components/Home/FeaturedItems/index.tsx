@@ -7,7 +7,7 @@ import useMenu from '../../../hooks/useMenu';
 import homeTranslations from '../../../translations/home';
 import { MenuItem } from '../../../types/MenuItem';
 
-import Text from '../../Shared/Text';
+import Text from '../../shared/Text';
 import PromotionItemCard from './PromotionItemCard';
 
 import { FeaturedItemsSection, FeaturedItemsTextContainer } from './styles';
