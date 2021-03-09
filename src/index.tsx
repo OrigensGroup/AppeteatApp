@@ -15,9 +15,10 @@ import CartProvider from './contexts/Cart';
 import MenuProvider, { Menu } from './contexts/Menu';
 
 import LoginScreen from './screens/Login';
-import Register from './screens/Register';
 
-import TabBar from './components/shared/TabBar';
+import TabBar from './components/Shared/TabBar';
+import Register from './screens/Register';
+import LocationsProvider from './contexts/Locations';
 
 import getMenu from './utils/loadMenu';
 import useAuth from './hooks/useAuth';
@@ -76,6 +77,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
+        <LocationsProvider>
       <MenuProvider loadedMenu={menu}>
         <CartProvider>
           <NavigationContainer
@@ -109,8 +111,10 @@ const App = () => {
 
             </Stack.Navigator>
           </NavigationContainer>
-        </CartProvider>
-      </MenuProvider>
+        </CartProvider>      
+        </MenuProvider>
+        </LocationsProvider>
+
     </ThemeProvider>
   );
 };
