@@ -21,7 +21,7 @@ const Register: React.FunctionComponent<RegisterProps> = () => {
   return (
     <LoginContainer>
       <UpperContent>
-        <LogoContainer><LogoImage source={require('../../img/Logo.png')} /></LogoContainer>
+        <LogoContainer><LogoImage source={require('../../img/logo.png')} /></LogoContainer>
         <SocialLogin>
           <AntDesign name="apple1" size={40} color="#000" />
           <AntDesign name="google" size={40} color="#000" />
