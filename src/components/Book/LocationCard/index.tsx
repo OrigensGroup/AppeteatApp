@@ -1,6 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Entypo';
+import { useTheme } from 'styled-components';
 
 import {
   CardContainer,
@@ -12,10 +12,10 @@ import {
   Content,
   BookATableButton,
   Circle,
-  TextContainer
+  TextContainer,
 } from './styles';
-import theme from '../../../theme';
-import Text from '../../Shared/Text';
+
+import Text from '../../shared/Text';
 import { Venue } from '../../../types/Venue';
 import bookTranslations from '../../../translations/book';
 
@@ -25,16 +25,12 @@ interface LocationCardProps {
 }
 
 const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, venue }) => {
-  const navigation = useNavigation();
-
-  const navigate = () => {
-    navigation.navigate('Book');
-  };
+  const theme = useTheme();
 
   return (
     <CardContainer activeOpacity={0.9} onPress={onClick(venue)}>
       <ImageContainer>
-        <VenueImage source={{ uri: venue.image }} />
+        <VenueImage source={{ uri: venue.image }} resizeMode="cover" />
       </ImageContainer>
       <Content>
         <Circle />
@@ -42,8 +38,11 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
           <Text fontSize={16} color="primary" bold>
             {venue.name}
           </Text>
-          <TextContainer><Text fontSize={12} color="primary">{venue.address}
-          </Text></TextContainer>
+          <TextContainer>
+            <Text fontSize={12} color="primary">
+              {venue.address}
+            </Text>
+          </TextContainer>
           <Text fontSize={12} color="quartiary">
             {venue.phoneNumber}
           </Text>

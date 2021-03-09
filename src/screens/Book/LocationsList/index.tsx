@@ -6,10 +6,9 @@ import LocationCard from '../../../components/Book/LocationCard';
 import useLocations from '../../../hooks/useLocations';
 
 import { mapStyle } from '../../../utils/mapstyle';
-import BookATableModal from '../BookATableModal';
+import BookATableModal from '../../../components/Book/BookATableModal';
 
-
-const { width, height } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
@@ -19,18 +18,19 @@ interface LocationsListProps {
 }
 
 const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
-
   const { locations } = useLocations();
   const venues = locations.list;
 
   const mapRef = useRef<MapView>(null);
   const [animation] = useState(new Animated.Value(0));
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [venueToBook, setVenueToBook] = useState({});
+  const [index, setIndex] = useState(0);
+
   //@ts-ignore
   const timeoutRef = useRef<NodeJS.Timeout>(0);
-  const [index, setIndex] = useState(0);
   const region = {
-    latitude: 51.51085,
-    longitude: -0.13401,
+    ...venues[0],
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
@@ -42,13 +42,12 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
       outputRange: [1, 2.5, 1],
       extrapolate: 'clamp',
     });
+
     const opacity = animation.interpolate({
       inputRange,
       outputRange: [0.35, 1, 0.35],
       extrapolate: 'clamp',
     });
-
-  
 
     return { scale, opacity };
   });
@@ -83,9 +82,6 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
     });
   }, [animation]);
 
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [venueToBook, setVenueToBook] = useState({});
-
   const toggleModal = (venue: any) => () => {
     setVenueToBook(venue);
     setModalVisible(!isModalVisible);
@@ -110,7 +106,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
             opacity: interpolations[index].opacity,
           };
           return (
-            <Marker key={index} coordinate={{latitude: marker.latitude, longitude: marker.longitude}}>
+            <Marker key={index} coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}>
               <Animated.View style={[styles.markerWrap, opacityStyle]}>
                 <Animated.View style={[styles.ring, scaleStyle]} />
                 <View style={styles.marker} />
@@ -158,9 +154,7 @@ const styles = StyleSheet.create({
     right: 0,
     paddingVertical: 10,
   },
-  endPadding: {
-    
-  },
+  endPadding: {},
   markerWrap: {
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import firestore from '@react-native-firebase/firestore';
 
 import { Venue } from '../../types/Venue';
 
-interface Locations {
+export interface Locations {
   list: Venue[];
 }
 
@@ -12,24 +11,15 @@ interface LocationsContext {
 }
 
 export const LocationsContext = React.createContext<LocationsContext>({
-  locations: { list: []},
+  locations: { list: [] },
 });
 
-interface LocationsProviderProps {}
+interface LocationsProviderProps {
+  loadedLocations: Locations;
+}
 
-const LocationsProvider: React.FunctionComponent<LocationsProviderProps> = ({ children }) => {
-  const [locations, setLocations] = useState<Locations>({ list: [], });
-
-  const getLocations = async () => {
-    const firebaseLocations = (await (await firestore().collection('bar').doc('locations').get()).data()) as Locations;
-    
-    console.log(firebaseLocations);
-    setLocations(firebaseLocations);
-  };
-
-  useEffect(() => {
-    getLocations();
-  }, []);
+const LocationsProvider: React.FunctionComponent<LocationsProviderProps> = ({ loadedLocations, children }) => {
+  const [locations] = useState<Locations>(loadedLocations);
 
   return (
     <LocationsContext.Provider

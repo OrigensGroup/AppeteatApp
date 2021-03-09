@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { MenuItem } from '../../types/MenuItem';
 import { Tab } from '../../types/Tab';
@@ -21,7 +21,7 @@ interface MenuProviderProps {
 }
 
 const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ loadedMenu, children }) => {
-  const [menu, setMenu] = useState<Menu>(loadedMenu);
+  const [menu] = useState<Menu>(loadedMenu);
 
   return (
     <MenuContext.Provider
