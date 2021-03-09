@@ -18,14 +18,14 @@ interface LocationsListProps {
 }
 
 const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
-  const { locations } = useLocations();
-  const venues = locations.list;
-
   const mapRef = useRef<MapView>(null);
   const [animation] = useState(new Animated.Value(0));
   const [isModalVisible, setModalVisible] = useState(false);
   const [venueToBook, setVenueToBook] = useState({});
   const [index, setIndex] = useState(0);
+
+  const { locations } = useLocations();
+  const venues = locations.list;
 
   //@ts-ignore
   const timeoutRef = useRef<NodeJS.Timeout>(0);
