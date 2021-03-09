@@ -26,6 +26,33 @@ const loginTranslations = {
     label: 'Hai giá un account?',
     buttonLabel: 'Accedi  > ',
   },
+
+  //SignIn Errors
+  errorSignInEmail: {
+    label: 'That email address is invalid!',
+  },
+  errorWrongPasswordSignIn: {
+    label: 'Email or password invalid',
+  },
+
+  //SignUp Errors
+  usernameError: {
+    label: 'Username must be 4 chartacters long',
+  },
+  passwordLenghtError: {
+    label: 'Password must be at least 8 digits long',
+  },
+  confirmPasswordError: {
+    label: 'Passwords do not match',
+  },
+  invalidPasswordError: {
+    label: 'Password must contain at least 1 letter, 1 number and 1 special character',
+  },
+  emailAlreayInUse: {
+    label: 'That email address is already in use!',
+  },
+
+
 };
 
 export default loginTranslations;

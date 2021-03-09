@@ -19,3 +19,7 @@ flex: 1;
 export const TitleWrapper = styled.View`
 margin-bottom: ${({ theme }) => theme.spacing.double};
 `;
+
+export const ErrorContainer = styled.View`
+margin-top: ${({ theme }) => theme.spacing.single};
+`;

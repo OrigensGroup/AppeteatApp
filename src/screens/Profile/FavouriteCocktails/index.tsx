@@ -15,20 +15,17 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
   const { width } = Dimensions.get('window');
   const { menu } = useMenu();
   const renderItem = ({ item }: { item: MenuItem }) => (
-    <View style={{width: width/2}}><FavCard item={item} /></View>
+    <View style={{ width: width / 2 }}>
+      <FavCard item={item} />
+    </View>
   );
 
   const favoriteCocktails = menu.items.filter((menuItem) => menuItem.promoted);
-    const numberColumn = menu.items.length ===1 ? 1  : 2;
-    console.log(numberColumn);
+  const numberColumn = menu.items.length === 1 ? 1 : 2;
+
   return (
     <FavouriteCocktailsContainer>
-      <FlatList
-        data={favoriteCocktails}
-        horizontal={false}
-        numColumns={numberColumn}
-        renderItem={renderItem}
-      />
+      <FlatList data={favoriteCocktails} horizontal={false} numColumns={numberColumn} renderItem={renderItem} />
     </FavouriteCocktailsContainer>
   );
 };
