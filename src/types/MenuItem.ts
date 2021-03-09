@@ -1,6 +1,11 @@
-type Extra = {
+export type UpgradeItem = {
   title: string;
-  extraPrice: number;
+  data: {
+    title: string;
+    price: number;
+    selected: boolean;
+  };
+  selection: 'single' | 'multiple';
 };
 
 export type MenuItem = {
@@ -12,7 +17,9 @@ export type MenuItem = {
   image: string;
   smallDesc: string;
   description: string;
-  allergyCustomisations: string[];
-  extras: Extra[];
   promoted: boolean;
+  type: 'customisableItem' | 'itemWithExtras';
+  ingredients?: string[];
+  customisations?: string[];
+  upgradableItems?: UpgradeItem[];
 };

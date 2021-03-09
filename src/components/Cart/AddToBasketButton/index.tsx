@@ -1,10 +1,10 @@
 import React from 'react';
+import Text from '../../Shared/Text';
 
-import { MainButtonWrapper, MainButton, TextWrapper, ButtonText } from './styles';
+import { MainButtonWrapper, MainButton, TextWrapper } from './styles';
 
 interface GoToCheckoutProps {
   onClick: () => void;
-  price: number;
 }
 
 const GoToCheckout: React.FunctionComponent<GoToCheckoutProps> = ({ onClick }) => {
@@ -12,7 +12,7 @@ const GoToCheckout: React.FunctionComponent<GoToCheckoutProps> = ({ onClick }) =
     <MainButtonWrapper>
       <MainButton onPress={onClick}>
         <TextWrapper>
-          <ButtonText>Go to Checkout</ButtonText>
+          <Text color='primary' fontSize={18} bold>Go to Checkout</Text>
         </TextWrapper>
       </MainButton>
     </MainButtonWrapper>

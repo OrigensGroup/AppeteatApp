@@ -1,8 +1,5 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
 import { MenuItem } from '../../../../types/MenuItem';
-
-import HeartLike from '../../../Shared/HeartLike';
 
 import Text from '../../../Shared/Text';
 
@@ -11,7 +8,6 @@ import {
   PromotionItemCardImageContainer,
   PromotionItemCardImage,
   PromotionItemCardDescription,
-  PromotionItemCardLikeContainer,
 } from './styles';
 
 interface PromotionItemCardProps {
@@ -20,7 +16,6 @@ interface PromotionItemCardProps {
 }
 
 const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ item, onClick }) => {
-  const theme = useTheme();
 
   return (
     <PromotionItemCardContainer onPress={onClick}>
@@ -35,9 +30,6 @@ const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ it
           {item.description}
         </Text>
       </PromotionItemCardDescription>
-      <PromotionItemCardLikeContainer>
-        <HeartLike />
-      </PromotionItemCardLikeContainer>
     </PromotionItemCardContainer>
   );
 };

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import firestore from '@react-native-firebase/firestore';
 
 import { MenuItem } from '../../types/MenuItem';
 import { Tab } from '../../types/Tab';
 
-interface Menu {
+export interface Menu {
   items: MenuItem[];
   tabs: Tab[];
 }
@@ -17,19 +16,12 @@ export const MenuContext = React.createContext<MenuContext>({
   menu: { items: [], tabs: [] },
 });
 
-interface MenuProviderProps {}
+interface MenuProviderProps {
+  loadedMenu: Menu;
+}
 
-const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ children }) => {
-  const [menu, setMenu] = useState<Menu>({ items: [], tabs: [] });
-
-  const getMenu = async () => {
-    const firebaseMenu = (await (await firestore().collection('bar').doc('menu').get()).data()) as Menu;
-    setMenu(firebaseMenu);
-  };
-
-  useEffect(() => {
-    getMenu();
-  }, []);
+const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ loadedMenu, children }) => {
+  const [menu, setMenu] = useState<Menu>(loadedMenu);
 
   return (
     <MenuContext.Provider

@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useFonts } from 'expo-font';
+import * as Font from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { Asset } from 'expo-asset';
+
 import analytics from '@react-native-firebase/analytics';
 
 import { ThemeProvider } from 'styled-components/native';
@@ -10,32 +12,73 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from './theme';
 
 import CartProvider from './contexts/Cart';
-import MenuProvider from './contexts/Menu';
+import MenuProvider, { Menu } from './contexts/Menu';
+
 import LoginScreen from './screens/Login';
 
 import TabBar from './components/Shared/TabBar';
 import Register from './screens/Register';
 import LocationsProvider from './contexts/Locations';
 
+import getMenu from './utils/loadMenu';
+import useAuth from './hooks/useAuth';
+
 const Stack = createStackNavigator();
 
 const App = () => {
   const navigationRef = useRef<NavigationContainerRef>(null);
   const routeNameRef = useRef<string>('');
-  const [loaded] = useFonts({
-    Comfortaa: require('./theme/fonts/Comfortaa-Regular.ttf'),
-    ComfortaaBold: require('./theme/fonts/Comfortaa-Bold.ttf'),
-    ComfortaaLight: require('./theme/fonts/Comfortaa-Light.ttf'),
-  });
+  const user = useAuth();
+  const [appReady, setAppReady] = useState(false);
+  const [menu, setMenu] = useState<Menu>({ items: [], tabs: [] });
 
-  if (!loaded) {
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+    loadStuff();
+  }, []);
+
+  const loadStuff = async () => {
+    try {
+      await Font.loadAsync({
+        Comfortaa: require('./theme/fonts/Comfortaa-Regular.ttf'),
+        ComfortaaBold: require('./theme/fonts/Comfortaa-Bold.ttf'),
+        ComfortaaLight: require('./theme/fonts/Comfortaa-Light.ttf'),
+      });
+
+      const menu = await getMenu();
+
+      const images = [
+        require('./img/alex.jpg'),
+        require('./img/google.png'),
+        require('./img/jack.jpg'),
+        require('./img/logo.png'),
+        require('./img/venue.jpg'),
+      ];
+
+      const cacheImages = images.map((image) => {
+        return Asset.fromModule(image).downloadAsync();
+      });
+
+      await Promise.all(cacheImages);
+
+      setMenu(menu);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setAppReady(true);
+      SplashScreen.hideAsync();
+    }
+  };
+
+  if (!appReady) {
     return null;
   }
+  
 
   return (
     <ThemeProvider theme={theme}>
-      <MenuProvider>
         <LocationsProvider>
+      <MenuProvider loadedMenu={menu}>
         <CartProvider>
           <NavigationContainer
             //@ts-ignore
@@ -57,14 +100,21 @@ const App = () => {
             ref={navigationRef}
           >
             <Stack.Navigator headerMode="none">
+               {user == null ? (
+                 <>
               <Stack.Screen component={LoginScreen} name="Login" />
               <Stack.Screen component={Register} name="Register" />
+              </>
+                ) : (
               <Stack.Screen component={TabBar} name="App" />
+                      )}
+
             </Stack.Navigator>
           </NavigationContainer>
-        </CartProvider>
+        </CartProvider>      
+        </MenuProvider>
         </LocationsProvider>
-      </MenuProvider>
+
     </ThemeProvider>
   );
 };

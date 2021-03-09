@@ -1,8 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Entypo';
-import { useTheme } from 'styled-components';
-
 
 import {
   CardContainer,

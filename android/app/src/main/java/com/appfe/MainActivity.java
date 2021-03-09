@@ -1,4 +1,4 @@
-package com.appfe;
+package com.oriensgroup.stg;
 
 import android.os.Bundle;
 

@@ -4,17 +4,20 @@ import Swiper from 'react-native-swiper';
 
 import { useNavigation } from '@react-navigation/native';
 
-import SwiperPage from '../../../components/Menu/MenuComponents/SwiperPage';
-import MenuTabs from '../../../components/Menu/MenuComponents/MenuTabs';
-import ViewBasketButton from '../../../components/Menu/MenuComponents/ViewBasketButton';
-import FilterModal from '../../../components/Menu/MenuComponents/FilterModal';
-import Filter from '../../../components/Menu/MenuComponents/Filter';
-import CloseButton from '../../../components/Menu/MenuComponents/CloseButton';
+import SwiperPage from '../../../components/Menu/MenuSwiper/SwiperPage';
+import MenuTabs from '../../../components/Menu/MenuTabs';
+import ViewBasketButton from '../../../components/Menu/ViewBasketButton';
+import FilterModal from '../../../components/Menu/FilterModal';
 import useMenu from '../../../hooks/useMenu';
+import MenuTopBar from '../../../components/Menu/MenuTopBar'
 
-import { MenuWrapper, TopBarWrapper, TopContainer, BasketButtonWrapper } from './styles';
+import {
+  SafeAreaViewBottom,
+  MenuWrapper,
+} from './styles';
+import useCart from '../../../hooks/useCart';
 
-interface MenuProps {}
+interface MenuProps { }
 
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
@@ -23,6 +26,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   const navigation = useNavigation();
   const { menu } = useMenu();
+  const { cart } = useCart();
 
   const onSwipe = (index: number) => {
     if (ref.current && index !== menuIndex) {
@@ -32,12 +36,8 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     setMenuIndex(index);
   };
 
-  const navigate = () => {
+  const goToCart = () => {
     navigation.navigate('Cart');
-  };
-
-  const navigateBack = () => {
-    navigation.navigate('HomePage');
   };
 
   const menuTabsContent = useCallback(
@@ -49,31 +49,30 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     [menu.tabs, menu.items]
   );
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
-
   const closeModal = () => {
     setModalVisible(false);
   };
 
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
-    <MenuWrapper>
-      <TopContainer>
-        <TopBarWrapper>
-          <CloseButton onClick={navigateBack} />
-          <Filter onClick={toggleModal} />
-        </TopBarWrapper>
-        <FilterModal isModalVisible={isModalVisible} onClose={closeModal} />
-        <MenuTabs menuTabs={menu.tabs} onChange={onSwipe} tabActive={menuIndex} />
-      </TopContainer>
-      <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
-        {menuTabsContent()}
-      </Swiper>
-      {/* <BasketButtonWrapper>
-        <ViewBasketButton onClick={navigate} />
-      </BasketButtonWrapper> */}
-    </MenuWrapper>
+    <>
+      <SafeAreaViewBottom>
+        <MenuWrapper>
+          <MenuTopBar onClick={toggleModal} />
+          <MenuTabs menuTabs={menu.tabs} onChange={onSwipe} tabActive={menuIndex} />
+          <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
+            {menuTabsContent()}
+          </Swiper>
+          {cart.length > 0 && (
+            <ViewBasketButton onClick={goToCart} />
+          )}
+          <FilterModal isModalVisible={isModalVisible} onClose={closeModal} onClick={closeModal} />
+        </MenuWrapper>
+      </SafeAreaViewBottom>
+    </>
   );
 };
 
