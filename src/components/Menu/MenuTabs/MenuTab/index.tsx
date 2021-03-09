@@ -1,9 +1,7 @@
 import React from 'react';
-import Text from '../../../Shared/Text'
+import Text from '../../../shared/Text';
 
-import {
-  MenuTabContainer
-} from './styles';
+import { MenuTabContainer } from './styles';
 
 interface MenuTabProps {
   title: string;
@@ -19,7 +17,9 @@ const MenuTab: React.FunctionComponent<MenuTabProps> = ({ active, index, onPress
 
   return (
     <MenuTabContainer active={active} onPress={onMenuPress}>
-      <Text color='primary' fontSize={18} bold>{title}</Text>
+      <Text color="primary" fontSize={18} bold>
+        {title}
+      </Text>
     </MenuTabContainer>
   );
 };

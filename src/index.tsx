@@ -15,18 +15,20 @@ import CartProvider from './contexts/Cart';
 import MenuProvider, { Menu } from './contexts/Menu';
 
 import LoginScreen from './screens/Login';
-import Register from './screens/Register';
 
 import TabBar from './components/Shared/TabBar';
+import Register from './screens/Register';
+import LocationsProvider from './contexts/Locations';
 
 import getMenu from './utils/loadMenu';
+import useAuth from './hooks/useAuth';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   const navigationRef = useRef<NavigationContainerRef>(null);
   const routeNameRef = useRef<string>('');
-
+  const user = useAuth();
   const [appReady, setAppReady] = useState(false);
   const [menu, setMenu] = useState<Menu>({ items: [], tabs: [] });
 
@@ -71,9 +73,11 @@ const App = () => {
   if (!appReady) {
     return null;
   }
+  
 
   return (
     <ThemeProvider theme={theme}>
+        <LocationsProvider>
       <MenuProvider loadedMenu={menu}>
         <CartProvider>
           <NavigationContainer
@@ -96,13 +100,21 @@ const App = () => {
             ref={navigationRef}
           >
             <Stack.Navigator headerMode="none">
+               {user == null ? (
+                 <>
               <Stack.Screen component={LoginScreen} name="Login" />
               <Stack.Screen component={Register} name="Register" />
+              </>
+                ) : (
               <Stack.Screen component={TabBar} name="App" />
+                      )}
+
             </Stack.Navigator>
           </NavigationContainer>
-        </CartProvider>
-      </MenuProvider>
+        </CartProvider>      
+        </MenuProvider>
+        </LocationsProvider>
+
     </ThemeProvider>
   );
 };

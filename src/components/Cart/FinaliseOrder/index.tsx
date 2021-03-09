@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import useCart from '../../../hooks/useCart';
 import cartTranslations from '../../../translations/cart';
-import Spinner from '../../Shared/Spinner';
-import Text from '../../Shared/Text';
-import ViewCta from '../../Shared/ViewCta';
+import Spinner from '../../shared/Spinner';
+import Text from '../../shared/Text';
+import ViewCta from '../../shared/ViewCta';
 import ValueItem from '../ValueItem';
 
 import { FinaliseOrderContainer, TipCounterWrapper, Separator } from './styles';

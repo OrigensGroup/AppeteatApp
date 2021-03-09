@@ -1,17 +1,9 @@
 import React from 'react';
-import { Dimensions, } from 'react-native';
+import { Dimensions } from 'react-native';
 
-import Text from '../../Shared/Text';
+import Text from '../../shared/Text';
 
-import {
-  Container,
-  DrinkDesc,
-  OrderCardContainer,
-  DateContainer,
-  Circle,
-  PriceContainer,
-  Button,
-} from './styles';
+import { Container, DrinkDesc, OrderCardContainer, DateContainer, Circle, PriceContainer, Button } from './styles';
 
 interface OrderCardProps {
   items: string;

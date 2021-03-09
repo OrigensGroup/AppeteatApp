@@ -3,10 +3,11 @@ import { StyleSheet, View, Animated, Dimensions } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
 import LocationCard from '../../../components/Book/LocationCard';
+import useLocations from '../../../hooks/useLocations';
 
 import { mapStyle } from '../../../utils/mapstyle';
+import BookATableModal from '../BookATableModal';
 
-import useMarkers from './useMarkers';
 
 const { width, height } = Dimensions.get('window');
 
@@ -14,24 +15,27 @@ const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
 interface LocationsListProps {
-  markers: Marker[];
+  venues: Marker[];
 }
 
 const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
+
+  const { locations } = useLocations();
+  const venues = locations.list;
+
   const mapRef = useRef<MapView>(null);
   const [animation] = useState(new Animated.Value(0));
   //@ts-ignore
   const timeoutRef = useRef<NodeJS.Timeout>(0);
   const [index, setIndex] = useState(0);
-  const markers = useMarkers();
   const region = {
-    latitude: 45.52220671242907,
-    longitude: -122.6653281029795,
-    latitudeDelta: 0.04864195044303443,
-    longitudeDelta: 0.040142817690068,
+    latitude: 51.51085,
+    longitude: -0.13401,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
   };
 
-  const interpolations = markers.map((_, index) => {
+  const interpolations = venues.map((_, index) => {
     const inputRange = [(index - 1) * CARD_WIDTH, index * CARD_WIDTH, (index + 1) * CARD_WIDTH];
     const scale = animation.interpolate({
       inputRange,
@@ -43,14 +47,17 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
       outputRange: [0.35, 1, 0.35],
       extrapolate: 'clamp',
     });
+
+  
+
     return { scale, opacity };
   });
 
   useEffect(() => {
     animation.addListener(({ value }) => {
       let localIndex = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
-      if (index >= markers.length) {
-        localIndex = markers.length - 1;
+      if (index >= venues.length) {
+        localIndex = venues.length - 1;
       }
       if (index <= 0) {
         localIndex = 0;
@@ -60,11 +67,12 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
       timeoutRef.current = setTimeout(() => {
         if (index !== localIndex) {
           setIndex(index);
-          const { coordinate } = markers[index];
+          const { latitude, longitude } = venues[index];
           if (mapRef.current)
             mapRef.current.animateToRegion(
               {
-                ...coordinate,
+                latitude,
+                longitude,
                 latitudeDelta: region.latitudeDelta,
                 longitudeDelta: region.longitudeDelta,
               },
@@ -75,10 +83,22 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
     });
   }, [animation]);
 
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [venueToBook, setVenueToBook] = useState({});
+
+  const toggleModal = (venue: any) => () => {
+    setVenueToBook(venue);
+    setModalVisible(!isModalVisible);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
   return (
     <View style={styles.container}>
-      <MapView ref={mapRef} showsUserLocation style={styles.container} customMapStyle={mapStyle}>
-        {markers.map((marker, index) => {
+      <BookATableModal isModalVisible={isModalVisible} venue={venueToBook} onClose={closeModal} />
+      <MapView region={region} ref={mapRef} showsUserLocation style={styles.container} customMapStyle={mapStyle}>
+        {venues.map((marker, index) => {
           const scaleStyle = {
             transform: [
               {
@@ -90,7 +110,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
             opacity: interpolations[index].opacity,
           };
           return (
-            <Marker key={index} coordinate={marker.coordinate}>
+            <Marker key={index} coordinate={{latitude: marker.latitude, longitude: marker.longitude}}>
               <Animated.View style={[styles.markerWrap, opacityStyle]}>
                 <Animated.View style={[styles.ring, scaleStyle]} />
                 <View style={styles.marker} />
@@ -119,8 +139,8 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
         style={styles.scrollView}
         contentContainerStyle={styles.endPadding}
       >
-        {markers.map((marker) => (
-          <LocationCard item={marker} />
+        {venues.map((marker) => (
+          <LocationCard onClick={toggleModal} venue={marker} />
         ))}
       </Animated.ScrollView>
     </View>
@@ -139,7 +159,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   endPadding: {
-    paddingRight: width - CARD_WIDTH,
+    
   },
   markerWrap: {
     alignItems: 'center',

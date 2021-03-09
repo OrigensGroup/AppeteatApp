@@ -38,7 +38,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
     if (username.length < 4) {
       setErrors((oldErrors) => ({
         ...oldErrors,
-        ['username']: 'Username must be 4 chartacters long',
+        ['username']: loginTranslations.usernameError.label,
       }));
     } else {
       setErrors((oldErrors) => ({
@@ -51,7 +51,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
     if (password.length < 8) {
       setErrors((oldErrors) => ({
         ...oldErrors,
-        ['passwordLenght']: 'Password must be at least 8 digits long',
+        ['passwordLenght']: loginTranslations.passwordLenghtError.label,
       }));
     } else {
       setErrors((oldErrors) => ({
@@ -64,7 +64,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
     if (password !== confirmPassword) {
       setErrors((oldErrors) => ({
         ...oldErrors,
-        ['confirmPassword']: 'Passwords do not match',
+        ['confirmPassword']: loginTranslations.confirmPasswordError.label,
       }));
     } else {
       setErrors((oldErrors) => ({
@@ -77,7 +77,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
     if (new RegExp('^(.{0,7}|[^0-9]*|[^a-z]*|[a-z0-9]*)$').test(password)) {
       setErrors((oldErrors) => ({
         ...oldErrors,
-        ['passwordSpecialCharacters']: 'Password must contain at least 1 letter, 1 number and 1 special character',
+        ['passwordSpecialCharacters']: loginTranslations.invalidPasswordError.label,
       }));
     } else {
       setErrors((oldErrors) => ({
@@ -95,11 +95,11 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
         })
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
-            Alert.alert('That email address is already in use!');
+            Alert.alert(loginTranslations.emailAlreayInUse.label);
           }
 
           if (error.code === 'auth/invalid-email') {
-            Alert.alert('That email address is invalid!');
+            Alert.alert(loginTranslations.errorSignInEmail.label);
           }
 
           console.error(error);

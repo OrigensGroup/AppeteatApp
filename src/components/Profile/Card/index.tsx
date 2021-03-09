@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MenuItem } from '../../../types/MenuItem';
-import Text from '../../Shared/Text';
+import Text from '../../shared/Text';
 
 import { CardContainer, DrinkImage, DrinkDesc, TextTitle, Container } from './styles';
 
@@ -16,8 +16,12 @@ const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
       <Container onPress={onClick}>
         <DrinkImage source={{ uri: item.image }} />
         <DrinkDesc>
-          <Text color="primary" fontSize={20}>{item.title}</Text>
-          <Text color="quartiary" fontSize={12}>{item.description}</Text>
+          <Text color="primary" fontSize={20}>
+            {item.title}
+          </Text>
+          <Text color="quartiary" fontSize={12}>
+            {item.description}
+          </Text>
         </DrinkDesc>
       </Container>
     </CardContainer>

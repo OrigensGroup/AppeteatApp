@@ -4,8 +4,8 @@ import useCart from '../../../../hooks/useCart';
 
 import singleDrinkTranslations from '../../../../translations/singleDrink';
 import { MenuItem } from '../../../../types/MenuItem';
-import Text from '../../../Shared/Text';
-import ViewCta from '../../../Shared/ViewCta';
+import Text from '../../../shared/Text';
+import ViewCta from '../../../shared/ViewCta';
 import QuantityCounter from '../Counter';
 
 import { AddToBasketButtonWrapper, ViewCtaButton, QuantityButton } from './styles';

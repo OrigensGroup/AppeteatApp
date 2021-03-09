@@ -1,7 +1,7 @@
 import React from 'react';
 import { MenuItem } from '../../../../types/MenuItem';
 
-import Text from '../../../Shared/Text';
+import Text from '../../../shared/Text';
 
 import {
   PromotionItemCardContainer,
@@ -16,7 +16,6 @@ interface PromotionItemCardProps {
 }
 
 const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ item, onClick }) => {
-
   return (
     <PromotionItemCardContainer onPress={onClick}>
       <PromotionItemCardImageContainer>

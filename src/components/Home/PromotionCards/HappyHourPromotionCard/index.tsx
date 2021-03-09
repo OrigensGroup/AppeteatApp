@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'styled-components';
 import homeTranslations from '../../../../translations/home';
 
-import Text from '../../../Shared/Text';
+import Text from '../../../shared/Text';
 
 import {
   HappyHourPromotionCardContainer,
@@ -78,7 +78,6 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
       if (interval.current) clearInterval(interval.current);
     };
   }, []);
-
 
   const navigateHappyHour = () => {
     navigation.navigate('HappyHourMenu');
