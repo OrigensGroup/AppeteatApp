@@ -4,7 +4,7 @@ import { TitleText, TitleContainer } from './styles';
 
 interface TextProps {
   fontSize: number;
-  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary';
+  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor';
   bold?: boolean;
   light?: boolean;
   align?: string;

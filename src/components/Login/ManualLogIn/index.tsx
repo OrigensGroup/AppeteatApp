@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import LogInTextField from "../LogInInputField";
 import { Platform } from "react-native";
 import auth from '@react-native-firebase/auth';
+import { Alert } from 'react-native';
 
 import {
     ManualLogInContainer,
@@ -43,11 +44,11 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
             })
             .catch(error => {
                 if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
+                    Alert.alert('That email address is invalid!');
                 }
 
                 if (error.code === 'auth/wrong-password') {
-                    console.log('Email or password invalid');
+                    Alert.alert('Email or password invalid');
                 }
 
                 console.error(error);
