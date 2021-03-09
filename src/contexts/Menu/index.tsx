@@ -7,6 +7,7 @@ export interface Menu {
   items: MenuItem[];
   tabs: Tab[];
 }
+
 interface MenuContext {
   menu: Menu;
 }
