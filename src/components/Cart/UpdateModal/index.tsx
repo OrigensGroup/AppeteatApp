@@ -1,47 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-native-modal';
 
-import Text from '../../Shared/Text';
+import Text from '../../shared/Text';
 import { OrderItem } from '../../../types/OrderItem';
-import Spinner from '../../Shared/Spinner';
+import Spinner from '../../shared/Spinner';
 import cartTranslations from '../../../translations/cart';
 import useCart from '../../../hooks/useCart';
 
-import ViewCta from '../../Shared/ViewCta';
+import ViewCta from '../../shared/ViewCta';
 
-import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper, DeleteButton } from './styles';
+import {
+  ModalCounterContainer,
+  DivLine,
+  ModalTitle,
+  PopUpContainer,
+  ModalCounterWrapper,
+  DeleteButton,
+} from './styles';
 
 interface UpdateModalProps {
   item: OrderItem | null;
   isModalVisible: boolean;
   onClose: () => void;
-  data: any,
-  rowMap: any
+  data: any;
+  rowMap: any;
   itemId: string;
 }
 
 const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible, item, onClose }) => {
-
   const [localQuantity, setLocalQuantity] = useState(item ? item.quantity : 1);
   const { updateItemQuantity, deleteItemFromCart } = useCart();
 
   const updateQuantity = (number: number) => {
     setLocalQuantity(number);
-
   };
-
 
   const update = () => {
     if (item && localQuantity == 0) deleteItemFromCart(item.orderItemId);
-    if (localQuantity != 0) { if (item) updateItemQuantity(item, localQuantity); }
+    if (localQuantity != 0) {
+      if (item) updateItemQuantity(item, localQuantity);
+    }
     onClose();
-  }
+  };
 
   useEffect(() => {
     setLocalQuantity(item ? item.quantity : 1);
-  }, [item])
-
-
+  }, [item]);
 
   return (
     <Modal

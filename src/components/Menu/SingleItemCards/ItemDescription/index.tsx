@@ -1,7 +1,7 @@
 import React from 'react';
 import currencyTranslations from '../../../../translations/currency';
 import { MenuItem } from '../../../../types/MenuItem';
-import Text from '../../../Shared/Text';
+import Text from '../../../shared/Text';
 
 import { ItemDescriptionContainer, ItemDescriptionTitle, ItemDescriptionDesc } from './styles';
 

@@ -3,7 +3,7 @@ import { SectionList } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import { useTheme } from 'styled-components';
 
-import Text from '../../../Shared/Text';
+import Text from '../../../shared/Text';
 
 import { MenuItem, UpgradeItem } from '../../../../types/MenuItem';
 import { ItemRow, TitleItem, UpgradeSectionContainer, PriceItem } from './styles';

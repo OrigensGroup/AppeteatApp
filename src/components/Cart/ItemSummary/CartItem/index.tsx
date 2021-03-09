@@ -2,7 +2,7 @@ import React from 'react';
 import currencyTranslations from '../../../../translations/currency';
 
 import { OrderItem } from '../../../../types/OrderItem';
-import Text from '../../../Shared/Text';
+import Text from '../../../shared/Text';
 
 import {
   CartItemContainer,

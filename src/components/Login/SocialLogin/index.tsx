@@ -3,8 +3,8 @@ import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import { SocialLoginWrapper, SocialLoginButton } from './styles';
-import FacebookButton from '../../Shared/FacebookButton';
-import GoogleButton from '../../Shared/GoogleButton';
+import FacebookButton from '../../shared/FacebookButton';
+import GoogleButton from '../../shared/GoogleButton';
 
 interface SocialLoginProps {}
 

@@ -17,7 +17,7 @@ import MenuProvider, { Menu } from './contexts/Menu';
 import LoginScreen from './screens/Login';
 import Register from './screens/Register';
 
-import TabBar from './components/Shared/TabBar';
+import TabBar from './components/shared/TabBar';
 
 import getMenu from './utils/loadMenu';
 
