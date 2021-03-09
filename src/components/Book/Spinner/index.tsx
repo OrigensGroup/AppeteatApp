@@ -1,6 +1,6 @@
 import React from 'react';
 import InputSpinner from 'react-native-input-spinner';
-import theme from '../../../theme';
+import { useTheme } from 'styled-components';
 import Text from '../../Shared/Text';
 
 import {TextContainer, Container } from './styles';
@@ -9,14 +9,17 @@ interface SpinnerProps {
   title?: string;
 }
 
+
 const Spinner: React.FunctionComponent<SpinnerProps> = ({ title}) => {
+  const theme = useTheme();
+
   return <Container ><TextContainer>
               <Text color="primary" fontSize={15}>
                 {title}
               </Text>
             </TextContainer>
             <InputSpinner
-            color='#EEEBE8'
+            color= {theme.colors.quantityUpdate}
             max={50}
             min={1}
             onChange={(num) => {

@@ -11,7 +11,7 @@ import { OrderItem } from '../../types/OrderItem';
 
 import { CartContainer, CartSummarySection } from './styles';
 
-interface CartProps { }
+interface CartProps {}
 
 const Cart: React.FunctionComponent<CartProps> = () => {
   const { pricing } = useCart();

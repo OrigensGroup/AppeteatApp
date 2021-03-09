@@ -21,6 +21,7 @@ import { Platform } from 'react-native';
 import { useTheme } from 'styled-components';
 import Spinner from '../../../components/Book/Spinner';
 import bookTranslations from '../../../translations/book';
+import ViewCta from '../../../components/Shared/ViewCta';
 
 type Months = {
   [key: number]: string;
@@ -105,7 +106,7 @@ const theme = useTheme();
     23: '11',
     24: '12',
   };
-
+  
     return (
         <Modal
             animationInTiming={600}
@@ -138,10 +139,12 @@ const theme = useTheme();
         <SpinnerContainer>
          <Spinner title='No of member' />
         </SpinnerContainer>
-          <ConfirmButton onPress={onClose}>
+        <ConfirmButton>
+          <ViewCta onClick={onClose}>
             <Text color="secondary" fontSize={18} bold>
               {bookTranslations.bookPage.confirmBookingButton}
             </Text>
+        </ViewCta>
         </ConfirmButton>
                 </PopUpContainer>
             </ModalContainer>
