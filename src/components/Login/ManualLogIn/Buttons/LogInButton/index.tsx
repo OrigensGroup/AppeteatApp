@@ -1,4 +1,5 @@
 import React from 'react';
+import { ActivityIndicator } from 'react-native';
 import { useTheme } from 'styled-components';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -9,9 +10,10 @@ import { ButtonContainer, IconWrapper } from './styles';
 interface LoginProps {
   text: string;
   onClick: () => void;
+  loading: boolean;
 }
 
-const LogInButton: React.FunctionComponent<LoginProps> = ({ onClick, text }) => {
+const LogInButton: React.FunctionComponent<LoginProps> = ({ loading, onClick, text }) => {
   const theme = useTheme();
 
   return (
@@ -19,9 +21,15 @@ const LogInButton: React.FunctionComponent<LoginProps> = ({ onClick, text }) => 
       <Text bold color="secondary" fontSize={14}>
         {text}
       </Text>
-      <IconWrapper onPress={onClick}>
-        <Icon color={theme.colors.textSecondary} name="ios-arrow-forward" size={36} />
-      </IconWrapper>
+      {!loading ? (
+        <IconWrapper onPress={onClick}>
+          <Icon color={theme.colors.textSecondary} name="ios-arrow-forward" size={36} />
+        </IconWrapper>
+      ) : (
+        <IconWrapper>
+          <ActivityIndicator />
+        </IconWrapper>
+      )}
     </ButtonContainer>
   );
 };

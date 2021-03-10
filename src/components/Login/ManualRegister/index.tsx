@@ -20,13 +20,14 @@ type LoopObject = {
 };
 
 const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [username, setUsername] = useState('');
   const [errors, setErrors] = useState<LoopObject>({});
-
-  const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
 
   const login = () => {
     navigation.navigate('Login');
@@ -37,6 +38,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
   };
 
   const createUser = () => {
+    setLoading(true);
     let errorCounter = 4;
 
     if (username.length < 4) {
@@ -99,6 +101,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
       auth()
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
+          setLoading(false);
           return enter();
         })
         .catch((error) => {
@@ -112,6 +115,8 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
 
           console.error(error);
         });
+    } else {
+      setLoading(false);
     }
   };
 
@@ -150,7 +155,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
         </PasswordsWrapper>
       </TextFieldsWrapper>
       <LogInSection>
-        <LogInButton onClick={createUser} text={loginTranslations.RegisterButton.label} />
+        <LogInButton loading={loading} onClick={createUser} text={loginTranslations.RegisterButton.label} />
         <SignUpButton
           buttonText={loginTranslations.SignInSection.buttonLabel}
           onClick={login}

@@ -9,18 +9,20 @@ interface ListItemProps {
   title: string;
   icon?: React.ReactElement;
   icon2: React.ReactElement;
-  navigateTo: string;
+  navigateTo?: string;
+  onClick?: () => void;
 }
 
-const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigateTo, title }) => {
+const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigateTo, onClick, title }) => {
   const navigation = useNavigation();
 
-  const navigate = (goTo: string) => () => {
-    navigation.navigate(goTo);
+  const navigate = () => {
+    onClick && onClick();
+    navigateTo && navigation.navigate(navigateTo);
   };
 
   return (
-    <ProfileLinkContainer onPress={navigate(navigateTo)}>
+    <ProfileLinkContainer onPress={navigate}>
       <IconContainer>{icon}</IconContainer>
       <TextContainer>
         <Text color="primary" fontSize={15}>

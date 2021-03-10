@@ -3,8 +3,6 @@ import auth from '@react-native-firebase/auth';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-import { useNavigation } from '@react-navigation/native';
-
 import { ButtonContainer, GoogleImage } from './styles';
 
 GoogleSignin.configure({
@@ -16,12 +14,6 @@ interface GoogleButtonProps {
 }
 
 const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
-  const navigation = useNavigation();
-
-  const login = () => {
-    navigation.navigate('App');
-  };
-
   async function onGoogleButtonPress() {
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();
@@ -34,7 +26,7 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
   }
 
   return (
-    <ButtonContainer onPress={() => onGoogleButtonPress().then(() => login())}>
+    <ButtonContainer onPress={onGoogleButtonPress}>
       <GoogleImage source={require('./../../../img/google.png')} />
     </ButtonContainer>
   );
