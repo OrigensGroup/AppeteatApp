@@ -1,4 +1,5 @@
 import React from 'react';
+import { scale } from '../../../theme/textScaling';
 
 import { TitleText, TitleContainer } from './styles';
 
@@ -13,7 +14,7 @@ interface TextProps {
 const Text: React.FunctionComponent<TextProps> = ({ align = 'left', bold, children, color, fontSize, light }) => {
   return (
     <TitleContainer>
-      <TitleText align={align} bold={bold} color={color} fontSize={fontSize} light={light}>
+      <TitleText align={align} bold={bold} color={color} fontSize={scale(fontSize)} light={light}>
         {children}
       </TitleText>
     </TitleContainer>
