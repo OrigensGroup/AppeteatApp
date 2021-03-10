@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Text from '../../../../shared/Text';
 
 import { ModalItemContainer, ModalItemTextWrapper } from './styles';
@@ -8,7 +9,7 @@ interface FilterModalItemProps {
   onClick: () => void;
 }
 
-const FilterModalItem: React.FunctionComponent<FilterModalItemProps> = ({ item, onClick }) => {
+const FilterModalItem: React.FunctionComponent<FilterModalItemProps> = ({ item }) => {
   return (
     <ModalItemContainer>
       <ModalItemTextWrapper>

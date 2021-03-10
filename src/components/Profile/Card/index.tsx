@@ -3,7 +3,7 @@ import React from 'react';
 import { MenuItem } from '../../../types/MenuItem';
 import Text from '../../shared/Text';
 
-import { CardContainer, DrinkImage, DrinkDesc, TextTitle, Container } from './styles';
+import { CardContainer, DrinkImage, DrinkDesc, Container } from './styles';
 
 interface CardProps {
   item: MenuItem;

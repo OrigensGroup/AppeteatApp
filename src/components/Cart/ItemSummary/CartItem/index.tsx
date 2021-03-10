@@ -1,4 +1,5 @@
 import React from 'react';
+
 import currencyTranslations from '../../../../translations/currency';
 
 import { OrderItem } from '../../../../types/OrderItem';
@@ -20,28 +21,28 @@ interface CartItemProps {
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
   return (
-    <CartItemContainer onPress={onClick(item)} activeOpacity={1}>
+    <CartItemContainer activeOpacity={1} onPress={onClick(item)}>
       <CartItemInfo>
         <CartItemQuantity>
-          <Text bold fontSize={20} color="tertiary">
+          <Text bold color="tertiary" fontSize={20}>
             {item.quantity} x
           </Text>
         </CartItemQuantity>
         <CartItemTitle>
-          <Text bold fontSize={20} color="primary">
+          <Text bold color="primary" fontSize={20}>
             {item.title}
           </Text>
           <CartItemCustomisation>
             {item.customisations &&
               item.customisations.map((customisation) => (
-                <Text light fontSize={14} color="tertiary">
+                <Text color="tertiary" fontSize={14} key={customisation} light>
                   {customisation}
                 </Text>
               ))}
           </CartItemCustomisation>
         </CartItemTitle>
         <CartItemPrice>
-          <Text bold fontSize={20} color="primary">
+          <Text bold color="primary" fontSize={20}>
             {currencyTranslations.currencyField.placeholder}
             {item.price * item.quantity}
           </Text>

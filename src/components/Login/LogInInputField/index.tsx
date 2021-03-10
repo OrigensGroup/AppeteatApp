@@ -1,8 +1,9 @@
 import React from 'react';
+
 import Text from '../../shared/Text';
 import LoginTextField from '../../shared/LoginTextField';
 
-import { TextFieldWrapper, TitleWrapper } from './styles';
+import { TextFieldWrapper, TitleWrapper, ErrorContainer } from './styles';
 
 interface LogInInputFieldProps {
   secondary?: boolean;
@@ -10,23 +11,32 @@ interface LogInInputFieldProps {
   textContentType: 'emailAddress' | 'password' | 'none';
   label: string;
   updateValue?: (value: string) => void;
+  error?: string | null;
 }
 
 const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({
-  secondary,
-  placeholder,
-  textContentType,
+  error,
   label,
+  placeholder,
+  secondary,
+  textContentType,
   updateValue,
 }) => {
   return (
     <TextFieldWrapper secondary={secondary}>
       <TitleWrapper>
-        <Text color="secondary" fontSize={14} bold>
+        <Text bold color="secondary" fontSize={14}>
           {label}
         </Text>
       </TitleWrapper>
-      <LoginTextField updateValue={updateValue} placeholder={placeholder} textContentType={textContentType} />
+      <LoginTextField placeholder={placeholder} textContentType={textContentType} updateValue={updateValue} />
+      {error && (
+        <ErrorContainer>
+          <Text bold color="errorColor" fontSize={14}>
+            *{error}
+          </Text>
+        </ErrorContainer>
+      )}
     </TextFieldWrapper>
   );
 };

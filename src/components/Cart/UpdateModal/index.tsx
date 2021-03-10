@@ -9,14 +9,7 @@ import useCart from '../../../hooks/useCart';
 
 import ViewCta from '../../shared/ViewCta';
 
-import {
-  ModalCounterContainer,
-  DivLine,
-  ModalTitle,
-  PopUpContainer,
-  ModalCounterWrapper,
-  DeleteButton,
-} from './styles';
+import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper } from './styles';
 
 interface UpdateModalProps {
   item: OrderItem | null;
@@ -29,7 +22,7 @@ interface UpdateModalProps {
 
 const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible, item, onClose }) => {
   const [localQuantity, setLocalQuantity] = useState(item ? item.quantity : 1);
-  const { updateItemQuantity, deleteItemFromCart } = useCart();
+  const { deleteItemFromCart, updateItemQuantity } = useCart();
 
   const updateQuantity = (number: number) => {
     setLocalQuantity(number);
@@ -37,9 +30,11 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
 
   const update = () => {
     if (item && localQuantity == 0) deleteItemFromCart(item.orderItemId);
+
     if (localQuantity != 0) {
       if (item) updateItemQuantity(item, localQuantity);
     }
+
     onClose();
   };
 
@@ -51,16 +46,16 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
     <Modal
       animationInTiming={600}
       animationOutTiming={450}
+      avoidKeyboard
       isVisible={isModalVisible}
       onBackdropPress={onClose}
-      avoidKeyboard={true}
       style={{
         margin: 0,
       }}
     >
       <PopUpContainer>
         <ModalTitle>
-          <Text color="primary" fontSize={18} bold>
+          <Text bold color="primary" fontSize={18}>
             {item && item.title}
           </Text>
         </ModalTitle>
@@ -76,8 +71,8 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         </ModalTitle>
         <DivLine />
 
-        <ViewCta redDelete={localQuantity === 0} onClick={update}>
-          <Text color="secondary" fontSize={18} bold>
+        <ViewCta onClick={update} redDelete={localQuantity === 0}>
+          <Text bold color="secondary" fontSize={18}>
             {localQuantity === 0 ? cartTranslations.removeItemModal.title : cartTranslations.updateModalField.label}
           </Text>
         </ViewCta>

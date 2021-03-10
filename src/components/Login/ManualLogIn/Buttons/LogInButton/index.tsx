@@ -1,6 +1,7 @@
+import React from 'react';
 import { useTheme } from 'styled-components';
-import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import Text from '../../../../shared/Text';
 
 import { ButtonContainer, IconWrapper } from './styles';
@@ -15,7 +16,7 @@ const LogInButton: React.FunctionComponent<LoginProps> = ({ onClick, text }) => 
 
   return (
     <ButtonContainer>
-      <Text color="secondary" fontSize={14} bold>
+      <Text bold color="secondary" fontSize={14}>
         {text}
       </Text>
       <IconWrapper onPress={onClick}>

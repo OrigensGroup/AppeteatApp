@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Text from '../../../../shared/Text';
 
 import { ButtonContainer, IconWrapper } from './styles';
@@ -9,14 +10,14 @@ interface SignUpButtonProps {
   onClick: () => void;
 }
 
-const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ onClick, text, buttonText }) => {
+const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ buttonText, onClick, text }) => {
   return (
     <ButtonContainer>
       <Text color="secondary" fontSize={14}>
         {text}
       </Text>
       <IconWrapper onPress={onClick}>
-        <Text color="secondary" fontSize={14} bold>
+        <Text bold color="secondary" fontSize={14}>
           {buttonText}
         </Text>
       </IconWrapper>

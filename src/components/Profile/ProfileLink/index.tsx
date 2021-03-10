@@ -1,12 +1,13 @@
-import React from "react";
-import { Text } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { LinksContainer } from "./styles";
-import ListItem from "../ListItem";
-import accountTranslations from "../../../translations/account";
+import React from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import ListItem from '../ListItem';
+import accountTranslations from '../../../translations/account';
+
+import { LinksContainer } from './styles';
 
 interface ProfileLinkProps {}
 
@@ -14,72 +15,36 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
   return (
     <LinksContainer>
       <ListItem
-        icon={<AntDesign name="calendar" size={28} color="#000000" />}
-        icon2={
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={28}
-            color="#818181"
-          />
-        }
-        title={accountTranslations.accountPage.myReservation}
+        icon={<AntDesign color="#000000" name="calendar" size={28} />}
+        icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Reservations"
+        title={accountTranslations.accountPage.myReservation}
       />
       <ListItem
-        icon={
-          <MaterialCommunityIcons
-            name="glass-cocktail"
-            size={28}
-            color="#000000"
-          />
-        }
-        icon2={
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={28}
-            color="#818181"
-          />
-        }
-        title={accountTranslations.accountPage.myFavouriteCoctails}
+        icon={<MaterialCommunityIcons color="#000000" name="glass-cocktail" size={28} />}
+        icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="FavouriteCocktails"
+        title={accountTranslations.accountPage.myFavouriteCoctails}
       />
 
       <ListItem
-        icon={<AntDesign name="shoppingcart" size={28} color="#000000" />}
-        icon2={
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={28}
-            color="#818181"
-          />
-        }
-        title={accountTranslations.accountPage.myOrders}
+        icon={<AntDesign color="#000000" name="shoppingcart" size={28} />}
+        icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Orders"
+        title={accountTranslations.accountPage.myOrders}
       />
 
       <ListItem
-        icon={<Icon name="notifications-outline" size={28} color="#000000" />}
-        icon2={
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={28}
-            color="#818181"
-          />
-        }
-        title={accountTranslations.accountPage.notifications}
+        icon={<Icon color="#000000" name="notifications-outline" size={28} />}
+        icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Notifications"
+        title={accountTranslations.accountPage.notifications}
       />
       <ListItem
-        icon={<Icon name="settings-outline" size={28} color="#000000" />}
-        icon2={
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={28}
-            color="#818181"
-          />
-        }
-        title={accountTranslations.accountPage.settings}
+        icon={<Icon color="#000000" name="settings-outline" size={28} />}
+        icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Settings"
+        title={accountTranslations.accountPage.settings}
       />
     </LinksContainer>
   );

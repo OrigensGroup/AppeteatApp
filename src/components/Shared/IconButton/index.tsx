@@ -6,12 +6,11 @@ import { ButtonContainer } from './styles';
 interface IconButtonProps {
   onClick: () => void;
   iconName: string;
-  size: number
+  size: number;
   color: string;
 }
 
-const IconButton: React.FunctionComponent<IconButtonProps> = ({ onClick, iconName, size, color }) => {
-
+const IconButton: React.FunctionComponent<IconButtonProps> = ({ color, iconName, onClick, size }) => {
   return (
     <ButtonContainer onPress={onClick}>
       <Icon color={color} name={iconName} size={size} />

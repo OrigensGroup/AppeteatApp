@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { fixDecimals } from '../../../../contexts/Cart';
 import useCart from '../../../../hooks/useCart';
 
@@ -34,10 +35,10 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
       </QuantityButton>
       <ViewCtaButton>
         <ViewCta onClick={onClick}>
-          <Text fontSize={18} bold color="secondary">
+          <Text bold color="secondary" fontSize={18}>
             {singleDrinkTranslations.viewBasketButtonField.placeholder}
           </Text>
-          <Text fontSize={18} bold color="secondary">
+          <Text bold color="secondary" fontSize={18}>
             + {fixDecimals(item.price * amount)}
           </Text>
         </ViewCta>

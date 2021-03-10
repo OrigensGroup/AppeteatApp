@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { MenuItem } from '../../../../types/MenuItem';
 
 import { ItemPictureContainer, ItemPic } from './styles';

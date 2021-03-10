@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { StyleSheet, Dimensions, Animated } from 'react-native';
+import React from 'react';
+import { Dimensions } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
+
 import useCart from '../../../hooks/useCart';
 import cartTranslations from '../../../translations/cart';
 import { OrderItem } from '../../../types/OrderItem';
 import Text from '../../shared/Text';
+
 import CartItem from './CartItem';
 
 import { ItemSummaryContainer, CartTitleContainer, DeleteButton } from './styles';
@@ -18,6 +20,7 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
 
   const onSwipeValueChange = (swipeData: any) => {
     const { key, value } = swipeData;
+
     if (value < -Dimensions.get('window').width) {
       deleteItemFromCart(key);
     }
@@ -36,7 +39,7 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
 
   const renderHiddenItem = (data: any, rowMap: any) => (
     <DeleteButton onPress={() => deleteRow(data, rowMap)}>
-      <Text color="secondary" bold fontSize={18}>
+      <Text bold color="secondary" fontSize={18}>
         {cartTranslations.removeItemSwipe.title}
       </Text>
     </DeleteButton>
@@ -45,20 +48,20 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
   return (
     <ItemSummaryContainer>
       <CartTitleContainer>
-        <Text color="primary" bold fontSize={28}>
+        <Text bold color="primary" fontSize={28}>
           {cartTranslations.titleField.title}
         </Text>
       </CartTitleContainer>
       <SwipeListView
-        showsVerticalScrollIndicator={false}
-        useFlatList={true}
         data={cart}
         disableRightSwipe
         keyExtractor={(item) => item.orderItemId}
-        renderItem={({ item }) => <CartItem item={item} onClick={onUpdate} />}
-        renderHiddenItem={renderHiddenItem}
-        rightOpenValue={-Dimensions.get('window').width}
         onSwipeValueChange={onSwipeValueChange}
+        renderHiddenItem={renderHiddenItem}
+        renderItem={({ item }) => <CartItem item={item} onClick={onUpdate} />}
+        rightOpenValue={-Dimensions.get('window').width}
+        showsVerticalScrollIndicator={false}
+        useFlatList
         useNativeDriver={false}
       />
     </ItemSummaryContainer>
@@ -66,14 +69,3 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
 };
 
 export default ItemSummary;
-
-const styles = StyleSheet.create({
-  rowBack: {
-    alignItems: 'center',
-    backgroundColor: 'red',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: 15,
-  },
-});

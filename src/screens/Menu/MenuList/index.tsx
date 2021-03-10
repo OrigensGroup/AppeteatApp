@@ -9,15 +9,13 @@ import MenuTabs from '../../../components/Menu/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/ViewBasketButton';
 import FilterModal from '../../../components/Menu/FilterModal';
 import useMenu from '../../../hooks/useMenu';
-import MenuTopBar from '../../../components/Menu/MenuTopBar'
+import MenuTopBar from '../../../components/Menu/MenuTopBar';
 
-import {
-  SafeAreaViewBottom,
-  MenuWrapper,
-} from './styles';
 import useCart from '../../../hooks/useCart';
 
-interface MenuProps { }
+import { SafeAreaViewBottom, MenuWrapper } from './styles';
+
+interface MenuProps {}
 
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
@@ -66,10 +64,8 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
           <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
             {menuTabsContent()}
           </Swiper>
-          {cart.length > 0 && (
-            <ViewBasketButton onClick={goToCart} />
-          )}
-          <FilterModal isModalVisible={isModalVisible} onClose={closeModal} onClick={closeModal} />
+          {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
+          <FilterModal isModalVisible={isModalVisible} onClick={closeModal} onClose={closeModal} />
         </MenuWrapper>
       </SafeAreaViewBottom>
     </>

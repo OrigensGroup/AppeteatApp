@@ -4,16 +4,16 @@ import { TitleText, TitleContainer } from './styles';
 
 interface TextProps {
   fontSize: number;
-  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary';
+  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor';
   bold?: boolean;
   light?: boolean;
   align?: string;
 }
 
-const Text: React.FunctionComponent<TextProps> = ({ children, color, fontSize, light, bold, align = 'left' }) => {
+const Text: React.FunctionComponent<TextProps> = ({ align = 'left', bold, children, color, fontSize, light }) => {
   return (
     <TitleContainer>
-      <TitleText color={color} fontSize={fontSize} align={align} bold={bold} light={light}>
+      <TitleText align={align} bold={bold} color={color} fontSize={fontSize} light={light}>
         {children}
       </TitleText>
     </TitleContainer>

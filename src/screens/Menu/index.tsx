@@ -1,8 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import Cart from '../Cart';
+
 import Menu from './MenuList';
 import SingleItem from './SingleItem';
-import Cart from '../Cart';
 
 const Stack = createStackNavigator();
 

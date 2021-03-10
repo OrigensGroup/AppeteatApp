@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ProfileLinkContainer, IconContainer, TextContainer, ArrowContainer } from './styles';
+
 import Text from '../../shared/Text';
+
+import { ProfileLinkContainer, IconContainer, TextContainer, ArrowContainer } from './styles';
 
 interface ListItemProps {
   title: string;

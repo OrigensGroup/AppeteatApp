@@ -8,7 +8,11 @@ interface ViewCtaProps {
 }
 
 const ViewCta: React.FunctionComponent<ViewCtaProps> = ({ children, onClick, redDelete }) => {
-  return <MainButton redDelete={redDelete} onPress={onClick}>{children}</MainButton>;
+  return (
+    <MainButton onPress={onClick} redDelete={redDelete}>
+      {children}
+    </MainButton>
+  );
 };
 
 export default ViewCta;

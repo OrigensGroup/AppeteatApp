@@ -1,19 +1,17 @@
 import React from 'react';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
-import auth from '@react-native-firebase/auth';
-import {  ButtonContainer } from './styles';
-import AntDesign from "react-native-vector-icons/AntDesign";
+
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+import { ButtonContainer } from './styles';
 
 interface AppleButtonProps {
-   onClick?: () => void;
+  onClick?: () => void;
 }
 
-const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ onClick }) => {
-
-
+const AppleButton: React.FunctionComponent<AppleButtonProps> = () => {
   return (
     <ButtonContainer>
-      <AntDesign name="apple1" size={50} color="#000" />
+      <AntDesign color="#000" name="apple1" size={50} />
     </ButtonContainer>
   );
 };

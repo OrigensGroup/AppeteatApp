@@ -10,7 +10,8 @@ export const NavigationContainer = styled.View`
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
 `;
 export const FavouriteCocktailsContainer = styled.View`
-  margin: ${({ theme }) => theme.spacing.multiple(3)} 0 ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
+  margin: ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.spacing.double};
 `;
 export const Content = styled.ScrollView`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
@@ -30,10 +31,10 @@ export const ImageContainer = styled.View`
 export const CocktailContainer = styled.ScrollView``;
 export const TitleContainer = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.single};
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  `;
+`;
 export const NameContainer = styled.View`
   margin-top: ${({ theme }) => theme.spacing.single};
 `;

@@ -1,9 +1,12 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Modal from 'react-native-modal';
+
+import Swiper from 'react-native-swiper';
+
 import filterTransaltions from '../../../translations/filter';
 import Text from '../../shared/Text';
+
 import FilterModalTabs from './FilterModalTabs';
-import Swiper from 'react-native-swiper';
 import FilterModalSwiper from './FilterModalSwiper';
 
 import {
@@ -11,7 +14,6 @@ import {
   FilterPopUpContainer,
   TitleWrapper,
   DivLine,
-  FlatListWrapper,
   FilterModalBottomBar,
   BottomButtonContainer,
   BottomButtonWrapperLeft,
@@ -222,7 +224,7 @@ interface FilterModalProps {
   onClick: () => void;
 }
 
-const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible, onClose, onClick }) => {
+const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible, onClick, onClose }) => {
   const ref = useRef<Swiper | null>(null);
   const [filterIndex, setFilterIndex] = useState(0);
 
@@ -235,17 +237,17 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
   };
 
   const filterTabsContent = useCallback(
-    () => Object.keys(FILTERS_DATA).map((item) => <FilterModalSwiper key={item} filterItems={FILTERS_DATA[item]} />),
-    [FILTERS_DATA]
+    () => Object.keys(FILTERS_DATA).map((item) => <FilterModalSwiper filterItems={FILTERS_DATA[item]} key={item} />),
+    []
   );
 
   return (
     <Modal
       animationInTiming={500}
       animationOutTiming={450}
+      avoidKeyboard
       isVisible={isModalVisible}
       onBackdropPress={onClose}
-      avoidKeyboard={true}
       style={{
         margin: 0,
       }}
@@ -253,16 +255,12 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
       <FilterModalContainer>
         <FilterPopUpContainer>
           <TitleWrapper>
-            <Text color="primary" fontSize={18} bold>
+            <Text bold color="primary" fontSize={18}>
               {filterTransaltions.titleField.placeholder}
             </Text>
           </TitleWrapper>
           <FilterModalTbasContainer>
-            <FilterModalTabs
-              filterTabs={Object.keys(FILTERS_DATA)}
-              onChange={onSwipe}
-              tabActive={filterIndex}
-            ></FilterModalTabs>
+            <FilterModalTabs filterTabs={Object.keys(FILTERS_DATA)} onChange={onSwipe} tabActive={filterIndex} />
           </FilterModalTbasContainer>
           <DivLine />
           <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
@@ -278,14 +276,14 @@ const FilterModal: React.FunctionComponent<FilterModalProps> = ({ isModalVisible
             <FilterModalBottomBarWrapper>
               <BottomButtonContainer>
                 <BottomButtonWrapperLeft>
-                  <Text color="secondary" fontSize={18} bold>
+                  <Text bold color="secondary" fontSize={18}>
                     {filterTransaltions.clearAllField.placeholder}
                   </Text>
                 </BottomButtonWrapperLeft>
               </BottomButtonContainer>
               <BottomButtonContainer onPress={onClick}>
                 <BottomButtonWrapperRight>
-                  <Text color="secondary" fontSize={18} bold>
+                  <Text bold color="secondary" fontSize={18}>
                     {filterTransaltions.doneField.placeholder}
                   </Text>
                 </BottomButtonWrapperRight>

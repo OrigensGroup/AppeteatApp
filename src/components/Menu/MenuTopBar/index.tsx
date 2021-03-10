@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
+
 import IconButton from '../../shared/IconButton';
 import menuTranslations from '../../../translations/menu';
 
@@ -22,13 +23,13 @@ const MenuTopBar: React.FunctionComponent<MenuTopBarProps> = ({ onClick }) => {
 
   return (
     <TopContainer>
-      <IconButton onClick={navigateBack} iconName="ios-close" size={28} color={theme.colors.textPrimary} />
+      <IconButton color={theme.colors.textPrimary} iconName="ios-close" onClick={navigateBack} size={28} />
       <TitleWrapper>
-        <Text color="primary" fontSize={20} bold>
+        <Text bold color="primary" fontSize={20}>
           {menuTranslations.menu.title}
         </Text>
       </TitleWrapper>
-      <IconButton onClick={onClick} iconName="filter" size={24} color={theme.colors.textPrimary} />
+      <IconButton color={theme.colors.textPrimary} iconName="filter" onClick={onClick} size={24} />
     </TopContainer>
   );
 };

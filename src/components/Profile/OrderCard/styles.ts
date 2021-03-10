@@ -40,4 +40,3 @@ export const PriceContainer = styled.View`
 export const Button = styled.TouchableOpacity`
   padding-top: ${({ theme }) => theme.spacing.double};
 `;
-

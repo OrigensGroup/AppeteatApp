@@ -14,7 +14,7 @@ import {
   HappyHourMenuHeader,
 } from './styles';
 
-interface HappyHourMenuProps { }
+interface HappyHourMenuProps {}
 
 const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
   const { menu } = useMenu();
@@ -26,7 +26,7 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
   return (
     <HappyHourMenuContainer>
       <HappyHourMenuHeader>
-        <HappyHourPromotionCard endDate={'Wed Feb 10 2021 15:36:55 GMT+0000'} />
+        <HappyHourPromotionCard endDate="Wed Feb 10 2021 15:36:55 GMT+0000" />
       </HappyHourMenuHeader>
       <HappyHourMenuSection>
         <HappyHourMenuItemsContainer>

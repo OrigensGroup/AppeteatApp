@@ -11,11 +11,6 @@ import PersonalInformation from './Settings/PersonalInformation';
 import Password from './Settings/Password';
 import ChangeEmail from './Settings/PersonalInformation/ChangeEmail';
 import ChangeName from './Settings/PersonalInformation/ChangeName';
-import Text from '../../components/shared/Text';
-import { ButtonContainer } from '../../screens/Profile/Settings/PersonalInformation/styles';
-import accountTranslations from '../../translations/account';
-import { Alert } from 'react-native';
-import CustomButton from '../../components/shared/Button';
 
 const Stack = createStackNavigator();
 

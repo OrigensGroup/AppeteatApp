@@ -319,7 +319,7 @@ PODS:
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.6.0):
+  - FirebaseCoreDiagnostics (7.7.0):
     - GoogleDataTransport (~> 8.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
@@ -336,7 +336,7 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30907.0)
-  - FirebaseInstallations (7.6.0):
+  - FirebaseInstallations (7.7.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
@@ -1025,9 +1025,9 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 9f8f4feab1f3fddf4e4515f8f022fe6aa9e51043
   FirebaseAuth: 0a1df88dc32569db509e6269c3e4bf2a168e8ae8
   FirebaseCore: 0a43b7f1c5b36f3358cd703011ca4c7e0df55870
-  FirebaseCoreDiagnostics: ee1184d51da3293335b83355aad20f537acc24cf
+  FirebaseCoreDiagnostics: 179bf3831213451c8addd036aca7fcf5492ec154
   FirebaseFirestore: b860346d5095c741528efac94995bab39275d0bf
-  FirebaseInstallations: 6e4e77396559bc2ae0504823837ed737b1c7e47f
+  FirebaseInstallations: 42c86e7b02ff75b7f27f85833bf5dcb5f38a9774
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   GoogleAppMeasurement: c542a2feaac9ab98fd074e8f1a02c3585bbfbd47

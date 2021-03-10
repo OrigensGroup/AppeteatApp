@@ -2,9 +2,10 @@ import { useTheme } from 'styled-components';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import { SocialLoginWrapper, SocialLoginButton } from './styles';
 import FacebookButton from '../../shared/FacebookButton';
 import GoogleButton from '../../shared/GoogleButton';
+
+import { SocialLoginWrapper, SocialLoginButton } from './styles';
 
 interface SocialLoginProps {}
 
@@ -14,7 +15,7 @@ const SocialLogin: React.FunctionComponent<SocialLoginProps> = () => {
   return (
     <SocialLoginWrapper>
       <SocialLoginButton>
-        <AntDesign name="apple1" size={40} color={theme.colors.loginBottom} />
+        <AntDesign color={theme.colors.loginBottom} name="apple1" size={40} />
       </SocialLoginButton>
       <GoogleButton />
       <FacebookButton />

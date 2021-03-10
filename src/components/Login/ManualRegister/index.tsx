@@ -1,95 +1,164 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
+import { useNavigation } from '@react-navigation/native';
+
+import auth from '@react-native-firebase/auth';
+
+import { Alert } from 'react-native';
+
 import loginTranslations from '../../../translations/login';
 import LogInButton from '../ManualLogIn/Buttons/LogInButton';
 import SignUpButton from '../ManualLogIn/Buttons/SignUpButton';
-import { useNavigation } from "@react-navigation/native";
-import LogInInputField from '../LogInInputField'
-import auth from '@react-native-firebase/auth';
+import LogInInputField from '../LogInInputField';
 
-import {
-    ManualLogInContainer,
-    TextFieldsWrapper,
-    LogInSection,
-    PasswordsWrapper,
-    PasswordSeparator
-} from './styles';
+import { ManualLogInContainer, TextFieldsWrapper, LogInSection, PasswordsWrapper, PasswordSeparator } from './styles';
 
-interface RegisterManualProps {
-}
+interface RegisterManualProps {}
+
+type LoopObject = {
+  [key: string]: string | null;
+};
 
 const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [errors, setErrors] = useState<LoopObject>({});
 
-    const [email, setEmail] = useState('')
+  const navigation = useNavigation();
 
-    const [password, setPassword] = useState('')
+  const login = () => {
+    navigation.navigate('Login');
+  };
 
-    const [username, setUsername] = useState('')
+  const enter = () => {
+    navigation.navigate('App');
+  };
 
-    const navigation = useNavigation();
+  const createUser = () => {
+    let errorCounter = 4;
 
-    const login = () => {
-        navigation.navigate('Login');
-    };
+    if (username.length < 4) {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['username']: loginTranslations.usernameError.label,
+      }));
+    } else {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['username']: null,
+      }));
 
-    const enter = () => {
-        navigation.navigate('App');
-    };
+      errorCounter = errorCounter - 1;
+    }
 
-    const createUser = () => {
-        auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                return enter();
-            })
-            .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
-                }
+    if (password.length < 8) {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['passwordLenght']: loginTranslations.passwordLenghtError.label,
+      }));
+    } else {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['passwordLenght']: null,
+      }));
 
-                if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                }
+      errorCounter = errorCounter - 1;
+    }
 
-                console.error(error);
-            });
-    };
+    if (password !== confirmPassword) {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['confirmPassword']: loginTranslations.confirmPasswordError.label,
+      }));
+    } else {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['confirmPassword']: null,
+      }));
 
-    return (
-        <ManualLogInContainer>
-            <TextFieldsWrapper>
-                <LogInInputField
-                    updateValue={setUsername}
-                    label={loginTranslations.nameField.label}
-                    placeholder={loginTranslations.nameField.placeholder}
-                    textContentType="none"
-                />
-                <LogInInputField
-                    updateValue={setEmail}
-                    label={loginTranslations.emailField.label}
-                    placeholder={loginTranslations.emailField.placeholder}
-                    textContentType="emailAddress"
-                />
-                <PasswordsWrapper>
-                    <LogInInputField
-                        updateValue={setPassword}
-                        label={loginTranslations.passwordField.label}
-                        placeholder={loginTranslations.passwordField.placeholder}
-                        textContentType="password"
-                    />
-                    <PasswordSeparator />
-                    <LogInInputField
-                        label={loginTranslations.passwordField.secondaryLabel}
-                        placeholder={loginTranslations.passwordField.placeholder}
-                        textContentType="password"
-                    />
-                </PasswordsWrapper>
-            </TextFieldsWrapper>
-            <LogInSection>
-                <LogInButton onClick={createUser} text={loginTranslations.RegisterButton.label} />
-                <SignUpButton onClick={login} text={loginTranslations.SignInSection.label} buttonText={loginTranslations.SignInSection.buttonLabel} />
-            </LogInSection>
-        </ManualLogInContainer>
-    );
+      errorCounter = errorCounter - 1;
+    }
+
+    if (new RegExp('^(.{0,7}|[^0-9]*|[^a-z]*|[a-z0-9]*)$').test(password)) {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['passwordSpecialCharacters']: loginTranslations.invalidPasswordError.label,
+      }));
+    } else {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['passwordSpecialCharacters']: null,
+      }));
+
+      errorCounter = errorCounter - 1;
+    }
+
+    if (errorCounter === 0) {
+      auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          return enter();
+        })
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            Alert.alert(loginTranslations.emailAlreayInUse.label);
+          }
+
+          if (error.code === 'auth/invalid-email') {
+            Alert.alert(loginTranslations.errorSignInEmail.label);
+          }
+
+          console.error(error);
+        });
+    }
+  };
+
+  return (
+    <ManualLogInContainer>
+      <TextFieldsWrapper>
+        <LogInInputField
+          error={errors['username']}
+          label={loginTranslations.nameField.label}
+          placeholder={loginTranslations.nameField.placeholder}
+          textContentType="none"
+          updateValue={setUsername}
+        />
+        <LogInInputField
+          label={loginTranslations.emailField.label}
+          placeholder={loginTranslations.emailField.placeholder}
+          textContentType="emailAddress"
+          updateValue={setEmail}
+        />
+        <PasswordsWrapper>
+          <LogInInputField
+            error={errors['passwordLenght'] || errors['passwordSpecialCharacters']}
+            label={loginTranslations.passwordField.label}
+            placeholder={loginTranslations.passwordField.placeholder}
+            textContentType="password"
+            updateValue={setPassword}
+          />
+          <PasswordSeparator />
+          <LogInInputField
+            error={errors['confirmPassword']}
+            label={loginTranslations.passwordField.secondaryLabel}
+            placeholder={loginTranslations.passwordField.placeholder}
+            textContentType="password"
+            updateValue={setConfirmPassword}
+          />
+        </PasswordsWrapper>
+      </TextFieldsWrapper>
+      <LogInSection>
+        <LogInButton onClick={createUser} text={loginTranslations.RegisterButton.label} />
+        <SignUpButton
+          buttonText={loginTranslations.SignInSection.buttonLabel}
+          onClick={login}
+          text={loginTranslations.SignInSection.label}
+        />
+      </LogInSection>
+    </ManualLogInContainer>
+  );
 };
 
 export default RegisterManual;

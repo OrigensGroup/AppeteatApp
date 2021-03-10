@@ -8,7 +8,7 @@ interface InputSpinnerProps {
   hideInput?: boolean;
 }
 
-const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ initialValue, hideInput, onChange }) => {
+const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initialValue, onChange }) => {
   const theme = useTheme();
   return (
     <InputSpinner
@@ -20,18 +20,18 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ initialValue, hid
         backgroundColor: theme.colors.textSecondary,
         ...(hideInput && { marginHorizontal: 8 }),
       }}
+      buttonTextColor={theme.colors.textPrimary}
+      fontSize={22}
       inputStyle={
         hideInput && {
           display: 'none',
         }
       }
-      buttonTextColor={theme.colors.textPrimary}
-      fontSize={22}
-      value={initialValue}
       min={0.0}
       onChange={onChange}
       step={1}
       textColor={theme.colors.textPrimary}
+      value={initialValue}
     />
   );
 };

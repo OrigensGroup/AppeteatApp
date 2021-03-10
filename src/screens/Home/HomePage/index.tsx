@@ -2,10 +2,11 @@ import React from 'react';
 
 import CarouselPromo from '../../../components/Home/Carousel';
 
-import { HomeContainer } from './styles';
 import ShowLocations from '../../../components/Home/ShowLocations';
 import FeaturedItems from '../../../components/Home/FeaturedItems';
 import Logo from '../../../components/shared/Logo';
+
+import { HomeContainer } from './styles';
 
 interface HomeProps {}
 
@@ -13,8 +14,8 @@ const Home: React.FunctionComponent<HomeProps> = () => {
   return (
     <HomeContainer
       alwaysBounceVertical
-      showsVerticalScrollIndicator={false}
       contentContainerStyle={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}
+      showsVerticalScrollIndicator={false}
     >
       <Logo />
       <FeaturedItems />

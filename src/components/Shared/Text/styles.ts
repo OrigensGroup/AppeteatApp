@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
-import CartProvider from '../../../contexts/Cart';
 
 interface TitleProps {
   fontSize: number;
-  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary';
+  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor';
   bold?: boolean;
   light?: boolean;
   align: string;
@@ -19,19 +18,26 @@ export const TitleContainer = styled.View`
 
 export const TitleText = styled.Text<TitleProps>`
   font-size: ${({ fontSize }) => fontSize}px;
-  color: ${({ theme, color }) => {
+  color: ${({ color, theme }) => {
     switch (color) {
       case 'primary': {
         return theme.colors.textPrimary;
       }
+
       case 'secondary': {
         return theme.colors.textSecondary;
       }
+
       case 'tertiary': {
         return theme.colors.active;
       }
+
       case 'quartiary': {
         return theme.colors.border;
+      }
+
+      case 'errorColor': {
+        return theme.colors.activeRed;
       }
 
       default:

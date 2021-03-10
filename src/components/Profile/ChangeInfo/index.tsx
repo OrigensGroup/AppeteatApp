@@ -1,4 +1,5 @@
 import React from 'react';
+
 import TextField from '../../shared/LoginTextField';
 
 import { ChangeInfoContainer, Container } from './styles';
@@ -12,7 +13,7 @@ const ChangeInfo: React.FunctionComponent<ChangeInfoProps> = ({ icon }) => {
     <ChangeInfoContainer>
       <Container>
         {icon}
-        <TextField textContentType="none"></TextField>
+        <TextField textContentType="none" />
       </Container>
     </ChangeInfoContainer>
   );

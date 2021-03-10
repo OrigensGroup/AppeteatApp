@@ -1,12 +1,14 @@
 import React from 'react';
+
 import { MenuItem } from '../../../../types/MenuItem';
 import CardsHeader from '../CardsHeader';
 import ItemPicture from '../ItemPicture';
 import ItemDescription from '../ItemDescription';
 import AddToBasketButton from '../AddToBasketButton';
 
-import { CustomisableItemContainer } from './styles';
 import CustomiseSection from '../CustomiseSection';
+
+import { CustomisableItemContainer } from './styles';
 
 interface CustomisableItemProps {
   item: MenuItem;

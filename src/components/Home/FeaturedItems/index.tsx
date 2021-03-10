@@ -8,6 +8,7 @@ import homeTranslations from '../../../translations/home';
 import { MenuItem } from '../../../types/MenuItem';
 
 import Text from '../../shared/Text';
+
 import PromotionItemCard from './PromotionItemCard';
 
 import { FeaturedItemsSection, FeaturedItemsTextContainer } from './styles';
@@ -24,21 +25,21 @@ const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = () => {
 
   const promotedItems = menu.items.filter((menuItem) => menuItem.promoted);
 
-  const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionItemCard onClick={onCardClick(item)} item={item} />;
+  const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionItemCard item={item} onClick={onCardClick(item)} />;
 
   return (
     <FeaturedItemsSection>
       <FeaturedItemsTextContainer>
-        <Text fontSize={20} color="primary">
+        <Text color="primary" fontSize={20}>
           {homeTranslations.homepageScreen.popularItems.title}
         </Text>
       </FeaturedItemsTextContainer>
       <FlatList
+        contentContainerStyle={{ paddingRight: 16 }}
         data={promotedItems}
         horizontal
         renderItem={flatlistItem}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingRight: 16 }}
       />
     </FeaturedItemsSection>
   );

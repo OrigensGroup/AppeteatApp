@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ImagePromotionContainer, ImagePromotionImageContainer, ImagePromotionImage } from './styles';
 
 interface ImagePromotionProps {
