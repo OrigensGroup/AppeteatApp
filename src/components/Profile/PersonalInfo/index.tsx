@@ -8,7 +8,7 @@ import { InfoContainer, ValueContainer, FieldContainer } from './styles';
 
 interface PersonalInfoProps {
   field: string;
-  value: string;
+  value: string | null | undefined;
   navigateTo: string;
   onClick?: () => void;
 }

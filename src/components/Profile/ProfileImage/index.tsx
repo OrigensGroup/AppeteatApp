@@ -1,15 +1,16 @@
 import React from 'react';
 
+import useAuth from '../../../hooks/useAuth';
+
 import { ProfileImageContainer, AccountImage } from './styles';
 
-interface ProfileImageProps {
-  imageUrl?: string;
-}
+interface ProfileImageProps {}
 
 const ProfileImage: React.FunctionComponent<ProfileImageProps> = () => {
+  const user = useAuth();
   return (
     <ProfileImageContainer>
-      <AccountImage source={require('../../../img/alex.jpg')} />
+      <AccountImage source={{ uri: user?.photoURL }} />
     </ProfileImageContainer>
   );
 };

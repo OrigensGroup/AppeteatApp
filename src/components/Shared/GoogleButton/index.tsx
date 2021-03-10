@@ -9,9 +9,7 @@ GoogleSignin.configure({
   webClientId: '462697324514-ukkeh7qnmf3gvc14e0klftv2h5onquf2.apps.googleusercontent.com',
 });
 
-interface GoogleButtonProps {
-  onClick?: () => void;
-}
+interface GoogleButtonProps {}
 
 const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
   async function onGoogleButtonPress() {

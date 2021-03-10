@@ -5,9 +5,7 @@ import auth from '@react-native-firebase/auth';
 
 import { ButtonContainer } from './styles';
 
-interface FacebookButtonProps {
-  onClick?: () => void;
-}
+interface FacebookButtonProps {}
 
 const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
   async function onFacebookButtonPress() {
