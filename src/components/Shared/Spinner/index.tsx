@@ -17,7 +17,7 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
         borderWidth: 1,
         width: 24,
         height: 24,
-        backgroundColor: theme.colors.textSecondary,
+        backgroundColor: theme.colors.backgroundColor,
         ...(hideInput && { marginHorizontal: 8 }),
       }}
       buttonTextColor={theme.colors.textPrimary}

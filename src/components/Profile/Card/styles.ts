@@ -6,7 +6,7 @@ export const Container = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   border-width: 1px;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 
   border-radius:${({ theme }) => theme.spacing.double};
   border-color: #c2c2c2;
@@ -29,4 +29,8 @@ export const DrinkImage = styled.Image`
 export const DrinkDesc = styled.View`
   flex: 1;
   padding: ${({ theme }) => theme.spacing.single} 0 0 ${({ theme }) => theme.spacing.double};
+`;
+
+export const DescriptionWrapper = styled.View`
+  padding-top: ${({ theme }) => theme.spacing.single};
 `;

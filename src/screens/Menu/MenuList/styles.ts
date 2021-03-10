@@ -7,5 +7,5 @@ export const MenuWrapper = styled.View`
 
 export const SafeAreaViewBottom = styled.SafeAreaView`
   flex: 1;
-  background: ${({ theme }) => theme.colors.textSecondary};
+  background: ${({ theme }) => theme.colors.backgroundColor};
 `;

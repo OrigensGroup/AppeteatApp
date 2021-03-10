@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import LinearGradient from 'react-native-linear-gradient';
+import { useTheme } from 'styled-components';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,7 +13,14 @@ import LogInButton from '../ManualLogIn/Buttons/LogInButton';
 import SignUpButton from '../ManualLogIn/Buttons/SignUpButton';
 import LogInInputField from '../LogInInputField';
 
-import { ManualLogInContainer, TextFieldsWrapper, LogInSection, PasswordsWrapper, PasswordSeparator } from './styles';
+import {
+  ManualLogInContainer,
+  TextFieldsWrapper,
+  LogInSection,
+  PasswordsWrapper,
+  PasswordSeparator,
+  styles,
+} from './styles';
 
 interface RegisterManualProps {}
 
@@ -20,6 +29,7 @@ type LoopObject = {
 };
 
 const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
+  const theme = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -81,7 +91,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
       errorCounter = errorCounter - 1;
     }
 
-    if (new RegExp('^(.{0,7}|[^0-9]*|[^a-z]*|[a-z0-9]*)$').test(password)) {
+    if (new RegExp('^(?=(.*[a-z])(?=(.*[d]){1,}){1,})(?!.*s).{8,}$').test(password)) {
       setErrors((oldErrors) => ({
         ...oldErrors,
         ['passwordSpecialCharacters']: loginTranslations.invalidPasswordError.label,
@@ -116,48 +126,55 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
   };
 
   return (
-    <ManualLogInContainer>
-      <TextFieldsWrapper>
-        <LogInInputField
-          error={errors['username']}
-          label={loginTranslations.nameField.label}
-          placeholder={loginTranslations.nameField.placeholder}
-          textContentType="none"
-          updateValue={setUsername}
-        />
-        <LogInInputField
-          label={loginTranslations.emailField.label}
-          placeholder={loginTranslations.emailField.placeholder}
-          textContentType="emailAddress"
-          updateValue={setEmail}
-        />
-        <PasswordsWrapper>
+    <LinearGradient
+      colors={[theme.colors.active, theme.colors.secondaryActive]}
+      end={{ x: 1, y: 1 }}
+      start={{ x: 0, y: 0 }}
+      style={styles.linearGradient}
+    >
+      <ManualLogInContainer>
+        <TextFieldsWrapper>
           <LogInInputField
-            error={errors['passwordLenght'] || errors['passwordSpecialCharacters']}
-            label={loginTranslations.passwordField.label}
-            placeholder={loginTranslations.passwordField.placeholder}
-            textContentType="password"
-            updateValue={setPassword}
+            error={errors['username']}
+            label={loginTranslations.nameField.label}
+            placeholder={loginTranslations.nameField.placeholder}
+            textContentType="none"
+            updateValue={setUsername}
           />
-          <PasswordSeparator />
           <LogInInputField
-            error={errors['confirmPassword']}
-            label={loginTranslations.passwordField.secondaryLabel}
-            placeholder={loginTranslations.passwordField.placeholder}
-            textContentType="password"
-            updateValue={setConfirmPassword}
+            label={loginTranslations.emailField.label}
+            placeholder={loginTranslations.emailField.placeholder}
+            textContentType="emailAddress"
+            updateValue={setEmail}
           />
-        </PasswordsWrapper>
-      </TextFieldsWrapper>
-      <LogInSection>
-        <LogInButton onClick={createUser} text={loginTranslations.RegisterButton.label} />
-        <SignUpButton
-          buttonText={loginTranslations.SignInSection.buttonLabel}
-          onClick={login}
-          text={loginTranslations.SignInSection.label}
-        />
-      </LogInSection>
-    </ManualLogInContainer>
+          <PasswordsWrapper>
+            <LogInInputField
+              error={errors['passwordLenght'] || errors['passwordSpecialCharacters']}
+              label={loginTranslations.passwordField.label}
+              placeholder={loginTranslations.passwordField.placeholder}
+              textContentType="password"
+              updateValue={setPassword}
+            />
+            <PasswordSeparator />
+            <LogInInputField
+              error={errors['confirmPassword']}
+              label={loginTranslations.passwordField.secondaryLabel}
+              placeholder={loginTranslations.passwordField.placeholder}
+              textContentType="password"
+              updateValue={setConfirmPassword}
+            />
+          </PasswordsWrapper>
+        </TextFieldsWrapper>
+        <LogInSection>
+          <LogInButton onClick={createUser} text={loginTranslations.RegisterButton.label} />
+          <SignUpButton
+            buttonText={loginTranslations.SignInSection.buttonLabel}
+            onClick={login}
+            text={loginTranslations.SignInSection.label}
+          />
+        </LogInSection>
+      </ManualLogInContainer>
+    </LinearGradient>
   );
 };
 

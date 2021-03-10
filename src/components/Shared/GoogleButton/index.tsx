@@ -3,8 +3,6 @@ import auth from '@react-native-firebase/auth';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-import { useNavigation } from '@react-navigation/native';
-
 import { ButtonContainer, GoogleImage } from './styles';
 
 GoogleSignin.configure({
@@ -15,9 +13,7 @@ interface GoogleButtonProps {
   onClick?: () => void;
 }
 
-const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ onClick }) => {
-
-
+const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
   async function onGoogleButtonPress() {
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();

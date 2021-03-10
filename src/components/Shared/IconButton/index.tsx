@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { ButtonContainer } from './styles';
 
 interface IconButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   iconName: string;
   size: number;
   color: string;

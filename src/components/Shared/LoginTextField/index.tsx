@@ -28,7 +28,7 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
         defaultValue={text}
         onChangeText={updateText}
         placeholder={placeholder}
-        placeholderTextColor={theme.colors.border}
+        placeholderTextColor={theme.colors.background}
         secureTextEntry={textContentType === 'password'}
         textContentType={textContentType}
       />

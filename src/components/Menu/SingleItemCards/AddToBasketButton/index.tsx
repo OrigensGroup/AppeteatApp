@@ -35,10 +35,10 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
       </QuantityButton>
       <ViewCtaButton>
         <ViewCta onClick={onClick}>
-          <Text bold color="secondary" fontSize={18}>
+          <Text bold color="fixedWhite" fontSize={18}>
             {singleDrinkTranslations.viewBasketButtonField.placeholder}
           </Text>
-          <Text bold color="secondary" fontSize={18}>
+          <Text bold color="fixedWhite" fontSize={18}>
             + {fixDecimals(item.price * amount)}
           </Text>
         </ViewCta>

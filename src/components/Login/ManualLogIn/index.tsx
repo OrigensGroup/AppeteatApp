@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from 'styled-components';
 
 import { Platform, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
@@ -11,11 +13,12 @@ import loginTranslations from '../../../translations/login';
 import SignUpButton from './Buttons/SignUpButton';
 import LogInButton from './Buttons/LogInButton';
 
-import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper } from './styles';
+import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
 
 interface ManualLogInProps {}
 
 const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
+  const theme = useTheme();
   const [email, setEmail] = useState('');
 
   const [password, setPassword] = useState('');
@@ -50,31 +53,38 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
   };
 
   return (
-    <ManualLogInContainer>
-      <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <LogInTextField
-          label={loginTranslations.emailField.label}
-          placeholder={loginTranslations.emailField.placeholder}
-          textContentType="emailAddress"
-          updateValue={setEmail}
-        />
-        <LogInTextField
-          label={loginTranslations.passwordField.label}
-          placeholder={loginTranslations.passwordField.placeholder}
-          secondary
-          textContentType="password"
-          updateValue={setPassword}
-        />
-      </TextFieldsWrapper>
-      <ButtonsWrapper>
-        <LogInButton onClick={singIn} text={loginTranslations.loginButton.label} />
-        <SignUpButton
-          buttonText={loginTranslations.signUpSection.buttonLabel}
-          onClick={register}
-          text={loginTranslations.signUpSection.label}
-        />
-      </ButtonsWrapper>
-    </ManualLogInContainer>
+    <LinearGradient
+      colors={[theme.colors.active, theme.colors.secondaryActive]}
+      end={{ x: 1, y: 1 }}
+      start={{ x: 0, y: 0 }}
+      style={styles.linearGradient}
+    >
+      <ManualLogInContainer>
+        <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <LogInTextField
+            label={loginTranslations.emailField.label}
+            placeholder={loginTranslations.emailField.placeholder}
+            textContentType="emailAddress"
+            updateValue={setEmail}
+          />
+          <LogInTextField
+            label={loginTranslations.passwordField.label}
+            placeholder={loginTranslations.passwordField.placeholder}
+            secondary
+            textContentType="password"
+            updateValue={setPassword}
+          />
+        </TextFieldsWrapper>
+        <ButtonsWrapper>
+          <LogInButton onClick={singIn} text={loginTranslations.loginButton.label} />
+          <SignUpButton
+            buttonText={loginTranslations.signUpSection.buttonLabel}
+            onClick={register}
+            text={loginTranslations.signUpSection.label}
+          />
+        </ButtonsWrapper>
+      </ManualLogInContainer>
+    </LinearGradient>
   );
 };
 

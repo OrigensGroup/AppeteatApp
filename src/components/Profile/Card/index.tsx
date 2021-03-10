@@ -3,7 +3,7 @@ import React from 'react';
 import { MenuItem } from '../../../types/MenuItem';
 import Text from '../../shared/Text';
 
-import { CardContainer, DrinkImage, DrinkDesc, Container } from './styles';
+import { CardContainer, DrinkImage, DrinkDesc, Container, DescriptionWrapper } from './styles';
 
 interface CardProps {
   item: MenuItem;
@@ -19,9 +19,11 @@ const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
           <Text color="primary" fontSize={20}>
             {item.title}
           </Text>
-          <Text color="quartiary" fontSize={12}>
-            {item.description}
-          </Text>
+          <DescriptionWrapper>
+            <Text color="quartiary" fontSize={12}>
+              {item.description}
+            </Text>
+          </DescriptionWrapper>
         </DrinkDesc>
       </Container>
     </CardContainer>

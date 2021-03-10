@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const CartItemContainer = styled.TouchableOpacity`
   width: 100%;
-  background: ${({ theme }) => theme.colors.textSecondary};
+  background: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 export const CartItemInfo = styled.View`

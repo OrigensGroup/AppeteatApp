@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+interface ButtonContainerProps {
+  secondary?: boolean;
+}
+
 export const LocationContainer = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
@@ -25,12 +29,19 @@ export const MapContainer = styled.View`
   border-color: ${({ theme }) => theme.colors.border};
 `;
 
-export const FindButton = styled.View`
+export const FindButton = styled.View<ButtonContainerProps>`
   position: absolute;
-  bottom: ${({ theme }) => theme.spacing.double};
-  left: ${({ theme }) => theme.spacing.double};
+  bottom: ${({ theme }) => theme.spacing.oneAndHalf};
+  left: ${({ theme }) => theme.spacing.oneAndHalf};
 
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.fixedWhite};
+  opacity: 0.9;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  padding: ${({ theme }) => theme.spacing.half} ${({ theme }) => theme.spacing.single};
+  padding: ${({ theme }) => theme.spacing.half} ${({ theme }) => theme.spacing.oneAndHalf};
+  ${({ secondary }) =>
+    secondary &&
+    `
+    opacity: 0.7
+    ;
+  `};
 `;

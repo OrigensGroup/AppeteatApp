@@ -12,6 +12,8 @@ import accountTranslations from '../../../translations/account';
 import Text from '../../../components/shared/Text';
 
 import {
+  SafeAreaTop,
+  SafeAreaBottom,
   ProfileContainer,
   ImageContainer,
   NavigationContainer,
@@ -41,45 +43,50 @@ const Account: React.FunctionComponent<AccountProps> = () => {
   const username = 'Alessandro Carpanzano';
 
   return (
-    <ProfileContainer>
-      <ImageContainer>
-        <ProfileImage />
-        <NameContainer>
-          <Text color="primary" fontSize={20}>
-            {username}
-          </Text>
-        </NameContainer>
-      </ImageContainer>
-      <Content
-        contentContainerStyle={{
-          flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <NavigationContainer>
-          <ProfileLink />
-        </NavigationContainer>
-        <FavouriteCocktailsContainer>
-          <TitleContainer>
-            <Text color="primary" fontSize={20}>
-              {accountTranslations.accountPage.myFavouriteCoctails}
-            </Text>
-            <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
-              <Text color="tertiary" fontSize={16}>
-                {accountTranslations.accountPage.showButton}
+    <>
+      <SafeAreaTop />
+      <SafeAreaBottom>
+        <ProfileContainer>
+          <ImageContainer>
+            <ProfileImage />
+            <NameContainer>
+              <Text color="primary" fontSize={20}>
+                {username}
               </Text>
-            </ShowButton>
-          </TitleContainer>
-          <FlatList
-            data={favoriteCocktails}
-            horizontal
-            renderItem={flatlistRenderItem}
-            showsHorizontalScrollIndicator={false}
-          />
-        </FavouriteCocktailsContainer>
-      </Content>
-    </ProfileContainer>
+            </NameContainer>
+          </ImageContainer>
+          <Content
+            contentContainerStyle={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <NavigationContainer>
+              <ProfileLink />
+            </NavigationContainer>
+            <FavouriteCocktailsContainer>
+              <TitleContainer>
+                <Text color="primary" fontSize={20}>
+                  {accountTranslations.accountPage.myFavouriteCoctails}
+                </Text>
+                <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
+                  <Text color="tertiary" fontSize={16}>
+                    {accountTranslations.accountPage.showButton}
+                  </Text>
+                </ShowButton>
+              </TitleContainer>
+              <FlatList
+                data={favoriteCocktails}
+                horizontal
+                renderItem={flatlistRenderItem}
+                showsHorizontalScrollIndicator={false}
+              />
+            </FavouriteCocktailsContainer>
+          </Content>
+        </ProfileContainer>
+      </SafeAreaBottom>
+    </>
   );
 };
 

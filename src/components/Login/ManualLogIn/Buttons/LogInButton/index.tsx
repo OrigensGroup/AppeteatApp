@@ -16,11 +16,11 @@ const LogInButton: React.FunctionComponent<LoginProps> = ({ onClick, text }) => 
 
   return (
     <ButtonContainer>
-      <Text bold color="secondary" fontSize={14}>
+      <Text bold color="fixedWhite" fontSize={14}>
         {text}
       </Text>
       <IconWrapper onPress={onClick}>
-        <Icon color={theme.colors.textSecondary} name="ios-arrow-forward" size={36} />
+        <Icon color={theme.colors.fixedWhite} name="ios-arrow-forward" size={36} />
       </IconWrapper>
     </ButtonContainer>
   );

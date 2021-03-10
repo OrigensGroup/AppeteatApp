@@ -8,6 +8,7 @@ import useLocations from '../../../hooks/useLocations';
 
 import { mapStyle } from '../../../utils/mapstyle';
 import BookATableModal from '../../../components/Book/BookATableModal';
+import theme from '../../../theme';
 
 const { height } = Dimensions.get('window');
 
@@ -35,19 +36,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   marker: {
-    width: 15,
-    height: 15,
+    width: 16,
+    height: 16,
     borderRadius: 7.5,
-    backgroundColor: '#F69019',
+    backgroundColor: theme.colors.active,
   },
   ring: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: '#F69019',
+    backgroundColor: theme.colors.active,
     position: 'absolute',
     borderWidth: 1,
-    borderColor: '#F69019',
+    borderColor: theme.colors.active,
   },
 });
 

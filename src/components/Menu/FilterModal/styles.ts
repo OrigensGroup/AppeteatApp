@@ -19,7 +19,7 @@ export const FilterPopUpContainer = styled.View`
   width: 100%;
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
 `;

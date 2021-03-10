@@ -13,7 +13,7 @@ interface ListItemProps {
   onClick?: () => void;
 }
 
-const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigateTo, title,onClick }) => {
+const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigateTo, onClick, title }) => {
   const navigation = useNavigation();
 
   const navigate = () => {
@@ -22,7 +22,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigat
   };
 
   return (
-    <ProfileLinkContainer onPress={navigate} >
+    <ProfileLinkContainer onPress={navigate}>
       <IconContainer>{icon}</IconContainer>
       <TextContainer>
         <Text color="primary" fontSize={15}>
