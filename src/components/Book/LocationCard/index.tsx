@@ -14,7 +14,7 @@ import {
   Circle,
 } from './styles';
 import theme from '../../../theme';
-import Title from '../../Shared/Text';
+import Title from '../../shared/Text';
 
 interface LocationCardProps {
   imageUrl: string;

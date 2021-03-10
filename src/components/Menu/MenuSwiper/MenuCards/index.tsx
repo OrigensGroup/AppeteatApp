@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import currencyTranslations from '../../../../translations/currency';
-import Text from '../../../Shared/Text';
+import Text from '../../../shared/Text';
 
 import { MenuItem } from '../../../../types/MenuItem';
 

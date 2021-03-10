@@ -8,7 +8,7 @@ import InputSpinner from 'react-native-input-spinner';
 import { Platform } from 'react-native';
 
 import Button from '../../../components/Book/Button';
-import Text from '../../../components/Shared/Text';
+import Text from '../../../components/shared/Text';
 import IconField from '../../../components/Book/IconField';
 
 import {

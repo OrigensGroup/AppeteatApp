@@ -1,7 +1,7 @@
 import React from 'react';
 import menuTranslations from '../../../../translations/menu';
 import { MenuItem } from '../../../../types/MenuItem';
-import Text from '../../../Shared/Text';
+import Text from '../../../shared/Text';
 import {
   CustomiseSectionContainer,
   CustomiseTitle,
