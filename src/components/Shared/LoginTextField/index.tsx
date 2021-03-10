@@ -30,6 +30,7 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
         placeholder={placeholder}
         placeholderTextColor={theme.colors.border}
         secureTextEntry={textContentType === 'password'}
+        style={{ fontFamily: 'Comfortaa', fontSize: 16 }}
         textContentType={textContentType}
       />
     </TextFieldContainer>

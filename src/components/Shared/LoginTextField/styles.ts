@@ -6,10 +6,11 @@ export const TextFieldContainer = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: ${({ theme }) => theme.spacing.single};
 `;
 
 export const TextFieldInput = styled.TextInput`
-  border-bottom-color: ${({ theme }) => theme.colors.textSecondary};
+  border-bottom-color: ${({ theme }) => theme.colors.textPrimary};
   color: ${({ theme }) => theme.colors.border};
   border-bottom-width: 1px;
   flex: 1;
