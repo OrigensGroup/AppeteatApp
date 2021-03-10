@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import { scale } from '../../../theme/textScaling';
+
 export const TextFieldContainer = styled.View`
   width: 100%;
   display: flex;
@@ -10,6 +12,8 @@ export const TextFieldContainer = styled.View`
 `;
 
 export const TextFieldInput = styled.TextInput`
+  font-family: Comfortaa;
+  font-size: ${scale(16)}px;
   border-bottom-color: ${({ theme }) => theme.colors.textPrimary};
   color: ${({ theme }) => theme.colors.border};
   border-bottom-width: 1px;

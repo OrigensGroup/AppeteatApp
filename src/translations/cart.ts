@@ -27,7 +27,7 @@ const cartTranslations = {
     title: 'Go To Checkout',
   },
   updateModal: {
-    price: 'Price per Item:',
+    price: 'Price:',
     cta: 'Update',
   },
   removeItemSwipe: {
