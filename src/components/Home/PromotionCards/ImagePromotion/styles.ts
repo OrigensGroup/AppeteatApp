@@ -21,5 +21,4 @@ export const ImagePromotionImage = styled.Image`
   height: 100%;
   width: 100%;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  resize-mode: cover;
 `;

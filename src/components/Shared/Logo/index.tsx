@@ -7,7 +7,7 @@ interface LogoProps {}
 const Logo: React.FunctionComponent<LogoProps> = () => {
   return (
     <HomeLogoContainer>
-      <HomeLogoImage source={require('../../../img/logo.png')} />
+      <HomeLogoImage resizeMode="contain" source={require('../../../img/logo.png')} />
     </HomeLogoContainer>
   );
 };
