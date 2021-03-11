@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { Platform, Alert } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
-import { Platform, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import LogInTextField from '../LogInInputField';
 import loginTranslations from '../../../translations/login';
@@ -31,23 +32,28 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
   };
 
   const singIn = () => {
+    crashlytics().log('Log in attempt.');
     setLoading(true);
 
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         setLoading(false);
-        return login();
+        login();
       })
       .catch((error) => {
         if (error.code === 'auth/invalid-email') {
           Alert.alert(loginTranslations.errorSignInEmail.label);
+          return;
         }
 
         if (error.code === 'auth/wrong-password') {
           Alert.alert(loginTranslations.errorWrongPasswordSignIn.label);
+          return;
         }
 
+        crashlytics().log('Log in failed.');
+        crashlytics().recordError(error);
         console.error(error);
       });
   };

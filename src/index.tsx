@@ -6,6 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Asset } from 'expo-asset';
 
 import analytics from '@react-native-firebase/analytics';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import { ThemeProvider } from 'styled-components/native';
 
@@ -62,6 +63,7 @@ const App = () => {
       setMenu(menu);
       setLocations(locations);
     } catch (error) {
+      crashlytics().recordError(error);
       console.error(error);
     } finally {
       setAppReady(true);
@@ -70,6 +72,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    crashlytics().log('App mounted.');
     SplashScreen.preventAutoHideAsync();
     loadStuff();
   }, []);

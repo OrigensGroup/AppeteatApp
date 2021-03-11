@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Alert } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
 import auth from '@react-native-firebase/auth';
-
-import { Alert } from 'react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import loginTranslations from '../../../translations/login';
 import LogInButton from '../ManualLogIn/Buttons/LogInButton';
@@ -39,6 +39,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
 
   const createUser = () => {
     setLoading(true);
+    crashlytics().log('Sign in attempt.');
     let errorCounter = 4;
 
     if (username.length < 4) {
@@ -102,17 +103,21 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           setLoading(false);
-          return enter();
+          enter();
         })
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
             Alert.alert(loginTranslations.emailAlreayInUse.label);
+            return;
           }
 
           if (error.code === 'auth/invalid-email') {
             Alert.alert(loginTranslations.errorSignInEmail.label);
+            return;
           }
 
+          crashlytics().log('Sign in failed.');
+          crashlytics().recordError(error);
           console.error(error);
         });
     } else {

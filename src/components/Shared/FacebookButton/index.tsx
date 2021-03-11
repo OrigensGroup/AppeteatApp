@@ -2,6 +2,7 @@ import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import auth from '@react-native-firebase/auth';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import { ButtonContainer } from './styles';
 
@@ -9,6 +10,7 @@ interface FacebookButtonProps {}
 
 const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
   async function onFacebookButtonPress() {
+    crashlytics().log('Facebook log in attempt.');
     // Attempt login with permissions
     const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
@@ -27,7 +29,12 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
     const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
 
     // Sign-in the user with the credential
-    return auth().signInWithCredential(facebookCredential);
+    return auth()
+      .signInWithCredential(facebookCredential)
+      .catch((error) => {
+        crashlytics().log('Facebook log in failed.');
+        crashlytics().recordError(error);
+      });
   }
 
   return (
