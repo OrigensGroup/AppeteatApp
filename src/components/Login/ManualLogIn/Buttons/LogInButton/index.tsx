@@ -27,7 +27,7 @@ const LogInButton: React.FunctionComponent<LoginProps> = ({ loading, onClick, te
         </IconWrapper>
       ) : (
         <IconWrapper>
-          <ActivityIndicator />
+          <ActivityIndicator color={theme.colors.textSecondary} />
         </IconWrapper>
       )}
     </ButtonContainer>

@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { useTheme } from 'styled-components';
+
 import accountTranslations from '../../translations/account';
 
 import Account from './Account';
