@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 
 import { MenuItem } from '../../../../types/MenuItem';
 import CardsHeader from '../CardsHeader';
@@ -18,10 +19,12 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ item
   return (
     <CustomisableItemContainer>
       <CardsHeader item={item} />
-      <ItemPicture item={item} />
-      <ItemDescription item={item} />
-      <AddToBasketButton item={item} />
-      <CustomiseSection item={item} />
+      <ScrollView>
+        <ItemPicture item={item} />
+        <ItemDescription item={item} />
+        <CustomiseSection item={item} />
+        <AddToBasketButton item={item} />
+      </ScrollView>
     </CustomisableItemContainer>
   );
 };
