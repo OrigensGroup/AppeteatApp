@@ -1,9 +1,9 @@
 // import original module declarations
 import { DefaultTheme } from 'styled-components';
 
-import { Platform } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
 
-import colors, { ColorsInterface } from './colors';
+import colors, { ColorsInterface, darkColors } from './colors';
 import spacing, { SpacingInterface } from './spacing';
 import * as shadows from './shadows';
 
@@ -22,6 +22,19 @@ const theme: DefaultTheme = {
   spacing,
   shadows,
   os: Platform.OS,
+};
+
+const darkTheme: DefaultTheme = {
+  colors: darkColors,
+  spacing,
+  shadows,
+  os: Platform.OS,
+};
+
+export const useThemeSelector = () => {
+  const mode = useColorScheme();
+
+  return mode === 'light' ? theme : darkTheme;
 };
 
 export default theme;

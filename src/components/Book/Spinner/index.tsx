@@ -20,7 +20,13 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({ title }) => {
           {title}
         </Text>
       </TextContainer>
-      <InputSpinner color={theme.colors.quantityUpdate} max={50} min={1} step={1} />
+      <InputSpinner
+        color={theme.colors.bookSpinnerButton}
+        max={50}
+        min={1}
+        step={1}
+        textColor={theme.colors.inputSpinner}
+      />
     </Container>
   );
 };

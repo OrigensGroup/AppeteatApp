@@ -20,7 +20,7 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: theme.colors.border,
-        backgroundColor: theme.colors.textSecondary,
+        backgroundColor: theme.colors.backgroundColor,
         borderWidth: 1,
         width: 32,
         height: 32,

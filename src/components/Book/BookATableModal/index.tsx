@@ -110,14 +110,14 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
     >
       <PopUpContainer>
         <Picker
-          icon={<Icon color={theme.colors.textPrimary} name="location-outline" size={28} />}
+          icon={<Icon color={theme.colors.fixedBlack} name="location-outline" size={28} />}
           textValue={venue.name}
           title="Venue"
         />
         <DateContainer>
           <PickerContainer>
             <Picker
-              icon={<Icon color={theme.colors.textPrimary} name="ios-time-outline" size={28} />}
+              icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
               onPress={showDatepicker}
               textValue={`${date.getDate()} ${months[date.getMonth()]}`}
               title="Date"
@@ -125,7 +125,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
           </PickerContainer>
           <PickerContainer>
             <Picker
-              icon={<Icon color={theme.colors.textPrimary} name="ios-time-outline" size={28} />}
+              icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
               onPress={showTimepicker}
               textValue={
                 date.getHours() > 11
@@ -152,7 +152,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
         </SpinnerContainer>
         <ConfirmButton>
           <ViewCta onClick={onClose}>
-            <Text bold color="secondary" fontSize={18}>
+            <Text bold color="fixedWhite" fontSize={18}>
               {bookTranslations.bookPage.confirmBookingButton}
             </Text>
           </ViewCta>

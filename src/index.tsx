@@ -10,7 +10,7 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import { ThemeProvider } from 'styled-components/native';
 
-import theme from './theme';
+import { useThemeSelector } from './theme';
 
 import CartProvider from './contexts/Cart';
 import MenuProvider, { Menu } from './contexts/Menu';
@@ -28,6 +28,7 @@ import getLocations from './utils/loadLocations';
 const Stack = createStackNavigator();
 
 const App = () => {
+  const theme = useThemeSelector();
   const navigationRef = useRef<NavigationContainerRef>(null);
   const routeNameRef = useRef<string>('');
   const user = useAuth();
@@ -51,6 +52,7 @@ const App = () => {
         require('./img/google.png'),
         require('./img/jack.jpg'),
         require('./img/logo.png'),
+        require('./img/logo2.png'),
         require('./img/venue.jpg'),
       ];
 

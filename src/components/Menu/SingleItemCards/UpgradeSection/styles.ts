@@ -16,7 +16,7 @@ export const ItemRow = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.triple};
   padding: ${({ theme }) => theme.spacing.double} 0;
   border-bottom-width: 1px;
-  border-color: black;
+  border-color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
 export const TitleItem = styled.View`

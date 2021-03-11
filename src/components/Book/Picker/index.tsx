@@ -23,7 +23,7 @@ const Picker: React.FunctionComponent<PickerProps> = ({ icon, onPress, textValue
       <PickerContainer onPress={onPress}>
         <IconContainer>{icon}</IconContainer>
         <PickerTextContainer>
-          <Text color="primary" fontSize={15}>
+          <Text color="fixedBlack" fontSize={15}>
             {textValue}
           </Text>
         </PickerTextContainer>

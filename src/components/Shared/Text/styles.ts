@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 interface TitleProps {
   fontSize: number;
-  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor';
+  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor' | 'fixedWhite' | 'fixedBlack';
   bold?: boolean;
   light?: boolean;
   align: string;
@@ -38,6 +38,14 @@ export const TitleText = styled.Text<TitleProps>`
 
       case 'errorColor': {
         return theme.colors.activeRed;
+      }
+
+      case 'fixedWhite': {
+        return theme.colors.fixedWhite;
+      }
+
+      case 'fixedBlack': {
+        return theme.colors.fixedBlack;
       }
 
       default:

@@ -13,6 +13,7 @@ export const IconContainer = styled.View`
   justify-content: center;
   align-items: center;
   padding: 0 ${({ theme }) => theme.spacing.single};
+  margin-right: ${({ theme }) => theme.spacing.single};
 `;
 export const TextContainer = styled.View`
   display: flex;

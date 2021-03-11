@@ -5,7 +5,7 @@ export const FinaliseOrderContainer = styled.View`
   border-color: ${({ theme }) => theme.colors.textPrimary};
   padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double}
     ${({ theme }) => (theme.os === 'ios' ? 0 : theme.spacing.double)} ${({ theme }) => theme.spacing.double};
-  background: ${({ theme }) => theme.colors.textSecondary};
+  background: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 export const TipCounterWrapper = styled.View`

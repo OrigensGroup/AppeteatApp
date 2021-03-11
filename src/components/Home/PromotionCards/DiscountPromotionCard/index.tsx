@@ -49,7 +49,7 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
       </DiscountPromotionDescription>
       <DiscountPromotionButton>
         <DiscountPromotionOrderButton>
-          <Text color="secondary" fontSize={14}>
+          <Text color="fixedWhite" fontSize={14}>
             {homeTranslations.discountPromotionCard.cta}
           </Text>
         </DiscountPromotionOrderButton>

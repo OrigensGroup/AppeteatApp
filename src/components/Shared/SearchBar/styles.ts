@@ -4,7 +4,7 @@ export const SearchBarWrapper = styled.View`
   width: 85%;
   height: ${({ theme }) => theme.spacing.multiple(5)};
   border-radius: ${({ theme }) => theme.spacing.single};
-  margin-bottom: ${({ theme }) => theme.spacing.multiple(2)};
+  margin-bottom: ${({ theme }) => theme.spacing.double};
   display: flex;
   flex-direction: row;
   border-width: 1px;

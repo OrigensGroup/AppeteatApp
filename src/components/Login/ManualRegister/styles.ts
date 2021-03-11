@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { StyleSheet } from 'react-native';
 
 interface ButtonContainerProps {
   secondary?: boolean;
@@ -6,7 +7,6 @@ interface ButtonContainerProps {
 
 export const ManualLogInContainer = styled.View`
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.loginBottom};
   border-top-left-radius: ${({ theme }) => theme.spacing.triple};
   border-top-right-radius: ${({ theme }) => theme.spacing.triple};
   display: flex;
@@ -15,7 +15,16 @@ export const ManualLogInContainer = styled.View`
   bottom: 0;
   flex: 1;
   padding: 0 ${({ theme }) => theme.spacing.multiple(4)};
+  margin-bottom: ${({ theme }) => theme.spacing.triple};
 `;
+
+export const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+});
 
 export const TextFieldsWrapper = styled.KeyboardAvoidingView`
   width: 100%;

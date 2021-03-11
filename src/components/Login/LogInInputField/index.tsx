@@ -25,7 +25,7 @@ const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({
   return (
     <TextFieldWrapper secondary={secondary}>
       <TitleWrapper>
-        <Text bold color="secondary" fontSize={14}>
+        <Text bold color="fixedWhite" fontSize={14}>
           {label}
         </Text>
       </TitleWrapper>
