@@ -14,7 +14,7 @@ export const OrderCardContainer = styled.View`
 `;
 export const DrinkDesc = styled.View`
   padding: ${({ theme }) => theme.spacing.double} 0 0 0;
-  width: 60%;
+  width: 55%;
 `;
 export const DateContainer = styled.View`
   width: 25%;
@@ -32,10 +32,11 @@ export const Circle = styled.View`
   align-items: center;
 `;
 export const PriceContainer = styled.View`
-  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 20%;
+  padding-right: ${({ theme }) => theme.spacing.single};
 `;
 export const Button = styled.TouchableOpacity`
   padding-top: ${({ theme }) => theme.spacing.double};

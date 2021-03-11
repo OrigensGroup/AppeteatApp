@@ -13,8 +13,10 @@ export const TipCounterWrapper = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: ${({ theme }) => theme.spacing.multiple(8)};
-  margin-right: ${({ theme }) => theme.spacing.double};
+  width: ${({ theme }) => theme.spacing.multiple(6)};
+  height: ${({ theme }) => theme.spacing.triple};
+  margin-left: auto;
+  margin-right: ${({ theme }) => theme.spacing.triple};
 `;
 
 export const Separator = styled.View`

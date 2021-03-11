@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 export const SafeAreaTop = styled.SafeAreaView`
@@ -11,7 +12,7 @@ export const SafeAreaBottom = styled.SafeAreaView`
 `;
 
 export const ProfileContainer = styled.View`
-  background-color: #2da59a;
+  background-color: ${({ theme }) => theme.colors.active};
   height: 100%;
 `;
 
@@ -39,7 +40,7 @@ export const ImageContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.multiple(3)};
   justify-content: center;
   align-items: center;
-  background-color: #2da59a;
+  background-color: transparent;
 `;
 
 export const CocktailContainer = styled.ScrollView``;
@@ -60,3 +61,8 @@ export const ShowButton = styled.TouchableOpacity`
   justify-content: flex-end;
   margin-right: ${({ theme }) => theme.spacing.single};
 `;
+export const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
+});

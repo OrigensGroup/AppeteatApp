@@ -37,7 +37,7 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
   return (
     <DiscountPromotionContainer onPress={navigate}>
       <ImageContainer>
-        <DiscountPromotionImage source={{ uri: item.image }} />
+        <DiscountPromotionImage resizeMode="cover" source={{ uri: item.image }} />
       </ImageContainer>
       <DiscountPromotionDescription>
         <Text bold color="primary" fontSize={20}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { useTheme } from 'styled-components';
+import accountTranslations from '../../translations/account';
 
 import Account from './Account';
 import Reservations from './Reservations';
@@ -33,7 +34,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={Reservations}
         name="Reservations"
         options={{
-          title: 'My Reservation',
+          title: accountTranslations.accountPage.myReservation,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -44,7 +45,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={FavouriteCocktails}
         name="FavouriteCocktails"
         options={{
-          title: 'My Favourite Cocktails',
+          title: accountTranslations.accountPage.myFavouriteCoctails,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -55,7 +56,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={Orders}
         name="Orders"
         options={{
-          title: 'My Orders',
+          title: accountTranslations.accountPage.myOrders,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -66,7 +67,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={Notifications}
         name="Notifications"
         options={{
-          title: 'Notifications',
+          title: accountTranslations.accountPage.notifications,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -77,7 +78,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={Settings}
         name="Settings"
         options={{
-          title: 'Settings',
+          title: accountTranslations.accountPage.settings,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -88,7 +89,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={PersonalInformation}
         name="PersonalInformation"
         options={{
-          title: 'Personal Information',
+          title: accountTranslations.accountPage.personalInformation,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -99,7 +100,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={Password}
         name="Password"
         options={{
-          title: 'Password',
+          title: accountTranslations.accountPage.password,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -110,7 +111,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={ChangeName}
         name="ChangeName"
         options={{
-          title: 'Change Name',
+          title: accountTranslations.accountPage.name,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -121,7 +122,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={ChangeEmail}
         name="ChangeEmail"
         options={{
-          title: 'Change Email',
+          title: accountTranslations.accountPage.email,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,

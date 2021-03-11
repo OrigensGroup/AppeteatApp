@@ -18,19 +18,21 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
   const theme = useTheme();
 
   const updateText = (text: string) => {
-    setText(text);
-    if (updateValue) updateValue(text);
+    const textToUpdate = textContentType === 'password' ? text.replace(/\s/g, '') : text;
+    setText(textToUpdate);
+    if (updateValue) updateValue(textToUpdate);
   };
 
   return (
     <TextFieldContainer>
       <TextFieldInput
-        defaultValue={text}
+        autoCapitalize="none"
         onChangeText={updateText}
         placeholder={placeholder}
         placeholderTextColor={theme.colors.background}
         secureTextEntry={textContentType === 'password'}
         textContentType={textContentType}
+        value={text.trim()}
       />
     </TextFieldContainer>
   );

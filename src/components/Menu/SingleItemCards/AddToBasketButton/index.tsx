@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { fixDecimals } from '../../../../contexts/Cart';
 import useCart from '../../../../hooks/useCart';
@@ -19,6 +20,7 @@ interface AddToBasketButtonProps {
 const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ item }) => {
   const [amount, setAmount] = useState(1);
   const { addItemToCart } = useCart();
+  const navigation = useNavigation();
 
   const onUpdate = (amount: number) => {
     setAmount(amount);
@@ -26,6 +28,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
 
   const onClick = () => {
     addItemToCart({ ...item, quantity: amount, customisations: [] });
+    navigation.goBack();
   };
 
   return (

@@ -19,11 +19,11 @@ interface ManualLogInProps {}
 
 const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
   const theme = useTheme();
-  const [email, setEmail] = useState('');
-
-  const [password, setPassword] = useState('');
-
   const navigation = useNavigation();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const login = () => {
     navigation.navigate('App');
@@ -34,9 +34,12 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
   };
 
   const singIn = () => {
+    setLoading(true);
+
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
+        setLoading(false);
         return login();
       })
       .catch((error) => {
@@ -76,7 +79,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
           />
         </TextFieldsWrapper>
         <ButtonsWrapper>
-          <LogInButton onClick={singIn} text={loginTranslations.loginButton.label} />
+          <LogInButton loading={loading} onClick={singIn} text={loginTranslations.loginButton.label} />
           <SignUpButton
             buttonText={loginTranslations.signUpSection.buttonLabel}
             onClick={register}

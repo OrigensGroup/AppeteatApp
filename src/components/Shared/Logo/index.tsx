@@ -10,9 +10,9 @@ const Logo: React.FunctionComponent<LogoProps> = () => {
   return (
     <HomeLogoContainer>
       {mode === 'dark' ? (
-        <HomeLogoImage source={require('../../../img/logo.png')} />
+        <HomeLogoImage resizeMode="contain" source={require('../../../img/logo.png')} />
       ) : (
-        <HomeLogoImage source={require('../../../img/logo2.png')} />
+        <HomeLogoImage resizeMode="contain" source={require('../../../img/logo2.png')} />
       )}
     </HomeLogoContainer>
   );

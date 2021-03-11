@@ -20,7 +20,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       accountTranslations.accountPage.logOutPromp,
       [
         {
-          text: accountTranslations.accountPage.logOut,
+          text: accountTranslations.accountPage.cancel,
           style: 'cancel',
         },
         { text: accountTranslations.accountPage.yes, onPress: () => auth().signOut() },
