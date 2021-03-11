@@ -45,6 +45,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
         login();
       })
       .catch((error) => {
+        setLoading(false);
         if (error.code === 'auth/invalid-email') {
           Alert.alert(loginTranslations.errorSignInEmail.label);
           return;

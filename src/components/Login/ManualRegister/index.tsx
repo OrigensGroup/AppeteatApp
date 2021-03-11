@@ -116,6 +116,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
           enter();
         })
         .catch((error) => {
+          setLoading(false);
           if (error.code === 'auth/email-already-in-use') {
             Alert.alert(loginTranslations.emailAlreayInUse.label);
             return;
