@@ -67,7 +67,7 @@ export const TimerDots = styled.View``;
 export const TimerDot = styled.View`
   width: ${({ theme }) => theme.spacing.oneAndHalf};
   height: ${({ theme }) => theme.spacing.oneAndHalf};
-  background: #ffffff;
+  background: ${({ theme }) => theme.colors.fixedWhite};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 
   margin: 0 ${({ theme }) => theme.spacing.oneAndHalf} ${({ theme }) => theme.spacing.multiple(3)};
