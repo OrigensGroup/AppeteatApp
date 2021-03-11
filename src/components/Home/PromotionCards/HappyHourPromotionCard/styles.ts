@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(30)};
+  height: ${({ theme }) => theme.spacing.multiple(25)};
 
   display: flex;
   flex-direction: row;
@@ -47,7 +47,7 @@ export const DigitCounter = styled.View`
 export const DigitBackground = styled.View`
   width: ${({ theme }) => theme.spacing.multiple(12)};
   height: ${({ theme }) => theme.spacing.multiple(10)};
-  background: ${({ theme }) => theme.colors.textSecondary};
+  background: #ffffff;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 
   display: flex;
@@ -58,14 +58,16 @@ export const DigitBackground = styled.View`
   border-width: 1px;
 `;
 
-export const DigitTitle = styled.View``;
+export const DigitTitle = styled.View`
+  margin-top: ${({ theme }) => theme.spacing.half};
+`;
 
 export const TimerDots = styled.View``;
 
 export const TimerDot = styled.View`
   width: ${({ theme }) => theme.spacing.oneAndHalf};
   height: ${({ theme }) => theme.spacing.oneAndHalf};
-  background: ${({ theme }) => theme.colors.textSecondary};
+  background: ${({ theme }) => theme.colors.fixedWhite};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 
   margin: 0 ${({ theme }) => theme.spacing.oneAndHalf} ${({ theme }) => theme.spacing.multiple(3)};

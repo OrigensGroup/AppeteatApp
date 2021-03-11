@@ -12,7 +12,7 @@ export const PromotionItemCardContainer = styled.TouchableOpacity`
 
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   margin: ${({ theme }) => theme.spacing.single} 0 0 ${({ theme }) => theme.spacing.double};
 `;

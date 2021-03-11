@@ -27,6 +27,11 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
         showLabel: false,
         activeTintColor: theme.colors.active,
         inactiveTintColor: theme.colors.inactive,
+        activeBackgroundColor: theme.colors.backgroundColor,
+        inactiveBackgroundColor: theme.colors.backgroundColor,
+        style: {
+          backgroundColor: theme.colors.backgroundColor,
+        },
         labelStyle: { fontSize: 10, marginBottom: 6 },
       }}
     >

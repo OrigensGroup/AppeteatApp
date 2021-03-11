@@ -2,17 +2,12 @@ import styled from 'styled-components/native';
 
 export const LogInContainer = styled.ScrollView`
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 export const SafeAreaViewTop = styled.SafeAreaView`
   flex: 0;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
-`;
-
-export const SafeAreaViewBottom = styled.SafeAreaView`
-  flex: 1;
-  background-color: ${({ theme }) => theme.colors.loginBottom}; //
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 export const KeyboardAvoidingView = styled.KeyboardAvoidingView`

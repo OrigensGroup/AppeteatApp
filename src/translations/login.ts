@@ -46,7 +46,7 @@ const loginTranslations = {
     label: 'Passwords do not match',
   },
   invalidPasswordError: {
-    label: 'Password must contain at least 1 letter, 1 number and 1 special character',
+    label: 'Password must contain at least 1 letter and 1 number',
   },
   emailAlreayInUse: {
     label: 'That email address is already in use!',

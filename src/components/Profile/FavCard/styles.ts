@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(28)};
   border-width: 1px;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-color: ${({ theme }) => theme.colors.border};
 `;

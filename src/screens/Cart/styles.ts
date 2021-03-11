@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const CartContainer = styled.SafeAreaView`
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   flex: 1;
 `;
 

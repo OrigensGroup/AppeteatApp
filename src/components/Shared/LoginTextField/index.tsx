@@ -29,7 +29,7 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
         autoCapitalize="none"
         onChangeText={updateText}
         placeholder={placeholder}
-        placeholderTextColor={theme.colors.border}
+        placeholderTextColor={theme.colors.background}
         secureTextEntry={textContentType === 'password'}
         textContentType={textContentType}
         value={text.trim()}

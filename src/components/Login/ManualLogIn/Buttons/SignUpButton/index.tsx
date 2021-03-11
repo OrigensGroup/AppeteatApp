@@ -13,11 +13,11 @@ interface SignUpButtonProps {
 const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ buttonText, onClick, text }) => {
   return (
     <ButtonContainer>
-      <Text color="secondary" fontSize={14}>
+      <Text color="fixedWhite" fontSize={14}>
         {text}
       </Text>
       <IconWrapper onPress={onClick}>
-        <Text bold color="secondary" fontSize={14}>
+        <Text bold color="fixedWhite" fontSize={14}>
           {buttonText}
         </Text>
       </IconWrapper>

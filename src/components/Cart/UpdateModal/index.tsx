@@ -77,7 +77,7 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         <DivLine />
 
         <ViewCta onClick={update} redDelete={localQuantity === 0}>
-          <Text bold color="secondary" fontSize={18}>
+          <Text bold color="fixedWhite" fontSize={18}>
             {localQuantity === 0 ? cartTranslations.removeItemModal.title : cartTranslations.updateModalField.label}
           </Text>
         </ViewCta>

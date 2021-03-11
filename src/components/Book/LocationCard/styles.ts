@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const CardContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(32)};
   width: ${({ theme }) => theme.spacing.multiple(30)};
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-radius: ${({ theme }) => theme.spacing.double};
   margin-bottom: ${({ theme }) => theme.spacing.double};
   margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.multiple(3)};
@@ -26,7 +26,8 @@ export const DrinkDesc = styled.View`
 `;
 
 export const TextContainer = styled.View`
-  padding: 0 ${({ theme }) => theme.spacing.double} 0 0;
+  padding: ${({ theme }) => theme.spacing.half} ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.spacing.half} 0;
 `;
 export const Content = styled.View`
   display: flex;

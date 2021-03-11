@@ -20,6 +20,8 @@ import useAuth from '../../../hooks/useAuth';
 import theme from '../../../theme';
 
 import {
+  SafeAreaTop,
+  SafeAreaBottom,
   ProfileContainer,
   ImageContainer,
   NavigationContainer,
@@ -51,52 +53,57 @@ const Account: React.FunctionComponent<AccountProps> = () => {
   const navigation = useNavigation();
 
   return (
-    <ProfileContainer>
-      <LinearGradient
-        colors={[theme.colors.active, theme.colors.secondaryActive]}
-        end={{ x: 1, y: 0.4 }}
-        start={{ x: 0, y: 0 }}
-        style={styles.linearGradient}
-      >
-        <ImageContainer>
-          <ProfileImage />
-          <NameContainer>
-            <Text color="primary" fontSize={20}>
-              {user?.displayName}
-            </Text>
-          </NameContainer>
-        </ImageContainer>
-        <Content
-          contentContainerStyle={{
-            flex: 1,
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <NavigationContainer>
-            <ProfileLink />
-          </NavigationContainer>
-          <FavouriteCocktailsContainer>
-            <TitleContainer>
-              <Text color="primary" fontSize={20}>
-                {accountTranslations.accountPage.myFavouriteCoctails}
-              </Text>
-              <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
-                <Text color="tertiary" fontSize={16}>
-                  {accountTranslations.accountPage.showButton}
+    <>
+      <SafeAreaTop />
+      <SafeAreaBottom>
+        <ProfileContainer>
+          <LinearGradient
+            colors={[theme.colors.active, theme.colors.secondaryActive]}
+            end={{ x: 1, y: 0.4 }}
+            start={{ x: 0, y: 0 }}
+            style={styles.linearGradient}
+          >
+            <ImageContainer>
+              <ProfileImage />
+              <NameContainer>
+                <Text color="primary" fontSize={20}>
+                  {user?.displayName}
                 </Text>
-              </ShowButton>
-            </TitleContainer>
-            <FlatList
-              data={favoriteCocktails}
-              horizontal
-              renderItem={flatlistRenderItem}
-              showsHorizontalScrollIndicator={false}
-            />
-          </FavouriteCocktailsContainer>
-        </Content>
-      </LinearGradient>
-    </ProfileContainer>
+              </NameContainer>
+            </ImageContainer>
+            <Content
+              contentContainerStyle={{
+                flex: 1,
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <NavigationContainer>
+                <ProfileLink />
+              </NavigationContainer>
+              <FavouriteCocktailsContainer>
+                <TitleContainer>
+                  <Text color="primary" fontSize={20}>
+                    {accountTranslations.accountPage.myFavouriteCoctails}
+                  </Text>
+                  <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
+                    <Text color="tertiary" fontSize={16}>
+                      {accountTranslations.accountPage.showButton}
+                    </Text>
+                  </ShowButton>
+                </TitleContainer>
+                <FlatList
+                  data={favoriteCocktails}
+                  horizontal
+                  renderItem={flatlistRenderItem}
+                  showsHorizontalScrollIndicator={false}
+                />
+              </FavouriteCocktailsContainer>
+            </Content>
+          </LinearGradient>
+        </ProfileContainer>
+      </SafeAreaBottom>
+    </>
   );
 };
 
