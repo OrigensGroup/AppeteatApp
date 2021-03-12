@@ -31,13 +31,13 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
           <DrinkImage source={{ uri: item.image }} />
         </ImageWrapper>
         <DrinkDesc>
-          <Text bold color="primary" fontSize={18}>
+          <Text bold color="primary" fontSize={16}>
             {item.title}
           </Text>
           <Text color="tertiary" fontSize={14}>
             {item.smallDesc}
           </Text>
-          <Text bold color="tertiary" fontSize={18}>
+          <Text bold color="quartiary" fontSize={16}>
             {currencyTranslations.currencyField.placeholder} {item.price}
           </Text>
         </DrinkDesc>

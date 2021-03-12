@@ -23,10 +23,10 @@ const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ it
         <PromotionItemCardImage source={{ uri: item.image }} />
       </PromotionItemCardImageContainer>
       <PromotionItemCardDescription>
-        <Text color="primary" fontSize={20}>
+        <Text color="primary" fontSize={18}>
           {item.title}
         </Text>
-        <Text color="primary" fontSize={16} light>
+        <Text color="primary" fontSize={12} light>
           {item.description}
         </Text>
       </PromotionItemCardDescription>

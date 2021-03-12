@@ -33,18 +33,18 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
     <CartItemContainer activeOpacity={1} onPress={onClick(item)}>
       <CartItemInfo>
         <CartItemQuantity>
-          <Text bold color="tertiary" fontSize={20}>
+          <Text bold color="tertiary" fontSize={18}>
             {item.quantity} x
           </Text>
         </CartItemQuantity>
         <CartItemTitle>
-          <Text bold color="primary" fontSize={20}>
+          <Text bold color="primary" fontSize={18}>
             {item.title}
           </Text>
           <CartItemCustomisation>{itemExtras}</CartItemCustomisation>
         </CartItemTitle>
         <CartItemPrice>
-          <Text bold color="primary" fontSize={20}>
+          <Text bold color="primary" fontSize={18}>
             {currencyTranslations.currencyField.placeholder}
             {item.price * item.quantity}
           </Text>
