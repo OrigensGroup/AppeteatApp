@@ -9,9 +9,10 @@ import useCart from '../../../hooks/useCart';
 
 import ViewCta from '../../shared/ViewCta';
 
-import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper } from './styles';
 import currencyTranslations from '../../../translations/currency';
 import { fixDecimals } from '../../../contexts/Cart';
+
+import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper } from './styles';
 
 interface UpdateModalProps {
   item: OrderItem | null;
