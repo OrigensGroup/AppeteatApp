@@ -27,8 +27,8 @@ export const FavouriteCocktailsContainer = styled.View`
 `;
 
 export const FavouriteCocktailsTextContainer = styled.View`
-  margin-left:${({ theme }) => theme.spacing.double};
-  margin-right:${({ theme }) => theme.spacing.double};
+  margin-left: ${({ theme }) => theme.spacing.double};
+  margin-right: ${({ theme }) => theme.spacing.double};
 `;
 
 export const Content = styled.ScrollView`
@@ -62,7 +62,7 @@ export const NameContainer = styled.View`
 
 export const ShowButton = styled.TouchableOpacity`
   display: flex;
-  justify-content: center
+  justify-content: center;
 `;
 
 export const styles = StyleSheet.create({
