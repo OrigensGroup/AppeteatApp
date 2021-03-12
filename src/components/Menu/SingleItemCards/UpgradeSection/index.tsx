@@ -49,11 +49,9 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
   useEffect(() => {
     let allTruthyCustomisation: DataItem[] = [];
 
-    Object.values(selectionExtras).forEach(
-      (extras) => {
-        (allTruthyCustomisation = [...allTruthyCustomisation, ...Object.values(extras).filter((v) => v.selected)])
-      }
-    );
+    Object.values(selectionExtras).forEach((extras) => {
+      allTruthyCustomisation = [...allTruthyCustomisation, ...Object.values(extras).filter((v) => v.selected)];
+    });
 
     updateExtras(allTruthyCustomisation);
   }, [selectionExtras, updateExtras]);

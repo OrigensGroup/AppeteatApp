@@ -21,12 +21,14 @@ interface CartItemProps {
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
   const itemExtras = () => {
-    return item.extras &&
+    return (
+      item.extras &&
       item.extras.map((extra) => (
         <Text color="tertiary" fontSize={14} key={extra.id} light>
           {extra.title}
         </Text>
-      ));
+      ))
+    );
   };
 
   return (
