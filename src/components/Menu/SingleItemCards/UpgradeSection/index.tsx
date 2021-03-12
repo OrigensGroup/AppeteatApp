@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SectionList } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
 
 import Text from '../../../shared/Text';
@@ -9,7 +10,16 @@ import { MenuItem, UpgradeItem, DataItem } from '../../../../types/MenuItem';
 
 import currencyTranslations from '../../../../translations/currency';
 
-import { HeaderRow, ItemRow, CheckBoxItemSection, TitleItem, UpgradeSectionContainer, PriceItem } from './styles';
+import {
+  HeaderRow,
+  ItemRow,
+  CheckBoxItemSection,
+  TitleItem,
+  UpgradeSectionContainer,
+  PriceItem,
+  ItemInfo,
+} from './styles';
+import ExplanationModal from '../../../shared/ExplanationModal';
 
 type SelectionExtras = {
   [key: string]: {
@@ -25,6 +35,11 @@ interface UpgradeSectionProps {
 const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, updateExtras }) => {
   const theme = useTheme();
   const [selectionExtras, setSelectedExtras] = useState<SelectionExtras>({});
+  const [modalData, setModalData] = useState({
+    show: false,
+    title: '',
+    description: '',
+  });
 
   const addNewSelection = (sections: UpgradeItem[]) => {
     const selectionStructure: any = {};
@@ -55,6 +70,18 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
 
     updateExtras(allTruthyCustomisation);
   }, [selectionExtras, updateExtras]);
+
+  const showDescriptionModal = ({ title, description }: { title: string; description: string }) => () => {
+    setModalData({ show: true, title, description });
+  };
+
+  const closeModal = () => {
+    setModalData({
+      show: false,
+      title: '',
+      description: '',
+    });
+  };
 
   const updateItemSelection = (type: 'single' | 'multiple', sectionId: string, itemId: string) => (value: boolean) => {
     if (type === 'single') {
@@ -114,7 +141,11 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
             </Text>
           </PriceItem>
         )}
-
+        {item.explanation && (
+          <ItemInfo onPress={showDescriptionModal({ title: item.title, description: item.explanation })}>
+            <Icon color={theme.colors.fixedBlack} name="ios-information-circle-outline" size={24} />
+          </ItemInfo>
+        )}
         <CheckBoxItemSection>
           <CheckBox
             animationDuration={0.2}
@@ -145,6 +176,12 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
 
   return (
     <UpgradeSectionContainer>
+      <ExplanationModal
+        isVisible={modalData.show}
+        title={modalData.title}
+        description={modalData.description}
+        onClose={closeModal}
+      />
       {item.upgradableItems && (
         <SectionList
           extraData={selectionExtras}

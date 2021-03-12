@@ -42,3 +42,7 @@ export const TitleItem = styled.View`
 export const PriceItem = styled.View`
   margin-right: ${({ theme }) => theme.spacing.single};
 `;
+
+export const ItemInfo = styled.TouchableOpacity`
+  margin-right: ${({ theme }) => theme.spacing.half};
+`;
