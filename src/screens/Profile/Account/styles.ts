@@ -62,7 +62,7 @@ export const NameContainer = styled.View`
 
 export const ShowButton = styled.TouchableOpacity`
   display: flex;
-  justify-content: center;
+  justify-content: center
 `;
 
 export const styles = StyleSheet.create({

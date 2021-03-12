@@ -26,7 +26,7 @@ export const ImageContainer = styled.View`
 export const DrinkImage = styled.Image`
   height: 100%;
   width: ${({ theme }) => theme.spacing.multiple(11)};
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 
 export const DrinkDesc = styled.View`
