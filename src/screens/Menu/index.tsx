@@ -5,6 +5,7 @@ import Cart from '../Cart';
 
 import Menu from './MenuList';
 import SingleItem from './SingleItem';
+import ChooseTableOrTA from '../ChooseTableOrTA';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
       <Stack.Screen component={Menu} name="MenuList" />
       <Stack.Screen component={SingleItem} name="SingleItem" />
       <Stack.Screen component={Cart} name="Cart" />
+      <Stack.Screen component={ChooseTableOrTA} name="ChooseTableOrTA" />
     </Stack.Navigator>
   );
 };

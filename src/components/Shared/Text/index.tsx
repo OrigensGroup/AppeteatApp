@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { scale } from '../../../theme/textScaling';
 
 import { TitleText, TitleContainer } from './styles';

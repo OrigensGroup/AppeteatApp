@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const ProfileContainer = styled.View`
+export const ProfileContainer = styled.ScrollView`
   background-color: ${({ theme }) => theme.colors.active};
   height: 100%;
 `;
@@ -12,7 +12,7 @@ export const NavigationContainer = styled.View`
 `;
 export const FavouriteCocktailsContainer = styled.View`
   margin: ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.double}
-    ${({ theme }) => theme.spacing.double};
+    0;
 `;
 export const Content = styled.ScrollView`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
@@ -31,7 +31,7 @@ export const ImageContainer = styled.View`
 `;
 export const CocktailContainer = styled.ScrollView``;
 export const TitleContainer = styled.View`
-  margin: 0 ${({ theme }) => theme.spacing.single};
+  margin: 0 ${({ theme }) => theme.spacing.double};
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -16,13 +16,13 @@ interface ValueItemProps {
 const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, icon, onItemClick, title, value }) => {
   return (
     <ValueItemContainer onPress={onItemClick}>
-      <Text color={color} fontSize={16}>
+      <Text color={color} fontSize={14}>
         {title}
       </Text>
       <ValueItemInfoContainer>
         {icon && icon}
         {typeof value !== 'undefined' && (
-          <Text color={color} fontSize={16}>
+          <Text color={color} fontSize={14}>
             {currencyTranslations.currencyField.placeholder}
             {value}
           </Text>

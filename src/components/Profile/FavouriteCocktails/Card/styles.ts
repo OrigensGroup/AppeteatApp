@@ -7,16 +7,13 @@ export const Container = styled.TouchableOpacity`
   flex-direction: row;
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.textSecondary};
-
   border-radius:${({ theme }) => theme.spacing.double};
-  border-color: #c2c2c2;
-
-  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} ${({ theme }) =>
-  theme.spacing.half} 0};
+  border-color: ${({ theme }) => theme.colors.border};;
+  margin: ${({ theme }) => theme.spacing.single} 0 0 ${({ theme }) => theme.spacing.double};
 `;
 
 export const CardContainer = styled.View`
-  padding: ${({ theme }) => theme.spacing.single};
+
 `;
 
 export const DrinkImage = styled.Image`

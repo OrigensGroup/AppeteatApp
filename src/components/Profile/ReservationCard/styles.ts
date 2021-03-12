@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
-  height: ${({ theme }) => theme.spacing.multiple(13)};
+  height: ${({ theme }) => theme.spacing.multiple(15)};
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
@@ -33,7 +33,7 @@ export const VenueDesc = styled.View`
     ${({ theme }) => theme.spacing.multiple(5)};
 `;
 export const BottomContainer = styled.View`
-  margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double} 0
+  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} 0
     ${({ theme }) => theme.spacing.multiple(5)};
   display: flex;
   flex-direction: row;

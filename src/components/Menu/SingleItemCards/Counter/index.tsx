@@ -1,4 +1,5 @@
 import React from 'react';
+import { Vibration } from 'react-native';
 import InputSpinner from 'react-native-input-spinner';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
@@ -28,6 +29,8 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount
         max={99}
         min={1}
         onChange={onChange}
+        onDecrease={Vibration.vibrate}
+        onIncrease={Vibration.vibrate}
         precision={2}
         step={1}
         textColor={theme.colors.textPrimary}
