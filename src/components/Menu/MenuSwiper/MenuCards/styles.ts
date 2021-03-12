@@ -6,7 +6,7 @@ export const CardContainer = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   border-width: 1px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-color: ${({ theme }) => theme.colors.border};
   border-bottom-width: 1px;
@@ -57,7 +57,6 @@ export const LikeButton = styled.TouchableOpacity`
   margin-top: ${({ theme }) => theme.spacing.multiple(9)};
   margin-right: ${({ theme }) => theme.spacing.multiple(2)};
   display: flex;
-  background-color: ${({ theme }) => theme.colors.inactive};
   border-radius: ${({ theme }) => theme.spacing.multiple(4)};
   justify-content: center;
   align-items: center;

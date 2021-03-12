@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { Appearance } from 'react-native';
 
 import Map from '../../shared/Map';
 import Text from '../../shared/Text';
@@ -8,7 +9,9 @@ import homeTranslations from '../../../translations/home';
 
 import { LocationContainer, FindButton, MapContainer } from './styles';
 
-interface ShowLocationsProps {}
+interface ShowLocationsProps {
+  secondary?: boolean;
+}
 
 const ShowLocations: React.FunctionComponent<ShowLocationsProps> = () => {
   const navigation = useNavigation();
@@ -28,11 +31,19 @@ const ShowLocations: React.FunctionComponent<ShowLocationsProps> = () => {
             longitudeDelta: 0.0421,
           }}
         />
-        <FindButton>
-          <Text color="primary" fontSize={18}>
-            {homeTranslations.showLocations.cta}
-          </Text>
-        </FindButton>
+        {Appearance.getColorScheme() === 'dark' ? (
+          <FindButton secondary>
+            <Text color="fixedBlack" fontSize={18}>
+              {homeTranslations.showLocations.cta}
+            </Text>
+          </FindButton>
+        ) : (
+          <FindButton secondary={false}>
+            <Text color="fixedBlack" fontSize={18}>
+              {homeTranslations.showLocations.cta}
+            </Text>
+          </FindButton>
+        )}
       </MapContainer>
     </LocationContainer>
   );

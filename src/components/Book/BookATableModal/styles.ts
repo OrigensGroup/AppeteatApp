@@ -13,7 +13,7 @@ export const PopUpContainer = styled.View`
   right: 0;
 
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 
   align-items: center;
   border-top-left-radius: ${({ theme }) => theme.spacing.triple};

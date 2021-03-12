@@ -13,21 +13,31 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
   const theme = useTheme();
   return (
     <InputSpinner
+      buttonPressTextColor={theme.colors.textPrimary}
       buttonStyle={{
+        margin: 0,
+        padding: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         borderColor: theme.colors.border,
+        backgroundColor: theme.colors.backgroundColor,
         borderWidth: 1,
-        width: 24,
-        height: 24,
-        backgroundColor: theme.colors.textSecondary,
+        width: 32,
+        height: 32,
+        borderRadius: 100,
         ...(hideInput && { marginHorizontal: 8 }),
       }}
+      //@ts-ignore
       buttonTextColor={theme.colors.textPrimary}
-      fontSize={22}
+      height={32}
       inputStyle={
         hideInput && {
           display: 'none',
+          width: 0,
         }
       }
+      max={99}
       min={0.0}
       onChange={onChange}
       onDecrease={Vibration.vibrate}
@@ -35,6 +45,7 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
       step={1}
       textColor={theme.colors.textPrimary}
       value={initialValue}
+      width={80}
     />
   );
 };

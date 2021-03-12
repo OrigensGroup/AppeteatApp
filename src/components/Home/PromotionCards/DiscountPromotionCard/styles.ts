@@ -2,10 +2,10 @@ import styled from 'styled-components/native';
 
 export const DiscountPromotionContainer = styled.TouchableOpacity`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(30)};
+  height: ${({ theme }) => theme.spacing.multiple(25)};
   display: flex;
   flex-direction: row;
-  background-color: ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
@@ -15,7 +15,6 @@ export const DiscountPromotionImage = styled.Image`
   height: 100%;
   width: 100%;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  resize-mode: cover;
 `;
 
 export const ImageContainer = styled.View`

@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
+interface CardSize {
+  happyHourSize?: boolean;
+}
+
+export const HappyHourPromotionCardContainer = styled.TouchableOpacity<CardSize>`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(30)};
+  height: ${({ theme }) => theme.spacing.multiple(25)};
 
   display: flex;
   flex-direction: row;
@@ -13,6 +17,12 @@ export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
+  ${({ happyHourSize }) =>
+    happyHourSize &&
+    `
+    height: 176px;
+    ;
+  `};
 `;
 
 export const styles = StyleSheet.create({
@@ -47,7 +57,7 @@ export const DigitCounter = styled.View`
 export const DigitBackground = styled.View`
   width: ${({ theme }) => theme.spacing.multiple(12)};
   height: ${({ theme }) => theme.spacing.multiple(10)};
-  background: ${({ theme }) => theme.colors.textSecondary};
+  background: #ffffff;
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 
   display: flex;
@@ -58,14 +68,16 @@ export const DigitBackground = styled.View`
   border-width: 1px;
 `;
 
-export const DigitTitle = styled.View``;
+export const DigitTitle = styled.View`
+  margin-top: ${({ theme }) => theme.spacing.half};
+`;
 
 export const TimerDots = styled.View``;
 
 export const TimerDot = styled.View`
   width: ${({ theme }) => theme.spacing.oneAndHalf};
   height: ${({ theme }) => theme.spacing.oneAndHalf};
-  background: ${({ theme }) => theme.colors.textSecondary};
+  background: ${({ theme }) => theme.colors.fixedWhite};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 
   margin: 0 ${({ theme }) => theme.spacing.oneAndHalf} ${({ theme }) => theme.spacing.multiple(3)};

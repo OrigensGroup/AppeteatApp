@@ -25,3 +25,7 @@ export const DrinkDesc = styled.View`
   flex: 1;
   padding: ${({ theme }) => theme.spacing.single} 0 0 ${({ theme }) => theme.spacing.double};
 `;
+
+export const DescriptionWrapper = styled.View`
+  padding-top: ${({ theme }) => theme.spacing.single};
+`;

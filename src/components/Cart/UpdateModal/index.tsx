@@ -28,6 +28,11 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
     setLocalQuantity(number);
   };
 
+  const closeModal = () => {
+    setLocalQuantity(item ? item.quantity : 1);
+    onClose();
+  };
+
   const update = () => {
     if (item && localQuantity == 0) deleteItemFromCart(item.orderItemId);
 
@@ -35,7 +40,7 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
       if (item) updateItemQuantity(item, localQuantity);
     }
 
-    onClose();
+    closeModal();
   };
 
   useEffect(() => {
@@ -48,7 +53,7 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
       animationOutTiming={450}
       avoidKeyboard
       isVisible={isModalVisible}
-      onBackdropPress={onClose}
+      onBackdropPress={closeModal}
       style={{
         margin: 0,
       }}
@@ -66,13 +71,13 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         </ModalCounterContainer>
         <ModalTitle>
           <Text color="primary" fontSize={18}>
-            {cartTranslations.updateModal.price} £ {item && item.price}
+            {cartTranslations.updateModal.price} £ {item && item.price * localQuantity}
           </Text>
         </ModalTitle>
         <DivLine />
 
         <ViewCta onClick={update} redDelete={localQuantity === 0}>
-          <Text bold color="secondary" fontSize={18}>
+          <Text bold color="fixedWhite" fontSize={18}>
             {localQuantity === 0 ? cartTranslations.removeItemModal.title : cartTranslations.updateModalField.label}
           </Text>
         </ViewCta>

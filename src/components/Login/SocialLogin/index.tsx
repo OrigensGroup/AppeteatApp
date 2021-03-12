@@ -15,7 +15,7 @@ const SocialLogin: React.FunctionComponent<SocialLoginProps> = () => {
   return (
     <SocialLoginWrapper>
       <SocialLoginButton>
-        <AntDesign color={theme.colors.loginBottom} name="apple1" size={40} />
+        <AntDesign color={theme.colors.textPrimary} name="apple1" size={40} />
       </SocialLoginButton>
       <GoogleButton />
       <FacebookButton />

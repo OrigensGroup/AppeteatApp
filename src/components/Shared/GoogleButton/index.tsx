@@ -1,5 +1,6 @@
 import React from 'react';
 import auth from '@react-native-firebase/auth';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
@@ -13,6 +14,7 @@ interface GoogleButtonProps {}
 
 const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
   async function onGoogleButtonPress() {
+    crashlytics().log('Google log in attempt.');
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();
 
@@ -20,7 +22,12 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
     // Sign-in the user with the credential
-    return auth().signInWithCredential(googleCredential);
+    return auth()
+      .signInWithCredential(googleCredential)
+      .catch((error) => {
+        crashlytics().log('Google log in failed.');
+        crashlytics().recordError(error);
+      });
   }
 
   return (

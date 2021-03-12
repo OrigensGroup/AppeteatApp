@@ -17,8 +17,8 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount
   return (
     <MainCoutnerWrapper>
       <InputSpinner
-        buttonLeftImage={<Icon color={theme.colors.textPrimary} name="remove" size={24} />}
-        buttonRightImage={<Icon color={theme.colors.textPrimary} name="add" size={24} />}
+        buttonLeftImage={<Icon color={theme.colors.fixedBlack} name="remove" size={24} />}
+        buttonRightImage={<Icon color={theme.colors.fixedBlack} name="add" size={24} />}
         buttonStyle={{
           backgroundColor: 'transparent',
           width: 32,
@@ -33,7 +33,7 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount
         onIncrease={Vibration.vibrate}
         precision={2}
         step={1}
-        textColor={theme.colors.textPrimary}
+        textColor={theme.colors.fixedBlack}
       />
     </MainCoutnerWrapper>
   );

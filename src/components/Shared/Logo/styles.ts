@@ -9,5 +9,4 @@ export const HomeLogoContainer = styled.View`
 export const HomeLogoImage = styled.Image`
   width: ${({ theme }) => theme.spacing.multiple(10)};
   height: ${({ theme }) => theme.spacing.multiple(10)};
-  resize-mode: contain;
 `;

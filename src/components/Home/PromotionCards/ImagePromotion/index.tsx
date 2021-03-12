@@ -10,7 +10,7 @@ const ImagePromotion: React.FunctionComponent<ImagePromotionProps> = ({ image })
   return (
     <ImagePromotionContainer>
       <ImagePromotionImageContainer>
-        <ImagePromotionImage source={{ uri: image }} />
+        <ImagePromotionImage resizeMode="cover" source={{ uri: image }} />
       </ImagePromotionImageContainer>
     </ImagePromotionContainer>
   );
