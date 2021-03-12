@@ -22,7 +22,7 @@ const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
             {item.title}
           </Text>
           <DescriptionWrapper>
-            <Text color="quartiary" fontSize={12}>
+            <Text color="subtitles" fontSize={12}>
               {item.description}
             </Text>
           </DescriptionWrapper>

@@ -9,7 +9,7 @@ import { MenuItem } from '../../../../types/MenuItem';
 
 import IconButton from '../../../shared/IconButton';
 
-import { CardContainer, ImageWrapper, LeftWrapper, RightWrapper, DrinkImage, DrinkDesc, LikeButton } from './styles';
+import { CardContainer, ImageWrapper, DrinkImage, DrinkDesc, LikeButton, PropsWrapper } from './styles';
 
 interface CardProps {
   item: MenuItem;
@@ -26,7 +26,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
 
   return (
     <CardContainer onPress={navigate}>
-      <LeftWrapper>
+      <PropsWrapper>
         <ImageWrapper>
           <DrinkImage source={{ uri: item.image }} />
         </ImageWrapper>
@@ -37,16 +37,14 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
           <Text color="tertiary" fontSize={14}>
             {item.smallDesc}
           </Text>
-          <Text bold color="quartiary" fontSize={16}>
+          <Text bold color="tertiary" fontSize={16}>
             {currencyTranslations.currencyField.placeholder} {item.price}
           </Text>
         </DrinkDesc>
-      </LeftWrapper>
-      <RightWrapper>
-        <LikeButton onPress={onClick}>
-          <IconButton color={theme.colors.textPrimary} iconName="heart-outline" size={20} />
-        </LikeButton>
-      </RightWrapper>
+      </PropsWrapper>
+      <LikeButton onPress={onClick}>
+        <IconButton color={theme.colors.textPrimary} iconName="heart-outline" size={20} />
+      </LikeButton>
     </CardContainer>
   );
 };

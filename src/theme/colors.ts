@@ -14,6 +14,7 @@ export interface ColorsInterface {
   borderFaded: string;
   inputSpinner: string;
   bookSpinnerButton: string;
+  subtitles: string,
 }
 
 const colors: ColorsInterface = {
@@ -32,6 +33,7 @@ const colors: ColorsInterface = {
   backgroundColor: '#ffffff',
   fixedWhite: '#ffffff',
   fixedBlack: '#000000',
+  subtitles: '#636363',
 };
 
 export const darkColors: ColorsInterface = {
@@ -50,6 +52,7 @@ export const darkColors: ColorsInterface = {
   backgroundColor: '#0D1A2C',
   fixedWhite: '#ffffff',
   fixedBlack: '#000000',
+  subtitles: '#B1B1B1',
 };
 
 export default colors;
