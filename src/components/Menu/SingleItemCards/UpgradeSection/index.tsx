@@ -50,7 +50,9 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     let allTruthyCustomisation: DataItem[] = [];
 
     Object.values(selectionExtras).forEach(
-      (extras) => (allTruthyCustomisation = Object.values(extras).filter((v) => v.selected))
+      (extras) => {
+        (allTruthyCustomisation = [...allTruthyCustomisation, ...Object.values(extras).filter((v) => v.selected)])
+      }
     );
 
     updateExtras(allTruthyCustomisation);
@@ -86,7 +88,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           ...oldSelection[sectionId],
           [itemId]: {
             ...oldSelection[sectionId][itemId],
-            selection: value,
+            selected: value,
           },
         },
       }));
