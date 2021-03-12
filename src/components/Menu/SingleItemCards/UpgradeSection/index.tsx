@@ -10,6 +10,8 @@ import { MenuItem, UpgradeItem, DataItem } from '../../../../types/MenuItem';
 
 import currencyTranslations from '../../../../translations/currency';
 
+import ExplanationModal from '../../../shared/ExplanationModal';
+
 import {
   HeaderRow,
   ItemRow,
@@ -19,7 +21,6 @@ import {
   PriceItem,
   ItemInfo,
 } from './styles';
-import ExplanationModal from '../../../shared/ExplanationModal';
 
 type SelectionExtras = {
   [key: string]: {
@@ -35,6 +36,7 @@ interface UpgradeSectionProps {
 const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, updateExtras }) => {
   const theme = useTheme();
   const [selectionExtras, setSelectedExtras] = useState<SelectionExtras>({});
+
   const [modalData, setModalData] = useState({
     show: false,
     title: '',
@@ -71,7 +73,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     updateExtras(allTruthyCustomisation);
   }, [selectionExtras, updateExtras]);
 
-  const showDescriptionModal = ({ title, description }: { title: string; description: string }) => () => {
+  const showDescriptionModal = ({ description, title }: { title: string; description: string }) => () => {
     setModalData({ show: true, title, description });
   };
 
@@ -177,10 +179,10 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
   return (
     <UpgradeSectionContainer>
       <ExplanationModal
-        isVisible={modalData.show}
-        title={modalData.title}
         description={modalData.description}
+        isVisible={modalData.show}
         onClose={closeModal}
+        title={modalData.title}
       />
       {item.upgradableItems && (
         <SectionList

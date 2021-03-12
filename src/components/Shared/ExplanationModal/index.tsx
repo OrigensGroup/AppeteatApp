@@ -1,10 +1,13 @@
 import React from 'react';
 import Modal from 'react-native-modal';
 
-import { CloseModal, CloseModalSection, ModalContainer, ModalDescription, ModalTitle } from './styles';
-import Text from '../Text';
-import IconButton from '../IconButton';
 import { useTheme } from 'styled-components';
+
+import Text from '../Text';
+
+import IconButton from '../IconButton';
+
+import { CloseModal, CloseModalSection, ModalContainer, ModalDescription, ModalTitle } from './styles';
 
 interface ExplanationModalProps {
   isVisible: boolean;
@@ -14,10 +17,10 @@ interface ExplanationModalProps {
 }
 
 const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
-  title,
   description,
   isVisible,
   onClose,
+  title,
 }) => {
   const theme = useTheme();
 
@@ -30,12 +33,12 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
           </CloseModal>
         </CloseModalSection>
         <ModalTitle>
-          <Text fontSize={18} color="fixedBlack" bold>
+          <Text bold color="fixedBlack" fontSize={18}>
             {title}
           </Text>
         </ModalTitle>
         <ModalDescription>
-          <Text fontSize={14} color="fixedBlack">
+          <Text color="fixedBlack" fontSize={14}>
             {description}
           </Text>
         </ModalDescription>

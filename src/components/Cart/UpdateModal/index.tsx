@@ -10,6 +10,8 @@ import useCart from '../../../hooks/useCart';
 import ViewCta from '../../shared/ViewCta';
 
 import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper } from './styles';
+import currencyTranslations from '../../../translations/currency';
+import { fixDecimals } from '../../../contexts/Cart';
 
 interface UpdateModalProps {
   item: OrderItem | null;
@@ -71,7 +73,9 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         </ModalCounterContainer>
         <ModalTitle>
           <Text color="primary" fontSize={18}>
-            {cartTranslations.updateModal.price} £ {item && item.price * localQuantity}
+            {cartTranslations.updateModal.price} {currencyTranslations.currencyField.placeholder}
+            {item &&
+              fixDecimals((item.price + item.extras.reduce((acc, extra) => acc + extra.price, 0)) * localQuantity)}
           </Text>
         </ModalTitle>
         <DivLine />
