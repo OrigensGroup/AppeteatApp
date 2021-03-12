@@ -1,4 +1,5 @@
 import React from 'react';
+import { Vibration } from 'react-native';
 import InputSpinner from 'react-native-input-spinner';
 import { useTheme } from 'styled-components';
 
@@ -21,11 +22,12 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({ title }) => {
         </Text>
       </TextContainer>
       <InputSpinner
-        color={theme.colors.bookSpinnerButton}
+        color={theme.colors.quantityUpdate}
         max={50}
         min={1}
+        onDecrease={Vibration.vibrate}
+        onIncrease={Vibration.vibrate}
         step={1}
-        textColor={theme.colors.inputSpinner}
       />
     </Container>
   );

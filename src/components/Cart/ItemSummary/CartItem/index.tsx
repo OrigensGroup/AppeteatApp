@@ -20,29 +20,31 @@ interface CartItemProps {
 }
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
+  const itemExtras = () => {
+    item.extras &&
+      item.extras.map((extra) => (
+        <Text color="tertiary" fontSize={14} key={extra} light>
+          {extra}
+        </Text>
+      ));
+  };
+
   return (
     <CartItemContainer activeOpacity={1} onPress={onClick(item)}>
       <CartItemInfo>
         <CartItemQuantity>
-          <Text bold color="tertiary" fontSize={20}>
+          <Text bold color="tertiary" fontSize={18}>
             {item.quantity} x
           </Text>
         </CartItemQuantity>
         <CartItemTitle>
-          <Text bold color="primary" fontSize={20}>
+          <Text bold color="primary" fontSize={18}>
             {item.title}
           </Text>
-          <CartItemCustomisation>
-            {item.customisations &&
-              item.customisations.map((customisation) => (
-                <Text color="tertiary" fontSize={14} key={customisation} light>
-                  {customisation}
-                </Text>
-              ))}
-          </CartItemCustomisation>
+          <CartItemCustomisation>{itemExtras}</CartItemCustomisation>
         </CartItemTitle>
         <CartItemPrice>
-          <Text bold color="primary" fontSize={20}>
+          <Text bold color="primary" fontSize={18}>
             {currencyTranslations.currencyField.placeholder}
             {item.price * item.quantity}
           </Text>

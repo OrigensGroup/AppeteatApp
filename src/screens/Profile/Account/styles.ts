@@ -1,14 +1,8 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const SafeAreaTop = styled.SafeAreaView`
-  flex: 0;
-  background: ${({ theme }) => theme.colors.backgroundColor};
-`;
-
 export const SafeAreaBottom = styled.SafeAreaView`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 export const ProfileContainer = styled.View`
@@ -23,8 +17,7 @@ export const NavigationContainer = styled.View`
 `;
 
 export const FavouriteCocktailsContainer = styled.View`
-  margin: ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.double}
-    ${({ theme }) => theme.spacing.double};
+  margin: ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.double} 0;
 `;
 
 export const Content = styled.ScrollView`
@@ -46,7 +39,7 @@ export const ImageContainer = styled.View`
 export const CocktailContainer = styled.ScrollView``;
 
 export const TitleContainer = styled.View`
-  margin: 0 ${({ theme }) => theme.spacing.single};
+  margin: 0 ${({ theme }) => theme.spacing.double};
   display: flex;
   flex-direction: row;
   justify-content: space-between;

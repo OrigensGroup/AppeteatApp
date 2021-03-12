@@ -40,10 +40,10 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
         <DiscountPromotionImage resizeMode="cover" source={{ uri: item.image }} />
       </ImageContainer>
       <DiscountPromotionDescription>
-        <Text bold color="primary" fontSize={20}>
+        <Text bold color="primary" fontSize={18}>
           {item.title}
         </Text>
-        <Text color="primary" fontSize={16} light>
+        <Text color="primary" fontSize={14} light>
           {item.description}
         </Text>
       </DiscountPromotionDescription>

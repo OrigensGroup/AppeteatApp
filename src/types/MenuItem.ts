@@ -1,10 +1,14 @@
-export type UpgradeItem = {
+export type DataItem = {
+  id: string;
   title: string;
-  data: {
-    title: string;
-    price: number;
-    selected: boolean;
-  };
+  price: number;
+  selected: boolean;
+};
+
+export type UpgradeItem = {
+  id: string;
+  title: string;
+  data: DataItem[];
   selection: 'single' | 'multiple';
 };
 
@@ -20,6 +24,5 @@ export type MenuItem = {
   promoted: boolean;
   type: 'customisableItem' | 'itemWithExtras';
   ingredients?: string[];
-  customisations?: string[];
   upgradableItems?: UpgradeItem[];
 };
