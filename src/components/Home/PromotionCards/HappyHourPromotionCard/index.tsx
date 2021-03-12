@@ -21,9 +21,15 @@ import {
 
 interface HappyHourPromotionCardProps {
   endDate: string;
+  happyHour?: boolean;
+  happyHourSize?: boolean;
 }
 
-const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({ endDate }) => {
+const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({
+  endDate,
+  happyHour,
+  happyHourSize,
+}) => {
   const theme = useTheme();
   const navigation = useNavigation();
   const interval = useRef<NodeJS.Timeout>();
@@ -83,18 +89,20 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   });
 
   return (
-    <HappyHourPromotionCardContainer onPress={navigate}>
+    <HappyHourPromotionCardContainer happyHourSize={happyHourSize} onPress={navigate}>
       <LinearGradient
         colors={[theme.colors.active, theme.colors.secondaryActive]}
         end={{ x: 1, y: 1 }}
         start={{ x: 0, y: 0 }}
         style={styles.linearGradient}
       >
-        <HappyHourTitleContainer>
-          <Text align="center" color="fixedWhite" fontSize={24}>
-            {homeTranslations.happyHourCard.title}
-          </Text>
-        </HappyHourTitleContainer>
+        {!happyHour && (
+          <HappyHourTitleContainer>
+            <Text align="center" color="fixedWhite" fontSize={24}>
+              {homeTranslations.happyHourCard.title}
+            </Text>
+          </HappyHourTitleContainer>
+        )}
         <HappyHourPromotionCardTimerContainer>
           <DigitCounter>
             <DigitBackground>

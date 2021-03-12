@@ -1,14 +1,8 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const SafeAreaTop = styled.SafeAreaView`
-  flex: 0;
-  background: ${({ theme }) => theme.colors.backgroundColor};
-`;
-
 export const SafeAreaBottom = styled.SafeAreaView`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 export const ProfileContainer = styled.View`
