@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const FavouriteCocktailsContainer = styled.View`
-  margin-top: ${({ theme }) => theme.spacing.double};
+  margin: ${({ theme }) => theme.spacing.double} 0;
 `;
 export const TitleContainer = styled.View`
   margin: 0 ${({ theme }) => theme.spacing.double};

@@ -39,7 +39,7 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
 
   return (
     <ButtonContainer onPress={onFacebookButtonPress}>
-      <Entypo color="#4267B2" name="facebook" size={50} />
+      <Entypo color="#4267B2" name="facebook" size={48} />
     </ButtonContainer>
   );
 };

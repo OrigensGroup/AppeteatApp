@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const SafeAreaBottom = styled.SafeAreaView`
+export const SafeArea = styled.SafeAreaView`
   flex: 1;
 `;
 
@@ -30,8 +30,14 @@ export const Content = styled.ScrollView`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
   background-color: ${({ theme }) => theme.colors.backgroundColor};
-  height: 100%;
+  flex: 1;
 `;
+
+// export const Content = styled.View`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// `;
 
 export const ImageContainer = styled.View`
   width: 100%;

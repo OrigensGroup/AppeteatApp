@@ -15,5 +15,4 @@ export const SocialLoginButton = styled.TouchableOpacity`
   align-items: center;
   height: ${({ theme }) => theme.spacing.multiple(6)};
   width: ${({ theme }) => theme.spacing.multiple(6)};
-  margin: 0 ${({ theme }) => theme.spacing.double};
 `;

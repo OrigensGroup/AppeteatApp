@@ -29,8 +29,8 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount
         max={99}
         min={1}
         onChange={onChange}
-        onDecrease={Vibration.vibrate}
-        onIncrease={Vibration.vibrate}
+        onDecrease={() => Vibration.vibrate([10])}
+        onIncrease={() => Vibration.vibrate([10])}
         precision={2}
         step={1}
         textColor={theme.colors.fixedBlack}
