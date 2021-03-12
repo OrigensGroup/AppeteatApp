@@ -9,15 +9,13 @@ export const Container = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
 
   border-radius:${({ theme }) => theme.spacing.double};
-  border-color: #c2c2c2;
+  border-color: ${({ theme }) => theme.colors.border};
 
   margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} ${({ theme }) =>
   theme.spacing.half} ${({ theme }) => theme.spacing.double}};
 `;
 
-export const CardContainer = styled.View`
-  padding: ${({ theme }) => theme.spacing.single};
-`;
+export const CardContainer = styled.View``;
 
 export const ImageContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single};

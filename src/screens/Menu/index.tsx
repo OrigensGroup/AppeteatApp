@@ -3,6 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Cart from '../Cart';
 
+import ChooseTableOrTA from '../ChooseTableOrTA';
+
 import Menu from './MenuList';
 import SingleItem from './SingleItem';
 
@@ -16,6 +18,7 @@ const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
       <Stack.Screen component={Menu} name="MenuList" />
       <Stack.Screen component={SingleItem} name="SingleItem" />
       <Stack.Screen component={Cart} name="Cart" />
+      <Stack.Screen component={ChooseTableOrTA} name="ChooseTableOrTA" />
     </Stack.Navigator>
   );
 };

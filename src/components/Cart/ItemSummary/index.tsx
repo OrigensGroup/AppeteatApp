@@ -48,7 +48,7 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
   return (
     <ItemSummaryContainer>
       <CartTitleContainer>
-        <Text bold color="primary" fontSize={28}>
+        <Text bold color="primary" fontSize={20}>
           {cartTranslations.titleField.title}
         </Text>
       </CartTitleContainer>

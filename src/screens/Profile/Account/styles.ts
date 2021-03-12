@@ -45,7 +45,7 @@ export const ImageContainer = styled.View`
 export const CocktailContainer = styled.ScrollView``;
 
 export const TitleContainer = styled.View`
-  margin: 0 ${({ theme }) => theme.spacing.single};
+  margin: 0 ${({ theme }) => theme.spacing.double};
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, View, FlatList } from 'react-native';
 
-import FavCard from '../../../components/Profile/FavCard';
+import FavCard from '../../../components/Profile/FavouriteCocktails/FavCard';
 import useMenu from '../../../hooks/useMenu';
 import { MenuItem } from '../../../types/MenuItem';
 

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
 import useCart from '../../../hooks/useCart';
@@ -13,6 +14,7 @@ interface FinaliseOrderProps {}
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = () => {
   const { addTips, pricing } = useCart();
+  const navigation = useNavigation();
 
   return (
     <FinaliseOrderContainer>
@@ -28,7 +30,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = () => {
       />
       <ValueItem color="primary" title={cartTranslations.orderTotField.title} value={pricing.total} />
       <Separator />
-      <ViewCta onClick={() => {}}>
+      <ViewCta onClick={() => navigation.navigate('ChooseTableOrTA')}>
         <Text bold color="secondary" fontSize={20}>
           {cartTranslations.goToCheckoutCta.title}
         </Text>

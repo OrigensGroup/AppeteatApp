@@ -14,7 +14,7 @@ interface ItemWithExtrasProps {
 }
 
 const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ item }) => {
-  const [extras, setExtras] = useState([]);
+  const [extras, setExtras] = useState({});
 
   return (
     <ItemWithExtrasContainer>
