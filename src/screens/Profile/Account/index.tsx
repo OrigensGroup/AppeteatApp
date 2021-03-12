@@ -5,7 +5,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import ProfileImage from '../../../components/Profile/ProfileImage';
 import ProfileLink from '../../../components/Profile/ProfileLink';
 
-
 import Text from '../../../components/shared/Text';
 
 import useAuth from '../../../hooks/useAuth';
@@ -14,19 +13,11 @@ import theme from '../../../theme';
 
 import FavouriteCocktails from '../../../components/Profile/FavouriteCocktails';
 
-import {
-  ProfileContainer,
-  ImageContainer,
-  NavigationContainer,
-  NameContainer,
-  Content,
-  styles,
-} from './styles';
+import { ProfileContainer, ImageContainer, NavigationContainer, NameContainer, Content, styles } from './styles';
 
 interface AccountProps {}
 
 const Account: React.FunctionComponent<AccountProps> = () => {
-
   const user = useAuth();
 
   return (
@@ -55,7 +46,7 @@ const Account: React.FunctionComponent<AccountProps> = () => {
           <NavigationContainer>
             <ProfileLink />
           </NavigationContainer>
-      <FavouriteCocktails />
+          <FavouriteCocktails />
         </Content>
       </LinearGradient>
     </ProfileContainer>

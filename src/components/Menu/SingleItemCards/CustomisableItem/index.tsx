@@ -18,10 +18,10 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ item
   return (
     <CustomisableItemContainer>
       <CardsHeader item={item} />
-       <ItemContainer>
-      <ItemPicture item={item} />
-      <ItemDescription item={item} />
-      <CustomiseSection item={item} />
+      <ItemContainer>
+        <ItemPicture item={item} />
+        <ItemDescription item={item} />
+        <CustomiseSection item={item} />
       </ItemContainer>
       <AddToBasketButton item={item} />
     </CustomisableItemContainer>

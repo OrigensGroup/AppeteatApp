@@ -3,9 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Cart from '../Cart';
 
+import ChooseTableOrTA from '../ChooseTableOrTA';
+
 import Menu from './MenuList';
 import SingleItem from './SingleItem';
-import ChooseTableOrTA from '../ChooseTableOrTA';
 
 const Stack = createStackNavigator();
 

@@ -5,5 +5,5 @@ export const CustomisableItemContainer = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.textSecondary};
 `;
 export const ItemContainer = styled.ScrollView`
-margin-bottom: ${({ theme }) => theme.spacing.multiple(12)};
+  margin-bottom: ${({ theme }) => theme.spacing.multiple(12)};
 `;

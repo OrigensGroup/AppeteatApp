@@ -21,8 +21,14 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({ title }) => {
           {title}
         </Text>
       </TextContainer>
-      <InputSpinner color={theme.colors.quantityUpdate} max={50} min={1} step={1} onDecrease={Vibration.vibrate}
-        onIncrease={Vibration.vibrate} />
+      <InputSpinner
+        color={theme.colors.quantityUpdate}
+        max={50}
+        min={1}
+        onDecrease={Vibration.vibrate}
+        onIncrease={Vibration.vibrate}
+        step={1}
+      />
     </Container>
   );
 };

@@ -19,7 +19,7 @@ const FavCard: React.FunctionComponent<FavCardProps> = ({ item, onClick }) => {
           <DrinkImage source={{ uri: item.image }} />
         </ImageContainer>
         <DrinkDesc>
-          <Text color="primary" fontSize={14} >
+          <Text color="primary" fontSize={14}>
             {item.title}
           </Text>
           <Text color="quartiary" fontSize={12}>
