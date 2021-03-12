@@ -1,7 +1,11 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
+interface CardSize {
+  happyHourSize?: boolean;
+}
+
+export const HappyHourPromotionCardContainer = styled.TouchableOpacity<CardSize>`
   width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(25)};
 
@@ -13,6 +17,12 @@ export const HappyHourPromotionCardContainer = styled.TouchableOpacity`
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
+  ${({ happyHourSize }) =>
+    happyHourSize &&
+    `
+    height: 176px;
+    ;
+  `};
 `;
 
 export const styles = StyleSheet.create({

@@ -7,17 +7,20 @@ export const HappyHourMenuContainer = styled.View`
 `;
 
 export const HappyHourMenuHeader = styled.View`
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
   margin: 0 ${({ theme }) => theme.spacing.multiple(3)};
-  padding-bottom: ${({ theme }) => theme.spacing.multiple(3)};
-  margin-top: ${({ theme }) => theme.spacing.multiple(8)};
+  padding-top: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 
 export const HappyHourMenuSection = styled.View`
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
+  padding-top: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
 export const HappyHourMenuItemsContainer = styled.View`
   height: 100%;
   padding: 0 ${({ theme }) => theme.spacing.multiple(3)};
+`;
+
+export const SafeArea = styled.SafeAreaView`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;

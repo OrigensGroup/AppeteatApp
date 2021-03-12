@@ -13,6 +13,8 @@ import MenuTopBar from '../../../components/Menu/MenuTopBar';
 
 import useCart from '../../../hooks/useCart';
 
+import menuTranslations from '../../../translations/menu';
+
 import { SafeAreaViewBottom, MenuWrapper } from './styles';
 
 interface MenuProps {}
@@ -59,7 +61,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     <>
       <SafeAreaViewBottom>
         <MenuWrapper>
-          <MenuTopBar onClick={toggleModal} />
+          <MenuTopBar onClick={toggleModal} title={menuTranslations.menu.title} />
           <MenuTabs menuTabs={menu.tabs} onChange={onSwipe} tabActive={menuIndex} />
           <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
             {menuTabsContent()}

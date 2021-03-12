@@ -22,3 +22,8 @@ export const TitleWrapper = styled.View`
   border-bottom-color: ${({ theme }) => theme.colors.active};
   border-bottom-width: 3px;
 `;
+
+export const EmptyDiv = styled.View`
+  width: ${({ theme }) => theme.spacing.multiple(3)};
+  height: ${({ theme }) => theme.spacing.triple};
+`;
