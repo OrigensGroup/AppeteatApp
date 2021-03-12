@@ -31,6 +31,7 @@ import {
   Content,
   ShowButton,
   styles,
+  FavouriteCocktailsTextContainer,
 } from './styles';
 
 interface AccountProps {}
@@ -82,16 +83,18 @@ const Account: React.FunctionComponent<AccountProps> = () => {
                 <ProfileLink />
               </NavigationContainer>
               <FavouriteCocktailsContainer>
-                <TitleContainer>
-                  <Text color="primary" fontSize={20}>
-                    {accountTranslations.accountPage.myFavouriteCoctails}
-                  </Text>
-                  <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
-                    <Text color="tertiary" fontSize={16}>
-                      {accountTranslations.accountPage.showButton}
+                <FavouriteCocktailsTextContainer>
+                  <TitleContainer>
+                    <Text color="primary" fontSize={18}>
+                      {accountTranslations.accountPage.myFavouriteCoctails}
                     </Text>
-                  </ShowButton>
-                </TitleContainer>
+                    <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
+                      <Text color="tertiary" fontSize={16}>
+                        {accountTranslations.accountPage.showButton}
+                      </Text>
+                    </ShowButton>
+                  </TitleContainer>
+                </FavouriteCocktailsTextContainer>
                 <FlatList
                   data={favoriteCocktails}
                   horizontal
