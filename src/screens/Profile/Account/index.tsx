@@ -2,6 +2,8 @@ import React from 'react';
 
 import LinearGradient from 'react-native-linear-gradient';
 
+import FavouriteCocktails from '../../../components/Profile/FavouriteCocktails';
+
 import ProfileImage from '../../../components/Profile/ProfileImage';
 import ProfileLink from '../../../components/Profile/ProfileLink';
 
@@ -10,8 +12,6 @@ import Text from '../../../components/shared/Text';
 import useAuth from '../../../hooks/useAuth';
 
 import theme from '../../../theme';
-
-import FavouriteCocktails from '../../../components/Profile/FavouriteCocktails';
 
 import { ProfileContainer, ImageContainer, NavigationContainer, NameContainer, Content, styles } from './styles';
 

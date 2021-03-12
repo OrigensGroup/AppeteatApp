@@ -3,7 +3,7 @@ import React from 'react';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 
-import { CardContainer, DrinkImage, DrinkDesc, Container, DescriptionWrapper } from './styles';
+import { CardContainer, DrinkImage, DrinkDesc, Container, DescriptionWrapper, ImageContainer } from './styles';
 
 interface CardProps {
   item: MenuItem;
@@ -14,7 +14,9 @@ const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   return (
     <CardContainer>
       <Container onPress={onClick}>
-        <DrinkImage source={{ uri: item.image }} />
+        <ImageContainer>
+          <DrinkImage source={{ uri: item.image }} />
+        </ImageContainer>
         <DrinkDesc>
           <Text color="primary" fontSize={14}>
             {item.title}
