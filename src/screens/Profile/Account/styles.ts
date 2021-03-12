@@ -17,12 +17,13 @@ export const NavigationContainer = styled.View`
 `;
 
 export const FavouriteCocktailsContainer = styled.View`
-  margin: ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.double} 0;
+  margin-top: ${({ theme }) => theme.spacing.double};
 `;
 
 export const FavouriteCocktailsTextContainer = styled.View`
   margin-left: ${({ theme }) => theme.spacing.double};
   margin-right: ${({ theme }) => theme.spacing.double};
+  margin-bottom: ${({ theme }) => theme.spacing.double};
 `;
 
 export const Content = styled.ScrollView`
