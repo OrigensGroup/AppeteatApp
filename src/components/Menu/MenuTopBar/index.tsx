@@ -3,17 +3,19 @@ import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 
 import IconButton from '../../shared/IconButton';
-import menuTranslations from '../../../translations/menu';
 
 import Text from '../../shared/Text';
 
-import { TopContainer, TitleWrapper } from './styles';
+import { TopContainer, TitleWrapper, EmptyDiv } from './styles';
 
 interface MenuTopBarProps {
-  onClick: () => void;
+  onClick?: () => void;
+  title: string;
+  hideFilter?: boolean;
+  hideTitle?: boolean;
 }
 
-const MenuTopBar: React.FunctionComponent<MenuTopBarProps> = ({ onClick }) => {
+const MenuTopBar: React.FunctionComponent<MenuTopBarProps> = ({ hideFilter, hideTitle, onClick, title }) => {
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -24,12 +26,18 @@ const MenuTopBar: React.FunctionComponent<MenuTopBarProps> = ({ onClick }) => {
   return (
     <TopContainer>
       <IconButton color={theme.colors.textPrimary} iconName="ios-close" onClick={navigateBack} size={28} />
-      <TitleWrapper>
-        <Text bold color="primary" fontSize={20}>
-          {menuTranslations.menu.title}
-        </Text>
-      </TitleWrapper>
-      <IconButton color={theme.colors.textPrimary} iconName="filter" onClick={onClick} size={24} />
+      {!hideTitle && (
+        <TitleWrapper>
+          <Text bold color="primary" fontSize={20}>
+            {title}
+          </Text>
+        </TitleWrapper>
+      )}
+      {!hideFilter ? (
+        <IconButton color={theme.colors.textPrimary} iconName="filter" onClick={onClick} size={24} />
+      ) : (
+        <EmptyDiv />
+      )}
     </TopContainer>
   );
 };
