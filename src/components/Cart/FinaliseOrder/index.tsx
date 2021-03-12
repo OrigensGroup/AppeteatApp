@@ -29,7 +29,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = () => {
       <ValueItem color="primary" title={cartTranslations.orderTotField.title} value={pricing.total} />
       <Separator />
       <ViewCta onClick={() => {}}>
-        <Text bold color="secondary" fontSize={20}>
+        <Text bold color="fixedWhite" fontSize={20}>
           {cartTranslations.goToCheckoutCta.title}
         </Text>
       </ViewCta>

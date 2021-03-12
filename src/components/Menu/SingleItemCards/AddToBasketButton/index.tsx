@@ -5,7 +5,7 @@ import { fixDecimals } from '../../../../contexts/Cart';
 import useCart from '../../../../hooks/useCart';
 
 import singleDrinkTranslations from '../../../../translations/singleDrink';
-import { MenuItem } from '../../../../types/MenuItem';
+import { DataItem, MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 import QuantityCounter from '../Counter';
@@ -14,10 +14,10 @@ import { AddToBasketButtonWrapper, ViewCtaButton, QuantityButton } from './style
 
 interface AddToBasketButtonProps {
   item: MenuItem;
-  extras?: any[];
+  extras?: DataItem[];
 }
 
-const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ item }) => {
+const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ item, extras = [] }) => {
   const [amount, setAmount] = useState(1);
   const { addItemToCart } = useCart();
   const navigation = useNavigation();
@@ -27,7 +27,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
   };
 
   const onClick = () => {
-    addItemToCart({ ...item, quantity: amount, customisations: [] });
+    addItemToCart({ ...item, quantity: amount, extras });
     navigation.goBack();
   };
 
