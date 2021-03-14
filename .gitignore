@@ -65,4 +65,4 @@ web-build/
 
 *.hprof
 
-project.pbxproj
+*/project.pbxproj
