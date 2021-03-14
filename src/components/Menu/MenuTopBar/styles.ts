@@ -8,8 +8,8 @@ export const TopContainer = styled.View`
   align-items: center;
   justify-content: space-between;
 
-  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple} ${({ theme }) => theme.spacing.single}
-    ${({ theme }) => theme.spacing.triple};
+  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple}
+    ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple};
 
   ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.double}`};
 `;

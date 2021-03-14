@@ -15,7 +15,6 @@ export const CardContainer = styled.TouchableOpacity`
   position: relative;
 `;
 
-
 export const ImageWrapper = styled.View`
   width: ${({ theme }) => theme.spacing.multiple(15)};
   height: ${({ theme }) => theme.spacing.multiple(15)};

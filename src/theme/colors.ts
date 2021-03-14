@@ -14,7 +14,7 @@ export interface ColorsInterface {
   borderFaded: string;
   inputSpinner: string;
   bookSpinnerButton: string;
-  subtitles: string,
+  subtitles: string;
 }
 
 const colors: ColorsInterface = {
