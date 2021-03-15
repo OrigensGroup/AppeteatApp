@@ -39,7 +39,7 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
 
   const renderHiddenItem = (data: any, rowMap: any) => (
     <DeleteButton onPress={() => deleteRow(data, rowMap)}>
-      <Text bold color="secondary" fontSize={18}>
+      <Text bold color="fixedWhite" fontSize={18}>
         {cartTranslations.removeItemSwipe.title}
       </Text>
     </DeleteButton>

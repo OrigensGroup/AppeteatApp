@@ -15,9 +15,10 @@ import {
 
 interface CustomiseSectionProps {
   item: MenuItem;
+  onClick: () => void;
 }
 
-const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item }) => {
+const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item, onClick }) => {
   const ingredientRender = ({ item }: { item: string }) => (
     <Ingredient>
       <Text color="primary" fontSize={14}>
@@ -34,7 +35,7 @@ const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item
             {menuTranslations.singleItem.ingredients.title}
           </Text>
         </IngredientsTitle>
-        <CustomiseTitle>
+        <CustomiseTitle onPress={onClick}>
           <Text color="tertiary" fontSize={14}>
             {menuTranslations.singleItem.customise.title}
           </Text>
