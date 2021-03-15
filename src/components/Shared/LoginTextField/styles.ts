@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { scale } from '../../../theme/textScaling';
 
 export const TextFieldContainer = styled.View`
-  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -20,4 +20,15 @@ export const TextFieldInput = styled.TextInput`
   flex: 1;
   padding: 0;
   padding-bottom: ${({ theme }) => theme.spacing.half};
+`;
+
+export const CustomiseFieldInput = styled.TextInput`
+  border-color: ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.spacing.single};
+  color: ${({ theme }) => theme.colors.fixedBlack};
+  font-family: Comfortaa;
+  font-size: ${scale(16)}px;
+  border-width: 1px;
+  flex: 1;
+  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double};
 `;
