@@ -9,11 +9,13 @@ import getUserData, { saveUserData } from '../../utils/manageUserdata';
 interface UserContext {
   userData: User;
   addNewFavoriteCocktail: (item: MenuItem) => void;
+  restoreDefault: () => void;
 }
 
 export const UserContext = React.createContext<UserContext>({
   userData: { favoriteCocktails: [], default: false },
   addNewFavoriteCocktail: () => {},
+  restoreDefault: () => {},
 });
 
 interface UserProviderProps {}
@@ -34,6 +36,10 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
       await saveUserData(user.uid, userData);
     }
   }, [user, userData]);
+
+  const restoreDefault = () => {
+    setUserData({ favoriteCocktails: [], default: true });
+  };
 
   useEffect(() => {
     loadData();
@@ -59,6 +65,7 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
       value={{
         userData,
         addNewFavoriteCocktail,
+        restoreDefault,
       }}
     >
       {children}

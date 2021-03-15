@@ -9,11 +9,15 @@ import { Alert } from 'react-native';
 import ListItem from '../../../components/Profile/ListItem';
 import accountTranslations from '../../../translations/account';
 
+import useUserData from '../../../hooks/useUserData';
+
 import { SettingsContainer } from './styles';
 
 interface SettingsProps {}
 
 const Settings: React.FunctionComponent<SettingsProps> = () => {
+  const { restoreDefault } = useUserData();
+
   const logOutAlert = () =>
     Alert.alert(
       accountTranslations.accountPage.logOut,
@@ -23,7 +27,13 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
           text: accountTranslations.accountPage.cancel,
           style: 'cancel',
         },
-        { text: accountTranslations.accountPage.yes, onPress: () => auth().signOut() },
+        {
+          text: accountTranslations.accountPage.yes,
+          onPress: async () => {
+            await auth().signOut();
+            restoreDefault();
+          },
+        },
       ],
       { cancelable: false }
     );
