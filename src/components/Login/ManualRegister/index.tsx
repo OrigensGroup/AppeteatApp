@@ -3,8 +3,6 @@ import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'styled-components';
 
-import { useNavigation } from '@react-navigation/native';
-
 import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
@@ -24,15 +22,16 @@ import {
   styles,
 } from './styles';
 
-interface RegisterManualProps {}
+interface RegisterManualProps {
+  changeModule: (b: boolean) => void;
+}
 
 type LoopObject = {
   [key: string]: string | null;
 };
 
-const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
+const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeModule }) => {
   const theme = useTheme();
-  const navigation = useNavigation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,7 +41,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
   const [loading, setLoading] = useState(false);
 
   const login = () => {
-    navigation.navigate('Login');
+    changeModule(true);
   };
 
   const createUser = () => {
@@ -128,6 +127,8 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
 
           if (user) {
             initUserData(user.uid);
+
+            !user.emailVerified && user.sendEmailVerification();
 
             user.updateProfile({
               displayName: username,

@@ -18,7 +18,6 @@ import MenuProvider, { Menu } from './contexts/Menu';
 import LoginScreen from './screens/Login';
 
 import TabBar from './components/shared/TabBar';
-import Register from './screens/Register';
 import LocationsProvider, { Locations } from './contexts/Locations';
 
 import getMenu from './utils/loadMenu';
@@ -70,7 +69,7 @@ const App = () => {
       console.error(error);
     } finally {
       setAppReady(true);
-      SplashScreen.hideAsync();
+      await SplashScreen.hideAsync();
     }
   };
 
@@ -111,10 +110,7 @@ const App = () => {
               >
                 <Stack.Navigator headerMode="none">
                   {user == null ? (
-                    <>
-                      <Stack.Screen component={LoginScreen} name="Login" />
-                      <Stack.Screen component={Register} name="Register" />
-                    </>
+                    <Stack.Screen component={LoginScreen} name="Login" />
                   ) : (
                     <Stack.Screen component={TabBar} name="App" />
                   )}

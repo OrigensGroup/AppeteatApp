@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Platform, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 
 import auth from '@react-native-firebase/auth';
@@ -16,15 +15,16 @@ import LogInButton from './Buttons/LogInButton';
 
 import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
 
-interface ManualLogInProps {}
+interface ManualLogInProps {
+  changeModule: (b: boolean) => void;
+}
 
 type LoopObject = {
   [key: string]: string | null;
 };
 
-const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
+const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }) => {
   const theme = useTheme();
-  const navigation = useNavigation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,7 +32,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
   const [loading, setLoading] = useState(false);
 
   const register = () => {
-    navigation.navigate('Register');
+    changeModule(false);
   };
 
   const singIn = () => {
