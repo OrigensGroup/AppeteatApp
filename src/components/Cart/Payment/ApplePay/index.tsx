@@ -10,7 +10,7 @@ interface ApplePayProps {
 const ApplePay: React.FunctionComponent<ApplePayProps> = ({ active, onClick }) => {
   return (
     <ApplePayContainer active={active} onPress={onClick}>
-      <ApplePayImage source={require('./../../../../img/ApplePay.png')} />
+      <ApplePayImage resizeMode="contain" source={require('./../../../../img/ApplePay.png')} />
     </ApplePayContainer>
   );
 };

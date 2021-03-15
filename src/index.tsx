@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Asset } from 'expo-asset';
+import { PaymentsStripe as Stripe } from 'expo-payments-stripe';
 
 import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
@@ -38,6 +39,12 @@ const App = () => {
 
   const loadStuff = async () => {
     try {
+      Stripe.setOptionsAsync({
+        publishableKey:
+          'pk_test_51IVOBfAfCAulp2YCXMxRFgdbY4LsL8Pb6guzhnevDVNweDfgD2W8UQd2GT7C2BWoB78z2mrDhhCYKXPtxmyKR0h500ZmXtM6No',
+        androidPayMode: 'test', // [optional] used to set wallet environment (AndroidPay)
+      });
+
       await Font.loadAsync({
         Comfortaa: require('./theme/fonts/Comfortaa-Regular.ttf'),
         ComfortaaBold: require('./theme/fonts/Comfortaa-Bold.ttf'),

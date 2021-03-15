@@ -4,14 +4,7 @@ import menuTranslations from '../../../../translations/menu';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 
-import {
-  CustomiseSectionContainer,
-  CustomiseTitle,
-  IngredientsList,
-  IngredientsTitle,
-  TitleRow,
-  Ingredient,
-} from './styles';
+import { CustomiseSectionContainer, CustomiseTitle, IngredientsTitle, TitleRow, Ingredient } from './styles';
 
 interface CustomiseSectionProps {
   item: MenuItem;
@@ -19,14 +12,6 @@ interface CustomiseSectionProps {
 }
 
 const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item, onClick }) => {
-  const ingredientRender = ({ item }: { item: string }) => (
-    <Ingredient>
-      <Text color="primary" fontSize={14}>
-        {item}
-      </Text>
-    </Ingredient>
-  );
-
   return (
     <CustomiseSectionContainer>
       <TitleRow>
@@ -41,9 +26,14 @@ const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item
           </Text>
         </CustomiseTitle>
       </TitleRow>
-      {item.ingredients && (
-        <IngredientsList data={item.ingredients} keyExtractor={(item) => item} renderItem={ingredientRender} />
-      )}
+      {item.ingredients &&
+        item.ingredients.map((ingredient) => (
+          <Ingredient key={ingredient}>
+            <Text color="primary" fontSize={14}>
+              {ingredient}
+            </Text>
+          </Ingredient>
+        ))}
     </CustomiseSectionContainer>
   );
 };

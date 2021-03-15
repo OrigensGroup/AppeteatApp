@@ -15,7 +15,7 @@ const Home: React.FunctionComponent<HomeProps> = () => {
     <SafeArea>
       <HomeContainer
         alwaysBounceVertical
-        contentContainerStyle={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}
+        contentContainerStyle={{ display: 'flex', flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
       >
         <Logo />

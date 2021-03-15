@@ -5,14 +5,15 @@ interface GooglePayProps {
 }
 
 export const GooglePayContainer = styled.TouchableOpacity<GooglePayProps>`
-  height: ${({ theme }) => theme.spacing.multiple(7)};
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
+
+  height: ${({ theme }) => theme.spacing.multiple(7)};
+
   border-color: ${({ theme }) => theme.colors.border};
   border-width: 1px;
-  margin: 0 ${({ theme }) => theme.spacing.double};
   border-radius: ${({ theme }) => theme.spacing.single};
   padding: ${({ theme }) => theme.spacing.single};
   ${({ active }) =>
@@ -23,6 +24,6 @@ export const GooglePayContainer = styled.TouchableOpacity<GooglePayProps>`
   `}
 `;
 export const GooglePayImage = styled.Image`
-  flex: 1;
-  resizemode: contain;
+  width: 100%;
+  height: 100%;
 `;

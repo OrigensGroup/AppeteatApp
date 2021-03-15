@@ -5,11 +5,13 @@ interface ApplePayProps {
 }
 
 export const ApplePayContainer = styled.TouchableOpacity<ApplePayProps>`
-  height: ${({ theme }) => theme.spacing.multiple(7)};
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
+
+  height: ${({ theme }) => theme.spacing.multiple(7)};
+
   border-color: ${({ theme }) => theme.colors.border};
   border-width: 1px;
   border-radius: ${({ theme }) => theme.spacing.single};
@@ -22,6 +24,6 @@ export const ApplePayContainer = styled.TouchableOpacity<ApplePayProps>`
   `}
 `;
 export const ApplePayImage = styled.Image`
-  flex: 1;
-  resizemode: contain;
+  width: 100%;
+  height: 100%;
 `;

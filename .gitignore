@@ -66,3 +66,5 @@ web-build/
 *.hprof
 
 */project.pbxproj
+
+.env

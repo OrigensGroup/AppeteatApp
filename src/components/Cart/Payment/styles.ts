@@ -15,7 +15,11 @@ export const PaymentButtonContainer = styled.View`
   bottom: ${({ theme }) => theme.spacing.double};
 `;
 export const PaymentMethodsContainer = styled.View``;
+
 export const TextContainer = styled.View`
   margin-bottom: ${({ theme }) => theme.spacing.multiple(3)};
 `;
-export const HideCard = styled.View``;
+
+export const HideCard = styled.View`
+  width: ${({ theme }) => theme.spacing.double};
+`;

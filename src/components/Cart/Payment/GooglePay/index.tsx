@@ -10,7 +10,7 @@ interface GooglePayProps {
 const GooglePay: React.FunctionComponent<GooglePayProps> = ({ active, onClick }) => {
   return (
     <GooglePayContainer active={active} onPress={onClick}>
-      <GooglePayImage source={require('./../../../../img/GooglePay.png')} />
+      <GooglePayImage resizeMode="contain" source={require('./../../../../img/GooglePay.png')} />
     </GooglePayContainer>
   );
 };

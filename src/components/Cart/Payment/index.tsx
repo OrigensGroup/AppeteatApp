@@ -23,7 +23,7 @@ import {
 interface PaymentOptionProps {}
 
 const PaymentOption: React.FunctionComponent<PaymentOptionProps> = () => {
-  const [index, setIndex] = useState(5);
+  const [index, setIndex] = useState(0);
 
   return (
     <PaymentOptionContainer>

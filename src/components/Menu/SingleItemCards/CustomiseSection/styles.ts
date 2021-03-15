@@ -1,4 +1,3 @@
-import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 
 export const CustomiseSectionContainer = styled.View`
@@ -16,9 +15,5 @@ export const TitleRow = styled.View`
 export const IngredientsTitle = styled.View``;
 
 export const CustomiseTitle = styled.TouchableOpacity``;
-
-export const IngredientsList = (styled.FlatList`
-  margin-top: ${({ theme }) => theme.spacing.double};
-` as unknown) as typeof FlatList;
 
 export const Ingredient = styled.View``;
