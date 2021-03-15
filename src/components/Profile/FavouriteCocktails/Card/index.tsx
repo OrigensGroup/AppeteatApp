@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
@@ -7,13 +8,18 @@ import { CardContainer, DrinkImage, DrinkDesc, Container, DescriptionWrapper, Im
 
 interface CardProps {
   item: MenuItem;
-  onClick?: () => void;
 }
 
-const Card: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
+const Card: React.FunctionComponent<CardProps> = ({ item }) => {
+  const navigation = useNavigation();
+
+  const onCardClick = () => {
+    navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
+  };
+
   return (
     <CardContainer>
-      <Container onPress={onClick}>
+      <Container onPress={onCardClick}>
         <ImageContainer>
           <DrinkImage source={{ uri: item.image }} />
         </ImageContainer>

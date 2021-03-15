@@ -18,49 +18,80 @@ import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from 
 
 interface ManualLogInProps {}
 
+type LoopObject = {
+  [key: string]: string | null;
+};
+
 const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
   const theme = useTheme();
   const navigation = useNavigation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<LoopObject>({});
   const [loading, setLoading] = useState(false);
-
-  const login = () => {
-    navigation.navigate('App');
-  };
 
   const register = () => {
     navigation.navigate('Register');
   };
 
   const singIn = () => {
+    let errorCounter = 2;
     crashlytics().log('Log in attempt.');
     setLoading(true);
 
-    auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        setLoading(false);
-        login();
-      })
-      .catch((error) => {
-        setLoading(false);
+    if (email === '') {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['email']: loginTranslations.emailError.label,
+      }));
+    } else {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['email']: null,
+      }));
 
-        if (error.code === 'auth/invalid-email') {
-          Alert.alert(loginTranslations.errorSignInEmail.label);
-          return;
-        }
+      errorCounter = errorCounter - 1;
+    }
 
-        if (error.code === 'auth/wrong-password') {
-          Alert.alert(loginTranslations.errorWrongPasswordSignIn.label);
-          return;
-        }
+    if (password === '') {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['password']: loginTranslations.emailError.label,
+      }));
+    } else {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['password']: null,
+      }));
 
-        crashlytics().log('Log in failed.');
-        crashlytics().recordError(error);
-        console.error(error);
-      });
+      errorCounter = errorCounter - 1;
+    }
+
+    if (errorCounter === 0) {
+      auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          setLoading(false);
+        })
+        .catch((error) => {
+          setLoading(false);
+
+          if (error.code === 'auth/invalid-email') {
+            Alert.alert(loginTranslations.errorSignInEmail.label);
+            return;
+          }
+
+          if (error.code === 'auth/wrong-password') {
+            Alert.alert(loginTranslations.errorWrongPasswordSignIn.label);
+            return;
+          }
+
+          crashlytics().log('Log in failed.');
+          crashlytics().recordError(error);
+          console.error(error);
+        });
+    }
   };
 
   return (
@@ -73,12 +104,14 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = () => {
       <ManualLogInContainer>
         <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <LogInTextField
+            error={errors['email']}
             label={loginTranslations.emailField.label}
             placeholder={loginTranslations.emailField.placeholder}
             textContentType="emailAddress"
             updateValue={setEmail}
           />
           <LogInTextField
+            error={errors['password']}
             label={loginTranslations.passwordField.label}
             placeholder={loginTranslations.passwordField.placeholder}
             secondary

@@ -1,5 +1,7 @@
 import React from 'react';
-import Entypo from 'react-native-vector-icons/Entypo';
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useTheme } from 'styled-components';
 
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
@@ -8,13 +10,20 @@ import { Container, DrinkImage, DrinkDesc, IconWrap, FavouriteCoctailsCard, Imag
 
 interface FavCardProps {
   item: MenuItem;
-  onClick?: () => void;
 }
 
-const FavCard: React.FunctionComponent<FavCardProps> = ({ item, onClick }) => {
+const FavCard: React.FunctionComponent<FavCardProps> = ({ item }) => {
+  const theme = useTheme();
+
+  const navigation = useNavigation();
+
+  const onCardClick = () => {
+    navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
+  };
+
   return (
     <FavouriteCoctailsCard>
-      <Container onPress={onClick}>
+      <Container onPress={onCardClick}>
         <ImageContainer>
           <DrinkImage source={{ uri: item.image }} />
         </ImageContainer>
@@ -23,11 +32,11 @@ const FavCard: React.FunctionComponent<FavCardProps> = ({ item, onClick }) => {
             {item.title}
           </Text>
           <Text color="quartiary" fontSize={12}>
-            Sesso, Droga e Pastorizia
+            {item.description}
           </Text>
         </DrinkDesc>
         <IconWrap>
-          <Entypo color="red" name="heart" size={25} />
+          <Icon color={theme.colors.activeRed} name="ios-heart" size={25} />
         </IconWrap>
       </Container>
     </FavouriteCoctailsCard>

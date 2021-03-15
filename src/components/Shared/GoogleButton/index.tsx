@@ -4,6 +4,8 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
+import initUserData from '../../../utils/initUserData';
+
 import { ButtonContainer, GoogleImage } from './styles';
 
 GoogleSignin.configure({
@@ -22,8 +24,17 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
     // Sign-in the user with the credential
-    return auth()
+    auth()
       .signInWithCredential(googleCredential)
+      .then(() => {
+        const user = auth().currentUser;
+
+        if (user) {
+          initUserData(user.uid);
+        } else {
+          crashlytics().log("Couldn't setup user db");
+        }
+      })
       .catch((error) => {
         crashlytics().log('Google log in failed.');
         crashlytics().recordError(error);

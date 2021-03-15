@@ -24,7 +24,7 @@
     "@react-native-firebase/analytics": "^10.8.1",
     "@react-native-firebase/app": "^10.8.1",
     "@react-native-firebase/auth": "^10.8.1",
-    "@react-native-firebase/crashlytics": "^11.0.0",
+    "@react-native-firebase/crashlytics": "^10.8.1",
     "@react-native-firebase/firestore": "^10.8.1",
     "@react-native-google-signin/google-signin": "^6.0.0",
     "@react-navigation/bottom-tabs": "^5.11.7",

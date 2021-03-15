@@ -24,6 +24,7 @@ import LocationsProvider, { Locations } from './contexts/Locations';
 import getMenu from './utils/loadMenu';
 import useAuth from './hooks/useAuth';
 import getLocations from './utils/loadLocations';
+import UserProvider from './contexts/User';
 
 const Stack = createStackNavigator();
 
@@ -87,38 +88,40 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <LocationsProvider loadedLocations={locations}>
         <MenuProvider loadedMenu={menu}>
-          <CartProvider>
-            <NavigationContainer
-              //@ts-ignore
-              onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
-              onStateChange={async () => {
-                const previousRouteName = routeNameRef.current;
+          <UserProvider>
+            <CartProvider>
+              <NavigationContainer
                 //@ts-ignore
-                const currentRouteName = navigationRef.current.getCurrentRoute().name;
+                onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
+                onStateChange={async () => {
+                  const previousRouteName = routeNameRef.current;
+                  //@ts-ignore
+                  const currentRouteName = navigationRef.current.getCurrentRoute().name;
 
-                if (previousRouteName !== currentRouteName) {
-                  await analytics().logScreenView({
-                    screen_name: currentRouteName,
-                    screen_class: currentRouteName,
-                  });
-                }
+                  if (previousRouteName !== currentRouteName) {
+                    await analytics().logScreenView({
+                      screen_name: currentRouteName,
+                      screen_class: currentRouteName,
+                    });
+                  }
 
-                routeNameRef.current = currentRouteName;
-              }}
-              ref={navigationRef}
-            >
-              <Stack.Navigator headerMode="none">
-                {user == null ? (
-                  <>
-                    <Stack.Screen component={LoginScreen} name="Login" />
-                    <Stack.Screen component={Register} name="Register" />
-                  </>
-                ) : (
-                  <Stack.Screen component={TabBar} name="App" />
-                )}
-              </Stack.Navigator>
-            </NavigationContainer>
-          </CartProvider>
+                  routeNameRef.current = currentRouteName;
+                }}
+                ref={navigationRef}
+              >
+                <Stack.Navigator headerMode="none">
+                  {user == null ? (
+                    <>
+                      <Stack.Screen component={LoginScreen} name="Login" />
+                      <Stack.Screen component={Register} name="Register" />
+                    </>
+                  ) : (
+                    <Stack.Screen component={TabBar} name="App" />
+                  )}
+                </Stack.Navigator>
+              </NavigationContainer>
+            </CartProvider>
+          </UserProvider>
         </MenuProvider>
       </LocationsProvider>
     </ThemeProvider>

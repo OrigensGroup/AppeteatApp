@@ -9,20 +9,24 @@ import { MenuItem } from '../../../../types/MenuItem';
 
 import IconButton from '../../../shared/IconButton';
 
+import useUserData from '../../../../hooks/useUserData';
+
 import { CardContainer, ImageWrapper, DrinkImage, DrinkDesc, LikeButton, PropsWrapper } from './styles';
 
 interface CardProps {
   item: MenuItem;
-  onClick: () => void;
 }
 
-const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
+const MenuCard: React.FunctionComponent<CardProps> = ({ item }) => {
   const theme = useTheme();
+  const { userData } = useUserData();
   const navigation = useNavigation();
 
   const navigate = () => {
     navigation.navigate('SingleItem', { item });
   };
+
+  const iLikeThis = userData.favoriteCocktails.includes(item.id);
 
   return (
     <CardContainer onPress={navigate}>
@@ -42,9 +46,11 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
           </Text>
         </DrinkDesc>
       </PropsWrapper>
-      <LikeButton onPress={onClick}>
-        <IconButton color={theme.colors.textPrimary} iconName="heart-outline" size={20} />
-      </LikeButton>
+      {iLikeThis && (
+        <LikeButton>
+          <IconButton color={theme.colors.activeRed} iconName="md-heart" size={20} />
+        </LikeButton>
+      )}
     </CardContainer>
   );
 };

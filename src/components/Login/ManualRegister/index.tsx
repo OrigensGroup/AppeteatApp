@@ -13,6 +13,8 @@ import LogInButton from '../ManualLogIn/Buttons/LogInButton';
 import SignUpButton from '../ManualLogIn/Buttons/SignUpButton';
 import LogInInputField from '../LogInInputField';
 
+import initUserData from '../../../utils/initUserData';
+
 import {
   ManualLogInContainer,
   TextFieldsWrapper,
@@ -43,14 +45,10 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
     navigation.navigate('Login');
   };
 
-  const enter = () => {
-    navigation.navigate('App');
-  };
-
   const createUser = () => {
     setLoading(true);
     crashlytics().log('Sign in attempt.');
-    let errorCounter = 4;
+    let errorCounter = 5;
 
     if (username.length < 4) {
       setErrors((oldErrors) => ({
@@ -61,6 +59,20 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
       setErrors((oldErrors) => ({
         ...oldErrors,
         ['username']: null,
+      }));
+
+      errorCounter = errorCounter - 1;
+    }
+
+    if (email === '') {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['email']: loginTranslations.emailError.label,
+      }));
+    } else {
+      setErrors((oldErrors) => ({
+        ...oldErrors,
+        ['email']: null,
       }));
 
       errorCounter = errorCounter - 1;
@@ -112,8 +124,17 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
       auth()
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
-          setLoading(false);
-          enter();
+          const user = auth().currentUser;
+
+          if (user) {
+            initUserData(user.uid);
+
+            user.updateProfile({
+              displayName: username,
+            });
+          } else {
+            crashlytics().log("Couldn't setup user");
+          }
         })
         .catch((error) => {
           setLoading(false);
@@ -154,6 +175,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = () => {
             updateValue={setUsername}
           />
           <LogInInputField
+            error={errors['email']}
             label={loginTranslations.emailField.label}
             placeholder={loginTranslations.emailField.placeholder}
             textContentType="emailAddress"
