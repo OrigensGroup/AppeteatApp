@@ -1,5 +1,4 @@
 import React from 'react';
-import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from 'styled-components';
@@ -9,6 +8,8 @@ import { MenuItem } from '../../../../types/MenuItem';
 import IconButton from '../../../shared/IconButton';
 import Text from '../../../shared/Text';
 
+import useUserData from '../../../../hooks/useUserData';
+
 import { TitleWrapper, CardsHeaderContainer } from './styles';
 
 interface CardsHeaderProps {
@@ -17,11 +18,18 @@ interface CardsHeaderProps {
 
 const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
   const theme = useTheme();
+  const { addNewFavoriteCocktail, userData } = useUserData();
   const navigation = useNavigation();
 
   const navigate = () => {
     navigation.goBack();
   };
+
+  const addNew = (item: MenuItem) => () => {
+    addNewFavoriteCocktail(item);
+  };
+
+  const iLikeThis = userData.favoriteCocktails.includes(item.id);
 
   return (
     <CardsHeaderContainer>
@@ -32,9 +40,9 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
         </Text>
       </TitleWrapper>
       <IconButton
-        color={theme.colors.textPrimary}
-        iconName="md-heart-outline"
-        onClick={() => Alert.alert('You like this!')}
+        color={!iLikeThis ? theme.colors.textPrimary : theme.colors.activeRed}
+        iconName={!iLikeThis ? 'md-heart-outline' : 'md-heart'}
+        onClick={addNew(item)}
         size={24}
       />
     </CardsHeaderContainer>

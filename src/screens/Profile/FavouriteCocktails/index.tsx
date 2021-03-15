@@ -3,6 +3,7 @@ import { Dimensions, View, FlatList } from 'react-native';
 
 import FavCard from '../../../components/Profile/FavouriteCocktails/FavCard';
 import useMenu from '../../../hooks/useMenu';
+import useUserData from '../../../hooks/useUserData';
 import { MenuItem } from '../../../types/MenuItem';
 
 import { FavouriteCocktailsContainer } from './styles';
@@ -11,7 +12,8 @@ interface FavouriteCocktailsProps {}
 
 const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () => {
   const { width } = Dimensions.get('window');
-  const { menu } = useMenu();
+  const { findMenuItems } = useMenu();
+  const { userData } = useUserData();
 
   const renderItem = ({ item }: { item: MenuItem }) => (
     <View style={{ width: width / 2 }}>
@@ -19,8 +21,8 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
     </View>
   );
 
-  const favoriteCocktails = menu.items.filter((menuItem) => menuItem.promoted);
-  const numberColumn = menu.items.length === 1 ? 1 : 2;
+  const favoriteCocktails = findMenuItems(userData.favoriteCocktails);
+  const numberColumn = favoriteCocktails.length === 1 ? 1 : 2;
 
   return (
     <FavouriteCocktailsContainer>

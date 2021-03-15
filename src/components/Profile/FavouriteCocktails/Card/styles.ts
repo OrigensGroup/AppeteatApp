@@ -8,11 +8,11 @@ export const Container = styled.TouchableOpacity`
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
 
-  border-radius:${({ theme }) => theme.spacing.double};
+  border-radius: ${({ theme }) => theme.spacing.double};
   border-color: ${({ theme }) => theme.colors.border};
 
-  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} ${({ theme }) =>
-  theme.spacing.half} ${({ theme }) => theme.spacing.double}};
+  margin: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.spacing.half} ${({ theme }) => theme.spacing.double};
 `;
 
 export const CardContainer = styled.View``;
