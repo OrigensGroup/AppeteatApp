@@ -26,6 +26,9 @@ const cartTranslations = {
   goToCheckoutCta: {
     title: 'Go To Checkout',
   },
+  goToPayment: {
+    title: 'Go to payment',
+  },
   updateModal: {
     price: 'Price:',
     cta: 'Update',
@@ -43,6 +46,25 @@ const cartTranslations = {
   priceModalField: {
     label: 'Price',
     placeholder: 'Price £',
+  },
+  tableNumber: {
+    label: 'Enter your table number',
+    placeholder: 'Eg. 23',
+  },
+  takeAway: {
+    placeholder: 'Take Away',
+  },
+  SelectService: {
+    title: 'Take Away',
+  },
+  pay: {
+    title: 'Pay',
+  },
+  paymentMethods: {
+    title: 'Payment Methods',
+  },
+  cardDetails: {
+    title: 'Card Details',
   },
 };
 
