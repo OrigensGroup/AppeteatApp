@@ -180,8 +180,8 @@ android {
             // see https://reactnative.dev/docs/signed-apk-android.
             firebaseCrashlytics {
                 nativeSymbolUploadEnabled true
-                strippedNativeLibsDir "build/ndklibs/obj"
-                unstrippedNativeLibsDir "build/ndklibs/libs"
+                strippedNativeLibsDir "$buildDir/ndklibs/obj"
+                unstrippedNativeLibsDir "$buildDir/ndklibs/libs"
             }
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
