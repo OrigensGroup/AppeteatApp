@@ -32,7 +32,7 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
       <HappyHourMenuContainer>
         <MenuTopBar hideFilter title={happyHourTranslations.headerTitle.label} />
         <HappyHourMenuHeader>
-          <HappyHourPromotionCard endDate="Wed Feb 10 2021 15:36:55 GMT+0000" happyHour happyHourSize />
+          <HappyHourPromotionCard disabled endDate="Wed Feb 10 2021 15:36:55 GMT+0000" happyHour happyHourSize />
         </HappyHourMenuHeader>
         <HappyHourMenuSection>
           <HappyHourMenuItemsContainer>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { MenuItem } from '../../../../types/MenuItem';
+import { DataItem, MenuItem } from '../../../../types/MenuItem';
 import CardsHeader from '../CardsHeader';
 import ItemPicture from '../ItemPicture';
 import ItemDescription from '../ItemDescription';
@@ -14,7 +14,7 @@ interface ItemWithExtrasProps {
 }
 
 const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ item }) => {
-  const [extras, setExtras] = useState({});
+  const [extras, setExtras] = useState<DataItem[]>([]);
 
   return (
     <ItemWithExtrasContainer>

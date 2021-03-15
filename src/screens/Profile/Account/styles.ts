@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const SafeAreaBottom = styled.SafeAreaView`
+export const SafeArea = styled.SafeAreaView`
   flex: 1;
 `;
 
@@ -17,15 +17,27 @@ export const NavigationContainer = styled.View`
 `;
 
 export const FavouriteCocktailsContainer = styled.View`
-  margin: ${({ theme }) => theme.spacing.single} 0 ${({ theme }) => theme.spacing.double} 0;
+  margin-top: ${({ theme }) => theme.spacing.double};
+`;
+
+export const FavouriteCocktailsTextContainer = styled.View`
+  margin-left: ${({ theme }) => theme.spacing.double};
+  margin-right: ${({ theme }) => theme.spacing.double};
+  margin-bottom: ${({ theme }) => theme.spacing.double};
 `;
 
 export const Content = styled.ScrollView`
   border-top-right-radius: ${({ theme }) => theme.spacing.multiple(5)};
   border-top-left-radius: ${({ theme }) => theme.spacing.multiple(5)};
   background-color: ${({ theme }) => theme.colors.backgroundColor};
-  height: 100%;
+  flex: 1;
 `;
+
+// export const Content = styled.View`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// `;
 
 export const ImageContainer = styled.View`
   width: 100%;
@@ -51,9 +63,9 @@ export const NameContainer = styled.View`
 
 export const ShowButton = styled.TouchableOpacity`
   display: flex;
-  justify-content: flex-end;
-  margin-right: ${({ theme }) => theme.spacing.single};
+  justify-content: center;
 `;
+
 export const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,

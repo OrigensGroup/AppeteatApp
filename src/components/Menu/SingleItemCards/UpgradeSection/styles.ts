@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const UpgradeSectionContainer = styled.View`
   flex: 1;
+  padding-bottom: ${({ theme }) => theme.spacing.multiple(8)};
 `;
 
 export const UpgradeItemList = styled.SectionList`
@@ -41,4 +42,8 @@ export const TitleItem = styled.View`
 
 export const PriceItem = styled.View`
   margin-right: ${({ theme }) => theme.spacing.single};
+`;
+
+export const ItemInfo = styled.TouchableOpacity`
+  margin-right: ${({ theme }) => theme.spacing.half};
 `;

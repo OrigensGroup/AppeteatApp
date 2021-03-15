@@ -21,12 +21,14 @@ interface CartItemProps {
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
   const itemExtras = () => {
-    item.extras &&
+    return (
+      item.extras &&
       item.extras.map((extra) => (
-        <Text color="tertiary" fontSize={14} key={extra} light>
-          {extra}
+        <Text color="tertiary" fontSize={14} key={extra.id} light>
+          {extra.title}
         </Text>
-      ));
+      ))
+    );
   };
 
   return (
@@ -41,12 +43,12 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
           <Text bold color="primary" fontSize={18}>
             {item.title}
           </Text>
-          <CartItemCustomisation>{itemExtras}</CartItemCustomisation>
+          <CartItemCustomisation>{itemExtras()}</CartItemCustomisation>
         </CartItemTitle>
         <CartItemPrice>
           <Text bold color="primary" fontSize={18}>
             {currencyTranslations.currencyField.placeholder}
-            {item.price * item.quantity}
+            {(item.price + item.extras.reduce((acc, extra) => acc + extra.price, 0)) * item.quantity}
           </Text>
         </CartItemPrice>
       </CartItemInfo>

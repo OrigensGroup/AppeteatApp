@@ -12,7 +12,7 @@ import Text from '../../shared/Text';
 
 import Card from './Card';
 
-import { FavouriteCocktailsContainer, TitleContainer, ShowButton } from './styles';
+import { FavouriteCocktailsContainer, TitleContainer, ShowButton, TextContainer } from './styles';
 
 interface FavouriteCocktailsProps {}
 
@@ -34,16 +34,18 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
 
   return (
     <FavouriteCocktailsContainer>
-      <TitleContainer>
-        <Text color="primary" fontSize={18}>
-          {accountTranslations.accountPage.myFavouriteCoctails}
-        </Text>
-        <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
-          <Text color="tertiary" fontSize={16}>
-            {accountTranslations.accountPage.showButton}
+      <TextContainer>
+        <TitleContainer>
+          <Text color="primary" fontSize={18}>
+            {accountTranslations.accountPage.myFavouriteCoctails}
           </Text>
-        </ShowButton>
-      </TitleContainer>
+          <ShowButton onPress={() => navigation.navigate('FavouriteCocktails')}>
+            <Text color="tertiary" fontSize={16}>
+              {accountTranslations.accountPage.showButton}
+            </Text>
+          </ShowButton>
+        </TitleContainer>
+      </TextContainer>
       <FlatList
         contentContainerStyle={{ paddingRight: 16 }}
         data={favoriteCocktails}

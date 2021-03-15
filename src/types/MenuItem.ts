@@ -3,6 +3,7 @@ export type DataItem = {
   title: string;
   price: number;
   selected: boolean;
+  explanation?: string;
 };
 
 export type UpgradeItem = {

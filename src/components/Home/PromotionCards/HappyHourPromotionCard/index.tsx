@@ -23,9 +23,11 @@ interface HappyHourPromotionCardProps {
   endDate: string;
   happyHour?: boolean;
   happyHourSize?: boolean;
+  disabled?: boolean;
 }
 
 const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({
+  disabled,
   endDate,
   happyHour,
   happyHourSize,
@@ -89,7 +91,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   });
 
   return (
-    <HappyHourPromotionCardContainer happyHourSize={happyHourSize} onPress={navigate}>
+    <HappyHourPromotionCardContainer disabled={disabled} happyHourSize={happyHourSize} onPress={navigate}>
       <LinearGradient
         colors={[theme.colors.active, theme.colors.secondaryActive]}
         end={{ x: 1, y: 1 }}

@@ -6,7 +6,7 @@ import { TitleText, TitleContainer } from './styles';
 
 interface TextProps {
   fontSize: number;
-  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor' | 'fixedWhite' | 'fixedBlack';
+  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor' | 'fixedWhite' | 'fixedBlack' | 'subtitles';
   bold?: boolean;
   light?: boolean;
   align?: string;
