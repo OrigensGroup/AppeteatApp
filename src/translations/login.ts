@@ -51,6 +51,9 @@ const loginTranslations = {
   emailAlreayInUse: {
     label: 'That email address is already in use!',
   },
+  emailError: {
+    label: 'Email must not be empty',
+  },
 };
 
 export default loginTranslations;
