@@ -1,17 +1,19 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, useColorScheme } from 'react-native';
 import MapView, { Region } from 'react-native-maps';
 
-// import { mapStyle } from '../../../utils/mapstyle';
+import { mapStyle } from '../../../utils/mapstyle';
 
 interface MapProps {
   initial: Region;
 }
 
 const Map: React.FunctionComponent<MapProps> = ({ initial }) => {
+  const mode = useColorScheme();
+
   return (
     <MapView
-      followsUserLocation
+      customMapStyle={mode === 'dark' ? mapStyle : undefined}
       pitchEnabled={false}
       region={initial}
       rotateEnabled={false}
@@ -19,7 +21,6 @@ const Map: React.FunctionComponent<MapProps> = ({ initial }) => {
       showsUserLocation
       style={{ ...StyleSheet.absoluteFillObject, bottom: -30 }}
       zoomEnabled={false}
-      //customMapStyle={mapStyle}
     />
   );
 };

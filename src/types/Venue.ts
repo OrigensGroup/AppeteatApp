@@ -5,5 +5,7 @@ export type Venue = {
   image: string;
   latitude: number;
   longitude: number;
+  latitudeDelta: number;
+  longitudeDelta: number;
   phoneNumber: string;
 };

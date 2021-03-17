@@ -1,5 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.oriensgroup.stg">
-  <uses-permission android:name="android.permission.INTERNET"/>
   <!-- OPTIONAL PERMISSIONS, REMOVE WHATEVER YOU DO NOT NEED -->
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -70,18 +69,17 @@
     <meta-data
       android:name="com.google.android.gms.wallet.api.enabled"
       android:value="true" />
-      </application>
-    <activity
+        <activity
           android:exported="true"
           android:launchMode="singleTask"
           android:name="expo.modules.payments.stripe.RedirectUriReceiver"
           android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-          <intent-filter>
-              <action android:name="android.intent.action.VIEW" />
-              <category android:name="android.intent.category.DEFAULT" />
-              <category android:name="android.intent.category.BROWSABLE" />
-
-              <data android:scheme="exp9d1ea7e1de174f31828a156ea7a38e11" />
-          </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="exp9d1ea7e1de174f31828a156ea7a38e11" />
+        </intent-filter>
       </activity>
+  </application>
 </manifest>

@@ -23,7 +23,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ item }) => {
   const navigation = useNavigation();
 
   const navigate = () => {
-    navigation.navigate('SingleItem', { item });
+    navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
   };
 
   const iLikeThis = userData.favoriteCocktails.includes(item.id);

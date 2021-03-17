@@ -10,38 +10,19 @@ import DiscountPromotionCard from '../PromotionCards/DiscountPromotionCard';
 
 import ImagePromotion from '../PromotionCards/ImagePromotion';
 
+import { Promotion } from '../../../types/Promotion';
+import useMenu from '../../../hooks/useMenu';
+
 import { CarouselContainer, Container } from './styles';
 
 interface CarouselPromoProps {}
 
 const sliderWidth = Dimensions.get('window').width;
 
-const DATA: any[] = [
-  {
-    id: '9',
-    title: 'Third Item',
-    endDate: 'March 1 2021 18:30:00 GMT+0000',
-    type: 'happyhour',
-  },
-  {
-    id: '17',
-    title: 'First Item',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToUP1IEZFfaiwUAZtPSwqKvPBUNNF-emr-DA&usqp=CAU',
-    type: 'image',
-  },
-  {
-    id: '8',
-    description: 'Discount on all selected drinks!',
-    title: '15% off all drink!',
-    image:
-      'https://www.liquor.com/thmb/WjB8S0yKOpreI1-WHrcdWToVAN8=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/neighborhood-negroni-720x720-primary-727f7dc3a5d04a298d63977679efe856.jpg',
-    type: 'discount',
-  },
-];
-
 const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
   const theme = useTheme();
   const [activeSlide, setActiveSlide] = useState(0);
+  const { promotions } = useMenu();
 
   const pagination = () => {
     return (
@@ -54,7 +35,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
           borderRadius: 5,
           backgroundColor: theme.colors.active,
         }}
-        dotsLength={DATA.length}
+        dotsLength={promotions.list.length}
         inactiveDotOpacity={0.4}
         inactiveDotScale={1}
         inactiveDotStyle={{
@@ -64,7 +45,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
     );
   };
 
-  const renderItem = ({ item }: { item: any }) => {
+  const renderItem = ({ item }: { item: Promotion }) => {
     if (item.type === 'discount') {
       return (
         <Container>
@@ -73,10 +54,10 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
       );
     }
 
-    if (item.type === 'happyhour') {
+    if (item.type === 'countdown') {
       return (
         <Container>
-          <HappyHourPromotionCard endDate={item.endDate} />
+          <HappyHourPromotionCard item={item} />
         </Container>
       );
     }
@@ -95,7 +76,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
   return (
     <CarouselContainer>
       <Carousel
-        data={DATA}
+        data={promotions.list}
         itemWidth={sliderWidth}
         onSnapToItem={setIndex}
         renderItem={renderItem}

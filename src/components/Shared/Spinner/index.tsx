@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 import InputSpinner from 'react-native-input-spinner';
-import { Vibration } from 'react-native';
 
 interface InputSpinnerProps {
   initialValue: number;
@@ -40,8 +39,6 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
       max={99}
       min={0.0}
       onChange={onChange}
-      onDecrease={Vibration.vibrate}
-      onIncrease={Vibration.vibrate}
       step={1}
       textColor={theme.colors.textPrimary}
       value={initialValue}

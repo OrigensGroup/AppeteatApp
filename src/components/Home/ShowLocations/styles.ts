@@ -4,7 +4,7 @@ interface ButtonContainerProps {
   secondary?: boolean;
 }
 
-export const LocationContainer = styled.TouchableOpacity`
+export const LocationContainer = styled.View`
   display: flex;
   flex-direction: row;
   position: relative;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Animated, Dimensions } from 'react-native';
+import { StyleSheet, View, Animated, Dimensions, useColorScheme } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
 
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
 });
 
 const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
+  const mode = useColorScheme();
   const mapRef = useRef<MapView>(null);
   const [animation] = useState(new Animated.Value(0));
   const [isModalVisible, setModalVisible] = useState(false);
@@ -134,7 +135,13 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   return (
     <View style={styles.container}>
       <BookATableModal isModalVisible={isModalVisible} onClose={closeModal} venue={venueToBook} />
-      <MapView customMapStyle={mapStyle} ref={mapRef} region={region} showsUserLocation style={styles.container}>
+      <MapView
+        customMapStyle={mode === 'dark' ? mapStyle : undefined}
+        ref={mapRef}
+        region={region}
+        showsUserLocation
+        style={styles.container}
+      >
         {venues.map((marker, index) => {
           const scaleStyle = {
             transform: [

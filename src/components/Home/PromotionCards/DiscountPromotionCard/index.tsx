@@ -6,6 +6,8 @@ import Text from '../../../shared/Text';
 
 import homeTranslations from '../../../../translations/home';
 
+import { Promotion } from '../../../../types/Promotion';
+
 import {
   DiscountPromotionContainer,
   DiscountPromotionImage,
@@ -15,14 +17,8 @@ import {
   DiscountPromotionOrderButton,
 } from './styles';
 
-type DiscountCardItem = {
-  title: string;
-  description: string;
-  image: string;
-};
-
 interface DiscountPromotionCardProps {
-  item: DiscountCardItem;
+  item: Promotion;
 }
 
 //MAX DESCRIPTION 163 chars

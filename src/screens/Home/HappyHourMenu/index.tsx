@@ -2,13 +2,16 @@ import React from 'react';
 
 import { FlatList } from 'react-native';
 
+import { useRoute } from '@react-navigation/native';
+
 import useMenu from '../../../hooks/useMenu';
 import HappyHourPromotionCard from '../../../components/Home/PromotionCards/HappyHourPromotionCard';
 import { MenuItem } from '../../../types/MenuItem';
 import MenuCard from '../../../components/Menu/MenuSwiper/MenuCards';
-import happyHourTranslations from '../../../translations/happyhour';
 
 import MenuTopBar from '../../../components/Menu/MenuTopBar';
+
+import { Promotion } from '../../../types/Promotion';
 
 import {
   HappyHourMenuContainer,
@@ -25,14 +28,18 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
 
   const happyhourItems = menu.items.filter((item) => item.promoted);
 
-  const flatlistRender = ({ item }: { item: MenuItem }) => <MenuCard item={item} onClick={() => console.log('test')} />;
+  const flatlistRender = ({ item }: { item: MenuItem }) => <MenuCard item={item} />;
+
+  const route = useRoute();
+
+  const { item } = route.params as { item: Promotion };
 
   return (
     <SafeArea>
       <HappyHourMenuContainer>
-        <MenuTopBar hideFilter title={happyHourTranslations.headerTitle.label} />
+        <MenuTopBar hideFilter title={item.title} />
         <HappyHourMenuHeader>
-          <HappyHourPromotionCard disabled endDate="Wed Feb 10 2021 15:36:55 GMT+0000" happyHour happyHourSize />
+          <HappyHourPromotionCard disabled happyHour happyHourSize item={item} />
         </HappyHourMenuHeader>
         <HappyHourMenuSection>
           <HappyHourMenuItemsContainer>

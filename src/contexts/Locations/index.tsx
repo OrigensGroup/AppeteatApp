@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 
-import { Venue } from '../../types/Venue';
-
-export interface Locations {
-  list: Venue[];
-}
+import { Locations } from '../../types/Bar';
 
 interface LocationsContext {
   locations: Locations;

@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'styled-components';
 
 import homeTranslations from '../../../../translations/home';
+import { Promotion } from '../../../../types/Promotion';
 
 import Text from '../../../shared/Text';
 
@@ -20,7 +21,7 @@ import {
 } from './styles';
 
 interface HappyHourPromotionCardProps {
-  endDate: string;
+  item: Promotion;
   happyHour?: boolean;
   happyHourSize?: boolean;
   disabled?: boolean;
@@ -28,16 +29,16 @@ interface HappyHourPromotionCardProps {
 
 const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({
   disabled,
-  endDate,
   happyHour,
   happyHourSize,
+  item,
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
   const interval = useRef<NodeJS.Timeout>();
 
-  const [countdown, setCountdown] = useState(() => {
-    const end = Date.parse(endDate);
+  const calculateCountdown = useCallback(() => {
+    const end = Date.parse(item.endDate || new Date().toString());
     const now = Date.parse(new Date().toString());
 
     if (end < now) {
@@ -45,42 +46,28 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
     }
 
     return end - now;
-  });
+  }, [item.endDate]);
+
+  const [countdown, setCountdown] = useState(() => calculateCountdown());
 
   const navigate = () => {
-    navigation.navigate('HappyHourMenu');
+    navigation.navigate('HappyHourMenu', { item });
   };
 
-  const getTimeRemaining = () => {
-    const end = Date.parse(endDate);
-    const now = Date.parse(new Date().toString());
-
-    const newCountdownValue = end < now ? 0 : end - now;
-    const seconds = Math.floor((newCountdownValue / 1000) % 60);
-    const minutes = Math.floor((newCountdownValue / 1000 / 60) % 60);
-    const hours = Math.floor((newCountdownValue / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(newCountdownValue / (1000 * 60 * 60 * 24));
-
-    setCountdown(newCountdownValue);
-
-    return {
-      newCountdownValue,
-      days,
-      hours,
-      minutes,
-      seconds,
-    };
-  };
-
-  const startTimer = () => {
+  const startTimer = useCallback(() => {
     interval.current = setInterval(() => {
       if (countdown <= 0) {
         if (interval.current) clearInterval(interval.current);
       }
 
-      getTimeRemaining();
+      const end = Date.parse(item.endDate || new Date().toString());
+      const now = Date.parse(new Date().toString());
+
+      const newCountdownValue = end < now ? 0 : end - now;
+
+      setCountdown(newCountdownValue);
     }, 1000);
-  };
+  }, [item.endDate, countdown]);
 
   useEffect(() => {
     startTimer();
@@ -88,7 +75,11 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
     return () => {
       if (interval.current) clearInterval(interval.current);
     };
-  });
+  }, [startTimer]);
+
+  useEffect(() => {
+    calculateCountdown();
+  }, [item.endDate, calculateCountdown]);
 
   return (
     <HappyHourPromotionCardContainer disabled={disabled} happyHourSize={happyHourSize} onPress={navigate}>
@@ -101,7 +92,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
         {!happyHour && (
           <HappyHourTitleContainer>
             <Text align="center" color="fixedWhite" fontSize={24}>
-              {homeTranslations.happyHourCard.title}
+              {item.title}
             </Text>
           </HappyHourTitleContainer>
         )}

@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const AddToBasketButtonWrapper = styled.View`
   position: absolute;
-  bottom: ${({ theme }) => theme.spacing.triple};
+  bottom: ${({ theme }) => (theme.os === 'ios' ? theme.spacing.triple : theme.spacing.double)};
   left: 0;
   right: 0;
   width: 100%;

@@ -24,8 +24,8 @@ interface ExplanationModalProps {
   onClose: () => void;
   title: string;
   description?: string;
-  placeholderTextColor: string;
-  placeholder: string;
+  placeholderTextColor?: string;
+  placeholder?: string;
 }
 
 const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
@@ -52,7 +52,7 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
             <IconButton color={theme.colors.fixedBlack} iconName="ios-close" onClick={onClose} size={28} />
           </CloseIconWrapper>
         </ModalTopRow>
-        {description ? (
+        {!placeholderTextColor ? (
           <ModalDescription>
             <Text color="fixedBlack" fontSize={14}>
               {description}

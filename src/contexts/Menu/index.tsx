@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 
-import { MenuItem } from '../../types/MenuItem';
-import { Tab } from '../../types/Tab';
+import { Menu, Promotions } from '../../types/Bar';
 
-export interface Menu {
-  items: MenuItem[];
-  tabs: Tab[];
-}
+import { MenuItem } from '../../types/MenuItem';
 
 interface MenuContext {
   menu: Menu;
   findMenuItems: (id: string[]) => MenuItem[];
+  promotions: Promotions;
 }
 
 export const MenuContext = React.createContext<MenuContext>({
   menu: { items: [], tabs: [] },
   findMenuItems: () => [],
+  promotions: { list: [] },
 });
 
 interface MenuProviderProps {
   loadedMenu: Menu;
+  loadedPromotions: Promotions;
 }
 
-const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ children, loadedMenu }) => {
+const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ children, loadedMenu, loadedPromotions }) => {
   const [menu] = useState<Menu>(loadedMenu);
 
   const findMenuItems = (items: string[]) => {
@@ -34,6 +33,7 @@ const MenuProvider: React.FunctionComponent<MenuProviderProps> = ({ children, lo
       value={{
         menu,
         findMenuItems,
+        promotions: loadedPromotions,
       }}
     >
       {children}
