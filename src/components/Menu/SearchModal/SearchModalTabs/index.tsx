@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
-import FilterModalTab from './FilterModalTab';
+import FilterModalTab from './SearchModalTab';
 
 import { FilterTabsContainer } from './styles';
 

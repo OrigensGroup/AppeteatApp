@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import SwiperPage from '../../../components/Menu/MenuSwiper/SwiperPage';
 import MenuTabs from '../../../components/Menu/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/ViewBasketButton';
-import FilterModal from '../../../components/Menu/FilterModal';
+import SearchModal from '../../../components/Menu/SearchModal';
 import useMenu from '../../../hooks/useMenu';
 import MenuTopBar from '../../../components/Menu/MenuTopBar';
 
@@ -67,7 +67,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
             {menuTabsContent()}
           </Swiper>
           {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
-          <FilterModal isModalVisible={isModalVisible} onClick={closeModal} onClose={closeModal} />
+          <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
         </MenuWrapper>
       </SafeAreaViewBottom>
     </>

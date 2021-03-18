@@ -14,15 +14,17 @@ import useUserData from '../../../../hooks/useUserData';
 import { CardContainer, ImageWrapper, DrinkImage, DrinkDesc, LikeButton, PropsWrapper } from './styles';
 
 interface CardProps {
+  onClick?: () => void;
   item: MenuItem;
 }
 
-const MenuCard: React.FunctionComponent<CardProps> = ({ item }) => {
+const MenuCard: React.FunctionComponent<CardProps> = ({ item, onClick }) => {
   const theme = useTheme();
   const { userData } = useUserData();
   const navigation = useNavigation();
 
   const navigate = () => {
+    onClick && onClick();
     navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
   };
 

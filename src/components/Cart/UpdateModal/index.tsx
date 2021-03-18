@@ -18,9 +18,6 @@ interface UpdateModalProps {
   item: OrderItem | null;
   isModalVisible: boolean;
   onClose: () => void;
-  // data: any;
-  // rowMap: any;
-  // itemId: string;
 }
 
 const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible, item, onClose }) => {

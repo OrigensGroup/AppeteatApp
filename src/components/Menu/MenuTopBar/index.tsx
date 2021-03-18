@@ -34,7 +34,7 @@ const MenuTopBar: React.FunctionComponent<MenuTopBarProps> = ({ hideFilter, hide
         </TitleWrapper>
       )}
       {!hideFilter ? (
-        <IconButton color={theme.colors.textPrimary} iconName="filter" onClick={onClick} size={24} />
+        <IconButton color={theme.colors.textPrimary} iconName="search" onClick={onClick} size={24} />
       ) : (
         <EmptyDiv />
       )}
