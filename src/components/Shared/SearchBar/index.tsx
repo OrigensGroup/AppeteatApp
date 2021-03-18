@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import IconButton from '../IconButton';
@@ -6,6 +6,7 @@ import IconButton from '../IconButton';
 import { SearchBarWrapper, SearchButtonWrapper, SearchFieldInput } from './styles';
 
 interface SearchBarProps {
+  value: string;
   onUpdateText: (t: string) => void;
   onClick?: () => void;
   placeholder?: string;
@@ -17,9 +18,14 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = ({
   onUpdateText,
   placeholder,
   textContentType,
+  value,
 }) => {
   const theme = useTheme();
   const [text, setText] = useState<string>('');
+
+  useEffect(() => {
+    setText(value);
+  }, [value]);
 
   const updateText = (newText: string) => {
     onUpdateText(newText);
@@ -34,6 +40,7 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = ({
         onChangeText={updateText}
         placeholder={placeholder}
         textContentType={textContentType}
+        value={text}
       />
       <SearchButtonWrapper>
         <IconButton color={theme.colors.textPrimary} iconName="search" onClick={onClick} size={24} />

@@ -3,6 +3,8 @@ import Modal from 'react-native-modal';
 
 import { FlatList } from 'react-native-gesture-handler';
 
+import { View } from 'react-native';
+
 import Text from '../../shared/Text';
 
 import SearchBar from '../../shared/SearchBar';
@@ -10,6 +12,8 @@ import useMenu from '../../../hooks/useMenu';
 import MenuCard from '../MenuSwiper/MenuCards';
 import ViewCta from '../../shared/ViewCta';
 import { MenuItem } from '../../../types/MenuItem';
+
+import searchModal from '../../../translations/searchModal';
 
 import {
   SearchPopUpContainer,
@@ -29,7 +33,9 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
   const { menu } = useMenu();
   const [searchItem, setSearchItem] = useState('');
 
-  const itemsToShow = menu.items.filter((item) => item.title.toLowerCase().includes(searchItem.toLowerCase()));
+  const itemsToShow = menu.items.filter((item) =>
+    JSON.stringify(item).toLowerCase().includes(searchItem.toLowerCase())
+  );
 
   const closeModal = () => {
     setSearchItem('');
@@ -52,17 +58,30 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
       <SearchPopUpContainer>
         <TitleWrapper>
           <Text bold color="primary" fontSize={18}>
-            Search items
+            {searchModal.searchTitle.title}
           </Text>
         </TitleWrapper>
-        <SearchBar onUpdateText={setSearchItem} placeholder="Search items..." textContentType="none" />
+        <SearchBar
+          onUpdateText={setSearchItem}
+          placeholder={searchModal.searchInput.placeholder}
+          textContentType="none"
+          value={searchItem}
+        />
         <DivLine />
         <SearchModalBottomBar>
-          <FlatList data={itemsToShow} renderItem={renderItem} style={{ width: '100%', paddingTop: 16 }} />
+          {searchItem !== '' ? (
+            <FlatList data={itemsToShow} renderItem={renderItem} style={{ width: '100%', paddingTop: 16 }} />
+          ) : (
+            <View style={{ width: '100%', flex: 1, display: 'flex', alignItems: 'center', marginTop: 24 }}>
+              <Text bold color="primary" fontSize={18}>
+                No items found
+              </Text>
+            </View>
+          )}
           <SearchModalBottomBarWrapper>
             <ViewCta onClick={closeModal}>
               <Text bold color="secondary" fontSize={18}>
-                Close
+                {searchModal.closeCta.label}
               </Text>
             </ViewCta>
           </SearchModalBottomBarWrapper>
