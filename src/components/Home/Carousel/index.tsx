@@ -11,18 +11,31 @@ import DiscountPromotionCard from '../PromotionCards/DiscountPromotionCard';
 import ImagePromotion from '../PromotionCards/ImagePromotion';
 
 import { Promotion } from '../../../types/Promotion';
-import useMenu from '../../../hooks/useMenu';
 
 import { CarouselContainer, Container } from './styles';
 
-interface CarouselPromoProps {}
+interface CarouselPromoProps {
+  promotions: Promotion[];
+}
 
 const sliderWidth = Dimensions.get('window').width;
 
-const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
+const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({ promotions }) => {
   const theme = useTheme();
   const [activeSlide, setActiveSlide] = useState(0);
-  const { promotions } = useMenu();
+
+  const promotionsItems = promotions.filter((item) => {
+    if (item.endDate) {
+      const end = Date.parse(item.endDate);
+      const now = Date.parse(item.startDate);
+
+      if (end < now) {
+        return false;
+      }
+    }
+
+    return true;
+  });
 
   const pagination = () => {
     return (
@@ -35,7 +48,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
           borderRadius: 5,
           backgroundColor: theme.colors.active,
         }}
-        dotsLength={promotions.list.length}
+        dotsLength={promotionsItems.length}
         inactiveDotOpacity={0.4}
         inactiveDotScale={1}
         inactiveDotStyle={{
@@ -76,7 +89,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = () => {
   return (
     <CarouselContainer>
       <Carousel
-        data={promotions.list}
+        data={promotionsItems}
         itemWidth={sliderWidth}
         onSnapToItem={setIndex}
         renderItem={renderItem}

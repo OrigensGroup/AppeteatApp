@@ -26,6 +26,8 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
     setAmount(amount);
   };
 
+  const price = fixDecimals((item.price + extras.reduce((acc, extra) => acc + extra.price, 0)) * amount);
+
   const onClick = () => {
     addItemToCart({ ...item, quantity: amount, extras });
     navigation.goBack();
@@ -42,7 +44,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
             {singleDrinkTranslations.viewBasketButtonField.placeholder}
           </Text>
           <Text bold color="fixedWhite" fontSize={18}>
-            + {fixDecimals((item.price + extras.reduce((acc, extra) => acc + extra.price, 0)) * amount)}
+            + {price}
           </Text>
         </ViewCta>
       </ViewCtaButton>

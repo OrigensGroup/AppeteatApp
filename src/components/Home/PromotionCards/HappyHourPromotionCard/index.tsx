@@ -39,14 +39,14 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
 
   const calculateCountdown = useCallback(() => {
     const end = Date.parse(item.endDate || new Date().toString());
-    const now = Date.parse(new Date().toString());
+    const start = Date.parse(item.startDate || new Date().toString());
 
-    if (end < now) {
+    if (end < start) {
       return 0;
     }
 
-    return end - now;
-  }, [item.endDate]);
+    return end - start;
+  }, [item.endDate, item.startDate]);
 
   const [countdown, setCountdown] = useState(() => calculateCountdown());
 
