@@ -12,7 +12,7 @@ import IconButton from '../../../shared/IconButton';
 import useUserData from '../../../../hooks/useUserData';
 
 import { Discount } from '../../../../types/DiscountRules';
-import { fixDecimals } from '../../../../contexts/Cart';
+import { fixDecimals } from '../../../../utils/priceCalculations';
 
 import {
   CardContainer,

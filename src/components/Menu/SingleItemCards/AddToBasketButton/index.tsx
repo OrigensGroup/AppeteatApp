@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { fixDecimals } from '../../../../contexts/Cart';
+import { fixDecimals, calculateDiscount, calculateItemPrice } from '../../../../utils/priceCalculations';
 import useCart from '../../../../hooks/useCart';
 
 import singleDrinkTranslations from '../../../../translations/singleDrink';
@@ -11,7 +11,6 @@ import ViewCta from '../../../shared/ViewCta';
 import QuantityCounter from '../Counter';
 
 import { Discount } from '../../../../types/DiscountRules';
-import { calculateDiscount, calculateItemPrice } from '../../../../utils/priceCalculations';
 
 import { AddToBasketButtonWrapper, ViewCtaButton, QuantityButton } from './styles';
 

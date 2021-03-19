@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { fixDecimals } from '../../../../contexts/Cart';
+import { fixDecimals } from '../../../../utils/priceCalculations';
 
 import currencyTranslations from '../../../../translations/currency';
 import { Discount } from '../../../../types/DiscountRules';

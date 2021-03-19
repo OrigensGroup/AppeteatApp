@@ -10,7 +10,7 @@ import useCart from '../../../hooks/useCart';
 import ViewCta from '../../shared/ViewCta';
 
 import currencyTranslations from '../../../translations/currency';
-import { fixDecimals } from '../../../contexts/Cart';
+import { fixDecimals } from '../../../utils/priceCalculations';
 
 import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper } from './styles';
 
