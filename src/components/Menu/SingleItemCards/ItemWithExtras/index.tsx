@@ -7,22 +7,27 @@ import ItemDescription from '../ItemDescription';
 import AddToBasketButton from '../AddToBasketButton';
 import UpgradeSection from '../UpgradeSection';
 
-import { ItemWithExtrasContainer } from './styles';
+import { Discount } from '../../../../types/DiscountRules';
+
+import { ItemWithExtrasContainer, ItemContainer } from './styles';
 
 interface ItemWithExtrasProps {
   item: MenuItem;
+  discount?: Discount;
 }
 
-const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ item }) => {
+const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, item }) => {
   const [extras, setExtras] = useState<DataItem[]>([]);
 
   return (
     <ItemWithExtrasContainer>
       <CardsHeader item={item} />
-      <ItemPicture item={item} />
-      <ItemDescription item={item} />
-      <UpgradeSection item={item} updateExtras={setExtras} />
-      <AddToBasketButton extras={extras} item={item} />
+      <ItemContainer>
+        <ItemPicture item={item} />
+        <ItemDescription discount={discount} item={item} />
+        <UpgradeSection item={item} updateExtras={setExtras} />
+      </ItemContainer>
+      <AddToBasketButton discount={discount} extras={extras} item={item} />
     </ItemWithExtrasContainer>
   );
 };

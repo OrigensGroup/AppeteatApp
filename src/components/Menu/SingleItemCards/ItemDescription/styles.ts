@@ -17,3 +17,10 @@ export const ItemDescriptionDesc = styled.View`
 
   margin-top: ${({ theme }) => theme.spacing.double};
 `;
+
+export const PriceSection = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+`;

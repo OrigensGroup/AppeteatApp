@@ -18,6 +18,7 @@ export interface Homepage {
 }
 
 export interface Bar {
+  bookings: { list: any[] };
   homepage: Homepage;
   locations: Locations;
   menu: Menu;

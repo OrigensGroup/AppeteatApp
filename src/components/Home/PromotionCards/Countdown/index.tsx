@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'styled-components';
 
 import homeTranslations from '../../../../translations/home';
-import { Promotion } from '../../../../types/Promotion';
+import { PromotionCountdown } from '../../../../types/Promotion';
 
 import Text from '../../../shared/Text';
 
@@ -21,7 +21,7 @@ import {
 } from './styles';
 
 interface HappyHourPromotionCardProps {
-  item: Promotion;
+  item: PromotionCountdown;
   happyHour?: boolean;
   happyHourSize?: boolean;
   disabled?: boolean;
@@ -51,7 +51,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   const [countdown, setCountdown] = useState(() => calculateCountdown());
 
   const navigate = () => {
-    navigation.navigate('HappyHourMenu', { item });
+    navigation.navigate('HappyHourMenu', { promotionItem: item });
   };
 
   const startTimer = useCallback(() => {

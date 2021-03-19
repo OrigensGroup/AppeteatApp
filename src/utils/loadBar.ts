@@ -5,6 +5,7 @@ import { Bar } from '../types/Bar';
 
 const loadBar = async () => {
   let bar = {
+    bookings: { list: [] },
     locations: { list: [] },
     menu: { items: [], tabs: [] },
     homepage: { sections: [] },
@@ -18,11 +19,13 @@ const loadBar = async () => {
 
     bar = {
       //@ts-ignore
-      homepage: allDocsLoaded[0],
+      bookings: allDocsLoaded[0],
       //@ts-ignore
-      locations: allDocsLoaded[1],
+      homepage: allDocsLoaded[1],
       //@ts-ignore
-      menu: allDocsLoaded[2],
+      locations: allDocsLoaded[2],
+      //@ts-ignore
+      menu: allDocsLoaded[3],
     };
   } catch (error) {
     crashlytics().log('Bar data loading failed.');

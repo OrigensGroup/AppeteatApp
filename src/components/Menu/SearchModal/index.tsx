@@ -26,7 +26,6 @@ import {
 interface SearchModalProps {
   isModalVisible: boolean;
   onClose: () => void;
-  onClick: () => void;
 }
 
 const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible, onClose }) => {

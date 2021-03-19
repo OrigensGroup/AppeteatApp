@@ -10,12 +10,21 @@ interface TextProps {
   bold?: boolean;
   light?: boolean;
   align?: string;
+  strike?: boolean;
 }
 
-const Text: React.FunctionComponent<TextProps> = ({ align = 'left', bold, children, color, fontSize, light }) => {
+const Text: React.FunctionComponent<TextProps> = ({
+  align = 'left',
+  bold,
+  children,
+  color,
+  fontSize,
+  light,
+  strike,
+}) => {
   return (
     <TitleContainer>
-      <TitleText align={align} bold={bold} color={color} fontSize={scale(fontSize)} light={light}>
+      <TitleText align={align} bold={bold} color={color} fontSize={scale(fontSize)} light={light} strike={strike}>
         {children}
       </TitleText>
     </TitleContainer>

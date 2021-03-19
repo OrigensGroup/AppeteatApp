@@ -6,7 +6,7 @@ import Text from '../../../shared/Text';
 
 import homeTranslations from '../../../../translations/home';
 
-import { Promotion } from '../../../../types/Promotion';
+import { PromotionDiscount } from '../../../../types/Promotion';
 
 import {
   DiscountPromotionContainer,
@@ -18,7 +18,7 @@ import {
 } from './styles';
 
 interface DiscountPromotionCardProps {
-  item: Promotion;
+  item: PromotionDiscount;
 }
 
 //MAX DESCRIPTION 163 chars
@@ -27,7 +27,7 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
   const navigation = useNavigation();
 
   const navigate = () => {
-    navigation.navigate('Menu');
+    navigation.navigate('Menu', { screen: 'MenuList', params: { goTo: item.discount.tabToDiscount }, initial: false });
   };
 
   return (

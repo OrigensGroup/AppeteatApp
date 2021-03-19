@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const UpgradeSectionContainer = styled.View`
   flex: 1;
-  padding-bottom: ${({ theme }) => theme.spacing.multiple(8)};
+  height: 100%;
 `;
 
 export const UpgradeItemList = styled.SectionList`

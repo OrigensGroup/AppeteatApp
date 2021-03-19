@@ -38,7 +38,11 @@ const Home: React.FunctionComponent<HomeProps> = () => {
     <SafeArea>
       <HomeContainer>
         <Logo />
-        <FlatList data={homepage.sections} renderItem={renderHomepageComponent} />
+        <FlatList
+          data={homepage.sections}
+          keyExtractor={(item, index) => `${item.type}-${index}`}
+          renderItem={renderHomepageComponent}
+        />
       </HomeContainer>
     </SafeArea>
   );

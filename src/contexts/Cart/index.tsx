@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 
 import { OrderItem } from '../../types/OrderItem';
+import { calculateItemPrice } from '../../utils/priceCalculations';
 
 type Pricing = {
   subtotal: number;
@@ -65,7 +66,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
   };
 
   useEffect(() => {
-    const subtotal = cart.reduce((acc, item) => acc + item.overallPrice, 0);
+    const subtotal = cart.reduce((acc, item) => acc + calculateItemPrice(item), 0);
 
     const serviceCharge = Math.round(subtotal * 0.125 * 100) / 100;
 

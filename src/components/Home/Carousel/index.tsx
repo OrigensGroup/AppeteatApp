@@ -5,10 +5,10 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 import { useTheme } from 'styled-components';
 
-import HappyHourPromotionCard from '../PromotionCards/HappyHourPromotionCard';
-import DiscountPromotionCard from '../PromotionCards/DiscountPromotionCard';
+import HappyHourPromotionCard from '../PromotionCards/Countdown';
+import DiscountPromotionCard from '../PromotionCards/TabDiscount';
 
-import ImagePromotion from '../PromotionCards/ImagePromotion';
+import ImagePromotion from '../PromotionCards/Billboard';
 
 import { Promotion } from '../../../types/Promotion';
 
@@ -25,7 +25,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({ promotions
   const [activeSlide, setActiveSlide] = useState(0);
 
   const promotionsItems = promotions.filter((item) => {
-    if (item.endDate) {
+    if (item.type === 'countdown') {
       const end = Date.parse(item.endDate);
       const now = Date.parse(item.startDate);
 
