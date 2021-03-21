@@ -16,45 +16,73 @@ export const CardContainer = styled.TouchableOpacity`
 `;
 
 export const ImageWrapper = styled.View`
-  width: ${({ theme }) => theme.spacing.multiple(15)};
-  height: ${({ theme }) => theme.spacing.multiple(15)};
+  flex: 1;
+  max-width: ${({ theme }) => theme.spacing.multiple(15)};
+  max-height: ${({ theme }) => theme.spacing.multiple(15)};
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const PropsWrapper = styled.View`
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-`;
-
-export const DrinkImage = styled.Image`
+export const CardImage = styled.Image`
   height: ${({ theme }) => theme.spacing.multiple(12)};
   width: ${({ theme }) => theme.spacing.multiple(12)};
   border-radius: ${({ theme }) => theme.spacing.triple};
 `;
 
-export const DrinkDesc = styled.View`
+export const CardDescription = styled.View`
   flex: 1;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
+`;
+
+export const DiscountTag = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 ${({ theme }) => theme.spacing.single};
+  height: 24px;
+  border-radius: ${({ theme }) => theme.spacing.single};
+  background-color: ${({ theme }) => theme.colors.active};
+  margin-right: ${({ theme }) => theme.spacing.double};
+`;
+
+export const CardTitle = styled.View`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+`;
+
+export const CardMainItem = styled.View`
+  flex: 1;
+  margin-top: ${({ theme }) => theme.spacing.single};
+`;
+
+export const LikeIcon = styled.View`
+  margin-right: ${({ theme }) => theme.spacing.single};
+`;
+
+export const CardPrice = styled.View`
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: ${({ theme }) => theme.spacing.double} 0;
   justify-content: space-between;
 `;
 
-export const LikeButton = styled.TouchableOpacity`
-  width: ${({ theme }) => theme.spacing.multiple(4)};
-  height: ${({ theme }) => theme.spacing.multiple(4)};
-  display: flex;
-  border-radius: ${({ theme }) => theme.spacing.multiple(4)};
-  justify-content: center;
-  align-items: center;
-  bottom: ${({ theme }) => theme.spacing.single};
-  right: ${({ theme }) => theme.spacing.double};
-  position: absolute;
+export const DiscountPrice = styled.View`
+  margin-top: auto;
+  margin-bottom: ${({ theme }) => theme.spacing.single};
+  margin-right: ${({ theme }) => theme.spacing.double};
+`;
+
+export const Price = styled.View<{ move: boolean }>`
+  ${({ move }) => move && `margin-top: auto`};
+  margin-right: ${({ theme }) => theme.spacing.double};
 `;

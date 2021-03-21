@@ -10,13 +10,13 @@ import crashlytics from '@react-native-firebase/crashlytics';
 import LogInTextField from '../LogInInputField';
 import loginTranslations from '../../../translations/login';
 
-import SignUpButton from './Buttons/SignUpButton';
-import LogInButton from './Buttons/LogInButton';
+import SignUpButton from '../Buttons/SignUpButton';
+import LogInButton from '../Buttons/LogInButton';
 
 import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
 
 interface ManualLogInProps {
-  changeModule: (b: boolean) => void;
+  changeModule: (b: 'login' | 'register' | 'forgotPassword') => void;
 }
 
 type LoopObject = {
@@ -32,7 +32,11 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
   const [loading, setLoading] = useState(false);
 
   const register = () => {
-    changeModule(false);
+    changeModule('register');
+  };
+
+  const forgotPassword = () => {
+    changeModule('forgotPassword');
   };
 
   const singIn = () => {
@@ -118,6 +122,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
             textContentType="password"
             updateValue={setPassword}
           />
+          <SignUpButton buttonText="Forgot password" onClick={forgotPassword} text="" />
         </TextFieldsWrapper>
         <ButtonsWrapper>
           <LogInButton loading={loading} onClick={singIn} text={loginTranslations.loginButton.label} />

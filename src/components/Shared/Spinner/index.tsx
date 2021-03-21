@@ -12,6 +12,7 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
   const theme = useTheme();
   return (
     <InputSpinner
+      //@ts-ignore
       buttonPressTextColor={theme.colors.textPrimary}
       buttonStyle={{
         margin: 0,

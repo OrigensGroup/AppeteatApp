@@ -1,13 +1,13 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import Swiper from 'react-native-swiper';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import SwiperPage from '../../../components/Menu/MenuSwiper/SwiperPage';
 import MenuTabs from '../../../components/Menu/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/ViewBasketButton';
-import FilterModal from '../../../components/Menu/FilterModal';
+import SearchModal from '../../../components/Menu/SearchModal';
 import useMenu from '../../../hooks/useMenu';
 import MenuTopBar from '../../../components/Menu/MenuTopBar';
 
@@ -15,22 +15,64 @@ import useCart from '../../../hooks/useCart';
 
 import menuTranslations from '../../../translations/menu';
 
+import useLocations from '../../../hooks/useLocations';
+import { HomepageComponent, CarouselPromo } from '../../../types/HomepageComponent';
+import { TabDiscount } from '../../../types/DiscountRules';
+import { Tab } from '../../../types/Tab';
+
 import { SafeAreaViewBottom, MenuWrapper } from './styles';
 
 interface MenuProps {}
 
+const findDiscounts = (sections: HomepageComponent[]) => {
+  const carousels = sections.filter((section) => section.type === 'CarouselPromo') as CarouselPromo[];
+
+  const allCarouselsWithDiscounts = carousels.filter((carousels) =>
+    carousels.promotions.some((promo) => promo.type === 'discount')
+  );
+
+  const onlyDiscounts: TabDiscount[] = [];
+
+  allCarouselsWithDiscounts.forEach((carouselPromo) => {
+    const discountArr = carouselPromo.promotions
+      .map((promo) => (promo.type === 'discount' ? promo.discount : null))
+      .filter((item) => item !== null) as TabDiscount[];
+
+    onlyDiscounts.push(...discountArr);
+  });
+
+  return onlyDiscounts;
+};
+
+const findIndex = (tabs: Tab[], goToTab: string) => tabs.map((item) => item.id).indexOf(goToTab);
+
 const Menu: React.FunctionComponent<MenuProps> = () => {
   const ref = useRef<Swiper | null>(null);
-  const [menuIndex, setMenuIndex] = useState(0);
+
+  const route = useRoute();
+  const navigation = useNavigation();
+
+  const { homepage } = useLocations();
+  const { cart } = useCart();
+  const { menu } = useMenu();
+
   const [isModalVisible, setModalVisible] = useState(false);
 
-  const navigation = useNavigation();
-  const { menu } = useMenu();
-  const { cart } = useCart();
+  const discounts = findDiscounts(homepage.sections);
 
-  const onSwipe = (index: number) => {
-    if (ref.current && index !== menuIndex) {
-      ref.current.scrollBy(index - menuIndex, true);
+  const { goTo } = route.params ? (route.params as { goTo: string }) : { goTo: undefined };
+
+  const [menuIndex, setMenuIndex] = useState(() => {
+    if (goTo) {
+      return findIndex(menu.tabs, goTo);
+    } else {
+      return 0;
+    }
+  });
+
+  const onSwipe = (mode: 'menu' | 'swipe') => (index: number) => {
+    if (ref.current && index !== menuIndex && mode !== 'swipe') {
+      ref.current.scrollTo(index, true);
     }
 
     setMenuIndex(index);
@@ -44,9 +86,14 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     () =>
       menu.tabs.map((tab) => {
         const menuItemsPerSwipe = menu.items.filter((menuItems) => menuItems.belongsTo === tab.id);
-        return <SwiperPage key={tab.id} menuItems={menuItemsPerSwipe} />;
+
+        const possibleDiscount = discounts.filter((discount) => discount.tabToDiscount === tab.id);
+
+        const tabDiscount = possibleDiscount.length === 1 ? possibleDiscount[0] : undefined;
+
+        return <SwiperPage discount={tabDiscount} key={tab.id} menuItems={menuItemsPerSwipe} />;
       }),
-    [menu.tabs, menu.items]
+    [menu.tabs, menu.items, discounts]
   );
 
   const closeModal = () => {
@@ -57,20 +104,24 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     setModalVisible(!isModalVisible);
   };
 
+  useEffect(() => {
+    if (goTo) {
+      setMenuIndex(findIndex(menu.tabs, goTo));
+    }
+  }, [menu.tabs, goTo]);
+
   return (
-    <>
-      <SafeAreaViewBottom>
-        <MenuWrapper>
-          <MenuTopBar onClick={toggleModal} title={menuTranslations.menu.title} />
-          <MenuTabs menuTabs={menu.tabs} onChange={onSwipe} tabActive={menuIndex} />
-          <Swiper loop={false} onIndexChanged={onSwipe} ref={ref} showsPagination={false}>
-            {menuTabsContent()}
-          </Swiper>
-          {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
-          <FilterModal isModalVisible={isModalVisible} onClick={closeModal} onClose={closeModal} />
-        </MenuWrapper>
-      </SafeAreaViewBottom>
-    </>
+    <SafeAreaViewBottom>
+      <MenuWrapper>
+        <MenuTopBar onClick={toggleModal} title={menuTranslations.menu.title} />
+        <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
+        <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
+          {menuTabsContent()}
+        </Swiper>
+        {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
+        <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
+      </MenuWrapper>
+    </SafeAreaViewBottom>
   );
 };
 

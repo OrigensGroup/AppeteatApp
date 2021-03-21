@@ -3,7 +3,7 @@ import { ActivityIndicator } from 'react-native';
 import { useTheme } from 'styled-components';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import Text from '../../../../shared/Text';
+import Text from '../../../shared/Text';
 
 import { ButtonContainer, IconWrapper } from './styles';
 

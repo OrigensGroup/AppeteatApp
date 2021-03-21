@@ -4,7 +4,6 @@ import { FlatList } from 'react-native';
 
 import useMenu from '../../../hooks/useMenu';
 
-import homeTranslations from '../../../translations/home';
 import { MenuItem } from '../../../types/MenuItem';
 
 import Text from '../../shared/Text';
@@ -13,9 +12,12 @@ import PromotionItemCard from './PromotionItemCard';
 
 import { FeaturedItemsSection, FeaturedItemsTextContainer } from './styles';
 
-interface FeaturedItemsProps {}
+interface FeaturedItemsProps {
+  title: string;
+  promotedItems: string[];
+}
 
-const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = () => {
+const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = ({ promotedItems, title }) => {
   const navigation = useNavigation();
   const { menu } = useMenu();
 
@@ -23,7 +25,7 @@ const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = () => {
     navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
   };
 
-  const promotedItems = menu.items.filter((menuItem) => menuItem.promoted);
+  const promotedItemsToShow = menu.items.filter((menuItem) => promotedItems.includes(menuItem.id));
 
   const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionItemCard item={item} onClick={onCardClick(item)} />;
 
@@ -31,12 +33,12 @@ const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = () => {
     <FeaturedItemsSection>
       <FeaturedItemsTextContainer>
         <Text color="primary" fontSize={20}>
-          {homeTranslations.homepageScreen.popularItems.title}
+          {title}
         </Text>
       </FeaturedItemsTextContainer>
       <FlatList
         contentContainerStyle={{ paddingRight: 16 }}
-        data={promotedItems}
+        data={promotedItemsToShow}
         horizontal
         renderItem={flatlistItem}
         showsHorizontalScrollIndicator={false}

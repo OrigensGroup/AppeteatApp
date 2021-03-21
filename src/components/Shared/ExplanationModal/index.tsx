@@ -26,6 +26,7 @@ interface ExplanationModalProps {
   description?: string;
   placeholderTextColor?: string;
   placeholder?: string;
+  updateValue?: (t: string) => void;
 }
 
 const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
@@ -35,6 +36,7 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
   placeholder,
   placeholderTextColor,
   title,
+  updateValue,
 }) => {
   const theme = useTheme();
 
@@ -62,10 +64,11 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
           <ModalDescription>
             <LoginTextField
               darkText
-              maxLength={150}
+              maxLength={70}
               placeholder={placeholder}
               placeholderTextColor={placeholderTextColor}
               textContentType="none"
+              updateValue={updateValue}
             />
             <SumbmitButtonWrapper>
               <IconButton color={theme.colors.border} iconName="arrow-forward-sharp" onClick={onClose} size={28} />

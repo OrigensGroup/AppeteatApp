@@ -8,9 +8,10 @@ import { MainCoutnerWrapper } from './styles';
 interface QuantityCounterProps {
   amount: number;
   onChange: (amount: number) => void;
+  stepSize: number;
 }
 
-const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount, onChange }) => {
+const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount, onChange, stepSize }) => {
   const theme = useTheme();
 
   return (
@@ -30,12 +31,12 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount
         buttonTextColor={theme.colors.fixedBlack}
         color="transparent"
         fontSize={20}
-        initialValue={amount}
         max={99}
-        min={1}
+        min={stepSize}
         onChange={onChange}
         precision={2}
-        step={1}
+        step={stepSize}
+        value={amount}
       />
     </MainCoutnerWrapper>
   );

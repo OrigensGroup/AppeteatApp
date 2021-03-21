@@ -5,13 +5,13 @@ import { FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 import useMenu from '../../../hooks/useMenu';
-import HappyHourPromotionCard from '../../../components/Home/PromotionCards/HappyHourPromotionCard';
+import HappyHourPromotionCard from '../../../components/Home/PromotionCards/Countdown';
 import { MenuItem } from '../../../types/MenuItem';
 import MenuCard from '../../../components/Menu/MenuSwiper/MenuCards';
 
 import MenuTopBar from '../../../components/Menu/MenuTopBar';
 
-import { Promotion } from '../../../types/Promotion';
+import { PromotionCountdown } from '../../../types/Promotion';
 
 import {
   HappyHourMenuContainer,
@@ -25,21 +25,22 @@ interface HappyHourMenuProps {}
 
 const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
   const { menu } = useMenu();
-
-  const happyhourItems = menu.items.filter((item) => item.promoted);
-
-  const flatlistRender = ({ item }: { item: MenuItem }) => <MenuCard item={item} />;
-
   const route = useRoute();
 
-  const { item } = route.params as { item: Promotion };
+  const { promotionItem } = route.params as { promotionItem: PromotionCountdown };
+
+  console.log(promotionItem);
+
+  const happyhourItems = menu.items.filter((item) => promotionItem.discountedItems.includes(item.id));
+
+  const flatlistRender = ({ item }: { item: MenuItem }) => <MenuCard discount={promotionItem.discount} item={item} />;
 
   return (
     <SafeArea>
       <HappyHourMenuContainer>
-        <MenuTopBar hideFilter title={item.title} />
+        <MenuTopBar hideFilter title={promotionItem.title} />
         <HappyHourMenuHeader>
-          <HappyHourPromotionCard disabled happyHour happyHourSize item={item} />
+          <HappyHourPromotionCard disabled happyHour happyHourSize item={promotionItem} />
         </HappyHourMenuHeader>
         <HappyHourMenuSection>
           <HappyHourMenuItemsContainer>

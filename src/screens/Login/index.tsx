@@ -8,12 +8,14 @@ import ManualLogIn from '../../components/Login/ManualLogIn';
 
 import RegisterManual from '../../components/Login/ManualRegister';
 
+import ForgotPassword from '../../components/Login/ForgotPassword';
+
 import { SafeAreaViewTop, KeyboardAvoidingView, LogInContainer, EnclosingView } from './styles';
 
 interface LoginProps {}
 
 const Login: React.FunctionComponent<LoginProps> = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [pageToShow, setPageToShow] = useState<'login' | 'register' | 'forgotPassword'>('login');
 
   return (
     <>
@@ -27,7 +29,9 @@ const Login: React.FunctionComponent<LoginProps> = () => {
           <EnclosingView>
             <Logo />
             <SocialLogin />
-            {isLogin ? <ManualLogIn changeModule={setIsLogin} /> : <RegisterManual changeModule={setIsLogin} />}
+            {pageToShow === 'login' && <ManualLogIn changeModule={setPageToShow} />}
+            {pageToShow === 'register' && <RegisterManual changeModule={setPageToShow} />}
+            {pageToShow === 'forgotPassword' && <ForgotPassword changeModule={setPageToShow} />}
           </EnclosingView>
         </LogInContainer>
       </KeyboardAvoidingView>

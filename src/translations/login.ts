@@ -26,6 +26,10 @@ const loginTranslations = {
     label: 'Hai giá un account?',
     buttonLabel: 'Accedi  > ',
   },
+  forgotPassword: {
+    label: 'Email to send password reset',
+    placeholder: 'mail@mail.com',
+  },
 
   //SignIn Errors
   errorSignInEmail: {

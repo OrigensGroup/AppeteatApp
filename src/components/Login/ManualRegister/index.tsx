@@ -7,8 +7,8 @@ import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 import loginTranslations from '../../../translations/login';
-import LogInButton from '../ManualLogIn/Buttons/LogInButton';
-import SignUpButton from '../ManualLogIn/Buttons/SignUpButton';
+import LogInButton from '../Buttons/LogInButton';
+import SignUpButton from '../Buttons/SignUpButton';
 import LogInInputField from '../LogInInputField';
 
 import initUserData from '../../../utils/initUserData';
@@ -23,7 +23,7 @@ import {
 } from './styles';
 
 interface RegisterManualProps {
-  changeModule: (b: boolean) => void;
+  changeModule: (b: 'login' | 'register' | 'forgotPassword') => void;
 }
 
 type LoopObject = {
@@ -41,7 +41,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
   const [loading, setLoading] = useState(false);
 
   const login = () => {
-    changeModule(true);
+    changeModule('login');
   };
 
   const createUser = () => {

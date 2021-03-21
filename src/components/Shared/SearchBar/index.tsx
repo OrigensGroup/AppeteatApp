@@ -1,28 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import IconButton from '../IconButton';
-import SearchField from '../SearchField';
 
-import { SearchBarWrapper, SearchBarTextWrapper, SearchButtonWrapper } from './styles';
+import { SearchBarWrapper, SearchButtonWrapper, SearchFieldInput } from './styles';
 
 interface SearchBarProps {
-  onClick: () => void;
+  value: string;
+  onUpdateText: (t: string) => void;
+  onClick?: () => void;
   placeholder?: string;
   textContentType: 'name' | 'none';
 }
 
-const SearchBar: React.FunctionComponent<SearchBarProps> = ({ onClick, placeholder, textContentType }) => {
+const SearchBar: React.FunctionComponent<SearchBarProps> = ({
+  onClick,
+  onUpdateText,
+  placeholder,
+  textContentType,
+  value,
+}) => {
   const theme = useTheme();
+  const [text, setText] = useState<string>('');
+
+  useEffect(() => {
+    setText(value);
+  }, [value]);
+
+  const updateText = (newText: string) => {
+    onUpdateText(newText);
+    setText(newText);
+  };
 
   return (
     <SearchBarWrapper>
+      <SearchFieldInput
+        autoFocus
+        defaultValue={text}
+        onChangeText={updateText}
+        placeholder={placeholder}
+        textContentType={textContentType}
+        value={text}
+      />
       <SearchButtonWrapper>
-        <IconButton color={theme.colors.textPrimary} iconName="sliders" onClick={onClick} size={24} />
+        <IconButton color={theme.colors.textPrimary} iconName="search" onClick={onClick} size={24} />
       </SearchButtonWrapper>
-      <SearchBarTextWrapper>
-        <SearchField placeholder={placeholder} textContentType={textContentType} />
-      </SearchBarTextWrapper>
     </SearchBarWrapper>
   );
 };

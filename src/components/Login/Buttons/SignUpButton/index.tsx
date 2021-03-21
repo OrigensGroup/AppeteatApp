@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Text from '../../../../shared/Text';
+import Text from '../../../shared/Text';
 
 import { ButtonContainer, IconWrapper } from './styles';
 

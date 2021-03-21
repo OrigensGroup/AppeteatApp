@@ -39,7 +39,7 @@ const App = () => {
   const [bar, setBar] = useState<Bar>({
     locations: { list: [] },
     menu: { items: [], tabs: [] },
-    promotions: { list: [] },
+    homepage: { sections: [] },
   });
 
   const loadStuff = async () => {
@@ -88,8 +88,8 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <LocationsProvider loadedLocations={bar.locations}>
-        <MenuProvider loadedMenu={bar.menu} loadedPromotions={bar.promotions}>
+      <LocationsProvider loadedHomepage={bar.homepage} loadedLocations={bar.locations}>
+        <MenuProvider loadedMenu={bar.menu}>
           <UserProvider>
             <CartProvider>
               <NavigationContainer

@@ -4,6 +4,6 @@ export const MainButtonWrapper = styled.View`
   flex: 1;
   display: flex;
   position: absolute;
-  bottom: ${({ theme }) => theme.spacing.double};
+  bottom: 0;
   padding: 0 ${({ theme }) => theme.spacing.triple};
 `;

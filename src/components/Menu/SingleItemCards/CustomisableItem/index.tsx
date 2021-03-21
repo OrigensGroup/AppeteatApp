@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useTheme } from 'styled-components';
+
 import { MenuItem } from '../../../../types/MenuItem';
 import CardsHeader from '../CardsHeader';
 import ItemPicture from '../ItemPicture';
@@ -9,30 +11,36 @@ import ExplanationModal from '../../../shared/ExplanationModal';
 
 import CustomiseSection from '../CustomiseSection';
 
-import theme from '../../../../theme';
 import customOrderTranslations from '../../../../translations/customOrder';
+
+import { Discount } from '../../../../types/DiscountRules';
 
 import { CustomisableItemContainer, ItemContainer } from './styles';
 
 interface CustomisableItemProps {
   item: MenuItem;
+  discount?: Discount;
 }
 
-const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ item }) => {
+const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ discount, item }) => {
+  const theme = useTheme();
+
   const [modalData, setModalData] = useState({
     show: false,
-    title: '',
+    title: customOrderTranslations.allergiesModal.title,
+    inputData: '',
   });
 
-  const showDescriptionModal = ({ title }: { title: string }) => () => {
-    setModalData({ show: true, title });
+  const showDescriptionModal = () => {
+    setModalData((old) => ({ ...old, show: true }));
   };
 
   const closeModal = () => {
-    setModalData({
-      show: false,
-      title: '',
-    });
+    setModalData((old) => ({ ...old, show: false }));
+  };
+
+  const updateValue = (text: string) => {
+    setModalData((old) => ({ ...old, inputData: text }));
   };
 
   return (
@@ -43,17 +51,19 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ item
         placeholder={customOrderTranslations.allergiesModal.placeholder}
         placeholderTextColor={theme.colors.border}
         title={modalData.title}
+        updateValue={updateValue}
       />
       <CardsHeader item={item} />
       <ItemContainer>
         <ItemPicture item={item} />
-        <ItemDescription item={item} />
-        <CustomiseSection
-          item={item}
-          onClick={showDescriptionModal({ title: customOrderTranslations.allergiesModal.title })}
-        />
+        <ItemDescription discount={discount} item={item} />
+        <CustomiseSection item={item} onClick={showDescriptionModal} />
       </ItemContainer>
-      <AddToBasketButton item={item} />
+      <AddToBasketButton
+        discount={discount}
+        extras={[{ id: 'custom', price: 0, selected: false, title: modalData.inputData }]}
+        item={item}
+      />
     </CustomisableItemContainer>
   );
 };

@@ -3,6 +3,7 @@ import React from 'react';
 import currencyTranslations from '../../../../translations/currency';
 
 import { OrderItem } from '../../../../types/OrderItem';
+import { calculateItemPrice } from '../../../../utils/priceCalculations';
 import Text from '../../../shared/Text';
 
 import {
@@ -48,7 +49,7 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
         <CartItemPrice>
           <Text bold color="primary" fontSize={18}>
             {currencyTranslations.currencyField.placeholder}
-            {(item.price + item.extras.reduce((acc, extra) => acc + extra.price, 0)) * item.quantity}
+            {calculateItemPrice(item)}
           </Text>
         </CartItemPrice>
       </CartItemInfo>

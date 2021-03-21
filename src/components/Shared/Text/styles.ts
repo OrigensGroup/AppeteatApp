@@ -6,6 +6,7 @@ interface TitleProps {
   bold?: boolean;
   light?: boolean;
   align: string;
+  strike?: boolean;
 }
 
 export const TitleContainer = styled.View`
@@ -18,6 +19,14 @@ export const TitleContainer = styled.View`
 
 export const TitleText = styled.Text<TitleProps>`
   font-size: ${({ fontSize }) => fontSize}px;
+
+  ${({ strike }) =>
+    strike &&
+    `
+    text-decoration-line: line-through;
+    text-decoration-style: solid;
+  `};
+
   color: ${({ color, theme }) => {
     switch (color) {
       case 'primary': {
