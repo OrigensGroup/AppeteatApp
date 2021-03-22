@@ -12,7 +12,7 @@ import ImagePromotion from '../PromotionCards/Billboard';
 
 import { Promotion } from '../../../types/Promotion';
 
-import { CarouselContainer, Container } from './styles';
+import { CarouselContainer, Container, Space } from './styles';
 
 interface CarouselPromoProps {
   promotions: Promotion[];
@@ -29,6 +29,15 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({ promotions
       const end = Date.parse(item.endDate);
       const now = Date.parse(item.startDate);
 
+      const startDate = new Date(item.startDate);
+      // Get today's date
+      const todaysDate = new Date();
+
+      // call setHours to take the time out of the comparison
+      if (startDate.setHours(0, 0, 0, 0) !== todaysDate.setHours(0, 0, 0, 0)) {
+        return false;
+      }
+
       if (end < now) {
         return false;
       }
@@ -41,7 +50,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({ promotions
     return (
       <Pagination
         activeDotIndex={activeSlide}
-        containerStyle={{ backgroundColor: 'transparent', paddingTop: 16, paddingBottom: 8 }}
+        containerStyle={{ backgroundColor: 'transparent', paddingTop: 16, paddingBottom: 16 }}
         dotStyle={{
           width: 50,
           height: 5,
@@ -95,7 +104,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({ promotions
         renderItem={renderItem}
         sliderWidth={sliderWidth}
       />
-      {pagination()}
+      {promotionsItems.length > 1 ? pagination() : <Space />}
     </CarouselContainer>
   );
 };

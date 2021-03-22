@@ -1,6 +1,7 @@
 import { TabDiscount, TwoForOne } from './DiscountRules';
 
 export interface PromotionCommon {
+  id: string;
   title: string;
 }
 
@@ -14,6 +15,7 @@ export interface PromotionDiscount extends PromotionCommon {
   image: string;
   description: string;
   discount: TabDiscount;
+  cta: string;
   type: 'discount';
 }
 

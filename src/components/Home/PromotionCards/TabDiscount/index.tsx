@@ -4,8 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 
 import Text from '../../../shared/Text';
 
-import homeTranslations from '../../../../translations/home';
-
 import { PromotionDiscount } from '../../../../types/Promotion';
 
 import {
@@ -46,7 +44,7 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
       <DiscountPromotionButton>
         <DiscountPromotionOrderButton>
           <Text color="fixedWhite" fontSize={14}>
-            {homeTranslations.discountPromotionCard.cta}
+            {item.cta}
           </Text>
         </DiscountPromotionOrderButton>
       </DiscountPromotionButton>

@@ -17,10 +17,10 @@ export const HappyHourPromotionCardContainer = styled.TouchableOpacity<CardSize>
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
-  ${({ happyHourSize }) =>
+  ${({ happyHourSize, theme }) =>
     happyHourSize &&
     `
-    height: 176px;
+    height: ${theme.spacing.multiple(22)};
     ;
   `};
 `;
@@ -51,6 +51,8 @@ export const HappyHourTitleContainer = styled.View`
 
 export const DigitCounter = styled.View`
   display: flex;
+
+  flex-direction: column;
   align-items: center;
 `;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const FeaturedItemsSection = styled.View`
-  margin: ${({ theme }) => theme.spacing.double} 0;
+  margin-bottom: ${({ theme }) => theme.spacing.double};
 `;
 
 export const FeaturedItemsTextContainer = styled.View`

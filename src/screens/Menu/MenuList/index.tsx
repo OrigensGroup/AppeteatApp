@@ -20,20 +20,26 @@ import { HomepageComponent, CarouselPromo } from '../../../types/HomepageCompone
 import { TabDiscount } from '../../../types/DiscountRules';
 import { Tab } from '../../../types/Tab';
 
+import { Promotion } from '../../../types/Promotion';
+
 import { SafeAreaViewBottom, MenuWrapper } from './styles';
 
 interface MenuProps {}
 
-const findDiscounts = (sections: HomepageComponent[]) => {
+const findDiscounts = (sections: (HomepageComponent | Promotion)[]) => {
   const carousels = sections.filter((section) => section.type === 'CarouselPromo') as CarouselPromo[];
 
   const allCarouselsWithDiscounts = carousels.filter((carousels) =>
     carousels.promotions.some((promo) => promo.type === 'discount')
   );
 
+  const allDiscounts = sections
+    .filter((section) => section.type === 'discount')
+    .map((discount) => ({ promotions: [discount] })) as CarouselPromo[];
+
   const onlyDiscounts: TabDiscount[] = [];
 
-  allCarouselsWithDiscounts.forEach((carouselPromo) => {
+  [...allCarouselsWithDiscounts, ...allDiscounts].forEach((carouselPromo) => {
     const discountArr = carouselPromo.promotions
       .map((promo) => (promo.type === 'discount' ? promo.discount : null))
       .filter((item) => item !== null) as TabDiscount[];

@@ -27,6 +27,23 @@ interface HappyHourPromotionCardProps {
   disabled?: boolean;
 }
 
+const humanReadableDuration = (msDuration: number) => {
+  const h = Math.floor(msDuration / 1000 / 60 / 60);
+  const m = Math.floor((msDuration / 1000 / 60 / 60 - h) * 60);
+  const s = Math.floor(((msDuration / 1000 / 60 / 60 - h) * 60 - m) * 60);
+
+  // To get time format 00:00:00
+  const seconds: string = s < 10 ? `0${s}` : `${s}`;
+  const minutes: string = m < 10 ? `0${m}` : `${m}`;
+  const hours: string = h < 10 ? `0${h}` : `${h}`;
+
+  return {
+    seconds,
+    minutes,
+    hours,
+  };
+};
+
 const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProps> = ({
   disabled,
   happyHour,
@@ -38,8 +55,8 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
   const interval = useRef<NodeJS.Timeout>();
 
   const calculateCountdown = useCallback(() => {
-    const end = Date.parse(item.endDate || new Date().toString());
-    const start = Date.parse(item.startDate || new Date().toString());
+    const end = Date.parse(item.endDate);
+    const start = Date.parse(item.startDate);
 
     if (end < start) {
       return 0;
@@ -60,13 +77,13 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
         if (interval.current) clearInterval(interval.current);
       }
 
-      const end = Date.parse(item.endDate || new Date().toString());
+      const end = Date.parse(item.endDate);
       const now = Date.parse(new Date().toString());
 
       const newCountdownValue = end < now ? 0 : end - now;
 
       setCountdown(newCountdownValue);
-    }, 1000);
+    }, 100);
   }, [item.endDate, countdown]);
 
   useEffect(() => {
@@ -100,7 +117,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
           <DigitCounter>
             <DigitBackground>
               <Text bold color="fixedBlack" fontSize={36}>
-                {String(Math.floor((countdown / (1000 * 60 * 60)) % 24)).padStart(2, '0')}
+                {humanReadableDuration(countdown).hours}
               </Text>
             </DigitBackground>
             <DigitTitle>
@@ -116,7 +133,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
           <DigitCounter>
             <DigitBackground>
               <Text bold color="fixedBlack" fontSize={36}>
-                {String(Math.floor((countdown / 1000 / 60) % 60)).padStart(2, '0')}
+                {humanReadableDuration(countdown).minutes}
               </Text>
             </DigitBackground>
             <DigitTitle>
