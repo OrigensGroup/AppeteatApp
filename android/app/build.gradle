@@ -138,7 +138,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.oriensgroup.stg"
+        applicationId "uk.co.origens.testing"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
