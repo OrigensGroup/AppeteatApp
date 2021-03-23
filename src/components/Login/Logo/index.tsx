@@ -10,9 +10,9 @@ const Logo: React.FunctionComponent<LogoProps> = () => {
   return (
     <LogoContainer>
       {mode === 'dark' ? (
-        <LogoImage source={require('../../../img/logo.png')} />
+        <LogoImage resizeMode="contain" source={require('../../../img/logo.png')} />
       ) : (
-        <LogoImage source={require('../../../img/logo2.png')} />
+        <LogoImage resizeMode="contain" source={require('../../../img/logo2.png')} />
       )}
     </LogoContainer>
   );

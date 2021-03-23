@@ -1,9 +1,9 @@
 {
-  "name": "app-fe",
-  "displayName": "app-fe",
+  "name": "origens-testing",
+  "displayName": "Origens Testing",
   "expo": {
-    "name": "app-fe",
-    "slug": "app-fe",
+    "name": "Origens Testing",
+    "slug": "origens-testing",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "scheme": "exp9d1ea7e1de174f31828a156ea7a38e11",

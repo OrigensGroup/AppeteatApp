@@ -9,9 +9,6 @@ export const LocationContainer = styled.View`
   flex-direction: row;
   position: relative;
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(17)};
-  padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double};
-  margin-bottom: ${({ theme }) => theme.spacing.multiple(4)};
 `;
 
 export const MapContainer = styled.View`

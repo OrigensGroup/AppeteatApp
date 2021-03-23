@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
 export const DiscountPromotionContainer = styled.TouchableOpacity`
+  position: relative;
   width: 100%;
   height: ${({ theme }) => theme.spacing.multiple(25)};
   display: flex;

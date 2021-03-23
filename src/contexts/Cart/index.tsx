@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 
 import { OrderItem } from '../../types/OrderItem';
-import { calculateItemPrice } from '../../utils/priceCalculations';
+import { calculateItemPrice, fixDecimals } from '../../utils/priceCalculations';
 
 type Pricing = {
   subtotal: number;
@@ -37,8 +37,6 @@ export const CartContext = React.createContext<CartContext>({
 });
 
 interface CartProviderProps {}
-
-export const fixDecimals = (n: number) => Math.round(n * 100) / 100;
 
 const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<OrderItem[]>([]);

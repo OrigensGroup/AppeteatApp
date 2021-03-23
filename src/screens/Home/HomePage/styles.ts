@@ -9,3 +9,8 @@ export const SafeArea = styled.SafeAreaView`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
+
+export const ComponentContainer = styled.View`
+  padding: 0 ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.spacing.double};
+`;

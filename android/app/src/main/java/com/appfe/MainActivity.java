@@ -1,4 +1,4 @@
-package com.oriensgroup.stg;
+package uk.co.origens.testing;
 
 import android.os.Bundle;
 

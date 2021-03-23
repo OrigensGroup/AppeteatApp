@@ -1,5 +1,6 @@
 import { HomepageComponent } from './HomepageComponent';
 import { MenuItem } from './MenuItem';
+import { Promotion } from './Promotion';
 import { Tab } from './Tab';
 
 import { Venue } from './Venue';
@@ -14,7 +15,7 @@ export interface Menu {
 }
 
 export interface Homepage {
-  sections: HomepageComponent[];
+  sections: (HomepageComponent | Promotion)[];
 }
 
 export interface Bar {

@@ -37,6 +37,7 @@ const App = () => {
   const [appReady, setAppReady] = useState(false);
 
   const [bar, setBar] = useState<Bar>({
+    bookings: { list: [] },
     locations: { list: [] },
     menu: { items: [], tabs: [] },
     homepage: { sections: [] },

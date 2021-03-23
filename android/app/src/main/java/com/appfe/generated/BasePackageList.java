@@ -1,4 +1,4 @@
-package com.oriensgroup.stg.generated;
+package uk.co.origens.testing.generated;
 
 import java.util.Arrays;
 import java.util.List;
