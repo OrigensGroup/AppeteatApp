@@ -8,7 +8,6 @@ interface PickerProps {
   title?: string;
   icon: React.ReactElement;
   textValue?: string;
-
   onPress?: () => void;
 }
 
