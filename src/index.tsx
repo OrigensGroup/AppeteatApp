@@ -90,7 +90,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <LocationsProvider loadedHomepage={bar.homepage} loadedLocations={bar.locations}>
-        <MenuProvider loadedMenu={bar.menu}>
+        <MenuProvider loadedBookings={bar.bookings} loadedMenu={bar.menu}>
           <UserProvider>
             <CartProvider>
               <NavigationContainer

@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import Modal from 'react-native-modal';
+import firestore from '@react-native-firebase/firestore';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+import CalendarIcon from 'react-native-vector-icons/AntDesign';
 import { Platform } from 'react-native';
 import { useTheme } from 'styled-components';
+
+import { v4 } from 'uuid';
 
 import Picker from '../Picker';
 import Text from '../../shared/Text';
@@ -13,7 +17,19 @@ import Spinner from '../Spinner';
 import bookTranslations from '../../../translations/book';
 import ViewCta from '../../shared/ViewCta';
 
-import { SpinnerContainer, PopUpContainer, DateContainer, ConfirmButton, PickerContainer } from './styles';
+import { Booking } from '../../../types/Booking';
+import useAuth from '../../../hooks/useAuth';
+import useMenu from '../../../hooks/useMenu';
+import { Venue } from '../../../types/Venue';
+
+import {
+  SpinnerContainer,
+  PopUpContainer,
+  TimePickers,
+  TimePickersRow,
+  ConfirmButton,
+  PickerContainer,
+} from './styles';
 
 type Months = {
   [key: number]: string;
@@ -23,9 +39,10 @@ type Minutes = {
 };
 
 interface BookATableModalProps {
-  venue?: any;
+  venue: Venue;
   isModalVisible: boolean;
   onClose: () => void;
+  booking: Booking | null;
 }
 
 const minutes: Minutes = {
@@ -72,11 +89,18 @@ const months: Months = {
 };
 
 const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, onClose, venue }) => {
+  const user = useAuth();
   const theme = useTheme();
+  const { bookings } = useMenu();
 
+  const [localQuantity, setLocalQuantity] = useState('1');
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState<'date' | 'time' | undefined>('date');
   const [show, setShow] = useState(false);
+
+  const updateQuantity = (people: number) => {
+    setLocalQuantity(String(people));
+  };
 
   const onChange = (_: any, selectedDate: any) => {
     const currentDate = selectedDate || date;
@@ -97,6 +121,29 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
     showMode('time');
   };
 
+  const onSubmit = () => {
+    firestore()
+      .collection('bar')
+      .doc('bookings')
+      .set({
+        ...bookings,
+        list: [
+          ...bookings.list,
+          {
+            id: v4(),
+            fullName: user?.displayName,
+            date: date.getDay() + '/' + date.getMonth() + 1 + '/' + date.getFullYear(),
+            time: date.getHours() + ':' + date.getMinutes(),
+            people: localQuantity,
+            venue: venue.name,
+            done: false,
+          },
+        ],
+      });
+
+    onClose();
+  };
+
   return (
     <Modal
       animationInTiming={600}
@@ -114,44 +161,46 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
           textValue={venue.name}
           title="Venue"
         />
-        <DateContainer>
-          <PickerContainer>
-            <Picker
-              icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
-              onPress={showDatepicker}
-              textValue={`${date.getDate()} ${months[date.getMonth()]}`}
-              title="Date"
-            />
-          </PickerContainer>
-          <PickerContainer>
-            <Picker
-              icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
-              onPress={showTimepicker}
-              textValue={
-                date.getHours() > 11
-                  ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
-                  : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
-              }
-              title="Time"
-            />
-          </PickerContainer>
+        <TimePickers>
+          <TimePickersRow>
+            <PickerContainer>
+              <Picker
+                icon={<CalendarIcon color={theme.colors.fixedBlack} name="calendar" size={28} />}
+                onPress={showDatepicker}
+                textValue={`${date.getDate()} ${months[date.getMonth()]}`}
+                title="Date"
+              />
+            </PickerContainer>
+            <PickerContainer>
+              <Picker
+                icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
+                onPress={showTimepicker}
+                textValue={
+                  date.getHours() > 11
+                    ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
+                    : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
+                }
+                title="Time"
+              />
+            </PickerContainer>
+          </TimePickersRow>
           {show && (
             <DateTimePicker
-              display="default"
-              is24Hour
+              display="spinner"
               minimumDate={new Date()}
               mode={mode}
               onChange={onChange}
+              style={{ flex: 1 }}
               testID="dateTimePicker"
               value={date}
             />
           )}
-        </DateContainer>
+        </TimePickers>
         <SpinnerContainer>
-          <Spinner title="No of member" />
+          <Spinner initialValue={localQuantity} onChange={updateQuantity} title="No of member" />
         </SpinnerContainer>
         <ConfirmButton>
-          <ViewCta onClick={onClose}>
+          <ViewCta onClick={onSubmit}>
             <Text bold color="fixedWhite" fontSize={18}>
               {bookTranslations.bookPage.confirmBookingButton}
             </Text>

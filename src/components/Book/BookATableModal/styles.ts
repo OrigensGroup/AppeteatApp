@@ -27,8 +27,15 @@ export const SpinnerContainer = styled.View`
     ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.double};
 `;
 
-export const DateContainer = styled.View`
+export const TimePickers = styled.View`
   display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
+
+export const TimePickersRow = styled.View`
+  display: flex;
+  width: 100%;
   flex-direction: row;
 `;
 
