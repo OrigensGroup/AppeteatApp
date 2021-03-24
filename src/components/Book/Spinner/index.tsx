@@ -28,6 +28,7 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({ initialValue, onChange
         min={1}
         onChange={onChange}
         step={1}
+        textColor={theme.colors.textPrimary}
         value={initialValue}
       />
     </Container>
