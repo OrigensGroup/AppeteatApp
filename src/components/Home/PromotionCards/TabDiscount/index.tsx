@@ -9,6 +9,8 @@ import Text from '../../../shared/Text';
 
 import { PromotionDiscount } from '../../../../types/Promotion';
 
+import { normalisedSource } from '../../../../utils/image';
+
 import {
   DiscountPromotionContainer,
   DiscountPromotionDescription,
@@ -36,10 +38,7 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
       <ImageContainer>
         <FastImage
           resizeMode={FastImage.resizeMode.cover}
-          source={{
-            uri: item.image,
-            priority: FastImage.priority.high,
-          }}
+          source={normalisedSource(item.image)}
           style={{
             width: '100%',
             height: '100%',

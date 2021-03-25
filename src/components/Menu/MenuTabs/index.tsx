@@ -23,6 +23,7 @@ const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, t
         renderItem={({ index, item }) => (
           <MenuTab active={index === tabActive} index={index} onPress={onChange} title={item.name} />
         )}
+        showsHorizontalScrollIndicator={false}
       />
     </MenuTabsContainer>
   );

@@ -72,9 +72,13 @@ const App = () => {
 
       const alltogether = [...loadedBar.locations.list, ...loadedBar.menu.items];
 
-      const imagesToLoad: Source[] = alltogether.map((item) => ({
-        uri: item.image,
-      }));
+      const imagesToLoad = alltogether.reduce((acc, item) => {
+        if (item.image) {
+          acc.push({ uri: item.image });
+        }
+
+        return acc;
+      }, [] as Source[]);
 
       FastImage.preload(imagesToLoad);
     } catch (error) {

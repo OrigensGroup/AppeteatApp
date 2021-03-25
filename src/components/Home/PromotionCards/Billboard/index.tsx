@@ -2,6 +2,8 @@ import React from 'react';
 import FastImage from 'react-native-fast-image';
 import { useTheme } from 'styled-components';
 
+import { normalisedSource } from '../../../../utils/image';
+
 import { ImagePromotionContainer, ImagePromotionImageContainer } from './styles';
 
 interface ImagePromotionProps {
@@ -16,10 +18,7 @@ const ImagePromotion: React.FunctionComponent<ImagePromotionProps> = ({ image })
       <ImagePromotionImageContainer>
         <FastImage
           resizeMode={FastImage.resizeMode.cover}
-          source={{
-            uri: image,
-            priority: FastImage.priority.high,
-          }}
+          source={normalisedSource(image)}
           style={{
             width: '100%',
             height: '100%',

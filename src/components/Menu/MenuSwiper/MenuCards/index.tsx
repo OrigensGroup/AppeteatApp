@@ -16,6 +16,8 @@ import useUserData from '../../../../hooks/useUserData';
 import { Discount } from '../../../../types/DiscountRules';
 import { fixDecimals } from '../../../../utils/priceCalculations';
 
+import { normalisedSource } from '../../../../utils/image';
+
 import {
   CardContainer,
   ImageWrapper,
@@ -57,10 +59,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
       <ImageWrapper>
         <FastImage
           resizeMode={FastImage.resizeMode.cover}
-          source={{
-            uri: item.image,
-            priority: FastImage.priority.high,
-          }}
+          source={normalisedSource(item.image)}
           style={{
             width: Number(theme.spacing.multiple(12).replace('px', '')),
             height: Number(theme.spacing.multiple(12).replace('px', '')),

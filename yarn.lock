@@ -1200,7 +1200,7 @@
     xcode "^2.1.0"
     xml2js "^0.4.23"
 
-"@expo/config-plugins@^1.0.12", "@expo/config-plugins@^1.0.14":
+"@expo/config-plugins@^1.0.14":
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-1.0.21.tgz#5a6f5c818dd7bccc2f3e381cbf8b0657c38bb302"
   integrity sha512-sMTF0/lx52ovJPz9iH5l0aKRpPFFtYoAQ+38AYhXI890Sswr1UU4Pq3IA5RMdvtOTkTzNREr21WvEHd7X8D1dA==
@@ -4750,14 +4750,6 @@ expo-notifications@^0.9.0:
     expo-constants "10.0.0"
     fs-extra "^9.0.1"
     uuid "^3.4.0"
-
-expo-payments-stripe@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/expo-payments-stripe/-/expo-payments-stripe-9.0.0.tgz#e09642b6c3dc7f6a520e0383a1a7f8eae29f0afe"
-  integrity sha512-WF2s93etrIqMKrGh4inhGsaSGKqkehi4MQW6yuMC+0cXYto41eCUzUjyuzyZafdlVTV49UlX1tUZzCHIEKk94w==
-  dependencies:
-    "@expo/config-plugins" "^1.0.12"
-    prop-types "^15.6.0"
 
 expo-permissions@~10.0.0:
   version "10.0.0"

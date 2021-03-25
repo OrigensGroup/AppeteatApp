@@ -3,6 +3,7 @@ import FastImage from 'react-native-fast-image';
 import { useTheme } from 'styled-components';
 
 import { MenuItem } from '../../../../types/MenuItem';
+import { normalisedSource } from '../../../../utils/image';
 
 import Text from '../../../shared/Text';
 
@@ -21,10 +22,7 @@ const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ it
       <PromotionItemCardImageContainer>
         <FastImage
           resizeMode={FastImage.resizeMode.cover}
-          source={{
-            uri: item.image,
-            priority: FastImage.priority.high,
-          }}
+          source={normalisedSource(item.image)}
           style={{
             width: Number(theme.spacing.multiple(14).replace('px', '')),
             height: '100%',

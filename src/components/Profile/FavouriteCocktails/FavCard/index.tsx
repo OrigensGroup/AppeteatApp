@@ -7,6 +7,8 @@ import { useTheme } from 'styled-components';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 
+import { normalisedSource } from '../../../../utils/image';
+
 import { Container, DrinkDesc, IconWrap, FavouriteCoctailsCard, ImageContainer } from './styles';
 
 interface FavCardProps {
@@ -28,10 +30,7 @@ const FavCard: React.FunctionComponent<FavCardProps> = ({ item }) => {
         <ImageContainer>
           <FastImage
             resizeMode={FastImage.resizeMode.cover}
-            source={{
-              uri: item.image,
-              priority: FastImage.priority.high,
-            }}
+            source={normalisedSource(item.image)}
             style={{
               width: '100%',
               height: '100%',

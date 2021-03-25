@@ -8,6 +8,8 @@ import Text from '../../shared/Text';
 import { Venue } from '../../../types/Venue';
 import bookTranslations from '../../../translations/book';
 
+import { normalisedSource } from '../../../utils/image';
+
 import {
   CardContainer,
   DrinkDesc,
@@ -33,10 +35,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
       <ImageContainer>
         <FastImage
           resizeMode={FastImage.resizeMode.cover}
-          source={{
-            uri: venue.image,
-            priority: FastImage.priority.high,
-          }}
+          source={normalisedSource(venue.image)}
           style={{
             width: '100%',
             height: '100%',
