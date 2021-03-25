@@ -5,4 +5,5 @@ export interface Payment {
   customerEmail: string;
   tokenId: string;
   currency: string;
+  fee: number;
 }

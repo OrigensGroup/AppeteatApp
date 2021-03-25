@@ -4,11 +4,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '11.0'
 
-pod 'GoogleSignIn', '~> 5.0.2'
-
 target 'OrigensTesting' do
   use_unimodules!
   config = use_native_modules!
+  
+  pod 'GoogleSignIn', '~> 5.0.2'
+  pod 'Stripe', '~> 21.3.1'
 
   use_react_native!(:path => config["reactNativePath"])
 
@@ -19,12 +20,13 @@ target 'OrigensTesting' do
 #       end
 #     end
 # end
+
 end
 
 post_install do |pi|
     pi.pods_project.targets.each do |t|
       t.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
       end
     end
 end
