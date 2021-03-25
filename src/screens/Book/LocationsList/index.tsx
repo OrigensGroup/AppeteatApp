@@ -60,7 +60,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   const [venueToBook, setVenueToBook] = useState({});
   const [index, setIndex] = useState(0);
 
-  const { locations } = useLocations();
+  const [locations] = useLocations();
   const venues = locations.list;
 
   //@ts-ignore

@@ -16,8 +16,7 @@ import { useThemeSelector } from './theme';
 import { Bar } from './types/Bar';
 
 import CartProvider from './contexts/Cart';
-import MenuProvider from './contexts/Menu';
-import LocationsProvider from './contexts/Locations';
+import BarProvider from './contexts/Bar';
 import UserProvider from './contexts/User';
 
 import LoginScreen from './screens/Login';
@@ -89,41 +88,39 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <LocationsProvider loadedHomepage={bar.homepage} loadedLocations={bar.locations}>
-        <MenuProvider loadedMenu={bar.menu}>
-          <UserProvider>
-            <CartProvider>
-              <NavigationContainer
+      <BarProvider loadedBar={bar}>
+        <UserProvider>
+          <CartProvider>
+            <NavigationContainer
+              //@ts-ignore
+              onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
+              onStateChange={async () => {
+                const previousRouteName = routeNameRef.current;
                 //@ts-ignore
-                onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
-                onStateChange={async () => {
-                  const previousRouteName = routeNameRef.current;
-                  //@ts-ignore
-                  const currentRouteName = navigationRef.current.getCurrentRoute().name;
+                const currentRouteName = navigationRef.current.getCurrentRoute().name;
 
-                  if (previousRouteName !== currentRouteName) {
-                    await analytics().logScreenView({
-                      screen_name: currentRouteName,
-                      screen_class: currentRouteName,
-                    });
-                  }
+                if (previousRouteName !== currentRouteName) {
+                  await analytics().logScreenView({
+                    screen_name: currentRouteName,
+                    screen_class: currentRouteName,
+                  });
+                }
 
-                  routeNameRef.current = currentRouteName;
-                }}
-                ref={navigationRef}
-              >
-                <Stack.Navigator headerMode="none">
-                  {user === null ? (
-                    <Stack.Screen component={LoginScreen} name="Login" />
-                  ) : (
-                    <Stack.Screen component={TabBar} name="App" />
-                  )}
-                </Stack.Navigator>
-              </NavigationContainer>
-            </CartProvider>
-          </UserProvider>
-        </MenuProvider>
-      </LocationsProvider>
+                routeNameRef.current = currentRouteName;
+              }}
+              ref={navigationRef}
+            >
+              <Stack.Navigator headerMode="none">
+                {user === null ? (
+                  <Stack.Screen component={LoginScreen} name="Login" />
+                ) : (
+                  <Stack.Screen component={TabBar} name="App" />
+                )}
+              </Stack.Navigator>
+            </NavigationContainer>
+          </CartProvider>
+        </UserProvider>
+      </BarProvider>
     </ThemeProvider>
   );
 };

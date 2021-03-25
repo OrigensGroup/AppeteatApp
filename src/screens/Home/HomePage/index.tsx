@@ -13,16 +13,17 @@ import HappyHourPromotionCard from '../../../components/Home/PromotionCards/Coun
 
 import Logo from '../../../components/shared/Logo';
 
-import useLocations from '../../../hooks/useLocations';
 import { HomepageComponent } from '../../../types/HomepageComponent';
 import { Promotion } from '../../../types/Promotion';
+
+import useHomepage from '../../../hooks/useHomepage';
 
 import { HomeContainer, SafeArea, ComponentContainer } from './styles';
 
 interface HomeProps {}
 
 const Home: React.FunctionComponent<HomeProps> = () => {
-  const { homepage } = useLocations();
+  const [homepage] = useHomepage();
 
   const filteredSections = homepage.sections.filter((item) => {
     if (item.type === 'countdown') {

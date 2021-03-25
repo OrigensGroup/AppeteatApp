@@ -1,7 +1,12 @@
 import { useContext } from 'react';
 
-import { LocationsContext } from '../contexts/Locations';
+import { BarContext } from '../contexts/Bar';
+import { Locations } from '../types/Bar';
 
-const useLocations = () => useContext(LocationsContext);
+const useLocations = () => {
+  const bar = useContext(BarContext);
+
+  return bar<Locations>('locations');
+};
 
 export default useLocations;

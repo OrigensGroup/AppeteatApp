@@ -11,6 +11,8 @@ import accountTranslations from '../../../translations/account';
 
 import Text from '../../shared/Text';
 
+import { findMenuItems } from '../../../utils/menuUtils';
+
 import Card from './Card';
 
 import { FavouriteCocktailsContainer, TitleContainer, ShowButton, TextContainer } from './styles';
@@ -18,31 +20,33 @@ import { FavouriteCocktailsContainer, TitleContainer, ShowButton, TextContainer 
 interface FavouriteCocktailsProps {}
 
 const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () => {
-  const { findMenuItems } = useMenu();
+  const [menu] = useMenu();
   const { userData } = useUserData();
 
   const navigation = useNavigation();
 
   const navigate = () => navigation.navigate('FavouriteCocktails');
 
-  const favoriteCocktails = findMenuItems(userData.favoriteCocktails);
+  const favoriteCocktails = findMenuItems(menu, userData.favoriteCocktails);
 
   const flatlistRenderItem = ({ item }: { item: MenuItem }) => <Card item={item} />;
 
   return (
     <FavouriteCocktailsContainer>
-      <TextContainer>
-        <TitleContainer>
-          <Text color="primary" fontSize={18}>
-            {accountTranslations.accountPage.myFavouriteCoctails}
-          </Text>
-          <ShowButton onPress={navigate}>
-            <Text color="tertiary" fontSize={16}>
-              {accountTranslations.accountPage.showButton}
+      {favoriteCocktails.length > 0 && (
+        <TextContainer>
+          <TitleContainer>
+            <Text color="primary" fontSize={18}>
+              {accountTranslations.accountPage.myFavouriteCoctails}
             </Text>
-          </ShowButton>
-        </TitleContainer>
-      </TextContainer>
+            <ShowButton onPress={navigate}>
+              <Text color="tertiary" fontSize={16}>
+                {accountTranslations.accountPage.showButton}
+              </Text>
+            </ShowButton>
+          </TitleContainer>
+        </TextContainer>
+      )}
       <FlatList
         contentContainerStyle={{ paddingRight: 16 }}
         data={favoriteCocktails}

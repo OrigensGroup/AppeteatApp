@@ -1,7 +1,12 @@
 import { useContext } from 'react';
 
-import { MenuContext } from '../contexts/Menu';
+import { BarContext } from '../contexts/Bar';
+import { Menu } from '../types/Bar';
 
-const useMenu = () => useContext(MenuContext);
+const useMenu = () => {
+  const bar = useContext(BarContext);
+
+  return bar<Menu>('menu');
+};
 
 export default useMenu;

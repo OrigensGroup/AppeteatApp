@@ -24,12 +24,10 @@ import {
 interface HappyHourMenuProps {}
 
 const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
-  const { menu } = useMenu();
+  const [menu] = useMenu();
   const route = useRoute();
 
   const { promotionItem } = route.params as { promotionItem: PromotionCountdown };
-
-  console.log(promotionItem);
 
   const happyhourItems = menu.items.filter((item) => promotionItem.discountedItems.includes(item.id));
 

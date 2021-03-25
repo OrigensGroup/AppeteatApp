@@ -19,7 +19,7 @@ interface FeaturedItemsProps {
 
 const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = ({ promotedItems, title }) => {
   const navigation = useNavigation();
-  const { menu } = useMenu();
+  const [menu] = useMenu();
 
   const onCardClick = (item: MenuItem) => () => {
     navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });

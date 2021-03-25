@@ -9,13 +9,13 @@ import MenuTabs from '../../../components/Menu/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/ViewBasketButton';
 import SearchModal from '../../../components/Menu/SearchModal';
 import useMenu from '../../../hooks/useMenu';
+import useHomepage from '../../../hooks/useHomepage';
 import MenuTopBar from '../../../components/Menu/MenuTopBar';
 
 import useCart from '../../../hooks/useCart';
 
 import menuTranslations from '../../../translations/menu';
 
-import useLocations from '../../../hooks/useLocations';
 import { HomepageComponent, CarouselPromo } from '../../../types/HomepageComponent';
 import { TabDiscount } from '../../../types/DiscountRules';
 import { Tab } from '../../../types/Tab';
@@ -58,9 +58,9 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   const route = useRoute();
   const navigation = useNavigation();
 
-  const { homepage } = useLocations();
+  const [homepage] = useHomepage();
   const { cart } = useCart();
-  const { menu } = useMenu();
+  const [menu] = useMenu();
 
   const [isModalVisible, setModalVisible] = useState(false);
 

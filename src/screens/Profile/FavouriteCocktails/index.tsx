@@ -5,6 +5,7 @@ import FavCard from '../../../components/Profile/FavouriteCocktails/FavCard';
 import useMenu from '../../../hooks/useMenu';
 import useUserData from '../../../hooks/useUserData';
 import { MenuItem } from '../../../types/MenuItem';
+import { findMenuItems } from '../../../utils/menuUtils';
 
 import { FavouriteCocktailsContainer } from './styles';
 
@@ -12,7 +13,7 @@ interface FavouriteCocktailsProps {}
 
 const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () => {
   const { width } = Dimensions.get('window');
-  const { findMenuItems } = useMenu();
+  const [menu] = useMenu();
   const { userData } = useUserData();
 
   const renderItem = ({ item }: { item: MenuItem }) => (
@@ -21,7 +22,7 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
     </View>
   );
 
-  const favoriteCocktails = findMenuItems(userData.favoriteCocktails);
+  const favoriteCocktails = findMenuItems(menu, userData.favoriteCocktails);
   const numberColumn = favoriteCocktails.length === 1 ? 1 : 2;
 
   return (

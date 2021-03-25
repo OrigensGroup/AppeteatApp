@@ -16,7 +16,7 @@ interface ShowLocationsProps {
 }
 
 const ShowLocations: React.FunctionComponent<ShowLocationsProps> = () => {
-  const { locations } = useLocations();
+  const [locations] = useLocations();
   const navigation = useNavigation();
 
   const navigate = () => {

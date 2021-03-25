@@ -29,7 +29,7 @@ interface SearchModalProps {
 }
 
 const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible, onClose }) => {
-  const { menu } = useMenu();
+  const [menu] = useMenu();
   const [searchItem, setSearchItem] = useState('');
 
   const itemsToShow = menu.items.filter((item) =>
