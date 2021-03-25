@@ -11,14 +11,6 @@ export const FavouriteCoctailsCard = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
 
-export const DrinkImage = styled.Image`
-  height: 100%;
-  width: 100%;
-  border-top-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  border-top-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  border-bottom-left-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  border-bottom-right-radius: ${({ theme }) => theme.spacing.multiple(3)};
-`;
 export const ImageContainer = styled.View`
   height: 60%;
   padding: ${({ theme }) => theme.spacing.single};

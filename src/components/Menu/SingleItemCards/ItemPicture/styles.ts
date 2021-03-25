@@ -9,12 +9,3 @@ export const ItemPictureContainer = styled.View`
   padding: 0 ${({ theme }) => theme.spacing.double};
   margin: ${({ theme }) => theme.spacing.double} 0;
 `;
-
-export const ItemPic = styled.Image`
-  height: ${({ theme }) => theme.spacing.multiple(40)};
-  width: 100%;
-  border-bottom-left-radius: ${({ theme }) => theme.spacing.double};
-  border-bottom-right-radius: ${({ theme }) => theme.spacing.double};
-  border-top-left-radius: ${({ theme }) => theme.spacing.double};
-  border-top-right-radius: ${({ theme }) => theme.spacing.double};
-`;

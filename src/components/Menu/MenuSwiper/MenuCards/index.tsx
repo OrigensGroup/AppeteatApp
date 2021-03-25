@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 
+import FastImage from 'react-native-fast-image';
+
 import currencyTranslations from '../../../../translations/currency';
 import Text from '../../../shared/Text';
 
@@ -17,7 +19,6 @@ import { fixDecimals } from '../../../../utils/priceCalculations';
 import {
   CardContainer,
   ImageWrapper,
-  CardImage,
   CardDescription,
   CardTitle,
   CardMainItem,
@@ -54,7 +55,18 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
   return (
     <CardContainer onPress={navigate}>
       <ImageWrapper>
-        <CardImage source={{ uri: item.image }} />
+        <FastImage
+          resizeMode={FastImage.resizeMode.cover}
+          source={{
+            uri: item.image,
+            priority: FastImage.priority.high,
+          }}
+          style={{
+            width: Number(theme.spacing.multiple(12).replace('px', '')),
+            height: Number(theme.spacing.multiple(12).replace('px', '')),
+            borderRadius: Number(theme.spacing.triple.replace('px', '')),
+          }}
+        />
       </ImageWrapper>
       <CardDescription>
         <CardTitle>

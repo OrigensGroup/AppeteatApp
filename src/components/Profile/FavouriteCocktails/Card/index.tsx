@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
+import { useTheme } from 'styled-components';
 
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 
-import { CardContainer, DrinkImage, DrinkDesc, Container, DescriptionWrapper, ImageContainer } from './styles';
+import { CardContainer, DrinkDesc, Container, DescriptionWrapper, ImageContainer } from './styles';
 
 interface CardProps {
   item: MenuItem;
@@ -12,6 +14,7 @@ interface CardProps {
 
 const Card: React.FunctionComponent<CardProps> = ({ item }) => {
   const navigation = useNavigation();
+  const theme = useTheme();
 
   const onCardClick = () => {
     navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
@@ -21,7 +24,18 @@ const Card: React.FunctionComponent<CardProps> = ({ item }) => {
     <CardContainer>
       <Container onPress={onCardClick}>
         <ImageContainer>
-          <DrinkImage source={{ uri: item.image }} />
+          <FastImage
+            resizeMode={FastImage.resizeMode.cover}
+            source={{
+              uri: item.image,
+              priority: FastImage.priority.high,
+            }}
+            style={{
+              width: Number(theme.spacing.multiple(11).replace('px', '')),
+              height: '100%',
+              borderRadius: Number(theme.spacing.double.replace('px', '')),
+            }}
+          />
         </ImageContainer>
         <DrinkDesc>
           <Text color="primary" fontSize={14}>

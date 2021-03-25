@@ -6,6 +6,8 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Asset } from 'expo-asset';
 
+import FastImage, { Source } from 'react-native-fast-image';
+
 import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
 
@@ -67,6 +69,14 @@ const App = () => {
       await Promise.all(cacheImages);
 
       setBar(loadedBar);
+
+      const alltogether = [...loadedBar.locations.list, ...loadedBar.menu.items];
+
+      const imagesToLoad: Source[] = alltogether.map((item) => ({
+        uri: item.image,
+      }));
+
+      FastImage.preload(imagesToLoad);
     } catch (error) {
       crashlytics().recordError(error);
       console.error(error);

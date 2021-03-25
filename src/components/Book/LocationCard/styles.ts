@@ -13,13 +13,6 @@ export const ImageContainer = styled.View`
   height: 50%;
 `;
 
-export const VenueImage = styled.Image`
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: ${({ theme }) => theme.spacing.double};
-  border-top-left-radius: ${({ theme }) => theme.spacing.double};
-`;
-
 export const DrinkDesc = styled.View`
   padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double} 0
     ${({ theme }) => theme.spacing.single};

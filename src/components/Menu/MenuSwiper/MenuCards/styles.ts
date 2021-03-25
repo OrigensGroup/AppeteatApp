@@ -24,12 +24,6 @@ export const ImageWrapper = styled.View`
   justify-content: center;
 `;
 
-export const CardImage = styled.Image`
-  height: ${({ theme }) => theme.spacing.multiple(12)};
-  width: ${({ theme }) => theme.spacing.multiple(12)};
-  border-radius: ${({ theme }) => theme.spacing.triple};
-`;
-
 export const CardDescription = styled.View`
   flex: 1;
   width: 100%;

@@ -16,9 +16,3 @@ export const ImagePromotionImageContainer = styled.View`
   width: 100%;
   padding: ${({ theme }) => theme.spacing.oneAndHalf};
 `;
-
-export const ImagePromotionImage = styled.Image`
-  height: 100%;
-  width: 100%;
-  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-`;

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import FastImage from 'react-native-fast-image';
+import { useTheme } from 'styled-components';
+
 import { useNavigation } from '@react-navigation/native';
 
 import Text from '../../../shared/Text';
@@ -8,7 +11,6 @@ import { PromotionDiscount } from '../../../../types/Promotion';
 
 import {
   DiscountPromotionContainer,
-  DiscountPromotionImage,
   DiscountPromotionDescription,
   DiscountPromotionButton,
   ImageContainer,
@@ -23,6 +25,7 @@ interface DiscountPromotionCardProps {
 
 const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps> = ({ item }) => {
   const navigation = useNavigation();
+  const theme = useTheme();
 
   const navigate = () => {
     navigation.navigate('Menu', { screen: 'MenuList', params: { goTo: item.discount.tabToDiscount }, initial: false });
@@ -31,7 +34,18 @@ const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps>
   return (
     <DiscountPromotionContainer onPress={navigate}>
       <ImageContainer>
-        <DiscountPromotionImage resizeMode="cover" source={{ uri: item.image }} />
+        <FastImage
+          resizeMode={FastImage.resizeMode.cover}
+          source={{
+            uri: item.image,
+            priority: FastImage.priority.high,
+          }}
+          style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: Number(theme.spacing.triple.replace('px', '')),
+          }}
+        />
       </ImageContainer>
       <DiscountPromotionDescription>
         <Text bold color="primary" fontSize={18}>

@@ -21,12 +21,6 @@ export const ImageContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single};
 `;
 
-export const DrinkImage = styled.Image`
-  height: 100%;
-  width: ${({ theme }) => theme.spacing.multiple(11)};
-  border-radius: ${({ theme }) => theme.spacing.multiple(2)};
-`;
-
 export const DrinkDesc = styled.View`
   flex: 1;
   padding: ${({ theme }) => theme.spacing.oneAndHalf} ${({ theme }) => theme.spacing.single};

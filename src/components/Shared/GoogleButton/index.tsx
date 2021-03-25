@@ -9,7 +9,7 @@ import initUserData from '../../../utils/initUserData';
 import { ButtonContainer, GoogleImage } from './styles';
 
 GoogleSignin.configure({
-  webClientId: '462697324514-ukkeh7qnmf3gvc14e0klftv2h5onquf2.apps.googleusercontent.com',
+  webClientId: '920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com',
 });
 
 interface GoogleButtonProps {}

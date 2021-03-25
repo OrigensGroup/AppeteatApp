@@ -12,12 +12,6 @@ export const DiscountPromotionContainer = styled.TouchableOpacity`
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
 `;
 
-export const DiscountPromotionImage = styled.Image`
-  height: 100%;
-  width: 100%;
-  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-`;
-
 export const ImageContainer = styled.View`
   height: 100%;
   width: 40%;

@@ -21,12 +21,6 @@ export const PromotionItemCardImageContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.oneAndHalf};
 `;
 
-export const PromotionItemCardImage = styled.Image`
-  height: 100%;
-  width: ${({ theme }) => theme.spacing.multiple(14)};
-  border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-`;
-
 export const PromotionItemCardDescription = styled.View`
   flex: 1;
   padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double} 0 0;
