@@ -164,7 +164,7 @@
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = X4USHY2GC2;
+						DevelopmentTeam = S9VUZ886D8;
 						LastSwiftMigration = 1210;
 					};
 				};
@@ -215,7 +215,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=/Users/leonardod/.nvm/versions/node/v15.11.0/bin/node\n../node_modules/react-native/scripts/react-native-xcode.sh\n../node_modules/expo-constants/scripts/get-app-config-ios.sh\n../node_modules/expo-updates/scripts/create-manifest-ios.sh\n";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n../node_modules/expo-constants/scripts/get-app-config-ios.sh\n../node_modules/expo-updates/scripts/create-manifest-ios.sh\n";
 		};
 		570F216FB606C66196F5559F /* [CP-User] [RNFB] Crashlytics Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -376,7 +376,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OrigensTesting/OrigensTesting.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X4USHY2GC2;
+				DEVELOPMENT_TEAM = S9VUZ886D8;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -391,7 +391,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.origens.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.origens.testing.paolo;
 				PRODUCT_NAME = OrigensTesting;
 				SWIFT_OBJC_BRIDGING_HEADER = "OrigensTesting-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -408,7 +408,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OrigensTesting/OrigensTesting.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X4USHY2GC2;
+				DEVELOPMENT_TEAM = S9VUZ886D8;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = OrigensTesting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -418,7 +418,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.origens.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.origens.testing.paolo;
 				PRODUCT_NAME = OrigensTesting;
 				SWIFT_OBJC_BRIDGING_HEADER = "OrigensTesting-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

@@ -2,8 +2,13 @@ import { HomepageComponent } from './HomepageComponent';
 import { MenuItem } from './MenuItem';
 import { Promotion } from './Promotion';
 import { Tab } from './Tab';
+import { Booking } from './Booking';
 
 import { Venue } from './Venue';
+
+export interface Bookings {
+  list: Booking[];
+}
 
 export interface Locations {
   list: Venue[];
@@ -19,7 +24,7 @@ export interface Homepage {
 }
 
 export interface Bar {
-  bookings: { list: any[] };
+  bookings: Bookings;
   homepage: Homepage;
   locations: Locations;
   menu: Menu;
