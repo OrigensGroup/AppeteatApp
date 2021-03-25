@@ -19,8 +19,10 @@ import ViewCta from '../../shared/ViewCta';
 
 import { Booking } from '../../../types/Booking';
 import useAuth from '../../../hooks/useAuth';
-import useMenu from '../../../hooks/useMenu';
 import { Venue } from '../../../types/Venue';
+
+import useBookings from '../../../hooks/useBookings';
+import useUserData from '../../../hooks/useUserData';
 
 import {
   SpinnerContainer,
@@ -91,10 +93,11 @@ const months: Months = {
 const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, onClose, venue }) => {
   const user = useAuth();
   const theme = useTheme();
-  const { bookings } = useMenu();
+  const [bookings] = useBookings();
+  const { addBooking } = useUserData();
 
   const [localQuantity, setLocalQuantity] = useState('1');
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState<'date' | 'time' | undefined>('date');
   const [show, setShow] = useState(false);
 
@@ -103,7 +106,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
   };
 
   const onChange = (_: any, selectedDate: any) => {
-    const currentDate = selectedDate || date;
+    const currentDate = selectedDate;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
   };
@@ -122,24 +125,26 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
   };
 
   const onSubmit = () => {
+    const newBooking: Booking = {
+      id: v4(),
+      fullName: user?.displayName || 'user without name',
+      date: date.getDay() + '/' + date.getMonth() + 1 + '/' + date.getFullYear(),
+      time: date.getHours() + ':' + date.getMinutes(),
+      people: localQuantity,
+      venue: venue.name,
+      done: false,
+      comment: '',
+    };
+
     firestore()
       .collection('bar')
       .doc('bookings')
       .set({
         ...bookings,
-        list: [
-          ...bookings.list,
-          {
-            id: v4(),
-            fullName: user?.displayName,
-            date: date.getDay() + '/' + date.getMonth() + 1 + '/' + date.getFullYear(),
-            time: date.getHours() + ':' + date.getMinutes(),
-            people: localQuantity,
-            venue: venue.name,
-            done: false,
-          },
-        ],
+        list: [...bookings.list, newBooking],
       });
+
+    addBooking(newBooking);
 
     onClose();
   };

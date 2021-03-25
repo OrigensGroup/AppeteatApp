@@ -4,7 +4,7 @@ import crashlytics from '@react-native-firebase/crashlytics';
 import { User } from '../types/User';
 
 const getUserData = async (userId: string) => {
-  let userData = { favoriteCocktails: [], default: true } as User;
+  let userData = { favoriteCocktails: [], bookings: [], default: true } as User;
 
   try {
     crashlytics().log('User data loading attempt.');

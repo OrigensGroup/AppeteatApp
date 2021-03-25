@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import useAuth from '../../hooks/useAuth';
+import { Booking } from '../../types/Booking';
 import { MenuItem } from '../../types/MenuItem';
 import { User } from '../../types/User';
 
@@ -9,12 +10,14 @@ import getUserData, { saveUserData } from '../../utils/manageUserdata';
 interface UserContext {
   userData: User;
   addNewFavoriteCocktail: (item: MenuItem) => void;
+  addBooking: (b: Booking) => void;
   restoreDefault: () => void;
 }
 
 export const UserContext = React.createContext<UserContext>({
-  userData: { favoriteCocktails: [], default: false },
+  userData: { favoriteCocktails: [], bookings: [], default: false },
   addNewFavoriteCocktail: () => {},
+  addBooking: () => {},
   restoreDefault: () => {},
 });
 
@@ -22,7 +25,7 @@ interface UserProviderProps {}
 
 const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) => {
   const user = useAuth();
-  const [userData, setUserData] = useState<User>({ favoriteCocktails: [], default: true });
+  const [userData, setUserData] = useState<User>({ favoriteCocktails: [], bookings: [], default: true });
 
   const loadData = useCallback(async () => {
     if (user) {
@@ -38,7 +41,7 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   }, [user, userData]);
 
   const restoreDefault = () => {
-    setUserData({ favoriteCocktails: [], default: true });
+    setUserData({ favoriteCocktails: [], bookings: [], default: true });
   };
 
   useEffect(() => {
@@ -60,11 +63,19 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
     }));
   };
 
+  const addBooking = (booking: Booking) => {
+    setUserData((data) => ({
+      ...data,
+      bookings: [booking, ...data.bookings],
+    }));
+  };
+
   return (
     <UserContext.Provider
       value={{
         userData,
         addNewFavoriteCocktail,
+        addBooking,
         restoreDefault,
       }}
     >

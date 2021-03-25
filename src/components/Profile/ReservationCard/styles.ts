@@ -1,15 +1,14 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
-  height: ${({ theme }) => theme.spacing.multiple(15)};
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-radius: ${({ theme }) => theme.spacing.multiple(3)};
-  border-color: ${({ theme }) => theme.colors.border}; ;
-`;
-export const ReservationCardContainer = styled.View`
+  border-color: ${({ theme }) => theme.colors.border};
+
   padding: ${({ theme }) => theme.spacing.single};
 `;
+
 export const VenueName = styled.View`
   display: flex;
   flex-direction: row;

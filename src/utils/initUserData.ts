@@ -5,6 +5,7 @@ import { User } from '../types/User';
 const defaultUserdata: User = {
   favoriteCocktails: [],
   default: true,
+  bookings: [],
 };
 
 const initUserData = async (userId: string) => {
