@@ -2,14 +2,16 @@ import styled from 'styled-components/native';
 
 export const ItemSummaryContainer = styled.View`
   flex: 1;
+  padding-top: ${({ theme }) => theme.spacing.triple};
 `;
 
 export const CartTitleContainer = styled.View`
-  margin: ${({ theme }) => theme.spacing.double};
+  margin-top: ${({ theme }) => theme.spacing.double};
 `;
 
 export const DeleteButton = styled.TouchableOpacity`
   position: absolute;
+  height: ${({ theme }) => theme.spacing.multiple(15)};
   background-color: ${({ theme }) => theme.colors.activeRed};
   top: 0;
   right: 0;

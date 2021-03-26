@@ -1,48 +1,45 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 
-import cartTranslations from '../../../translations/cart';
 import Text from '../../shared/Text';
-import ViewCta from '../../shared/ViewCta';
 
-import { ServiceSelectionContainer, TextContainer, Line, PaymentButtonContainer, ServiceSelector } from './styles';
-import TableNumber from './TableNumber';
-import TakeAway from './TakeAway';
+import SelectServiceButton from './SelectServiceButton';
 
-interface ServiceSelectionProps {}
+import { SelectServiceWrapper, ButtonsWrapper, TitleWrapper } from './styles';
 
-const ServiceSelection: React.FunctionComponent<ServiceSelectionProps> = () => {
-  const navigation = useNavigation();
-  const [text, setText] = useState<string>('');
+interface SelectServiceProps {
+  // setShowTable: boolean;
+}
 
-  const updateTableNumber = (TableNumber: string) => {
-    setText(TableNumber);
-  };
+const SelectService: React.FunctionComponent<SelectServiceProps> = () => {
+  const [index, setIndex] = useState(0);
 
   return (
-    <ServiceSelectionContainer>
-      <ServiceSelector>
-        <TableNumber placeholder={cartTranslations.tableNumber.placeholder} updateValue={updateTableNumber} />
-        <TextContainer>
-          <Line />
-          <Text align="center" color="primary" fontSize={25}>
-            OR
-          </Text>
-          <Line />
-        </TextContainer>
-        <TakeAway />
-      </ServiceSelector>
-      {text.length > 0 && (
-        <PaymentButtonContainer>
-          <ViewCta onClick={() => navigation.navigate('Payment')}>
-            <Text bold color="secondary" fontSize={20}>
-              {cartTranslations.goToPayment.title}
-            </Text>
-          </ViewCta>
-        </PaymentButtonContainer>
-      )}
-    </ServiceSelectionContainer>
+    <SelectServiceWrapper>
+      <TitleWrapper>
+        <Text bold color="primary" fontSize={16}>
+          Order details
+        </Text>
+      </TitleWrapper>
+      <ButtonsWrapper>
+        <SelectServiceButton
+          active={index === 0}
+          onClick={() => {
+            // setShowTable = setShowTable;
+            setIndex(0);
+          }}
+          title="Eat in"
+        />
+        <SelectServiceButton
+          active={index === 1}
+          onClick={() => {
+            // setShowTable = setShowTable;
+            setIndex(1);
+          }}
+          title="Take away"
+        />
+      </ButtonsWrapper>
+    </SelectServiceWrapper>
   );
 };
 
-export default ServiceSelection;
+export default SelectService;

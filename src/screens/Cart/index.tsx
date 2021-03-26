@@ -6,7 +6,6 @@ import cartTranslations from '../../translations/cart';
 import useCart from '../../hooks/useCart';
 import UpdateModal from '../../components/Cart/UpdateModal';
 
-import Logo from '../../components/shared/Logo';
 import ItemSummary from '../../components/Cart/ItemSummary';
 import ValueItem from '../../components/Cart/ValueItem';
 import FinaliseOrder from '../../components/Cart/FinaliseOrder';
@@ -14,8 +13,11 @@ import { OrderItem } from '../../types/OrderItem';
 
 import ExplanationModal from '../../components/shared/ExplanationModal';
 import allergiesTranslations from '../../translations/allergies';
+import TopBar from '../../components/shared/TopBar';
+import SelectService from '../../components/Cart/SelectService';
+import Text from '../../components/shared/Text';
 
-import { CartContainer, CartSummarySection } from './styles';
+import { CartContainer, CartSummarySection, TotalRow, TotalSection, CartSwiper } from './styles';
 
 interface CartProps {}
 
@@ -51,6 +53,8 @@ const Cart: React.FunctionComponent<CartProps> = () => {
     });
   };
 
+  const [showTable, setShowTable] = useState(true);
+
   return (
     <CartContainer>
       <UpdateModal isModalVisible={isModalVisible} item={itemToUpdate} onClose={closeModal} />
@@ -61,18 +65,67 @@ const Cart: React.FunctionComponent<CartProps> = () => {
         placeholderTextColor={theme.colors.border}
         title={modalData.title}
       />
-      <Logo />
-      <ItemSummary onUpdate={toggleModal} />
-      <CartSummarySection>
-        <ValueItem color="quartiary" title={cartTranslations.subtotal.title} value={pricing.subtotal} />
-        <ValueItem color="quartiary" title={cartTranslations.serviceFeeField.title} value={pricing.servicefee} />
-        <ValueItem
-          color="tertiary"
-          onItemClick={showDescriptionModal({ title: allergiesTranslations.allergiesModal.title })}
-          title={cartTranslations.allergiesField.title}
-        />
-        <ValueItem color="tertiary" title={cartTranslations.voucherField.title} />
-      </CartSummarySection>
+      <TopBar back="MenuList" hideFilter title="Cart" />
+      <CartSwiper>
+        <ItemSummary onUpdate={toggleModal} />
+        <SelectService setShowTable={setShowTable} />
+        <CartSummarySection>
+          {showTable ? (
+            <ValueItem
+              color="primary"
+              icon="location-outline"
+              onItemClick={showDescriptionModal({ title: 'Table number' })}
+              title="Insert table number"
+            />
+          ) : (
+            <ValueItem
+              color="primary"
+              icon="location-outline"
+              onItemClick={showDescriptionModal({ title: 'Table number' })}
+              title="Insert pick up time"
+            />
+          )}
+          <ValueItem color="primary" icon="ios-card" title={cartTranslations.paymentMethodField.title} />
+          <ValueItem
+            color="primary"
+            icon="ios-chatbox-outline"
+            onItemClick={showDescriptionModal({ title: allergiesTranslations.allergiesModal.title })}
+            title={cartTranslations.allergiesField.title}
+          />
+          <ValueItem
+            color="primary"
+            icon="ios-chatbox-outline"
+            onItemClick={showDescriptionModal({ title: 'Voucher code' })}
+            title={cartTranslations.voucherField.title}
+          />
+          <TotalSection>
+            <TotalRow>
+              <Text color="primary" fontSize={14}>
+                Subtotal
+              </Text>
+              <Text color="primary" fontSize={14}>
+                £ {pricing.subtotal}
+              </Text>
+            </TotalRow>
+            <TotalRow>
+              <Text color="primary" fontSize={14}>
+                Service fee
+              </Text>
+              <Text color="primary" fontSize={14}>
+                £ {pricing.servicefee}
+              </Text>
+            </TotalRow>
+            <TotalRow>
+              <Text color="primary" fontSize={14}>
+                Total
+              </Text>
+              <Text bold color="primary" fontSize={14}>
+                £ {pricing.total}
+              </Text>
+            </TotalRow>
+          </TotalSection>
+        </CartSummarySection>
+      </CartSwiper>
       <FinaliseOrder />
     </CartContainer>
   );

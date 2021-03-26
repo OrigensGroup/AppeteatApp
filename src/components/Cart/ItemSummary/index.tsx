@@ -9,7 +9,7 @@ import Text from '../../shared/Text';
 
 import CartItem from './CartItem';
 
-import { ItemSummaryContainer, CartTitleContainer, DeleteButton } from './styles';
+import { ItemSummaryContainer, DeleteButton } from './styles';
 
 interface ItemSummaryProps {
   onUpdate: (orderItem: OrderItem) => () => void;
@@ -47,11 +47,6 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
 
   return (
     <ItemSummaryContainer>
-      <CartTitleContainer>
-        <Text bold color="primary" fontSize={20}>
-          {cartTranslations.titleField.title}
-        </Text>
-      </CartTitleContainer>
       <SwipeListView
         data={cart}
         disableRightSwipe
