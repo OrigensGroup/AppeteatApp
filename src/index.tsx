@@ -13,6 +13,11 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import { ThemeProvider } from 'styled-components/native';
 
+// eslint-disable-next-line
+import { STRIPE_ACCOUNT } from '@env';
+
+import stripe from 'tipsi-stripe';
+
 import { useThemeSelector } from './theme';
 
 import { Bar } from './types/Bar';
@@ -46,6 +51,11 @@ const App = () => {
 
   const loadStuff = async () => {
     try {
+      stripe.setOptions({
+        publishableKey: STRIPE_ACCOUNT,
+        androidPayMode: 'test',
+      });
+
       await Font.loadAsync({
         Comfortaa: require('./theme/fonts/Comfortaa-Regular.ttf'),
         ComfortaaBold: require('./theme/fonts/Comfortaa-Bold.ttf'),

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
+
+import useAuth from '../../../hooks/useAuth';
+import useCart from '../../../hooks/useCart';
 
 import cartTranslations from '../../../translations/cart';
+import { makeCardPayment } from '../../../utils/payments';
 import Text from '../../shared/Text';
 import ViewCta from '../../shared/ViewCta';
 
@@ -23,7 +26,24 @@ import {
 interface PaymentOptionProps {}
 
 const PaymentOption: React.FunctionComponent<PaymentOptionProps> = () => {
+  const { pricing } = useCart();
+  const user = useAuth();
   const [index, setIndex] = useState(0);
+
+  const pay = async () => {
+    if (user && user.email) {
+      const res = await makeCardPayment(
+        { number: '4242424242424242', expMonth: 11, expYear: 22, cvc: '223' },
+        {
+          customerEmail: user.email,
+          price: pricing.total,
+          product: 'Test app flow payment',
+        }
+      );
+
+      console.log(res);
+    }
+  };
 
   return (
     <PaymentOptionContainer>
@@ -44,7 +64,7 @@ const PaymentOption: React.FunctionComponent<PaymentOptionProps> = () => {
       </PaymentMethodsContainer>
       {index === 0 && <CardDetails />}
       <PaymentButtonContainer>
-        <ViewCta onClick={() => Alert.alert('Order Done')}>
+        <ViewCta onClick={pay}>
           <Text bold color="secondary" fontSize={20}>
             {cartTranslations.pay.title}
           </Text>

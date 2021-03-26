@@ -20,6 +20,7 @@ interface CartContext {
   updateItemQuantity: (item: OrderItem, amount: number) => void;
   pricing: Pricing;
   addTips: (amount: number) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = React.createContext<CartContext>({
@@ -34,6 +35,7 @@ export const CartContext = React.createContext<CartContext>({
     total: 0,
   },
   addTips: () => {},
+  clearCart: () => {},
 });
 
 interface CartProviderProps {}
@@ -86,6 +88,10 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     }));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -95,6 +101,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
         updateItemQuantity,
         pricing,
         addTips,
+        clearCart,
       }}
     >
       {children}
