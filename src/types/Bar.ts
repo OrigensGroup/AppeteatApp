@@ -3,8 +3,12 @@ import { MenuItem } from './MenuItem';
 import { Promotion } from './Promotion';
 import { Tab } from './Tab';
 import { Booking } from './Booking';
-
+import { Order } from './Order';
 import { Venue } from './Venue';
+
+export interface Orders {
+  list: Order[];
+}
 
 export interface Bookings {
   list: Booking[];
@@ -28,4 +32,5 @@ export interface Bar {
   homepage: Homepage;
   locations: Locations;
   menu: Menu;
+  orders: Orders;
 }
