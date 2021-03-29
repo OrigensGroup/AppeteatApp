@@ -5,14 +5,14 @@ const cartTranslations = {
   totalField: {
     title: 'Total',
   },
-  serviceFeeField: {
-    title: 'Service Fee',
+  paymentMethodField: {
+    title: 'Select payment method',
   },
   allergiesField: {
-    title: 'Any allergies we should be aware of?',
+    title: 'Any allergies and/or preferences?',
   },
   voucherField: {
-    title: 'Add voucher code',
+    title: 'Insert discount code here',
   },
   tipField: {
     title: 'Add Tip',
@@ -24,7 +24,7 @@ const cartTranslations = {
     title: 'Subtotal',
   },
   goToCheckoutCta: {
-    title: 'Go To Checkout',
+    title: 'Checkout',
   },
   goToPayment: {
     title: 'Go to payment',

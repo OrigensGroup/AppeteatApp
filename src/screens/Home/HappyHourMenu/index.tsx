@@ -9,7 +9,7 @@ import HappyHourPromotionCard from '../../../components/Home/PromotionCards/Coun
 import { MenuItem } from '../../../types/MenuItem';
 import MenuCard from '../../../components/Menu/MenuSwiper/MenuCards';
 
-import MenuTopBar from '../../../components/Menu/MenuTopBar';
+import TopBar from '../../../components/shared/TopBar';
 
 import { PromotionCountdown } from '../../../types/Promotion';
 
@@ -36,7 +36,7 @@ const HappyHourMenu: React.FunctionComponent<HappyHourMenuProps> = () => {
   return (
     <SafeArea>
       <HappyHourMenuContainer>
-        <MenuTopBar hideFilter title={promotionItem.title} />
+        <TopBar back="HomePage" hideFilter title={promotionItem.title} />
         <HappyHourMenuHeader>
           <HappyHourPromotionCard disabled happyHour happyHourSize item={promotionItem} />
         </HappyHourMenuHeader>

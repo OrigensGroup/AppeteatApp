@@ -10,7 +10,7 @@ import ViewBasketButton from '../../../components/Menu/ViewBasketButton';
 import SearchModal from '../../../components/Menu/SearchModal';
 import useMenu from '../../../hooks/useMenu';
 import useHomepage from '../../../hooks/useHomepage';
-import MenuTopBar from '../../../components/Menu/MenuTopBar';
+import TopBar from '../../../components/shared/TopBar';
 
 import useCart from '../../../hooks/useCart';
 
@@ -119,7 +119,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   return (
     <SafeAreaViewBottom>
       <MenuWrapper>
-        <MenuTopBar onClick={toggleModal} title={menuTranslations.menu.title} />
+        <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menu.title} />
         <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
         <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
           {menuTabsContent()}

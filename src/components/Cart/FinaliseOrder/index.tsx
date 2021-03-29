@@ -1,37 +1,27 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
-import useCart from '../../../hooks/useCart';
+// import useCart from '../../../hooks/useCart';
 import cartTranslations from '../../../translations/cart';
-import Spinner from '../../shared/Spinner';
 import Text from '../../shared/Text';
 import ViewCta from '../../shared/ViewCta';
-import ValueItem from '../ValueItem';
 
-import { FinaliseOrderContainer, TipCounterWrapper, Separator } from './styles';
+import {
+  FinaliseOrderContainer,
+  // TipCounterWrapper,
+  // Separator
+} from './styles';
 
 interface FinaliseOrderProps {}
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = () => {
-  const { addTips, pricing } = useCart();
+  // const { addTips, pricing } = useCart();
   const navigation = useNavigation();
 
   return (
     <FinaliseOrderContainer>
-      <ValueItem
-        color="quartiary"
-        icon={
-          <TipCounterWrapper>
-            <Spinner hideInput initialValue={0} onChange={addTips} />
-          </TipCounterWrapper>
-        }
-        title={cartTranslations.tipField.title}
-        value={pricing.tip}
-      />
-      <ValueItem color="primary" title={cartTranslations.orderTotField.title} value={pricing.total} />
-      <Separator />
       <ViewCta onClick={() => navigation.navigate('SelectService')}>
-        <Text bold color="secondary" fontSize={20}>
+        <Text bold color="fixedWhite" fontSize={20}>
           {cartTranslations.goToCheckoutCta.title}
         </Text>
       </ViewCta>
