@@ -22,7 +22,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = () => {
     <FinaliseOrderContainer>
       <ViewCta onClick={() => navigation.navigate('SelectService')}>
         <Text bold color="fixedWhite" fontSize={20}>
-          {cartTranslations.goToCheckoutCta.title}
+          {cartTranslations.checkoutButton.title}
         </Text>
       </ViewCta>
     </FinaliseOrderContainer>

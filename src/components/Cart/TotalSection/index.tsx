@@ -1,6 +1,7 @@
 import React from 'react';
 
 import useCart from '../../../hooks/useCart';
+import cartTranslations from '../../../translations/cart';
 import Text from '../../shared/Text';
 
 import { TotalSectionContainer, TotalRow } from './styles';
@@ -13,7 +14,7 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = () => {
     <TotalSectionContainer>
       <TotalRow>
         <Text color="primary" fontSize={14}>
-          Subtotal
+          {cartTranslations.subtotal.title}
         </Text>
         <Text color="primary" fontSize={14}>
           £ {pricing.subtotal}
@@ -21,15 +22,15 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = () => {
       </TotalRow>
       <TotalRow>
         <Text color="primary" fontSize={14}>
-          Service fee
+          {cartTranslations.serviceFee.title}
         </Text>
         <Text color="primary" fontSize={14}>
           £ {pricing.servicefee}
         </Text>
       </TotalRow>
       <TotalRow>
-        <Text color="primary" fontSize={14}>
-          Total
+        <Text bold color="primary" fontSize={14}>
+          {cartTranslations.totalField.title}
         </Text>
         <Text bold color="primary" fontSize={14}>
           £ {pricing.total}
