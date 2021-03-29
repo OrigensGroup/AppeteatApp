@@ -11,7 +11,6 @@ import FinaliseOrder from '../../components/Cart/FinaliseOrder';
 import { OrderItem } from '../../types/OrderItem';
 
 import ExplanationModal from '../../components/shared/ExplanationModal';
-import allergiesTranslations from '../../translations/allergies';
 import TopBar from '../../components/shared/TopBar';
 import SelectService from '../../components/Cart/SelectService';
 
@@ -66,7 +65,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
         placeholderTextColor={theme.colors.border}
         title={modalData.title}
       />
-      <TopBar back="MenuList" hideFilter title="Cart" />
+      <TopBar back="MenuList" hideFilter title={cartTranslations.titleField.title} />
       <CartSwiper>
         <ItemSummary onUpdate={toggleModal} />
         <SelectService setShowTable={setShowTable} />
@@ -75,32 +74,41 @@ const Cart: React.FunctionComponent<CartProps> = () => {
             <ValueItem
               color="primary"
               icon="location-outline"
-              onItemClick={showDescriptionModal({ title: 'Table number', placeholder: 'Insert table number' })}
-              title="Insert table number"
+              onItemClick={showDescriptionModal({
+                title: cartTranslations.tableNumber.label,
+                placeholder: cartTranslations.tableNumber.placeholder,
+              })}
+              title={cartTranslations.tableNumber.title}
             />
           ) : (
             <ValueItem
               color="primary"
               icon="location-outline"
-              onItemClick={showDescriptionModal({ title: 'Pick up time', placeholder: 'hh : mm' })}
-              title="Insert pick up time"
+              onItemClick={showDescriptionModal({
+                title: cartTranslations.takeAway.label,
+                placeholder: cartTranslations.takeAway.placeholder,
+              })}
+              title={cartTranslations.takeAway.title}
             />
           )}
-          <ValueItem color="primary" icon="ios-card" title={cartTranslations.paymentMethodField.title} />
+          <ValueItem color="primary" icon="ios-card" title={cartTranslations.paymentMethod.title} />
           <ValueItem
             color="primary"
             icon="ios-chatbox-outline"
             onItemClick={showDescriptionModal({
-              title: allergiesTranslations.allergiesModal.title,
-              placeholder: 'Insert any comments',
+              title: cartTranslations.commentAndAllergies.label,
+              placeholder: cartTranslations.commentAndAllergies.placeholder,
             })}
-            title={cartTranslations.allergiesField.title}
+            title={cartTranslations.commentAndAllergies.title}
           />
           <ValueItem
             color="primary"
             icon="ios-chatbox-outline"
-            onItemClick={showDescriptionModal({ title: 'Voucher', placeholder: 'Insert discount code' })}
-            title={cartTranslations.voucherField.title}
+            onItemClick={showDescriptionModal({
+              title: cartTranslations.voucher.label,
+              placeholder: cartTranslations.voucher.placeholder,
+            })}
+            title={cartTranslations.voucher.title}
           />
           <TotalSection />
         </CartSummarySection>

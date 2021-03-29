@@ -5,66 +5,77 @@ const cartTranslations = {
   totalField: {
     title: 'Total',
   },
-  paymentMethodField: {
+  orderDetails: {
+    title: 'Order details',
+    eatIn: 'Eat in',
+    takeAway: 'Take away',
+  },
+
+  tableNumber: {
+    title: 'Insert table number',
+    label: 'Table number',
+    placeholder: 'Eg. 23',
+  },
+
+  takeAway: {
+    title: 'Insert pick up time',
+    label: 'Pick up time',
+    placeholder: 'hh : mm',
+  },
+
+  paymentMethod: {
     title: 'Select payment method',
+    label: 'Payment method',
+    addNew: 'Add a payement method',
   },
-  allergiesField: {
+
+  commentAndAllergies: {
     title: 'Any allergies and/or preferences?',
+    label: 'Comment/Allergies',
+    placeholder: 'Insert any request',
   },
-  voucherField: {
-    title: 'Insert discount code here',
+
+  voucher: {
+    title: 'Insert discont code here',
+    label: 'Voucher',
+    placeholder: 'Insert discount code',
   },
-  tipField: {
-    title: 'Add Tip',
+
+  removeItemSwipe: {
+    title: 'Remove',
   },
-  orderTotField: {
-    title: 'Order Total',
+  removeItemModal: {
+    title: 'Remove item',
   },
+
   subtotal: {
     title: 'Subtotal',
   },
-  goToCheckoutCta: {
-    title: 'Checkout',
+
+  serviceFee: {
+    title: 'Servcie fee',
   },
-  goToPayment: {
-    title: 'Go to payment',
+
+  // tipField: {
+  //   title: 'Add Tip',
+  // },
+
+  checkoutButton: {
+    title: 'Checkout',
   },
   updateModal: {
     price: 'Price:',
     cta: 'Update',
   },
-  removeItemSwipe: {
-    title: 'Remove',
-  },
+
   updateModalField: {
     label: 'Update',
     placeholder: 'Update',
   },
-  removeItemModal: {
-    title: 'Remove Item',
-  },
+
   priceModalField: {
     label: 'Price',
     placeholder: 'Price £',
-  },
-  tableNumber: {
-    label: 'Enter your table number',
-    placeholder: 'Eg. 23',
-  },
-  takeAway: {
-    placeholder: 'Take Away',
-  },
-  SelectService: {
-    title: 'Take Away',
-  },
-  pay: {
-    title: 'Pay',
-  },
-  paymentMethods: {
-    title: 'Payment Methods',
-  },
-  cardDetails: {
-    title: 'Card Details',
   },
 };
 
