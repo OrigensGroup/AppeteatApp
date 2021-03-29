@@ -5,6 +5,9 @@ export const CartContainer = styled.SafeAreaView`
   flex: 1;
 `;
 
-export const CartSummarySection = styled.View`
-  padding: 0 ${({ theme }) => theme.spacing.double};
+export const CartSwiper = styled.ScrollView`
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
+  flex: 1;
 `;
+
+export const CartSummarySection = styled.View``;

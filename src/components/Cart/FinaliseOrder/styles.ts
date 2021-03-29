@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const FinaliseOrderContainer = styled.View`
   border-top-width: 1px;
-  border-color: ${({ theme }) => theme.colors.textPrimary};
+  border-color: ${({ theme }) => theme.colors.border};
   padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double}
     ${({ theme }) => (theme.os === 'ios' ? 0 : theme.spacing.double)} ${({ theme }) => theme.spacing.double};
   background: ${({ theme }) => theme.colors.backgroundColor};

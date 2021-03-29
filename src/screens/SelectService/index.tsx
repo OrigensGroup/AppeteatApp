@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ServiceSelection from '../../components/Cart/SelectService';
+import ServiceSelection from '../../components/Cart/SelectServicex';
 
 import { SelectServiceContainer } from './styles';
 
