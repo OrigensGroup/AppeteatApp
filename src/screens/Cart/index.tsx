@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import cartTranslations from '../../translations/cart';
-import useCart from '../../hooks/useCart';
 import UpdateModal from '../../components/Cart/UpdateModal';
 
 import ItemSummary from '../../components/Cart/ItemSummary';
@@ -15,15 +14,15 @@ import ExplanationModal from '../../components/shared/ExplanationModal';
 import allergiesTranslations from '../../translations/allergies';
 import TopBar from '../../components/shared/TopBar';
 import SelectService from '../../components/Cart/SelectService';
-import Text from '../../components/shared/Text';
 
-import { CartContainer, CartSummarySection, TotalRow, TotalSection, CartSwiper } from './styles';
+import TotalSection from '../../components/Cart/TotalSection';
+
+import { CartContainer, CartSummarySection, CartSwiper } from './styles';
 
 interface CartProps {}
 
 const Cart: React.FunctionComponent<CartProps> = () => {
   const theme = useTheme();
-  const { pricing } = useCart();
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [itemToUpdate, setItemToUpdate] = useState<OrderItem | null>(null);
@@ -31,6 +30,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
   const [modalData, setModalData] = useState({
     show: false,
     title: '',
+    placeholder: '',
   });
 
   const toggleModal = (item: OrderItem) => () => {
@@ -42,14 +42,15 @@ const Cart: React.FunctionComponent<CartProps> = () => {
     setModalVisible(false);
   };
 
-  const showDescriptionModal = ({ title }: { title: string }) => () => {
-    setModalData({ show: true, title });
+  const showDescriptionModal = ({ placeholder, title }: { title: string; placeholder: string }) => () => {
+    setModalData({ show: true, title, placeholder });
   };
 
   const closeExplanationModal = () => {
     setModalData({
       show: false,
       title: '',
+      placeholder: '',
     });
   };
 
@@ -61,7 +62,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
       <ExplanationModal
         isVisible={modalData.show}
         onClose={closeExplanationModal}
-        placeholder={allergiesTranslations.allergiesModal.placeholder}
+        placeholder={modalData.placeholder}
         placeholderTextColor={theme.colors.border}
         title={modalData.title}
       />
@@ -74,14 +75,14 @@ const Cart: React.FunctionComponent<CartProps> = () => {
             <ValueItem
               color="primary"
               icon="location-outline"
-              onItemClick={showDescriptionModal({ title: 'Table number' })}
+              onItemClick={showDescriptionModal({ title: 'Table number', placeholder: 'Insert table number' })}
               title="Insert table number"
             />
           ) : (
             <ValueItem
               color="primary"
               icon="location-outline"
-              onItemClick={showDescriptionModal({ title: 'Table number' })}
+              onItemClick={showDescriptionModal({ title: 'Pick up time', placeholder: 'hh : mm' })}
               title="Insert pick up time"
             />
           )}
@@ -89,41 +90,19 @@ const Cart: React.FunctionComponent<CartProps> = () => {
           <ValueItem
             color="primary"
             icon="ios-chatbox-outline"
-            onItemClick={showDescriptionModal({ title: allergiesTranslations.allergiesModal.title })}
+            onItemClick={showDescriptionModal({
+              title: allergiesTranslations.allergiesModal.title,
+              placeholder: 'Insert any comments',
+            })}
             title={cartTranslations.allergiesField.title}
           />
           <ValueItem
             color="primary"
             icon="ios-chatbox-outline"
-            onItemClick={showDescriptionModal({ title: 'Voucher code' })}
+            onItemClick={showDescriptionModal({ title: 'Voucher', placeholder: 'Insert discount code' })}
             title={cartTranslations.voucherField.title}
           />
-          <TotalSection>
-            <TotalRow>
-              <Text color="primary" fontSize={14}>
-                Subtotal
-              </Text>
-              <Text color="primary" fontSize={14}>
-                £ {pricing.subtotal}
-              </Text>
-            </TotalRow>
-            <TotalRow>
-              <Text color="primary" fontSize={14}>
-                Service fee
-              </Text>
-              <Text color="primary" fontSize={14}>
-                £ {pricing.servicefee}
-              </Text>
-            </TotalRow>
-            <TotalRow>
-              <Text color="primary" fontSize={14}>
-                Total
-              </Text>
-              <Text bold color="primary" fontSize={14}>
-                £ {pricing.total}
-              </Text>
-            </TotalRow>
-          </TotalSection>
+          <TotalSection />
         </CartSummarySection>
       </CartSwiper>
       <FinaliseOrder />

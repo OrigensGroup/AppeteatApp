@@ -5,7 +5,7 @@ import currencyTranslations from '../../../translations/currency';
 import IconButton from '../../shared/IconButton';
 import Text from '../../shared/Text';
 
-import { ValueItemContainer, ValueItemInfoContainer } from './styles';
+import { ValueItemContainer, ValueItemInfoContainer, TextWrapp } from './styles';
 
 interface ValueItemProps {
   title: string;
@@ -21,9 +21,11 @@ const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, icon, onIte
   return (
     <ValueItemContainer onPress={onItemClick}>
       <IconButton color={theme.colors.textPrimary} iconName={icon} size={28} />
-      <Text color={color} fontSize={14}>
-        {title}
-      </Text>
+      <TextWrapp>
+        <Text color={color} fontSize={14}>
+          {title}
+        </Text>
+      </TextWrapp>
       <ValueItemInfoContainer>
         {typeof value !== 'undefined' && (
           <Text color={color} fontSize={14}>

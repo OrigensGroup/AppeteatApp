@@ -4,13 +4,13 @@ import Text from '../../shared/Text';
 
 import SelectServiceButton from './SelectServiceButton';
 
-import { SelectServiceWrapper, ButtonsWrapper, TitleWrapper } from './styles';
+import { SelectServiceWrapper, ButtonsWrapper, TitleWrapper, EmptyDiv } from './styles';
 
 interface SelectServiceProps {
-  // setShowTable: boolean;
+  setShowTable: (b: boolean) => void;
 }
 
-const SelectService: React.FunctionComponent<SelectServiceProps> = () => {
+const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTable }) => {
   const [index, setIndex] = useState(0);
 
   return (
@@ -24,15 +24,16 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = () => {
         <SelectServiceButton
           active={index === 0}
           onClick={() => {
-            // setShowTable = setShowTable;
+            setShowTable(true);
             setIndex(0);
           }}
           title="Eat in"
         />
+        <EmptyDiv />
         <SelectServiceButton
           active={index === 1}
           onClick={() => {
-            // setShowTable = setShowTable;
+            setShowTable(false);
             setIndex(1);
           }}
           title="Take away"
