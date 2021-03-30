@@ -1,6 +1,6 @@
 import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
