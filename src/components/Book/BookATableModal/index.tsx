@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from 'react-native-modal';
-import firestore from '@react-native-firebase/firestore';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
 
@@ -93,7 +92,7 @@ const months: Months = {
 const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, onClose, venue }) => {
   const user = useAuth();
   const theme = useTheme();
-  const [bookings] = useBookings();
+  const [bookings, setBookings] = useBookings();
   const { addBooking } = useUserData();
 
   const [localQuantity, setLocalQuantity] = useState('1');
@@ -125,27 +124,25 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
   };
 
   const onSubmit = () => {
+    const d = new Date(date);
+
     const newBooking: Booking = {
       id: v4(),
       fullName: user?.displayName || 'user without name',
-      date: date.getDay() + '/' + date.getMonth() + 1 + '/' + date.getFullYear(),
-      time: date.getHours() + ':' + date.getMinutes(),
+      date: `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`,
+      time: `${d.getHours()}:${date.getMinutes()}`,
       people: localQuantity,
-      venue: venue.name,
+      venueId: venue.id,
       done: false,
       comment: '',
     };
 
-    firestore()
-      .collection('bar')
-      .doc('bookings')
-      .set({
-        ...bookings,
-        list: [...bookings.list, newBooking],
-      });
+    setBookings({
+      ...bookings,
+      list: [...bookings.list, newBooking],
+    });
 
     addBooking(newBooking);
-
     onClose();
   };
 
