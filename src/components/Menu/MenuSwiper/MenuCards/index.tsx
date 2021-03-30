@@ -79,35 +79,45 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
           </Text>
         </CardMainItem>
       </CardDescription>
-      <CardPrice>
-        {discount && discount.type === 'tabDiscount' ? (
-          <>
-            <DiscountTag>
-              <Text bold color="secondary" fontSize={12}>
-                - {discount.amountForDiscount}%
-              </Text>
-            </DiscountTag>
-            <DiscountPrice>
-              <Text bold color="quartiary" fontSize={12} strike>
-                {currencyTranslations.currencyField.placeholder}
-                {item.price}
-              </Text>
-            </DiscountPrice>
-          </>
-        ) : (
-          iLikeThis && (
-            <LikeIcon>
-              <IconButton color={theme.colors.activeRed} iconName="md-heart" size={24} />
-            </LikeIcon>
-          )
-        )}
-        <Price move={!discount}>
-          <Text bold color="tertiary" fontSize={14}>
-            {currencyTranslations.currencyField.placeholder}
-            {finalPrice}
-          </Text>
-        </Price>
-      </CardPrice>
+      {item.soldout === false ? (
+        <CardPrice>
+          {discount && discount.type === 'tabDiscount' ? (
+            <>
+              <DiscountTag>
+                <Text bold color="secondary" fontSize={12}>
+                  - {discount.amountForDiscount}%
+                </Text>
+              </DiscountTag>
+              <DiscountPrice>
+                <Text bold color="quartiary" fontSize={12} strike>
+                  {currencyTranslations.currencyField.placeholder}
+                  {item.price}
+                </Text>
+              </DiscountPrice>
+            </>
+          ) : (
+            iLikeThis && (
+              <LikeIcon>
+                <IconButton color={theme.colors.activeRed} iconName="md-heart" size={24} />
+              </LikeIcon>
+            )
+          )}
+          <Price move={!discount}>
+            <Text bold color="tertiary" fontSize={14}>
+              {currencyTranslations.currencyField.placeholder}
+              {finalPrice}
+            </Text>
+          </Price>
+        </CardPrice>
+      ) : (
+        <CardPrice>
+          <Price move={!discount}>
+            <Text bold color="tertiary" fontSize={10}>
+              SOLDOUT
+            </Text>
+          </Price>
+        </CardPrice>
+      )}
     </CardContainer>
   );
 };
