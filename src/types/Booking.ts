@@ -6,5 +6,5 @@ export interface Booking {
   id: string;
   people: string;
   time: string;
-  venue: string;
+  venueId: string;
 }
