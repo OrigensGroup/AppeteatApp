@@ -59,11 +59,13 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
         <ItemDescription discount={discount} item={item} />
         <CustomiseSection item={item} onClick={showDescriptionModal} />
       </ItemContainer>
-      <AddToBasketButton
-        discount={discount}
-        extras={[{ id: 'custom', price: 0, selected: false, title: modalData.inputData }]}
-        item={item}
-      />
+      {item.soldout === false && (
+        <AddToBasketButton
+          discount={discount}
+          extras={[{ id: 'custom', price: 0, selected: false, title: modalData.inputData }]}
+          item={item}
+        />
+      )}
     </CustomisableItemContainer>
   );
 };

@@ -26,4 +26,5 @@ export type MenuItem = {
   type: 'customisableItem' | 'itemWithExtras';
   ingredients?: string[];
   upgradableItems?: UpgradeItem[];
+  soldout: boolean;
 };
