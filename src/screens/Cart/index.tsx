@@ -13,7 +13,6 @@ import FinaliseOrder from '../../components/Cart/FinaliseOrder';
 import { OrderItem } from '../../types/OrderItem';
 
 import ExplanationModal from '../../components/shared/ExplanationModal';
-import allergiesTranslations from '../../translations/allergies';
 import TopBar from '../../components/shared/TopBar';
 
 import TotalSection from '../../components/Cart/TotalSection';
@@ -109,7 +108,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
         title={explanationModal.title}
         updateValue={updateModalValue(explanationModal.code)}
       />
-      <TopBar back="MenuList" hideFilter title="Cart" />
+      <TopBar back="MenuList" hideFilter title={cartTranslations.titleField.title} />
       <CartSwiper>
         <ItemSummary onUpdate={toggleModal} />
         <SelectService setShowTable={setShowTable} />
@@ -119,18 +118,22 @@ const Cart: React.FunctionComponent<CartProps> = () => {
               color="primary"
               icon="location-outline"
               onItemClick={showDescriptionModal({
-                title: 'Table number',
-                placeholder: 'Insert table number',
+                title: cartTranslations.tableNumber.label,
+                placeholder: cartTranslations.tableNumber.placeholder,
                 code: 'table',
               })}
-              title={values.table ? values.table : 'Insert table number'}
+              title={values.table ? values.table : cartTranslations.tableNumber.title}
             />
           ) : (
             <ValueItem
               color="primary"
               icon="location-outline"
-              onItemClick={showDescriptionModal({ title: 'Pick up time', placeholder: 'hh : mm', code: 'pickup' })}
-              title={values.pickup ? values.pickup : 'Insert pick up time'}
+              onItemClick={showDescriptionModal({
+                title: cartTranslations.takeAway.label,
+                placeholder: cartTranslations.takeAway.placeholder,
+                code: 'pickup',
+              })}
+              title={values.pickup ? values.pickup : cartTranslations.takeAway.title}
             />
           )}
           <ValueItem
@@ -142,28 +145,28 @@ const Cart: React.FunctionComponent<CartProps> = () => {
                 ? 'Apple pay'
                 : Object.keys(cardModal.card).length !== 0
                 ? 'Card **** **** **** ' + cardModal.card.number.substr(-4, 4)
-                : cartTranslations.paymentMethodField.title
+                : cartTranslations.paymentMethod.title
             }
           />
           <ValueItem
             color="primary"
             icon="ios-chatbox-outline"
             onItemClick={showDescriptionModal({
-              title: allergiesTranslations.allergiesModal.title,
-              placeholder: 'Insert any comments',
+              title: cartTranslations.commentAndAllergies.label,
+              placeholder: cartTranslations.commentAndAllergies.placeholder,
               code: 'allergy',
             })}
-            title={values.allergy ? values.allergy : cartTranslations.allergiesField.title}
+            title={values.allergy ? values.allergy : cartTranslations.commentAndAllergies.title}
           />
           <ValueItem
             color="primary"
             icon="ios-chatbox-outline"
             onItemClick={showDescriptionModal({
-              title: 'Voucher',
-              placeholder: 'Insert discount code',
+              title: cartTranslations.voucher.label,
+              placeholder: cartTranslations.voucher.placeholder,
               code: 'voucher',
             })}
-            title={values.voucher ? values.voucher : cartTranslations.voucherField.title}
+            title={values.voucher ? values.voucher : cartTranslations.voucher.title}
           />
           <TotalSection />
         </CartSummarySection>

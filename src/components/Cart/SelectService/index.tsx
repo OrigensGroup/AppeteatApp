@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import cartTranslations from '../../../translations/cart';
+
 import Text from '../../shared/Text';
 
 import SelectServiceButton from './SelectServiceButton';
@@ -17,7 +19,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTab
     <SelectServiceWrapper>
       <TitleWrapper>
         <Text bold color="primary" fontSize={16}>
-          Order details
+          {cartTranslations.orderDetails.title}
         </Text>
       </TitleWrapper>
       <ButtonsWrapper>
@@ -27,7 +29,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTab
             setShowTable(true);
             setIndex(0);
           }}
-          title="Eat in"
+          title={cartTranslations.orderDetails.eatIn}
         />
         <EmptyDiv />
         <SelectServiceButton
@@ -36,7 +38,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTab
             setShowTable(false);
             setIndex(1);
           }}
-          title="Take away"
+          title={cartTranslations.orderDetails.takeAway}
         />
       </ButtonsWrapper>
     </SelectServiceWrapper>
