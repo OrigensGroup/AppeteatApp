@@ -26,18 +26,26 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discou
         <Text bold color="primary" fontSize={18}>
           {item.title}
         </Text>
-        <PriceSection>
-          {discount && discount.type === 'tabDiscount' && (
-            <Text bold color="quartiary" fontSize={14} strike>
+        {item.soldout === false ? (
+          <PriceSection>
+            {discount && discount.type === 'tabDiscount' && (
+              <Text bold color="quartiary" fontSize={14} strike>
+                {currencyTranslations.currencyField.placeholder}
+                {item.price}
+              </Text>
+            )}
+            <Text bold color="tertiary" fontSize={18}>
               {currencyTranslations.currencyField.placeholder}
-              {item.price}
+              {finalPrice}
             </Text>
-          )}
-          <Text bold color="tertiary" fontSize={18}>
-            {currencyTranslations.currencyField.placeholder}
-            {finalPrice}
-          </Text>
-        </PriceSection>
+          </PriceSection>
+        ) : (
+          <PriceSection>
+            <Text bold color="tertiary" fontSize={14}>
+              SOLDOUT
+            </Text>
+          </PriceSection>
+        )}
       </ItemDescriptionTitle>
       <ItemDescriptionDesc>
         <Text color="primary" fontSize={16}>

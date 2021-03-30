@@ -14,7 +14,6 @@ export const ItemDescriptionDesc = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   margin-top: ${({ theme }) => theme.spacing.double};
 `;
 
