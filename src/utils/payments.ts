@@ -26,19 +26,23 @@ export const makeCardPayment = async (
   card: Card,
   payment: Omit<Payment, 'currency' | 'tokenId' | 'CONNECTED_STRIPE_ACCOUNT_ID' | 'fee'>
 ): Promise<PaymentStatus> => {
-  const token = await stripe.createTokenWithCard({
-    ...card,
-  });
+  try {
+    const token = await stripe.createTokenWithCard({
+      ...card,
+    });
 
-  const postData: Payment = {
-    ...payment,
-    currency: CURRENCY,
-    tokenId: token.tokenId,
-    CONNECTED_STRIPE_ACCOUNT_ID: CONNECTED_ACCOUNT_ID,
-    fee: FEE,
-  };
+    const postData: Payment = {
+      ...payment,
+      currency: CURRENCY,
+      tokenId: token.tokenId,
+      CONNECTED_STRIPE_ACCOUNT_ID: CONNECTED_ACCOUNT_ID,
+      fee: FEE,
+    };
 
-  const res = await payToApi(postData);
+    const res = await payToApi(postData);
 
-  return res;
+    return res;
+  } catch (e) {
+    return e;
+  }
 };

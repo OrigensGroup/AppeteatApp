@@ -29,9 +29,33 @@ declare module 'tipsi-stripe' {
     tokenId: string;
   };
 
+  type CanMakeNativePayPaymentsOptions = {
+    networks: (
+      | 'american_express'
+      | 'cartes_bancaires'
+      | 'china_union_pay'
+      | 'discover'
+      | 'eftpos'
+      | 'electron'
+      | 'elo'
+      | 'id_credit'
+      | 'interac'
+      | 'jcb'
+      | 'mada'
+      | 'maestro'
+      | 'master_card'
+      | 'private_label'
+      | 'quic_pay'
+      | 'suica'
+      | 'visa'
+      | 'vpay'
+    )[];
+  };
+
   const stripe = {
     setOptions: (init: InitModule): Promise<void> => {},
     createTokenWithCard: (card: Card): Promise<Token> => {},
+    canMakeNativePayPayments: (options: CanMakeNativePayPaymentsOptions): Promise<boolean> => {},
   };
 
   export default stripe;

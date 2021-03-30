@@ -11,6 +11,7 @@ const loadBar = async () => {
     locations: { list: [] },
     menu: { items: [], tabs: [] },
     homepage: { sections: [] },
+    orders: { list: [] },
   } as Bar;
 
   try {

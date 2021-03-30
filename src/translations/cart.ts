@@ -25,6 +25,7 @@ const cartTranslations = {
   },
   goToCheckoutCta: {
     title: 'Checkout',
+    loading: 'Loading...',
   },
   goToPayment: {
     title: 'Go to payment',

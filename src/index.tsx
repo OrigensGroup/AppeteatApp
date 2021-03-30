@@ -47,6 +47,7 @@ const App = () => {
     locations: { list: [] },
     menu: { items: [], tabs: [] },
     homepage: { sections: [] },
+    orders: { list: [] },
   });
 
   const loadStuff = async () => {

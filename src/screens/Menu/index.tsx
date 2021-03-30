@@ -3,10 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Cart from '../Cart';
 
-import SelectService from '../SelectService';
-
-import Payment from '../Payment';
-
 import SingleItem from './SingleItem';
 import Menu from './MenuList';
 
@@ -38,8 +34,6 @@ const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen component={SelectService} name="SelectService" />
-      <Stack.Screen component={Payment} name="Payment" />
     </Stack.Navigator>
   );
 };
