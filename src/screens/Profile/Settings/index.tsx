@@ -20,15 +20,15 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
 
   const logOutAlert = () =>
     Alert.alert(
-      accountTranslations.accountPage.logOut,
-      accountTranslations.accountPage.logOutPromp,
+      accountTranslations.settingsPage.logOut,
+      accountTranslations.settingsPage.logOutPromp,
       [
         {
-          text: accountTranslations.accountPage.cancel,
+          text: accountTranslations.settingsPage.cancel,
           style: 'cancel',
         },
         {
-          text: accountTranslations.accountPage.yes,
+          text: accountTranslations.settingsPage.yes,
           onPress: async () => {
             await auth().signOut();
             restoreDefault();
@@ -43,22 +43,22 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       <ListItem
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="PersonalInformation"
-        title={accountTranslations.accountPage.personalInformation}
+        title={accountTranslations.personalInformationPage.title}
       />
       <ListItem
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Notifications"
-        title={accountTranslations.accountPage.myCard}
+        title={accountTranslations.settingsPage.myCard}
       />
       <ListItem
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Password"
-        title={accountTranslations.accountPage.password}
+        title={accountTranslations.settingsPage.password}
       />
       <ListItem
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         onClick={logOutAlert}
-        title={accountTranslations.accountPage.logOut}
+        title={accountTranslations.settingsPage.logOut}
       />
     </SettingsContainer>
   );

@@ -16,9 +16,12 @@ const ChangeName: React.FunctionComponent<ChangeNameProps> = () => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <CustomButton onClick={() => Alert.alert('Successfully saved')} title={accountTranslations.accountPage.save} />
+        <CustomButton
+          onClick={() => Alert.alert('Successfully saved')}
+          title={accountTranslations.changeNamePage.save}
+        />
       ),
-      title: 'Change Email',
+      title: accountTranslations.changeNamePage.title,
     });
   }, [navigation]);
 

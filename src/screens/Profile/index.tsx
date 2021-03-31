@@ -90,7 +90,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={PersonalInformation}
         name="PersonalInformation"
         options={{
-          title: accountTranslations.accountPage.personalInformation,
+          title: accountTranslations.personalInformationPage.title,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -101,7 +101,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={Password}
         name="Password"
         options={{
-          title: accountTranslations.accountPage.password,
+          title: accountTranslations.settingsPage.password,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -112,7 +112,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={ChangeName}
         name="ChangeName"
         options={{
-          title: accountTranslations.accountPage.name,
+          title: accountTranslations.changeEmailPage.name,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,
@@ -123,7 +123,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={ChangeEmail}
         name="ChangeEmail"
         options={{
-          title: accountTranslations.accountPage.email,
+          title: accountTranslations.changeEmailPage.email,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,

@@ -16,8 +16,12 @@ const PersonalInformation: React.FunctionComponent<PersonalInformationProps> = (
 
   return (
     <PersonalInformationContainer>
-      <PersonalInfo field={accountTranslations.accountPage.email} navigateTo="ChangeEmail" value={user?.email} />
-      <PersonalInfo field={accountTranslations.accountPage.name} navigateTo="ChangeName" value={user?.displayName} />
+      <PersonalInfo field={accountTranslations.changeEmailPage.email} navigateTo="ChangeEmail" value={user?.email} />
+      <PersonalInfo
+        field={accountTranslations.changeEmailPage.name}
+        navigateTo="ChangeName"
+        value={user?.displayName}
+      />
     </PersonalInformationContainer>
   );
 };
