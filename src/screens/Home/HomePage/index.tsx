@@ -3,7 +3,6 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import CarouselPromo from '../../../components/Home/Carousel';
-
 import ShowLocations from '../../../components/Home/ShowLocations';
 import FeaturedItems from '../../../components/Home/FeaturedItems';
 
@@ -13,8 +12,8 @@ import HappyHourPromotionCard from '../../../components/Home/PromotionCards/Coun
 
 import Logo from '../../../components/shared/Logo';
 
-import { HomepageComponent } from '../../../types/HomepageComponent';
-import { Promotion } from '../../../types/Promotion';
+import type { HomepageComponent } from '../../../types/HomepageComponent';
+import type { Promotion } from '../../../types/Promotion';
 
 import useHomepage from '../../../hooks/useHomepage';
 

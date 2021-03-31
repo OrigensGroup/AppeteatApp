@@ -28,19 +28,11 @@ const ShowLocations: React.FunctionComponent<ShowLocationsProps> = () => {
       <LocationContainer>
         <MapContainer>
           <Map initial={locations.list[0]} />
-          {Appearance.getColorScheme() === 'dark' ? (
-            <FindButton secondary>
-              <Text color="fixedBlack" fontSize={18}>
-                {homeTranslations.showLocations.cta}
-              </Text>
-            </FindButton>
-          ) : (
-            <FindButton secondary={false}>
-              <Text color="fixedBlack" fontSize={18}>
-                {homeTranslations.showLocations.cta}
-              </Text>
-            </FindButton>
-          )}
+          <FindButton secondary={Appearance.getColorScheme() === 'dark'}>
+            <Text color="fixedBlack" fontSize={18}>
+              {homeTranslations.showLocations.cta}
+            </Text>
+          </FindButton>
         </MapContainer>
       </LocationContainer>
     </Pressable>

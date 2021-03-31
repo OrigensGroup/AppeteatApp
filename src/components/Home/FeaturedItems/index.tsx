@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 
 import useMenu from '../../../hooks/useMenu';
 
-import { MenuItem } from '../../../types/MenuItem';
+import type { MenuItem } from '../../../types/MenuItem';
 
 import Text from '../../shared/Text';
 

@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import Text from '../../../shared/Text';
 
-import { PromotionDiscount } from '../../../../types/Promotion';
+import type { PromotionDiscount } from '../../../../types/Promotion';
 
 import { normalisedSource } from '../../../../utils/image';
 
