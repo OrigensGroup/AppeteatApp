@@ -1,7 +1,8 @@
 const bookTranslations = {
-  bookPage: {
-    bookTableButton: 'BOOK A TABLE',
-    confirmBookingButton: 'Confirm Booking',
+  bookATableModal: {
+    spinner: 'No of member',
+    cta: 'BOOK A TABLE',
+    confirm: 'Confirm Booking',
   },
 };
 

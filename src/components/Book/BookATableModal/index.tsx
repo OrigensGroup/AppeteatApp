@@ -197,12 +197,16 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
           )}
         </TimePickers>
         <SpinnerContainer>
-          <Spinner initialValue={localQuantity} onChange={updateQuantity} title="No of member" />
+          <Spinner
+            initialValue={localQuantity}
+            onChange={updateQuantity}
+            title={bookTranslations.bookATableModal.spinner}
+          />
         </SpinnerContainer>
         <ConfirmButton>
           <ViewCta onClick={onSubmit}>
             <Text bold color="fixedWhite" fontSize={18}>
-              {bookTranslations.bookPage.confirmBookingButton}
+              {bookTranslations.bookATableModal.confirm}
             </Text>
           </ViewCta>
         </ConfirmButton>
