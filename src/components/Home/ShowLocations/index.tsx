@@ -30,7 +30,7 @@ const ShowLocations: React.FunctionComponent<ShowLocationsProps> = () => {
           <Map initial={locations.list[0]} />
           <FindButton secondary={Appearance.getColorScheme() === 'dark'}>
             <Text color="fixedBlack" fontSize={18}>
-              {homeTranslations.showLocations.cta}
+              {homeTranslations.homePage.showLocations.cta}
             </Text>
           </FindButton>
         </MapContainer>
