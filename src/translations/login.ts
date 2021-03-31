@@ -61,6 +61,9 @@ const loginTranslations = {
   emailError: {
     label: 'Email must not be empty',
   },
+  passwordError: {
+    label: 'Password must not be empty',
+  },
 };
 
 export default loginTranslations;
