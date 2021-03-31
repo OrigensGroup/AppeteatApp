@@ -79,7 +79,7 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
           </CartItemQuantity>
           <CartItemPrice>
             <Text bold color="tertiary" fontSize={16}>
-              {currencyTranslations.currencyField.placeholder}
+              {currencyTranslations.currencyField}
               {calculateItemPrice(item)}
             </Text>
           </CartItemPrice>

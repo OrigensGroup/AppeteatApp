@@ -1,7 +1,5 @@
 const currencyTranslations = {
-  currencyField: {
-    placeholder: '£ ',
-  },
+  currencyField: '£ ',
 };
 
 export default currencyTranslations;

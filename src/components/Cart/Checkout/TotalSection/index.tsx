@@ -18,7 +18,7 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = () => {
           {cartTranslations.checkoutPage.subtotal.title}
         </Text>
         <Text color="primary" fontSize={14}>
-          {currencyTranslations.currencyField.placeholder}
+          {currencyTranslations.currencyField}
           {pricing.subtotal}
         </Text>
       </TotalRow>
@@ -27,7 +27,7 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = () => {
           {cartTranslations.checkoutPage.serviceFee.title}
         </Text>
         <Text color="primary" fontSize={14}>
-          {currencyTranslations.currencyField.placeholder}
+          {currencyTranslations.currencyField}
           {pricing.servicefee}
         </Text>
       </TotalRow>
@@ -36,7 +36,7 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = () => {
           {cartTranslations.checkoutPage.totalField.title}
         </Text>
         <Text bold color="primary" fontSize={14}>
-          {currencyTranslations.currencyField.placeholder}
+          {currencyTranslations.currencyField}
           {pricing.total}
         </Text>
       </TotalRow>

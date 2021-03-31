@@ -75,7 +75,7 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         </ModalCounterContainer>
         <ModalTitle>
           <Text color="primary" fontSize={18}>
-            {currencyTranslations.currencyField.placeholder}
+            {currencyTranslations.currencyField}
             {cartTranslations.checkoutPage.updateModal.price}
             {fixDecimals((item.price + item.extras.reduce((acc, extra) => acc + extra.price, 0)) * localQuantity)}
           </Text>

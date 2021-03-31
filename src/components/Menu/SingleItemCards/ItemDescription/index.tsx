@@ -30,12 +30,12 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discou
           <PriceSection>
             {discount && discount.type === 'tabDiscount' && (
               <Text bold color="quartiary" fontSize={14} strike>
-                {currencyTranslations.currencyField.placeholder}
+                {currencyTranslations.currencyField}
                 {item.price}
               </Text>
             )}
             <Text bold color="tertiary" fontSize={18}>
-              {currencyTranslations.currencyField.placeholder}
+              {currencyTranslations.currencyField}
               {finalPrice}
             </Text>
           </PriceSection>

@@ -9,17 +9,17 @@ import cartTranslations from '../../../translations/cart';
 
 import type { OrderItem } from '../../../types/OrderItem';
 
-import ExplanationModal from '../../shared/ExplanationModal';
+import ExplanationModal from '../../../components/shared/ExplanationModal';
 
-import TopBar from '../../shared/TopBar';
+import TopBar from '../../../components/shared/TopBar';
 
-import UpdateModal from './UpdateModal';
-import ItemSummary from './ItemSummary';
-import ValueItem from './ValueItem';
-import FinaliseOrder from './FinaliseOrder';
-import TotalSection from './TotalSection';
-import CardModal from './CardModal';
-import SelectService from './SelectService';
+import UpdateModal from '../../../components/Cart/Checkout/UpdateModal';
+import ItemSummary from '../../../components/Cart/Checkout/ItemSummary';
+import ValueItem from '../../../components/Cart/Checkout/ValueItem';
+import FinaliseOrder from '../../../components/Cart/Checkout/FinaliseOrder';
+import TotalSection from '../../../components/Cart/Checkout/TotalSection';
+import CardModal from '../../../components/Cart/Checkout/CardModal';
+import SelectService from '../../../components/Cart/Checkout/SelectService';
 
 import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper } from './styles';
 

@@ -90,7 +90,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
               </DiscountTag>
               <DiscountPrice>
                 <Text bold color="quartiary" fontSize={12} strike>
-                  {currencyTranslations.currencyField.placeholder}
+                  {currencyTranslations.currencyField}
                   {item.price}
                 </Text>
               </DiscountPrice>
@@ -104,7 +104,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
           )}
           <Price move={!discount}>
             <Text bold color="tertiary" fontSize={14}>
-              {currencyTranslations.currencyField.placeholder}
+              {currencyTranslations.currencyField}
               {finalPrice}
             </Text>
           </Price>

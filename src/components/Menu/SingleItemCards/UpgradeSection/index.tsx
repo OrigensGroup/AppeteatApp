@@ -140,7 +140,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
         {item.price > 0 && (
           <PriceItem>
             <Text bold color="primary" fontSize={14}>
-              ( + {currencyTranslations.currencyField.placeholder}
+              ( + {currencyTranslations.currencyField}
               {item.price})
             </Text>
           </PriceItem>

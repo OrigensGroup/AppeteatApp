@@ -29,7 +29,7 @@ const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, icon, onIte
       <ValueItemInfoContainer>
         {typeof value !== 'undefined' && (
           <Text color={color} fontSize={14}>
-            {currencyTranslations.currencyField.placeholder}
+            {currencyTranslations.currencyField}
             {value}
           </Text>
         )}
