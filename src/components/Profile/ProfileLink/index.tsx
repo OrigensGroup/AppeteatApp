@@ -36,13 +36,6 @@ const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
         navigateTo="Orders"
         title={accountTranslations.accountPage.myOrders}
       />
-
-      <ListItem
-        icon={<Icon color={theme.colors.textPrimary} name="notifications-outline" size={28} />}
-        icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
-        navigateTo="Notifications"
-        title={accountTranslations.accountPage.notifications}
-      />
       <ListItem
         icon={<Icon color={theme.colors.textPrimary} name="settings-outline" size={28} />}
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}

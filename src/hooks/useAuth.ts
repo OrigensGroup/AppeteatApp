@@ -9,12 +9,23 @@ const useAuth = () => {
     setUser(user);
   }
 
+  const updateUser = (name: string) => {
+    let newUser = auth().currentUser;
+
+    if (newUser) {
+      newUser = { ...newUser, displayName: name };
+    }
+
+    setUser((oldUser) => ({ ...oldUser, ...newUser }));
+    console.log(newUser);
+  };
+
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  return user;
+  return { user, updateUser };
 };
 
 export default useAuth;

@@ -10,7 +10,7 @@ const accountTranslations = {
     showButton: 'Show all',
     email: 'E-mail',
     name: 'Name',
-    password: 'Password',
+    changePassword: 'Change Password',
     currentPassword: 'Current Password',
     newPassword: 'New Password',
     reNewPassword: 'Re enter New Password',

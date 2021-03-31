@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import useAuth from '../../../hooks/useAuth';
 import useCart from '../../../hooks/useCart';
+import useUserData from '../../../hooks/useUserData';
 
 import cartTranslations from '../../../translations/cart';
 import { makeCardPayment } from '../../../utils/payments';
@@ -27,7 +27,7 @@ interface PaymentOptionProps {}
 
 const PaymentOption: React.FunctionComponent<PaymentOptionProps> = () => {
   const { pricing } = useCart();
-  const user = useAuth();
+  const { user } = useUserData();
   const [index, setIndex] = useState(0);
 
   const pay = async () => {

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import type { Card } from 'tipsi-stripe';
 
-import useAuth from '../../../hooks/useAuth';
 import useCart from '../../../hooks/useCart';
 import useOrders from '../../../hooks/useOrders';
 import useUserData from '../../../hooks/useUserData';
@@ -23,9 +22,8 @@ interface FinaliseOrderProps {
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOption }) => {
   //const navigation = useNavigation();
   const { cart, clearCart, pricing } = useCart();
-  const { addOrder } = useUserData();
   const [, setOrders] = useOrders();
-  const user = useAuth();
+  const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
 
   const finaliseOrder = async () => {

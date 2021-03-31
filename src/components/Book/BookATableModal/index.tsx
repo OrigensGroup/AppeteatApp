@@ -17,7 +17,6 @@ import bookTranslations from '../../../translations/book';
 import ViewCta from '../../shared/ViewCta';
 
 import { Booking } from '../../../types/Booking';
-import useAuth from '../../../hooks/useAuth';
 import { Venue } from '../../../types/Venue';
 
 import useBookings from '../../../hooks/useBookings';
@@ -89,7 +88,7 @@ const months: Months = {
 };
 
 const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, onClose, venue }) => {
-  const user = useAuth();
+  const { user } = useUserData();
   const theme = useTheme();
   const [bookings, setBookings] = useBookings();
   const { addBooking } = useUserData();

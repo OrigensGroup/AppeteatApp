@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 
-import { TextFieldContainer, TextFieldInput, CustomiseFieldInput } from './styles';
+import Text from '../Text';
+
+import { TextFieldContainer, TextFieldInput, CustomiseFieldInput, ErrorContainer } from './styles';
 
 interface LoginTextFieldProps {
   darkText?: boolean;
@@ -10,10 +12,14 @@ interface LoginTextFieldProps {
   updateValue?: (value: string) => void;
   maxLength?: number;
   placeholderTextColor?: string;
+  defaultValue?: string;
+  error?: string | null;
 }
 
 const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
   darkText,
+  defaultValue,
+  error,
   maxLength,
   placeholder,
   placeholderTextColor,
@@ -36,6 +42,8 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
       {!darkText ? (
         <TextFieldInput
           autoCapitalize="none"
+          defaultValue={defaultValue}
+          maxLength={maxLength}
           onChangeText={updateText}
           placeholder={placeholder}
           placeholderTextColor={defaultPlaceholderColor}
@@ -46,12 +54,20 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
       ) : (
         <CustomiseFieldInput
           autoCapitalize="none"
+          defaultValue={defaultValue}
           maxLength={maxLength}
           onChangeText={updateText}
           placeholder={placeholder}
           placeholderTextColor={defaultPlaceholderColor}
           textContentType={textContentType}
         />
+      )}
+      {error && (
+        <ErrorContainer>
+          <Text bold color="errorColor" fontSize={14}>
+            *{error}
+          </Text>
+        </ErrorContainer>
       )}
     </TextFieldContainer>
   );
