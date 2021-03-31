@@ -122,7 +122,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
             </DigitBackground>
             <DigitTitle>
               <Text color="fixedWhite" fontSize={16} light>
-                {homeTranslations.happyHourCard.hourDigit}
+                {homeTranslations.homePage.happyHourCard.hourDigit}
               </Text>
             </DigitTitle>
           </DigitCounter>
@@ -138,7 +138,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
             </DigitBackground>
             <DigitTitle>
               <Text color="fixedWhite" fontSize={16} light>
-                {homeTranslations.happyHourCard.minutesDigit}
+                {homeTranslations.homePage.happyHourCard.minutesDigit}
               </Text>
             </DigitTitle>
           </DigitCounter>

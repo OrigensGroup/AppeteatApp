@@ -11,6 +11,7 @@ import Home from '../../../screens/Home';
 import Menu from '../../../screens/Menu';
 import Book from '../../../screens/Book';
 import Profile from '../../../screens/Profile';
+import sharedTranslations from '../../../translations/shared';
 
 interface TabBarProps {}
 
@@ -39,7 +40,7 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
         component={Home}
         name="Home"
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: sharedTranslations.tabs.home,
           tabBarIcon: ({ color, size }) => <Ionicons color={color} name="md-home-outline" size={size} />,
         }}
       />
@@ -48,7 +49,7 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
         name="Menu"
         options={{
           tabBarVisible: false,
-          tabBarLabel: 'Menu',
+          tabBarLabel: sharedTranslations.tabs.menu,
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="glass-cocktail" size={size} />,
         }}
       />
@@ -56,7 +57,7 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
         component={Book}
         name="Book"
         options={{
-          tabBarLabel: 'Book',
+          tabBarLabel: sharedTranslations.tabs.book,
           tabBarIcon: ({ color, size }) => <Antdesign color={color} name="calendar" size={size} />,
         }}
       />
@@ -64,7 +65,7 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
         component={Profile}
         name="Account"
         options={{
-          tabBarLabel: 'Account',
+          tabBarLabel: sharedTranslations.tabs.account,
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="account-outline" size={size} />,
         }}
       />

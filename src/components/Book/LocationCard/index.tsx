@@ -7,7 +7,7 @@ import FastImage from 'react-native-fast-image';
 import { Linking, Platform } from 'react-native';
 
 import Text from '../../shared/Text';
-import { Venue } from '../../../types/Venue';
+import type { Venue } from '../../../types/Venue';
 import bookTranslations from '../../../translations/book';
 
 import { normalisedSource } from '../../../utils/image';
@@ -79,7 +79,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
         </ShareButton>
         <BookATableButton onPress={onClick(venue)}>
           <Text bold color="tertiary" fontSize={12}>
-            {bookTranslations.bookPage.bookTableButton}
+            {bookTranslations.locationsListPage.bookATableModal.cta}
           </Text>
         </BookATableButton>
       </ButtonContainer>

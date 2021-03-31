@@ -3,7 +3,7 @@ import { StyleSheet, View, Animated, Dimensions, useColorScheme } from 'react-na
 
 import MapView, { Marker } from 'react-native-maps';
 
-import { Venue } from '../../../types/Venue';
+import type { Venue } from '../../../types/Venue';
 
 import useLocations from '../../../hooks/useLocations';
 

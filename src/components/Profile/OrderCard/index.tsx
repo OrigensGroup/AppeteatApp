@@ -13,16 +13,17 @@ interface OrderCardProps {
 }
 
 const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onClick, price }) => {
+  const day = new Date(date);
   return (
     <OrderCardContainer>
       <Container activeOpacity={1} onPress={onClick}>
         <DateContainer>
           <Circle style={{ borderRadius: Dimensions.get('window').width / 2 }}>
             <Text bold color="secondary" fontSize={14}>
-              {date}
+              {day.getDate()}
             </Text>
             <Text bold color="secondary" fontSize={12}>
-              2021
+              {day.getFullYear()}
             </Text>
           </Circle>
         </DateContainer>

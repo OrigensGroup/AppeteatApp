@@ -16,6 +16,8 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
     // Attempt login with permissions
     const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
+    console.log(result);
+
     if (result.isCancelled) {
       throw 'User cancelled the login process';
     }

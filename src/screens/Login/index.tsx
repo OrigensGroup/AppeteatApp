@@ -5,9 +5,7 @@ import { Platform } from 'react-native';
 import Logo from '../../components/Login/Logo';
 import SocialLogin from '../../components/Login/SocialLogin';
 import ManualLogIn from '../../components/Login/ManualLogIn';
-
 import RegisterManual from '../../components/Login/ManualRegister';
-
 import ForgotPassword from '../../components/Login/ForgotPassword';
 
 import { SafeAreaViewTop, KeyboardAvoidingView, LogInContainer, EnclosingView } from './styles';

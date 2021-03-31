@@ -7,7 +7,7 @@ import { useRoute } from '@react-navigation/native';
 import useMenu from '../../../hooks/useMenu';
 import HappyHourPromotionCard from '../../../components/Home/PromotionCards/Countdown';
 import { MenuItem } from '../../../types/MenuItem';
-import MenuCard from '../../../components/Menu/MenuSwiper/MenuCards';
+import MenuCard from '../../../components/Menu/MenuList/MenuSwiper/MenuCards';
 
 import TopBar from '../../../components/shared/TopBar';
 

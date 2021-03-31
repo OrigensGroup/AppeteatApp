@@ -4,14 +4,15 @@ import Swiper from 'react-native-swiper';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-import SwiperPage from '../../../components/Menu/MenuSwiper/SwiperPage';
-import MenuTabs from '../../../components/Menu/MenuTabs';
-import ViewBasketButton from '../../../components/Menu/ViewBasketButton';
-import SearchModal from '../../../components/Menu/SearchModal';
-import useMenu from '../../../hooks/useMenu';
-import useHomepage from '../../../hooks/useHomepage';
+import SwiperPage from '../../../components/Menu/MenuList/MenuSwiper/SwiperPage';
+import MenuTabs from '../../../components/Menu/MenuList/MenuTabs';
+import ViewBasketButton from '../../../components/Menu/MenuList/ViewBasketButton';
+import SearchModal from '../../../components/Menu/MenuList/SearchModal';
+
 import TopBar from '../../../components/shared/TopBar';
 
+import useMenu from '../../../hooks/useMenu';
+import useHomepage from '../../../hooks/useHomepage';
 import useCart from '../../../hooks/useCart';
 
 import menuTranslations from '../../../translations/menu';
@@ -119,7 +120,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   return (
     <SafeAreaViewBottom>
       <MenuWrapper>
-        <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menu.title} />
+        <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
         <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
         <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
           {menuTabsContent()}

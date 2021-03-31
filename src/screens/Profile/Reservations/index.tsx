@@ -2,10 +2,13 @@ import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
 import ReservationCard from '../../../components/Profile/ReservationCard';
+
 import useLocations from '../../../hooks/useLocations';
 import useUserData from '../../../hooks/useUserData';
-import { Booking } from '../../../types/Booking';
-import { Venue } from '../../../types/Venue';
+import profileTranslations from '../../../translations/profile';
+
+import type { Booking } from '../../../types/Booking';
+import type { Venue } from '../../../types/Venue';
 
 import { ReservationsContainer } from './styles';
 
@@ -17,17 +20,16 @@ const Reservations: React.FunctionComponent<ReservationsProps> = () => {
 
   const renderItem = ({ item }: { item: Booking }) => {
     const selectedVenue = locations.list.find((venue: Venue) => venue.id === item.venueId);
+
     return (
       <ReservationCard
-        address={selectedVenue?.address || 'Address not Found'}
+        address={selectedVenue?.address || profileTranslations.reservationsPage.addressNotFound}
         date={item.date}
         people={item.people}
         time={item.time}
-        venue={selectedVenue?.name || 'Venue name not Found'}
+        venue={selectedVenue?.name || profileTranslations.reservationsPage.nameNotFound}
       />
     );
-
-    return <></>;
   };
 
   return (

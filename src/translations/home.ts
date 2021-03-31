@@ -1,19 +1,12 @@
 const homeTranslations = {
-  homepageScreen: {
-    popularItems: {
-      title: 'Popular Items',
+  homePage: {
+    showLocations: {
+      cta: 'Find us!',
     },
-  },
-  discountPromotionCard: {
-    cta: 'Order Now',
-  },
-  showLocations: {
-    cta: 'Find us!',
-  },
-  happyHourCard: {
-    title: 'Happy Hour!',
-    hourDigit: 'Hours',
-    minutesDigit: 'Minutes',
+    happyHourCard: {
+      hourDigit: 'Hours',
+      minutesDigit: 'Minutes',
+    },
   },
 };
 

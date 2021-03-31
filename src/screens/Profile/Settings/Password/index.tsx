@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import CustomButton from '../../../../components/shared/Button';
 
 import TextField from '../../../../components/shared/LoginTextField';
-import accountTranslations from '../../../../translations/account';
+import accountTranslations from '../../../../translations/profile';
 
 import { PasswordContainer } from './styles';
 
@@ -25,9 +25,9 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
 
   return (
     <PasswordContainer>
-      <TextField placeholder={accountTranslations.accountPage.currentPassword} textContentType="password" />
-      <TextField placeholder={accountTranslations.accountPage.newPassword} textContentType="password" />
-      <TextField placeholder={accountTranslations.accountPage.reNewPassword} textContentType="password" />
+      <TextField placeholder={accountTranslations.passwordPage.currentPassword} textContentType="password" />
+      <TextField placeholder={accountTranslations.passwordPage.newPassword} textContentType="password" />
+      <TextField placeholder={accountTranslations.passwordPage.reNewPassword} textContentType="password" />
     </PasswordContainer>
   );
 };

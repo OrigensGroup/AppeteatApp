@@ -15,18 +15,21 @@ const loginTranslations = {
   loginButton: {
     label: 'Log In',
   },
-  RegisterButton: {
+  registerButton: {
     label: 'Registrati',
   },
   signUpSection: {
     label: 'Non hai ancora un account?',
     buttonLabel: 'Registrati  > ',
   },
-  SignInSection: {
+  signInSection: {
     label: 'Hai giá un account?',
     buttonLabel: 'Accedi  > ',
   },
   forgotPassword: {
+    goBack: 'Go Back',
+    resetPassword: 'Reset password',
+    cta: 'Forgot password',
     label: 'Email to send password reset',
     placeholder: 'mail@mail.com',
   },
@@ -57,6 +60,9 @@ const loginTranslations = {
   },
   emailError: {
     label: 'Email must not be empty',
+  },
+  passwordError: {
+    label: 'Password must not be empty',
   },
 };
 

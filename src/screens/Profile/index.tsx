@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { useTheme } from 'styled-components';
 
-import accountTranslations from '../../translations/account';
+import accountTranslations from '../../translations/profile';
 
 import Account from './Account';
 import Reservations from './Reservations';
@@ -76,7 +76,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
         component={Password}
         name="Password"
         options={{
-          title: accountTranslations.accountPage.changePassword,
+          title: accountTranslations.passwordPage.changePassword,
           headerTintColor: theme.colors.textPrimary,
           headerStyle: {
             backgroundColor: theme.colors.backgroundColor,

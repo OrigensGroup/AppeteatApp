@@ -9,7 +9,7 @@ import { Alert } from 'react-native';
 import { Switch } from 'react-native-gesture-handler';
 
 import ListItem from '../../../components/Profile/ListItem';
-import accountTranslations from '../../../translations/account';
+import accountTranslations from '../../../translations/profile';
 
 import useUserData from '../../../hooks/useUserData';
 
@@ -32,15 +32,15 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
 
   const logOutAlert = () =>
     Alert.alert(
-      accountTranslations.accountPage.logOut,
-      accountTranslations.accountPage.logOutPromp,
+      accountTranslations.settingsPage.logOut,
+      accountTranslations.settingsPage.logOutPromp,
       [
         {
-          text: accountTranslations.accountPage.cancel,
+          text: accountTranslations.settingsPage.cancel,
           style: 'cancel',
         },
         {
-          text: accountTranslations.accountPage.yes,
+          text: accountTranslations.settingsPage.yes,
           onPress: async () => {
             await auth().signOut();
             restoreDefault();
@@ -104,7 +104,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       <ProfileSection>
         <TextContainer>
           <Text bold color="primary" fontSize={18}>
-            {accountTranslations.accountPage.personalInformation}
+            {accountTranslations.personalInformationPage.title}
           </Text>
         </TextContainer>
         <InfoContainer>
@@ -143,18 +143,18 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
         <ListItem
           icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
           navigateTo="Password"
-          title={accountTranslations.accountPage.changePassword}
+          title={accountTranslations.passwordPage.changePassword}
         />
         <ListItem
           icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
           onClick={logOutAlert}
-          title={accountTranslations.accountPage.logOut}
+          title={accountTranslations.settingsPage.logOut}
         />
       </ProfileSection>
       <SaveButton>
         <ViewCta onClick={updateProfile}>
           <Text bold color="fixedWhite" fontSize={18}>
-            {accountTranslations.accountPage.save}
+            {accountTranslations.settingsPage.save}
           </Text>
         </ViewCta>
       </SaveButton>

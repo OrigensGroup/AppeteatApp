@@ -10,7 +10,7 @@ import DiscountPromotionCard from '../PromotionCards/TabDiscount';
 
 import ImagePromotion from '../PromotionCards/Billboard';
 
-import { Promotion } from '../../../types/Promotion';
+import type { Promotion } from '../../../types/Promotion';
 
 import { CarouselContainer, Container, Space } from './styles';
 
