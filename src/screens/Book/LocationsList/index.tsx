@@ -10,6 +10,8 @@ import { mapStyle } from '../../../utils/mapstyle';
 import BookATableModal from '../../../components/Book/BookATableModal';
 import theme from '../../../theme';
 
+import { SingleVenueContainer } from './styles';
+
 const { height } = Dimensions.get('window');
 
 const CARD_HEIGHT = height / 4;
@@ -165,30 +167,36 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
           );
         })}
       </MapView>
-      <Animated.ScrollView
-        contentContainerStyle={styles.endPadding}
-        horizontal
-        onScroll={Animated.event(
-          [
-            {
-              nativeEvent: {
-                contentOffset: {
-                  x: animation,
+      {venues.length > 1 ? (
+        <Animated.ScrollView
+          contentContainerStyle={styles.endPadding}
+          horizontal
+          onScroll={Animated.event(
+            [
+              {
+                nativeEvent: {
+                  contentOffset: {
+                    x: animation,
+                  },
                 },
               },
-            },
-          ],
-          { useNativeDriver: true }
-        )}
-        scrollEventThrottle={1}
-        showsHorizontalScrollIndicator={false}
-        snapToInterval={CARD_WIDTH}
-        style={styles.scrollView}
-      >
-        {venues.map((marker) => (
-          <LocationCard key={marker.id} onClick={toggleModal} venue={marker} />
-        ))}
-      </Animated.ScrollView>
+            ],
+            { useNativeDriver: true }
+          )}
+          scrollEventThrottle={1}
+          showsHorizontalScrollIndicator={false}
+          snapToInterval={CARD_WIDTH}
+          style={styles.scrollView}
+        >
+          {venues.map((marker) => (
+            <LocationCard key={marker.id} onClick={toggleModal} venue={marker} />
+          ))}
+        </Animated.ScrollView>
+      ) : (
+        <SingleVenueContainer>
+          <LocationCard onClick={toggleModal} venue={venues[0]} />
+        </SingleVenueContainer>
+      )}
     </View>
   );
 };
