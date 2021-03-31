@@ -72,10 +72,10 @@ const ForgotPassword: React.FunctionComponent<ManualLogInProps> = ({ changeModul
         <ButtonsWrapper>
           <GoBack onPress={login}>
             <Text color="secondary" fontSize={14}>
-              Go Back
+              {loginTranslations.forgotPassword.goBack}
             </Text>
           </GoBack>
-          <LogInButton loading={loading} onClick={singIn} text="Reset password" />
+          <LogInButton loading={loading} onClick={singIn} text={loginTranslations.forgotPassword.resetPassword} />
         </ButtonsWrapper>
       </ManualLogInContainer>
     </LinearGradient>

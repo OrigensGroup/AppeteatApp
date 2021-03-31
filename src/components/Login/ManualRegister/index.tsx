@@ -6,10 +6,11 @@ import { useTheme } from 'styled-components';
 import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
-import loginTranslations from '../../../translations/login';
 import LogInButton from '../Buttons/LogInButton';
 import SignUpButton from '../Buttons/SignUpButton';
 import LogInInputField from '../LogInInputField';
+
+import loginTranslations from '../../../translations/login';
 
 import initUserData from '../../../utils/initUserData';
 
@@ -201,11 +202,11 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
           </PasswordsWrapper>
         </TextFieldsWrapper>
         <LogInSection>
-          <LogInButton loading={loading} onClick={createUser} text={loginTranslations.RegisterButton.label} />
+          <LogInButton loading={loading} onClick={createUser} text={loginTranslations.registerButton.label} />
           <SignUpButton
-            buttonText={loginTranslations.SignInSection.buttonLabel}
+            buttonText={loginTranslations.signInSection.buttonLabel}
             onClick={login}
-            text={loginTranslations.SignInSection.label}
+            text={loginTranslations.signInSection.label}
           />
         </LogInSection>
       </ManualLogInContainer>

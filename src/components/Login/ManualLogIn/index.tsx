@@ -8,10 +8,11 @@ import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 import LogInTextField from '../LogInInputField';
-import loginTranslations from '../../../translations/login';
 
 import SignUpButton from '../Buttons/SignUpButton';
 import LogInButton from '../Buttons/LogInButton';
+
+import loginTranslations from '../../../translations/login';
 
 import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
 
@@ -122,7 +123,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
             textContentType="password"
             updateValue={setPassword}
           />
-          <SignUpButton buttonText="Forgot password" onClick={forgotPassword} text="" />
+          <SignUpButton buttonText={loginTranslations.forgotPassword.cta} onClick={forgotPassword} text="" />
         </TextFieldsWrapper>
         <ButtonsWrapper>
           <LogInButton loading={loading} onClick={singIn} text={loginTranslations.loginButton.label} />

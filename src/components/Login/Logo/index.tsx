@@ -7,13 +7,11 @@ interface LogoProps {}
 
 const Logo: React.FunctionComponent<LogoProps> = () => {
   const mode = useColorScheme();
+  const source = mode === 'dark' ? require('../../../img/logo.png') : require('../../../img/logo2.png');
+
   return (
     <LogoContainer>
-      {mode === 'dark' ? (
-        <LogoImage resizeMode="contain" source={require('../../../img/logo.png')} />
-      ) : (
-        <LogoImage resizeMode="contain" source={require('../../../img/logo2.png')} />
-      )}
+      <LogoImage resizeMode="contain" source={source} />
     </LogoContainer>
   );
 };
