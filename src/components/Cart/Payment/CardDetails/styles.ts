@@ -13,7 +13,7 @@ export const CardDetailsContainer = styled.View`
 export const TextFieldInput = styled.TextInput<CardDetailsProps>`
   border-color: ${({ theme }) => theme.colors.border};
   color: ${({ theme }) => theme.colors.textPrimary};
-  font-family: Comfortaa, sans-serif;
+  font-family: Comfortaa;
   font-size: ${scale(16)}px;
   border-bottom-width: 2px;
   margin-bottom: ${({ theme }) => theme.spacing.single};

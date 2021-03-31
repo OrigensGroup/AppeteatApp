@@ -6,8 +6,10 @@ import type { Card } from 'tipsi-stripe';
 import useAuth from '../../../hooks/useAuth';
 import useCart from '../../../hooks/useCart';
 import useOrders from '../../../hooks/useOrders';
+import useUserData from '../../../hooks/useUserData';
 
 import cartTranslations from '../../../translations/cart';
+import { Order } from '../../../types/Order';
 import { makeCardPayment } from '../../../utils/payments';
 import Text from '../../shared/Text';
 import ViewCta from '../../shared/ViewCta';
@@ -21,6 +23,7 @@ interface FinaliseOrderProps {
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOption }) => {
   //const navigation = useNavigation();
   const { cart, clearCart, pricing } = useCart();
+  const { addOrder } = useUserData();
   const [, setOrders] = useOrders();
   const user = useAuth();
   const [loadingPayment, setLoadingPayment] = useState(false);
@@ -57,19 +60,20 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
     setLoadingPayment(false);
 
     if (res.paymentRes.type === 'Charge') {
+      const order: Order = {
+        paymentRes: res.paymentRes,
+        orderedItems: cart,
+        pricing,
+      };
+
       console.log('Payment made!!');
 
       setOrders((oldOrders) => ({
         ...oldOrders,
-        list: [
-          ...oldOrders.list,
-          {
-            paymentRes: res.paymentRes,
-            orderedItems: cart,
-            pricing,
-          },
-        ],
+        list: [...oldOrders.list, order],
       }));
+
+      addOrder(order);
 
       clearCart();
       //navigation.navigate('SuccessPage');

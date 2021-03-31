@@ -34,6 +34,7 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
     auth()
       .signInWithCredential(facebookCredential)
       .then(() => {
+        console.log('loggedint');
         const user = auth().currentUser;
 
         if (user) {

@@ -18,6 +18,8 @@ import { STRIPE_ACCOUNT } from '@env';
 
 import stripe from 'tipsi-stripe';
 
+import { Settings } from 'react-native-fbsdk-next';
+
 import { useThemeSelector } from './theme';
 
 import { Bar } from './types/Bar';
@@ -52,6 +54,8 @@ const App = () => {
 
   const loadStuff = async () => {
     try {
+      Settings.initializeSDK();
+
       stripe.setOptions({
         publishableKey: STRIPE_ACCOUNT,
         androidPayMode: 'test',
