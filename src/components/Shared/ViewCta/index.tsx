@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { Booking } from '../../../types/Booking';
-
 import { MainButton } from './styles';
 
 interface ViewCtaProps {
-  onClick: (newBooking: Booking) => void;
+  onClick: () => void;
   redDelete?: boolean;
 }
 
