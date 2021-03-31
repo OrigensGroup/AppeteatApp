@@ -79,7 +79,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
         </ShareButton>
         <BookATableButton onPress={onClick(venue)}>
           <Text bold color="tertiary" fontSize={12}>
-            {bookTranslations.bookATableModal.cta}
+            {bookTranslations.locationsListPage.bookATableModal.cta}
           </Text>
         </BookATableButton>
       </ButtonContainer>
