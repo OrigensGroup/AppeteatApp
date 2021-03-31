@@ -10,7 +10,6 @@ export const SearchBarWrapper = styled.View`
   border-width: 1px;
   background-color: ${({ theme }) => theme.colors.fixedWhite};
   border-color: ${({ theme }) => theme.colors.border};
-  border-width: 1px;
   justify-content: flex-start;
   align-items: center;
 `;

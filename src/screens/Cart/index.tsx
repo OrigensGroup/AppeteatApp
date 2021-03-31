@@ -78,7 +78,7 @@ const Cart: React.FunctionComponent<CartProps> = () => {
 
   const closeCardModal = () => setCardModal((oldM) => ({ ...oldM, show: false }));
 
-  const onCardModalUpdate = (v: any) => {
+  const onCardModalUpdate = (v: Card | 'native') => {
     setCardModal((oldM) => ({ ...oldM, card: v }));
   };
 

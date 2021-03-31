@@ -16,5 +16,5 @@ export const SingleVenueContainer = styled.View`
   bottom: ${({ theme }) => theme.spacing.triple};
   left: 0px;
   right: 0px;
-  padding: ${({ theme }) => theme.spacing.half}; 0;
+  padding: ${({ theme }) => theme.spacing.half};
 `;

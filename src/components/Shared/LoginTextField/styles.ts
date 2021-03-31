@@ -14,7 +14,7 @@ export const TextFieldContainer = styled.View`
 export const TextFieldInput = styled.TextInput`
   border-bottom-color: ${({ theme }) => theme.colors.fixedWhite};
   color: ${({ theme }) => theme.colors.fixedWhite};
-  font-family: Comfortaa;
+  font-family: Comfortaa, sans-serif;
   font-size: ${scale(16)}px;
   border-bottom-width: 1px;
   flex: 1;
@@ -26,7 +26,7 @@ export const CustomiseFieldInput = styled.TextInput`
   border-color: ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.spacing.single};
   color: ${({ theme }) => theme.colors.fixedBlack};
-  font-family: Comfortaa;
+  font-family: Comfortaa, sans-serif;
   font-size: ${scale(16)}px;
   border-width: 1px;
   flex: 1;

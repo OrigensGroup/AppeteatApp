@@ -22,10 +22,12 @@ import {
   ItemInfo,
 } from './styles';
 
+type SelectionCheckbox = {
+  [key: string]: DataItem;
+};
+
 type SelectionExtras = {
-  [key: string]: {
-    [key: string]: DataItem;
-  };
+  [key: string]: SelectionCheckbox;
 };
 
 interface UpgradeSectionProps {
@@ -44,10 +46,10 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
   });
 
   const addNewSelection = (sections: UpgradeItem[]) => {
-    const selectionStructure: any = {};
+    const selectionStructure: SelectionExtras = {};
 
     sections.forEach((section) => {
-      const selectionCheckbox: any = {};
+      const selectionCheckbox: SelectionCheckbox = {};
 
       section.data.forEach((item) => {
         selectionCheckbox[item.id] = item;

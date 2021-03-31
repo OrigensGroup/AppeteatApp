@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-native-modal';
+
 import { LiteCreditCardInput } from 'react-native-credit-card-input';
+import type { CardInput } from 'react-native-credit-card-input';
 
 import stripe from 'tipsi-stripe';
 import type { Card } from 'tipsi-stripe';
@@ -19,7 +21,26 @@ interface CardModalProps {
 
 const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, onCardUpdate, onClose }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(0);
-  const [cardStatus, setCardStatus] = useState<any>({});
+
+  const [cardStatus, setCardStatus] = useState<CardInput>({
+    status: {
+      cvc: 'invalid',
+      name: 'invalid',
+      postalCode: 'invalid',
+      number: 'invalid',
+      expiry: 'invalid',
+    },
+    values: {
+      cvc: '',
+      expiry: '',
+      name: '',
+      number: '',
+      postalCode: '',
+      type: null,
+    },
+    valid: false,
+  });
+
   const [canPayWithNativePay, setCanPayWithNativePay] = useState(false);
 
   useEffect(() => {
@@ -43,7 +64,7 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
     }
   };
 
-  const cardChange = (v: any) => {
+  const cardChange = (v: CardInput) => {
     setSelectedPaymentMethod(1);
 
     onCardUpdate({

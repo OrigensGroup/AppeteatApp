@@ -3,11 +3,14 @@ import { StyleSheet, View, Animated, Dimensions, useColorScheme } from 'react-na
 
 import MapView, { Marker } from 'react-native-maps';
 
-import LocationCard from '../../../components/Book/LocationCard';
+import { Venue } from '../../../types/Venue';
+
 import useLocations from '../../../hooks/useLocations';
 
-import { mapStyle } from '../../../utils/mapstyle';
 import BookATableModal from '../../../components/Book/BookATableModal';
+import LocationCard from '../../../components/Book/LocationCard';
+
+import { mapStyle } from '../../../utils/mapstyle';
 import theme from '../../../theme';
 
 import { SingleVenueContainer } from './styles';
@@ -59,11 +62,12 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   const mapRef = useRef<MapView>(null);
   const [animation] = useState(new Animated.Value(0));
   const [isModalVisible, setModalVisible] = useState(false);
-  const [venueToBook, setVenueToBook] = useState({});
   const [index, setIndex] = useState(0);
 
   const [locations] = useLocations();
   const venues = locations.list;
+
+  const [venueToBook, setVenueToBook] = useState<Venue>(venues[0]);
 
   //@ts-ignore
   const timeoutRef = useRef<NodeJS.Timeout>(0);
@@ -125,7 +129,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
     });
   }, [animation, index, region.latitudeDelta, region.longitudeDelta, venues]);
 
-  const toggleModal = (venue: any) => () => {
+  const toggleModal = (venue: Venue) => () => {
     setVenueToBook(venue);
     setModalVisible(!isModalVisible);
   };

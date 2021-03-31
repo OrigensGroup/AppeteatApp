@@ -5,7 +5,6 @@ export const CardContainer = styled.TouchableOpacity`
   width: ${({ theme }) => theme.spacing.multiple(30)};
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-radius: ${({ theme }) => theme.spacing.double};
-  margin-bottom: ${({ theme }) => theme.spacing.double};
   margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.multiple(3)};
 `;
 

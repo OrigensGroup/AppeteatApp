@@ -12,7 +12,6 @@ export const InfoContainer = styled.View`
   width: 100%;
 `;
 export const ValueContainer = styled.TouchableOpacity`
-  border-bottom-color: ${({ theme }) => theme.colors.textPrimary};
   border-color: transparent;
   border-width: 1px;
   flex: 1;

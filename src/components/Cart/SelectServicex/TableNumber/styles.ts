@@ -12,7 +12,7 @@ export const TextFieldContainer = styled.View`
 export const TextFieldInput = styled.TextInput`
   border-color: ${({ theme }) => theme.colors.border};
   color: ${({ theme }) => theme.colors.textPrimary};
-  font-family: Comfortaa;
+  font-family: Comfortaa, sans-serif;
   font-size: ${scale(16)}px;
   border-width: 1px;
   border-radius: ${({ theme }) => theme.spacing.single};

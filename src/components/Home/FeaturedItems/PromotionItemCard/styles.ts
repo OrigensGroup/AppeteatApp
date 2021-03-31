@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 export const PromotionItemCardContainer = styled.TouchableOpacity`
   min-width: ${({ theme }) => theme.spacing.multiple(30)};
-  width: ${({ theme }) => theme.spacing.multiple(30)};
   min-height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
   flex-direction: row;

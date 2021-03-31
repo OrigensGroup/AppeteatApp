@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
-import { SwipeListView } from 'react-native-swipe-list-view';
+import { RowMap, SwipeListView } from 'react-native-swipe-list-view';
 
 import useCart from '../../../hooks/useCart';
 import cartTranslations from '../../../translations/cart';
@@ -18,7 +18,12 @@ interface ItemSummaryProps {
 const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) => {
   const { cart, deleteItemFromCart } = useCart();
 
-  const onSwipeValueChange = (swipeData: any) => {
+  const onSwipeValueChange = (swipeData: {
+    key: string;
+    value: number;
+    direction: 'left' | 'right';
+    isOpen: boolean;
+  }) => {
     const { key, value } = swipeData;
 
     if (value < -Dimensions.get('window').width) {
@@ -26,24 +31,27 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
     }
   };
 
-  const closeRow = (rowMap: any, rowKey: any) => {
+  const closeRow = (rowMap: RowMap<OrderItem>, rowKey: string) => {
     if (rowMap[rowKey]) {
       rowMap[rowKey].closeRow();
     }
   };
 
-  const deleteRow = (item: any, rowMap: any) => {
+  const deleteRow = (item: OrderItem, rowMap: RowMap<OrderItem>) => {
     closeRow(rowMap, item.orderItemId);
     deleteItemFromCart(item.orderItemId);
   };
 
-  const renderHiddenItem = (data: any, rowMap: any) => (
-    <DeleteButton onPress={() => deleteRow(data, rowMap)}>
-      <Text bold color="fixedWhite" fontSize={18}>
-        {cartTranslations.removeItemSwipe.title}
-      </Text>
-    </DeleteButton>
-  );
+  const renderHiddenItem = (data: unknown, rowMap: RowMap<OrderItem>) => {
+    const itemData = data as OrderItem;
+    return (
+      <DeleteButton onPress={() => deleteRow(itemData, rowMap)}>
+        <Text bold color="fixedWhite" fontSize={18}>
+          {cartTranslations.removeItemSwipe.title}
+        </Text>
+      </DeleteButton>
+    );
+  };
 
   return (
     <ItemSummaryContainer>

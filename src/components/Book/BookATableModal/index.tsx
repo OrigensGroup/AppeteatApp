@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-native-modal';
 
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import CalendarIcon from 'react-native-vector-icons/AntDesign';
@@ -43,7 +43,6 @@ interface BookATableModalProps {
   venue: Venue;
   isModalVisible: boolean;
   onClose: () => void;
-  booking: Booking | null;
 }
 
 const minutes: Minutes = {
@@ -104,10 +103,9 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
     setLocalQuantity(String(people));
   };
 
-  const onChange = (_: any, selectedDate: any) => {
-    const currentDate = selectedDate;
+  const onChange = (_: Event, selectedDate: Date | undefined) => {
     setShow(Platform.OS === 'ios');
-    setDate(currentDate);
+    selectedDate && setDate(selectedDate);
   };
 
   const showMode = (currentMode: 'date' | 'time' | undefined) => {
