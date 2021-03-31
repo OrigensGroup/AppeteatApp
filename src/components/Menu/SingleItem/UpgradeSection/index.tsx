@@ -192,7 +192,6 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           keyExtractor={(item) => item.title}
           renderItem={upgradeItemRow}
           renderSectionHeader={sectionHeader}
-          //@ts-ignore
           sections={item.upgradableItems}
           stickySectionHeadersEnabled
         />

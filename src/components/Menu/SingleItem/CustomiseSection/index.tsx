@@ -17,12 +17,12 @@ const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item
       <TitleRow>
         <IngredientsTitle>
           <Text bold color="primary" fontSize={14}>
-            {menuTranslations.singleItem.ingredients.title}
+            {menuTranslations.singleItemPage.ingredients.title}
           </Text>
         </IngredientsTitle>
         <CustomiseTitle onPress={onClick}>
           <Text color="tertiary" fontSize={14}>
-            {menuTranslations.singleItem.customise.title}
+            {menuTranslations.singleItemPage.customise.title}
           </Text>
         </CustomiseTitle>
       </TitleRow>

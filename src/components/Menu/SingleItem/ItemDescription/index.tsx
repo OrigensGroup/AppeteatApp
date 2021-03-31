@@ -7,6 +7,8 @@ import { Discount } from '../../../../types/DiscountRules';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 
+import menuTranslations from '../../../../translations/menu';
+
 import { ItemDescriptionContainer, ItemDescriptionTitle, ItemDescriptionDesc, PriceSection } from './styles';
 
 interface ItemDescriptionProps {
@@ -42,7 +44,7 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discou
         ) : (
           <PriceSection>
             <Text bold color="tertiary" fontSize={14}>
-              SOLDOUT
+              {menuTranslations.menuPage.menuCard.soldout}
             </Text>
           </PriceSection>
         )}

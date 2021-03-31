@@ -5,15 +5,15 @@ import { FlatList } from 'react-native-gesture-handler';
 
 import { View } from 'react-native';
 
-import Text from '../../shared/Text';
+import Text from '../../../shared/Text';
 
-import SearchBar from '../../shared/SearchBar';
-import useMenu from '../../../hooks/useMenu';
+import SearchBar from '../../../shared/SearchBar';
+import useMenu from '../../../../hooks/useMenu';
 import MenuCard from '../MenuSwiper/MenuCards';
-import ViewCta from '../../shared/ViewCta';
-import { MenuItem } from '../../../types/MenuItem';
+import ViewCta from '../../../shared/ViewCta';
+import { MenuItem } from '../../../../types/MenuItem';
 
-import menuTranslations from '../../../translations/menu';
+import menuTranslations from '../../../../translations/menu';
 
 import {
   SearchPopUpContainer,
@@ -57,12 +57,12 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
       <SearchPopUpContainer>
         <TitleWrapper>
           <Text bold color="primary" fontSize={18}>
-            {menuTranslations.searchModal.searchTitle.title}
+            {menuTranslations.menuPage.searchModal.searchTitle.title}
           </Text>
         </TitleWrapper>
         <SearchBar
           onUpdateText={setSearchItem}
-          placeholder={menuTranslations.searchModal.searchInput.title}
+          placeholder={menuTranslations.menuPage.searchModal.searchInput.title}
           textContentType="none"
           value={searchItem}
         />
@@ -73,14 +73,14 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
           ) : (
             <View style={{ width: '100%', flex: 1, display: 'flex', alignItems: 'center', marginTop: 24 }}>
               <Text bold color="primary" fontSize={18}>
-                {menuTranslations.searchModal.noItems.title}
+                {menuTranslations.menuPage.searchModal.noItems.title}
               </Text>
             </View>
           )}
           <SearchModalBottomBarWrapper>
             <ViewCta onClick={closeModal}>
               <Text bold color="secondary" fontSize={18}>
-                {menuTranslations.searchModal.closeCta.title}
+                {menuTranslations.menuPage.searchModal.closeCta.title}
               </Text>
             </ViewCta>
           </SearchModalBottomBarWrapper>

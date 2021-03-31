@@ -1,9 +1,9 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import { TabDiscount } from '../../../../types/DiscountRules';
+import type { TabDiscount } from '../../../../../types/DiscountRules';
+import type { MenuItem } from '../../../../../types/MenuItem';
 
-import { MenuItem } from '../../../../types/MenuItem';
 import MenuCard from '../MenuCards';
 
 import { Wrapper } from './styles';

@@ -11,6 +11,8 @@ import QuantityCounter from '../Counter';
 
 import { Discount } from '../../../../types/DiscountRules';
 
+import menuTranslations from '../../../../translations/menu';
+
 import { AddToBasketButtonWrapper, ViewCtaButton, QuantityButton } from './styles';
 
 interface AddToBasketButtonProps {
@@ -73,7 +75,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
       <ViewCtaButton>
         <ViewCta onClick={onClick}>
           <Text bold color="fixedWhite" fontSize={18}>
-            Add To Basket
+            {menuTranslations.singleItemPage.addToBasket.cta}
           </Text>
           <Text bold color="fixedWhite" fontSize={18}>
             + {price}

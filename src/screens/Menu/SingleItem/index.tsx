@@ -1,8 +1,8 @@
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
 
-import CustomisableItem from '../../../components/Menu/SingleItemCards/CustomisableItem';
-import ItemWithExtras from '../../../components/Menu/SingleItemCards/ItemWithExtras';
+import CustomisableItem from '../../../components/Menu/SingleItem/CustomisableItem';
+import ItemWithExtras from '../../../components/Menu/SingleItem/ItemWithExtras';
 import { Discount } from '../../../types/DiscountRules';
 import { MenuItem } from '../../../types/MenuItem';
 

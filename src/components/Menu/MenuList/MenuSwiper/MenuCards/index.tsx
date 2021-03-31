@@ -4,19 +4,19 @@ import { useTheme } from 'styled-components';
 
 import FastImage from 'react-native-fast-image';
 
-import currencyTranslations from '../../../../translations/currency';
-import Text from '../../../shared/Text';
+import currencyTranslations from '../../../../../translations/currency';
+import menuTranslations from '../../../../../translations/menu';
 
-import { MenuItem } from '../../../../types/MenuItem';
+import Text from '../../../../shared/Text';
+import IconButton from '../../../../shared/IconButton';
 
-import IconButton from '../../../shared/IconButton';
+import useUserData from '../../../../../hooks/useUserData';
 
-import useUserData from '../../../../hooks/useUserData';
+import type { MenuItem } from '../../../../../types/MenuItem';
+import type { Discount } from '../../../../../types/DiscountRules';
 
-import { Discount } from '../../../../types/DiscountRules';
-import { fixDecimals } from '../../../../utils/priceCalculations';
-
-import { normalisedSource } from '../../../../utils/image';
+import { fixDecimals } from '../../../../../utils/priceCalculations';
+import { normalisedSource } from '../../../../../utils/image';
 
 import {
   CardContainer,
@@ -75,7 +75,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
         </CardTitle>
         <CardMainItem>
           <Text color="quartiary" fontSize={12}>
-            Gin
+            {item.ingredients?.splice(0, 3).join(' ')}
           </Text>
         </CardMainItem>
       </CardDescription>
@@ -113,7 +113,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
         <CardPrice>
           <Price move={!discount}>
             <Text bold color="tertiary" fontSize={10}>
-              SOLDOUT
+              {menuTranslations.menuPage.menuCard.soldout}
             </Text>
           </Price>
         </CardPrice>
