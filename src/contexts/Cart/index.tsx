@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 import { OrderItem } from '../../types/OrderItem';
 import { calculateItemPrice, fixDecimals } from '../../utils/priceCalculations';
 
-type Pricing = {
+export type Pricing = {
   subtotal: number;
   servicefee: number;
   tip: number;

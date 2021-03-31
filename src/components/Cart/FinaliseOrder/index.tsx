@@ -14,6 +14,8 @@ import { makeCardPayment } from '../../../utils/payments';
 import Text from '../../shared/Text';
 import ViewCta from '../../shared/ViewCta';
 
+import { generateNumberId } from './generateNumberId';
+
 import { FinaliseOrderContainer } from './styles';
 
 interface FinaliseOrderProps {
@@ -61,12 +63,13 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
 
     if (res.paymentRes.type === 'Charge') {
       const order: Order = {
+        id: generateNumberId(),
+        userId: user.uid,
         paymentRes: res.paymentRes,
         orderedItems: cart,
         pricing,
+        day: new Date().toString(),
       };
-
-      console.log('Payment made!!');
 
       setOrders((oldOrders) => ({
         ...oldOrders,
