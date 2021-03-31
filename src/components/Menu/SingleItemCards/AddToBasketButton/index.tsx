@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { fixDecimals, calculateDiscount, calculateItemPrice } from '../../../../utils/priceCalculations';
 import useCart from '../../../../hooks/useCart';
 
-import singleDrinkTranslations from '../../../../translations/singleDrink';
 import { DataItem, MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
@@ -74,7 +73,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
       <ViewCtaButton>
         <ViewCta onClick={onClick}>
           <Text bold color="fixedWhite" fontSize={18}>
-            {singleDrinkTranslations.viewBasketButtonField.placeholder}
+            Add To Basket
           </Text>
           <Text bold color="fixedWhite" fontSize={18}>
             + {price}

@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import useMenu from '../../../hooks/useMenu';
 import useUserData from '../../../hooks/useUserData';
 import { MenuItem } from '../../../types/MenuItem';
-import accountTranslations from '../../../translations/account';
+import accountTranslations from '../../../translations/profile';
 
 import Text from '../../shared/Text';
 

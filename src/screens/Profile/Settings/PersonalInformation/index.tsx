@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PersonalInfo from '../../../../components/Profile/PersonalInfo';
-import accountTranslations from '../../../../translations/account';
+import accountTranslations from '../../../../translations/profile';
 
 import useAuth from '../../../../hooks/useAuth';
 

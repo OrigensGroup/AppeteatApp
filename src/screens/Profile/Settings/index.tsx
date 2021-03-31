@@ -7,7 +7,7 @@ import auth from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
 
 import ListItem from '../../../components/Profile/ListItem';
-import accountTranslations from '../../../translations/account';
+import accountTranslations from '../../../translations/profile';
 
 import useUserData from '../../../hooks/useUserData';
 

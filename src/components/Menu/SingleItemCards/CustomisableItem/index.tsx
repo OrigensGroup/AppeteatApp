@@ -11,8 +11,6 @@ import ExplanationModal from '../../../shared/ExplanationModal';
 
 import CustomiseSection from '../CustomiseSection';
 
-import customOrderTranslations from '../../../../translations/customOrder';
-
 import { Discount } from '../../../../types/DiscountRules';
 
 import { CustomisableItemContainer, ItemContainer } from './styles';
@@ -27,7 +25,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
 
   const [modalData, setModalData] = useState({
     show: false,
-    title: customOrderTranslations.allergiesModal.title,
+    title: 'Customise Item',
     inputData: '',
   });
 
@@ -48,7 +46,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
       <ExplanationModal
         isVisible={modalData.show}
         onClose={closeModal}
-        placeholder={customOrderTranslations.allergiesModal.placeholder}
+        placeholder="Type custom request"
         placeholderTextColor={theme.colors.border}
         title={modalData.title}
         updateValue={updateValue}

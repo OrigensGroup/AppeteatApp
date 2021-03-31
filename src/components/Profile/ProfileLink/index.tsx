@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useTheme } from 'styled-components';
 
 import ListItem from '../ListItem';
-import accountTranslations from '../../../translations/account';
+import accountTranslations from '../../../translations/profile';
 
 import { LinksContainer } from './styles';
 

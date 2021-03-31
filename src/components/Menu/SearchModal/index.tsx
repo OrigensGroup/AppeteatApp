@@ -13,7 +13,7 @@ import MenuCard from '../MenuSwiper/MenuCards';
 import ViewCta from '../../shared/ViewCta';
 import { MenuItem } from '../../../types/MenuItem';
 
-import searchModal from '../../../translations/searchModal';
+import menuTranslations from '../../../translations/menu';
 
 import {
   SearchPopUpContainer,
@@ -57,12 +57,12 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
       <SearchPopUpContainer>
         <TitleWrapper>
           <Text bold color="primary" fontSize={18}>
-            {searchModal.searchTitle.title}
+            {menuTranslations.searchModal.searchTitle.title}
           </Text>
         </TitleWrapper>
         <SearchBar
           onUpdateText={setSearchItem}
-          placeholder={searchModal.searchInput.placeholder}
+          placeholder={menuTranslations.searchModal.searchInput.title}
           textContentType="none"
           value={searchItem}
         />
@@ -73,14 +73,14 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
           ) : (
             <View style={{ width: '100%', flex: 1, display: 'flex', alignItems: 'center', marginTop: 24 }}>
               <Text bold color="primary" fontSize={18}>
-                No items found
+                {menuTranslations.searchModal.noItems.title}
               </Text>
             </View>
           )}
           <SearchModalBottomBarWrapper>
             <ViewCta onClick={closeModal}>
               <Text bold color="secondary" fontSize={18}>
-                {searchModal.closeCta.label}
+                {menuTranslations.searchModal.closeCta.title}
               </Text>
             </ViewCta>
           </SearchModalBottomBarWrapper>

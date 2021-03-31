@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import ChangeInfo from '../../../../../components/Profile/ChangeInfo';
 import CustomButton from '../../../../../components/shared/Button';
-import accountTranslations from '../../../../../translations/account';
+import accountTranslations from '../../../../../translations/profile';
 
 interface ChangeNameProps {}
 

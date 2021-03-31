@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { useTheme } from 'styled-components';
 
-import accountTranslations from '../../translations/account';
+import accountTranslations from '../../translations/profile';
 
 import Account from './Account';
 import Reservations from './Reservations';

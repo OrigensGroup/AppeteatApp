@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import CustomButton from '../../../../components/shared/Button';
 
 import TextField from '../../../../components/shared/LoginTextField';
-import accountTranslations from '../../../../translations/account';
+import accountTranslations from '../../../../translations/profile';
 
 import { PasswordContainer } from './styles';
 
