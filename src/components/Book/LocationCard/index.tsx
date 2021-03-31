@@ -4,6 +4,8 @@ import { useTheme } from 'styled-components';
 
 import FastImage from 'react-native-fast-image';
 
+import { Linking, Platform } from 'react-native';
+
 import Text from '../../shared/Text';
 import { Venue } from '../../../types/Venue';
 import bookTranslations from '../../../translations/book';
@@ -29,6 +31,17 @@ interface LocationCardProps {
 
 const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, venue }) => {
   const theme = useTheme();
+
+  const onShareClick = () => {
+    const url = Platform.select({
+      ios: 'maps:' + venue.latitude + ',' + venue.longitude + '?q=' + venue.name,
+      android: 'geo:' + venue.latitude + ',' + venue.longitude + '?q=' + venue.name,
+    });
+
+    if (url) {
+      Linking.openURL(url);
+    }
+  };
 
   return (
     <CardContainer activeOpacity={0.9} onPress={onClick(venue)}>
@@ -61,7 +74,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
         </DrinkDesc>
       </Content>
       <ButtonContainer>
-        <ShareButton>
+        <ShareButton onPress={onShareClick}>
           <Icon color={theme.colors.textPrimary} name="share" size={28} />
         </ShareButton>
         <BookATableButton onPress={onClick(venue)}>

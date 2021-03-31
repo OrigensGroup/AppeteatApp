@@ -27,7 +27,7 @@ const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount
         <ItemDescription discount={discount} item={item} />
         <UpgradeSection item={item} updateExtras={setExtras} />
       </ItemContainer>
-      {item.soldout === false && <AddToBasketButton discount={discount} extras={extras} item={item} />}
+      {!item.soldout && <AddToBasketButton discount={discount} extras={extras} item={item} />}
     </ItemWithExtrasContainer>
   );
 };

@@ -79,7 +79,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
           </Text>
         </CardMainItem>
       </CardDescription>
-      {item.soldout === false ? (
+      {!item.soldout ? (
         <CardPrice>
           {discount && discount.type === 'tabDiscount' ? (
             <>

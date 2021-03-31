@@ -21,7 +21,7 @@ export const HeaderRow = styled.View`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
-export const ItemRow = styled.View`
+export const ItemRow = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   align-items: center;

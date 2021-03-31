@@ -129,7 +129,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
       (selectionExtras && selectionExtras[section.id] && selectionExtras[section.id][item.id].selected) || false;
 
     return (
-      <ItemRow>
+      <ItemRow onPress={() => updateItemSelection(section.selection, section.id, item.id)(!selectionValue)}>
         <TitleItem>
           <Text bold color="primary" fontSize={16}>
             {item.title}

@@ -26,7 +26,7 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discou
         <Text bold color="primary" fontSize={18}>
           {item.title}
         </Text>
-        {item.soldout === false ? (
+        {!item.soldout ? (
           <PriceSection>
             {discount && discount.type === 'tabDiscount' && (
               <Text bold color="quartiary" fontSize={14} strike>
