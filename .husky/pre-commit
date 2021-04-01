@@ -3,3 +3,4 @@
 
 yarn lint:fix
 git add -A
+yarn test --onlyChanged

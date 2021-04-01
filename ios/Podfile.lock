@@ -229,7 +229,7 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (3.0.0):
     - UMCore
-  - EXConstants (10.0.0):
+  - EXConstants (10.0.1):
     - UMConstantsInterface
     - UMCore
   - EXErrorRecovery (1.4.0):
@@ -794,7 +794,7 @@ DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-notifications/node_modules/expo-application/ios`)
-  - EXConstants (from `../node_modules/expo-notifications/node_modules/expo-constants/ios`)
+  - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
@@ -912,7 +912,7 @@ EXTERNAL SOURCES:
   EXApplication:
     :path: "../node_modules/expo-notifications/node_modules/expo-application/ios"
   EXConstants:
-    :path: "../node_modules/expo-notifications/node_modules/expo-constants/ios"
+    :path: "../node_modules/expo-constants/ios"
   EXErrorRecovery:
     :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
@@ -1064,7 +1064,7 @@ SPEC CHECKSUMS:
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXApplication: e3a06b6d81f94e526f029a57b2121d6cde044004
-  EXConstants: 07a3effb73d2f73b61079703f810bbdd5364a1c5
+  EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
   EXErrorRecovery: b46af4b91e2b4ec598ab1fa51d2cf088aaf5511f
   EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
   EXFont: ec06a9fb8f0d558fb7afa8540f3d932622fa85d6

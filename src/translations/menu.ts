@@ -29,6 +29,7 @@ const menuTranslations = {
     },
     customise: {
       title: 'Customise item',
+      placeholder: 'Type custom request',
     },
     addToBasket: {
       cta: 'Add To Basket',

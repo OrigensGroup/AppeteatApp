@@ -13,7 +13,7 @@ interface TopBarProps {
   title: string;
   hideFilter?: boolean;
   hideTitle?: boolean;
-  back: 'HomePage' | 'MenuList';
+  back: 'HomePage' | 'MenuList' | 'back';
 }
 
 const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTitle, onClick, title }) => {
@@ -21,6 +21,10 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTi
   const navigation = useNavigation();
 
   const navigateBack = () => {
+    if (back === 'back') {
+      navigation.navigate('App', { screen: 'Account', params: { screen: 'Orders' } });
+    }
+
     navigation.navigate(back);
   };
 

@@ -7,7 +7,7 @@ import cartTranslations from '../../../../translations/cart';
 import type { OrderItem } from '../../../../types/OrderItem';
 import Text from '../../../shared/Text';
 
-import CartItem from './CartItem';
+import CartItem from '../../CartItem';
 
 import { ItemSummaryContainer, DeleteButton } from './styles';
 

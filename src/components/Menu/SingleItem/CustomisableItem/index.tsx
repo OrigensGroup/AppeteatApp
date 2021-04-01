@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 
 import { useTheme } from 'styled-components';
 
-import { MenuItem } from '../../../../types/MenuItem';
+import type { MenuItem } from '../../../../types/MenuItem';
+import type { Discount } from '../../../../types/DiscountRules';
+
+import menuTranslations from '../../../../translations/menu';
+
 import CardsHeader from '../CardsHeader';
 import ItemPicture from '../ItemPicture';
 import ItemDescription from '../ItemDescription';
 import AddToBasketButton from '../AddToBasketButton';
-import ExplanationModal from '../../../shared/ExplanationModal';
-
 import CustomiseSection from '../CustomiseSection';
 
-import { Discount } from '../../../../types/DiscountRules';
+import ExplanationModal from '../../../shared/ExplanationModal';
 
 import { CustomisableItemContainer, ItemContainer } from './styles';
 
@@ -46,7 +48,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
       <ExplanationModal
         isVisible={modalData.show}
         onClose={closeModal}
-        placeholder="Type custom request"
+        placeholder={menuTranslations.singleItemPage.customise.placeholder}
         placeholderTextColor={theme.colors.border}
         title={modalData.title}
         updateValue={updateValue}

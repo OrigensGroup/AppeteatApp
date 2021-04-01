@@ -4,10 +4,10 @@ import FastImage from 'react-native-fast-image';
 
 import { useTheme } from 'styled-components';
 
-import currencyTranslations from '../../../../../translations/currency';
-import { OrderItem } from '../../../../../types/OrderItem';
-import { calculateItemPrice } from '../../../../../utils/priceCalculations';
-import Text from '../../../../shared/Text';
+import currencyTranslations from '../../../translations/currency';
+import { OrderItem } from '../../../types/OrderItem';
+import { calculateItemPrice } from '../../../utils/priceCalculations';
+import Text from '../../shared/Text';
 
 import {
   CartItemContainer,

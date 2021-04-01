@@ -72,6 +72,18 @@ const cartTranslations = {
       placeholder: 'Update',
     },
   },
+  orderPage: {
+    title: 'Order info',
+    orderInfo: {
+      title: 'Order number',
+      deliveryEst: 'will be ready at 9:00/9:30pm',
+    },
+    orderStatus: {
+      received: 'Order recived',
+      preparing: 'Preparing',
+      done: 'Done',
+    },
+  },
 };
 
 export default cartTranslations;

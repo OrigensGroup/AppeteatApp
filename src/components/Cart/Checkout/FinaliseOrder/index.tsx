@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
 import type { Card } from 'tipsi-stripe';
 
@@ -23,7 +23,7 @@ interface FinaliseOrderProps {
 }
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOption }) => {
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
   const { cart, clearCart, pricing } = useCart();
   const { addOrder } = useUserData();
   const [, setOrders] = useOrders();
@@ -79,24 +79,21 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
       addOrder(order);
 
       clearCart();
-      //navigation.navigate('SuccessPage');
+      navigation.navigate('OrderDetails', { order });
     } else {
-      Alert.alert('Payment error');
+      console.log(res.paymentRes);
+      Alert.alert(res.paymentRes.message);
     }
   };
 
   return (
     <FinaliseOrderContainer>
       <ViewCta onClick={finaliseOrder}>
-        {!loadingPayment ? (
-          <Text bold color="fixedWhite" fontSize={20}>
-            {cartTranslations.checkoutPage.goToCheckoutCta.title}
-          </Text>
-        ) : (
-          <Text bold color="fixedWhite" fontSize={20}>
-            {cartTranslations.checkoutPage.goToCheckoutCta.loading}
-          </Text>
-        )}
+        <Text bold color="fixedWhite" fontSize={20}>
+          {!loadingPayment
+            ? cartTranslations.checkoutPage.goToCheckoutCta.title
+            : cartTranslations.checkoutPage.goToCheckoutCta.loading}
+        </Text>
       </ViewCta>
     </FinaliseOrderContainer>
   );

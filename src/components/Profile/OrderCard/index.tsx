@@ -1,19 +1,29 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+
+import type { Order } from '../../../types/Order';
 
 import Text from '../../shared/Text';
 
 import { Container, DrinkDesc, OrderCardContainer, DateContainer, Circle, PriceContainer, Button } from './styles';
 
 interface OrderCardProps {
-  items: string;
-  date: string;
-  price: number;
+  order: Order;
   onClick?: () => void;
 }
 
-const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onClick, price }) => {
-  const day = new Date(date);
+const OrderCard: React.FunctionComponent<OrderCardProps> = ({ onClick, order }) => {
+  const day = new Date(order.day);
+  const navigation = useNavigation();
+
+  const navigate = () => {
+    navigation.navigate('App', {
+      screen: 'Menu',
+      params: { screen: 'Cart', params: { screen: 'OrderDetails', params: { order, back: 'back' } } },
+    });
+  };
+
   return (
     <OrderCardContainer>
       <Container activeOpacity={1} onPress={onClick}>
@@ -29,14 +39,14 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({ date, items, onCli
         </DateContainer>
         <DrinkDesc>
           <Text color="primary" fontSize={16}>
-            {items}
+            {order.orderedItems.map((item) => `${item.quantity}x ${item.title}`).join(' ')}
           </Text>
         </DrinkDesc>
         <PriceContainer>
           <Text bold color="primary" fontSize={16}>
-            {price}$
+            {order.pricing.total}$
           </Text>
-          <Button>
+          <Button onPress={navigate}>
             <Text color="tertiary" fontSize={16}>
               View
             </Text>
