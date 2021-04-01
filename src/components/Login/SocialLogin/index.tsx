@@ -7,9 +7,11 @@ import GoogleButton from '../../shared/GoogleButton';
 
 import { SocialLoginWrapper, SocialLoginButton } from './styles';
 
-interface SocialLoginProps {}
+interface SocialLoginProps {
+  setLoading: (b: boolean) => void;
+}
 
-const SocialLogin: React.FunctionComponent<SocialLoginProps> = () => {
+const SocialLogin: React.FunctionComponent<SocialLoginProps> = ({ setLoading }) => {
   const theme = useTheme();
 
   return (
@@ -17,8 +19,8 @@ const SocialLogin: React.FunctionComponent<SocialLoginProps> = () => {
       <SocialLoginButton>
         <AntDesign color={theme.colors.textPrimary} name="apple1" size={48} />
       </SocialLoginButton>
-      <GoogleButton />
-      <FacebookButton />
+      <GoogleButton setLoading={setLoading} />
+      <FacebookButton setLoading={setLoading} />
     </SocialLoginWrapper>
   );
 };
