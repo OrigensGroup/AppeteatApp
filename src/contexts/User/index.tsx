@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import useAuth from '../../hooks/useAuth';
+import useNotifications from '../../hooks/useNotifications';
 import { Booking } from '../../types/Booking';
 import { MenuItem } from '../../types/MenuItem';
 import { Order } from '../../types/Order';
@@ -28,6 +29,7 @@ interface UserProviderProps {}
 
 const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) => {
   const user = useAuth();
+  const { token } = useNotifications();
   const [userData, setUserData] = useState<User>({ favoriteCocktails: [], orders: [], bookings: [], default: true });
 
   const loadData = useCallback(async () => {
@@ -54,6 +56,14 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   useEffect(() => {
     saveData();
   }, [userData, saveData]);
+
+  useEffect(() => {
+    if (userData.token !== token)
+      setUserData((data) => ({
+        ...data,
+        token,
+      }));
+  }, [token, userData]);
 
   const addNewFavoriteCocktail = (item: MenuItem) => {
     const newItems = !userData.favoriteCocktails.includes(item.id)

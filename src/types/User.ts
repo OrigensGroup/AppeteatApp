@@ -6,4 +6,5 @@ export interface User {
   default: boolean;
   bookings: Booking[];
   orders: Order[];
+  token?: string;
 }

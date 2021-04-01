@@ -2,6 +2,7 @@
   "name": "origens-testing",
   "displayName": "Origens Testing",
   "expo": {
+    "owner": "origens",
     "name": "Origens Testing",
     "slug": "origens-testing",
     "version": "1.0.0",
