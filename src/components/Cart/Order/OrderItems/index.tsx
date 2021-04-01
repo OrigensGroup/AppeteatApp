@@ -29,7 +29,12 @@ const OrderItems: React.FunctionComponent<OrderItemsProps> = ({ order }) => {
         </OrderItemInvoice>
       </OrderItemTitle>
       <OrderItemSection>
-        <FlatList data={order.orderedItems} renderItem={({ item }) => <CartItem item={item} />} />
+        <FlatList
+          data={order.orderedItems}
+          keyExtractor={(item, ind) => `${item.id}-${ind}`}
+          renderItem={({ item }) => <CartItem item={item} />}
+          showsVerticalScrollIndicator={false}
+        />
       </OrderItemSection>
     </OrderItemsContainer>
   );

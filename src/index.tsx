@@ -20,6 +20,8 @@ import stripe from 'tipsi-stripe';
 
 import { Settings } from 'react-native-fbsdk-next';
 
+import { enableScreens } from 'react-native-screens';
+
 import { useThemeSelector } from './theme';
 
 import { Bar } from './types/Bar';
@@ -35,6 +37,8 @@ import TabBar from './components/shared/TabBar';
 import useAuth from './hooks/useAuth';
 import loadBar from './utils/loadBar';
 import NotificationProvider from './contexts/Notification';
+
+enableScreens();
 
 const Stack = createStackNavigator();
 
