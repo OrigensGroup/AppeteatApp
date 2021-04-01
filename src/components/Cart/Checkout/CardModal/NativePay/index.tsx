@@ -11,7 +11,7 @@ interface NativePayProps {}
 
 const NativePay: React.FunctionComponent<NativePayProps> = () => {
   const isIos = Platform.OS === 'ios';
-  const source = isIos ? require('./../../../../img/ApplePay.png') : require('./../../../../img/GooglePay.png');
+  const source = isIos ? require('./../../../../../img/ApplePay.png') : require('./../../../../../img/GooglePay.png');
 
   return (
     <NativePayContainer>

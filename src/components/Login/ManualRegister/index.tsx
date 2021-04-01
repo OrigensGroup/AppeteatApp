@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { Formik } from 'formik';
 import { useTheme } from 'styled-components';
 
 import auth from '@react-native-firebase/auth';
@@ -13,6 +14,8 @@ import LogInInputField from '../LogInInputField';
 import loginTranslations from '../../../translations/login';
 
 import initUserData from '../../../utils/initUserData';
+
+import { RegisterSchema } from './registerSchema';
 
 import {
   ManualLogInContainer,
@@ -27,137 +30,55 @@ interface RegisterManualProps {
   changeModule: (b: 'login' | 'register' | 'forgotPassword') => void;
 }
 
-type LoopObject = {
-  [key: string]: string | null;
-};
-
 const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeModule }) => {
   const theme = useTheme();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [errors, setErrors] = useState<LoopObject>({});
   const [loading, setLoading] = useState(false);
 
   const login = () => {
     changeModule('login');
   };
 
-  const createUser = () => {
+  const createUser = (username: string, email: string, password: string) => {
     setLoading(true);
     crashlytics().log('Sign in attempt.');
-    let errorCounter = 5;
 
-    if (username.length < 4) {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['username']: loginTranslations.usernameError.label,
-      }));
-    } else {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['username']: null,
-      }));
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        const user = auth().currentUser;
 
-      errorCounter = errorCounter - 1;
-    }
+        if (user) {
+          initUserData(user.uid);
 
-    if (email === '') {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['email']: loginTranslations.emailError.label,
-      }));
-    } else {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['email']: null,
-      }));
+          !user.emailVerified && user.sendEmailVerification();
 
-      errorCounter = errorCounter - 1;
-    }
+          user.updateProfile({
+            displayName: username,
+          });
+        } else {
+          crashlytics().log("Couldn't setup user");
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
 
-    if (password.length < 8) {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['passwordLenght']: loginTranslations.passwordLenghtError.label,
-      }));
-    } else {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['passwordLenght']: null,
-      }));
+        if (error.code === 'auth/email-already-in-use') {
+          Alert.alert(loginTranslations.emailAlreayInUse.label);
+          return;
+        }
 
-      errorCounter = errorCounter - 1;
-    }
+        if (error.code === 'auth/invalid-email') {
+          Alert.alert(loginTranslations.errorSignInEmail.label);
+          return;
+        }
 
-    if (password !== confirmPassword) {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['confirmPassword']: loginTranslations.confirmPasswordError.label,
-      }));
-    } else {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['confirmPassword']: null,
-      }));
+        crashlytics().log('Sign in failed.');
+        crashlytics().recordError(error);
+        console.error(error);
+      });
 
-      errorCounter = errorCounter - 1;
-    }
-
-    if (new RegExp('^(?=(.*[a-z])(?=(.*[d]){1,}){1,})(?!.*s).{8,}$').test(password)) {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['passwordSpecialCharacters']: loginTranslations.invalidPasswordError.label,
-      }));
-    } else {
-      setErrors((oldErrors) => ({
-        ...oldErrors,
-        ['passwordSpecialCharacters']: null,
-      }));
-
-      errorCounter = errorCounter - 1;
-    }
-
-    if (errorCounter === 0) {
-      auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(() => {
-          const user = auth().currentUser;
-
-          if (user) {
-            initUserData(user.uid);
-
-            !user.emailVerified && user.sendEmailVerification();
-
-            user.updateProfile({
-              displayName: username,
-            });
-          } else {
-            crashlytics().log("Couldn't setup user");
-          }
-        })
-        .catch((error) => {
-          setLoading(false);
-
-          if (error.code === 'auth/email-already-in-use') {
-            Alert.alert(loginTranslations.emailAlreayInUse.label);
-            return;
-          }
-
-          if (error.code === 'auth/invalid-email') {
-            Alert.alert(loginTranslations.errorSignInEmail.label);
-            return;
-          }
-
-          crashlytics().log('Sign in failed.');
-          crashlytics().recordError(error);
-          console.error(error);
-        });
-    } else {
-      setLoading(false);
-    }
+    setLoading(false);
   };
 
   return (
@@ -167,49 +88,59 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
       start={{ x: 0, y: 0 }}
       style={styles.linearGradient}
     >
-      <ManualLogInContainer>
-        <TextFieldsWrapper>
-          <LogInInputField
-            error={errors['username']}
-            label={loginTranslations.nameField.label}
-            placeholder={loginTranslations.nameField.placeholder}
-            textContentType="none"
-            updateValue={setUsername}
-          />
-          <LogInInputField
-            error={errors['email']}
-            label={loginTranslations.emailField.label}
-            placeholder={loginTranslations.emailField.placeholder}
-            textContentType="emailAddress"
-            updateValue={setEmail}
-          />
-          <PasswordsWrapper>
-            <LogInInputField
-              error={errors['passwordLenght'] || errors['passwordSpecialCharacters']}
-              label={loginTranslations.passwordField.label}
-              placeholder={loginTranslations.passwordField.placeholder}
-              textContentType="password"
-              updateValue={setPassword}
-            />
-            <PasswordSeparator />
-            <LogInInputField
-              error={errors['confirmPassword']}
-              label={loginTranslations.passwordField.secondaryLabel}
-              placeholder={loginTranslations.passwordField.placeholder}
-              textContentType="password"
-              updateValue={setConfirmPassword}
-            />
-          </PasswordsWrapper>
-        </TextFieldsWrapper>
-        <LogInSection>
-          <LogInButton loading={loading} onClick={createUser} text={loginTranslations.registerButton.label} />
-          <SignUpButton
-            buttonText={loginTranslations.signInSection.buttonLabel}
-            onClick={login}
-            text={loginTranslations.signInSection.label}
-          />
-        </LogInSection>
-      </ManualLogInContainer>
+      <Formik
+        initialValues={{ username: '', email: '', password: '', confirmPassword: '' }}
+        onSubmit={(values) => {
+          createUser(values.username, values.email, values.password);
+        }}
+        validationSchema={RegisterSchema}
+      >
+        {({ errors, handleChange, handleSubmit }) => (
+          <ManualLogInContainer>
+            <TextFieldsWrapper>
+              <LogInInputField
+                error={errors['username']}
+                label={loginTranslations.nameField.label}
+                placeholder={loginTranslations.nameField.placeholder}
+                textContentType="none"
+                updateValue={handleChange('username')}
+              />
+              <LogInInputField
+                error={errors['email']}
+                label={loginTranslations.emailField.label}
+                placeholder={loginTranslations.emailField.placeholder}
+                textContentType="emailAddress"
+                updateValue={handleChange('email')}
+              />
+              <PasswordsWrapper>
+                <LogInInputField
+                  error={errors['password']}
+                  label={loginTranslations.passwordField.label}
+                  placeholder={loginTranslations.passwordField.placeholder}
+                  textContentType="password"
+                  updateValue={handleChange('password')}
+                />
+                <PasswordSeparator />
+                <LogInInputField
+                  error={errors['confirmPassword']}
+                  label={loginTranslations.passwordField.secondaryLabel}
+                  placeholder={loginTranslations.passwordField.placeholder}
+                  textContentType="password"
+                  updateValue={handleChange('confirmPassword')}
+                />
+              </PasswordsWrapper>
+            </TextFieldsWrapper>
+            <LogInSection>
+              <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.registerButton.label} />
+              <SignUpButton
+                buttonText={loginTranslations.signInSection.buttonLabel}
+                onClick={login}
+                text={loginTranslations.signInSection.label}
+              />
+            </LogInSection>
+          </ManualLogInContainer>
+        )}
+      </Formik>
     </LinearGradient>
   );
 };

@@ -15,8 +15,9 @@ import LogInButton from '../Buttons/LogInButton';
 
 import loginTranslations from '../../../translations/login';
 
-import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
 import { LoginSchema } from './loginSchema';
+
+import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
 
 interface ManualLogInProps {
   changeModule: (b: 'login' | 'register' | 'forgotPassword') => void;
