@@ -12,6 +12,7 @@ const CartNav: React.FunctionComponent<CartNavProps> = () => {
   return (
     <Stack.Navigator headerMode="none">
       <Stack.Screen component={Checkout} name="Checkout" />
+      <Stack.Screen component={Checkout} name="OrderDetails" />
     </Stack.Navigator>
   );
 };

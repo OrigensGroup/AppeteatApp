@@ -18,8 +18,8 @@ export const IngredientsTitle = styled.View`
 `;
 
 export const CustomiseTitle = styled.TouchableOpacity`
-  margin-bottom: ${({ theme }) => theme.spacing.oneAndHalf};
   margin-top: ${({ theme }) => theme.spacing.multiple(5)};
+  margin-bottom: ${({ theme }) => theme.spacing.oneAndHalf};
 `;
 
 export const Ingredient = styled.View``;

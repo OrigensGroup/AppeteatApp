@@ -49,5 +49,5 @@ export const ItemInfo = styled.TouchableOpacity`
 `;
 
 export const UpgradableItems = styled.View`
-  margin-top: 40px;
+  margin-top: ${({ theme }) => theme.spacing.double};
 `;
