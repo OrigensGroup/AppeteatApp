@@ -8,17 +8,22 @@ import initUserData from '../../../utils/initUserData';
 
 import { ButtonContainer } from './styles';
 
-interface FacebookButtonProps {}
+interface FacebookButtonProps {
+  setLoading: (b: boolean) => void;
+}
 
-const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
+const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ setLoading }) => {
   async function onFacebookButtonPress() {
     crashlytics().log('Facebook log in attempt.');
     // Attempt login with permissions
     const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
+    setLoading(true);
+
     console.log(result);
 
     if (result.isCancelled) {
+      setLoading(false);
       throw 'User cancelled the login process';
     }
 
@@ -26,6 +31,7 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
     const data = await AccessToken.getCurrentAccessToken();
 
     if (!data) {
+      setLoading(false);
       throw 'Something went wrong obtaining access token';
     }
 
@@ -36,7 +42,7 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = () => {
     auth()
       .signInWithCredential(facebookCredential)
       .then(() => {
-        console.log('loggedint');
+        setLoading(false);
         const user = auth().currentUser;
 
         if (user) {

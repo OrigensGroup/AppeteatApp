@@ -12,21 +12,25 @@ GoogleSignin.configure({
   webClientId: '920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com',
 });
 
-interface GoogleButtonProps {}
+interface GoogleButtonProps {
+  setLoading: (b: boolean) => void;
+}
 
-const GoogleButton: React.FunctionComponent<GoogleButtonProps> = () => {
+const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ setLoading }) => {
   async function onGoogleButtonPress() {
     crashlytics().log('Google log in attempt.');
     // Get the users ID token
-    const { idToken } = await GoogleSignin.signIn();
 
+    const { idToken } = await GoogleSignin.signIn();
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    setLoading(true);
 
     // Sign-in the user with the credential
     auth()
       .signInWithCredential(googleCredential)
       .then(() => {
+        setLoading(false);
         const user = auth().currentUser;
 
         if (user) {

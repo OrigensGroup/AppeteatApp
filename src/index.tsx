@@ -34,6 +34,7 @@ import TabBar from './components/shared/TabBar';
 
 import loadBar from './utils/loadBar';
 import useAuth from './hooks/useAuth';
+import NotificationProvider from './contexts/Notification';
 
 const Stack = createStackNavigator();
 
@@ -118,37 +119,39 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <BarProvider loadedBar={bar}>
-        <UserProvider>
-          <CartProvider>
-            <NavigationContainer
-              //@ts-ignore
-              onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
-              onStateChange={async () => {
-                const previousRouteName = routeNameRef.current;
+        <NotificationProvider>
+          <UserProvider>
+            <CartProvider>
+              <NavigationContainer
                 //@ts-ignore
-                const currentRouteName = navigationRef.current.getCurrentRoute().name;
+                onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
+                onStateChange={async () => {
+                  const previousRouteName = routeNameRef.current;
+                  //@ts-ignore
+                  const currentRouteName = navigationRef.current.getCurrentRoute().name;
 
-                if (previousRouteName !== currentRouteName) {
-                  await analytics().logScreenView({
-                    screen_name: currentRouteName,
-                    screen_class: currentRouteName,
-                  });
-                }
+                  if (previousRouteName !== currentRouteName) {
+                    await analytics().logScreenView({
+                      screen_name: currentRouteName,
+                      screen_class: currentRouteName,
+                    });
+                  }
 
-                routeNameRef.current = currentRouteName;
-              }}
-              ref={navigationRef}
-            >
-              <Stack.Navigator headerMode="none">
-                {user === null ? (
-                  <Stack.Screen component={LoginScreen} name="Login" />
-                ) : (
-                  <Stack.Screen component={TabBar} name="App" />
-                )}
-              </Stack.Navigator>
-            </NavigationContainer>
-          </CartProvider>
-        </UserProvider>
+                  routeNameRef.current = currentRouteName;
+                }}
+                ref={navigationRef}
+              >
+                <Stack.Navigator headerMode="none">
+                  {user === null ? (
+                    <Stack.Screen component={LoginScreen} name="Login" />
+                  ) : (
+                    <Stack.Screen component={TabBar} name="App" />
+                  )}
+                </Stack.Navigator>
+              </NavigationContainer>
+            </CartProvider>
+          </UserProvider>
+        </NotificationProvider>
       </BarProvider>
     </ThemeProvider>
   );

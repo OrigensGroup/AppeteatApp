@@ -8,12 +8,15 @@ import ManualLogIn from '../../components/Login/ManualLogIn';
 import RegisterManual from '../../components/Login/ManualRegister';
 import ForgotPassword from '../../components/Login/ForgotPassword';
 
+import SocialLoading from '../../components/Login/SocialLoading';
+
 import { SafeAreaViewTop, KeyboardAvoidingView, LogInContainer, EnclosingView } from './styles';
 
 interface LoginProps {}
 
 const Login: React.FunctionComponent<LoginProps> = () => {
   const [pageToShow, setPageToShow] = useState<'login' | 'register' | 'forgotPassword'>('login');
+  const [socialLoading, setSocialLoading] = useState(false);
 
   return (
     <>
@@ -26,10 +29,16 @@ const Login: React.FunctionComponent<LoginProps> = () => {
         >
           <EnclosingView>
             <Logo />
-            <SocialLogin />
-            {pageToShow === 'login' && <ManualLogIn changeModule={setPageToShow} />}
-            {pageToShow === 'register' && <RegisterManual changeModule={setPageToShow} />}
-            {pageToShow === 'forgotPassword' && <ForgotPassword changeModule={setPageToShow} />}
+            <SocialLogin setLoading={setSocialLoading} />
+            {socialLoading ? (
+              <SocialLoading />
+            ) : pageToShow === 'login' ? (
+              <ManualLogIn changeModule={setPageToShow} />
+            ) : pageToShow === 'register' ? (
+              <RegisterManual changeModule={setPageToShow} />
+            ) : (
+              pageToShow === 'forgotPassword' && <ForgotPassword changeModule={setPageToShow} />
+            )}
           </EnclosingView>
         </LogInContainer>
       </KeyboardAvoidingView>
