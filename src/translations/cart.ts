@@ -83,6 +83,9 @@ const cartTranslations = {
       preparing: 'Preparing',
       done: 'Done',
     },
+    orderItems: {
+      text: 'Order list',
+    },
   },
 };
 

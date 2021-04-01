@@ -24,7 +24,7 @@ import {
 
 interface CartItemProps {
   item: OrderItem;
-  onClick: (id: OrderItem) => () => void;
+  onClick?: (id: OrderItem) => () => void;
 }
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
@@ -42,7 +42,7 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
   };
 
   return (
-    <CartItemContainer activeOpacity={1} onPress={onClick(item)}>
+    <CartItemContainer activeOpacity={1} onPress={onClick && onClick(item)}>
       <CartItemInfo>
         <ImageWrapper>
           <FastImage

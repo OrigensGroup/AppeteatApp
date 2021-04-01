@@ -25,7 +25,7 @@ export const OrderStatusBall = styled.View<DisabledStatus>`
   background-color: ${({ disabled, theme }) => (disabled ? theme.colors.border : theme.colors.active)};
   width: ${({ theme }) => theme.spacing.double};
   height: ${({ theme }) => theme.spacing.double};
-  border-radius: 100;
+  border-radius: ${({ theme }) => theme.spacing.double};
 `;
 
 export const OrderStatusLine = styled.View<DisabledStatus>`
