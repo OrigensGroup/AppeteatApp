@@ -29,7 +29,7 @@ const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item
       {item.ingredients &&
         item.ingredients.map((ingredient) => (
           <Ingredient key={ingredient}>
-            <Text color="primary" fontSize={14}>
+            <Text color="quartiary" fontSize={14}>
               {ingredient}
             </Text>
           </Ingredient>

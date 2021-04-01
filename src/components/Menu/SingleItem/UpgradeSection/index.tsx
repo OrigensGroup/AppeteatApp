@@ -20,6 +20,7 @@ import {
   UpgradeSectionContainer,
   PriceItem,
   ItemInfo,
+  UpgradableItems,
 } from './styles';
 
 type SelectionCheckbox = {
@@ -133,15 +134,15 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     return (
       <ItemRow onPress={() => updateItemSelection(section.selection, section.id, item.id)(!selectionValue)}>
         <TitleItem>
-          <Text bold color="primary" fontSize={16}>
+          <Text bold color="quartiary" fontSize={14}>
             {item.title}
           </Text>
         </TitleItem>
         {item.price > 0 && (
           <PriceItem>
-            <Text bold color="primary" fontSize={14}>
-              ( + {currencyTranslations.currencyField}
-              {item.price})
+            <Text bold color="quartiary" fontSize={14}>
+              + {currencyTranslations.currencyField}
+              {item.price}
             </Text>
           </PriceItem>
         )}
@@ -156,7 +157,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
             boxType={selectionType}
             onCheckColor={theme.colors.active}
             onTintColor={theme.colors.active}
-            onValueChange={updateItemSelection(section.selection, section.id, item.id)}
+            style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
             tintColors={{
               false: theme.colors.active,
               true: theme.colors.active,
@@ -171,7 +172,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
   const sectionHeader = ({ section: { title } }: { section: { title: string } }) => {
     return (
       <HeaderRow>
-        <Text bold color="primary" fontSize={20}>
+        <Text bold color="primary" fontSize={16}>
           {title}
         </Text>
       </HeaderRow>
@@ -187,14 +188,16 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
         title={modalData.title}
       />
       {item.upgradableItems && (
-        <SectionList
-          extraData={selectionExtras}
-          keyExtractor={(item) => item.title}
-          renderItem={upgradeItemRow}
-          renderSectionHeader={sectionHeader}
-          sections={item.upgradableItems}
-          stickySectionHeadersEnabled
-        />
+        <UpgradableItems>
+          <SectionList
+            extraData={selectionExtras}
+            keyExtractor={(item) => item.title}
+            renderItem={upgradeItemRow}
+            renderSectionHeader={sectionHeader}
+            sections={item.upgradableItems}
+            stickySectionHeadersEnabled
+          />
+        </UpgradableItems>
       )}
     </UpgradeSectionContainer>
   );
