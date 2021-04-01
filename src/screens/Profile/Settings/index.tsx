@@ -8,6 +8,8 @@ import { Alert } from 'react-native';
 
 import { Switch } from 'react-native-gesture-handler';
 
+import { Formik } from 'formik';
+
 import ListItem from '../../../components/Profile/ListItem';
 import accountTranslations from '../../../translations/profile';
 
@@ -27,8 +29,6 @@ type LoopObject = {
 
 const Settings: React.FunctionComponent<SettingsProps> = () => {
   const { reload, restoreDefault, user } = useUserData();
-  const [email, setEmail] = useState(user?.email);
-  const [name, setName] = useState(user?.displayName);
 
   const logOutAlert = () =>
     Alert.alert(
@@ -50,10 +50,11 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       { cancelable: false }
     );
 
-  const [errors, setErrors] = useState<LoopObject>({});
+  const [, setErrors] = useState<LoopObject>({});
 
-  const updateProfile = async () => {
+  const updateProfile = async (name: string, email: string) => {
     let errorCounter = 2;
+    console.log(email, name);
 
     if (name) {
       if (name.length < 4) {
@@ -100,65 +101,76 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
   };
 
   return (
-    <SettingsContainer>
-      <ProfileSection>
-        <TextContainer>
-          <Text bold color="primary" fontSize={18}>
-            {accountTranslations.personalInformationPage.title}
-          </Text>
-        </TextContainer>
-        <InfoContainer>
-          <LoginTextField
-            darkText
-            defaultValue={user?.displayName ? user.displayName : undefined}
-            error={errors['username']}
-            textContentType="none"
-            updateValue={setName}
-          />
-        </InfoContainer>
-        <InfoContainer>
-          <LoginTextField
-            darkText
-            defaultValue={user?.email ? user.email : undefined}
-            error={errors['password']}
-            textContentType="emailAddress"
-            updateValue={setEmail}
-          />
-        </InfoContainer>
-      </ProfileSection>
-      <ProfileSection>
-        <TextContainer>
-          <Text bold color="primary" fontSize={18}>
-            {accountTranslations.accountPage.notifications}
-          </Text>
-        </TextContainer>
-        <ListItem icon2={<Switch />} navigateTo="Notifications" title="Pause All" />
-      </ProfileSection>
-      <ProfileSection>
-        <TextContainer>
-          <Text bold color="primary" fontSize={18}>
-            {accountTranslations.accountPage.settings}
-          </Text>
-        </TextContainer>
-        <ListItem
-          icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
-          navigateTo="Password"
-          title={accountTranslations.passwordPage.changePassword}
-        />
-        <ListItem
-          icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
-          onClick={logOutAlert}
-          title={accountTranslations.settingsPage.logOut}
-        />
-      </ProfileSection>
-      <SaveButton>
-        <ViewCta onClick={updateProfile}>
-          <Text bold color="fixedWhite" fontSize={18}>
-            {accountTranslations.settingsPage.save}
-          </Text>
-        </ViewCta>
-      </SaveButton>
-    </SettingsContainer>
+    <Formik
+      initialValues={{ email: user?.email, username: user?.displayName }}
+      onSubmit={(values) => {
+        if (values.email && values.username) {
+          updateProfile(values.username, values.email);
+        }
+      }}
+    >
+      {({ errors, handleChange, handleSubmit }) => (
+        <SettingsContainer>
+          <ProfileSection>
+            <TextContainer>
+              <Text bold color="primary" fontSize={18}>
+                {accountTranslations.personalInformationPage.title}
+              </Text>
+            </TextContainer>
+            <InfoContainer>
+              <LoginTextField
+                darkText
+                defaultValue={user?.displayName ? user.displayName : undefined}
+                error={errors['username']}
+                textContentType="none"
+                updateValue={handleChange('username')}
+              />
+            </InfoContainer>
+            <InfoContainer>
+              <LoginTextField
+                darkText
+                defaultValue={user?.email ? user.email : undefined}
+                error={errors['email']}
+                textContentType="emailAddress"
+                updateValue={handleChange('email')}
+              />
+            </InfoContainer>
+          </ProfileSection>
+          <ProfileSection>
+            <TextContainer>
+              <Text bold color="primary" fontSize={18}>
+                {accountTranslations.accountPage.notifications}
+              </Text>
+            </TextContainer>
+            <ListItem icon2={<Switch />} navigateTo="Notifications" title="Pause All" />
+          </ProfileSection>
+          <ProfileSection>
+            <TextContainer>
+              <Text bold color="primary" fontSize={18}>
+                {accountTranslations.accountPage.settings}
+              </Text>
+            </TextContainer>
+            <ListItem
+              icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
+              navigateTo="Password"
+              title={accountTranslations.passwordPage.changePassword}
+            />
+            <ListItem
+              icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
+              onClick={logOutAlert}
+              title={accountTranslations.settingsPage.logOut}
+            />
+          </ProfileSection>
+          <SaveButton>
+            <ViewCta onClick={handleSubmit}>
+              <Text bold color="fixedWhite" fontSize={18}>
+                {accountTranslations.settingsPage.save}
+              </Text>
+            </ViewCta>
+          </SaveButton>
+        </SettingsContainer>
+      )}
+    </Formik>
   );
 };
 
