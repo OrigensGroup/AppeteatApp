@@ -12,6 +12,6 @@ export const TotalRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0 ${({ theme }) => theme.spacing.double};
+  margin: 0 ${({ theme }) => theme.spacing.triple};
   height: ${({ theme }) => theme.spacing.multiple(5)};
 `;

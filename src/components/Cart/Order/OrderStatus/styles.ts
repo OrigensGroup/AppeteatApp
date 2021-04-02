@@ -4,7 +4,7 @@ export const OrderStatusContainer = styled.View`
   display: flex;
   flex-direction: column;
 
-  margin: ${({ theme }) => theme.spacing.multiple(5)} 0;
+  margin-top: ${({ theme }) => theme.spacing.multiple(5)};
 `;
 
 export const OrderStatusGraphic = styled.View`

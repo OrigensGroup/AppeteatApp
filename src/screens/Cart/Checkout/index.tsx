@@ -17,7 +17,7 @@ import UpdateModal from '../../../components/Cart/Checkout/UpdateModal';
 import ItemSummary from '../../../components/Cart/Checkout/ItemSummary';
 import ValueItem from '../../../components/Cart/Checkout/ValueItem';
 import FinaliseOrder from '../../../components/Cart/Checkout/FinaliseOrder';
-import TotalSection from '../../../components/Cart/Checkout/TotalSection';
+import TotalSection from '../../../components/Cart/TotalSection';
 import CardModal from '../../../components/Cart/Checkout/CardModal';
 import SelectService from '../../../components/Cart/Checkout/SelectService';
 

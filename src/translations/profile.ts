@@ -12,7 +12,11 @@ const profileTranslations = {
     nameNotFound: 'Venue name not Found',
   },
   favouriteCocktailsPage: {},
-  ordersPage: {},
+  ordersPage: {
+    card: {
+      cta: 'View',
+    },
+  },
   notificationsPage: {},
   settingsPage: {
     myCard: 'My Card',

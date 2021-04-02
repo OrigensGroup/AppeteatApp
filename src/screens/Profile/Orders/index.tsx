@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native';
 
 import OrderCard from '../../../components/Profile/OrderCard';
 import useUserData from '../../../hooks/useUserData';
@@ -16,7 +16,7 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
 
   return (
     <OrdersContainer>
-      <FlatList data={userData.orders} horizontal={false} renderItem={renderItem} />
+      <FlatList data={userData.orders} horizontal={false} keyExtractor={(item) => item.id} renderItem={renderItem} />
     </OrdersContainer>
   );
 };

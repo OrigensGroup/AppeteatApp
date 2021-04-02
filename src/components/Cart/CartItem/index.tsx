@@ -65,9 +65,6 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
             </Text>
           </CartItemTitle>
           <CartMainItem>
-            <Text color="quartiary" fontSize={12}>
-              {item.smallDesc}
-            </Text>
             <CartItemCustomisation>{itemExtras()}</CartItemCustomisation>
           </CartMainItem>
         </CartItemDescription>

@@ -9,6 +9,7 @@ import TopBar from '../../../components/shared/TopBar';
 import OrderInfo from '../../../components/Cart/Order/OrderInfo';
 import OrderStatus from '../../../components/Cart/Order/OrderStatus';
 import OrderItems from '../../../components/Cart/Order/OrderItems';
+import TotalSection from '../../../components/Cart/TotalSection';
 
 import { OrderDetailsContainer } from './styles';
 
@@ -27,6 +28,7 @@ const OrderDetails: React.FunctionComponent<OrderDetailsProps> = () => {
       <OrderInfo order={order} />
       <OrderStatus done={back === 'back'} />
       <OrderItems order={order} />
+      <TotalSection order={order} />
     </OrderDetailsContainer>
   );
 };
