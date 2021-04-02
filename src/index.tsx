@@ -34,8 +34,8 @@ import LoginScreen from './screens/Login';
 
 import TabBar from './components/shared/TabBar';
 
-import useAuth from './hooks/useAuth';
 import loadBar from './utils/loadBar';
+import useAuth from './hooks/useAuth';
 import NotificationProvider from './contexts/Notification';
 
 enableScreens();
@@ -46,7 +46,7 @@ const App = () => {
   const theme = useThemeSelector();
   const navigationRef = useRef<NavigationContainerRef>(null);
   const routeNameRef = useRef<string>('');
-  const user = useAuth();
+  const { user } = useAuth();
   const [appReady, setAppReady] = useState(false);
 
   const [bar, setBar] = useState<Bar>({

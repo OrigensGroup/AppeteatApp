@@ -52,6 +52,9 @@ const loginTranslations = {
   confirmPasswordError: {
     label: 'Passwords do not match',
   },
+  passwordRequiredError: {
+    label: 'Password is required',
+  },
   invalidPasswordError: {
     label: 'Password must contain at least 1 letter and 1 number',
   },

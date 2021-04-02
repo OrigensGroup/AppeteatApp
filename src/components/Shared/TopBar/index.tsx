@@ -14,7 +14,7 @@ interface TopBarProps {
   title: string;
   hideFilter?: boolean;
   hideTitle?: boolean;
-  back: 'HomePage' | 'MenuList' | 'back';
+  back: 'HomePage' | 'MenuList' | 'Account' | 'back';
 }
 
 const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTitle, onClick, title }) => {
@@ -23,8 +23,10 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTi
 
   const navigateBack = () => {
     if (back === 'back') {
-      navigation.navigate('App', { screen: 'Account', params: { screen: 'Orders' } });
+      return navigation.goBack();
+    }
 
+    if (back === 'HomePage') {
       navigation.reset({
         index: 0,
         routes: [
@@ -33,20 +35,24 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTi
           },
         ],
       });
-    } else {
-      if (back === 'HomePage') {
-        navigation.reset({
-          index: 0,
-          routes: [
-            {
-              name: 'MenuList',
-            },
-          ],
-        });
-      }
 
-      navigation.navigate(back);
+      return navigation.navigate(back);
     }
+
+    if (back === 'Account') {
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'MenuList',
+          },
+        ],
+      });
+
+      return navigation.navigate('App', { screen: 'Account', params: { screen: 'Orders' } });
+    }
+
+    return navigation.navigate(back);
   };
 
   return (

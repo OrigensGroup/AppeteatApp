@@ -18,7 +18,10 @@ interface OrderDetailsProps {}
 const OrderDetails: React.FunctionComponent<OrderDetailsProps> = () => {
   const route = useRoute();
 
-  const { back = 'HomePage', order } = route.params as { order: Order; back?: 'back' | 'HomePage' | 'MenuList' };
+  const { back = 'HomePage', order } = route.params as {
+    order: Order;
+    back?: 'back' | 'HomePage' | 'MenuList' | 'Account';
+  };
 
   console.log(order);
 

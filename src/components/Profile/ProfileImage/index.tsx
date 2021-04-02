@@ -1,6 +1,7 @@
 import React from 'react';
 
-import useAuth from '../../../hooks/useAuth';
+import useUserData from '../../../hooks/useUserData';
+
 import Text from '../../shared/Text';
 
 import { ProfileImageContainer, AccountImageBackground } from './styles';
@@ -8,7 +9,7 @@ import { ProfileImageContainer, AccountImageBackground } from './styles';
 interface ProfileImageProps {}
 
 const ProfileImage: React.FunctionComponent<ProfileImageProps> = () => {
-  const user = useAuth();
+  const { user } = useUserData();
   return (
     <ProfileImageContainer>
       {/* <AccountImage source={{ uri: user?.photoURL }} /> */}

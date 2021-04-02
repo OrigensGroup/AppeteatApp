@@ -31,6 +31,7 @@ const cartTranslations = {
       cardPrefix: 'Card **** **** **** ',
       title: 'Select payment method',
       label: 'Payment method',
+      pay: 'Pay',
       addNew: 'Add a payement method',
     },
 
