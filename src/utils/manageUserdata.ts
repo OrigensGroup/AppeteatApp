@@ -11,8 +11,8 @@ const getUserData = async (userId: string) => {
   try {
     crashlytics().log('User data loading attempt.');
     const collection = await firestore().collection('users').doc(userId).get();
-    userData = (await collection.data()) as User;
-    userData = { ...userData, default: false };
+    const newUserData = (await collection.data()) as User;
+    userData = { ...userData, ...newUserData, default: false };
   } catch (error) {
     crashlytics().log('User data loading failed.');
     crashlytics().recordError(error);
