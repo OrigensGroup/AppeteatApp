@@ -1,7 +1,11 @@
 import styled from 'styled-components/native';
 
-export const OrdersContainer = styled.View`
+export const OrdersContainer = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   height: 100%;
-  padding: ${({ theme }) => theme.spacing.double};
+`;
+
+export const OrdersList = styled.View`
+  flex: 1;
+  padding: ${({ theme }) => theme.spacing.triple} ${({ theme }) => theme.spacing.double};
 `;

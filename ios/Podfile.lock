@@ -227,7 +227,7 @@ PODS:
   - BVLinearGradient (2.5.6):
     - React
   - DoubleConversion (1.1.6)
-  - EXApplication (3.0.0):
+  - EXApplication (2.4.1):
     - UMCore
   - EXConstants (10.0.1):
     - UMConstantsInterface
@@ -252,7 +252,7 @@ PODS:
     - UMCore
     - UMPermissionsInterface
     - UMTaskManagerInterface
-  - EXNotifications (0.9.0):
+  - EXNotifications (0.8.2):
     - UMCore
     - UMPermissionsInterface
   - EXPermissions (10.0.0):
@@ -793,8 +793,8 @@ PODS:
 DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - EXApplication (from `../node_modules/expo-notifications/node_modules/expo-application/ios`)
-  - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXApplication (from `../node_modules/expo-application/ios`)
+  - EXConstants (from `../node_modules/expo-linking/node_modules/expo-constants/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
@@ -910,9 +910,9 @@ EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXApplication:
-    :path: "../node_modules/expo-notifications/node_modules/expo-application/ios"
+    :path: "../node_modules/expo-application/ios"
   EXConstants:
-    :path: "../node_modules/expo-constants/ios"
+    :path: "../node_modules/expo-linking/node_modules/expo-constants/ios"
   EXErrorRecovery:
     :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
@@ -1063,7 +1063,7 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   DoubleConversion: cde416483dac037923206447da6e1454df403714
-  EXApplication: e3a06b6d81f94e526f029a57b2121d6cde044004
+  EXApplication: e3c201e7b913d081bbd37bd3c5d0e2cdc21733b4
   EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
   EXErrorRecovery: b46af4b91e2b4ec598ab1fa51d2cf088aaf5511f
   EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
@@ -1072,7 +1072,7 @@ SPEC CHECKSUMS:
   EXKeepAwake: 615c5a6fca5c2afedf611bb6f7f2ca323246de94
   EXLinearGradient: c803fbd1aa974be038177b1e45524bc35759fe9c
   EXLocation: d55e2a37f61bcfb4eba9c813b3f4621d896c4c00
-  EXNotifications: 3a88b7b898fa842cae3c5a895a255fab554bc0c8
+  EXNotifications: fba3319b1555961b99ddd185021b4c7ff978d5dd
   EXPermissions: 17d4846ad1880f6891c74ae58ca1acb43e47ed47
   EXSecureStore: 1b571851e6068b30b8ec097be848a04603c03bae
   EXSplashScreen: ab5984afcca91e0af6b3138f01a8c47dc4955c51

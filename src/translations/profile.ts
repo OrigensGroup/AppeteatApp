@@ -8,13 +8,19 @@ const profileTranslations = {
     settings: 'Setting',
   },
   reservationsPage: {
+    title: 'My Reservations',
     addressNotFound: 'Address not Found',
     nameNotFound: 'Venue name not Found',
   },
-  favouriteCocktailsPage: {},
-  ordersPage: {},
+  favouriteCocktailsPage: {
+    title: 'My Favourite Cocktails',
+  },
+  ordersPage: {
+    title: 'My Orders',
+  },
   notificationsPage: {},
   settingsPage: {
+    title: 'Settings',
     myCard: 'My Card',
     showButton: 'Show all',
     email: 'E-mail',
@@ -33,6 +39,7 @@ const profileTranslations = {
     title: 'Personal Information',
   },
   passwordPage: {
+    title: 'Change password',
     changePassword: 'Change Password',
     currentPassword: 'Current Password',
     newPassword: 'New Password',

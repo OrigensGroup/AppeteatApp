@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
 import ReservationCard from '../../../components/Profile/ReservationCard';
+import TopBar from '../../../components/shared/TopBar';
 
 import useLocations from '../../../hooks/useLocations';
 import useUserData from '../../../hooks/useUserData';
@@ -10,7 +11,7 @@ import profileTranslations from '../../../translations/profile';
 import type { Booking } from '../../../types/Booking';
 import type { Venue } from '../../../types/Venue';
 
-import { ReservationsContainer } from './styles';
+import { ReservationsContainer, ReservationsList } from './styles';
 
 interface ReservationsProps {}
 
@@ -34,7 +35,10 @@ const Reservations: React.FunctionComponent<ReservationsProps> = () => {
 
   return (
     <ReservationsContainer>
-      <FlatList data={userData.bookings} horizontal={false} renderItem={renderItem} />
+      <TopBar back="back" hideFilter title={profileTranslations.reservationsPage.title} />
+      <ReservationsList>
+        <FlatList data={userData.bookings} horizontal={false} renderItem={renderItem} />
+      </ReservationsList>
     </ReservationsContainer>
   );
 };

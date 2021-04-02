@@ -1,32 +1,28 @@
-import { useNavigation } from '@react-navigation/native';
-import { Formik } from 'formik';
 import React from 'react';
-import { Alert } from 'react-native';
 
-import CustomButton from '../../../../components/shared/Button';
+import { Formik } from 'formik';
 
 import useUserData from '../../../../hooks/useUserData';
 import theme from '../../../../theme';
-import accountTranslations from '../../../../translations/profile';
+
+import profileTranslations from '../../../../translations/profile';
 
 import LoginTextField from '../../../../components/shared/LoginTextField';
 
-import { PasswordContainer, PasswordFieldContainer, PasswordField } from './styles';
+import TopBar from '../../../../components/shared/TopBar';
+import ViewCta from '../../../../components/shared/ViewCta';
+import Text from '../../../../components/shared/Text';
+
+import { PasswordSchema } from './passwordSchema';
+
+import { PasswordContainer, PasswordFieldContainer, PasswordField, SaveButton } from './styles';
 
 interface PasswordProps {}
 
 const Password: React.FunctionComponent<PasswordProps> = () => {
-  const navigation = useNavigation();
   const { user } = useUserData();
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <CustomButton onClick={() => Alert.alert('Successfully saved')} title={accountTranslations.settingsPage.save} />
-      ),
-      title: 'Password',
-    });
-  }, [navigation]);
+  // const updatePassword = () => {};
 
   return (
     <Formik
@@ -36,15 +32,17 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
           user?.updatePassword(values.password);
         }
       }}
+      validationSchema={PasswordSchema}
     >
-      {({ errors, handleChange }) => (
+      {({ errors, handleChange, handleSubmit }) => (
         <PasswordContainer>
+          <TopBar back="back" hideFilter title={profileTranslations.passwordPage.title} />
           <PasswordFieldContainer>
             <PasswordField>
               <LoginTextField
                 darkText
                 error={errors['password']}
-                placeholder={accountTranslations.passwordPage.currentPassword}
+                placeholder={profileTranslations.passwordPage.currentPassword}
                 placeholderTextColor={theme.colors.fixedBlack}
                 textContentType="password"
                 updateValue={handleChange('password')}
@@ -54,7 +52,7 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
               <LoginTextField
                 darkText
                 error={errors['password']}
-                placeholder={accountTranslations.passwordPage.newPassword}
+                placeholder={profileTranslations.passwordPage.newPassword}
                 placeholderTextColor={theme.colors.fixedBlack}
                 textContentType="password"
                 updateValue={handleChange('password')}
@@ -64,13 +62,20 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
               <LoginTextField
                 darkText
                 error={errors['password']}
-                placeholder={accountTranslations.passwordPage.reNewPassword}
+                placeholder={profileTranslations.passwordPage.reNewPassword}
                 placeholderTextColor={theme.colors.fixedBlack}
                 textContentType="password"
                 updateValue={handleChange('password')}
               />
             </PasswordField>
           </PasswordFieldContainer>
+          <SaveButton>
+            <ViewCta onClick={handleSubmit}>
+              <Text bold color="fixedWhite" fontSize={18}>
+                {profileTranslations.settingsPage.save}
+              </Text>
+            </ViewCta>
+          </SaveButton>
         </PasswordContainer>
       )}
     </Formik>
