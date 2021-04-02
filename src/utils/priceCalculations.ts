@@ -1,6 +1,6 @@
 import { OrderItem } from '../types/OrderItem';
 
-export const fixDecimals = (n: number) => Math.round(n * 100) / 100;
+export const fixDecimals = (n: number) => Math.round((n + Number.EPSILON) * 100) / 100;
 
 export const calculateDiscount = (price: number, percentage: number) => fixDecimals(price - (price * percentage) / 100);
 

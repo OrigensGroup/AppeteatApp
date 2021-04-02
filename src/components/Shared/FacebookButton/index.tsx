@@ -20,8 +20,6 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ setLoadi
 
     setLoading(true);
 
-    console.log(result);
-
     if (result.isCancelled) {
       setLoading(false);
       throw 'User cancelled the login process';

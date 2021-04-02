@@ -12,14 +12,7 @@ interface OrdersProps {}
 const Orders: React.FunctionComponent<OrdersProps> = () => {
   const { userData } = useUserData();
 
-  const renderItem = ({ item }: { item: Order }) => (
-    <OrderCard
-      date={item.day}
-      items={item.orderedItems.map((item) => `${item.quantity}x ${item.title}`).join(' ')}
-      key={item.id}
-      price={item.pricing.total}
-    />
-  );
+  const renderItem = ({ item }: { item: Order }) => <OrderCard order={item} />;
 
   return (
     <OrdersContainer>

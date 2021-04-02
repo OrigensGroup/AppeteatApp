@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 
@@ -13,7 +14,7 @@ interface TopBarProps {
   title: string;
   hideFilter?: boolean;
   hideTitle?: boolean;
-  back: 'HomePage' | 'MenuList';
+  back: 'HomePage' | 'MenuList' | 'back';
 }
 
 const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTitle, onClick, title }) => {
@@ -21,7 +22,31 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTi
   const navigation = useNavigation();
 
   const navigateBack = () => {
-    navigation.navigate(back);
+    if (back === 'back') {
+      navigation.navigate('App', { screen: 'Account', params: { screen: 'Orders' } });
+
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'MenuList',
+          },
+        ],
+      });
+    } else {
+      if (back === 'HomePage') {
+        navigation.reset({
+          index: 0,
+          routes: [
+            {
+              name: 'MenuList',
+            },
+          ],
+        });
+      }
+
+      navigation.navigate(back);
+    }
   };
 
   return (

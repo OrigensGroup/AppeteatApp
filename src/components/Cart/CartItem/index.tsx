@@ -4,10 +4,10 @@ import FastImage from 'react-native-fast-image';
 
 import { useTheme } from 'styled-components';
 
-import currencyTranslations from '../../../../../translations/currency';
-import { OrderItem } from '../../../../../types/OrderItem';
-import { calculateItemPrice } from '../../../../../utils/priceCalculations';
-import Text from '../../../../shared/Text';
+import currencyTranslations from '../../../translations/currency';
+import { OrderItem } from '../../../types/OrderItem';
+import { calculateItemPrice } from '../../../utils/priceCalculations';
+import Text from '../../shared/Text';
 
 import {
   CartItemContainer,
@@ -24,7 +24,7 @@ import {
 
 interface CartItemProps {
   item: OrderItem;
-  onClick: (id: OrderItem) => () => void;
+  onClick?: (id: OrderItem) => () => void;
 }
 
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
@@ -42,7 +42,7 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
   };
 
   return (
-    <CartItemContainer activeOpacity={1} onPress={onClick(item)}>
+    <CartItemContainer activeOpacity={1} onPress={onClick && onClick(item)}>
       <CartItemInfo>
         <ImageWrapper>
           <FastImage

@@ -12,8 +12,14 @@ export const TitleRow = styled.View`
   justify-content: space-between;
 `;
 
-export const IngredientsTitle = styled.View``;
+export const IngredientsTitle = styled.View`
+  margin-top: ${({ theme }) => theme.spacing.multiple(5)};
+  margin-bottom: ${({ theme }) => theme.spacing.oneAndHalf};
+`;
 
-export const CustomiseTitle = styled.TouchableOpacity``;
+export const CustomiseTitle = styled.TouchableOpacity`
+  margin-top: ${({ theme }) => theme.spacing.multiple(5)};
+  margin-bottom: ${({ theme }) => theme.spacing.oneAndHalf};
+`;
 
 export const Ingredient = styled.View``;

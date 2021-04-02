@@ -27,9 +27,9 @@ export const ItemRow = styled.TouchableOpacity`
   align-items: center;
 
   margin: 0 ${({ theme }) => theme.spacing.triple};
-  padding: ${({ theme }) => theme.spacing.double} 0;
+  padding: ${({ theme }) => theme.spacing.multiple(1.5)} ${({ theme }) => theme.spacing.double};
   border-bottom-width: 1px;
-  border-color: ${({ theme }) => theme.colors.textPrimary};
+  border-color: ${({ theme }) => theme.colors.border};
 `;
 
 export const CheckBoxItemSection = styled.View`
@@ -46,4 +46,8 @@ export const PriceItem = styled.View`
 
 export const ItemInfo = styled.TouchableOpacity`
   margin-right: ${({ theme }) => theme.spacing.half};
+`;
+
+export const UpgradableItems = styled.View`
+  margin-top: ${({ theme }) => theme.spacing.double};
 `;

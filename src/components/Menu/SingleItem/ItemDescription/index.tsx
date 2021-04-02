@@ -50,7 +50,7 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discou
         )}
       </ItemDescriptionTitle>
       <ItemDescriptionDesc>
-        <Text color="primary" fontSize={16}>
+        <Text color="primary" fontSize={14}>
           {item.description}
         </Text>
       </ItemDescriptionDesc>
