@@ -2,10 +2,11 @@ import firestore from '@react-native-firebase/firestore';
 
 import { User } from '../types/User';
 
-const defaultUserdata: User = {
+export const defaultUserdata: User = {
   favoriteCocktails: [],
   default: true,
   bookings: [],
+  orders: [],
 };
 
 const initUserData = async (userId: string) => {

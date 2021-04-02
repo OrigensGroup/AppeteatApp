@@ -9,6 +9,7 @@ import { Order } from '../../types/Order';
 import { User } from '../../types/User';
 
 import getUserData, { saveUserData } from '../../utils/manageUserdata';
+import { defaultUserdata } from '../../utils/initUserData';
 
 interface UserContext {
   user: FirebaseAuthTypes.User | null;
@@ -22,7 +23,7 @@ interface UserContext {
 
 export const UserContext = React.createContext<UserContext>({
   user: null,
-  userData: { favoriteCocktails: [], bookings: [], default: false, orders: [] },
+  userData: defaultUserdata,
   addNewFavoriteCocktail: () => {},
   addBooking: () => {},
   addOrder: () => {},
@@ -52,7 +53,7 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   }, []);
 
   const { token } = useNotifications();
-  const [userData, setUserData] = useState<User>({ favoriteCocktails: [], orders: [], bookings: [], default: true });
+  const [userData, setUserData] = useState<User>(defaultUserdata);
 
   const loadData = useCallback(async () => {
     if (user) {
