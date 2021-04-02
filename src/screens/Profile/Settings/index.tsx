@@ -56,7 +56,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
     }
 
     if (email) {
-      await user?.verifyBeforeUpdateEmail(email);
+      await user?.updateEmail(email);
     }
 
     reload();
