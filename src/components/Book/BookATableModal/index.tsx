@@ -10,7 +10,6 @@ import { useTheme } from 'styled-components';
 
 import { v4 } from 'uuid';
 
-import useAuth from '../../../hooks/useAuth';
 import useBookings from '../../../hooks/useBookings';
 import useUserData from '../../../hooks/useUserData';
 
@@ -20,10 +19,10 @@ import Spinner from '../Spinner';
 import Text from '../../shared/Text';
 import ViewCta from '../../shared/ViewCta';
 
-import bookTranslations, { months, minutes } from '../../../translations/book';
+import { Booking } from '../../../types/Booking';
+import { Venue } from '../../../types/Venue';
 
-import type { Booking } from '../../../types/Booking';
-import type { Venue } from '../../../types/Venue';
+import bookTranslations, { minutes, months } from '../../../translations/book';
 
 import {
   SpinnerContainer,
@@ -41,7 +40,7 @@ interface BookATableModalProps {
 }
 
 const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, onClose, venue }) => {
-  const user = useAuth();
+  const { user } = useUserData();
   const theme = useTheme();
   const [bookings, setBookings] = useBookings();
   const { addBooking } = useUserData();

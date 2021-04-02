@@ -8,6 +8,6 @@ export const RegisterSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, loginTranslations.passwordLenghtError.label)
     .matches(new RegExp('^(?=(.*[a-z])(?=(.*[d]){1,}){1,})(?!.*s).{8,}$'), loginTranslations.invalidPasswordError.label)
-    .required('Password is required'),
+    .required(loginTranslations.passwordRequiredError.label),
   passwordConfirmation: Yup.string().oneOf([Yup.ref('password'), null], loginTranslations.confirmPasswordError.label),
 });

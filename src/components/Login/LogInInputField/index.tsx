@@ -9,7 +9,7 @@ interface LogInInputFieldProps {
   secondary?: boolean;
   placeholder: string;
   textContentType: 'emailAddress' | 'password' | 'none';
-  label: string;
+  label?: string;
   updateValue?: (value: string) => void;
   error?: string | null;
 }

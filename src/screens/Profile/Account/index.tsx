@@ -10,8 +10,7 @@ import ProfileImage from '../../../components/Profile/ProfileImage';
 import ProfileLink from '../../../components/Profile/ProfileLink';
 
 import Text from '../../../components/shared/Text';
-
-import useAuth from '../../../hooks/useAuth';
+import useUserData from '../../../hooks/useUserData';
 
 import {
   ProfileContainer,
@@ -27,8 +26,7 @@ interface AccountProps {}
 
 const Account: React.FunctionComponent<AccountProps> = () => {
   const theme = useTheme();
-  const user = useAuth();
-
+  const { user } = useUserData();
   return (
     <ProfileContainer>
       <LinearGradient

@@ -32,3 +32,6 @@ export const CustomiseFieldInput = styled.TextInput`
   flex: 1;
   padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double};
 `;
+export const ErrorContainer = styled.View`
+  margin-top: ${({ theme }) => theme.spacing.single};
+`;

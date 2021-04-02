@@ -2,12 +2,14 @@ import React from 'react';
 import { Dimensions, View, FlatList } from 'react-native';
 
 import FavCard from '../../../components/Profile/FavouriteCocktails/FavCard';
+import TopBar from '../../../components/shared/TopBar';
 import useMenu from '../../../hooks/useMenu';
 import useUserData from '../../../hooks/useUserData';
+import profileTranslations from '../../../translations/profile';
 import { MenuItem } from '../../../types/MenuItem';
 import { findMenuItems } from '../../../utils/menuUtils';
 
-import { FavouriteCocktailsContainer } from './styles';
+import { FavouriteCocktailsContainer, FavouriteCocktailsList } from './styles';
 
 interface FavouriteCocktailsProps {}
 
@@ -27,7 +29,10 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
 
   return (
     <FavouriteCocktailsContainer>
-      <FlatList data={favoriteCocktails} horizontal={false} numColumns={numberColumn} renderItem={renderItem} />
+      <TopBar back="back" hideFilter title={profileTranslations.favouriteCocktailsPage.title} />
+      <FavouriteCocktailsList>
+        <FlatList data={favoriteCocktails} horizontal={false} numColumns={numberColumn} renderItem={renderItem} />
+      </FavouriteCocktailsList>
     </FavouriteCocktailsContainer>
   );
 };
