@@ -33,18 +33,22 @@ export const ItemRow = styled.TouchableOpacity`
 `;
 
 export const CheckBoxItemSection = styled.View`
+  flex: 1;
   margin: 0 ${({ theme }) => theme.spacing.single};
 `;
 
 export const TitleItem = styled.View`
+  flex: 6;
   margin-right: auto;
 `;
 
 export const PriceItem = styled.View`
+  flex: 1;
   margin-right: ${({ theme }) => theme.spacing.single};
 `;
 
 export const ItemInfo = styled.TouchableOpacity`
+  flex: 1;
   margin-right: ${({ theme }) => theme.spacing.half};
 `;
 
