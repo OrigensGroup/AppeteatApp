@@ -30,17 +30,6 @@ interface CartItemProps {
 const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => {
   const theme = useTheme();
 
-  const itemExtras = () => {
-    return (
-      item.extras &&
-      item.extras.map((extra) => (
-        <Text color="tertiary" fontSize={14} key={extra.id} light>
-          {extra.title}
-        </Text>
-      ))
-    );
-  };
-
   return (
     <CartItemContainer activeOpacity={1} onPress={onClick && onClick(item)}>
       <CartItemInfo>
@@ -65,7 +54,14 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
             </Text>
           </CartItemTitle>
           <CartMainItem>
-            <CartItemCustomisation>{itemExtras()}</CartItemCustomisation>
+            <CartItemCustomisation>
+              {item.extras &&
+                item.extras.map((extra) => (
+                  <Text color="tertiary" fontSize={14} key={extra.id} light>
+                    {extra.title}
+                  </Text>
+                ))}
+            </CartItemCustomisation>
           </CartMainItem>
         </CartItemDescription>
         <CartItemNumbers>

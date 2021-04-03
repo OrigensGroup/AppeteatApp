@@ -11,3 +11,7 @@ export const CheckoutSwiper = styled.ScrollView`
 `;
 
 export const CheckoutSummarySection = styled.View``;
+
+export const ItemSummarySection = styled.View`
+  flex: 1;
+`;

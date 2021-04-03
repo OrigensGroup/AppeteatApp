@@ -21,7 +21,7 @@ import TotalSection from '../../../components/Cart/TotalSection';
 import CardModal from '../../../components/Cart/Checkout/CardModal';
 import SelectService from '../../../components/Cart/Checkout/SelectService';
 
-import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper } from './styles';
+import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper, ItemSummarySection } from './styles';
 
 interface CheckoutProps {}
 
@@ -111,7 +111,9 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
       />
       <TopBar back="MenuList" hideFilter title={cartTranslations.checkoutPage.title} />
       <CheckoutSwiper>
-        <ItemSummary onUpdate={toggleModal} />
+        <ItemSummarySection>
+          <ItemSummary onUpdate={toggleModal} />
+        </ItemSummarySection>
         <SelectService setShowTable={setShowTable} />
         <CheckoutSummarySection>
           {showTable ? (

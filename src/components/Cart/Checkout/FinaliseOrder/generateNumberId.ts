@@ -3,5 +3,5 @@ export const generateNumberId = () => {
   // pad with extra random digit
   now += now + Math.floor(Math.random() * 10);
   // format
-  return now.slice(0, 5);
+  return now.substr(now.length - 5);
 };
