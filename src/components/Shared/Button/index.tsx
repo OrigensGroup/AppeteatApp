@@ -4,14 +4,18 @@ import Text from '../Text';
 
 import { ButtonContainer } from './styles';
 
-interface CustomButtonProps {
+export const dataTestIds = {
+  button: 'buttonTestId',
+};
+
+interface ButtonProps {
   title: string;
   onClick?: () => void;
 }
 
-const CustomButton: React.FunctionComponent<CustomButtonProps> = ({ onClick, title }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ onClick, title }) => {
   return (
-    <ButtonContainer onPress={onClick}>
+    <ButtonContainer onPress={onClick} testID={dataTestIds.button}>
       <Text bold color="primary" fontSize={18}>
         {title}
       </Text>
@@ -19,4 +23,4 @@ const CustomButton: React.FunctionComponent<CustomButtonProps> = ({ onClick, tit
   );
 };
 
-export default CustomButton;
+export default Button;

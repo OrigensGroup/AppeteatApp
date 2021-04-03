@@ -68,3 +68,5 @@ web-build/
 */project.pbxproj
 
 .env
+
+coverage
