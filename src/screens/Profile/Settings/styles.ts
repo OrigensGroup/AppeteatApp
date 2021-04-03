@@ -13,11 +13,6 @@ export const TextContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single} 0;
 `;
 
-export const InfoContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-`;
-
 export const SaveButton = styled.View`
   position: absolute;
   left: ${({ theme }) => theme.spacing.double};

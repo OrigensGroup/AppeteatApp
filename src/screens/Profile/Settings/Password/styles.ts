@@ -9,11 +9,6 @@ export const PasswordFieldContainer = styled.View`
   display: flex;
 `;
 
-export const PasswordField = styled.View`
-  display: flex;
-  flex-direction: row;
-`;
-
 export const SaveButton = styled.View`
   position: absolute;
   left: ${({ theme }) => theme.spacing.double};

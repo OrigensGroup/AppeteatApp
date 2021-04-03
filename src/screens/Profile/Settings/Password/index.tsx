@@ -2,6 +2,10 @@ import React from 'react';
 
 import { Formik } from 'formik';
 
+import { Alert } from 'react-native';
+
+import { firebase } from '@react-native-firebase/auth';
+
 import useUserData from '../../../../hooks/useUserData';
 import theme from '../../../../theme';
 
@@ -15,21 +19,49 @@ import Text from '../../../../components/shared/Text';
 
 import { PasswordSchema } from './passwordSchema';
 
-import { PasswordContainer, PasswordFieldContainer, PasswordField, SaveButton } from './styles';
+import { PasswordContainer, PasswordFieldContainer, SaveButton } from './styles';
 
 interface PasswordProps {}
 
 const Password: React.FunctionComponent<PasswordProps> = () => {
-  const { user } = useUserData();
+  const { reload, user } = useUserData();
 
-  // const updatePassword = () => {};
+  const updatePassword = async (currentPassword: string, newPassword: string, reNewPassword: string) => {
+    if (currentPassword !== newPassword && newPassword === reNewPassword) {
+      if (user && user.email !== null) {
+        const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
+        // Prompt the user to re-provide their sign-in credentials
 
+        user
+          .reauthenticateWithCredential(credential)
+          .then(() => {
+            user
+              ?.updatePassword(newPassword)
+              .then(() => {
+                Alert.alert('Password Updated');
+              })
+              .catch(() => {
+                Alert.alert('error');
+              });
+          })
+          .catch(() => {
+            // An error happened.
+          });
+      }
+    }
+
+    reload();
+  };
+
+  console.log('cc');
   return (
     <Formik
       initialValues={{ password: '', newPassword: '', reNewPassword: '' }}
       onSubmit={(values) => {
+        console.log(values);
+
         if (values.password !== values.newPassword && values.newPassword === values.reNewPassword) {
-          user?.updatePassword(values.password);
+          updatePassword(values.password, values.newPassword, values.reNewPassword);
         }
       }}
       validationSchema={PasswordSchema}
@@ -38,36 +70,27 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
         <PasswordContainer>
           <TopBar back="back" hideFilter title={profileTranslations.passwordPage.title} />
           <PasswordFieldContainer>
-            <PasswordField>
-              <LoginTextField
-                darkText
-                error={errors['password']}
-                placeholder={profileTranslations.passwordPage.currentPassword}
-                placeholderTextColor={theme.colors.fixedBlack}
-                textContentType="password"
-                updateValue={handleChange('password')}
-              />
-            </PasswordField>
-            <PasswordField>
-              <LoginTextField
-                darkText
-                error={errors['password']}
-                placeholder={profileTranslations.passwordPage.newPassword}
-                placeholderTextColor={theme.colors.fixedBlack}
-                textContentType="password"
-                updateValue={handleChange('password')}
-              />
-            </PasswordField>
-            <PasswordField>
-              <LoginTextField
-                darkText
-                error={errors['password']}
-                placeholder={profileTranslations.passwordPage.reNewPassword}
-                placeholderTextColor={theme.colors.fixedBlack}
-                textContentType="password"
-                updateValue={handleChange('password')}
-              />
-            </PasswordField>
+            <LoginTextField
+              error={errors['password']}
+              placeholder={profileTranslations.passwordPage.currentPassword}
+              placeholderTextColor={theme.colors.border}
+              textContentType="password"
+              updateValue={handleChange('password')}
+            />
+            <LoginTextField
+              error={errors['newPassword']}
+              placeholder={profileTranslations.passwordPage.newPassword}
+              placeholderTextColor={theme.colors.border}
+              textContentType="password"
+              updateValue={handleChange('newPassword')}
+            />
+            <LoginTextField
+              error={errors['reNewPassword']}
+              placeholder={profileTranslations.passwordPage.reNewPassword}
+              placeholderTextColor={theme.colors.border}
+              textContentType="password"
+              updateValue={handleChange('reNewPassword')}
+            />
           </PasswordFieldContainer>
           <SaveButton>
             <ViewCta onClick={handleSubmit}>
