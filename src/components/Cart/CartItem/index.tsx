@@ -11,7 +11,6 @@ import Text from '../../shared/Text';
 
 import {
   CartItemContainer,
-  CartItemInfo,
   CartItemQuantity,
   CartItemDescription,
   CartItemTitle,
@@ -32,52 +31,50 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
 
   return (
     <CartItemContainer activeOpacity={1} onPress={onClick && onClick(item)}>
-      <CartItemInfo>
-        <ImageWrapper>
-          <FastImage
-            resizeMode={FastImage.resizeMode.cover}
-            source={{
-              uri: item.image,
-              priority: FastImage.priority.high,
-            }}
-            style={{
-              width: Number(theme.spacing.multiple(12).replace('px', '')),
-              height: Number(theme.spacing.multiple(12).replace('px', '')),
-              borderRadius: Number(theme.spacing.triple.replace('px', '')),
-            }}
-          />
-        </ImageWrapper>
-        <CartItemDescription>
-          <CartItemTitle>
-            <Text bold color="primary" fontSize={14}>
-              {item.title}
-            </Text>
-          </CartItemTitle>
-          <CartMainItem>
-            <CartItemCustomisation>
-              {item.extras &&
-                item.extras.map((extra) => (
-                  <Text color="tertiary" fontSize={14} key={extra.id} light>
-                    {extra.title}
-                  </Text>
-                ))}
-            </CartItemCustomisation>
-          </CartMainItem>
-        </CartItemDescription>
-        <CartItemNumbers>
-          <CartItemQuantity>
-            <Text bold color="primary" fontSize={16}>
-              {item.quantity} x
-            </Text>
-          </CartItemQuantity>
-          <CartItemPrice>
-            <Text bold color="tertiary" fontSize={16}>
-              {currencyTranslations.currencyField}
-              {calculateItemPrice(item)}
-            </Text>
-          </CartItemPrice>
-        </CartItemNumbers>
-      </CartItemInfo>
+      <ImageWrapper>
+        <FastImage
+          resizeMode={FastImage.resizeMode.cover}
+          source={{
+            uri: item.image,
+            priority: FastImage.priority.high,
+          }}
+          style={{
+            width: Number(theme.spacing.multiple(12).replace('px', '')),
+            height: Number(theme.spacing.multiple(12).replace('px', '')),
+            borderRadius: Number(theme.spacing.triple.replace('px', '')),
+          }}
+        />
+      </ImageWrapper>
+      <CartItemDescription>
+        <CartItemTitle>
+          <Text bold color="primary" fontSize={14}>
+            {item.title}
+          </Text>
+        </CartItemTitle>
+        <CartMainItem>
+          <CartItemCustomisation>
+            {item.extras &&
+              item.extras.map((extra) => (
+                <Text color="tertiary" fontSize={14} key={extra.id} light>
+                  {extra.title}
+                </Text>
+              ))}
+          </CartItemCustomisation>
+        </CartMainItem>
+      </CartItemDescription>
+      <CartItemNumbers>
+        <CartItemQuantity>
+          <Text bold color="primary" fontSize={16}>
+            {item.quantity} x
+          </Text>
+        </CartItemQuantity>
+        <CartItemPrice>
+          <Text bold color="tertiary" fontSize={16}>
+            {currencyTranslations.currencyField}
+            {calculateItemPrice(item)}
+          </Text>
+        </CartItemPrice>
+      </CartItemNumbers>
     </CartItemContainer>
   );
 };
