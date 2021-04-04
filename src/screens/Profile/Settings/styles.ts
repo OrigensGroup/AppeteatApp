@@ -19,3 +19,9 @@ export const SaveButton = styled.View`
   bottom: ${({ theme }) => theme.spacing.double};
   right: ${({ theme }) => theme.spacing.double};
 `;
+export const InfoUpdatedContainer = styled.View`
+  position: absolute;
+  bottom: ${({ theme }) => theme.spacing.double};
+  left: ${({ theme }) => theme.spacing.double};
+  flex: 1;
+`;

@@ -8,7 +8,7 @@ import { Alert } from 'react-native';
 
 import { Formik } from 'formik';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 
 import ListItem from '../../../components/Profile/ListItem';
 
@@ -21,16 +21,37 @@ import TopBar from '../../../components/shared/TopBar';
 
 import profileTranslations from '../../../translations/profile';
 
-import { ProfileSchema } from './profileSchema';
+import ReAuthModal from '../../../components/Profile/ReAuthModal';
+import loginTranslations from '../../../translations/login';
+import InfoUpdatedCard from '../../../components/Profile/InfoUpdatedCard';
 
-import { SettingsContainer, ProfileSection, TextContainer, SaveButton } from './styles';
+import { SettingsContainer, ProfileSection, TextContainer, SaveButton, InfoUpdatedContainer } from './styles';
+
+import { ProfileSchema } from './profileSchema';
 
 interface SettingsProps {}
 
 const Settings: React.FunctionComponent<SettingsProps> = () => {
   const { reload, restoreDefault, user } = useUserData();
   const [saveShow, setSaveShow] = useState(false);
+  const [infoUpdatedShow, setInfoUpdatedShow] = useState(false);
+
   const navigation = useNavigation();
+  const theme = useTheme();
+
+  const [modalData, setModalData] = useState({
+    show: false,
+    title: 'Authentication',
+    inputData: '',
+  });
+
+  const closeModal = () => {
+    setModalData((old) => ({ ...old, show: false }));
+  };
+
+  const showDescriptionModal = () => {
+    setModalData((old) => ({ ...old, show: true }));
+  };
 
   const logOutAlert = () =>
     Alert.alert(
@@ -52,18 +73,56 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       { cancelable: false }
     );
 
-  const updateProfile = async (name: string, email: string) => {
-    if (name) {
-      await user?.updateProfile({
-        displayName: name,
-      });
+  const updateProfile = (name?: string, email?: string, authResult?: boolean) => {
+    if (name !== user?.displayName) {
+      user
+        ?.updateProfile({
+          displayName: name,
+        })
+        .then(() => {
+          if (email === user?.email) {
+            setSaveShow(false);
+            setTimeout(() => setInfoUpdatedShow(true), 1000);
+          }
+        });
     }
 
-    if (email) {
-      await user?.updateEmail(email);
+    if (email && email !== user?.email) {
+      user
+        ?.updateEmail(email)
+        .then(() => {
+          if (name === user?.displayName) {
+            setSaveShow(false);
+            setTimeout(() => setInfoUpdatedShow(true), 1000);
+          } else {
+            setSaveShow(false);
+            setTimeout(() => setInfoUpdatedShow(true), 1000);
+          }
+        })
+        .catch((error) => {
+          if (error.code === 'auth/requires-recent-login') {
+            showDescriptionModal();
+
+            //implementare un mode che ti stoppa la funzione se authResult non e' true
+            {
+              authResult && user?.updateEmail(email);
+            }
+          }
+
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('Already used');
+            return;
+          }
+
+          if (error.code === 'auth/invalid-email ') {
+            console.log('Invalid email');
+            return;
+          }
+        });
     }
 
     reload();
+    setTimeout(() => navigation.goBack(), 2500);
   };
 
   return (
@@ -72,6 +131,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
         initialValues={{ email: user?.email ?? '', username: user?.displayName ?? '' }}
         onSubmit={(values) => {
           if (values.email && values.username) {
+            console.log(values);
             updateProfile(values.username, values.email);
           }
         }}
@@ -85,11 +145,24 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
 
           const saveChanges = () => {
             handleSubmit();
-            navigation.goBack();
           };
 
           return (
             <SettingsContainer>
+              <ReAuthModal
+                authResult={(authResult: boolean) => updateProfile(values.username, values.email, authResult)}
+                isVisible={modalData.show}
+                onClose={closeModal}
+                passwordPlaceholder={loginTranslations.passwordField.placeholder}
+                placeholder={loginTranslations.emailField.placeholder}
+                placeholderTextColor={theme.colors.border}
+                title={modalData.title}
+              />
+              {infoUpdatedShow && (
+                <InfoUpdatedContainer>
+                  <InfoUpdatedCard />
+                </InfoUpdatedContainer>
+              )}
               <TopBar back="back" hideFilter title={profileTranslations.settingsPage.title} />
               <ProfileSection>
                 <TextContainer>

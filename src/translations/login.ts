@@ -61,6 +61,10 @@ const loginTranslations = {
   emailAlreayInUse: {
     label: 'That email address is already in use!',
   },
+  tooManyRequests: {
+    label:
+      'Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.',
+  },
   emailError: {
     label: 'Email must not be empty',
   },

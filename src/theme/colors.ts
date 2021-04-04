@@ -7,6 +7,7 @@ export interface ColorsInterface {
   textSecondary: string;
   loginBottom: string;
   activeRed: string;
+  activeGreen: string;
   quantityUpdate: string;
   backgroundColor: string;
   fixedWhite: string;
@@ -27,6 +28,7 @@ const colors: ColorsInterface = {
   textSecondary: '#ffffff',
   loginBottom: '#111111',
   activeRed: '#f54e4e',
+  activeGreen: '#009900',
   quantityUpdate: '#f1f1f1',
   bookSpinnerButton: '#f1f1f1',
   inputSpinner: '#000000',
@@ -46,6 +48,7 @@ export const darkColors: ColorsInterface = {
   textSecondary: '#000000',
   loginBottom: '#0D1A2C',
   activeRed: '#f54e4e',
+  activeGreen: '#009900',
   quantityUpdate: '#f1f1f1',
   bookSpinnerButton: '#42525E',
   inputSpinner: '#ffffff',

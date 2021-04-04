@@ -63,6 +63,11 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
       .catch((error) => {
         setLoading(false);
 
+        if (error.code === 'auth/too-many-requests') {
+          Alert.alert(loginTranslations.tooManyRequests.label);
+          return;
+        }
+
         if (error.code === 'auth/email-already-in-use') {
           Alert.alert(loginTranslations.emailAlreayInUse.label);
           return;
