@@ -9,15 +9,19 @@ import { useTheme } from 'styled-components';
 import ListItem from '../ListItem';
 import accountTranslations from '../../../translations/profile';
 
+import withFeatureFlag from '../../../HOC/withFeatureFlag';
+
 import { LinksContainer } from './styles';
 
 interface ProfileLinkProps {}
+
+const BookingItem = withFeatureFlag(ListItem, 'FEAT_BOOK');
 
 const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
   const theme = useTheme();
   return (
     <LinksContainer>
-      <ListItem
+      <BookingItem
         icon={<AntDesign color={theme.colors.textPrimary} name="calendar" size={28} />}
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Reservations"

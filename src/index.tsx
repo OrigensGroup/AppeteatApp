@@ -34,28 +34,29 @@ import LoginScreen from './screens/Login';
 
 import TabBar from './components/shared/TabBar';
 
-import loadBar from './utils/loadBar';
+import loadBar, { barInit } from './utils/loadBar';
 import useAuth from './hooks/useAuth';
 import NotificationProvider from './contexts/Notification';
+import useSettings from './hooks/useSettings';
 
 enableScreens();
 
 const Stack = createStackNavigator();
 
-const App = () => {
+const CustomTheme: React.FC = ({ children }) => {
   const theme = useThemeSelector();
+  const [settings] = useSettings();
+
+  return <ThemeProvider theme={{ ...theme, colors: settings.colors }}>{children}</ThemeProvider>;
+};
+
+const App = () => {
   const navigationRef = useRef<NavigationContainerRef>(null);
   const routeNameRef = useRef<string>('');
   const { user } = useAuth();
   const [appReady, setAppReady] = useState(false);
 
-  const [bar, setBar] = useState<Bar>({
-    bookings: { list: [] },
-    locations: { list: [] },
-    menu: { items: [], tabs: [] },
-    homepage: { sections: [] },
-    orders: { list: [] },
-  });
+  const [bar, setBar] = useState<Bar>(barInit);
 
   const loadStuff = async () => {
     try {
@@ -121,18 +122,16 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <BarProvider loadedBar={bar}>
-        <NotificationProvider>
-          <UserProvider>
-            <CartProvider>
+    <BarProvider loadedBar={bar}>
+      <NotificationProvider>
+        <UserProvider>
+          <CartProvider>
+            <CustomTheme>
               <NavigationContainer
-                //@ts-ignore
-                onReady={() => (routeNameRef.current = navigationRef.current.getCurrentRoute().name)}
+                onReady={() => (routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name ?? '')}
                 onStateChange={async () => {
                   const previousRouteName = routeNameRef.current;
-                  //@ts-ignore
-                  const currentRouteName = navigationRef.current.getCurrentRoute().name;
+                  const currentRouteName = navigationRef.current?.getCurrentRoute()?.name ?? '';
 
                   if (previousRouteName !== currentRouteName) {
                     await analytics().logScreenView({
@@ -153,11 +152,11 @@ const App = () => {
                   )}
                 </Stack.Navigator>
               </NavigationContainer>
-            </CartProvider>
-          </UserProvider>
-        </NotificationProvider>
-      </BarProvider>
-    </ThemeProvider>
+            </CustomTheme>
+          </CartProvider>
+        </UserProvider>
+      </NotificationProvider>
+    </BarProvider>
   );
 };
 
