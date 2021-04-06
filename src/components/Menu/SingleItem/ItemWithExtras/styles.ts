@@ -9,5 +9,8 @@ export const ItemContainer = styled.ScrollView`
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin-bottom: ${({ theme }) => theme.spacing.multiple(12)};
+`;
+
+export const MarginBottom = styled.View`
+  height: ${({ theme }) => theme.spacing.multiple(9)};
 `;

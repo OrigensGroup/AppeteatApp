@@ -15,12 +15,17 @@ import CustomiseSection from '../CustomiseSection';
 
 import ExplanationModal from '../../../shared/ExplanationModal';
 
-import { CustomisableItemContainer, ItemContainer } from './styles';
+import withFeatureFlag from '../../../../HOC/withFeatureFlag';
+
+import { CustomisableItemContainer, ItemContainer, MarginBottom } from './styles';
 
 interface CustomisableItemProps {
   item: MenuItem;
   discount?: Discount;
 }
+
+const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
+const MarginBottomWithFlag = withFeatureFlag(MarginBottom, 'FEAT_ORDERING');
 
 const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ discount, item }) => {
   const theme = useTheme();
@@ -59,8 +64,9 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
         <ItemDescription discount={discount} item={item} />
         <CustomiseSection item={item} onClick={showDescriptionModal} />
       </ItemContainer>
+      <MarginBottomWithFlag />
       {!item.soldout && (
-        <AddToBasketButton
+        <AddToBasketWithFlag
           discount={discount}
           extras={[{ id: 'custom', price: 0, selected: false, title: modalData.inputData }]}
           item={item}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import withFeatureFlag from '../../../../HOC/withFeatureFlag';
+
 import cartTranslations from '../../../../translations/cart';
 
 import Text from '../../../shared/Text';
@@ -11,6 +13,11 @@ import { SelectServiceWrapper, ButtonsWrapper, TitleWrapper, EmptyDiv } from './
 interface SelectServiceProps {
   setShowTable: (n: number) => void;
 }
+
+const TakeAwayWithFlag = withFeatureFlag(SelectServiceButton, 'FEAT_CART_TAKEAWAY');
+const EmptyDivWithFlagTA = withFeatureFlag(EmptyDiv, 'FEAT_CART_TAKEAWAY');
+const DeliveryWithFlag = withFeatureFlag(SelectServiceButton, 'FEAT_CART_DELIVERY');
+const EmptyDivWithFlagDEL = withFeatureFlag(EmptyDiv, 'FEAT_CART_DELIVERY');
 
 const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTable }) => {
   const [index, setIndex] = useState(0);
@@ -31,8 +38,8 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTab
           }}
           title={cartTranslations.checkoutPage.orderDetails.eatIn}
         />
-        <EmptyDiv />
-        <SelectServiceButton
+        <EmptyDivWithFlagTA />
+        <TakeAwayWithFlag
           active={index === 1}
           onClick={() => {
             setShowTable(1);
@@ -40,14 +47,14 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTab
           }}
           title={cartTranslations.checkoutPage.orderDetails.takeAway}
         />
-        <EmptyDiv />
-        <SelectServiceButton
+        <EmptyDivWithFlagDEL />
+        <DeliveryWithFlag
           active={index === 2}
           onClick={() => {
             setShowTable(2);
             setIndex(2);
           }}
-          title="Delivery"
+          title={cartTranslations.checkoutPage.orderDetails.delivery}
         />
       </ButtonsWrapper>
     </SelectServiceWrapper>
