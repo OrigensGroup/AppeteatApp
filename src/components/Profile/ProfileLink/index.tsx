@@ -15,19 +15,20 @@ import { LinksContainer } from './styles';
 
 interface ProfileLinkProps {}
 
-const BookingItem = withFeatureFlag(ListItem, 'FEAT_BOOK');
+const BookingItemWithFlag = withFeatureFlag(ListItem, 'FEAT_BOOK');
+const FavouriteItemWithFlag = withFeatureFlag(ListItem, 'FEAT_FAVORITE_COCKTAILS');
 
 const ProfileLink: React.FunctionComponent<ProfileLinkProps> = () => {
   const theme = useTheme();
   return (
     <LinksContainer>
-      <BookingItem
+      <BookingItemWithFlag
         icon={<AntDesign color={theme.colors.textPrimary} name="calendar" size={28} />}
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="Reservations"
         title={accountTranslations.accountPage.myReservation}
       />
-      <ListItem
+      <FavouriteItemWithFlag
         icon={<MaterialCommunityIcons color={theme.colors.textPrimary} name="glass-cocktail" size={28} />}
         icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
         navigateTo="FavouriteCocktails"
