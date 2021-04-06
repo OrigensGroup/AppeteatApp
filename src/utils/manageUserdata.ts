@@ -3,7 +3,16 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import { User } from '../types/User';
 
-import { defaultUserdata } from './initUserData';
+export const defaultUserdata: User = {
+  favoriteCocktails: [],
+  default: true,
+  bookings: [],
+  orders: [],
+};
+
+export const initUserData = async (userId: string) => {
+  firestore().collection('users').doc(userId).set(defaultUserdata);
+};
 
 const getUserData = async (userId: string) => {
   let userData = defaultUserdata;

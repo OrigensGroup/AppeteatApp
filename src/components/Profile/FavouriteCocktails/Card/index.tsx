@@ -41,7 +41,7 @@ const Card: React.FunctionComponent<CardProps> = ({ item }) => {
             {item.title}
           </Text>
           <DescriptionWrapper>
-            <Text color="subtitles" fontSize={12}>
+            <Text color="primary" fontSize={12}>
               {item.description}
             </Text>
           </DescriptionWrapper>

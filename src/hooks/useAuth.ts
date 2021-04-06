@@ -17,7 +17,6 @@ const useAuth = () => {
     }
 
     setUser((oldUser) => ({ ...oldUser, ...newUser }));
-    console.log(newUser);
   };
 
   useEffect(() => {

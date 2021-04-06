@@ -13,7 +13,7 @@ import LogInInputField from '../LogInInputField';
 
 import loginTranslations from '../../../translations/login';
 
-import initUserData from '../../../utils/initUserData';
+import { initUserData } from '../../../utils/manageUserdata';
 
 import { RegisterSchema } from './registerSchema';
 

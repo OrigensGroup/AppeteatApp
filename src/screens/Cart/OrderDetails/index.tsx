@@ -23,8 +23,6 @@ const OrderDetails: React.FunctionComponent<OrderDetailsProps> = () => {
     back?: 'back' | 'HomePage' | 'MenuList' | 'Account';
   };
 
-  console.log(order);
-
   return (
     <OrderDetailsContainer>
       <TopBar back={back} hideFilter title={cartTranslations.orderPage.title} />

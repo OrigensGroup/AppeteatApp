@@ -3,7 +3,7 @@ import InputSpinner from 'react-native-input-spinner';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
 
-import { MainCoutnerWrapper } from './styles';
+import { MainCounterWrapper } from './styles';
 
 interface QuantityCounterProps {
   amount: number;
@@ -15,7 +15,7 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount
   const theme = useTheme();
 
   return (
-    <MainCoutnerWrapper>
+    <MainCounterWrapper>
       <InputSpinner
         buttonLeftImage={<Icon color={theme.colors.fixedBlack} name="remove" size={24} />}
         buttonRightImage={<Icon color={theme.colors.fixedBlack} name="add" size={24} />}
@@ -38,7 +38,7 @@ const QuantityCounter: React.FunctionComponent<QuantityCounterProps> = ({ amount
         step={stepSize}
         value={amount}
       />
-    </MainCoutnerWrapper>
+    </MainCounterWrapper>
   );
 };
 

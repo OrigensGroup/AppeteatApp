@@ -44,7 +44,7 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
         </Text>
       </TitleWrapper>
       <FavouriteIconWithFlag
-        color={!iLikeThis ? theme.colors.textPrimary : theme.colors.activeRed}
+        color={!iLikeThis ? theme.colors.textPrimary : theme.colors.actionRed}
         iconName={!iLikeThis ? 'md-heart-outline' : 'md-heart'}
         onClick={addNew(item)}
         size={24}

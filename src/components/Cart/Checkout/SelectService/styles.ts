@@ -23,5 +23,5 @@ export const ButtonsWrapper = styled.View`
 `;
 
 export const EmptyDiv = styled.View`
-  width: ${({ theme }) => theme.spacing.triple};
+  width: ${({ theme }) => theme.spacing.double};
 `;

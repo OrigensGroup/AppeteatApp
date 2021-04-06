@@ -4,7 +4,7 @@ export const PickerContainer = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.quantityUpdate};
+  background-color: ${({ theme }) => theme.colors.modalbackground};
   border-radius: ${({ theme }) => theme.spacing.single};
   padding: ${({ theme }) => theme.spacing.single};
 `;

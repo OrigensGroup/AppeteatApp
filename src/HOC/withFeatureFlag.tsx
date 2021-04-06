@@ -12,8 +12,6 @@ const withFeatureFlag = <T extends any>(
 
     const isFeatureFlagged = settings.features[flagName];
 
-    console.log('Feature', isFeatureFlagged);
-
     if (!isFeatureFlagged) {
       return Placeholder ? <Placeholder /> : <></>;
     }

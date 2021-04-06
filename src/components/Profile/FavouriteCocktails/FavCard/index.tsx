@@ -47,7 +47,7 @@ const FavCard: React.FunctionComponent<FavCardProps> = ({ item }) => {
           </Text>
         </DrinkDesc>
         <IconWrap>
-          <Icon color={theme.colors.activeRed} name="ios-heart" size={25} />
+          <Icon color={theme.colors.actionRed} name="ios-heart" size={25} />
         </IconWrap>
       </Container>
     </FavouriteCoctailsCard>

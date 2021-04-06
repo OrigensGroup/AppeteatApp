@@ -98,7 +98,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
           ) : (
             iLikeThis && (
               <LikeIcon>
-                <IconButton color={theme.colors.activeRed} iconName="md-heart" size={24} />
+                <IconButton color={theme.colors.actionRed} iconName="md-heart" size={24} />
               </LikeIcon>
             )
           )}
