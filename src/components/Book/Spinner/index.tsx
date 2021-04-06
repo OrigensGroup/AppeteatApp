@@ -23,7 +23,7 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({ initialValue, onChange
         </Text>
       </TextContainer>
       <InputSpinner
-        color={theme.colors.quantityUpdate}
+        color={theme.colors.modalbackground}
         max={50}
         min={1}
         onChange={onChange}
