@@ -8,8 +8,7 @@ import { MenuItem } from '../../types/MenuItem';
 import { Order } from '../../types/Order';
 import { User } from '../../types/User';
 
-import getUserData, { saveUserData } from '../../utils/manageUserdata';
-import { defaultUserdata } from '../../utils/initUserData';
+import getUserData, { saveUserData, defaultUserdata } from '../../utils/manageUserdata';
 
 interface UserContext {
   user: FirebaseAuthTypes.User | null;

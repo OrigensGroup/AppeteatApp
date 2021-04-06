@@ -4,7 +4,7 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-import initUserData from '../../../utils/initUserData';
+import initUserData from '../../../utils/manageUserdata';
 
 import { ButtonContainer, GoogleImage } from './styles';
 
