@@ -1,3 +1,3 @@
-# ProgettoBarsAppFE
+# Appeteat APP
 
-App fe
+This is the repo for the appeteat app
