@@ -21,7 +21,7 @@ import TotalSection from '../../../components/Cart/TotalSection';
 import CardModal from '../../../components/Cart/Checkout/CardModal';
 import SelectService from '../../../components/Cart/Checkout/SelectService';
 
-// import TakeAwayModal from '../../../components/Cart/Checkout/TakeAwayModal';
+import TakeAwayModal from '../../../components/Cart/Checkout/TakeAwayModal';
 
 import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper, ItemSummarySection } from './styles';
 
@@ -31,17 +31,17 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
   const theme = useTheme();
   const [showTable, setShowTable] = useState(0);
 
-  // const [takeAwayModal, setTakeAwayModal] = useState({
-  //   show: false,
-  // });
+  const [takeAwayModal, setTakeAwayModal] = useState({
+    show: false,
+  });
 
-  // const showTakeAwayModal = () => {
-  //   setTakeAwayModal({ show: true });
-  // };
+  const showTakeAwayModal = () => {
+    setTakeAwayModal({ show: true });
+  };
 
-  // const closeTakeAwayModal = () => {
-  //   setTakeAwayModal({ show: false });
-  // };
+  const closeTakeAwayModal = () => {
+    setTakeAwayModal({ show: false });
+  };
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [itemToUpdate, setItemToUpdate] = useState<OrderItem | null>(null);
@@ -102,18 +102,33 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
     delivery: '',
     allergy: '',
     voucher: '',
+    deliveryAddress: '',
+    city: '',
+    phoneNumber: '',
+    orderTime: 0,
   });
 
   const updateModalValue = (v: string) => (t: string) => {
+    console.log('Update values', v, t);
+
     setValues((oldV) => ({
       ...oldV,
       [v]: t,
     }));
   };
 
+  const change = (v: string) => (t: string) => {
+    console.log(v, t);
+  };
+
   return (
     <CheckoutContainer>
-      {/* <TakeAwayModal isModalVisible={takeAwayModal.show} onClose={closeModal} /> */}
+      <TakeAwayModal
+        delivery={showTable === 2}
+        handleChange={change}
+        isModalVisible={takeAwayModal.show}
+        onClose={closeTakeAwayModal}
+      />
       <UpdateModal isModalVisible={isModalVisible} item={itemToUpdate} onClose={closeModal} />
       <CardModal isModalVisible={cardModal.show} onCardUpdate={onCardModalUpdate} onClose={closeCardModal} />
       <ExplanationModal
@@ -147,11 +162,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
             <ValueItem
               color="primary"
               icon="location-outline"
-              onItemClick={showDescriptionModal({
-                title: cartTranslations.checkoutPage.takeAway.label,
-                placeholder: cartTranslations.checkoutPage.takeAway.placeholder,
-                code: 'pickup',
-              })}
+              onItemClick={showTakeAwayModal}
               title={values.pickup ? values.pickup : cartTranslations.checkoutPage.takeAway.title}
             />
           )}
@@ -159,12 +170,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
             <ValueItem
               color="primary"
               icon="location-outline"
-              onItemClick={showDescriptionModal({
-                title: cartTranslations.checkoutPage.takeAway.label,
-                placeholder: cartTranslations.checkoutPage.takeAway.placeholder,
-                // placeholder: cartTranslations.checkoutPage.delivery.placeholder,
-                code: 'delivery',
-              })}
+              onItemClick={showTakeAwayModal}
               title={values.delivery ? values.delivery : cartTranslations.checkoutPage.delivery.title}
             />
           )}
@@ -195,7 +201,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
           <TotalSection />
         </CheckoutSummarySection>
       </CheckoutSwiper>
-      <FinaliseOrder paymentOption={cardModal.card} />
+      <FinaliseOrder paymentOption={cardModal.card} values={values} />
     </CheckoutContainer>
   );
 };

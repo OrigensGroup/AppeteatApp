@@ -12,13 +12,22 @@ export const PopUpContainer = styled.View`
   align-items: center;
   border-top-left-radius: ${({ theme }) => theme.spacing.triple};
   border-top-right-radius: ${({ theme }) => theme.spacing.triple};
-  padding: ${({ theme }) => theme.spacing.triple};
+  padding: ${({ theme }) => theme.spacing.double};
+  padding-bottom: ${({ theme }) => theme.spacing.multiple(4)};
 `;
 
-export const CardModalHeader = styled.View`
+export const TakeAwayModalHeader = styled.View`
   display: flex;
   width: 100%;
-  margin-bottom: ${({ theme }) => theme.spacing.triple};
+  margin-bottom: ${({ theme }) => theme.spacing.double};
+  margin-top: ${({ theme }) => theme.spacing.single};
+  margin-left: ${({ theme }) => theme.spacing.double};
+`;
+
+export const TakeAwayTextfieldContainer = styled.View`
+  display: flex;
+  width: 100%;
+  margin-bottom: ${({ theme }) => theme.spacing.double};
 `;
 
 type CardModalChoiceProps = {
@@ -35,4 +44,8 @@ export const CardModalChoice = styled.TouchableOpacity<CardModalChoiceProps>`
   border-radius: ${({ theme }) => theme.spacing.single};
 
   margin-bottom: ${({ theme }) => theme.spacing.oneAndHalf};
+`;
+
+export const PickerContainer = styled.View`
+  flex: 1;
 `;
