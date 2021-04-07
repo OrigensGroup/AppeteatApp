@@ -1,7 +1,6 @@
 import { firebase } from '@react-native-firebase/auth';
 import { Formik } from 'formik';
-import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-native-modal';
 
 import { useTheme } from 'styled-components';
@@ -10,7 +9,9 @@ import IconButton from '../../shared/IconButton';
 import LoginTextField from '../../shared/LoginTextField';
 import Text from '../../shared/Text';
 import useUserData from '../../../hooks/useUserData';
-import loginTranslations from '../../../translations/login';
+
+import profileTranslations from '../../../translations/profile';
+import InfoUpdatedCard from '../InfoUpdatedCard';
 
 import {
   ModalContainer,
@@ -19,6 +20,7 @@ import {
   ModalTopRow,
   CloseIconWrapper,
   SumbmitButtonWrapper,
+  InfoUpdatedContainer,
 } from './styles';
 
 interface ReAuthModalProps {
@@ -43,7 +45,8 @@ const ReAuthModal: React.FunctionComponent<ReAuthModalProps> = ({
 }) => {
   const theme = useTheme();
   const { user } = useUserData();
-  const [result, setResult] = useState(false);
+  const autoHide = useRef<NodeJS.Timeout>();
+  const [infoUpdatedShow, setInfoUpdatedShow] = useState(false);
 
   const reAuthenticate = (email: string, password: string) => {
     if (user && user.email) {
@@ -52,23 +55,24 @@ const ReAuthModal: React.FunctionComponent<ReAuthModalProps> = ({
       user
         .reauthenticateWithCredential(credential)
         .then(() => {
-          setResult(true);
-          authResult(result);
+          authResult(true);
           onClose();
         })
-        .catch((error) => {
-          if (error.code === 'auth/invalid-email') {
-            Alert.alert(loginTranslations.errorSignInEmail.label);
-            return;
-          }
-
-          if (error.code === 'auth/wrong-password') {
-            Alert.alert(loginTranslations.errorWrongPasswordSignIn.label);
-            return;
-          }
+        .catch(() => {
+          setInfoUpdatedShow(true);
         });
     }
   };
+
+  useEffect(() => {
+    autoHide.current = setTimeout(() => {
+      setInfoUpdatedShow(false);
+    }, 2000);
+
+    return () => {
+      autoHide.current && clearTimeout(autoHide.current);
+    };
+  }, [infoUpdatedShow, setInfoUpdatedShow]);
 
   return (
     <Formik
@@ -109,9 +113,14 @@ const ReAuthModal: React.FunctionComponent<ReAuthModalProps> = ({
                   textContentType="password"
                   updateValue={handleChange('password')}
                 />
+                {infoUpdatedShow && (
+                  <InfoUpdatedContainer>
+                    <InfoUpdatedCard error />
+                  </InfoUpdatedContainer>
+                )}
                 <SumbmitButtonWrapper onPress={handleSubmit}>
                   <Text bold color="secondary" fontSize={18}>
-                    Confirm
+                    {profileTranslations.settingsPage.confirm}
                   </Text>
                 </SumbmitButtonWrapper>
               </ModalDescription>

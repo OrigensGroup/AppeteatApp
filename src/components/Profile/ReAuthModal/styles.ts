@@ -32,6 +32,7 @@ export const ModalTitle = styled.View`
 
 export const ModalDescription = styled.View`
   display: flex;
+  padding: 0 ${({ theme }) => theme.spacing.double};
 `;
 
 export const SumbmitButtonWrapper = styled.TouchableOpacity`
@@ -44,3 +45,5 @@ export const SumbmitButtonWrapper = styled.TouchableOpacity`
   padding: ${({ theme }) => theme.spacing.half};
   margin: ${({ theme }) => theme.spacing.single};
 `;
+
+export const InfoUpdatedContainer = styled.View``;

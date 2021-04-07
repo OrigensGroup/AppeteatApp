@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Formik } from 'formik';
-
-import { Alert } from 'react-native';
 
 import { firebase } from '@react-native-firebase/auth';
 
@@ -23,18 +21,21 @@ import InfoUpdatedCard from '../../../../components/Profile/InfoUpdatedCard';
 
 import { PasswordSchema } from './passwordSchema';
 
-import { PasswordContainer, PasswordFieldContainer, SaveButton, InfoUpdatedContainer } from './styles';
+import { PasswordContainer, PasswordFieldContainer, SaveButton, InfoUpdateContainer } from './styles';
 
 interface PasswordProps {}
 
 const Password: React.FunctionComponent<PasswordProps> = () => {
   const { reload, user } = useUserData();
-  const [saveShow, setSaveShow] = useState(true);
   const [infoUpdatedShow, setInfoUpdatedShow] = useState(false);
+  const [errorShow, setErrorShow] = useState(false);
+  const autoHide = useRef<NodeJS.Timeout>();
 
   const navigation = useNavigation();
 
   const updatePassword = async (currentPassword: string, newPassword: string, reNewPassword: string) => {
+    console.log(infoUpdatedShow);
+
     if (currentPassword !== newPassword && newPassword === reNewPassword) {
       if (user && user.email !== null) {
         const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
@@ -46,22 +47,53 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
             user
               ?.updatePassword(newPassword)
               .then(() => {
-                setSaveShow(false);
-                setTimeout(() => setInfoUpdatedShow(true), 1000);
-                setTimeout(() => navigation.goBack(), 2500);
+                setInfoUpdatedShow(true);
               })
-              .catch(() => {
-                Alert.alert('error');
+              .catch((error) => {
+                if (error.code === 'auth/weak-password') {
+                  setErrorShow(true);
+                  return;
+                }
+
+                if (error.code === 'auth/requires-recent-login') {
+                  setErrorShow(true);
+                  return;
+                }
               });
           })
           .catch(() => {
-            Alert.alert('Current password is invalid');
+            setErrorShow(true);
           });
       }
     }
 
     reload();
   };
+
+  useEffect(() => {
+    if (autoHide.current && !infoUpdatedShow) {
+      clearTimeout(autoHide.current);
+      navigation.goBack();
+    } else {
+      autoHide.current = setTimeout(() => {
+        setInfoUpdatedShow(false);
+      }, 1000);
+    }
+
+    return () => {
+      autoHide.current && clearTimeout(autoHide.current);
+    };
+  }, [navigation, infoUpdatedShow, setInfoUpdatedShow]);
+
+  useEffect(() => {
+    autoHide.current = setTimeout(() => {
+      setErrorShow(false);
+    }, 1500);
+
+    return () => {
+      autoHide.current && clearTimeout(autoHide.current);
+    };
+  }, [errorShow, setErrorShow]);
 
   return (
     <Formik
@@ -72,18 +104,13 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
         if (values.password !== values.newPassword && values.newPassword === values.reNewPassword) {
           updatePassword(values.password, values.newPassword, values.reNewPassword);
         } else {
-          Alert.alert('Choose a different password from the current one');
+          setErrorShow(true);
         }
       }}
       validationSchema={PasswordSchema}
     >
       {({ errors, handleChange, handleSubmit }) => (
         <PasswordContainer>
-          {infoUpdatedShow && (
-            <InfoUpdatedContainer>
-              <InfoUpdatedCard />
-            </InfoUpdatedContainer>
-          )}
           <TopBar back="back" hideFilter title={profileTranslations.passwordPage.title} />
           <PasswordFieldContainer>
             <LoginTextField
@@ -107,16 +134,25 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
               textContentType="password"
               updateValue={handleChange('reNewPassword')}
             />
+            {errorShow && (
+              <InfoUpdateContainer>
+                <InfoUpdatedCard error />
+              </InfoUpdateContainer>
+            )}
+            {infoUpdatedShow && (
+              <InfoUpdateContainer>
+                <InfoUpdatedCard />
+              </InfoUpdateContainer>
+            )}
           </PasswordFieldContainer>
-          {saveShow && (
-            <SaveButton>
-              <ViewCta onClick={handleSubmit}>
-                <Text bold color="fixedWhite" fontSize={18}>
-                  {profileTranslations.settingsPage.save}
-                </Text>
-              </ViewCta>
-            </SaveButton>
-          )}
+
+          <SaveButton>
+            <ViewCta onClick={handleSubmit}>
+              <Text bold color="fixedWhite" fontSize={18}>
+                {profileTranslations.settingsPage.save}
+              </Text>
+            </ViewCta>
+          </SaveButton>
         </PasswordContainer>
       )}
     </Formik>

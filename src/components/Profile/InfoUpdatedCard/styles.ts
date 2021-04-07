@@ -1,10 +1,15 @@
 import styled from 'styled-components/native';
 
-export const InfoUpdatedCardContainer = styled.TouchableOpacity`
+interface InfoUpdatedCardProps {
+  error?: boolean;
+}
+
+export const InfoUpdatedCardContainer = styled.TouchableOpacity<InfoUpdatedCardProps>`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.activeGreen};
+  ${({ error, theme }) =>
+    error ? `background-color: ${theme.colors.activeRed}` : `background-color: ${theme.colors.activeGreen}`};
   border-radius: ${({ theme }) => theme.spacing.single};
   width: 100%;
   padding: ${({ theme }) => theme.spacing.single};

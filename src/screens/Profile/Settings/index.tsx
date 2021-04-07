@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import auth from '@react-native-firebase/auth';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 import { Alert } from 'react-native';
 
@@ -35,13 +35,15 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
   const { reload, restoreDefault, user } = useUserData();
   const [saveShow, setSaveShow] = useState(false);
   const [infoUpdatedShow, setInfoUpdatedShow] = useState(false);
-
+  const [authResult, setAuthResult] = useState(false);
+  const [changedEmail, setChangedEmail] = useState('');
+  const autoHide = useRef<NodeJS.Timeout>();
   const navigation = useNavigation();
   const theme = useTheme();
 
   const [modalData, setModalData] = useState({
     show: false,
-    title: 'Authentication',
+    title: profileTranslations.settingsPage.authentication,
     inputData: '',
   });
 
@@ -73,57 +75,76 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       { cancelable: false }
     );
 
-  const updateProfile = (name?: string, email?: string, authResult?: boolean) => {
-    if (name !== user?.displayName) {
-      user
-        ?.updateProfile({
+  const updateEmail = useCallback(
+    async (user: FirebaseAuthTypes.User | null) => {
+      if (user) {
+        user.updateEmail(changedEmail);
+        await reload();
+        setSaveShow(false);
+        setInfoUpdatedShow(true);
+      }
+    },
+    [reload, changedEmail]
+  );
+
+  const updateProfile = async (name?: string, email?: string) => {
+    if (!user) {
+      return 'not logged in';
+    }
+
+    try {
+      if (name !== user.displayName) {
+        await user.updateProfile({
           displayName: name,
-        })
-        .then(() => {
-          if (email === user?.email) {
-            setSaveShow(false);
-            setTimeout(() => setInfoUpdatedShow(true), 1000);
-          }
         });
+      }
+
+      if (email && email !== user.email) {
+        setChangedEmail(email);
+        await user.updateEmail(email);
+      }
+
+      await reload();
+      setSaveShow(false);
+      setInfoUpdatedShow(true);
+    } catch (e) {
+      if (e.code === 'auth/requires-recent-login') {
+        showDescriptionModal();
+        return;
+      }
+
+      if (e.code === 'auth/email-already-in-use') {
+        console.log('Already used');
+        return;
+      }
+
+      if (e.code === 'auth/invalid-email ') {
+        console.log('Invalid email');
+        return;
+      }
     }
-
-    if (email && email !== user?.email) {
-      user
-        ?.updateEmail(email)
-        .then(() => {
-          if (name === user?.displayName) {
-            setSaveShow(false);
-            setTimeout(() => setInfoUpdatedShow(true), 1000);
-          } else {
-            setSaveShow(false);
-            setTimeout(() => setInfoUpdatedShow(true), 1000);
-          }
-        })
-        .catch((error) => {
-          if (error.code === 'auth/requires-recent-login') {
-            showDescriptionModal();
-
-            //implementare un mode che ti stoppa la funzione se authResult non e' true
-            {
-              authResult && user?.updateEmail(email);
-            }
-          }
-
-          if (error.code === 'auth/email-already-in-use') {
-            console.log('Already used');
-            return;
-          }
-
-          if (error.code === 'auth/invalid-email ') {
-            console.log('Invalid email');
-            return;
-          }
-        });
-    }
-
-    reload();
-    setTimeout(() => navigation.goBack(), 2500);
   };
+
+  useEffect(() => {
+    if (authResult) {
+      updateEmail(user);
+    }
+  }, [authResult, updateEmail, user]);
+
+  useEffect(() => {
+    if (autoHide.current && !infoUpdatedShow) {
+      clearTimeout(autoHide.current);
+      navigation.goBack();
+    } else {
+      autoHide.current = setTimeout(() => {
+        setInfoUpdatedShow(false);
+      }, 1000);
+    }
+
+    return () => {
+      autoHide.current && clearTimeout(autoHide.current);
+    };
+  }, [navigation, infoUpdatedShow, setInfoUpdatedShow]);
 
   return (
     <>
@@ -150,7 +171,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
           return (
             <SettingsContainer>
               <ReAuthModal
-                authResult={(authResult: boolean) => updateProfile(values.username, values.email, authResult)}
+                authResult={setAuthResult}
                 isVisible={modalData.show}
                 onClose={closeModal}
                 passwordPlaceholder={loginTranslations.passwordField.placeholder}
