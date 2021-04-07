@@ -4,4 +4,5 @@ declare module '@env' {
   export const CONNECTED_ACCOUNT_ID: string;
   export const FEE: number;
   export const CURRENCY: 'gbp' | 'euro';
+  export const APPLE_CURRENCY: 'GBP';
 }

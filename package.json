@@ -1,10 +1,10 @@
 {
   "main": "index.js",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android": "APP_ENV=staging react-native run-android",
+    "ios": "APP_ENV=staging react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start --reset-cache",
+    "start": "APP_ENV=staging react-native start --reset-cache",
     "type-check": "tsc --noEmit",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:fix": "yarn lint:js --fix",

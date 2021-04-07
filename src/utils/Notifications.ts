@@ -16,6 +16,7 @@ export const schedulePushNotification = async (request: Notifications.Notificati
 
 export const registerForPushNotificationsAsync = async () => {
   let token = '';
+  const experienceId = Constants.manifest.experienceId;
 
   if (Constants.isDevice) {
     const { status: existingStatus } = await Notifications.getPermissionsAsync();
@@ -31,7 +32,11 @@ export const registerForPushNotificationsAsync = async () => {
       return;
     }
 
-    token = (await Notifications.getExpoPushTokenAsync()).data;
+    token = (
+      await Notifications.getExpoPushTokenAsync({
+        experienceId,
+      })
+    ).data;
   }
 
   if (Platform.OS === 'android') {

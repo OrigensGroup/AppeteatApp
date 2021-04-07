@@ -7,6 +7,7 @@
     "slug": "origens-testing",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
+    "experienceId": "@origens/origens-testing",
     "scheme": "exp9d1ea7e1de174f31828a156ea7a38e11",
     "android": {
       "useNextNotificationsApi": true
