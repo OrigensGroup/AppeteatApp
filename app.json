@@ -10,6 +10,9 @@
     "scheme": "exp9d1ea7e1de174f31828a156ea7a38e11",
     "android": {
       "useNextNotificationsApi": true
+    },
+    "ios": {
+      "bundleIdentifier": "uk.co.origens.testing.appeteat"
     }
   }
 }

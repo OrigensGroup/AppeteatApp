@@ -15,7 +15,7 @@ export const schedulePushNotification = async (request: Notifications.Notificati
 };
 
 export const registerForPushNotificationsAsync = async () => {
-  let token;
+  let token = '';
 
   if (Constants.isDevice) {
     const { status: existingStatus } = await Notifications.getPermissionsAsync();
