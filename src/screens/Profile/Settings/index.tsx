@@ -152,7 +152,6 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
         initialValues={{ email: user?.email ?? '', username: user?.displayName ?? '' }}
         onSubmit={(values) => {
           if (values.email && values.username) {
-            console.log(values);
             updateProfile(values.username, values.email);
           }
         }}

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Linking, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import { useTheme } from 'styled-components';
 
 import FastImage from 'react-native-fast-image';
 
-import { Linking, Platform } from 'react-native';
+import withFeatureFlag from '../../../HOC/withFeatureFlag';
 
 import Text from '../../shared/Text';
 import type { Venue } from '../../../types/Venue';
@@ -23,6 +24,8 @@ import {
   Circle,
   TextContainer,
 } from './styles';
+
+const BookATableButtonWithFlag = withFeatureFlag(BookATableButton, 'FEAT_BOOK');
 
 interface LocationCardProps {
   venue: Venue;
@@ -44,7 +47,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
   };
 
   return (
-    <CardContainer activeOpacity={0.9} onPress={onClick(venue)}>
+    <CardContainer activeOpacity={0.9}>
       <ImageContainer>
         <FastImage
           resizeMode={FastImage.resizeMode.cover}
@@ -77,11 +80,11 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
         <ShareButton onPress={onShareClick}>
           <Icon color={theme.colors.textPrimary} name="share" size={28} />
         </ShareButton>
-        <BookATableButton onPress={onClick(venue)}>
+        <BookATableButtonWithFlag onPress={onClick(venue)}>
           <Text bold color="tertiary" fontSize={12}>
             {bookTranslations.locationsListPage.bookATableModal.cta}
           </Text>
-        </BookATableButton>
+        </BookATableButtonWithFlag>
       </ButtonContainer>
     </CardContainer>
   );

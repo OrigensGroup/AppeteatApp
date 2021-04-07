@@ -11,3 +11,7 @@ export const ItemContainer = styled.ScrollView`
   flex: 1;
   margin-bottom: ${({ theme }) => theme.spacing.multiple(12)};
 `;
+
+export const MarginBottom = styled.View`
+  height: ${({ theme }) => theme.spacing.multiple(9)};
+`;

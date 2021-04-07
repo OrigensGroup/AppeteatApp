@@ -10,11 +10,15 @@ import Text from '../../../shared/Text';
 
 import useUserData from '../../../../hooks/useUserData';
 
-import { TitleWrapper, CardsHeaderContainer } from './styles';
+import withFeatureFlag from '../../../../HOC/withFeatureFlag';
+
+import { TitleWrapper, CardsHeaderContainer, EmptyDiv } from './styles';
 
 interface CardsHeaderProps {
   item: MenuItem;
 }
+
+const FavouriteIconWithFlag = withFeatureFlag(IconButton, 'FEAT_FAVORITE_COCKTAILS', EmptyDiv);
 
 const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
   const theme = useTheme();
@@ -39,8 +43,8 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
           {item.title}
         </Text>
       </TitleWrapper>
-      <IconButton
-        color={!iLikeThis ? theme.colors.textPrimary : theme.colors.activeRed}
+      <FavouriteIconWithFlag
+        color={!iLikeThis ? theme.colors.textPrimary : theme.colors.actionRed}
         iconName={!iLikeThis ? 'md-heart-outline' : 'md-heart'}
         onClick={addNew(item)}
         size={24}

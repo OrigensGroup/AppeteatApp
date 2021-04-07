@@ -27,7 +27,7 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
       tabBarOptions={{
         showLabel: false,
         activeTintColor: theme.colors.active,
-        inactiveTintColor: theme.colors.inactive,
+        inactiveTintColor: theme.colors.border,
         activeBackgroundColor: theme.colors.backgroundColor,
         inactiveBackgroundColor: theme.colors.backgroundColor,
         style: {

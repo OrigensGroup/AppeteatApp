@@ -68,3 +68,7 @@ web-build/
 */project.pbxproj
 
 .env
+.env.staging
+.env.prod
+
+coverage

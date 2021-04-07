@@ -56,6 +56,9 @@ declare module 'tipsi-stripe' {
     setOptions: (init: InitModule): Promise<void> => {},
     createTokenWithCard: (card: Card): Promise<Token> => {},
     canMakeNativePayPayments: (options: CanMakeNativePayPaymentsOptions): Promise<boolean> => {},
+    paymentRequestWithNativePay: (options: {}, items: any[]): Promise<Token> => {},
+    completeNativePayRequest: () => {},
+    cancelNativePayRequest: () => {},
   };
 
   export default stripe;

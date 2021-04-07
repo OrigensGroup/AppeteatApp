@@ -8,6 +8,7 @@ const cartTranslations = {
       title: 'Order details',
       eatIn: 'Eat in',
       takeAway: 'Take away',
+      delivery: 'Delivery',
     },
     paymentDetails: {
       title: 'Choose a payment method',
@@ -20,8 +21,14 @@ const cartTranslations = {
     },
 
     takeAway: {
-      title: 'Insert pick up time',
+      title: 'Insert take away deatils',
       label: 'Pick up time',
+      placeholder: 'hh : mm',
+    },
+
+    delivery: {
+      title: 'Insert delivery deatils',
+      label: 'Delivery time',
       placeholder: 'hh : mm',
     },
 

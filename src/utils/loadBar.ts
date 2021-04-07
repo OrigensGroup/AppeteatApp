@@ -5,14 +5,19 @@ import { ValueOf } from 'react-native-gesture-handler/lib/typescript/typeUtils';
 
 import { Bar } from '../types/Bar';
 
+import colors from '../theme/colors';
+
+export const barInit: Bar = {
+  bookings: { list: [] },
+  locations: { list: [] },
+  menu: { items: [], tabs: [] },
+  homepage: { sections: [] },
+  orders: { list: [] },
+  settings: { colors: colors, features: {} },
+};
+
 const loadBar = async () => {
-  const bar = {
-    bookings: { list: [] },
-    locations: { list: [] },
-    menu: { items: [], tabs: [] },
-    homepage: { sections: [] },
-    orders: { list: [] },
-  } as Bar;
+  const bar = barInit;
 
   try {
     crashlytics().log('Bar data loading attempt.');

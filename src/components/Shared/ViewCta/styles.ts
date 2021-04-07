@@ -9,7 +9,7 @@ export const MainButton = styled.TouchableOpacity<ViewCtaProps>`
   border-radius: ${({ theme }) => theme.spacing.single};
 
   ${({ redDelete, theme }) =>
-    redDelete ? `background-color: ${theme.colors.activeRed}` : `background-color: ${theme.colors.active}`};
+    redDelete ? `background-color: ${theme.colors.actionRed}` : `background-color: ${theme.colors.active}`};
 
   display: flex;
   justify-content: space-evenly;

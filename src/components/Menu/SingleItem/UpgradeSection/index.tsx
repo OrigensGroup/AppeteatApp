@@ -138,14 +138,16 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
             {item.title}
           </Text>
         </TitleItem>
-        {item.price > 0 && (
-          <PriceItem>
+
+        <PriceItem>
+          {item.price > 0 && (
             <Text bold color="quartiary" fontSize={14}>
               + {currencyTranslations.currencyField}
               {item.price}
             </Text>
-          </PriceItem>
-        )}
+          )}
+        </PriceItem>
+
         {item.explanation && (
           <ItemInfo onPress={showDescriptionModal({ title: item.title, description: item.explanation })}>
             <Icon color={theme.colors.fixedBlack} name="ios-information-circle-outline" size={24} />
@@ -155,6 +157,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           <CheckBox
             animationDuration={0.2}
             boxType={selectionType}
+            disabled
             onCheckColor={theme.colors.active}
             onTintColor={theme.colors.active}
             style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}

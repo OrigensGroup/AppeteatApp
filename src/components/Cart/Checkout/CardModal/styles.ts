@@ -12,7 +12,8 @@ export const PopUpContainer = styled.View`
   align-items: center;
   border-top-left-radius: ${({ theme }) => theme.spacing.triple};
   border-top-right-radius: ${({ theme }) => theme.spacing.triple};
-  padding: ${({ theme }) => theme.spacing.triple};
+  padding: ${({ theme }) => theme.spacing.double};
+  padding-bottom: ${({ theme }) => theme.spacing.multiple(4)};
 `;
 
 export const CardModalHeader = styled.View`

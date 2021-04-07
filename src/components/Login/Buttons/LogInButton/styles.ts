@@ -13,7 +13,7 @@ export const ButtonContainer = styled.View`
 export const IconWrapper = styled.TouchableOpacity`
   height: ${({ theme }) => theme.spacing.multiple(8)};
   width: ${({ theme }) => theme.spacing.multiple(8)};
-  background-color: ${({ theme }) => theme.colors.borderFaded};
+  background-color: ${({ theme }) => theme.colors.border}69;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -9,12 +9,17 @@ import UpgradeSection from '../UpgradeSection';
 
 import { Discount } from '../../../../types/DiscountRules';
 
-import { ItemWithExtrasContainer, ItemContainer } from './styles';
+import withFeatureFlag from '../../../../HOC/withFeatureFlag';
+
+import { ItemWithExtrasContainer, ItemContainer, MarginBottom } from './styles';
 
 interface ItemWithExtrasProps {
   item: MenuItem;
   discount?: Discount;
 }
+
+const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
+const MarginBottomWithFlag = withFeatureFlag(MarginBottom, 'FEAT_ORDERING');
 
 const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, item }) => {
   const [extras, setExtras] = useState<DataItem[]>([]);
@@ -27,7 +32,8 @@ const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount
         <ItemDescription discount={discount} item={item} />
         <UpgradeSection item={item} updateExtras={setExtras} />
       </ItemContainer>
-      {!item.soldout && <AddToBasketButton discount={discount} extras={extras} item={item} />}
+      <MarginBottomWithFlag />
+      {!item.soldout && <AddToBasketWithFlag discount={discount} extras={extras} item={item} />}
     </ItemWithExtrasContainer>
   );
 };

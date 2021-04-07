@@ -22,8 +22,6 @@ const NotificationProvider: React.FunctionComponent<NotificationProviderProps> =
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) => setToken(token));
 
-    const pushTokenListener = Notifications.addPushTokenListener((t) => console.log(t));
-
     const notificationListener = Notifications.addNotificationReceivedListener((notification) => {
       setNotification(notification);
     });
@@ -33,7 +31,6 @@ const NotificationProvider: React.FunctionComponent<NotificationProviderProps> =
     });
 
     return () => {
-      pushTokenListener.remove();
       notificationListener.remove();
       responseListener.remove();
     };

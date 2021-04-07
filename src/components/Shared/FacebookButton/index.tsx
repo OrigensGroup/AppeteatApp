@@ -4,7 +4,7 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
-import initUserData from '../../../utils/initUserData';
+import initUserData from '../../../utils/manageUserdata';
 
 import { ButtonContainer } from './styles';
 

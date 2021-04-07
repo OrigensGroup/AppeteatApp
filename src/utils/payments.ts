@@ -2,9 +2,9 @@
 
 import stripe, { Card, Charge, GeneratedErrors } from 'tipsi-stripe';
 
-import { CONNECTED_ACCOUNT_ID, CURRENCY, FEE, API_URL } from '@env';
+import { CONNECTED_ACCOUNT_ID, CURRENCY, FEE, API_URL, APPLE_CURRENCY } from '@env';
 
-import { Payment } from '../types/Payment';
+import type { Payment } from '../types/Payment';
 
 type PaymentStatus = {
   paymentRes: Charge | GeneratedErrors;
@@ -43,6 +43,38 @@ export const makeCardPayment = async (
 
     return res;
   } catch (e) {
+    return e;
+  }
+};
+
+export const makeNativePayment = async (
+  display: {
+    label: string;
+    amount: string;
+  },
+  payment: Omit<Payment, 'currency' | 'tokenId' | 'CONNECTED_STRIPE_ACCOUNT_ID' | 'fee'>
+): Promise<PaymentStatus> => {
+  try {
+    const token = await stripe.paymentRequestWithNativePay(
+      {
+        currencyCode: APPLE_CURRENCY,
+      },
+      [display]
+    );
+
+    const postData: Payment = {
+      ...payment,
+      currency: CURRENCY,
+      tokenId: token.tokenId,
+      CONNECTED_STRIPE_ACCOUNT_ID: CONNECTED_ACCOUNT_ID,
+      fee: FEE,
+    };
+
+    const res = await payToApi(postData);
+
+    return res;
+  } catch (e) {
+    console.log('New error', e);
     return e;
   }
 };

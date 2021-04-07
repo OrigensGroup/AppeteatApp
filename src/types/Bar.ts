@@ -1,3 +1,5 @@
+import { ColorsInterface } from '../theme/colors';
+
 import { HomepageComponent } from './HomepageComponent';
 import { MenuItem } from './MenuItem';
 import { Promotion } from './Promotion';
@@ -27,10 +29,19 @@ export interface Homepage {
   sections: (HomepageComponent | Promotion)[];
 }
 
+interface Features {
+  [key: string]: boolean;
+}
+export interface Settings {
+  colors: ColorsInterface;
+  features: Features;
+}
+
 export interface Bar {
   bookings: Bookings;
   homepage: Homepage;
   locations: Locations;
   menu: Menu;
   orders: Orders;
+  settings: Settings;
 }

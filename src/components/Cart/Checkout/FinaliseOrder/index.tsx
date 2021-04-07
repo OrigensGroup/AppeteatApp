@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
+import stripe from 'tipsi-stripe';
 import type { Card } from 'tipsi-stripe';
 
 import useCart from '../../../../hooks/useCart';
@@ -9,7 +10,7 @@ import useUserData from '../../../../hooks/useUserData';
 
 import cartTranslations from '../../../../translations/cart';
 import type { Order } from '../../../../types/Order';
-import { makeCardPayment } from '../../../../utils/payments';
+import { makeCardPayment, makeNativePayment } from '../../../../utils/payments';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
@@ -19,9 +20,15 @@ import { FinaliseOrderContainer } from './styles';
 
 interface FinaliseOrderProps {
   paymentOption: 'native' | Card;
+  values: {
+    deliveryAddress: string;
+    city: string;
+    orderTime: number;
+    phoneNumber: string;
+  };
 }
 
-const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOption }) => {
+const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOption, values }) => {
   const navigation = useNavigation();
   const { cart, clearCart, pricing } = useCart();
   const [, setOrders] = useOrders();
@@ -29,6 +36,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
   const [loadingPayment, setLoadingPayment] = useState(false);
 
   const finaliseOrder = async () => {
+    let paymentRes = null;
     setLoadingPayment(true);
 
     if (!user) {
@@ -40,33 +48,46 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
     }
 
     if (paymentOption === 'native') {
-      return '';
+      paymentRes = await makeNativePayment(
+        {
+          label: 'Order',
+          amount: pricing.total.toString(),
+        },
+        {
+          customerEmail: user.email,
+          price: pricing.total,
+          product: cart[0].id,
+        }
+      );
+    } else {
+      paymentRes = await makeCardPayment(
+        {
+          number: paymentOption.number,
+          expMonth: paymentOption.expMonth,
+          expYear: paymentOption.expYear,
+          cvc: paymentOption.cvc,
+        },
+        {
+          customerEmail: user.email,
+          price: pricing.total,
+          product: cart[0].id,
+        }
+      );
     }
-
-    const res = await makeCardPayment(
-      {
-        number: paymentOption.number,
-        expMonth: paymentOption.expMonth,
-        expYear: paymentOption.expYear,
-        cvc: paymentOption.cvc,
-      },
-      {
-        customerEmail: user.email,
-        price: pricing.total,
-        product: cart[0].id,
-      }
-    );
 
     setLoadingPayment(false);
 
-    if (res.paymentRes.type === 'Charge') {
+    if (paymentRes.paymentRes.type === 'Charge') {
+      stripe.completeNativePayRequest();
+
       const order: Order = {
         id: generateNumberId(),
         userId: user.uid,
-        paymentRes: res.paymentRes,
+        paymentRes: paymentRes.paymentRes,
         orderedItems: cart,
         pricing,
         day: new Date().toString(),
+        ...values,
       };
 
       setOrders((oldOrders) => ({
@@ -74,16 +95,21 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
         list: [...oldOrders.list, order],
       }));
 
+      console.log(order);
+
       addOrder(order);
 
       clearCart();
       navigation.navigate('OrderDetails', { order });
     } else {
-      console.log(res.paymentRes);
-      Alert.alert(res.paymentRes.message);
+      stripe.cancelNativePayRequest();
+
+      console.log(paymentRes.paymentRes);
+      Alert.alert(paymentRes.paymentRes.message);
     }
   };
 
+  console.log();
   return (
     <FinaliseOrderContainer>
       <ViewCta onClick={finaliseOrder}>

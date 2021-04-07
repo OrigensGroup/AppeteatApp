@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
 
-import { Bar } from '../types/Bar';
+import { Bar, Homepage, Menu } from '../types/Bar';
 
 export const BarContext = React.createContext<
   <T extends ValueOf<Bar>>(document: keyof Bar) => [T, (v: T | ((newV: T) => T)) => void]
@@ -20,6 +20,38 @@ const BarProvider: React.FunctionComponent<BarProviderProps> = ({ children, load
   useEffect(() => {
     setLocalBar(loadedBar);
   }, [loadedBar]);
+
+  useEffect(() => {
+    const menuSubscriber = firestore()
+      .collection('bar')
+      .doc('menu')
+      .onSnapshot((documentSnapshot) => {
+        const newMenu = documentSnapshot.data() as Menu;
+
+        setLocalBar((old) => ({
+          ...old,
+          menu: newMenu,
+        }));
+      });
+
+    const homepageSubscriber = firestore()
+      .collection('bar')
+      .doc('homepage')
+      .onSnapshot((documentSnapshot) => {
+        const newHomepage = documentSnapshot.data() as Homepage;
+
+        setLocalBar((old) => ({
+          ...old,
+          homepage: newHomepage,
+        }));
+      });
+
+    // Stop listening for updates when no longer required
+    return () => {
+      menuSubscriber();
+      homepageSubscriber();
+    };
+  }, []);
 
   const getDocument = <T extends ValueOf<Bar>>(document: keyof Bar): [T, (v: T) => void] => {
     const updateDocument = async (value: T | ((callback: T) => T)) => {

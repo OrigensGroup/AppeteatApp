@@ -61,7 +61,7 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({ promotions
         inactiveDotOpacity={0.4}
         inactiveDotScale={1}
         inactiveDotStyle={{
-          backgroundColor: theme.colors.inactive,
+          backgroundColor: theme.colors.border,
         }}
       />
     );
