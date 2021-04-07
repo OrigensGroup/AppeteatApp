@@ -20,9 +20,15 @@ import { FinaliseOrderContainer } from './styles';
 
 interface FinaliseOrderProps {
   paymentOption: 'native' | Card;
+  values: {
+    deliveryAddress: string;
+    city: string;
+    orderTime: number;
+    phoneNumber: string;
+  };
 }
 
-const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOption }) => {
+const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOption, values }) => {
   const navigation = useNavigation();
   const { cart, clearCart, pricing } = useCart();
   const [, setOrders] = useOrders();
@@ -81,12 +87,15 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
         orderedItems: cart,
         pricing,
         day: new Date().toString(),
+        ...values,
       };
 
       setOrders((oldOrders) => ({
         ...oldOrders,
         list: [...oldOrders.list, order],
       }));
+
+      console.log(order);
 
       addOrder(order);
 
@@ -100,6 +109,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
     }
   };
 
+  console.log();
   return (
     <FinaliseOrderContainer>
       <ViewCta onClick={finaliseOrder}>
