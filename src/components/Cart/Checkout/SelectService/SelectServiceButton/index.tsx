@@ -13,7 +13,7 @@ interface SelectServiceButtonProps {
 const SelectServiceButton: React.FunctionComponent<SelectServiceButtonProps> = ({ active, onClick, title }) => {
   return (
     <ButtonContainer active={active} onPress={onClick}>
-      <Text color={active ? 'fixedWhite' : 'quartiary'} fontSize={14}>
+      <Text color={active ? 'fixedWhite' : 'quartiary'} fontSize={12}>
         {title}
       </Text>
     </ButtonContainer>

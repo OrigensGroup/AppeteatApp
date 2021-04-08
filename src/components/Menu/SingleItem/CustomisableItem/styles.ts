@@ -12,6 +12,4 @@ export const ItemContainer = styled.ScrollView`
   margin-bottom: ${({ theme }) => theme.spacing.multiple(12)};
 `;
 
-export const MarginBottom = styled.View`
-  height: ${({ theme }) => theme.spacing.multiple(9)};
-`;
+export const MarginBottom = styled.View``;

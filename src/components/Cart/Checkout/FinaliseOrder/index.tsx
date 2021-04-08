@@ -113,7 +113,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
   return (
     <FinaliseOrderContainer>
       <ViewCta onClick={finaliseOrder}>
-        <Text bold color="fixedWhite" fontSize={20}>
+        <Text bold color="fixedWhite" fontSize={14}>
           {!loadingPayment
             ? cartTranslations.checkoutPage.goToCheckoutCta.title
             : cartTranslations.checkoutPage.goToCheckoutCta.loading}

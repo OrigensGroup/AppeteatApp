@@ -25,7 +25,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ setShowTab
   return (
     <SelectServiceWrapper>
       <TitleWrapper>
-        <Text bold color="primary" fontSize={16}>
+        <Text bold color="primary" fontSize={14}>
           {cartTranslations.checkoutPage.orderDetails.title}
         </Text>
       </TitleWrapper>

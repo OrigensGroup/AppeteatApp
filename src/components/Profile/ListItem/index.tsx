@@ -25,7 +25,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({ icon, icon2, navigat
     <ProfileLinkContainer onPress={navigate}>
       <IconContainer>{icon}</IconContainer>
       <TextContainer>
-        <Text color="primary" fontSize={15}>
+        <Text color="primary" fontSize={14}>
           {title}
         </Text>
       </TextContainer>
