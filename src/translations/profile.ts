@@ -24,6 +24,7 @@ const profileTranslations = {
   notificationsPage: {},
   settingsPage: {
     title: 'Settings',
+    authentication: 'Authentication',
     myCard: 'My Card',
     showButton: 'Show all',
     email: 'E-mail',
@@ -35,8 +36,11 @@ const profileTranslations = {
     save: 'Save',
     logOut: 'Log Out',
     cancel: 'Cancel',
+    confirm: 'Confirm',
     yes: 'Yes',
     logOutPromp: 'Would you like to log out?',
+    informationUpdated: 'Information successfully updated',
+    error: 'Invalid information provided',
   },
   personalInformationPage: {
     title: 'Personal Information',

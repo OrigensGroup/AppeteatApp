@@ -7,11 +7,7 @@ export const PasswordContainer = styled.SafeAreaView`
 
 export const PasswordFieldContainer = styled.View`
   display: flex;
-`;
-
-export const PasswordField = styled.View`
-  display: flex;
-  flex-direction: row;
+  margin: ${({ theme }) => theme.spacing.double};
 `;
 
 export const SaveButton = styled.View`
@@ -19,4 +15,9 @@ export const SaveButton = styled.View`
   left: ${({ theme }) => theme.spacing.double};
   bottom: ${({ theme }) => theme.spacing.double};
   right: ${({ theme }) => theme.spacing.double};
+`;
+
+export const InfoUpdateContainer = styled.View`
+  display: flex;
+  justify-content: flex-end;
 `;

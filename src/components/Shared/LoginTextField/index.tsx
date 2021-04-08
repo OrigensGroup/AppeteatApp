@@ -3,10 +3,9 @@ import { useTheme } from 'styled-components';
 
 import Text from '../Text';
 
-import { TextFieldContainer, TextFieldInput, CustomiseFieldInput, ErrorContainer } from './styles';
+import { TextFieldContainer, TextFieldInput, ErrorContainer, Container } from './styles';
 
 interface LoginTextFieldProps {
-  darkText?: boolean;
   placeholder?: string;
   textContentType: 'emailAddress' | 'password' | 'none';
   updateValue?: (value: string) => void;
@@ -17,7 +16,6 @@ interface LoginTextFieldProps {
 }
 
 const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
-  darkText,
   defaultValue,
   error,
   maxLength,
@@ -26,7 +24,7 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
   textContentType,
   updateValue,
 }) => {
-  const [text, setText] = useState<string>('');
+  const [text, setText] = useState<string>(defaultValue ?? '');
   const theme = useTheme();
 
   const defaultPlaceholderColor = placeholderTextColor ?? theme.colors.fixedWhite;
@@ -38,11 +36,10 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
   };
 
   return (
-    <TextFieldContainer>
-      {!darkText ? (
+    <Container>
+      <TextFieldContainer>
         <TextFieldInput
           autoCapitalize="none"
-          defaultValue={defaultValue}
           maxLength={maxLength}
           onChangeText={updateText}
           placeholder={placeholder}
@@ -51,18 +48,7 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
           textContentType={textContentType}
           value={text}
         />
-      ) : (
-        <CustomiseFieldInput
-          autoCapitalize="none"
-          defaultValue={defaultValue}
-          maxLength={maxLength}
-          onChangeText={updateText}
-          placeholder={placeholder}
-          placeholderTextColor={defaultPlaceholderColor}
-          secureTextEntry={textContentType === 'password'}
-          textContentType={textContentType}
-        />
-      )}
+      </TextFieldContainer>
       {error && (
         <ErrorContainer>
           <Text bold color="errorColor" fontSize={14}>
@@ -70,7 +56,7 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
           </Text>
         </ErrorContainer>
       )}
-    </TextFieldContainer>
+    </Container>
   );
 };
 

@@ -13,14 +13,15 @@ export const TextContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single} 0;
 `;
 
-export const InfoContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-`;
-
 export const SaveButton = styled.View`
   position: absolute;
   left: ${({ theme }) => theme.spacing.double};
   bottom: ${({ theme }) => theme.spacing.double};
   right: ${({ theme }) => theme.spacing.double};
+`;
+export const InfoUpdatedContainer = styled.View`
+  position: absolute;
+  bottom: ${({ theme }) => theme.spacing.double};
+  left: ${({ theme }) => theme.spacing.double};
+  flex: 1;
 `;

@@ -40,8 +40,8 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
     setUser(user);
   }
 
-  const reload = () => {
-    auth().currentUser?.reload();
+  const reload = async () => {
+    await auth().currentUser?.reload();
     const newUser = auth().currentUser;
     setUser(newUser);
   };

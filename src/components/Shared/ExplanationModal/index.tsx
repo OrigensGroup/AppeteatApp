@@ -63,7 +63,6 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
         ) : (
           <ModalDescription>
             <LoginTextField
-              darkText
               maxLength={70}
               placeholder={placeholder}
               placeholderTextColor={placeholderTextColor}

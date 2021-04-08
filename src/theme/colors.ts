@@ -10,6 +10,7 @@ export interface ColorsInterface {
   backgroundColor: string;
   fixedWhite: string;
   fixedBlack: string;
+  activeGreen: string;
 }
 
 const colors: ColorsInterface = {
@@ -19,6 +20,7 @@ const colors: ColorsInterface = {
   border: '#c2c2c2',
   modalbackground: '#ebebed',
   actionRed: '#f54e4e',
+  activeGreen: '#009900',
   textPrimary: '#000000',
   textSecondary: '#ffffff',
   backgroundColor: '#ffffff',
@@ -35,6 +37,7 @@ export const darkColors: ColorsInterface = {
   textPrimary: '#ffffff',
   textSecondary: '#000000',
   actionRed: '#f54e4e',
+  activeGreen: '#009900',
   backgroundColor: '#0D1A2C',
   fixedWhite: '#ffffff',
   fixedBlack: '#000000',
