@@ -12,5 +12,5 @@ export const ItemContainer = styled.ScrollView`
 `;
 
 export const MarginBottom = styled.View`
-  height: ${({ theme }) => theme.spacing.multiple(9)};
+  height: ${({ theme }) => theme.spacing.multiple(14)};
 `;

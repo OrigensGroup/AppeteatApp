@@ -134,14 +134,14 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     return (
       <ItemRow onPress={() => updateItemSelection(section.selection, section.id, item.id)(!selectionValue)}>
         <TitleItem>
-          <Text bold color="quartiary" fontSize={14}>
+          <Text bold color="quartiary" fontSize={12}>
             {item.title}
           </Text>
         </TitleItem>
 
         <PriceItem>
           {item.price > 0 && (
-            <Text bold color="quartiary" fontSize={14}>
+            <Text bold color="quartiary" fontSize={12}>
               + {currencyTranslations.currencyField}
               {item.price}
             </Text>

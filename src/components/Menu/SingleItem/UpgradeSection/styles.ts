@@ -25,7 +25,6 @@ export const ItemRow = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   align-items: center;
-
   margin: 0 ${({ theme }) => theme.spacing.triple};
   padding: ${({ theme }) => theme.spacing.multiple(1.5)} ${({ theme }) => theme.spacing.double};
   border-bottom-width: 1px;

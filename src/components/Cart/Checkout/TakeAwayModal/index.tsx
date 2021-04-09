@@ -13,6 +13,8 @@ import Picker from '../../../Book/Picker';
 
 import { minutes } from '../../../../translations/book';
 
+import cartTranslations from '../../../../translations/cart';
+
 import { PopUpContainer, TakeAwayModalHeader, TakeAwayTextfieldContainer, PickerContainer } from './styles';
 
 interface TakeAwayModalProps {
@@ -62,32 +64,25 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
         {delivery ? (
           <TakeAwayModalHeader>
             <Text bold color="primary" fontSize={16}>
-              Delivery information
+              {cartTranslations.checkoutPage.deliveryInformation.title}
             </Text>
           </TakeAwayModalHeader>
         ) : (
           <TakeAwayModalHeader>
             <Text bold color="primary" fontSize={16}>
-              Take away information
+              {cartTranslations.checkoutPage.takeAway.title}
             </Text>
           </TakeAwayModalHeader>
         )}
         {delivery ? (
           <TakeAwayTextfieldContainer>
             <LoginTextField
-              darkText
               defaultValue="i.e. 2 Oriens Mews"
               textContentType="none"
               updateValue={handleChange('deliveryAddress')}
             />
+            <LoginTextField defaultValue="Insert city" textContentType="none" updateValue={handleChange('city')} />
             <LoginTextField
-              darkText
-              defaultValue="Insert city"
-              textContentType="none"
-              updateValue={handleChange('city')}
-            />
-            <LoginTextField
-              darkText
               defaultValue="Insert phone number"
               textContentType="none"
               updateValue={handleChange('phoneNumber')}
@@ -144,7 +139,6 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
               />
             )}
             <LoginTextField
-              darkText
               defaultValue="Insert phone number"
               textContentType="none"
               updateValue={handleChange('phoneNumber')}
@@ -153,7 +147,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
         )}
 
         <ViewCta onClick={onClose}>
-          <Text bold color="fixedWhite" fontSize={20}>
+          <Text bold color="fixedWhite" fontSize={14}>
             Confirm
           </Text>
         </ViewCta>
