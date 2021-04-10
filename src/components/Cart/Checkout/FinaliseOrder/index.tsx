@@ -25,6 +25,11 @@ interface FinaliseOrderProps {
     city: string;
     orderTime: number;
     phoneNumber: string;
+    table: string;
+    pickup: string;
+    delivery: string;
+    allergy: string;
+    voucher: string;
   };
 }
 
@@ -34,6 +39,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ paymentOpt
   const [, setOrders] = useOrders();
   const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
+  // const [settings] = useSettings();
 
   const finaliseOrder = async () => {
     let paymentRes = null;

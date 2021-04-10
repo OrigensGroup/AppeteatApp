@@ -25,7 +25,15 @@ const cartTranslations = {
       label: 'Pick up time',
       placeholder: 'hh : mm',
     },
+    deliveryModal: {
+      title: 'Delivery information',
+      cta: 'Confirm',
+    },
 
+    takeAwayModal: {
+      title: 'Take away information',
+      cta: 'Confirm',
+    },
     delivery: {
       title: 'Insert delivery deatils',
       label: 'Delivery time',
@@ -69,7 +77,7 @@ const cartTranslations = {
       loading: 'Loading...',
     },
     serviceFee: {
-      title: 'Servcie fee',
+      title: 'Service fee',
     },
     updateModal: {
       price: 'Price:',

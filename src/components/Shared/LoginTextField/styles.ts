@@ -14,6 +14,7 @@ export const TextFieldInput = styled.TextInput`
   font-size: ${scale(16)}px;
   border-width: 1px;
   flex: 1;
+  padding-left: ${({ theme }) => theme.spacing.single};
 `;
 export const Container = styled.View`
   margin: ${({ theme }) => theme.spacing.single};

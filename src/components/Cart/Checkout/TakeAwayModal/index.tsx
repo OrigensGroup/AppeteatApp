@@ -13,6 +13,8 @@ import Picker from '../../../Book/Picker';
 
 import { minutes } from '../../../../translations/book';
 
+import cartTranslations from '../../../../translations/cart';
+
 import { PopUpContainer, TakeAwayModalHeader, TakeAwayTextfieldContainer, PickerContainer } from './styles';
 
 interface TakeAwayModalProps {
@@ -59,36 +61,24 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
       }}
     >
       <PopUpContainer>
-        {delivery ? (
-          <TakeAwayModalHeader>
-            <Text bold color="primary" fontSize={16}>
-              Delivery information
-            </Text>
-          </TakeAwayModalHeader>
-        ) : (
-          <TakeAwayModalHeader>
-            <Text bold color="primary" fontSize={16}>
-              Take away information
-            </Text>
-          </TakeAwayModalHeader>
-        )}
+        <TakeAwayModalHeader>
+          <Text bold color="primary" fontSize={16}>
+            {delivery
+              ? cartTranslations.checkoutPage.deliveryModal.title
+              : cartTranslations.checkoutPage.takeAwayModal.title}
+          </Text>
+        </TakeAwayModalHeader>
+
         {delivery ? (
           <TakeAwayTextfieldContainer>
             <LoginTextField
-              darkText
-              defaultValue="i.e. 2 Oriens Mews"
+              placeholder="i.e. 2 Oriens Mews"
               textContentType="none"
               updateValue={handleChange('deliveryAddress')}
             />
+            <LoginTextField placeholder="Insert city" textContentType="none" updateValue={handleChange('city')} />
             <LoginTextField
-              darkText
-              defaultValue="Insert city"
-              textContentType="none"
-              updateValue={handleChange('city')}
-            />
-            <LoginTextField
-              darkText
-              defaultValue="Insert phone number"
+              placeholder="Insert phone number"
               textContentType="none"
               updateValue={handleChange('phoneNumber')}
             />
@@ -144,8 +134,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
               />
             )}
             <LoginTextField
-              darkText
-              defaultValue="Insert phone number"
+              placeholder="Insert phone number"
               textContentType="none"
               updateValue={handleChange('phoneNumber')}
             />
@@ -154,7 +143,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
 
         <ViewCta onClick={onClose}>
           <Text bold color="fixedWhite" fontSize={20}>
-            Confirm
+            {cartTranslations.checkoutPage.takeAwayModal.cta}
           </Text>
         </ViewCta>
       </PopUpContainer>
