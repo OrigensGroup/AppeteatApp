@@ -186,7 +186,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
               <TopBar back="back" hideFilter title={profileTranslations.settingsPage.title} />
               <ProfileSection>
                 <TextContainer>
-                  <Text bold color="primary" fontSize={18}>
+                  <Text bold color="primary" fontSize={16}>
                     {profileTranslations.personalInformationPage.title}
                   </Text>
                 </TextContainer>
@@ -205,7 +205,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
               </ProfileSection>
               <ProfileSection>
                 <TextContainer>
-                  <Text bold color="primary" fontSize={18}>
+                  <Text bold color="primary" fontSize={16}>
                     {profileTranslations.accountPage.settings}
                   </Text>
                 </TextContainer>

@@ -74,15 +74,14 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
           </ModalCounterWrapper>
         </ModalCounterContainer>
         <ModalTitle>
-          <Text color="primary" fontSize={18}>
-            {currencyTranslations.currencyField}
-            {cartTranslations.checkoutPage.updateModal.price}
+          <Text color="primary" fontSize={16}>
+            {cartTranslations.checkoutPage.updateModal.price} {currencyTranslations.currencyField}
             {fixDecimals((item.price + item.extras.reduce((acc, extra) => acc + extra.price, 0)) * localQuantity)}
           </Text>
         </ModalTitle>
         <DivLine />
         <ViewCta onClick={update} redDelete={localQuantity === 0}>
-          <Text bold color="fixedWhite" fontSize={18}>
+          <Text bold color="fixedWhite" fontSize={14}>
             {localQuantity === 0
               ? cartTranslations.checkoutPage.removeItemModal.title
               : cartTranslations.checkoutPage.updateModalField.label}

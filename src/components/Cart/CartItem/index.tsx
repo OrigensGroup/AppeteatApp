@@ -64,12 +64,12 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
       </CartItemDescription>
       <CartItemNumbers>
         <CartItemQuantity>
-          <Text bold color="primary" fontSize={16}>
+          <Text bold color="primary" fontSize={14}>
             {item.quantity} x
           </Text>
         </CartItemQuantity>
         <CartItemPrice>
-          <Text bold color="tertiary" fontSize={16}>
+          <Text bold color="tertiary" fontSize={14}>
             {currencyTranslations.currencyField}
             {calculateItemPrice(item)}
           </Text>

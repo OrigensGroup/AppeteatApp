@@ -30,7 +30,6 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
       }}
       //@ts-ignore
       buttonTextColor={theme.colors.textPrimary}
-      height={32}
       inputStyle={
         hideInput && {
           display: 'none',

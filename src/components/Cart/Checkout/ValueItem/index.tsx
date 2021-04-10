@@ -22,7 +22,7 @@ const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, icon, onIte
     <ValueItemContainer onPress={onItemClick}>
       <IconButton color={theme.colors.textPrimary} iconName={icon} size={28} />
       <TextWrapp>
-        <Text color={color} fontSize={14}>
+        <Text color={color} fontSize={12}>
           {title}
         </Text>
       </TextWrapp>

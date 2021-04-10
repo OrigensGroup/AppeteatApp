@@ -10,6 +10,12 @@ const cartTranslations = {
       takeAway: 'Take away',
       delivery: 'Delivery',
     },
+    deliveryInformation: {
+      title: 'Delivery Information',
+    },
+    takeAwayInformation: {
+      title: 'Take Away Information',
+    },
     paymentDetails: {
       title: 'Choose a payment method',
       cta: 'Choose',
@@ -94,6 +100,7 @@ const cartTranslations = {
       title: 'Order number',
       deliveryEst: 'will be ready at 9:00/9:30pm',
     },
+
     orderStatus: {
       received: 'Order recived',
       preparing: 'Preparing',

@@ -110,7 +110,7 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
           <LiteCreditCardInput onChange={cardChange} />
         </CardModalChoice>
         <ViewCta onClick={done}>
-          <Text bold color="fixedWhite" fontSize={20}>
+          <Text bold color="fixedWhite" fontSize={14}>
             {cartTranslations.checkoutPage.paymentDetails.cta}
           </Text>
         </ViewCta>

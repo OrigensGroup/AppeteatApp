@@ -74,10 +74,10 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
       </QuantityButton>
       <ViewCtaButton>
         <ViewCta onClick={onClick}>
-          <Text bold color="fixedWhite" fontSize={18}>
+          <Text bold color="fixedWhite" fontSize={14}>
             {menuTranslations.singleItemPage.addToBasket.cta}
           </Text>
-          <Text bold color="fixedWhite" fontSize={18}>
+          <Text bold color="fixedWhite" fontSize={14}>
             + {price}
           </Text>
         </ViewCta>

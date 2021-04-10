@@ -18,13 +18,13 @@ const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onCl
   return (
     <MainButtonWrapper>
       <ViewCta onClick={onClick}>
-        <Text bold color="fixedWhite" fontSize={18}>
+        <Text bold color="fixedWhite" fontSize={14}>
           ( {cart.length} )
         </Text>
-        <Text bold color="fixedWhite" fontSize={18}>
+        <Text bold color="fixedWhite" fontSize={14}>
           {menuTranslations.menuPage.viewBasketField.placeholder}
         </Text>
-        <Text bold color="fixedWhite" fontSize={18}>
+        <Text bold color="fixedWhite" fontSize={14}>
           {currencyTranslations.currencyField}
           {pricing.subtotal}
         </Text>

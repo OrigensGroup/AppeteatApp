@@ -11,7 +11,6 @@ export const ModalCounterWrapper = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: ${({ theme }) => theme.spacing.multiple(10)};
 `;
 
 export const PopUpContainer = styled.View`

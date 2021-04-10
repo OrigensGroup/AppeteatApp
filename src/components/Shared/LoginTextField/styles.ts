@@ -11,7 +11,7 @@ export const TextFieldInput = styled.TextInput`
   border-radius: ${({ theme }) => theme.spacing.single};
   color: ${({ theme }) => theme.colors.fixedBlack};
   font-family: Comfortaa;
-  font-size: ${scale(16)}px;
+  font-size: ${scale(14)}px;
   border-width: 1px;
   flex: 1;
   padding-left: ${({ theme }) => theme.spacing.single};
