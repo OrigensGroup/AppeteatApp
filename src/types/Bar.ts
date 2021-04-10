@@ -29,12 +29,18 @@ export interface Homepage {
   sections: (HomepageComponent | Promotion)[];
 }
 
-interface Features {
+type FeatureFlags = {
+  FEAT_BOOK: boolean;
+  FEAT_CART_DELIVERY: boolean;
+  FEAT_CART_TAKEAWAY: boolean;
+  FEAT_FAVORITE_COCKTAILS: boolean;
+  FEAT_ORDERING: boolean;
+  FEAT_DARK_MODE: boolean;
   [key: string]: boolean;
-}
+};
 export interface Settings {
   colors: ColorsInterface;
-  features: Features;
+  features: FeatureFlags;
 }
 
 export interface Bar {

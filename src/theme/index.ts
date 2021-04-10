@@ -3,6 +3,8 @@ import { DefaultTheme } from 'styled-components';
 
 import { Platform, useColorScheme } from 'react-native';
 
+import useSettings from '../hooks/useSettings';
+
 import colors, { ColorsInterface, darkColors } from './colors';
 import spacing, { SpacingInterface } from './spacing';
 import * as shadows from './shadows';
@@ -32,9 +34,10 @@ const darkTheme: DefaultTheme = {
 };
 
 export const useThemeSelector = () => {
+  const [settings] = useSettings();
   const mode = useColorScheme();
 
-  return mode === 'light' ? theme : darkTheme;
+  return settings.features.FEAT_DARK_MODE && mode === 'dark' ? darkTheme : theme;
 };
 
 export default theme;

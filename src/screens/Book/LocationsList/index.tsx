@@ -13,6 +13,8 @@ import LocationCard from '../../../components/Book/LocationCard';
 import { mapStyle } from '../../../utils/mapstyle';
 import theme from '../../../theme';
 
+import useSettings from '../../../hooks/useSettings';
+
 import { SingleVenueContainer } from './styles';
 
 const { height } = Dimensions.get('window');
@@ -59,6 +61,7 @@ const styles = StyleSheet.create({
 
 const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   const mode = useColorScheme();
+  const [settings] = useSettings();
   const mapRef = useRef<MapView>(null);
   const [animation] = useState(new Animated.Value(0));
   const [isModalVisible, setModalVisible] = useState(false);
@@ -142,7 +145,7 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
     <View style={styles.container}>
       <BookATableModal isModalVisible={isModalVisible} onClose={closeModal} venue={venueToBook} />
       <MapView
-        customMapStyle={mode === 'dark' ? mapStyle : undefined}
+        customMapStyle={settings.features.FEAT_DARK_MODE && mode === 'dark' ? mapStyle : undefined}
         ref={mapRef}
         region={region}
         showsUserLocation

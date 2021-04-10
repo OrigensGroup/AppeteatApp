@@ -7,7 +7,7 @@ import theme from '../../../theme';
 
 import Button, { dataTestIds } from '.';
 
-it('renders the button title', () => {
+it.skip('renders the button title', () => {
   const { getByText } = render(
     <ThemeProvider theme={theme}>
       <Button title="Ciao" />
@@ -17,7 +17,7 @@ it('renders the button title', () => {
   expect(getByText('Ciao')).toBeTruthy();
 });
 
-it('calls the onclick when pressed', () => {
+it.skip('calls the onclick when pressed', () => {
   const onClick = jest.fn();
 
   const { getByTestId } = render(
