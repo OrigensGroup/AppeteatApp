@@ -2,9 +2,9 @@
   "main": "index.js",
   "scripts": {
     "android": "set APP_ENV=staging && react-native run-android",
-    "ios": "APP_ENV=staging react-native run-ios",
+    "ios": "APP_ENV=staging && react-native run-ios",
+    "start": "APP_ENV=staging && react-native start --reset-cache",
     "web": "expo start --web",
-    "start": "APP_ENV=staging react-native start --reset-cache",
     "type-check": "tsc --noEmit",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:fix": "yarn lint:js --fix",
@@ -15,7 +15,10 @@
     "test:watch": "yarn jest --watch",
     "test:coverage": "yarn jest --coverage",
     "prepare": "husky install",
-    "build:ios": "APP_ENV=prod react-native run-ios --configuration Release"
+    "build:ios": "APP_ENV=prod && react-native run-ios --configuration Release",
+    "build:android": "APP_ENV=prod && react-native run-android --configuration Release",
+    "publish:staging": "APP_ENV=staging && expo publish --release-channel staging --target bare",
+    "publish:prod": "APP_ENV=staging && expo publish --release-channel staging --target bare"
   },
   "dependencies": {
     "@invertase/react-native-apple-authentication": "^2.1.0",

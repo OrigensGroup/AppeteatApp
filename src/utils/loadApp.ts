@@ -1,4 +1,5 @@
 import crashlytics from '@react-native-firebase/crashlytics';
+import * as Updates from 'expo-updates';
 
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
@@ -17,6 +18,13 @@ import loadBar, { barInit } from './loadBar';
 
 export const loadStuff = async () => {
   try {
+    const update = await Updates.checkForUpdateAsync();
+
+    if (update.isAvailable) {
+      await Updates.fetchUpdateAsync();
+      await Updates.reloadAsync();
+    }
+
     Settings.initializeSDK();
 
     stripe.setOptions({
