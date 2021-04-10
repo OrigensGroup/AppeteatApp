@@ -23,7 +23,7 @@ import { Tab } from '../../../types/Tab';
 
 import { Promotion } from '../../../types/Promotion';
 
-import { SafeAreaViewBottom, MenuWrapper } from './styles';
+import { SafeAreaViewBottom } from './styles';
 
 interface MenuProps {}
 
@@ -119,15 +119,13 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   return (
     <SafeAreaViewBottom>
-      <MenuWrapper>
-        <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
-        <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
-        <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
-          {menuTabsContent()}
-        </Swiper>
-        {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
-        <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
-      </MenuWrapper>
+      <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
+      <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
+      <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
+      <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
+        {menuTabsContent()}
+      </Swiper>
+      {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
     </SafeAreaViewBottom>
   );
 };

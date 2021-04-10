@@ -18,11 +18,13 @@ import loadBar, { barInit } from './loadBar';
 
 export const loadStuff = async () => {
   try {
-    const update = await Updates.checkForUpdateAsync();
+    if (!__DEV__) {
+      const update = await Updates.checkForUpdateAsync();
 
-    if (update.isAvailable) {
-      await Updates.fetchUpdateAsync();
-      await Updates.reloadAsync();
+      if (update.isAvailable) {
+        await Updates.fetchUpdateAsync();
+        await Updates.reloadAsync();
+      }
     }
 
     Settings.initializeSDK();
