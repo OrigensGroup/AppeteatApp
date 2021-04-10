@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Platform } from 'react-native';
+import React, { useCallback, useState } from 'react';
 import Modal from 'react-native-modal';
-import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
+import { Picker as OptionPicker } from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { useTheme } from 'styled-components';
@@ -11,11 +10,12 @@ import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 import Picker from '../../../Book/Picker';
 
-import { minutes } from '../../../../translations/book';
-
 import cartTranslations from '../../../../translations/cart';
 
 import { CheckoutServices } from '../../../../types/Checkout';
+
+import useOrders from '../../../../hooks/useOrders';
+import { dateToOption, isAllowedToOrder } from '../../../../utils/orderDateUtils';
 
 import { PopUpContainer, TakeAwayModalHeader, TakeAwayTextfieldContainer, PickerContainer } from './styles';
 
@@ -35,28 +35,39 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
   value,
 }) => {
   const theme = useTheme();
-  const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState<'date' | 'time' | undefined>('date');
+  const [orders] = useOrders();
   const [show, setShow] = useState(false);
+  const [selectedTimeFrame, setSelectedTimeFrame] = useState(value.orderTime);
 
-  const showMode = (currentMode: 'date' | 'time' | undefined) => {
+  const showMode = () => {
     setShow(true);
-    setMode(currentMode);
-  };
-
-  const onChange = (_: Event, selectedDate: Date | undefined) => {
-    setShow(Platform.OS === 'ios');
-    selectedDate && setDate(selectedDate);
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
   };
 
   const closeModal = () => {
     setShow(false);
     onClose();
   };
+
+  const optionsToShow = useCallback(() => {
+    const ordersPerSection = 10;
+    const orderTimeFrame = 1000 * 60 * 30;
+    let orderStart = new Date();
+    const orderFinish = new Date();
+    orderFinish.setHours(23, 59, 59, 999);
+    const orderSections = [];
+
+    while (orderStart < orderFinish) {
+      const orderTime = dateToOption(orderStart, orderTimeFrame);
+
+      if (isAllowedToOrder(orders.list, orderTime, ordersPerSection)) {
+        orderSections.push(<OptionPicker.Item key={orderTime} label={orderTime} value={orderTime} />);
+      }
+
+      orderStart = new Date(orderStart.getTime() + orderTimeFrame);
+    }
+
+    return orderSections;
+  }, [orders]);
 
   return (
     <Modal
@@ -81,41 +92,33 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
           <PickerContainer>
             <Picker
               icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
-              onPress={showTimepicker}
-              textValue={
-                date.getHours() > 11
-                  ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
-                  : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
-              }
-              title="Pick up time"
+              onPress={showMode}
+              textValue={selectedTimeFrame}
+              title={cartTranslations.checkoutPage.takeAwayModal.orderTime}
             />
           </PickerContainer>
           {show && (
-            <DateTimePicker
-              display="spinner"
-              minimumDate={new Date()}
-              minuteInterval={15}
-              mode={mode}
-              onChange={(_, sele) => {
-                onChange(_, sele);
-                handleChange('orderTime')(sele?.toString() ?? '');
+            <OptionPicker
+              onValueChange={(itemValue) => {
+                handleChange('orderTime')(itemValue);
+                setSelectedTimeFrame(itemValue);
               }}
-              style={{ flex: 1 }}
-              testID="dateTimePicker"
-              value={date}
-            />
+              selectedValue={selectedTimeFrame}
+            >
+              {optionsToShow()}
+            </OptionPicker>
           )}
           <LoginTextField
             defaultValue={value.phoneNumber}
-            placeholder="Insert phone number"
-            textContentType="none"
+            placeholder={cartTranslations.checkoutPage.takeAwayModal.telephone}
+            textContentType="telephoneNumber"
             updateValue={handleChange('phoneNumber')}
           />
           {delivery && (
             <LoginTextField
               defaultValue={value.address}
-              placeholder="i.e. 2 Oriens Mews"
-              textContentType="none"
+              placeholder={cartTranslations.checkoutPage.takeAwayModal.address}
+              textContentType="fullStreetAddress"
               updateValue={handleChange('address')}
             />
           )}

@@ -1,32 +1,22 @@
 import React, { useState } from 'react';
+import type { TextInputProps } from 'react-native';
 import { useTheme } from 'styled-components';
 
 import Text from '../Text';
 
 import { TextFieldContainer, TextFieldInput, ErrorContainer, Container } from './styles';
 
-interface LoginTextFieldProps {
-  placeholder?: string;
-  textContentType: 'emailAddress' | 'password' | 'none';
+interface LoginTextFieldProps extends TextInputProps {
   updateValue?: (value: string) => void;
-  maxLength?: number;
-  defaultValue?: string;
   error?: string | null;
 }
 
-const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
-  defaultValue,
-  error,
-  maxLength,
-  placeholder,
-  textContentType,
-  updateValue,
-}) => {
-  const [text, setText] = useState<string>(defaultValue ?? '');
+const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ error, updateValue, ...rest }) => {
+  const [text, setText] = useState<string>(rest.defaultValue ?? '');
   const theme = useTheme();
 
   const updateText = (text: string) => {
-    const textToUpdate = textContentType === 'password' ? text.replace(/\s/g, '').trim() : text;
+    const textToUpdate = rest.textContentType === 'password' ? text.replace(/\s/g, '').trim() : text;
     setText(textToUpdate);
     if (updateValue) updateValue(textToUpdate);
   };
@@ -36,12 +26,10 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({
       <TextFieldContainer>
         <TextFieldInput
           autoCapitalize="none"
-          maxLength={maxLength}
           onChangeText={updateText}
-          placeholder={placeholder}
           placeholderTextColor={theme.colors.border}
-          secureTextEntry={textContentType === 'password'}
-          textContentType={textContentType}
+          secureTextEntry={rest.textContentType === 'password'}
+          {...rest}
           value={text}
         />
       </TextFieldContainer>

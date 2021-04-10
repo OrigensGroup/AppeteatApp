@@ -79,7 +79,11 @@ export const makeNativePayment = async (
 
     return res;
   } catch (e) {
-    console.log('New error', e);
-    return e;
+    return {
+      paymentRes: {
+        type: 'NativeError',
+        message: e.message,
+      },
+    };
   }
 };

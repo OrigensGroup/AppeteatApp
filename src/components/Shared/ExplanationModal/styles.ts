@@ -44,6 +44,7 @@ export const ModalDescription = styled.View`
 
 export const ModalInput = styled.View`
   flex: 1;
+  margin-right: ${({ theme }) => theme.spacing.double};
 `;
 
 export const SumbmitButtonWrapper = styled.View`

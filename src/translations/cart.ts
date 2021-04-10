@@ -33,12 +33,14 @@ const cartTranslations = {
     },
     deliveryModal: {
       title: 'Delivery information',
-      cta: 'Confirm',
     },
 
     takeAwayModal: {
       title: 'Take away information',
       cta: 'Confirm',
+      telephone: 'Insert phone number',
+      address: 'i.e. 2 Oriens Mews',
+      orderTime: 'Pick up time',
     },
     delivery: {
       title: 'Insert delivery deatils',

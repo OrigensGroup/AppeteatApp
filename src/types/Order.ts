@@ -11,4 +11,5 @@ export interface Order {
   orderedItems: OrderItem[];
   pricing: Pricing;
   day: string;
+  orderTime?: string;
 }

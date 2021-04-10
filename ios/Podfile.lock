@@ -696,6 +696,8 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
+  - RNCPicker (1.14.0):
+    - React-Core
   - RNDateTimePicker (3.0.9):
     - React-Core
   - RNFastImage (8.3.4):
@@ -842,6 +844,7 @@ DEPENDENCIES:
   - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
   - "RNCCheckbox (from `../node_modules/@react-native-community/checkbox`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
@@ -1001,6 +1004,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/checkbox"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNCPicker:
+    :path: "../node_modules/@react-native-picker/picker"
   RNDateTimePicker:
     :path: "../node_modules/@react-native-community/datetimepicker"
   RNFastImage:
@@ -1132,6 +1137,7 @@ SPEC CHECKSUMS:
   RNAppleAuthentication: 46cbc67739bae83ca229497f9b0038f3f5431443
   RNCCheckbox: d1749e6a92178ce5dbc31e63becd1f34f0c76bbd
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNCPicker: 1a266981fc99330c252f5f98b3f09a377a35d88c
   RNDateTimePicker: 8a51a2216c307769e69ef827293d59549ab1ca23
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNFBAnalytics: b924aec7a5b8289dbc4f3a961c3222cd7705f236

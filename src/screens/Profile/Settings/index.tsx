@@ -114,12 +114,10 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       }
 
       if (e.code === 'auth/email-already-in-use') {
-        console.log('Already used');
         return;
       }
 
       if (e.code === 'auth/invalid-email ') {
-        console.log('Invalid email');
         return;
       }
     }

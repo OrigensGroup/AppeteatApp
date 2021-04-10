@@ -88,8 +88,6 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
 
     setLoadingPayment(false);
 
-    console.log('Payment res', paymentRes);
-
     if (paymentRes.paymentRes.type === 'Charge') {
       checkoutService.paymentOption === 'native' && stripe.completeNativePayRequest();
 
