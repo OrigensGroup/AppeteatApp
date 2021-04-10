@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="uk.co.origens.testing">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="uk.co.appeteat.elisir">
   <!-- OPTIONAL PERMISSIONS, REMOVE WHATEVER YOU DO NOT NEED -->
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -48,7 +48,7 @@
   <meta-data
     android:name="com.google.android.geo.API_KEY"
     android:value="${mapsApiKey}" />
-    <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@origens/origens-testing" />
+    <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@origens/elisir" />
     <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="40.0.0" />
     <meta-data
           android:name="expo.modules.updates.ENABLED"
@@ -59,7 +59,7 @@
     <meta-data
           android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS"
           android:value="0"/>
-    <meta-data android:name="expo.modules.updates.EXPO_RELEASE_CHANNEL" android:value="staging" />
+    <meta-data android:name="expo.modules.updates.EXPO_RELEASE_CHANNEL" android:value="prod" />
     <activity
       android:name=".MainActivity"
       android:label="@string/app_name"

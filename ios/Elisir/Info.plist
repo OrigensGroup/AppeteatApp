@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>OrigensTesting</string>
+	<string>Elisir</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,7 +35,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.920158940222-1g4qse554nvga2alid2nhvc2uh0iil3v</string>
+				<string>com.googleusercontent.apps.67347102756-nf768g2j19spv8rsa26r9kqhhctobljr</string>
 			</array>
 		</dict>
 	</array>

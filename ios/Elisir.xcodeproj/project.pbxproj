@@ -12,7 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		75D10E0B9802B975FF4CC075 /* libPods-OrigensTesting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D289BD93D08748A5493C81 /* libPods-OrigensTesting.a */; };
+		75D10E0B9802B975FF4CC075 /* libPods-Elisir.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D289BD93D08748A5493C81 /* libPods-Elisir.a */; };
 		9691277325E44DCA0076F6C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9691277225E44DCA0076F6C6 /* GoogleService-Info.plist */; };
 		969B844C25F42AAD004411F5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969B844B25F42AAD004411F5 /* File.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
@@ -20,22 +20,22 @@
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* OrigensTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrigensTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = OrigensTesting/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = OrigensTesting/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Elisir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elisir.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Elisir/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Elisir/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OrigensTesting/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = OrigensTesting/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = OrigensTesting/main.m; sourceTree = "<group>"; };
-		16BDC228C1B2DE2FE1F4B43E /* Pods-OrigensTesting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrigensTesting.release.xcconfig"; path = "Target Support Files/Pods-OrigensTesting/Pods-OrigensTesting.release.xcconfig"; sourceTree = "<group>"; };
-		7BB196018DCBCECED5806E83 /* Pods-OrigensTesting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrigensTesting.debug.xcconfig"; path = "Target Support Files/Pods-OrigensTesting/Pods-OrigensTesting.debug.xcconfig"; sourceTree = "<group>"; };
-		83D289BD93D08748A5493C81 /* libPods-OrigensTesting.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OrigensTesting.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Elisir/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Elisir/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Elisir/main.m; sourceTree = "<group>"; };
+		16BDC228C1B2DE2FE1F4B43E /* Pods-Elisir.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elisir.release.xcconfig"; path = "Target Support Files/Pods-Elisir/Pods-Elisir.release.xcconfig"; sourceTree = "<group>"; };
+		7BB196018DCBCECED5806E83 /* Pods-Elisir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elisir.debug.xcconfig"; path = "Target Support Files/Pods-Elisir/Pods-Elisir.debug.xcconfig"; sourceTree = "<group>"; };
+		83D289BD93D08748A5493C81 /* libPods-Elisir.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Elisir.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9691277225E44DCA0076F6C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		969B844A25F42AAC004411F5 /* OrigensTesting-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OrigensTesting-Bridging-Header.h"; sourceTree = "<group>"; };
+		969B844A25F42AAC004411F5 /* Elisir-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Elisir-Bridging-Header.h"; sourceTree = "<group>"; };
 		969B844B25F42AAD004411F5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		A49B78C42602A4D6009A97C5 /* OrigensTesting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = OrigensTesting.entitlements; path = OrigensTesting/OrigensTesting.entitlements; sourceTree = "<group>"; };
+		A49B78C42602A4D6009A97C5 /* Elisir.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Elisir.entitlements; path = Elisir/Elisir.entitlements; sourceTree = "<group>"; };
 		A4E44E1F260D2469000C7C67 /* libStripe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libStripe.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = OrigensTesting/SplashScreen.storyboard; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = Elisir/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -46,17 +46,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75D10E0B9802B975FF4CC075 /* libPods-OrigensTesting.a in Frameworks */,
+				75D10E0B9802B975FF4CC075 /* libPods-Elisir.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* OrigensTesting */ = {
+		13B07FAE1A68108700A75B9A /* Elisir */ = {
 			isa = PBXGroup;
 			children = (
-				A49B78C42602A4D6009A97C5 /* OrigensTesting.entitlements */,
+				A49B78C42602A4D6009A97C5 /* Elisir.entitlements */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -67,7 +67,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 			);
-			name = OrigensTesting;
+			name = Elisir;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -76,7 +76,7 @@
 				A4E44E1F260D2469000C7C67 /* libStripe.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				83D289BD93D08748A5493C81 /* libPods-OrigensTesting.a */,
+				83D289BD93D08748A5493C81 /* libPods-Elisir.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -93,12 +93,12 @@
 			children = (
 				9691277225E44DCA0076F6C6 /* GoogleService-Info.plist */,
 				969B844B25F42AAD004411F5 /* File.swift */,
-				13B07FAE1A68108700A75B9A /* OrigensTesting */,
+				13B07FAE1A68108700A75B9A /* Elisir */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
-				969B844A25F42AAC004411F5 /* OrigensTesting-Bridging-Header.h */,
+				969B844A25F42AAC004411F5 /* Elisir-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -108,7 +108,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* OrigensTesting.app */,
+				13B07F961A680F5B00A75B9A /* Elisir.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,14 +119,14 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = OrigensTesting/Supporting;
+			path = Elisir/Supporting;
 			sourceTree = "<group>";
 		};
 		D65327D7A22EEC0BE12398D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7BB196018DCBCECED5806E83 /* Pods-OrigensTesting.debug.xcconfig */,
-				16BDC228C1B2DE2FE1F4B43E /* Pods-OrigensTesting.release.xcconfig */,
+				7BB196018DCBCECED5806E83 /* Pods-Elisir.debug.xcconfig */,
+				16BDC228C1B2DE2FE1F4B43E /* Pods-Elisir.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -134,9 +134,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* OrigensTesting */ = {
+		13B07F861A680F5B00A75B9A /* Elisir */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "OrigensTesting" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Elisir" */;
 			buildPhases = (
 				8B528B71386B40D07EB063E5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -152,9 +152,9 @@
 			);
 			dependencies = (
 			);
-			name = OrigensTesting;
-			productName = OrigensTesting;
-			productReference = 13B07F961A680F5B00A75B9A /* OrigensTesting.app */;
+			name = Elisir;
+			productName = Elisir;
+			productReference = 13B07F961A680F5B00A75B9A /* Elisir.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -172,7 +172,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "OrigensTesting" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Elisir" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -185,7 +185,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* OrigensTesting */,
+				13B07F861A680F5B00A75B9A /* Elisir */,
 			);
 		};
 /* End PBXProject section */
@@ -249,7 +249,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OrigensTesting-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Elisir-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -272,7 +272,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OrigensTesting/Pods-OrigensTesting-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Elisir/Pods-Elisir-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
@@ -323,7 +323,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OrigensTesting/Pods-OrigensTesting-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Elisir/Pods-Elisir-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -367,7 +367,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = OrigensTesting;
+			path = Elisir;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -375,12 +375,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BB196018DCBCECED5806E83 /* Pods-OrigensTesting.debug.xcconfig */;
+			baseConfigurationReference = 7BB196018DCBCECED5806E83 /* Pods-Elisir.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
-				CODE_SIGN_ENTITLEMENTS = OrigensTesting/OrigensTesting.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Elisir/Elisir.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -392,7 +392,7 @@
 					"FB_SONARKIT_ENABLED=1",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = OrigensTesting/Info.plist;
+				INFOPLIST_FILE = Elisir/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.2;
@@ -401,10 +401,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.origens.testing.appeteat;
-				PRODUCT_NAME = OrigensTesting;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.appeteat.elisir;
+				PRODUCT_NAME = Elisir;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "OrigensTesting-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Elisir-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -413,19 +413,19 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16BDC228C1B2DE2FE1F4B43E /* Pods-OrigensTesting.release.xcconfig */;
+			baseConfigurationReference = 16BDC228C1B2DE2FE1F4B43E /* Pods-Elisir.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
-				CODE_SIGN_ENTITLEMENTS = OrigensTesting/OrigensTesting.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Elisir/Elisir.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9N45PGV7L3;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = OrigensTesting/Info.plist;
+				INFOPLIST_FILE = Elisir/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.2;
@@ -434,10 +434,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.origens.testing.appeteat;
-				PRODUCT_NAME = OrigensTesting;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.appeteat.elisir;
+				PRODUCT_NAME = Elisir;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "OrigensTesting-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Elisir-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -560,7 +560,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "OrigensTesting" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Elisir" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -569,7 +569,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "OrigensTesting" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Elisir" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

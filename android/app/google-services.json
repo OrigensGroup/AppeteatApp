@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "920158940222",
-    "project_id": "origenstesting",
-    "storage_bucket": "origenstesting.appspot.com"
+    "project_number": "67347102756",
+    "project_id": "elisir-37b24",
+    "storage_bucket": "elisir-37b24.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:920158940222:android:e7d3b2ff2eab53fc71756f",
+        "mobilesdk_app_id": "1:67347102756:android:5fad6d079aedd3f2362cb1",
         "android_client_info": {
-          "package_name": "uk.co.origens.testing"
+          "package_name": "uk.co.appeteat.elisir"
         }
       },
       "oauth_client": [
         {
-          "client_id": "920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com",
+          "client_id": "67347102756-7emre66q6inst9eas1n399akbo7t3dbm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCF9DUKo3tEKcWYKMKB2m5pPSF7YTNPqsI"
+          "current_key": "AIzaSyCF_1UXxHui4WLPlvfCoGlf5_K9tbakPaE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com",
+              "client_id": "67347102756-7emre66q6inst9eas1n399akbo7t3dbm.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "920158940222-1g4qse554nvga2alid2nhvc2uh0iil3v.apps.googleusercontent.com",
+              "client_id": "67347102756-nf768g2j19spv8rsa26r9kqhhctobljr.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "uk.co.origens.testing"
+                "bundle_id": "uk-co.appeteat.elisir"
               }
             }
           ]

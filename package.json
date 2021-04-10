@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "scripts": {
-    "android": "set APP_ENV=staging react-native run-android",
+    "android": "APP_ENV=staging react-native run-android",
     "ios": "APP_ENV=staging react-native run-ios",
     "start": "APP_ENV=staging react-native start --reset-cache",
     "web": "expo start --web",

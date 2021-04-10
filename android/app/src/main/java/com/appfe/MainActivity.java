@@ -1,4 +1,4 @@
-package uk.co.origens.testing;
+package uk.co.appeteat.elisir;
 
 import android.os.Bundle;
 

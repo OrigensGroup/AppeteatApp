@@ -1,18 +1,18 @@
 {
-  "name": "origens-testing",
-  "displayName": "Origens Testing",
+  "name": "elisir",
+  "displayName": "Elisir",
   "expo": {
     "sdkVersion": "40.0.0",
     "owner": "origens",
-    "name": "Origens Testing",
-    "slug": "origens-testing",
+    "name": "Elisir",
+    "slug": "elisir",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "android": {
       "useNextNotificationsApi": true
     },
     "ios": {
-      "bundleIdentifier": "uk.co.origens.testing.appeteat"
+      "bundleIdentifier": "uk.co.appeteat.elisir"
     },
     "updates": {
       "enabled": true,
