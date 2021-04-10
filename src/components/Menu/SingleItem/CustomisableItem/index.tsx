@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { useTheme } from 'styled-components';
-
 import type { MenuItem } from '../../../../types/MenuItem';
 import type { Discount } from '../../../../types/DiscountRules';
 
@@ -28,8 +26,6 @@ const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
 const MarginBottomWithFlag = withFeatureFlag(MarginBottom, 'FEAT_ORDERING');
 
 const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ discount, item }) => {
-  const theme = useTheme();
-
   const [modalData, setModalData] = useState({
     show: false,
     title: 'Customise Item',
@@ -54,7 +50,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
         isVisible={modalData.show}
         onClose={closeModal}
         placeholder={menuTranslations.singleItemPage.customise.placeholder}
-        placeholderTextColor={theme.colors.border}
+        showInput
         title={modalData.title}
         updateValue={updateValue}
       />

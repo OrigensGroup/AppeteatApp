@@ -11,9 +11,4 @@ export interface Order {
   orderedItems: OrderItem[];
   pricing: Pricing;
   day: string;
-  deliveryAddress: string;
-  city: string;
-  postcode?: string;
-  orderTime: number;
-  phoneNumber: string;
 }

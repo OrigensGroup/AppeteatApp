@@ -28,7 +28,6 @@ interface ReAuthModalProps {
   onClose: () => void;
   title: string;
   description?: string;
-  placeholderTextColor?: string;
   placeholder?: string;
   passwordPlaceholder?: string;
   authResult: (result: boolean) => void;
@@ -40,7 +39,6 @@ const ReAuthModal: React.FunctionComponent<ReAuthModalProps> = ({
   onClose,
   passwordPlaceholder,
   placeholder,
-  placeholderTextColor,
   title,
 }) => {
   const theme = useTheme();
@@ -102,14 +100,12 @@ const ReAuthModal: React.FunctionComponent<ReAuthModalProps> = ({
                   defaultValue={values.email}
                   maxLength={70}
                   placeholder={placeholder}
-                  placeholderTextColor={placeholderTextColor}
                   textContentType="emailAddress"
                   updateValue={handleChange('email')}
                 />
                 <LoginTextField
                   maxLength={70}
                   placeholder={passwordPlaceholder}
-                  placeholderTextColor={placeholderTextColor}
                   textContentType="password"
                   updateValue={handleChange('password')}
                 />

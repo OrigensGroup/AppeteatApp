@@ -12,7 +12,7 @@ interface ValueItemProps {
   value?: number;
   icon: string;
   onItemClick?: () => void;
-  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary';
+  color: 'primary' | 'secondary' | 'tertiary' | 'quartiary' | 'errorColor';
 }
 
 const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, icon, onItemClick, title, value }) => {

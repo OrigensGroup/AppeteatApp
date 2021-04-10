@@ -17,14 +17,16 @@ import {
   EmptyDiv,
   CloseIconWrapper,
   SumbmitButtonWrapper,
+  ModalInput,
 } from './styles';
 
 interface ExplanationModalProps {
+  value?: string;
   isVisible: boolean;
   onClose: () => void;
   title: string;
   description?: string;
-  placeholderTextColor?: string;
+  showInput?: boolean;
   placeholder?: string;
   updateValue?: (t: string) => void;
 }
@@ -34,9 +36,10 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
   isVisible,
   onClose,
   placeholder,
-  placeholderTextColor,
+  showInput,
   title,
   updateValue,
+  value,
 }) => {
   const theme = useTheme();
 
@@ -54,7 +57,7 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
             <IconButton color={theme.colors.fixedBlack} iconName="ios-close" onClick={onClose} size={28} />
           </CloseIconWrapper>
         </ModalTopRow>
-        {!placeholderTextColor ? (
+        {!showInput ? (
           <ModalDescription>
             <Text color="fixedBlack" fontSize={14}>
               {description}
@@ -62,13 +65,15 @@ const ExplanationModal: React.FunctionComponent<ExplanationModalProps> = ({
           </ModalDescription>
         ) : (
           <ModalDescription>
-            <LoginTextField
-              maxLength={70}
-              placeholder={placeholder}
-              placeholderTextColor={placeholderTextColor}
-              textContentType="none"
-              updateValue={updateValue}
-            />
+            <ModalInput>
+              <LoginTextField
+                defaultValue={value}
+                maxLength={70}
+                placeholder={placeholder}
+                textContentType="none"
+                updateValue={updateValue}
+              />
+            </ModalInput>
             <SumbmitButtonWrapper>
               <IconButton color={theme.colors.border} iconName="arrow-forward-sharp" onClick={onClose} size={28} />
             </SumbmitButtonWrapper>

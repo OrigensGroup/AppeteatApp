@@ -7,8 +7,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
 
-// eslint-disable-next-line
-
 import { enableScreens } from 'react-native-screens';
 
 import { Bar } from './types/Bar';

@@ -15,9 +15,12 @@ import { minutes } from '../../../../translations/book';
 
 import cartTranslations from '../../../../translations/cart';
 
+import { CheckoutServices } from '../../../../types/Checkout';
+
 import { PopUpContainer, TakeAwayModalHeader, TakeAwayTextfieldContainer, PickerContainer } from './styles';
 
 interface TakeAwayModalProps {
+  value: CheckoutServices;
   isModalVisible: boolean;
   onClose: () => void;
   delivery?: boolean;
@@ -29,6 +32,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
   handleChange,
   isModalVisible,
   onClose,
+  value,
 }) => {
   const theme = useTheme();
   const [date, setDate] = useState(new Date());
@@ -49,13 +53,18 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
     showMode('time');
   };
 
+  const closeModal = () => {
+    setShow(false);
+    onClose();
+  };
+
   return (
     <Modal
       animationInTiming={400}
       animationOutTiming={400}
       avoidKeyboard
       isVisible={isModalVisible}
-      onBackdropPress={onClose}
+      onBackdropPress={closeModal}
       style={{
         margin: 0,
       }}
@@ -68,80 +77,51 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
               : cartTranslations.checkoutPage.takeAwayModal.title}
           </Text>
         </TakeAwayModalHeader>
-
-        {delivery ? (
-          <TakeAwayTextfieldContainer>
+        <TakeAwayTextfieldContainer>
+          <PickerContainer>
+            <Picker
+              icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
+              onPress={showTimepicker}
+              textValue={
+                date.getHours() > 11
+                  ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
+                  : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
+              }
+              title="Pick up time"
+            />
+          </PickerContainer>
+          {show && (
+            <DateTimePicker
+              display="spinner"
+              minimumDate={new Date()}
+              minuteInterval={15}
+              mode={mode}
+              onChange={(_, sele) => {
+                onChange(_, sele);
+                handleChange('orderTime')(sele?.toString() ?? '');
+              }}
+              style={{ flex: 1 }}
+              testID="dateTimePicker"
+              value={date}
+            />
+          )}
+          <LoginTextField
+            defaultValue={value.phoneNumber}
+            placeholder="Insert phone number"
+            textContentType="none"
+            updateValue={handleChange('phoneNumber')}
+          />
+          {delivery && (
             <LoginTextField
+              defaultValue={value.address}
               placeholder="i.e. 2 Oriens Mews"
               textContentType="none"
-              updateValue={handleChange('deliveryAddress')}
+              updateValue={handleChange('address')}
             />
-            <LoginTextField placeholder="Insert city" textContentType="none" updateValue={handleChange('city')} />
-            <LoginTextField
-              placeholder="Insert phone number"
-              textContentType="none"
-              updateValue={handleChange('phoneNumber')}
-            />
-            <PickerContainer>
-              <Picker
-                icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
-                onPress={showTimepicker}
-                textValue={
-                  date.getHours() > 11
-                    ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
-                    : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
-                }
-                title="Delivery Time"
-              />
-            </PickerContainer>
-            {show && (
-              <DateTimePicker
-                display="spinner"
-                minimumDate={new Date()}
-                minuteInterval={15}
-                mode={mode}
-                onChange={onChange}
-                style={{ flex: 1 }}
-                testID="dateTimePicker"
-                value={date}
-              />
-            )}
-          </TakeAwayTextfieldContainer>
-        ) : (
-          <TakeAwayTextfieldContainer>
-            <PickerContainer>
-              <Picker
-                icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
-                onPress={showTimepicker}
-                textValue={
-                  date.getHours() > 11
-                    ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
-                    : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
-                }
-                title="Pick up time"
-              />
-            </PickerContainer>
-            {show && (
-              <DateTimePicker
-                display="spinner"
-                minimumDate={new Date()}
-                minuteInterval={15}
-                mode={mode}
-                onChange={(_, sele) => handleChange('orderTime')(sele?.toString() ?? '')}
-                style={{ flex: 1 }}
-                testID="dateTimePicker"
-                value={date}
-              />
-            )}
-            <LoginTextField
-              placeholder="Insert phone number"
-              textContentType="none"
-              updateValue={handleChange('phoneNumber')}
-            />
-          </TakeAwayTextfieldContainer>
-        )}
+          )}
+        </TakeAwayTextfieldContainer>
 
-        <ViewCta onClick={onClose}>
+        <ViewCta onClick={closeModal}>
           <Text bold color="fixedWhite" fontSize={20}>
             {cartTranslations.checkoutPage.takeAwayModal.cta}
           </Text>

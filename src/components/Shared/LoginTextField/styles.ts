@@ -17,7 +17,7 @@ export const TextFieldInput = styled.TextInput`
   padding-left: ${({ theme }) => theme.spacing.single};
 `;
 export const Container = styled.View`
-  margin: ${({ theme }) => theme.spacing.single};
+  margin: ${({ theme }) => theme.spacing.single} 0;
 `;
 
 export const ErrorContainer = styled.View`

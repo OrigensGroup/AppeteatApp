@@ -3,7 +3,7 @@ import React from 'react';
 import { MainButton } from './styles';
 
 interface ViewCtaProps {
-  onClick: () => void;
+  onClick?: () => void;
   redDelete?: boolean;
 }
 

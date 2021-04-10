@@ -7,7 +7,6 @@ import { firebase } from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 
 import useUserData from '../../../../hooks/useUserData';
-import theme from '../../../../theme';
 
 import profileTranslations from '../../../../translations/profile';
 
@@ -116,21 +115,18 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
             <LoginTextField
               error={errors['password']}
               placeholder={profileTranslations.passwordPage.currentPassword}
-              placeholderTextColor={theme.colors.border}
               textContentType="password"
               updateValue={handleChange('password')}
             />
             <LoginTextField
               error={errors['newPassword']}
               placeholder={profileTranslations.passwordPage.newPassword}
-              placeholderTextColor={theme.colors.border}
               textContentType="password"
               updateValue={handleChange('newPassword')}
             />
             <LoginTextField
               error={errors['reNewPassword']}
               placeholder={profileTranslations.passwordPage.reNewPassword}
-              placeholderTextColor={theme.colors.border}
               textContentType="password"
               updateValue={handleChange('reNewPassword')}
             />

@@ -42,6 +42,10 @@ export const ModalDescription = styled.View`
   padding: 0 ${({ theme }) => theme.spacing.double};
 `;
 
+export const ModalInput = styled.View`
+  flex: 1;
+`;
+
 export const SumbmitButtonWrapper = styled.View`
   display: flex;
   flex-direction: row;

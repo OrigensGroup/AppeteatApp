@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Platform } from 'react-native';
 
-import { useTheme } from 'styled-components';
-
 import type { Card } from 'tipsi-stripe';
 
 import cartTranslations from '../../../translations/cart';
@@ -23,28 +21,61 @@ import SelectService from '../../../components/Cart/Checkout/SelectService';
 
 import TakeAwayModal from '../../../components/Cart/Checkout/TakeAwayModal';
 
+import { CheckoutServices } from '../../../types/Checkout';
+
 import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper, ItemSummarySection } from './styles';
 
 interface CheckoutProps {}
 
 const Checkout: React.FunctionComponent<CheckoutProps> = () => {
-  const theme = useTheme();
-  const [showTable, setShowTable] = useState(0);
-
-  const [takeAwayModal, setTakeAwayModal] = useState({
-    show: false,
+  const [checkoutService, setCheckoutService] = useState<CheckoutServices>({
+    type: 'eatin',
+    allergy: '',
+    paymentOption: null,
+    table: '',
   });
 
+  // START - CARD MODAL STATE
+
+  const [isCardModalVisible, setCardModalVisible] = useState(false);
+
+  const showCardModal = () => setCardModalVisible(true);
+
+  const closeCardModal = () => setCardModalVisible(false);
+
+  const onCardModalUpdate = (v: Card | 'native') => {
+    setCheckoutService((oldM) => ({ ...oldM, paymentOption: v }));
+  };
+
+  //END - CARD MODAL STATE
+  const updateModalValue = (v: string) => (t: string) => {
+    setCheckoutService((oldV) => ({
+      ...oldV,
+      [v]: t,
+    }));
+  };
+
+  const [takeAwayModal, setTakeAwayModal] = useState(false);
+
+  const [showError, setShowError] = useState(false);
+
   const showTakeAwayModal = () => {
-    setTakeAwayModal({ show: true });
+    setTakeAwayModal(true);
   };
 
   const closeTakeAwayModal = () => {
-    setTakeAwayModal({ show: false });
+    setTakeAwayModal(false);
   };
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [itemToUpdate, setItemToUpdate] = useState<OrderItem | null>(null);
+
+  const [explanationModal, setExplanationModal] = useState({
+    show: false,
+    code: '',
+    title: '',
+    placeholder: '',
+  });
 
   const toggleModal = (item: OrderItem) => () => {
     setItemToUpdate(item);
@@ -54,13 +85,6 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
   const closeModal = () => {
     setModalVisible(false);
   };
-
-  const [explanationModal, setExplanationModal] = useState({
-    show: false,
-    code: '',
-    title: '',
-    placeholder: '',
-  });
 
   const showDescriptionModal = ({
     code,
@@ -83,108 +107,77 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
     });
   };
 
-  const [cardModal, setCardModal] = useState({
-    show: false,
-    card: {} as Card | 'native',
-  });
-
-  const showCardModal = () => setCardModal((oldM) => ({ ...oldM, show: true }));
-
-  const closeCardModal = () => setCardModal((oldM) => ({ ...oldM, show: false }));
-
-  const onCardModalUpdate = (v: Card | 'native') => {
-    setCardModal((oldM) => ({ ...oldM, card: v }));
-  };
-
-  const [values, setValues] = useState({
-    table: '',
-    pickup: '',
-    delivery: '',
-    allergy: '',
-    voucher: '',
-    deliveryAddress: '',
-    city: '',
-    phoneNumber: '',
-    orderTime: 0,
-  });
-
-  const updateModalValue = (v: string) => (t: string) => {
-    console.log('Update values', v, t);
-
-    setValues((oldV) => ({
-      ...oldV,
-      [v]: t,
-    }));
-  };
-
-  const change = (v: string) => (t: string) => {
-    console.log(v, t);
-  };
-
   return (
     <CheckoutContainer>
       <TakeAwayModal
-        delivery={showTable === 2}
-        handleChange={change}
-        isModalVisible={takeAwayModal.show}
+        delivery={checkoutService.type === 'delivery'}
+        handleChange={updateModalValue}
+        isModalVisible={takeAwayModal}
         onClose={closeTakeAwayModal}
+        value={checkoutService}
       />
       <UpdateModal isModalVisible={isModalVisible} item={itemToUpdate} onClose={closeModal} />
-      <CardModal isModalVisible={cardModal.show} onCardUpdate={onCardModalUpdate} onClose={closeCardModal} />
+      <CardModal isModalVisible={isCardModalVisible} onCardUpdate={onCardModalUpdate} onClose={closeCardModal} />
       <ExplanationModal
         isVisible={explanationModal.show}
         onClose={closeExplanationModal}
         placeholder={explanationModal.placeholder}
-        placeholderTextColor={theme.colors.border}
+        showInput
         title={explanationModal.title}
         updateValue={updateModalValue(explanationModal.code)}
+        value={checkoutService[explanationModal.code]}
       />
       <TopBar back="MenuList" hideFilter title={cartTranslations.checkoutPage.title} />
       <CheckoutSwiper>
         <ItemSummarySection>
           <ItemSummary onUpdate={toggleModal} />
         </ItemSummarySection>
-        <SelectService setShowTable={setShowTable} />
+        <SelectService selectService={setCheckoutService} />
         <CheckoutSummarySection>
-          {showTable === 0 && (
+          {checkoutService.type === 'eatin' && (
             <ValueItem
-              color="primary"
+              color={showError && checkoutService.table === '' ? 'errorColor' : 'primary'}
               icon="location-outline"
               onItemClick={showDescriptionModal({
                 title: cartTranslations.checkoutPage.tableNumber.label,
                 placeholder: cartTranslations.checkoutPage.tableNumber.placeholder,
                 code: 'table',
               })}
-              title={values.table ? values.table : cartTranslations.checkoutPage.tableNumber.title}
+              title={checkoutService.table ? checkoutService.table : cartTranslations.checkoutPage.tableNumber.title}
             />
           )}
-          {showTable === 1 && (
+          {checkoutService.type === 'takeaway' && (
             <ValueItem
-              color="primary"
+              color={showError && checkoutService.orderTime === '' ? 'errorColor' : 'primary'}
               icon="location-outline"
               onItemClick={showTakeAwayModal}
-              title={values.pickup ? values.pickup : cartTranslations.checkoutPage.takeAway.title}
+              title={
+                checkoutService.orderTime ? checkoutService.orderTime : cartTranslations.checkoutPage.takeAway.title
+              }
             />
           )}
-          {showTable === 2 && (
+          {checkoutService.type === 'delivery' && (
             <ValueItem
-              color="primary"
+              color={showError && checkoutService.address === '' ? 'errorColor' : 'primary'}
               icon="location-outline"
               onItemClick={showTakeAwayModal}
-              title={values.delivery ? values.delivery : cartTranslations.checkoutPage.delivery.title}
+              title={checkoutService.address ? checkoutService.address : cartTranslations.checkoutPage.delivery.title}
             />
           )}
           <ValueItem
-            color="primary"
+            color={showError && checkoutService.paymentOption === null ? 'errorColor' : 'primary'}
             icon="ios-card"
             onItemClick={showCardModal}
             title={
-              cardModal.card === 'native'
+              checkoutService.paymentOption === 'native'
                 ? Platform.OS === 'ios'
                   ? cartTranslations.checkoutPage.paymentMethod.nativeApplePay
                   : cartTranslations.checkoutPage.paymentMethod.nativeGooglePay
-                : Object.keys(cardModal.card).length !== 0
-                ? cartTranslations.checkoutPage.paymentMethod.cardPrefix + cardModal.card.number.substr(-4, 4)
+                : checkoutService.paymentOption === null
+                ? cartTranslations.checkoutPage.paymentMethod.title
+                : Object.keys(checkoutService.paymentOption).length !== 0
+                ? cartTranslations.checkoutPage.paymentMethod.cardPrefix +
+                  checkoutService.paymentOption.number.substr(-4, 4)
                 : cartTranslations.checkoutPage.paymentMethod.title
             }
           />
@@ -196,12 +189,16 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
               placeholder: cartTranslations.checkoutPage.commentAndAllergies.placeholder,
               code: 'allergy',
             })}
-            title={values.allergy ? values.allergy : cartTranslations.checkoutPage.commentAndAllergies.title}
+            title={
+              checkoutService.allergy
+                ? checkoutService.allergy
+                : cartTranslations.checkoutPage.commentAndAllergies.title
+            }
           />
           <TotalSection />
         </CheckoutSummarySection>
       </CheckoutSwiper>
-      <FinaliseOrder paymentOption={cardModal.card} values={values} />
+      <FinaliseOrder checkoutService={checkoutService} onPaymentError={setShowError} />
     </CheckoutContainer>
   );
 };

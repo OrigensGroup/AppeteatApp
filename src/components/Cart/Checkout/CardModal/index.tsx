@@ -23,7 +23,7 @@ interface CardModalProps {
 }
 
 const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, onCardUpdate, onClose }) => {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(0);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(-1);
 
   const [cardStatus, setCardStatus] = useState<CardInput>({
     status: {
