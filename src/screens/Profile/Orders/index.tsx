@@ -20,7 +20,12 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
     <OrdersContainer>
       <TopBar back="back" hideFilter title={profileTranslations.ordersPage.title} />
       <OrdersList>
-        <FlatList data={userData.orders} horizontal={false} renderItem={renderItem} />
+        <FlatList
+          data={userData.orders}
+          horizontal={false}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
       </OrdersList>
     </OrdersContainer>
   );

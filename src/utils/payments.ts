@@ -7,7 +7,7 @@ import { CONNECTED_ACCOUNT_ID, CURRENCY, FEE, API_URL, APPLE_CURRENCY } from '@e
 import type { Payment } from '../types/Payment';
 
 type PaymentStatus = {
-  paymentRes: Charge | GeneratedErrors;
+  paymentRes: Charge | GeneratedErrors | { type: 'NativeError'; message: string };
 };
 
 const payToApi = async (payment: Payment): Promise<PaymentStatus> => {
@@ -43,7 +43,12 @@ export const makeCardPayment = async (
 
     return res;
   } catch (e) {
-    return e;
+    return {
+      paymentRes: {
+        type: 'NativeError',
+        message: e.message,
+      },
+    };
   }
 };
 

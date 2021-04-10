@@ -27,7 +27,7 @@ const OrderDetails: React.FunctionComponent<OrderDetailsProps> = () => {
     <OrderDetailsContainer>
       <TopBar back={back} hideFilter title={cartTranslations.orderPage.title} />
       <OrderInfo order={order} />
-      <OrderStatus done={back === 'back'} />
+      <OrderStatus done={back === 'Account'} />
       <OrderItems order={order} />
       <TotalSection order={order} />
     </OrderDetailsContainer>

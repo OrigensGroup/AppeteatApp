@@ -34,8 +34,6 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
   const [loadingPayment, setLoadingPayment] = useState(false);
   // const [settings] = useSettings();
 
-  console.log('Service', checkoutService);
-
   const finaliseOrder = async () => {
     let paymentRes = null;
     setLoadingPayment(true);
@@ -90,6 +88,8 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
 
     setLoadingPayment(false);
 
+    console.log('Payment res', paymentRes);
+
     if (paymentRes.paymentRes.type === 'Charge') {
       checkoutService.paymentOption === 'native' && stripe.completeNativePayRequest();
 
@@ -115,7 +115,6 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
     } else {
       checkoutService.paymentOption === 'native' && stripe.cancelNativePayRequest();
 
-      console.log(paymentRes.paymentRes);
       Alert.alert(paymentRes.paymentRes.message);
     }
   };
@@ -124,7 +123,9 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
     <FinaliseOrderContainer>
       <ViewCta onClick={!loadingPayment ? finaliseOrder : undefined}>
         <Text bold color="fixedWhite" fontSize={14}>
-          {!loadingPayment
+          {!validateCheckoutService(checkoutService)
+            ? cartTranslations.checkoutPage.goToCheckoutCta.completeFields
+            : !loadingPayment
             ? cartTranslations.checkoutPage.goToCheckoutCta.title
             : cartTranslations.checkoutPage.goToCheckoutCta.loading}
         </Text>

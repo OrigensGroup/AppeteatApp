@@ -23,6 +23,15 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTi
 
   const navigateBack = () => {
     if (back === 'back') {
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'MenuList',
+          },
+        ],
+      });
+
       return navigation.goBack();
     }
 

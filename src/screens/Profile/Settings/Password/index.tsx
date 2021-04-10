@@ -98,8 +98,6 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
     <Formik
       initialValues={{ password: '', newPassword: '', reNewPassword: '' }}
       onSubmit={(values) => {
-        console.log(values);
-
         if (values.password !== values.newPassword && values.newPassword === values.reNewPassword) {
           updatePassword(values.password, values.newPassword, values.reNewPassword);
         } else {

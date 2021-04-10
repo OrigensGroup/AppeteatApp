@@ -81,6 +81,7 @@ const cartTranslations = {
     goToCheckoutCta: {
       title: 'Checkout',
       loading: 'Loading...',
+      completeFields: 'Complete fields',
     },
     serviceFee: {
       title: 'Service fee',
