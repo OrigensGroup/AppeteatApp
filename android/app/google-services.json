@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "67347102756-4bn8n6prthcpi3l2v9n99cv7df95pgne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.co.appeteat.elisir",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "67347102756-7emre66q6inst9eas1n399akbo7t3dbm.apps.googleusercontent.com",
           "client_type": 3
         }
