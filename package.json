@@ -21,7 +21,7 @@
     "clean:ios": "cd ios && pod cache clean --all && rm -rf build && cd ..",
     "clean:android": "cd android && ./gradlew cleanBuildCache && cd ..",
     "publish:staging": "APP_ENV=staging expo publish --release-channel staging --target bare",
-    "publish:prod": "APP_ENV=staging expo publish --release-channel staging --target bare"
+    "publish:prod": "APP_ENV=prod expo publish --release-channel prod --target bare"
   },
   "dependencies": {
     "@invertase/react-native-apple-authentication": "^2.1.0",
