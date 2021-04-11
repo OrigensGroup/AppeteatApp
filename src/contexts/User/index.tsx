@@ -11,6 +11,8 @@ import { User } from '../../types/User';
 import getUserData, { saveUserData, defaultUserdata } from '../../utils/manageUserdata';
 
 interface UserContext {
+  loggedIn: boolean;
+  setLoggedIn: (loggedIn: boolean) => void;
   user: FirebaseAuthTypes.User | null;
   userData: User;
   addNewFavoriteCocktail: (item: MenuItem) => void;
@@ -21,6 +23,8 @@ interface UserContext {
 }
 
 export const UserContext = React.createContext<UserContext>({
+  loggedIn: false,
+  setLoggedIn: () => {},
   user: null,
   userData: defaultUserdata,
   addNewFavoriteCocktail: () => {},
@@ -33,6 +37,7 @@ export const UserContext = React.createContext<UserContext>({
 interface UserProviderProps {}
 
 const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(() => auth().currentUser);
 
   // Handle user state changes
@@ -58,6 +63,11 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
     if (user) {
       const data = await getUserData(user.uid);
       setUserData(data);
+
+      if (!data.default) {
+        console.log('Logggin back in', data);
+        setLoggedIn(true);
+      }
     }
   }, [user, setUserData]);
 
@@ -72,8 +82,8 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   };
 
   useEffect(() => {
-    loadData();
-  }, [loadData]);
+    if (loggedIn) loadData();
+  }, [loadData, loggedIn]);
 
   useEffect(() => {
     saveData();
@@ -115,6 +125,8 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   return (
     <UserContext.Provider
       value={{
+        loggedIn,
+        setLoggedIn,
         user,
         userData,
         addNewFavoriteCocktail,

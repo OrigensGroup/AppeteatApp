@@ -8,7 +8,7 @@ import { Alert } from 'react-native';
 
 import { Formik } from 'formik';
 
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import ListItem from '../../../components/Profile/ListItem';
 
@@ -32,14 +32,13 @@ import { ProfileSchema } from './profileSchema';
 interface SettingsProps {}
 
 const Settings: React.FunctionComponent<SettingsProps> = () => {
-  const { reload, restoreDefault, user } = useUserData();
+  const { reload, restoreDefault, setLoggedIn, user } = useUserData();
   const [saveShow, setSaveShow] = useState(false);
   const [infoUpdatedShow, setInfoUpdatedShow] = useState(false);
   const [authResult, setAuthResult] = useState(false);
   const [changedEmail, setChangedEmail] = useState('');
   const autoHide = useRef<NodeJS.Timeout>();
   const navigation = useNavigation();
-  const theme = useTheme();
 
   const [modalData, setModalData] = useState({
     show: false,
@@ -68,6 +67,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
           text: profileTranslations.settingsPage.yes,
           onPress: async () => {
             await auth().signOut();
+            setLoggedIn(false);
             restoreDefault();
           },
         },
@@ -173,7 +173,6 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
                 onClose={closeModal}
                 passwordPlaceholder={loginTranslations.passwordField.placeholder}
                 placeholder={loginTranslations.emailField.placeholder}
-                placeholderTextColor={theme.colors.border}
                 title={modalData.title}
               />
               {infoUpdatedShow && (

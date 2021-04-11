@@ -227,6 +227,8 @@ PODS:
   - BVLinearGradient (2.5.6):
     - React
   - DoubleConversion (1.1.6)
+  - EXAppleAuthentication (3.0.0):
+    - UMCore
   - EXApplication (3.0.0):
     - UMCore
   - EXConstants (10.0.1):
@@ -795,6 +797,7 @@ PODS:
 DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - EXAppleAuthentication (from `../node_modules/expo-apple-authentication/ios`)
   - EXApplication (from `../node_modules/expo-notifications/node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
@@ -912,6 +915,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EXAppleAuthentication:
+    :path: "../node_modules/expo-apple-authentication/ios"
   EXApplication:
     :path: "../node_modules/expo-notifications/node_modules/expo-application/ios"
   EXConstants:
@@ -1068,6 +1073,7 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   DoubleConversion: cde416483dac037923206447da6e1454df403714
+  EXAppleAuthentication: f808549b4f641a2915b1c892b4b21b77f5998e8b
   EXApplication: e3a06b6d81f94e526f029a57b2121d6cde044004
   EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
   EXErrorRecovery: b46af4b91e2b4ec598ab1fa51d2cf088aaf5511f

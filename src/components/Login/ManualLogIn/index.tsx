@@ -15,6 +15,8 @@ import LogInButton from '../Buttons/LogInButton';
 
 import loginTranslations from '../../../translations/login';
 
+import useUserData from '../../../hooks/useUserData';
+
 import { LoginSchema } from './loginSchema';
 
 import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
@@ -27,6 +29,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
   const theme = useTheme();
 
   const [loading, setLoading] = useState(false);
+  const { setLoggedIn } = useUserData();
 
   const register = () => {
     changeModule('register');
@@ -44,6 +47,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         setLoading(false);
+        setLoggedIn(true);
       })
       .catch((error) => {
         setLoading(false);

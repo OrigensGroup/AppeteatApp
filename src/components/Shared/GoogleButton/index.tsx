@@ -6,10 +6,15 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import initUserData from '../../../utils/manageUserdata';
 
+import useUserData from '../../../hooks/useUserData';
+
 import { ButtonContainer, GoogleImage } from './styles';
 
+// eslint-disable-next-line
+import { GOOGLE_WEBCLIENT_ID } from '@env';
+
 GoogleSignin.configure({
-  webClientId: '920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com',
+  webClientId: GOOGLE_WEBCLIENT_ID,
 });
 
 interface GoogleButtonProps {
@@ -17,6 +22,8 @@ interface GoogleButtonProps {
 }
 
 const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ setLoading }) => {
+  const { setLoggedIn } = useUserData();
+
   async function onGoogleButtonPress() {
     crashlytics().log('Google log in attempt.');
     // Get the users ID token
@@ -29,12 +36,13 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ setLoading }
     // Sign-in the user with the credential
     auth()
       .signInWithCredential(googleCredential)
-      .then(() => {
+      .then(async () => {
         setLoading(false);
         const user = auth().currentUser;
 
         if (user) {
-          initUserData(user.uid);
+          await initUserData(user.uid);
+          setLoggedIn(true);
         } else {
           crashlytics().log("Couldn't setup user db");
         }

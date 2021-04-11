@@ -6,6 +6,8 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import initUserData from '../../../utils/manageUserdata';
 
+import useUserData from '../../../hooks/useUserData';
+
 import { ButtonContainer } from './styles';
 
 interface FacebookButtonProps {
@@ -13,6 +15,8 @@ interface FacebookButtonProps {
 }
 
 const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ setLoading }) => {
+  const { setLoggedIn } = useUserData();
+
   async function onFacebookButtonPress() {
     crashlytics().log('Facebook log in attempt.');
     // Attempt login with permissions
@@ -39,12 +43,13 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ setLoadi
     // Sign-in the user with the credential
     auth()
       .signInWithCredential(facebookCredential)
-      .then(() => {
+      .then(async () => {
         setLoading(false);
         const user = auth().currentUser;
 
         if (user) {
-          initUserData(user.uid);
+          await initUserData(user.uid);
+          setLoggedIn(true);
         } else {
           crashlytics().log("Couldn't setup user db");
         }

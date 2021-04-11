@@ -15,6 +15,8 @@ import loginTranslations from '../../../translations/login';
 
 import { initUserData } from '../../../utils/manageUserdata';
 
+import useUserData from '../../../hooks/useUserData';
+
 import { RegisterSchema } from './registerSchema';
 
 import {
@@ -34,6 +36,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
   const theme = useTheme();
 
   const [loading, setLoading] = useState(false);
+  const { setLoggedIn } = useUserData();
 
   const login = () => {
     changeModule('login');
@@ -45,17 +48,19 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
 
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(async () => {
         const user = auth().currentUser;
 
         if (user) {
-          initUserData(user.uid);
+          await initUserData(user.uid);
 
-          !user.emailVerified && user.sendEmailVerification();
+          !user.emailVerified && (await user.sendEmailVerification());
 
-          user.updateProfile({
+          await user.updateProfile({
             displayName: username,
           });
+
+          setLoggedIn(true);
         } else {
           crashlytics().log("Couldn't setup user");
         }
