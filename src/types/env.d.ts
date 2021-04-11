@@ -5,4 +5,5 @@ declare module '@env' {
   export const FEE: number;
   export const CURRENCY: 'gbp' | 'euro';
   export const APPLE_CURRENCY: 'GBP';
+  export const EXPERIENCE: string;
 }

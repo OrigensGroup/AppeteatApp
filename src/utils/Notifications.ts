@@ -2,6 +2,9 @@ import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import { Platform, Alert } from 'react-native';
 
+// eslint-disable-next-line
+import { EXPERIENCE } from '@env';
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -16,7 +19,7 @@ export const schedulePushNotification = async (request: Notifications.Notificati
 
 export const registerForPushNotificationsAsync = async () => {
   let token = '';
-  const experienceId = Constants.manifest.experienceId;
+  const experienceId = EXPERIENCE;
 
   if (Constants.isDevice) {
     const { status: existingStatus } = await Notifications.getPermissionsAsync();
