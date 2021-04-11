@@ -33,8 +33,6 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
   const navigation = useNavigation();
 
   const updatePassword = async (currentPassword: string, newPassword: string, reNewPassword: string) => {
-    console.log(infoUpdatedShow);
-
     if (currentPassword !== newPassword && newPassword === reNewPassword) {
       if (user && user.email !== null) {
         const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);

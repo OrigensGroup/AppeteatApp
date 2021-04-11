@@ -65,7 +65,6 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
       setUserData(data);
 
       if (!data.default) {
-        console.log('Logggin back in', data);
         setLoggedIn(true);
       }
     }
