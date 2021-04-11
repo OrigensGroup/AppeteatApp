@@ -1,9 +1,9 @@
 const bookTranslations = {
   locationsListPage: {
     bookATableModal: {
-      spinner: 'No of member',
-      cta: 'BOOK A TABLE',
-      confirm: 'Confirm Booking',
+      spinner: 'No di membri',
+      cta: 'Prenota',
+      confirm: 'Conferma prenotazione',
     },
   },
 };
@@ -13,18 +13,18 @@ type IndexableObject = {
 };
 
 export const months: IndexableObject = {
-  0: 'January',
-  1: 'February',
-  2: 'March',
-  3: 'April',
-  4: 'May',
-  5: 'June',
-  6: 'July',
-  7: 'August',
-  8: 'September',
-  9: 'October',
-  10: 'November',
-  11: 'December',
+  0: 'Gennaio',
+  1: 'Febbraio',
+  2: 'Marzo',
+  3: 'Aprile',
+  4: 'Maggio',
+  5: 'Giugno',
+  6: 'Loglio',
+  7: 'Agosto',
+  8: 'Settembre',
+  9: 'Ottobre',
+  10: 'Novembre',
+  11: 'Dicembre',
 };
 
 export const minutes: IndexableObject = {

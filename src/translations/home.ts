@@ -1,11 +1,11 @@
 const homeTranslations = {
   homePage: {
     showLocations: {
-      cta: 'Find us!',
+      cta: 'Trovaci!',
     },
     happyHourCard: {
-      hourDigit: 'Hours',
-      minutesDigit: 'Minutes',
+      hourDigit: 'Ore',
+      minutesDigit: 'Minuti',
     },
   },
 };

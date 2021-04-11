@@ -6,33 +6,33 @@ const menuTranslations = {
     },
     searchModal: {
       noItems: {
-        title: 'No items found',
+        title: 'Nessun risultato',
       },
       searchTitle: {
-        title: 'Search items',
+        title: 'Cerca',
       },
       searchInput: {
-        title: 'Search items...',
+        title: 'Cerca...',
       },
       closeCta: {
-        title: 'Close',
+        title: 'Chiudi',
       },
     },
     viewBasketField: {
-      label: 'ViewBasket',
-      placeholder: 'View Basket',
+      label: 'Carrello',
+      placeholder: 'Carrello',
     },
   },
   singleItemPage: {
     ingredients: {
-      title: 'Ingredients',
+      title: 'Ingredienti',
     },
     customise: {
-      title: 'Customise item',
-      placeholder: 'Type custom request',
+      title: 'Personalizza',
+      placeholder: 'Inserisci richesta',
     },
     addToBasket: {
-      cta: 'Add To Basket',
+      cta: 'Aggiungi',
     },
   },
 };

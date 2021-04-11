@@ -1,7 +1,7 @@
 const loginTranslations = {
   nameField: {
-    label: 'Full Name',
-    placeholder: 'Name Surname',
+    label: 'Nome',
+    placeholder: 'Nome cognome',
   },
   emailField: {
     label: 'E-mail',
@@ -9,7 +9,7 @@ const loginTranslations = {
   },
   passwordField: {
     label: 'Password',
-    secondaryLabel: 'Reinsert password',
+    secondaryLabel: 'Conferma password',
     placeholder: '********',
   },
   loginButton: {
@@ -27,49 +27,48 @@ const loginTranslations = {
     buttonLabel: 'Accedi  > ',
   },
   forgotPassword: {
-    goBack: 'Go Back',
-    resetPassword: 'Reset password',
-    cta: 'Forgot password',
-    label: 'Email to send password reset',
+    goBack: 'Indietro',
+    resetPassword: 'Resetta password',
+    cta: 'Password dimenticata',
+    label: 'Email del login',
     placeholder: 'mail@mail.com',
   },
 
   //SignIn Errors
   errorSignInEmail: {
-    label: 'That email address is invalid!',
+    label: 'Indirizzo email invalido',
   },
   errorWrongPasswordSignIn: {
-    label: 'Email or password invalid',
+    label: 'Password o email invalidi',
   },
 
   //SignUp Errors
   usernameError: {
-    label: 'Username must be 4 chartacters long',
+    label: 'Username deve essere maggiore di 4 caratteri',
   },
   passwordLenghtError: {
-    label: 'Password must be at least 8 digits long',
+    label: 'Passoword maggiore di 8 caratteri',
   },
   confirmPasswordError: {
-    label: 'Passwords do not match',
+    label: 'Le password non combaciano',
   },
   passwordRequiredError: {
-    label: 'Password is required',
+    label: 'Password è obbligatoria',
   },
   invalidPasswordError: {
-    label: 'Password must contain at least 1 letter and 1 number',
+    label: 'La password deve contenere almeno un numero e una lettera',
   },
   emailAlreayInUse: {
-    label: 'That email address is already in use!',
+    label: 'Indirzzo email invalido',
   },
   tooManyRequests: {
-    label:
-      'Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.',
+    label: 'Accesso disabilitato troppi accessi effetutati per lo stesso account',
   },
   emailError: {
-    label: 'Email must not be empty',
+    label: 'Email non può essere vuota',
   },
   passwordError: {
-    label: 'Password must not be empty',
+    label: 'Password non può essere vuota',
   },
 };
 

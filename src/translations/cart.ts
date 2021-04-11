@@ -1,80 +1,80 @@
 const cartTranslations = {
   checkoutPage: {
-    title: 'Cart',
+    title: 'Carrello',
     totalField: {
-      title: 'Total',
+      title: 'Totale',
     },
     orderDetails: {
-      title: 'Order details',
-      eatIn: 'Eat in',
-      takeAway: 'Take away',
-      delivery: 'Delivery',
+      title: 'Dettagli ordine',
+      eatIn: 'A tavola',
+      takeAway: "D'asporto",
+      delivery: 'Consegna',
     },
     deliveryInformation: {
-      title: 'Delivery Information',
+      title: 'Informazioni consegna',
     },
     takeAwayInformation: {
-      title: 'Take Away Information',
+      title: "Informazioni d'asporto",
     },
     paymentDetails: {
-      title: 'Choose a payment method',
-      cta: 'Choose',
+      title: 'Scegli metodo di pagamento',
+      cta: 'Scegli',
     },
     tableNumber: {
-      title: 'Insert table number',
-      label: 'Table number',
-      placeholder: 'Eg. 23',
+      title: 'Inserisci numero del tavolo',
+      label: 'Numero del tavolo',
+      placeholder: 'Ex. 23',
     },
 
     takeAway: {
-      title: 'Insert take away deatils',
-      label: 'Pick up time',
+      title: "Dettagli per l'asporto",
+      label: 'Ritiro',
       placeholder: 'hh : mm',
     },
     deliveryModal: {
-      title: 'Delivery information',
+      title: 'Informazioni consegna',
     },
 
     takeAwayModal: {
-      title: 'Take away information',
-      cta: 'Confirm',
-      telephone: 'Insert phone number',
+      title: "Informazioni per l'asporto",
+      cta: 'Conferma',
+      telephone: 'Inserisci numero di telefono',
       address: 'i.e. 2 Oriens Mews',
-      orderTime: 'Pick up time',
+      orderTime: 'Ritiro',
     },
     delivery: {
-      title: 'Insert delivery deatils',
-      label: 'Delivery time',
+      title: 'Inserisci dettagli per la consegna',
+      label: 'Orario consegna',
       placeholder: 'hh : mm',
     },
 
     paymentMethod: {
       nativeApplePay: 'Apple pay',
       nativeGooglePay: 'Google pay',
-      cardPrefix: 'Card **** **** **** ',
-      title: 'Select payment method',
-      label: 'Payment method',
-      pay: 'Pay',
-      addNew: 'Add a payement method',
+      cardPrefix: 'Carta **** **** **** ',
+      title: 'Scegli metodo di pagamento',
+      label: 'Metodo di pagamento',
+      pay: 'Paga',
+      addNew: 'Aggiungi metodo di pagamento',
     },
 
     commentAndAllergies: {
-      title: 'Any allergies and/or preferences?',
-      label: 'Comment/Allergies',
-      placeholder: 'Insert any request',
+      title: 'Qualche allergia/commento?',
+      label: 'Commento/Allergie',
+      placeholder: 'Inserisci richiesta',
     },
 
     voucher: {
-      title: 'Insert discont code here',
+      title: 'Inserisci codice sconto',
       label: 'Voucher',
-      placeholder: 'Insert discount code',
+      placeholder: 'Inserisci codice sconto',
     },
 
     removeItemSwipe: {
-      title: 'Remove',
+      title: 'Rimuovi',
     },
     removeItemModal: {
-      title: 'Remove item',
+      title: 'Rimuovi elemento',
     },
 
     subtotal: {
@@ -82,35 +82,35 @@ const cartTranslations = {
     },
     goToCheckoutCta: {
       title: 'Checkout',
-      loading: 'Loading...',
-      completeFields: 'Complete fields',
+      loading: 'Caricamento...',
+      completeFields: 'Completa i campi',
     },
     serviceFee: {
       title: 'Service fee',
     },
     updateModal: {
-      price: 'Price:',
-      cta: 'Update',
+      price: 'Prezzo:',
+      cta: 'Aggiorna',
     },
     updateModalField: {
-      label: 'Update',
-      placeholder: 'Update',
+      label: 'Aggiorna',
+      placeholder: 'Aggiorna',
     },
   },
   orderPage: {
-    title: 'Order info',
+    title: 'Informazioni ordine',
     orderInfo: {
-      title: 'Order number',
-      deliveryEst: 'will be ready at 9:00/9:30pm',
+      title: 'Numero ordine',
+      deliveryEst: 'sarà pronto per le 9:00/9:30pm',
     },
 
     orderStatus: {
-      received: 'Order recived',
-      preparing: 'Preparing',
-      done: 'Done',
+      received: 'Ordine ricevuto',
+      preparing: 'Preparando',
+      done: 'Fatto',
     },
     orderItems: {
-      text: 'Order list',
+      text: 'Lista ordini',
     },
   },
 };

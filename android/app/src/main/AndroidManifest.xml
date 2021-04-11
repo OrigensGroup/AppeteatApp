@@ -19,7 +19,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.INTERNET"/>
   <!-- END OPTIONAL PERMISSIONS -->
   <application
     android:name=".MainApplication"
@@ -29,37 +29,27 @@
     android:allowBackup="false"
     android:theme="@style/AppTheme"
   >
-    <meta-data android:name="com.google.android.gms.wallet.api.enabled"   android:value="true" />
     <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-    <activity android:name="com.facebook.FacebookActivity"
-        android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-        android:label="@string/app_name" />
     <activity
-        android:name="com.facebook.CustomTabActivity"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="@string/fb_login_protocol_scheme" />
-        </intent-filter>
+      android:name="com.facebook.FacebookActivity"
+      android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+      android:label="@string/app_name"
+    />
+    <activity android:name="com.facebook.CustomTabActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="@string/fb_login_protocol_scheme"/>
+      </intent-filter>
     </activity>
-  <meta-data
-    android:name="com.google.android.geo.API_KEY"
-    android:value="${mapsApiKey}" />
-    <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@origens/elisir" />
-    <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="40.0.0" />
-    <meta-data
-          android:name="expo.modules.updates.ENABLED"
-          android:value="true"/>
-    <meta-data
-          android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH"
-          android:value="NEVER"/>
-    <meta-data
-          android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS"
-          android:value="0"/>
-    <meta-data android:name="expo.modules.updates.EXPO_RELEASE_CHANNEL" android:value="prod" />
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="${mapsApiKey}"/>
+    <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@origens/elisir"/>
+    <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="40.0.0"/>
+    <meta-data android:name="expo.modules.updates.ENABLED" android:value="true"/>
+    <meta-data android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH" android:value="NEVER"/>
+    <meta-data android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS" android:value="0"/>
+    <meta-data android:name="expo.modules.updates.EXPO_RELEASE_CHANNEL" android:value="prod"/>
     <activity
       android:name=".MainActivity"
       android:label="@string/app_name"
@@ -75,20 +65,19 @@
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
-    <meta-data
-      android:name="com.google.android.gms.wallet.api.enabled"
-      android:value="true" />
-        <activity
-          android:exported="true"
-          android:launchMode="singleTask"
-          android:name="expo.modules.payments.stripe.RedirectUriReceiver"
-          android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="exp9d1ea7e1de174f31828a156ea7a38e11" />
-        </intent-filter>
-      </activity>
+    <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
+    <activity
+      android:exported="true"
+      android:launchMode="singleTask"
+      android:name="expo.modules.payments.stripe.RedirectUriReceiver"
+      android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+    >
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="exp9d1ea7e1de174f31828a156ea7a38e11"/>
+      </intent-filter>
+    </activity>
   </application>
 </manifest>

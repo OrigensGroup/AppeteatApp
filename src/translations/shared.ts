@@ -2,7 +2,7 @@ const sharedTranslations = {
   tabs: {
     home: 'Home',
     menu: 'Menu',
-    book: 'Book',
+    book: 'Prenota',
     account: 'Account',
   },
 };
