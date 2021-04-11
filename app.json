@@ -8,11 +8,20 @@
     "slug": "origens-testing",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#ffffff",
+      "resizeMode": "cover"
+    },
     "android": {
-      "useNextNotificationsApi": true
+      "useNextNotificationsApi": true,
+      "package": "uk.co.origens.testing.appeteat",
+      "versionCode": 1
     },
     "ios": {
-      "bundleIdentifier": "uk.co.origens.testing.appeteat"
+      "bundleIdentifier": "uk.co.origens.testing.appeteat",
+      "buildNumber": "1.0.0"
     },
     "updates": {
       "enabled": true,
