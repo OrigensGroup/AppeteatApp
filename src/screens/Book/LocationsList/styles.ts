@@ -4,10 +4,6 @@ export const LocationPageContainer = styled.View`
   background-color: ${({ theme }) => theme.colors.textSecondary};
   height: 100%;
 `;
-export const MapImage = styled.Image`
-  height: 100%;
-  width: 100%;
-`;
 
 export const SingleVenueContainer = styled.View`
   display: flex;

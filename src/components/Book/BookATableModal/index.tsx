@@ -34,7 +34,7 @@ import {
 } from './styles';
 
 interface BookATableModalProps {
-  venue: Venue;
+  venue: Venue | undefined;
   isModalVisible: boolean;
   onClose: () => void;
 }
@@ -73,27 +73,33 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
   };
 
   const onSubmit = () => {
-    const d = new Date(date);
+    if (venue) {
+      const d = new Date(date);
 
-    const newBooking: Booking = {
-      id: v4(),
-      fullName: user?.displayName || 'user without name',
-      date: `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`,
-      time: `${d.getHours()}:${date.getMinutes()}`,
-      people: localQuantity,
-      venueId: venue.id,
-      done: false,
-      comment: '',
-    };
+      const newBooking: Booking = {
+        id: v4(),
+        fullName: user?.displayName || 'user without name',
+        date: `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`,
+        time: `${d.getHours()}:${date.getMinutes()}`,
+        people: localQuantity,
+        venueId: venue.id,
+        done: false,
+        comment: '',
+      };
 
-    setBookings({
-      ...bookings,
-      list: [...bookings.list, newBooking],
-    });
+      setBookings({
+        ...bookings,
+        list: [...bookings.list, newBooking],
+      });
 
-    addBooking(newBooking);
-    onClose();
+      addBooking(newBooking);
+      onClose();
+    }
   };
+
+  if (!venue) {
+    return <></>;
+  }
 
   return (
     <Modal

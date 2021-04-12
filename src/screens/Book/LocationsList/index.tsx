@@ -1,30 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Animated, Dimensions, useColorScheme } from 'react-native';
+import { StyleSheet, View, Animated } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
 
-import type { Venue } from '../../../types/Venue';
-
-import useLocations from '../../../hooks/useLocations';
-
 import BookATableModal from '../../../components/Book/BookATableModal';
 import LocationCard from '../../../components/Book/LocationCard';
+import useLocations from '../../../hooks/useLocations';
+import { Venue } from '../../../types/Venue';
 
-import { mapStyle } from '../../../utils/mapstyle';
-import theme from '../../../theme';
-
-import useSettings from '../../../hooks/useSettings';
-
-import { SingleVenueContainer } from './styles';
-
-const { height } = Dimensions.get('window');
-
-const CARD_HEIGHT = height / 4;
-const CARD_WIDTH = CARD_HEIGHT - 50;
-
-interface LocationsListProps {
-  venues: Marker[];
-}
+const CARD_WIDTH = 240;
 
 const styles = StyleSheet.create({
   container: {
@@ -32,12 +16,10 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 16,
     left: 0,
     right: 0,
-    paddingVertical: 10,
   },
-  endPadding: {},
   markerWrap: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -45,43 +27,47 @@ const styles = StyleSheet.create({
   marker: {
     width: 16,
     height: 16,
-    borderRadius: 7.5,
-    backgroundColor: theme.colors.active,
+    borderRadius: 8,
+    backgroundColor: '#F69019',
   },
   ring: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: theme.colors.active,
+    backgroundColor: '#F69019',
     position: 'absolute',
     borderWidth: 1,
-    borderColor: theme.colors.active,
+    borderColor: '#F69019',
   },
 });
 
-const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
-  const mode = useColorScheme();
-  const [settings] = useSettings();
+const LocationLists: React.FunctionComponent = () => {
   const mapRef = useRef<MapView>(null);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+  const [locations] = useLocations();
+
+  const [locationIndex, setLocationIndex] = useState(0);
   const [animation] = useState(new Animated.Value(0));
   const [isModalVisible, setModalVisible] = useState(false);
-  const [index, setIndex] = useState(0);
 
-  const [locations] = useLocations();
-  const venues = locations.list;
+  const markers = locations.list;
 
-  const [venueToBook, setVenueToBook] = useState<Venue>(venues[0]);
+  const firstVenue = markers[0];
 
-  //@ts-ignore
-  const timeoutRef = useRef<NodeJS.Timeout>(0);
+  const [venueToBook, setVenueToBook] = useState<Venue | undefined>(firstVenue);
 
-  const region = {
-    ...venues[0],
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
+  const region = firstVenue;
+
+  const toggleModal = (venue: Venue) => () => {
+    setVenueToBook(venue);
+    setModalVisible(!isModalVisible);
   };
 
-  const interpolations = venues.map((_, index) => {
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const interpolations = markers.map((_, index) => {
     const inputRange = [(index - 1) * CARD_WIDTH, index * CARD_WIDTH, (index + 1) * CARD_WIDTH];
 
     const scale = animation.interpolate({
@@ -100,58 +86,50 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
   });
 
   useEffect(() => {
+    // We should detect when scrolling has stopped then animate
+    // We should just debounce the event listener here
     animation.addListener(({ value }) => {
-      let localIndex = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
+      let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
 
-      if (index >= venues.length) {
-        localIndex = venues.length - 1;
+      if (index >= markers.length) {
+        index = markers.length - 1;
       }
 
       if (index <= 0) {
-        localIndex = 0;
+        index = 0;
       }
 
-      clearTimeout(timeoutRef.current);
+      if (locationIndex !== index) setLocationIndex(index);
+
+      timeoutRef.current && clearTimeout(timeoutRef.current);
 
       timeoutRef.current = setTimeout(() => {
-        if (index !== localIndex) {
-          setIndex(index);
-          const { latitude, longitude } = venues[index];
-          if (mapRef.current)
-            mapRef.current.animateToRegion(
-              {
-                latitude,
-                longitude,
-                latitudeDelta: region.latitudeDelta,
-                longitudeDelta: region.longitudeDelta,
-              },
-              350
-            );
+        if (locationIndex !== index) {
+          const { latitude, longitude } = markers[index];
+
+          mapRef?.current?.animateToRegion(
+            {
+              latitude,
+              longitude,
+              latitudeDelta: region.latitudeDelta,
+              longitudeDelta: region.longitudeDelta,
+            },
+            250
+          );
         }
       }, 10);
     });
-  }, [animation, index, region.latitudeDelta, region.longitudeDelta, venues]);
 
-  const toggleModal = (venue: Venue) => () => {
-    setVenueToBook(venue);
-    setModalVisible(!isModalVisible);
-  };
-
-  const closeModal = () => {
-    setModalVisible(false);
-  };
+    return () => {
+      animation.removeAllListeners();
+    };
+  }, [animation, locationIndex, markers, region.latitudeDelta, region.longitudeDelta]);
 
   return (
     <View style={styles.container}>
       <BookATableModal isModalVisible={isModalVisible} onClose={closeModal} venue={venueToBook} />
-      <MapView
-        customMapStyle={settings.features.FEAT_DARK_MODE && mode === 'dark' ? mapStyle : undefined}
-        ref={mapRef}
-        region={region}
-        showsUserLocation
-        style={styles.container}
-      >
-        {venues.map((marker, index) => {
+      <MapView initialRegion={region} ref={mapRef} style={styles.container}>
+        {markers.map((marker, index) => {
           const scaleStyle = {
             transform: [
               {
@@ -174,38 +152,31 @@ const LocationsList: React.FunctionComponent<LocationsListProps> = () => {
           );
         })}
       </MapView>
-      {venues.length > 1 ? (
-        <Animated.ScrollView
-          contentContainerStyle={styles.endPadding}
-          horizontal
-          onScroll={Animated.event(
-            [
-              {
-                nativeEvent: {
-                  contentOffset: {
-                    x: animation,
-                  },
+      <Animated.ScrollView
+        horizontal
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  x: animation,
                 },
               },
-            ],
-            { useNativeDriver: true }
-          )}
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          snapToInterval={CARD_WIDTH}
-          style={styles.scrollView}
-        >
-          {venues.map((marker) => (
-            <LocationCard key={marker.id} onClick={toggleModal} venue={marker} />
-          ))}
-        </Animated.ScrollView>
-      ) : (
-        <SingleVenueContainer>
-          <LocationCard onClick={toggleModal} venue={venues[0]} />
-        </SingleVenueContainer>
-      )}
+            },
+          ],
+          { useNativeDriver: true }
+        )}
+        scrollEventThrottle={1}
+        showsHorizontalScrollIndicator={false}
+        snapToInterval={CARD_WIDTH}
+        style={styles.scrollView}
+      >
+        {markers.map((marker) => (
+          <LocationCard key={marker.id} onClick={toggleModal} venue={marker} />
+        ))}
+      </Animated.ScrollView>
     </View>
   );
 };
 
-export default LocationsList;
+export default LocationLists;
