@@ -2,7 +2,7 @@
 
 import stripe, { Card, Charge, GeneratedErrors } from 'tipsi-stripe';
 
-import { CONNECTED_ACCOUNT_ID, CURRENCY, FEE, API_URL, APPLE_CURRENCY } from '@env';
+import Config from '../utils/config';
 
 import type { Payment } from '../types/Payment';
 
@@ -11,7 +11,7 @@ type PaymentStatus = {
 };
 
 const payToApi = async (payment: Payment): Promise<PaymentStatus> => {
-  const res = await fetch(`${API_URL}/api/payments`, {
+  const res = await fetch(`${Config.API_URL}/api/payments`, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -33,10 +33,10 @@ export const makeCardPayment = async (
 
     const postData: Payment = {
       ...payment,
-      currency: CURRENCY,
+      currency: Config.CURRENCY,
       tokenId: token.tokenId,
-      CONNECTED_STRIPE_ACCOUNT_ID: CONNECTED_ACCOUNT_ID,
-      fee: FEE,
+      CONNECTED_STRIPE_ACCOUNT_ID: Config.CONNECTED_ACCOUNT_ID,
+      fee: Config.FEE,
     };
 
     const res = await payToApi(postData);
@@ -62,17 +62,17 @@ export const makeNativePayment = async (
   try {
     const token = await stripe.paymentRequestWithNativePay(
       {
-        currencyCode: APPLE_CURRENCY,
+        currencyCode: Config.APPLE_CURRENCY,
       },
       [display]
     );
 
     const postData: Payment = {
       ...payment,
-      currency: CURRENCY,
+      currency: Config.CURRENCY,
       tokenId: token.tokenId,
-      CONNECTED_STRIPE_ACCOUNT_ID: CONNECTED_ACCOUNT_ID,
-      fee: FEE,
+      CONNECTED_STRIPE_ACCOUNT_ID: Config.CONNECTED_ACCOUNT_ID,
+      fee: Config.FEE,
     };
 
     const res = await payToApi(postData);
