@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TextInputProps } from 'react-native';
 
 import { useTheme } from 'styled-components';
 
@@ -6,11 +7,8 @@ import Text from '../../shared/Text';
 
 import { TextFieldWrapper, TitleWrapper, ErrorContainer, TextFieldInput } from './styles';
 
-interface LogInInputFieldProps {
+interface LogInInputFieldProps extends TextInputProps {
   secondary?: boolean;
-  placeholder?: string;
-  placeholderTextColor?: string;
-  textContentType: 'emailAddress' | 'password' | 'none';
   label?: string;
   updateValue?: (value: string) => void;
   error?: string | null;
@@ -19,16 +17,15 @@ interface LogInInputFieldProps {
 const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({
   error,
   label,
-  placeholder,
-  placeholderTextColor,
   secondary,
   textContentType,
   updateValue,
+  ...props
 }) => {
   const [text, setText] = useState<string>();
   const theme = useTheme();
 
-  const defaultPlaceholderColor = placeholderTextColor ?? theme.colors.fixedWhite;
+  const defaultPlaceholderColor = theme.colors.fixedWhite;
 
   const updateText = (text: string) => {
     const textToUpdate = textContentType === 'password' ? text.replace(/\s/g, '').trim() : text;
@@ -45,11 +42,11 @@ const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({
       </TitleWrapper>
       <TextFieldInput
         onChangeText={updateText}
-        placeholder={placeholder}
         placeholderTextColor={defaultPlaceholderColor}
         secureTextEntry={textContentType === 'password'}
         textContentType={textContentType}
         value={text}
+        {...props}
       />
       {error && (
         <ErrorContainer>

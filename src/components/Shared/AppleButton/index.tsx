@@ -19,10 +19,9 @@ interface AppleButtonProps {
 
 const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ setLoading }) => {
   const theme = useTheme();
-  const { setLoggedIn } = useUserData();
+  const { login } = useUserData();
 
   async function onAppleButtonPress() {
-    console.log('Apple login');
     crashlytics().log('Apple log in attempt.');
 
     setLoading(true);
@@ -44,7 +43,7 @@ const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ setLoading }) 
 
           if (user) {
             await initUserData(user.uid);
-            setLoggedIn(true);
+            login();
           } else {
             crashlytics().log("Couldn't setup user db");
           }

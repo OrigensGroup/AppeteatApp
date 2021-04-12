@@ -12,7 +12,8 @@ import getUserData, { saveUserData, defaultUserdata } from '../../utils/manageUs
 
 interface UserContext {
   loggedIn: boolean;
-  setLoggedIn: (loggedIn: boolean) => void;
+  login: () => void;
+  logout: () => void;
   user: FirebaseAuthTypes.User | null;
   userData: User;
   addNewFavoriteCocktail: (item: MenuItem) => void;
@@ -24,7 +25,8 @@ interface UserContext {
 
 export const UserContext = React.createContext<UserContext>({
   loggedIn: false,
-  setLoggedIn: () => {},
+  login: () => {},
+  logout: () => {},
   user: null,
   userData: defaultUserdata,
   addNewFavoriteCocktail: () => {},
@@ -88,14 +90,8 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   };
 
   useEffect(() => {
-    if (loggedIn) loadData();
-  }, [loadData, loggedIn]);
-
-  useEffect(() => {
-    if (user) {
-      loadData();
-    }
-  }, [user, loadData]);
+    loadData();
+  }, [loadData]);
 
   useEffect(() => {
     saveData();
@@ -134,11 +130,23 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
     }));
   };
 
+  const login = () => {
+    setUser(auth().currentUser);
+    loadData();
+    setLoggedIn(true);
+  };
+
+  const logout = () => {
+    setUser(null);
+    setLoggedIn(false);
+  };
+
   return (
     <UserContext.Provider
       value={{
         loggedIn,
-        setLoggedIn,
+        login,
+        logout,
         user,
         userData,
         addNewFavoriteCocktail,

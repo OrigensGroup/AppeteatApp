@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import * as SplashScreen from 'expo-splash-screen';
-
-import crashlytics from '@react-native-firebase/crashlytics';
+import AppLoading from 'expo-app-loading';
 
 import { Bar } from './types/Bar';
 
@@ -24,18 +22,10 @@ const App = () => {
   const initApp = async () => {
     const foundBar = await loadStuff();
     setBar(foundBar);
-    setAppReady(true);
-    await SplashScreen.hideAsync();
   };
 
-  useEffect(() => {
-    crashlytics().log('App mounted.');
-    SplashScreen.preventAutoHideAsync();
-    initApp();
-  }, []);
-
   if (!appReady) {
-    return null;
+    return <AppLoading onError={console.warn} onFinish={() => setAppReady(true)} startAsync={initApp} />;
   }
 
   return (

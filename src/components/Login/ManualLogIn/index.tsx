@@ -29,7 +29,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
   const theme = useTheme();
 
   const [loading, setLoading] = useState(false);
-  const { setLoggedIn } = useUserData();
+  const { login } = useUserData();
 
   const register = () => {
     changeModule('register');
@@ -47,7 +47,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         setLoading(false);
-        setLoggedIn(true);
+        login();
       })
       .catch((error) => {
         setLoading(false);
@@ -80,12 +80,15 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
         onSubmit={(values) => {
           singIn(values.email, values.password);
         }}
+        validateOnBlur={false}
+        validateOnChange={false}
         validationSchema={LoginSchema}
       >
         {({ errors, handleChange, handleSubmit }) => (
           <ManualLogInContainer>
             <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
               <LogInTextField
+                autoCapitalize="none"
                 error={errors['email']}
                 label={loginTranslations.emailField.label}
                 placeholder={loginTranslations.emailField.placeholder}
