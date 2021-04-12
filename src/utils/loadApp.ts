@@ -6,13 +6,12 @@ import { Asset } from 'expo-asset';
 
 import FastImage, { Source } from 'react-native-fast-image';
 
-// eslint-disable-next-line
-import { STRIPE_ACCOUNT } from '@env';
-
 import stripe from 'tipsi-stripe';
 
 //@ts-ignore
 import { Settings } from 'react-native-fbsdk-next';
+
+import Config from './config';
 
 import loadBar, { barInit } from './loadBar';
 
@@ -30,7 +29,7 @@ export const loadStuff = async () => {
     Settings.initializeSDK();
 
     stripe.setOptions({
-      publishableKey: STRIPE_ACCOUNT,
+      publishableKey: Config.STRIPE_ACCOUNT,
       androidPayMode: 'test',
       merchantId: 'merchant.origens',
     });

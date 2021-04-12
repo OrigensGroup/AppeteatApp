@@ -8,13 +8,12 @@ import initUserData from '../../../utils/manageUserdata';
 
 import useUserData from '../../../hooks/useUserData';
 
+import Config from '../../../utils/config';
+
 import { ButtonContainer, GoogleImage } from './styles';
 
-// eslint-disable-next-line
-import { GOOGLE_WEBCLIENT_ID } from '@env';
-
 GoogleSignin.configure({
-  webClientId: GOOGLE_WEBCLIENT_ID,
+  webClientId: Config.GOOGLE_WEBCLIENT_ID,
 });
 
 interface GoogleButtonProps {
