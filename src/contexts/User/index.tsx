@@ -37,7 +37,14 @@ export const UserContext = React.createContext<UserContext>({
 interface UserProviderProps {}
 
 const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(() => {
+    if (auth().currentUser) {
+      return true;
+    }
+
+    return false;
+  });
+
   const [user, setUser] = useState(() => auth().currentUser);
 
   // Handle user state changes
@@ -83,6 +90,12 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   useEffect(() => {
     if (loggedIn) loadData();
   }, [loadData, loggedIn]);
+
+  useEffect(() => {
+    if (user) {
+      loadData();
+    }
+  }, [user, loadData]);
 
   useEffect(() => {
     saveData();
