@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>67347102756-nf768g2j19spv8rsa26r9kqhhctobljr.apps.googleusercontent.com</string>
+	<string>67347102756-pf6j84o8u2tjmn2vjckl4qtpfcg5g2je.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.67347102756-nf768g2j19spv8rsa26r9kqhhctobljr</string>
+	<string>com.googleusercontent.apps.67347102756-pf6j84o8u2tjmn2vjckl4qtpfcg5g2je</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>67347102756-4bn8n6prthcpi3l2v9n99cv7df95pgne.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyB8fmbj9Mbxu7r99JieQOPBOUdmnNKWGXU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>uk-co.appeteat.elisir</string>
+	<string>uk.co.appeteat.elisir</string>
 	<key>PROJECT_ID</key>
 	<string>elisir-37b24</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:67347102756:ios:4f87d15ef922ad63362cb1</string>
+	<string>1:67347102756:ios:921307ddd2938314362cb1</string>
 </dict>
 </plist>
