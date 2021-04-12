@@ -32,7 +32,7 @@ import { ProfileSchema } from './profileSchema';
 interface SettingsProps {}
 
 const Settings: React.FunctionComponent<SettingsProps> = () => {
-  const { reload, restoreDefault, setLoggedIn, user } = useUserData();
+  const { logout, reload, user } = useUserData();
   const [saveShow, setSaveShow] = useState(false);
   const [infoUpdatedShow, setInfoUpdatedShow] = useState(false);
   const [authResult, setAuthResult] = useState(false);
@@ -67,8 +67,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
           text: profileTranslations.settingsPage.yes,
           onPress: async () => {
             await auth().signOut();
-            setLoggedIn(false);
-            restoreDefault();
+            logout();
           },
         },
       ],

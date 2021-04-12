@@ -21,7 +21,7 @@ interface GoogleButtonProps {
 }
 
 const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ setLoading }) => {
-  const { setLoggedIn } = useUserData();
+  const { login } = useUserData();
 
   async function onGoogleButtonPress() {
     crashlytics().log('Google log in attempt.');
@@ -41,7 +41,7 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ setLoading }
 
         if (user) {
           await initUserData(user.uid);
-          setLoggedIn(true);
+          login();
         } else {
           crashlytics().log("Couldn't setup user db");
         }

@@ -36,9 +36,9 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
   const theme = useTheme();
 
   const [loading, setLoading] = useState(false);
-  const { setLoggedIn } = useUserData();
+  const { login } = useUserData();
 
-  const login = () => {
+  const loginApp = () => {
     changeModule('login');
   };
 
@@ -60,10 +60,12 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
             displayName: username,
           });
 
-          setLoggedIn(true);
+          login();
         } else {
           crashlytics().log("Couldn't setup user");
         }
+
+        setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
@@ -87,8 +89,6 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
         crashlytics().recordError(error);
         console.error(error);
       });
-
-    setLoading(false);
   };
 
   return (
@@ -103,6 +103,8 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
         onSubmit={(values) => {
           createUser(values.username, values.email, values.password);
         }}
+        validateOnBlur={false}
+        validateOnChange={false}
         validationSchema={RegisterSchema}
       >
         {({ errors, handleChange, handleSubmit }) => (
@@ -116,6 +118,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
                 updateValue={handleChange('username')}
               />
               <LogInInputField
+                autoCapitalize="none"
                 error={errors['email']}
                 label={loginTranslations.emailField.label}
                 placeholder={loginTranslations.emailField.placeholder}
@@ -144,7 +147,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
               <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.registerButton.label} />
               <SignUpButton
                 buttonText={loginTranslations.signInSection.buttonLabel}
-                onClick={login}
+                onClick={loginApp}
                 text={loginTranslations.signInSection.label}
               />
             </LogInSection>

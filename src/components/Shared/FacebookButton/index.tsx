@@ -15,7 +15,7 @@ interface FacebookButtonProps {
 }
 
 const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ setLoading }) => {
-  const { setLoggedIn } = useUserData();
+  const { login } = useUserData();
 
   async function onFacebookButtonPress() {
     crashlytics().log('Facebook log in attempt.');
@@ -49,7 +49,7 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ setLoadi
 
         if (user) {
           await initUserData(user.uid);
-          setLoggedIn(true);
+          login();
         } else {
           crashlytics().log("Couldn't setup user db");
         }
