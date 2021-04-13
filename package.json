@@ -81,7 +81,6 @@
     "@babel/core": "~7.9.0",
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-native": "^7.1.0",
-    "@types/": "react-native-picker/picker",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.1",
     "@types/react-native": "^0.63.48",
