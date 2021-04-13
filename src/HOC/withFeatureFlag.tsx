@@ -16,6 +16,7 @@ const withFeatureFlag = <T extends any>(
       return Placeholder ? <Placeholder /> : <></>;
     }
 
+    //@ts-ignore
     return <Component {...props} />;
   };
 

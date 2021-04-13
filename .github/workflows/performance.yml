@@ -1,0 +1,82 @@
+name: Performance Monitoring
+on:
+  push:
+    branches:
+      - 'performance/**'
+  workflow_dispatch:
+  release:
+    types: [prereleased]
+  schedule:
+    - cron: '0 14 * * 1-5'
+env:
+  PRODUCT_CODE: 1343445
+  APP_NAME: mf-web
+  BASE_URL: "https://mf-web-integration.external.dev.matchescloud.com"
+  URL_PATHS: /products/1343445 /mens
+
+
+jobs:
+  run-lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: run lighthouse audit
+        run: |
+          npm install -g @lhci/cli@0.6.x
+          mkdir .lighthouseci .lighthouseci/reports
+          for path in ${{ env.URL_PATHS }}; do
+          lhci autorun --collect.url=${{ env.BASE_URL }}$path \
+          --collect.settings.extraHeaders="{\"Cookie\":\"billingCurrency=GBP;language=en;country=GBR\"}"
+          files=($(find ./.lighthouseci  -type f -name lhr-*.json))
+          scores=()
+          for i in "${files[@]}"; do scores+=($(jq '.categories.performance.score' $i),$i); done
+          scores=($(printf '%s\n' "${scores[@]}"| sort -n))
+          len=${#scores[@]}
+          MOD=$(($len % 2))
+          if [ $MOD -eq 1 ]; then MED=$(echo "($len/2)"|bc); else MED=$(echo "($len / 2)"|bc); fi
+          file=$(echo ${scores[$MED]} | cut -d',' -f 2 | cut -d'.' -f 3 | cut -d'/' -f 2)
+          mv ./.lighthouseci/$file* ./.lighthouseci/reports/
+          find ./.lighthouseci  -type f -name lhr-* | grep -v ./.lighthouseci/reports | xargs rm
+          done
+      - name: upload reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-reports
+          path: .lighthouseci/reports
+
+  run-k6:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Agent
+        env:
+          DD_TAGS: "env:integration appName:${{ env.APP_NAME }}  version:${{ github.sha }}"
+          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+        run: |
+          DOCKER_CONTENT_TRUST=1 \
+          docker run -d \
+          --name datadog \
+          -v /var/run/docker.sock:/var/run/docker.sock:ro \
+          -v /proc/:/host/proc/:ro \
+          -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
+          -e DD_SITE="datadoghq.com" \
+          -e DD_API_KEY=$DD_API_KEY \
+          -e DD_DOGSTATSD_NON_LOCAL_TRAFFIC=1 \
+          -e DD_TAGS="${DD_TAGS}" \
+          -p 8125:8125/udp \
+          datadog/agent:latest
+      - name: Get Datadog IP
+        id: getDDIp
+        run: echo "::set-output name=ddIP::$( docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' datadog )"
+      - name: Run local k6 test
+        uses: k6io/action@v0.1
+        env:
+          K6_DATADOG_ADDR: ${{ steps.getDDIp.outputs.ddIP }}:8125
+          ProductCode: ${{ env.PRODUCT_CODE }}
+          service: ${{ env.APP_NAME }}
+          targetEnv: integration
+        with:
+          filename: ./k6/mf-web-K6.js
+          flags: --out datadog

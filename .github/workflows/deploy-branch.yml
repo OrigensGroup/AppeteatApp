@@ -1,0 +1,54 @@
+name: Deploy Branch To Dev3
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch Name
+        required: true
+
+jobs:
+  push-branch-docker-image-to-ecr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+      - name: Get git hash
+        id: hash
+        run: echo "::set-output name=hash::$(git rev-parse --short=7 ${{ github.sha }})"
+      - name: Get branch name
+        id: branch
+        run: echo "::set-output name=branch::$(BRANCH=${{ github.ref }}; BRANCH=${BRANCH#refs/heads/}; echo ${BRANCH////-})"
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        # Ignore the failure of a step and avoid terminating the job.
+        continue-on-error: true
+        with:
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Build and copy .next + public output from docker image for s3 build output sync
+        run: |
+          docker build -t node-js-development/mf-web:dev3-${{ steps.hash.outputs.hash }}-${{ steps.branch.outputs.branch }} .
+          docker run -v $PWD:/tmp --rm --entrypoint cp node-js-development/mf-web:dev3-${{ steps.hash.outputs.hash }}-${{ steps.branch.outputs.branch }} -r ./packages/mf-web/public /tmp/packages/mf-web
+          docker run -v $PWD:/tmp --rm --entrypoint cp node-js-development/mf-web:dev3-${{ steps.hash.outputs.hash }}-${{ steps.branch.outputs.branch }} -r ./packages/mf-web/.next /tmp/packages/mf-web/.next
+      - name: Push .next and public to S3 (dev)
+        run: |
+          aws s3 sync packages/mf-web/.next s3://${{ secrets.AWS_MF_WEB_ASSETS_S3_BUCKET_DEV }}/mf-web-assets/_next --acl public-read
+          aws s3 sync packages/mf-web/public s3://${{ secrets.AWS_MF_WEB_ASSETS_S3_BUCKET_DEV }}/mf-web-assets --acl public-read
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_MF_WEB_ASSETS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_MF_WEB_ASSETS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+      - name: Build and push docker image to ECR DEV for dev3 flux
+        uses: kciter/aws-ecr-action@v1
+        with:
+          access_key_id: ${{ secrets.AWS_ECR_ACCESS_KEY_ID_DEV }}
+          secret_access_key: ${{ secrets.AWS_ECR_SECRET_ACCESS_KEY_DEV }}
+          account_id: ${{ secrets.AWS_ECR_ACCOUNT_ID_DEV }}
+          repo: node-js-development/mf-web
+          region: ${{ secrets.AWS_ECR_REGION_DEV }}
+          tags: dev3-${{ steps.hash.outputs.hash }}-${{ steps.branch.outputs.branch }}
+          create_repo: false

@@ -13,7 +13,17 @@ export const barInit: Bar = {
   menu: { items: [], tabs: [] },
   homepage: { sections: [] },
   orders: { list: [] },
-  settings: { colors: colors, features: {} },
+  settings: {
+    colors: colors,
+    features: {
+      FEAT_BOOK: false,
+      FEAT_CART_DELIVERY: false,
+      FEAT_CART_TAKEAWAY: false,
+      FEAT_FAVORITE_COCKTAILS: false,
+      FEAT_ORDERING: false,
+      FEAT_DARK_MODE: false,
+    },
+  },
 };
 
 const loadBar = async () => {
