@@ -16,7 +16,7 @@
     "test:coverage": "yarn jest --coverage",
     "prepare": "husky install",
     "build:ios": "react-native run-ios --configuration Release",
-    "build:android": "react-native run-android --configuration Release",
+    "build:android": "react-native run-android --variant release",
     "clean": "yarn clean:ios && yarn clean:android",
     "clean:ios": "cd ios && pod cache clean --all && rm -rf build && cd ..",
     "clean:android": "cd android && ./gradlew cleanBuildCache && cd ..",
