@@ -2251,10 +2251,6 @@
   dependencies:
     pretty-format "^26.0.1"
 
-"@types/@react-native-picker/picker":
-  version "1.14.0"
-  resolved "https://codeload.github.com/react-native-picker/picker/tar.gz/d84059c70ee18655526f3cbb3328918e9a1c486d"
-
 "@types/babel__core@^7.1.0", "@types/babel__core@^7.1.7":
   version "7.1.12"
   resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.1.12.tgz"
