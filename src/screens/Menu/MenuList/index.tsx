@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-
 import Swiper from 'react-native-swiper';
 import auth from '@react-native-firebase/auth';
 
@@ -9,24 +8,19 @@ import SwiperPage from '../../../components/Menu/MenuList/MenuSwiper/SwiperPage'
 import MenuTabs from '../../../components/Menu/MenuList/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/MenuList/ViewBasketButton';
 import SearchModal from '../../../components/Menu/MenuList/SearchModal';
-
 import TopBar from '../../../components/shared/TopBar';
-
 import useMenu from '../../../hooks/useMenu';
 import useHomepage from '../../../hooks/useHomepage';
 import useCart from '../../../hooks/useCart';
-
 import menuTranslations from '../../../translations/menu';
-
 import { HomepageComponent, CarouselPromo } from '../../../types/HomepageComponent';
 import { TabDiscount } from '../../../types/DiscountRules';
 import { Tab } from '../../../types/Tab';
-
 import { Promotion } from '../../../types/Promotion';
 
 import LoginModal from '../../../components/shared/LoginModal';
 
-import { SafeAreaViewBottom } from './styles';
+import { SafeAreaViewBottom, MenuContainer } from './styles';
 
 interface MenuProps {}
 
@@ -145,7 +139,8 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   }, [menu.tabs, goTo]);
 
   return (
-    <SafeAreaViewBottom>
+    <MenuContainer>
+      <SafeAreaViewBottom />
       <LoginModal isModalVisible={loginModalData.show} onClose={hideLoginModal} onConfirm={goToCart} />
       <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
       <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
@@ -154,7 +149,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
         {menuTabsContent()}
       </Swiper>
       {cart.length > 0 && <ViewBasketButton onClick={verifyUser} />}
-    </SafeAreaViewBottom>
+    </MenuContainer>
   );
 };
 
