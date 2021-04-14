@@ -17,6 +17,7 @@ const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, t
   return (
     <MenuTabsContainer>
       <FlatList
+        contentContainerStyle={{ paddingRight: 24 }}
         data={menuTabs}
         horizontal
         keyExtractor={(item) => item.id}
@@ -24,6 +25,7 @@ const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, t
           <MenuTab active={index === tabActive} index={index} onPress={onChange} title={item.name} />
         )}
         showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
     </MenuTabsContainer>
   );
