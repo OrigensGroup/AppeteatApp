@@ -38,9 +38,17 @@ type FeatureFlags = {
   FEAT_DARK_MODE: boolean;
   [key: string]: boolean;
 };
+
+interface DeliverySettings {
+  oredersPerTimeFrame: number;
+  timeFrame: number;
+  openTime: string;
+  closeTime: string;
+}
 export interface Settings {
   colors: ColorsInterface;
   features: FeatureFlags;
+  deliverySettings: DeliverySettings;
 }
 
 export interface Bar {

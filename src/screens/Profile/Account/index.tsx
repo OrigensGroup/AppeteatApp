@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -11,6 +13,8 @@ import ProfileLink from '../../../components/Profile/ProfileLink';
 
 import Text from '../../../components/shared/Text';
 import useUserData from '../../../hooks/useUserData';
+
+import LoginModal from '../../../components/shared/LoginModal';
 
 import {
   ProfileContainer,
@@ -27,6 +31,39 @@ interface AccountProps {}
 const Account: React.FunctionComponent<AccountProps> = () => {
   const theme = useTheme();
   const { user } = useUserData();
+  const navigation = useNavigation();
+
+  const [loginModalData, setLoginModalData] = useState({
+    show: false,
+  });
+
+  const hideLoginModal = () => {
+    setLoginModalData((old) => ({
+      ...old,
+      show: false,
+    }));
+  };
+
+  const closeLoginModal = () => {
+    hideLoginModal();
+    navigation.navigate('App', { screen: 'Home' });
+  };
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      const user = auth().currentUser;
+
+      if (user && user.isAnonymous) {
+        setLoginModalData((old) => ({
+          ...old,
+          show: true,
+        }));
+      }
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <ProfileContainer>
       <LinearGradient
@@ -36,6 +73,7 @@ const Account: React.FunctionComponent<AccountProps> = () => {
         style={styles.linearGradient}
       >
         <SafeArea>
+          <LoginModal isModalVisible={loginModalData.show} onClose={closeLoginModal} onConfirm={hideLoginModal} />
           <ImageContainer>
             <ProfileImage />
             <NameContainer>

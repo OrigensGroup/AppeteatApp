@@ -6,7 +6,7 @@ export const SettingsContainer = styled.SafeAreaView`
 `;
 
 export const ProfileSection = styled.View`
-  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double}; ;
+  padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double};
 `;
 
 export const TextContainer = styled.View`

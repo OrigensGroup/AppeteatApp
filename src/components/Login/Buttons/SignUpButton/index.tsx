@@ -5,19 +5,22 @@ import Text from '../../../shared/Text';
 import { ButtonContainer, IconWrapper } from './styles';
 
 interface SignUpButtonProps {
-  text: string;
+  text?: string;
   buttonText: string;
   onClick: () => void;
+  small?: boolean;
 }
 
-const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ buttonText, onClick, text }) => {
+const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ buttonText, onClick, small, text }) => {
   return (
     <ButtonContainer>
-      <Text color="fixedWhite" fontSize={14}>
-        {text}
-      </Text>
+      {text !== undefined && (
+        <Text color="fixedWhite" fontSize={small ? 12 : 14}>
+          {text}
+        </Text>
+      )}
       <IconWrapper onPress={onClick}>
-        <Text bold color="fixedWhite" fontSize={14}>
+        <Text align="center" bold color="fixedWhite" fontSize={small ? 12 : 14}>
           {buttonText}
         </Text>
       </IconWrapper>

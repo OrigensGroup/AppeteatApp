@@ -7,15 +7,17 @@ import AppleButton from '../../shared/AppleButton';
 import { SocialLoginWrapper } from './styles';
 
 interface SocialLoginProps {
+  onConfirm?: () => void;
+  isFromModal?: boolean;
   setLoading: (b: boolean) => void;
 }
 
-const SocialLogin: React.FunctionComponent<SocialLoginProps> = ({ setLoading }) => {
+const SocialLogin: React.FunctionComponent<SocialLoginProps> = ({ isFromModal, onConfirm, setLoading }) => {
   return (
     <SocialLoginWrapper>
-      <AppleButton setLoading={setLoading} />
-      <GoogleButton setLoading={setLoading} />
-      <FacebookButton setLoading={setLoading} />
+      <AppleButton isFromModal={isFromModal} onConfirm={onConfirm} setLoading={setLoading} />
+      <GoogleButton isFromModal={isFromModal} onConfirm={onConfirm} setLoading={setLoading} />
+      <FacebookButton isFromModal={isFromModal} onConfirm={onConfirm} setLoading={setLoading} />
     </SocialLoginWrapper>
   );
 };

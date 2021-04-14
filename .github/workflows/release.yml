@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Show Tag
+        run: echo ${{ steps.get_version.outputs.VERSION }}
+
+      - name: Configure AWS credentials Prod Account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ECR_ACCESS_KEY_ID_PROD }}
+          aws-secret-access-key: ${{ secrets.AWS_ECR_SECRET_ACCESS_KEY_PROD }}
+          aws-region: ${{ secrets.AWS_ECR_REGION_PROD}}
+      - name: Login to Amazon ECR Account
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Re Tag Image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}/node-js-development/mf-web
+          CURRENT_TAG: ${{ steps.get_version.outputs.VERSION }}
+          NEW_TAG: prod1-${{ steps.get_version.outputs.VERSION }}
+        run: |
+          docker pull $ECR_REGISTRY:$CURRENT_TAG
+          docker tag  $ECR_REGISTRY:$CURRENT_TAG $ECR_REGISTRY:$NEW_TAG
+          docker push $ECR_REGISTRY:$NEW_TAG
+      - name: Logout of Amazon ECR Account
+        run: docker logout ${{ steps.login-ecr.outputs.registry }}

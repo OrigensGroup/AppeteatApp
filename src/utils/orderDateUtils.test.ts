@@ -3,11 +3,15 @@ import { formatDate, dateToOption, isAllowedToOrder } from './orderDateUtils';
 const thirtyMinutes = 30 * 60 * 1000;
 
 it('returns the day in hours:minutes', () => {
-  expect(formatDate(new Date('2021-04-05'), thirtyMinutes)).toEqual('01:00');
+  expect(formatDate(new Date('Tue Apr 13 2021 01:00:00 GMT+0100 (British Summer Time)'), thirtyMinutes)).toEqual(
+    '01:00'
+  );
 });
 
 it('returns the day in hours:minutes - hours:minutes', () => {
-  expect(dateToOption(new Date('2021-04-05'), thirtyMinutes)).toEqual('01:00 - 01:30');
+  expect(dateToOption(new Date('Tue Apr 13 2021 01:00:00 GMT+0100 (British Summer Time)'), thirtyMinutes)).toEqual(
+    '01:00 - 01:30'
+  );
 });
 
 it('should allow to order if there is less than 2 orders in one frame', () => {

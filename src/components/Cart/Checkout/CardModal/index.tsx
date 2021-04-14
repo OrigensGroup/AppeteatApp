@@ -107,6 +107,8 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
           </CardModalChoice>
         )}
         <CardModalChoice active={selectedPaymentMethod === 1} onPress={changeActive(1)}>
+          {/** 
+          // @ts-ignore */}
           <LiteCreditCardInput onChange={cardChange} />
         </CardModalChoice>
         <ViewCta onClick={done}>

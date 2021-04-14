@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-
 import Swiper from 'react-native-swiper';
+import auth from '@react-native-firebase/auth';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -8,22 +8,19 @@ import SwiperPage from '../../../components/Menu/MenuList/MenuSwiper/SwiperPage'
 import MenuTabs from '../../../components/Menu/MenuList/MenuTabs';
 import ViewBasketButton from '../../../components/Menu/MenuList/ViewBasketButton';
 import SearchModal from '../../../components/Menu/MenuList/SearchModal';
-
 import TopBar from '../../../components/shared/TopBar';
-
 import useMenu from '../../../hooks/useMenu';
 import useHomepage from '../../../hooks/useHomepage';
 import useCart from '../../../hooks/useCart';
-
 import menuTranslations from '../../../translations/menu';
-
 import { HomepageComponent, CarouselPromo } from '../../../types/HomepageComponent';
 import { TabDiscount } from '../../../types/DiscountRules';
 import { Tab } from '../../../types/Tab';
-
 import { Promotion } from '../../../types/Promotion';
 
-import { SafeAreaViewBottom } from './styles';
+import LoginModal from '../../../components/shared/LoginModal';
+
+import { SafeAreaViewBottom, MenuContainer } from './styles';
 
 interface MenuProps {}
 
@@ -65,6 +62,17 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   const [isModalVisible, setModalVisible] = useState(false);
 
+  const [loginModalData, setLoginModalData] = useState({
+    show: false,
+  });
+
+  const hideLoginModal = () => {
+    setLoginModalData((old) => ({
+      ...old,
+      show: false,
+    }));
+  };
+
   const discounts = findDiscounts(homepage.sections);
 
   const { goTo } = route.params ? (route.params as { goTo: string }) : { goTo: undefined };
@@ -87,6 +95,19 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   const goToCart = () => {
     navigation.navigate('Cart');
+  };
+
+  const verifyUser = () => {
+    const user = auth().currentUser;
+
+    if (user && user.isAnonymous) {
+      setLoginModalData((old) => ({
+        ...old,
+        show: true,
+      }));
+    } else {
+      goToCart();
+    }
   };
 
   const menuTabsContent = useCallback(
@@ -118,15 +139,17 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   }, [menu.tabs, goTo]);
 
   return (
-    <SafeAreaViewBottom>
+    <MenuContainer>
+      <SafeAreaViewBottom />
+      <LoginModal isModalVisible={loginModalData.show} onClose={hideLoginModal} onConfirm={goToCart} />
       <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
       <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
       <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
       <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
         {menuTabsContent()}
       </Swiper>
-      {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
-    </SafeAreaViewBottom>
+      {cart.length > 0 && <ViewBasketButton onClick={verifyUser} />}
+    </MenuContainer>
   );
 };
 

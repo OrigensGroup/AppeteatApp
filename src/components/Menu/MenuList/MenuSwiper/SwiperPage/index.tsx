@@ -19,9 +19,11 @@ const SwiperPage: React.FunctionComponent<SwiperProps> = ({ discount, menuItems 
   return (
     <Wrapper>
       <FlatList
+        contentContainerStyle={{ paddingBottom: 24 }}
         data={menuItems}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
+        showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       />
     </Wrapper>

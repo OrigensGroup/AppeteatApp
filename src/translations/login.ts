@@ -19,7 +19,11 @@ const loginTranslations = {
     label: 'Registrati',
   },
   signUpSection: {
-    label: 'Non hai ancora un account?',
+    label: 'Non hai un account?',
+    buttonLabel: 'Registrati  > ',
+  },
+  anonSection: {
+    label: 'Continue without an account',
     buttonLabel: 'Registrati  > ',
   },
   signInSection: {

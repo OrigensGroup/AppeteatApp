@@ -6,4 +6,6 @@ export const ButtonContainer = styled.TouchableOpacity`
   align-items: center;
   height: ${({ theme }) => theme.spacing.multiple(6)};
   width: ${({ theme }) => theme.spacing.multiple(6)};
+  background-color: black;
+  border-radius: ${({ theme }) => theme.spacing.single};
 `;
