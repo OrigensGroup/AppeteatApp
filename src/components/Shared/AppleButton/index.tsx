@@ -60,7 +60,7 @@ const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ setLoading }) 
 
   return (
     <ButtonContainer onPress={onAppleButtonPress}>
-      <AntDesign color={theme.colors.textPrimary} name="apple1" size={48} />
+      <AntDesign color={theme.colors.fixedWhite} name="apple1" size={26} />
     </ButtonContainer>
   );
 };
