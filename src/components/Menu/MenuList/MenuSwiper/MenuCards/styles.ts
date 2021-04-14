@@ -9,7 +9,7 @@ export const CardContainer = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-radius: ${({ theme }) => theme.spacing.triple};
   border-color: ${({ theme }) => theme.colors.border};
-  margin-bottom: ${({ theme }) => theme.spacing.double};
+  margin-top: ${({ theme }) => theme.spacing.multiple(3)};
   margin-right: ${({ theme }) => theme.spacing.triple};
   justify-content: space-between;
   position: relative;
