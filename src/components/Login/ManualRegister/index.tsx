@@ -29,10 +29,12 @@ import {
 } from './styles';
 
 interface RegisterManualProps {
+  isFromModal?: boolean;
   changeModule: (b: 'login' | 'register' | 'forgotPassword') => void;
+  onConfirm?: () => void;
 }
 
-const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeModule }) => {
+const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeModule, isFromModal, onConfirm }) => {
   const theme = useTheme();
 
   const [loading, setLoading] = useState(false);
@@ -45,6 +47,25 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
   const createUser = (username: string, email: string, password: string) => {
     setLoading(true);
     crashlytics().log('Sign in attempt.');
+
+    if (isFromModal) {
+      const user = auth().currentUser;
+      const res = auth.EmailAuthProvider.credential(email, password);
+
+      user?.linkWithCredential(res).then(async () => {
+        !user.emailVerified && (await user.sendEmailVerification());
+
+        await user.updateProfile({
+          displayName: username,
+        });
+
+        login();
+      });
+
+      onConfirm && onConfirm();
+
+      return;
+    }
 
     auth()
       .createUserWithEmailAndPassword(email, password)

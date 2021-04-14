@@ -17,39 +17,66 @@ GoogleSignin.configure({
 });
 
 interface GoogleButtonProps {
+  isFromModal?: boolean;
+  onConfirm?: () => void;
   setLoading: (b: boolean) => void;
 }
 
-const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ setLoading }) => {
+const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal, onConfirm, setLoading }) => {
   const { login } = useUserData();
 
   async function onGoogleButtonPress() {
     crashlytics().log('Google log in attempt.');
     // Get the users ID token
 
-    const { idToken } = await GoogleSignin.signIn();
-    // Create a Google credential with the token
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    setLoading(true);
+    try {
+      const { idToken } = await GoogleSignin.signIn();
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      setLoading(true);
 
-    // Sign-in the user with the credential
-    auth()
-      .signInWithCredential(googleCredential)
-      .then(async () => {
-        setLoading(false);
+      if (isFromModal) {
         const user = auth().currentUser;
 
-        if (user) {
-          await initUserData(user.uid);
-          login();
-        } else {
-          crashlytics().log("Couldn't setup user db");
-        }
-      })
-      .catch((error) => {
-        crashlytics().log('Google log in failed.');
-        crashlytics().recordError(error);
-      });
+        user
+          ?.linkWithCredential(googleCredential)
+          .then(async () => {
+            login();
+
+            onConfirm && onConfirm();
+          })
+          .catch((e) => {
+            throw e;
+          });
+
+        setLoading(false);
+
+        return;
+      }
+
+      // Sign-in the user with the credential
+      auth()
+        .signInWithCredential(googleCredential)
+        .then(async () => {
+          setLoading(false);
+          const user = auth().currentUser;
+
+          if (user) {
+            await initUserData(user.uid);
+            login();
+          } else {
+            crashlytics().log("Couldn't setup user db");
+          }
+        })
+        .catch((e) => {
+          throw e;
+        });
+    } catch (error) {
+      console.log('New erro', error);
+      setLoading(false);
+      crashlytics().log('Google log in failed.');
+      crashlytics().recordError(error);
+    }
   }
 
   return (

@@ -14,10 +14,12 @@ import { ButtonContainer } from './styles';
 import { appleLogin } from './login';
 
 interface AppleButtonProps {
+  onConfirm?: () => void;
+  isFromModal?: boolean;
   setLoading: (b: boolean) => void;
 }
 
-const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ setLoading }) => {
+const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ isFromModal, onConfirm, setLoading }) => {
   const theme = useTheme();
   const { login } = useUserData();
 
@@ -31,6 +33,23 @@ const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ setLoading }) 
 
       if (appleCredential === undefined) {
         setLoading(false);
+        return;
+      }
+
+      if (isFromModal) {
+        const user = auth().currentUser;
+
+        user
+          ?.linkWithCredential(appleCredential)
+          .then(async () => {
+            login();
+
+            onConfirm && onConfirm();
+          })
+          .catch((e) => {
+            throw e;
+          });
+
         return;
       }
 
@@ -48,13 +67,13 @@ const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ setLoading }) 
             crashlytics().log("Couldn't setup user db");
           }
         })
-        .catch((error) => {
-          crashlytics().log('Apple log in failed.');
-          crashlytics().recordError(error);
+        .catch((e) => {
+          throw e;
         });
     } catch (e) {
       setLoading(false);
-      return;
+      crashlytics().log('Apple log in failed.');
+      crashlytics().recordError(e);
     }
   }
 

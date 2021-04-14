@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import Swiper from 'react-native-swiper';
+import auth from '@react-native-firebase/auth';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -22,6 +23,8 @@ import { TabDiscount } from '../../../types/DiscountRules';
 import { Tab } from '../../../types/Tab';
 
 import { Promotion } from '../../../types/Promotion';
+
+import LoginModal from '../../../components/shared/LoginModal';
 
 import { SafeAreaViewBottom } from './styles';
 
@@ -65,6 +68,17 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   const [isModalVisible, setModalVisible] = useState(false);
 
+  const [loginModalData, setLoginModalData] = useState({
+    show: false,
+  });
+
+  const hideLoginModal = () => {
+    setLoginModalData((old) => ({
+      ...old,
+      show: false,
+    }));
+  };
+
   const discounts = findDiscounts(homepage.sections);
 
   const { goTo } = route.params ? (route.params as { goTo: string }) : { goTo: undefined };
@@ -87,6 +101,19 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   const goToCart = () => {
     navigation.navigate('Cart');
+  };
+
+  const verifyUser = () => {
+    const user = auth().currentUser;
+
+    if (user && user.isAnonymous) {
+      setLoginModalData((old) => ({
+        ...old,
+        show: true,
+      }));
+    } else {
+      goToCart();
+    }
   };
 
   const menuTabsContent = useCallback(
@@ -119,13 +146,14 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   return (
     <SafeAreaViewBottom>
+      <LoginModal isModalVisible={loginModalData.show} onClose={hideLoginModal} onConfirm={goToCart} />
       <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
       <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
       <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
       <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
         {menuTabsContent()}
       </Swiper>
-      {cart.length > 0 && <ViewBasketButton onClick={goToCart} />}
+      {cart.length > 0 && <ViewBasketButton onClick={verifyUser} />}
     </SafeAreaViewBottom>
   );
 };

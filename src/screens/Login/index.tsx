@@ -33,7 +33,7 @@ const Login: React.FunctionComponent<LoginProps> = () => {
             {socialLoading ? (
               <SocialLoading />
             ) : pageToShow === 'login' ? (
-              <ManualLogIn changeModule={setPageToShow} />
+              <ManualLogIn changeModule={setPageToShow} showAnonLogin />
             ) : pageToShow === 'register' ? (
               <RegisterManual changeModule={setPageToShow} />
             ) : (

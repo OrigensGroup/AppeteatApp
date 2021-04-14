@@ -17,15 +17,18 @@ import loginTranslations from '../../../translations/login';
 
 import useUserData from '../../../hooks/useUserData';
 
+import { initUserData } from '../../../utils/manageUserdata';
+
 import { LoginSchema } from './loginSchema';
 
 import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
 
 interface ManualLogInProps {
+  showAnonLogin?: boolean;
   changeModule: (b: 'login' | 'register' | 'forgotPassword') => void;
 }
 
-const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }) => {
+const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, showAnonLogin }) => {
   const theme = useTheme();
 
   const [loading, setLoading] = useState(false);
@@ -37,6 +40,43 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
 
   const forgotPassword = () => {
     changeModule('forgotPassword');
+  };
+
+  const anonSignIn = () => {
+    crashlytics().log('Anon Log in attempt.');
+
+    auth()
+      .signInAnonymously()
+      .then(async () => {
+        const user = auth().currentUser;
+
+        if (user) {
+          await initUserData(user.uid);
+
+          login();
+        } else {
+          crashlytics().log("Couldn't setup user");
+        }
+
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+
+        if (error.code === 'auth/invalid-email') {
+          Alert.alert(loginTranslations.errorSignInEmail.label);
+          return;
+        }
+
+        if (error.code === 'auth/wrong-password') {
+          Alert.alert(loginTranslations.errorWrongPasswordSignIn.label);
+          return;
+        }
+
+        crashlytics().log('Anon Log in failed.');
+        crashlytics().recordError(error);
+        console.error(error);
+      });
   };
 
   const singIn = (email: string, password: string) => {
@@ -112,6 +152,9 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule }
                 onClick={register}
                 text={loginTranslations.signUpSection.label}
               />
+              {showAnonLogin && (
+                <SignUpButton buttonText={loginTranslations.anonSection.label} onClick={anonSignIn} small />
+              )}
             </ButtonsWrapper>
           </ManualLogInContainer>
         )}
