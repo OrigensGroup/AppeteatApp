@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const UpgradeSectionContainer = styled.View`
   flex: 1;
   height: 100%;
+  margin-bottom: ${({ theme }) => theme.spacing.multiple(7)};
 `;
 
 export const UpgradeItemList = styled.SectionList`

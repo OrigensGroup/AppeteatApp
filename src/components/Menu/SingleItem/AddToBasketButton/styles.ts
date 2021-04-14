@@ -1,13 +1,15 @@
 import styled from 'styled-components/native';
 
 export const AddToBasketButtonWrapper = styled.View`
-  position: absolute;
-  bottom: ${({ theme }) => (theme.os === 'ios' ? theme.spacing.triple : theme.spacing.double)};
+  bottom: ${({ theme }) => (theme.os === 'ios' ? theme.spacing.half : theme.spacing.double)};
   left: 0;
   right: 0;
   width: 100%;
   flex-direction: row;
-  padding: ${({ theme }) => theme.spacing.half} ${({ theme }) => theme.spacing.triple};
+  padding: 0 ${({ theme }) => theme.spacing.triple};
+  border-top-width: 1px;
+  border-color: ${({ theme }) => theme.colors.border};
+  padding-top: ${({ theme }) => theme.spacing.double};
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   z-index: 99;
 `;
