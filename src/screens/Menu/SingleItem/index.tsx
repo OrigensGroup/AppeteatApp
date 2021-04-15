@@ -14,7 +14,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const { discount, goBackTo, item } = route.params as {
     item: MenuItem;
     discount: Discount | undefined;
-    goBackTo: string;
+    goBackTo: string | undefined;
   };
 
   if (item.type === 'customisableItem') {
