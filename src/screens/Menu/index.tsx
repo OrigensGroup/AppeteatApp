@@ -25,6 +25,7 @@ const MenuNav: React.FunctionComponent<MenuNavProps> = () => {
         name="SingleItem"
         options={{
           headerShown: false,
+          animationEnabled: false,
         }}
       />
       <Stack.Screen
