@@ -4,7 +4,6 @@ export const CustomiseSectionContainer = styled.View`
   flex: 1;
   margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.triple}
     ${({ theme }) => theme.spacing.multiple(7)};
-  ${({ theme }) => theme.spacing.triple};
 `;
 
 export const TitleRow = styled.View`
