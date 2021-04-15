@@ -36,12 +36,8 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item
       ],
     });
 
-    if (goBackTo === 'FavouriteCocktails') {
-      navigation.navigate('FavouriteCocktails');
-    }
-
-    if (goBackTo === 'Account') {
-      navigation.navigate('Account');
+    if (goBackTo) {
+      return navigation.navigate(goBackTo);
     } else {
       navigation.goBack();
     }

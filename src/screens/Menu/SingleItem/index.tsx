@@ -11,31 +11,18 @@ interface SingleItemProps {}
 const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const route = useRoute();
 
-  const { discount, favCard, item, profileFavCard } = route.params as {
+  const { discount, goBackTo, item } = route.params as {
     item: MenuItem;
     discount: Discount | undefined;
-    favCard: string;
-    profileFavCard: string;
+    goBackTo: string;
   };
 
   if (item.type === 'customisableItem') {
-    return (
-      <CustomisableItem
-        discount={discount}
-        goBackTo={favCard ? favCard : profileFavCard ? profileFavCard : undefined}
-        item={item}
-      />
-    );
+    return <CustomisableItem discount={discount} goBackTo={goBackTo} item={item} />;
   }
 
   //item.type === 'itemWithExtras'
-  return (
-    <ItemWithExtras
-      discount={discount}
-      goBackTo={favCard ? favCard : profileFavCard ? profileFavCard : undefined}
-      item={item}
-    />
-  );
+  return <ItemWithExtras discount={discount} goBackTo={goBackTo} item={item} />;
 };
 
 export default SingleItem;
