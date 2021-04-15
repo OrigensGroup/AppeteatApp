@@ -79,7 +79,7 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
           )}
           <SearchModalBottomBarWrapper>
             <ViewCta onClick={closeModal}>
-              <Text bold color="secondary" fontSize={18}>
+              <Text bold color="secondary" fontSize={14}>
                 {menuTranslations.menuPage.searchModal.closeCta.title}
               </Text>
             </ViewCta>

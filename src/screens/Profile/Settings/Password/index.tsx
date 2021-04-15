@@ -140,7 +140,7 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
 
           <SaveButton>
             <ViewCta onClick={handleSubmit}>
-              <Text bold color="fixedWhite" fontSize={18}>
+              <Text bold color="fixedWhite" fontSize={14}>
                 {profileTranslations.settingsPage.save}
               </Text>
             </ViewCta>

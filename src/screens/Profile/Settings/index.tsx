@@ -219,7 +219,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
               {saveShow && (
                 <SaveButton>
                   <ViewCta onClick={saveChanges}>
-                    <Text bold color="fixedWhite" fontSize={18}>
+                    <Text bold color="fixedWhite" fontSize={14}>
                       {profileTranslations.settingsPage.save}
                     </Text>
                   </ViewCta>

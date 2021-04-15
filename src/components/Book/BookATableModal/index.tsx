@@ -162,7 +162,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
         </SpinnerContainer>
         <ConfirmButton>
           <ViewCta onClick={onSubmit}>
-            <Text bold color="fixedWhite" fontSize={18}>
+            <Text bold color="fixedWhite" fontSize={14}>
               {bookTranslations.locationsListPage.bookATableModal.confirm}
             </Text>
           </ViewCta>

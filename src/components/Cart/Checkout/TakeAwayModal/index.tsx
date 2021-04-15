@@ -138,7 +138,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
         </TakeAwayTextfieldContainer>
 
         <ViewCta onClick={closeModal}>
-          <Text bold color="fixedWhite" fontSize={20}>
+          <Text bold color="fixedWhite" fontSize={14}>
             {cartTranslations.checkoutPage.takeAwayModal.cta}
           </Text>
         </ViewCta>
