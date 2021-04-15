@@ -14,6 +14,12 @@ export const barInit: Bar = {
   homepage: { sections: [] },
   orders: { list: [] },
   settings: {
+    deliverySettings: {
+      closeTime: '',
+      openTime: '',
+      oredersPerTimeFrame: 0,
+      timeFrame: 0,
+    },
     colors,
     features: {
       FEAT_BOOK: false,
