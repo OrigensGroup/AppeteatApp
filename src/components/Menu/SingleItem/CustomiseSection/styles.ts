@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 
 export const CustomiseSectionContainer = styled.View`
   flex: 1;
-  margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.triple} 0
-    ${({ theme }) => theme.spacing.triple};
+  margin: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.triple}
+    ${({ theme }) => theme.spacing.multiple(7)};
 `;
 
 export const TitleRow = styled.View`

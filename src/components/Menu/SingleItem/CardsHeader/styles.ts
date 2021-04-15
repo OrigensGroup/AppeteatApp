@@ -7,10 +7,11 @@ export const CardsHeaderContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
+  border-bottom-width: 1px;
+  border-color: ${({ theme }) => theme.colors.border};
   padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple};
-
-  ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.double}`};
+  padding-bottom: ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.double}`};
 `;
 
 export const TitleWrapper = styled.View`
