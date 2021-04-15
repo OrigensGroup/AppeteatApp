@@ -14,7 +14,9 @@ interface OrdersProps {}
 const Orders: React.FunctionComponent<OrdersProps> = () => {
   const { userData } = useUserData();
 
-  const renderItem = ({ item }: { item: Order }) => <OrderCard order={item} />;
+  const renderItem = ({ item, index }: { item: Order; index: number }) => (
+    <OrderCard key={item.id + index} order={item} />
+  );
 
   return (
     <OrdersContainer>
