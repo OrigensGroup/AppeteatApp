@@ -16,24 +16,18 @@ import { ItemWithExtrasContainer, ItemContainer, MarginBottom } from './styles';
 interface ItemWithExtrasProps {
   item: MenuItem;
   discount?: Discount;
-  favCard?: boolean;
-  profileFavoriteCard?: boolean;
+  goBackTo?: string;
 }
 
 const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
 const MarginBottomWithFlag = withFeatureFlag(MarginBottom, 'FEAT_ORDERING');
 
-const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({
-  discount,
-  favCard,
-  item,
-  profileFavoriteCard,
-}) => {
+const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, goBackTo, item }) => {
   const [extras, setExtras] = useState<DataItem[]>([]);
 
   return (
     <ItemWithExtrasContainer>
-      <CardsHeader favoriteCard={favCard} item={item} profileFavoriteCard={profileFavoriteCard} />
+      <CardsHeader goBackTo={goBackTo} item={item} />
       <ItemContainer>
         <ItemPicture item={item} />
         <ItemDescription discount={discount} item={item} />

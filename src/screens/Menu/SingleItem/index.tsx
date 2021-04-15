@@ -14,16 +14,28 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
   const { discount, favCard, item, profileFavCard } = route.params as {
     item: MenuItem;
     discount: Discount | undefined;
-    favCard: boolean;
-    profileFavCard: boolean;
+    favCard: string;
+    profileFavCard: string;
   };
 
   if (item.type === 'customisableItem') {
-    return <CustomisableItem discount={discount} favCard={favCard} item={item} profileFavoriteCard={profileFavCard} />;
+    return (
+      <CustomisableItem
+        discount={discount}
+        goBackTo={favCard ? favCard : profileFavCard ? profileFavCard : undefined}
+        item={item}
+      />
+    );
   }
 
   //item.type === 'itemWithExtras'
-  return <ItemWithExtras discount={discount} favCard={favCard} item={item} profileFavoriteCard={profileFavCard} />;
+  return (
+    <ItemWithExtras
+      discount={discount}
+      goBackTo={favCard ? favCard : profileFavCard ? profileFavCard : undefined}
+      item={item}
+    />
+  );
 };
 
 export default SingleItem;

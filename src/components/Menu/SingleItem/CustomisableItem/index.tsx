@@ -20,19 +20,13 @@ import { CustomisableItemContainer, ItemContainer, MarginBottom } from './styles
 interface CustomisableItemProps {
   item: MenuItem;
   discount?: Discount;
-  favCard?: boolean;
-  profileFavoriteCard?: boolean;
+  goBackTo?: string;
 }
 
 const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
 const MarginBottomWithFlag = withFeatureFlag(MarginBottom, 'FEAT_ORDERING');
 
-const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({
-  discount,
-  favCard,
-  item,
-  profileFavoriteCard,
-}) => {
+const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ discount, goBackTo, item }) => {
   const [modalData, setModalData] = useState({
     show: false,
     title: 'Customise Item',
@@ -61,7 +55,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({
         title={modalData.title}
         updateValue={updateValue}
       />
-      <CardsHeader favoriteCard={favCard} item={item} profileFavoriteCard={profileFavoriteCard} />
+      <CardsHeader goBackTo={goBackTo} item={item} />
       <ItemContainer>
         <ItemPicture item={item} />
         <ItemDescription discount={discount} item={item} />

@@ -17,7 +17,7 @@ interface FavCardProps {
 
 const FavCard: React.FunctionComponent<FavCardProps> = ({ item }) => {
   const theme = useTheme();
-  const favCard = true;
+  const favCard = 'FavouriteCocktails';
   const navigation = useNavigation();
 
   const onCardClick = () => {

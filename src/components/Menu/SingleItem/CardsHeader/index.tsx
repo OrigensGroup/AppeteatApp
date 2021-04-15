@@ -16,19 +16,15 @@ import { TitleWrapper, CardsHeaderContainer, EmptyDiv } from './styles';
 
 interface CardsHeaderProps {
   item: MenuItem;
-  favoriteCard?: boolean;
-  profileFavoriteCard?: boolean;
+  goBackTo?: string;
 }
 
 const FavouriteIconWithFlag = withFeatureFlag(IconButton, 'FEAT_FAVORITE_COCKTAILS', EmptyDiv);
 
-const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ favoriteCard, item, profileFavoriteCard }) => {
+const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item }) => {
   const theme = useTheme();
   const { addNewFavoriteCocktail, userData } = useUserData();
   const navigation = useNavigation();
-  console.log(favoriteCard);
-  console.log('cccc');
-  console.log(profileFavoriteCard);
 
   const navigate = () => {
     navigation.reset({
@@ -40,11 +36,11 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ favoriteCard, 
       ],
     });
 
-    if (favoriteCard) {
+    if (goBackTo === 'FavouriteCocktails') {
       navigation.navigate('FavouriteCocktails');
     }
 
-    if (profileFavoriteCard) {
+    if (goBackTo === 'Account') {
       navigation.navigate('Account');
     } else {
       navigation.goBack();

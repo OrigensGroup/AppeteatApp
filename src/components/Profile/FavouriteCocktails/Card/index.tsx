@@ -17,7 +17,7 @@ interface CardProps {
 const Card: React.FunctionComponent<CardProps> = ({ item }) => {
   const navigation = useNavigation();
   const theme = useTheme();
-  const profileFavCard = true;
+  const profileFavCard = 'Account';
 
   const onCardClick = () => {
     navigation.navigate('Menu', { screen: 'SingleItem', params: { item, profileFavCard }, initial: false });
