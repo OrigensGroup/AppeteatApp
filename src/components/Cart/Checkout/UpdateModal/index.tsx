@@ -34,9 +34,9 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
   };
 
   const update = () => {
-    if (item && localQuantity == 0) deleteItemFromCart(item.orderItemId);
+    if (item && localQuantity === 0) deleteItemFromCart(item.orderItemId);
 
-    if (localQuantity != 0) {
+    if (localQuantity !== 0) {
       if (item) updateItemQuantity(item, localQuantity);
     }
 

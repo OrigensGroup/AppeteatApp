@@ -47,9 +47,9 @@ const androidAppleLogin = async () => {
 
   if (response.state === state) {
     return auth.AppleAuthProvider.credential(
-      //@ts-ignore
+      // @ts-ignore
       response.id_token,
-      rawNonce // Passing the rawNonce here do the trick.
+      rawNonce, // Passing the rawNonce here do the trick.
     );
   }
 };

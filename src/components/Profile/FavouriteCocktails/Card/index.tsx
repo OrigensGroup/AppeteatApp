@@ -20,7 +20,11 @@ const Card: React.FunctionComponent<CardProps> = ({ item }) => {
   const goBackTo = 'Account';
 
   const onCardClick = () => {
-    navigation.navigate('Menu', { screen: 'SingleItem', params: { item, goBackTo }, initial: false });
+    navigation.navigate('Menu', {
+      screen: 'SingleItem',
+      params: { item, goBackTo },
+      initial: false,
+    });
   };
 
   return (

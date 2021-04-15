@@ -33,7 +33,7 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
   const [searchItem, setSearchItem] = useState('');
 
   const itemsToShow = menu.items.filter((item) =>
-    JSON.stringify(item).toLowerCase().includes(searchItem.toLowerCase())
+    JSON.stringify(item).toLowerCase().includes(searchItem.toLowerCase()),
   );
 
   const closeModal = () => {
@@ -71,7 +71,15 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
           {searchItem !== '' ? (
             <FlatList data={itemsToShow} renderItem={renderItem} style={{ width: '100%', paddingTop: 16 }} />
           ) : (
-            <View style={{ width: '100%', flex: 1, display: 'flex', alignItems: 'center', marginTop: 24 }}>
+            <View
+              style={{
+                width: '100%',
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                marginTop: 24,
+              }}
+            >
               <Text bold color="primary" fontSize={18}>
                 {menuTranslations.menuPage.searchModal.noItems.title}
               </Text>

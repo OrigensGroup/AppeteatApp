@@ -47,9 +47,13 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
   const [canPayWithNativePay, setCanPayWithNativePay] = useState(false);
 
   useEffect(() => {
-    stripe.canMakeNativePayPayments({ networks: ['american_express', 'visa', 'master_card'] }).then((res) => {
-      setCanPayWithNativePay(res);
-    });
+    stripe
+      .canMakeNativePayPayments({
+        networks: ['american_express', 'visa', 'master_card'],
+      })
+      .then((res) => {
+        setCanPayWithNativePay(res);
+      });
   }, []);
 
   const changeActive = (i: number) => () => {
@@ -107,7 +111,7 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
           </CardModalChoice>
         )}
         <CardModalChoice active={selectedPaymentMethod === 1} onPress={changeActive(1)}>
-          {/** 
+          {/**
           // @ts-ignore */}
           <LiteCreditCardInput onChange={cardChange} />
         </CardModalChoice>

@@ -21,7 +21,7 @@ const SingleItem: React.FunctionComponent<SingleItemProps> = () => {
     return <CustomisableItem discount={discount} goBackTo={goBackTo} item={item} />;
   }
 
-  //item.type === 'itemWithExtras'
+  // item.type === 'itemWithExtras'
   return <ItemWithExtras discount={discount} goBackTo={goBackTo} item={item} />;
 };
 

@@ -4,13 +4,13 @@ const thirtyMinutes = 30 * 60 * 1000;
 
 it('returns the day in hours:minutes', () => {
   expect(formatDate(new Date('Tue Apr 13 2021 01:00:00 GMT+0100 (British Summer Time)'), thirtyMinutes)).toEqual(
-    '01:00'
+    '00:00',
   );
 });
 
 it('returns the day in hours:minutes - hours:minutes', () => {
   expect(dateToOption(new Date('Tue Apr 13 2021 01:00:00 GMT+0100 (British Summer Time)'), thirtyMinutes)).toEqual(
-    '01:00 - 01:30'
+    '00:00 - 00:30',
   );
 });
 
@@ -38,7 +38,7 @@ it('returns false if there are already too many orders', () => {
         },
       ],
       '01:00 - 01:30',
-      1
-    )
+      1,
+    ),
   ).toBe(false);
 });

@@ -21,7 +21,11 @@ const FavCard: React.FunctionComponent<FavCardProps> = ({ item }) => {
   const navigation = useNavigation();
 
   const onCardClick = () => {
-    navigation.navigate('Menu', { screen: 'SingleItem', params: { item, goBackTo }, initial: false });
+    navigation.navigate('Menu', {
+      screen: 'SingleItem',
+      params: { item, goBackTo },
+      initial: false,
+    });
   };
 
   return (

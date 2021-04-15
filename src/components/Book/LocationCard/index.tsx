@@ -37,8 +37,8 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
 
   const onShareClick = () => {
     const url = Platform.select({
-      ios: 'maps:' + venue.latitude + ',' + venue.longitude + '?q=' + venue.name,
-      android: 'geo:' + venue.latitude + ',' + venue.longitude + '?q=' + venue.name,
+      ios: `maps:${venue.latitude},${venue.longitude}?q=${venue.name}`,
+      android: `geo:${venue.latitude},${venue.longitude}?q=${venue.name}`,
     });
 
     if (url) {
