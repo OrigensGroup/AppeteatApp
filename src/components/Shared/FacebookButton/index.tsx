@@ -12,53 +12,78 @@ import useUserData from '../../../hooks/useUserData';
 import { ButtonContainer } from './styles';
 
 interface FacebookButtonProps {
+  isFromModal?: boolean;
+  onConfirm?: () => void;
   setLoading: (b: boolean) => void;
 }
 
-const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ setLoading }) => {
+const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ isFromModal, onConfirm, setLoading }) => {
   const { login } = useUserData();
 
   async function onFacebookButtonPress() {
     crashlytics().log('Facebook log in attempt.');
+
     // Attempt login with permissions
-    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+    try {
+      const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
-    setLoading(true);
+      setLoading(true);
 
-    if (result.isCancelled) {
-      setLoading(false);
-      throw 'User cancelled the login process';
-    }
-
-    // Once signed in, get the users AccesToken
-    const data = await AccessToken.getCurrentAccessToken();
-
-    if (!data) {
-      setLoading(false);
-      throw 'Something went wrong obtaining access token';
-    }
-
-    // Create a Firebase credential with the AccessToken
-    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-
-    // Sign-in the user with the credential
-    auth()
-      .signInWithCredential(facebookCredential)
-      .then(async () => {
+      if (result.isCancelled) {
         setLoading(false);
+        throw 'User cancelled the login process';
+      }
+
+      // Once signed in, get the users AccesToken
+      const data = await AccessToken.getCurrentAccessToken();
+
+      if (!data) {
+        setLoading(false);
+        throw 'Something went wrong obtaining access token';
+      }
+
+      // Create a Firebase credential with the AccessToken
+      const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+      if (isFromModal) {
         const user = auth().currentUser;
 
-        if (user) {
-          await initUserData(user.uid);
-          login();
-        } else {
-          crashlytics().log("Couldn't setup user db");
-        }
-      })
-      .catch((error) => {
-        crashlytics().log('Facebook log in failed.');
-        crashlytics().recordError(error);
-      });
+        user
+          ?.linkWithCredential(facebookCredential)
+          .then(async () => {
+            login();
+            setLoading(false);
+
+            onConfirm && onConfirm();
+          })
+          .catch((e) => {
+            throw e;
+          });
+
+        return;
+      }
+
+      // Sign-in the user with the credential
+      auth()
+        .signInWithCredential(facebookCredential)
+        .then(async () => {
+          setLoading(false);
+          const user = auth().currentUser;
+
+          if (user) {
+            await initUserData(user.uid);
+            login();
+          } else {
+            crashlytics().log("Couldn't setup user db");
+          }
+        })
+        .catch((e) => {
+          throw e;
+        });
+    } catch (error) {
+      crashlytics().log('Facebook log in failed.');
+      crashlytics().recordError(error);
+    }
   }
 
   return (

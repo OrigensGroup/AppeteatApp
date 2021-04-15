@@ -17,6 +17,8 @@ import { CheckoutServices } from '../../../../types/Checkout';
 import useOrders from '../../../../hooks/useOrders';
 import { dateToOption, isAllowedToOrder } from '../../../../utils/orderDateUtils';
 
+import useSettings from '../../../../hooks/useSettings';
+
 import { PopUpContainer, TakeAwayModalHeader, TakeAwayTextfieldContainer, PickerContainer } from './styles';
 
 interface TakeAwayModalProps {
@@ -36,6 +38,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
 }) => {
   const theme = useTheme();
   const [orders] = useOrders();
+  const [settings] = useSettings();
   const [show, setShow] = useState(false);
   const [selectedTimeFrame, setSelectedTimeFrame] = useState(value.orderTime);
 
@@ -49,11 +52,21 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
   };
 
   const optionsToShow = useCallback(() => {
-    const ordersPerSection = 10;
-    const orderTimeFrame = 1000 * 60 * 30;
+    const ordersPerSection = settings.deliverySettings.oredersPerTimeFrame;
+    const orderTimeFrame = 1000 * 60 * settings.deliverySettings.timeFrame;
     let orderStart = new Date();
     const orderFinish = new Date();
-    orderFinish.setHours(23, 59, 59, 999);
+
+    orderStart.setHours(
+      Number(settings.deliverySettings.openTime.split(':')[0]),
+      Number(settings.deliverySettings.openTime.split(':')[1])
+    );
+
+    orderFinish.setHours(
+      Number(settings.deliverySettings.closeTime.split(':')[0]),
+      Number(settings.deliverySettings.closeTime.split(':')[1])
+    );
+
     const orderSections = [];
 
     while (orderStart < orderFinish) {
@@ -67,7 +80,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
     }
 
     return orderSections;
-  }, [orders]);
+  }, [orders, settings.deliverySettings]);
 
   return (
     <Modal
@@ -125,7 +138,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
         </TakeAwayTextfieldContainer>
 
         <ViewCta onClick={closeModal}>
-          <Text bold color="fixedWhite" fontSize={20}>
+          <Text bold color="fixedWhite" fontSize={14}>
             {cartTranslations.checkoutPage.takeAwayModal.cta}
           </Text>
         </ViewCta>

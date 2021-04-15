@@ -12,7 +12,7 @@
     "lint:css": "stylelint './src/**/styles.ts' --aei",
     "jest": "jest --silent",
     "test": "yarn jest --detectOpenHandles --no-cache",
-    "test:ci": "yarn jest --coverage --detectOpenHandles --no-cache",
+    "test:ci": "yarn jest --ci --coverage --detectOpenHandles --no-cache",
     "test:watch": "yarn jest --watch",
     "type:check": "tsc --noEmit",
     "prepare": "husky install",

@@ -6,7 +6,7 @@ import menuTranslations from '../../../../translations/menu';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
-import { MainButtonWrapper } from './styles';
+import { MainButtonWrapper, SafeAreaViewBottom } from './styles';
 
 interface ViewBasketButtonProps {
   onClick: () => void;
@@ -16,20 +16,23 @@ const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onCl
   const { cart, pricing } = useCart();
 
   return (
-    <MainButtonWrapper>
-      <ViewCta onClick={onClick}>
-        <Text bold color="fixedWhite" fontSize={14}>
-          ( {cart.length} )
-        </Text>
-        <Text bold color="fixedWhite" fontSize={14}>
-          {menuTranslations.menuPage.viewBasketField.placeholder}
-        </Text>
-        <Text bold color="fixedWhite" fontSize={14}>
-          {currencyTranslations.currencyField}
-          {pricing.subtotal}
-        </Text>
-      </ViewCta>
-    </MainButtonWrapper>
+    <>
+      <MainButtonWrapper>
+        <ViewCta onClick={onClick}>
+          <Text bold color="fixedWhite" fontSize={14}>
+            ( {cart.length} )
+          </Text>
+          <Text bold color="fixedWhite" fontSize={14}>
+            {menuTranslations.menuPage.viewBasketField.placeholder}
+          </Text>
+          <Text bold color="fixedWhite" fontSize={14}>
+            {currencyTranslations.currencyField}
+            {pricing.subtotal}
+          </Text>
+        </ViewCta>
+      </MainButtonWrapper>
+      <SafeAreaViewBottom />
+    </>
   );
 };
 

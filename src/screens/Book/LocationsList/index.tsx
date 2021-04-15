@@ -1,10 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, Animated } from 'react-native';
 
+import auth from '@react-native-firebase/auth';
+
 import MapView, { Marker } from 'react-native-maps';
+
+import { useNavigation } from '@react-navigation/native';
 
 import BookATableModal from '../../../components/Book/BookATableModal';
 import LocationCard from '../../../components/Book/LocationCard';
+import LoginModal from '../../../components/shared/LoginModal';
 import useLocations from '../../../hooks/useLocations';
 import { Venue } from '../../../types/Venue';
 
@@ -42,6 +47,7 @@ const styles = StyleSheet.create({
 });
 
 const LocationLists: React.FunctionComponent = () => {
+  const navigation = useNavigation();
   const mapRef = useRef<MapView>(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
   const [locations] = useLocations();
@@ -49,6 +55,22 @@ const LocationLists: React.FunctionComponent = () => {
   const [locationIndex, setLocationIndex] = useState(0);
   const [animation] = useState(new Animated.Value(0));
   const [isModalVisible, setModalVisible] = useState(false);
+
+  const [loginModalData, setLoginModalData] = useState({
+    show: false,
+  });
+
+  const hideLoginModal = () => {
+    setLoginModalData((old) => ({
+      ...old,
+      show: false,
+    }));
+  };
+
+  const closeLoginModal = () => {
+    hideLoginModal();
+    navigation.navigate('App', { screen: 'Home' });
+  };
 
   const markers = locations.list;
 
@@ -125,8 +147,24 @@ const LocationLists: React.FunctionComponent = () => {
     };
   }, [animation, locationIndex, markers, region.latitudeDelta, region.longitudeDelta]);
 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      const user = auth().currentUser;
+
+      if (user && user.isAnonymous) {
+        setLoginModalData((old) => ({
+          ...old,
+          show: true,
+        }));
+      }
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
+      <LoginModal isModalVisible={loginModalData.show} onClose={closeLoginModal} onConfirm={hideLoginModal} />
       <BookATableModal isModalVisible={isModalVisible} onClose={closeModal} venue={venueToBook} />
       <MapView initialRegion={region} ref={mapRef} style={styles.container}>
         {markers.map((marker, index) => {

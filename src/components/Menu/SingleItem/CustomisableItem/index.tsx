@@ -15,7 +15,12 @@ import ExplanationModal from '../../../shared/ExplanationModal';
 
 import withFeatureFlag from '../../../../HOC/withFeatureFlag';
 
-import { CustomisableItemContainer, ItemContainer, MarginBottom } from './styles';
+import {
+  CustomisableItemContainer,
+  ItemContainer,
+  CustomisableItemSafeAreaTop,
+  CustomisableItemSafeAreaBottom,
+} from './styles';
 
 interface CustomisableItemProps {
   item: MenuItem;
@@ -24,7 +29,7 @@ interface CustomisableItemProps {
 }
 
 const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
-const MarginBottomWithFlag = withFeatureFlag(MarginBottom, 'FEAT_ORDERING');
+const CustomisableItemSafeAreaBottomWithFlag = withFeatureFlag(CustomisableItemSafeAreaBottom, 'FEAT_ORDERING');
 
 const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ discount, goBackTo, item }) => {
   const [modalData, setModalData] = useState({
@@ -47,6 +52,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
 
   return (
     <CustomisableItemContainer>
+      <CustomisableItemSafeAreaTop />
       <ExplanationModal
         isVisible={modalData.show}
         onClose={closeModal}
@@ -61,7 +67,6 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
         <ItemDescription discount={discount} item={item} />
         <CustomiseSection item={item} onClick={showDescriptionModal} />
       </ItemContainer>
-      <MarginBottomWithFlag />
       {!item.soldout && (
         <AddToBasketWithFlag
           discount={discount}
@@ -69,6 +74,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
           item={item}
         />
       )}
+      <CustomisableItemSafeAreaBottomWithFlag />
     </CustomisableItemContainer>
   );
 };

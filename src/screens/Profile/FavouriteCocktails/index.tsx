@@ -31,7 +31,13 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
     <FavouriteCocktailsContainer>
       <TopBar back="back" hideFilter title={profileTranslations.favouriteCocktailsPage.title} />
       <FavouriteCocktailsList>
-        <FlatList data={favoriteCocktails} horizontal={false} numColumns={numberColumn} renderItem={renderItem} />
+        <FlatList
+          data={favoriteCocktails}
+          horizontal={false}
+          key={numberColumn}
+          numColumns={numberColumn}
+          renderItem={renderItem}
+        />
       </FavouriteCocktailsList>
     </FavouriteCocktailsContainer>
   );
