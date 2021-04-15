@@ -32,7 +32,7 @@ const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount
 
   return (
     <ItemWithExtrasContainer>
-       <ItemWithExtraSafeAreaTop />
+      <ItemWithExtraSafeAreaTop />
       <CardsHeader goBackTo={goBackTo} item={item} />
       <ItemContainer showsVerticalScrollIndicator={false}>
         <ItemPicture item={item} />
