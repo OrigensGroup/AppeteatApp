@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FlatList } from 'react-native';
 
 import { Tab } from '../../../../types/Tab';
@@ -14,6 +14,14 @@ interface MenuTabProps {
 }
 
 const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, tabActive }) => {
+  const menuTabsList = useRef<FlatList>(null);
+
+  useEffect(() => {
+    if (menuTabsList.current) {
+      menuTabsList.current.scrollToIndex({ animated: true, index: tabActive });
+    }
+  }, [tabActive]);
+
   return (
     <MenuTabsContainer>
       <FlatList
@@ -21,6 +29,7 @@ const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, t
         data={menuTabs}
         horizontal
         keyExtractor={(item) => item.id}
+        ref={menuTabsList}
         renderItem={({ index, item }) => (
           <MenuTab active={index === tabActive} index={index} onPress={onChange} title={item.name} />
         )}
