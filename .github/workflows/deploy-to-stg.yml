@@ -35,4 +35,4 @@ jobs:
           EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
 
       - name: Publish to stg
-        run: yarn publish:stg
+        run: yarn publish:stg --non-interactive
