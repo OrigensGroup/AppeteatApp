@@ -14,3 +14,7 @@ export const ComponentContainer = styled.View`
   padding: 0 ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double}
     ${({ theme }) => theme.spacing.double};
 `;
+
+export const LogoContainer = styled.View`
+  display: flex;
+`;
