@@ -22,7 +22,10 @@
     "clean:ios": "cd ios && pod cache clean --all && rm -rf build && cd ..",
     "clean:android": "cd android && ./gradlew cleanBuildCache && cd ..",
     "publish:stg": "expo publish --release-channel staging --target bare",
-    "publish:prod": "expo publish --release-channel prod --target bare"
+    "publish:prod": "expo publish --release-channel prod --target bare",
+    "detox-setup": "detox clean-framework-cache && detox build-framework-cache",
+    "build:test:e2e": "detox build -c ios && detox test -c ios",
+    "test:e2e": "detox test -c ios"
   },
   "dependencies": {
     "@invertase/react-native-apple-authentication": "^2.1.0",
@@ -83,7 +86,8 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-native": "^7.1.0",
-    "@types/jest": "^26.0.20",
+    "@types/detox": "^17.14.0",
+    "@types/jest": "^26.0.22",
     "@types/react": "^17.0.1",
     "@types/react-native": "^0.63.48",
     "@types/react-native-fbsdk": "^3.0.0",
@@ -99,11 +103,13 @@
     "@typescript-eslint/parser": "^4.22.0",
     "babel-jest": "~25.2.6",
     "babel-plugin-styled-components": "^1.12.0",
+    "detox": "^18.12.0",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-detox": "^1.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.5",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -114,6 +120,8 @@
     "eslint-plugin-sort-destructure-keys": "^1.3.5",
     "husky": "^5.1.3",
     "jest": "~25.2.6",
+    "jest-circus": "^26.6.3",
+    "jest-expo": "^41.0.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "react-test-renderer": "~16.13.1",
@@ -121,10 +129,14 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
+    "ts-jest": "^26.5.5",
     "typescript": "^4.1.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
   },
   "private": true
 }
