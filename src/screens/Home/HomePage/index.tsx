@@ -17,7 +17,7 @@ import type { Promotion } from '../../../types/Promotion';
 
 import useHomepage from '../../../hooks/useHomepage';
 
-import { HomeContainer, SafeArea, ComponentContainer } from './styles';
+import { HomeContainer, SafeArea, ComponentContainer, LogoContainer } from './styles';
 
 interface HomeProps {}
 
@@ -93,7 +93,9 @@ const Home: React.FunctionComponent<HomeProps> = () => {
   return (
     <SafeArea>
       <HomeContainer>
-        <Logo />
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
         <FlatList
           contentContainerStyle={{ paddingTop: 16 }}
           data={filteredSections}
