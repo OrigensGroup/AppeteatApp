@@ -44,7 +44,11 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
 
   const navigate = () => {
     onClick && onClick();
-    navigation.navigate('Menu', { screen: 'SingleItem', params: { item, discount }, initial: false });
+    navigation.navigate('Menu', {
+      screen: 'SingleItem',
+      params: { item, discount },
+      initial: false,
+    });
   };
 
   const iLikeThis = userData.favoriteCocktails.includes(item.id);

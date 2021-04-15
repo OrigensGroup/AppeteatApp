@@ -23,14 +23,18 @@ interface DiscountPromotionCardProps {
   item: PromotionDiscount;
 }
 
-//MAX DESCRIPTION 163 chars
+// MAX DESCRIPTION 163 chars
 
 const DiscountPromotionCard: React.FunctionComponent<DiscountPromotionCardProps> = ({ item }) => {
   const navigation = useNavigation();
   const theme = useTheme();
 
   const navigate = () => {
-    navigation.navigate('Menu', { screen: 'MenuList', params: { goTo: item.discount.tabToDiscount }, initial: false });
+    navigation.navigate('Menu', {
+      screen: 'MenuList',
+      params: { goTo: item.discount.tabToDiscount },
+      initial: false,
+    });
   };
 
   return (

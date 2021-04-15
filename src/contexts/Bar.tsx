@@ -5,7 +5,7 @@ import { Bar, Homepage, Menu } from '../types/Bar';
 
 export const BarContext = React.createContext<
   <T extends ValueOf<Bar>>(document: keyof Bar) => [T, (v: T | ((newV: T) => T)) => void]
-  //@ts-ignore
+  // @ts-ignore
 >(() => [{}, () => {}]);
 
 type ValueOf<T> = T[keyof T];
@@ -69,12 +69,12 @@ const BarProvider: React.FunctionComponent<BarProviderProps> = ({ children, load
       await firestore().collection('bar').doc(document).set(result);
     };
 
-    //@ts-ignore
+    // @ts-ignore
     return [localBar[document], updateDocument];
   };
 
   return (
-    //@ts-ignore
+    // @ts-ignore
     <BarContext.Provider value={getDocument}>{children}</BarContext.Provider>
   );
 };

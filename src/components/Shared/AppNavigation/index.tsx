@@ -24,7 +24,9 @@ const AppNavigation: React.FunctionComponent<AppNavigationProps> = () => {
   const { loggedIn } = useUserData();
   return (
     <NavigationContainer
-      onReady={() => (routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name ?? '')}
+      onReady={() => {
+        routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name ?? '';
+      }}
       onStateChange={async () => {
         const previousRouteName = routeNameRef.current;
         const currentRouteName = navigationRef.current?.getCurrentRoute()?.name ?? '';

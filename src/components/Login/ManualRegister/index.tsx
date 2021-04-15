@@ -120,7 +120,12 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
       style={styles.linearGradient}
     >
       <Formik
-        initialValues={{ username: '', email: '', password: '', confirmPassword: '' }}
+        initialValues={{
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        }}
         onSubmit={(values) => {
           createUser(values.username, values.email, values.password);
         }}
@@ -132,7 +137,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
           <ManualLogInContainer>
             <TextFieldsWrapper>
               <LogInInputField
-                error={errors['username']}
+                error={errors.username}
                 label={loginTranslations.nameField.label}
                 placeholder={loginTranslations.nameField.placeholder}
                 textContentType="none"
@@ -140,7 +145,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
               />
               <LogInInputField
                 autoCapitalize="none"
-                error={errors['email']}
+                error={errors.email}
                 label={loginTranslations.emailField.label}
                 placeholder={loginTranslations.emailField.placeholder}
                 textContentType="emailAddress"
@@ -148,7 +153,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
               />
               <PasswordsWrapper>
                 <LogInInputField
-                  error={errors['password']}
+                  error={errors.password}
                   label={loginTranslations.passwordField.label}
                   placeholder={loginTranslations.passwordField.placeholder}
                   textContentType="password"
@@ -156,7 +161,7 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
                 />
                 <PasswordSeparator />
                 <LogInInputField
-                  error={errors['confirmPassword']}
+                  error={errors.confirmPassword}
                   label={loginTranslations.passwordField.secondaryLabel}
                   placeholder={loginTranslations.passwordField.placeholder}
                   textContentType="password"

@@ -68,7 +68,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
           customerEmail: user.email,
           price: pricing.total,
           product: cart[0].id,
-        }
+        },
       );
     } else {
       paymentRes = await makeCardPayment(
@@ -82,7 +82,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
           customerEmail: user.email,
           price: pricing.total,
           product: cart[0].id,
-        }
+        },
       );
     }
 

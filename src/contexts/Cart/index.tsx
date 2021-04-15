@@ -58,10 +58,10 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     setCart((oldCart) => oldCart.filter((item) => item.orderItemId !== itemId));
   };
 
-  //Update quantity, on setCart! +1 on press, and -1 on press with min value set to 1.
+  // Update quantity, on setCart! +1 on press, and -1 on press with min value set to 1.
   const updateItemQuantity = (newItem: OrderItem, amount: number) => {
     setCart((oldCart) =>
-      oldCart.map((item) => (newItem.orderItemId === item.orderItemId ? { ...item, quantity: amount } : item))
+      oldCart.map((item) => (newItem.orderItemId === item.orderItemId ? { ...item, quantity: amount } : item)),
     );
   };
 

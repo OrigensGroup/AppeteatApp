@@ -38,7 +38,7 @@ const loginTranslations = {
     placeholder: 'mail@mail.com',
   },
 
-  //SignIn Errors
+  // SignIn Errors
   errorSignInEmail: {
     label: 'That email address is invalid!',
   },
@@ -46,7 +46,7 @@ const loginTranslations = {
     label: 'Email or password invalid',
   },
 
-  //SignUp Errors
+  // SignUp Errors
   usernameError: {
     label: 'Username must be 4 chartacters long',
   },

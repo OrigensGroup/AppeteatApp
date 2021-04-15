@@ -24,7 +24,11 @@ const Login: React.FunctionComponent<LoginProps> = () => {
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'position' : 'height'}>
         <LogInContainer
           alwaysBounceVertical
-          contentContainerStyle={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}
+          contentContainerStyle={{
+            display: 'flex',
+            justifyContent: 'center',
+            flexGrow: 1,
+          }}
           showsVerticalScrollIndicator={false}
         >
           <EnclosingView>

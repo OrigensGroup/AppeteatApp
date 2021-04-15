@@ -70,7 +70,14 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
       {!item.soldout && (
         <AddToBasketWithFlag
           discount={discount}
-          extras={[{ id: 'custom', price: 0, selected: false, title: modalData.inputData }]}
+          extras={[
+            {
+              id: 'custom',
+              price: 0,
+              selected: false,
+              title: modalData.inputData,
+            },
+          ]}
           item={item}
         />
       )}

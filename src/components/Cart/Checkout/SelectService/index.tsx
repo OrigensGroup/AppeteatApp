@@ -35,8 +35,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ selectServ
           active={index === 0}
           onClick={() => {
             selectService((oldService) => {
-              //@ts-ignore
-              // eslint-disable-next-line
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const { address, orderTime, phoneNumber, ...stripped } = oldService;
 
               return { ...stripped, type: 'eatin', table: '' };
@@ -51,11 +50,15 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ selectServ
           active={index === 1}
           onClick={() => {
             selectService((oldService) => {
-              //@ts-ignore
-              // eslint-disable-next-line
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const { address, table, ...stripped } = oldService;
 
-              return { ...stripped, type: 'takeaway', phoneNumber: '', orderTime: '' };
+              return {
+                ...stripped,
+                type: 'takeaway',
+                phoneNumber: '',
+                orderTime: '',
+              };
             });
 
             setIndex(1);
@@ -67,11 +70,16 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ selectServ
           active={index === 2}
           onClick={() => {
             selectService((oldService) => {
-              //@ts-ignore
-              // eslint-disable-next-line
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const { table, ...stripped } = oldService;
 
-              return { ...stripped, type: 'delivery', address: '', phoneNumber: '', orderTime: '' };
+              return {
+                ...stripped,
+                type: 'delivery',
+                address: '',
+                phoneNumber: '',
+                orderTime: '',
+              };
             });
 
             setIndex(2);

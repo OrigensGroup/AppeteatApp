@@ -27,8 +27,8 @@ const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({
 
   const defaultPlaceholderColor = theme.colors.fixedWhite;
 
-  const updateText = (text: string) => {
-    const textToUpdate = textContentType === 'password' ? text.replace(/\s/g, '').trim() : text;
+  const updateText = (inputText: string) => {
+    const textToUpdate = textContentType === 'password' ? inputText.replace(/\s/g, '').trim() : inputText;
     setText(textToUpdate);
     if (updateValue) updateValue(textToUpdate);
   };

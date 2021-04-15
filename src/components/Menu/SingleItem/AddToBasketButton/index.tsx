@@ -32,8 +32,8 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
   const { addItemToCart } = useCart();
   const navigation = useNavigation();
 
-  const onUpdate = (amount: number) => {
-    setAmount(amount);
+  const onUpdate = (updateAmount: number) => {
+    setAmount(updateAmount);
   };
 
   const price = fixDecimals(
@@ -42,11 +42,16 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
       extras: extrasToAdd,
       quantity: amount,
       customPriceReduction: customPrice,
-    })
+    }),
   );
 
   const onClick = () => {
-    addItemToCart({ ...itemToAdd, quantity: amount, extras: extrasToAdd, customPriceReduction: customPrice });
+    addItemToCart({
+      ...itemToAdd,
+      quantity: amount,
+      extras: extrasToAdd,
+      customPriceReduction: customPrice,
+    });
     navigation.goBack();
   };
 
