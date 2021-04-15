@@ -60,7 +60,7 @@ export const PasswordSeparator = styled.View`
   width: ${({ theme }) => theme.spacing.double};
 `;
 
-///////////////////// Buttons /////////////////////
+/// ////////////////// Buttons /////////////////////
 
 export const LogInSection = styled.View`
   width: 100%;

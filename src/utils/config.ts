@@ -7,6 +7,6 @@ export default {
   APPLE_CURRENCY: 'GBP',
   GOOGLE_WEBCLIENT_ID: '920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com',
   API_URL: 'https://appeteat-stg.herokuapp.com',
-  //API_URL:http://192.168.1.120:5000
+  // API_URL:http://192.168.1.120:5000
   EXPERIENCE: '@origens/origens-testing',
 };

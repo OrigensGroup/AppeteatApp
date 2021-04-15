@@ -73,7 +73,7 @@ const ForgotPassword: React.FunctionComponent<ManualLogInProps> = ({ changeModul
           <ManualLogInContainer>
             <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
               <LogInTextField
-                error={errors['email']}
+                error={errors.email}
                 label={loginTranslations.forgotPassword.label}
                 placeholder={loginTranslations.forgotPassword.placeholder}
                 textContentType="emailAddress"

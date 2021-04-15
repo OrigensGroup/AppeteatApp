@@ -47,7 +47,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
     setCheckoutService((oldM) => ({ ...oldM, paymentOption: v }));
   };
 
-  //END - CARD MODAL STATE
+  // END - CARD MODAL STATE
   const updateModalValue = (v: string) => (t: string) => {
     setCheckoutService((oldV) => ({
       ...oldV,

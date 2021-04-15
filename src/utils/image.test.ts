@@ -5,5 +5,8 @@ it("returns undefined if source doesn't start with http", () => {
 });
 
 it('returns fast image object source if uri starts http', () => {
-  expect(normalisedSource('http://example.com')).toStrictEqual({ uri: 'http://example.com', priority: 'high' });
+  expect(normalisedSource('http://example.com')).toStrictEqual({
+    uri: 'http://example.com',
+    priority: 'high',
+  });
 });

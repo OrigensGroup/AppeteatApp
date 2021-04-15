@@ -136,7 +136,7 @@ const LocationLists: React.FunctionComponent = () => {
               latitudeDelta: region.latitudeDelta,
               longitudeDelta: region.longitudeDelta,
             },
-            250
+            250,
           );
         }
       }, 10);
@@ -181,7 +181,13 @@ const LocationLists: React.FunctionComponent = () => {
           };
 
           return (
-            <Marker coordinate={{ latitude: marker.latitude, longitude: marker.longitude }} key={index}>
+            <Marker
+              coordinate={{
+                latitude: marker.latitude,
+                longitude: marker.longitude,
+              }}
+              key={index}
+            >
               <Animated.View style={[styles.markerWrap, opacityStyle]}>
                 <Animated.View style={[styles.ring, scaleStyle]} />
                 <View style={styles.marker} />
@@ -202,7 +208,7 @@ const LocationLists: React.FunctionComponent = () => {
               },
             },
           ],
-          { useNativeDriver: true }
+          { useNativeDriver: true },
         )}
         scrollEventThrottle={1}
         showsHorizontalScrollIndicator={false}

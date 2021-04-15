@@ -28,7 +28,7 @@ const findDiscounts = (sections: (HomepageComponent | Promotion)[]) => {
   const carousels = sections.filter((section) => section.type === 'CarouselPromo') as CarouselPromo[];
 
   const allCarouselsWithDiscounts = carousels.filter((carousels) =>
-    carousels.promotions.some((promo) => promo.type === 'discount')
+    carousels.promotions.some((promo) => promo.type === 'discount'),
   );
 
   const allDiscounts = sections
@@ -121,7 +121,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
         return <SwiperPage discount={tabDiscount} key={tab.id} menuItems={menuItemsPerSwipe} />;
       }),
-    [menu.tabs, menu.items, discounts]
+    [menu.tabs, menu.items, discounts],
   );
 
   const closeModal = () => {

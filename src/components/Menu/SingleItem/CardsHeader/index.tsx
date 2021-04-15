@@ -16,21 +16,35 @@ import { TitleWrapper, CardsHeaderContainer, EmptyDiv } from './styles';
 
 interface CardsHeaderProps {
   item: MenuItem;
+  goBackTo?: string;
 }
 
 const FavouriteIconWithFlag = withFeatureFlag(IconButton, 'FEAT_FAVORITE_COCKTAILS', EmptyDiv);
 
-const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ item }) => {
+const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item }) => {
   const theme = useTheme();
   const { addNewFavoriteCocktail, userData } = useUserData();
   const navigation = useNavigation();
 
   const navigate = () => {
-    navigation.goBack();
+    navigation.reset({
+      index: 0,
+      routes: [
+        {
+          name: 'MenuList',
+        },
+      ],
+    });
+
+    if (goBackTo) {
+      return navigation.navigate(goBackTo);
+    } else {
+      navigation.goBack();
+    }
   };
 
-  const addNew = (item: MenuItem) => () => {
-    addNewFavoriteCocktail(item);
+  const addNew = (newItem: MenuItem) => () => {
+    addNewFavoriteCocktail(newItem);
   };
 
   const iLikeThis = userData.favoriteCocktails.includes(item.id);

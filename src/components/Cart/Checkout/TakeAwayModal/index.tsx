@@ -59,12 +59,12 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
 
     orderStart.setHours(
       Number(settings.deliverySettings.openTime.split(':')[0]),
-      Number(settings.deliverySettings.openTime.split(':')[1])
+      Number(settings.deliverySettings.openTime.split(':')[1]),
     );
 
     orderFinish.setHours(
       Number(settings.deliverySettings.closeTime.split(':')[0]),
-      Number(settings.deliverySettings.closeTime.split(':')[1])
+      Number(settings.deliverySettings.closeTime.split(':')[1]),
     );
 
     const orderSections = [];

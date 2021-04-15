@@ -25,12 +25,13 @@ import {
 interface CustomisableItemProps {
   item: MenuItem;
   discount?: Discount;
+  goBackTo?: string;
 }
 
 const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
 const CustomisableItemSafeAreaBottomWithFlag = withFeatureFlag(CustomisableItemSafeAreaBottom, 'FEAT_ORDERING');
 
-const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ discount, item }) => {
+const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ discount, goBackTo, item }) => {
   const [modalData, setModalData] = useState({
     show: false,
     title: 'Customise Item',
@@ -60,7 +61,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
         title={modalData.title}
         updateValue={updateValue}
       />
-      <CardsHeader item={item} />
+      <CardsHeader goBackTo={goBackTo} item={item} />
       <ItemContainer>
         <ItemPicture item={item} />
         <ItemDescription discount={discount} item={item} />
@@ -69,7 +70,14 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
       {!item.soldout && (
         <AddToBasketWithFlag
           discount={discount}
-          extras={[{ id: 'custom', price: 0, selected: false, title: modalData.inputData }]}
+          extras={[
+            {
+              id: 'custom',
+              price: 0,
+              selected: false,
+              title: modalData.inputData,
+            },
+          ]}
           item={item}
         />
       )}

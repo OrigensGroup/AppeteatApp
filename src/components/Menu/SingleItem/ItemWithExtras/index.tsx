@@ -21,18 +21,19 @@ import {
 interface ItemWithExtrasProps {
   item: MenuItem;
   discount?: Discount;
+  goBackTo?: string;
 }
 
 const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
 const ItemWithExtraSafeAreaBottomWithFlag = withFeatureFlag(ItemWithExtraSafeAreaBottom, 'FEAT_ORDERING');
 
-const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, item }) => {
+const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, goBackTo, item }) => {
   const [extras, setExtras] = useState<DataItem[]>([]);
 
   return (
     <ItemWithExtrasContainer>
       <ItemWithExtraSafeAreaTop />
-      <CardsHeader item={item} />
+      <CardsHeader goBackTo={goBackTo} item={item} />
       <ItemContainer showsVerticalScrollIndicator={false}>
         <ItemPicture item={item} />
         <ItemDescription discount={discount} item={item} />

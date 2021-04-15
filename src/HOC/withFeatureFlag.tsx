@@ -5,7 +5,7 @@ import useSettings from '../hooks/useSettings';
 const withFeatureFlag = <T extends any>(
   Component: React.ComponentType<T>,
   flagName: string,
-  Placeholder?: React.ComponentType
+  Placeholder?: React.ComponentType,
 ) => {
   const FeatureFlag = (props: T): JSX.Element => {
     const [settings] = useSettings();
@@ -16,7 +16,7 @@ const withFeatureFlag = <T extends any>(
       return Placeholder ? <Placeholder /> : <></>;
     }
 
-    //@ts-ignore
+    // @ts-ignore
     return <Component {...props} />;
   };
 
