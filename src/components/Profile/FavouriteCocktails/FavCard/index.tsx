@@ -17,11 +17,11 @@ interface FavCardProps {
 
 const FavCard: React.FunctionComponent<FavCardProps> = ({ item }) => {
   const theme = useTheme();
-
+  const goBackTo = 'FavouriteCocktails';
   const navigation = useNavigation();
 
   const onCardClick = () => {
-    navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
+    navigation.navigate('Menu', { screen: 'SingleItem', params: { item, goBackTo }, initial: false });
   };
 
   return (
