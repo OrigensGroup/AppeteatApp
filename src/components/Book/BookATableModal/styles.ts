@@ -20,8 +20,8 @@ export const SpinnerContainer = styled.View`
   padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.double}
     ${({ theme }) => theme.spacing.multiple(3)} ${({ theme }) => theme.spacing.double};
 `;
-export const Padding = styled.View`
-  padding: 0 ${({ theme }) => theme.spacing.single};
+export const Space = styled.View`
+  margin: 0 ${({ theme }) => theme.spacing.single};
 `;
 
 export const TimePickers = styled.View`

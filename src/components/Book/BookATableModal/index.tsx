@@ -31,7 +31,7 @@ import {
   TimePickersRow,
   ConfirmButton,
   PickerContainer,
-  Padding,
+  Space,
 } from './styles';
 
 interface BookATableModalProps {
@@ -129,7 +129,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
                 title="Date"
               />
             </PickerContainer>
-            <Padding />
+            <Space />
             <PickerContainer>
               <Picker
                 icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
