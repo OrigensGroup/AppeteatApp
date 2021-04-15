@@ -38,9 +38,9 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item
 
     if (goBackTo) {
       return navigation.navigate(goBackTo);
-    } else {
-      navigation.goBack();
     }
+
+    navigation.goBack();
   };
 
   const addNew = (newItem: MenuItem) => () => {
