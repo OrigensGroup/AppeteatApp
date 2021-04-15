@@ -12,7 +12,17 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'detox'],
+  overrides: [
+    {
+      files: ['*.e2e.ts'],
+      env: {
+        'detox/detox': true,
+        jest: true,
+        'jest/globals': true,
+      },
+    },
+  ],
   rules: {
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
@@ -26,5 +36,6 @@ module.exports = {
     'eslint-comments/no-unlimited-disable': 'off',
     'no-throw-literal': 'off',
     'no-shadow': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
