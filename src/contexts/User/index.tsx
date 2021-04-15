@@ -86,7 +86,12 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   }, [user, userData]);
 
   const restoreDefault = () => {
-    setUserData({ favoriteCocktails: [], orders: [], bookings: [], default: true });
+    setUserData({
+      favoriteCocktails: [],
+      orders: [],
+      bookings: [],
+      default: true,
+    });
   };
 
   useEffect(() => {
@@ -98,11 +103,12 @@ const UserProvider: React.FunctionComponent<UserProviderProps> = ({ children }) 
   }, [userData, saveData]);
 
   useEffect(() => {
-    if (userData.token !== token)
+    if (userData.token !== token) {
       setUserData((data) => ({
         ...data,
         token,
       }));
+    }
   }, [token, userData]);
 
   const addNewFavoriteCocktail = (item: MenuItem) => {

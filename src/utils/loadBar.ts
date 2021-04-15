@@ -14,7 +14,7 @@ export const barInit: Bar = {
   homepage: { sections: [] },
   orders: { list: [] },
   settings: {
-    colors: colors,
+    colors,
     features: {
       FEAT_BOOK: false,
       FEAT_CART_DELIVERY: false,
@@ -41,12 +41,12 @@ const loadBar = async () => {
           const id = doc.id as keyof Bar;
 
           return { id, data };
-        }
-      )
+        },
+      ),
     );
 
     loadedDocs.forEach((doc) => {
-      //@ts-ignore
+      // @ts-ignore
       bar[doc.id] = doc.data;
     });
 

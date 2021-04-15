@@ -50,7 +50,11 @@ const CarouselPromo: React.FunctionComponent<CarouselPromoProps> = ({ promotions
     return (
       <Pagination
         activeDotIndex={activeSlide}
-        containerStyle={{ backgroundColor: 'transparent', paddingTop: 16, paddingBottom: 16 }}
+        containerStyle={{
+          backgroundColor: 'transparent',
+          paddingTop: 16,
+          paddingBottom: 16,
+        }}
         dotStyle={{
           width: 50,
           height: 5,

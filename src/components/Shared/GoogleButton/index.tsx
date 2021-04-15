@@ -81,7 +81,7 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
 
   return (
     <ButtonContainer onPress={onGoogleButtonPress}>
-      <GoogleImage source={require('./../../../img/google.png')} />
+      <GoogleImage source={require('../../../img/google.png')} />
     </ButtonContainer>
   );
 };

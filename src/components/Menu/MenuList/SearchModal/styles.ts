@@ -49,7 +49,7 @@ export const FlatListWrapper = styled.View`
   height: 100%;
 `;
 
-//bottom bar components
+// bottom bar components
 export const SearchModalBottomBar = styled.View`
   width: 100%;
   flex: 1;

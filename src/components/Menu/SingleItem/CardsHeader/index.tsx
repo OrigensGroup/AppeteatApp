@@ -43,8 +43,8 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item
     }
   };
 
-  const addNew = (item: MenuItem) => () => {
-    addNewFavoriteCocktail(item);
+  const addNew = (newItem: MenuItem) => () => {
+    addNewFavoriteCocktail(newItem);
   };
 
   const iLikeThis = userData.favoriteCocktails.includes(item.id);

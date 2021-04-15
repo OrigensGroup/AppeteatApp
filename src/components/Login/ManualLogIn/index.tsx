@@ -129,14 +129,14 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
             <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
               <LogInTextField
                 autoCapitalize="none"
-                error={errors['email']}
+                error={errors.email}
                 label={loginTranslations.emailField.label}
                 placeholder={loginTranslations.emailField.placeholder}
                 textContentType="emailAddress"
                 updateValue={handleChange('email')}
               />
               <LogInTextField
-                error={errors['password']}
+                error={errors.password}
                 label={loginTranslations.passwordField.label}
                 placeholder={loginTranslations.passwordField.placeholder}
                 secondary

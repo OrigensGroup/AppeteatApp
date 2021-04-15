@@ -54,7 +54,6 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
 
                 if (error.code === 'auth/requires-recent-login') {
                   setErrorShow(true);
-                  return;
                 }
               });
           })
@@ -109,19 +108,19 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
           <TopBar back="back" hideFilter title={profileTranslations.passwordPage.title} />
           <PasswordFieldContainer>
             <LoginTextField
-              error={errors['password']}
+              error={errors.password}
               placeholder={profileTranslations.passwordPage.currentPassword}
               textContentType="password"
               updateValue={handleChange('password')}
             />
             <LoginTextField
-              error={errors['newPassword']}
+              error={errors.newPassword}
               placeholder={profileTranslations.passwordPage.newPassword}
               textContentType="password"
               updateValue={handleChange('newPassword')}
             />
             <LoginTextField
-              error={errors['reNewPassword']}
+              error={errors.reNewPassword}
               placeholder={profileTranslations.passwordPage.reNewPassword}
               textContentType="password"
               updateValue={handleChange('reNewPassword')}

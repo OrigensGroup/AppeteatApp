@@ -46,7 +46,7 @@ export const TitleWrapper = styled.View`
   margin-bottom: ${({ theme }) => theme.spacing.triple};
 `;
 
-///////////////////// Buttons /////////////////////
+/// ////////////////// Buttons /////////////////////
 
 export const ButtonsWrapper = styled.View`
   width: 100%;

@@ -22,7 +22,10 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({ order }) => {
   const navigate = () => {
     navigation.navigate('App', {
       screen: 'Menu',
-      params: { screen: 'Cart', params: { screen: 'OrderDetails', params: { order, back: 'Account' } } },
+      params: {
+        screen: 'Cart',
+        params: { screen: 'OrderDetails', params: { order, back: 'Account' } },
+      },
     });
   };
 
