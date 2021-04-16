@@ -170,7 +170,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
             onItemClick={showCardModal}
             title={
               checkoutService.paymentOption === 'cash'
-                ? 'cash'
+                ? cartTranslations.checkoutPage.paymentMethod.cashPayment
                 : checkoutService.paymentOption === 'native'
                 ? Platform.OS === 'ios'
                   ? cartTranslations.checkoutPage.paymentMethod.nativeApplePay

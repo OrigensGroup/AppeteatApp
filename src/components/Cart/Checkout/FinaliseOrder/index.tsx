@@ -112,7 +112,13 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
 
       addOrder(order);
 
-      navigation.navigate('OrderDetails', { order });
+      navigation.navigate('App', {
+        screen: 'Menu',
+        params: {
+          screen: 'Cart',
+          params: { screen: 'OrderDetails', params: { order } },
+        },
+      });
 
       clearCart();
     } else {

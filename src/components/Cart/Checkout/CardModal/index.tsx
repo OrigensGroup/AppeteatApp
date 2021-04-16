@@ -25,7 +25,7 @@ interface CardModalProps {
   onClose: () => void;
 }
 
-const CashPayView = withFeatureFlag(CashPayFeatureFlag, 'FEAT_BOOK');
+const CashPayView = withFeatureFlag(CashPayFeatureFlag, 'FEAT_CASH_PAYMENT');
 
 const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, onCardUpdate, onClose }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(-1);
