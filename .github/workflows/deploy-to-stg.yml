@@ -33,40 +33,43 @@ jobs:
   test-e2e:
     name: E2E Tests
     runs-on: macos-latest
+    timeout-minutes: 15
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_11.2.app
     steps:
-      - uses: actions/checkout@v1
-      - name: Set up Node
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        id: cache
         with:
-          node-version: '15.x'
-      - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Install packages
-        run: |
-          npm install -g react-native-cli
-          npm install -g detox-cli
-          npm install -g yarn
-      - name: Install Detox
-        run: |
-          brew tap wix/brew
-          brew install applesimutils
-      - name: Install Yarn Dependencies
+          path: node_modules
+          key: node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Rebuild detox
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: yarn detox-setup
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
-      - name: Install Pod Dependencies
-        run: cd ./ios && pod install && cd ..
-      - name: Detox Build
-        run: detox build --configuration ios.sim.release
-      - name: Detox Test
-        run: detox test --configuration ios.sim.release --cleanup
+
+      - name: Cache Pods
+        uses: actions/cache@v1
+        id: podcache
+        with:
+          path: ios/Pods
+          key: pods-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: Update Pods
+        run: |
+          gem update cocoapods xcodeproj
+          cd ios && pod install && cd ..
+      - run: brew tap wix/brew
+      - run: brew install applesimutils
+      - run: yarn detox build e2e --configuration ios.sim.release
+      - run: yarn detox test e2e --configuration ios.sim.release --cleanup --debug-synchronization 200
 
   push-to-stg-app:
     runs-on: ubuntu-latest
