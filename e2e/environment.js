@@ -1,7 +1,7 @@
 const { DetoxCircusEnvironment, SpecReporter, WorkerAssignReporter } = require('detox/runners/jest-circus');
 
 class CustomDetoxEnvironment extends DetoxCircusEnvironment {
-  constructor(config: any, context: any) {
+  constructor(config, context) {
     super(config, context);
 
     // Can be safely removed, if you are content with the default value (=300000ms)
@@ -16,4 +16,4 @@ class CustomDetoxEnvironment extends DetoxCircusEnvironment {
   }
 }
 
-export { CustomDetoxEnvironment };
+module.exports = CustomDetoxEnvironment;
