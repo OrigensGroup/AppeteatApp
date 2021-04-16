@@ -43,7 +43,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
 
   const closeCardModal = () => setCardModalVisible(false);
 
-  const onCardModalUpdate = (v: Card | 'native') => {
+  const onCardModalUpdate = (v: Card | 'native' | 'cash') => {
     setCheckoutService((oldM) => ({ ...oldM, paymentOption: v }));
   };
 

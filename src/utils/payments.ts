@@ -6,7 +6,7 @@ import Config from '../utils/config';
 
 import type { Payment } from '../types/Payment';
 
-type PaymentStatus = {
+export type PaymentStatus = {
   paymentRes: Charge | GeneratedErrors | { type: 'NativeError'; message: string };
 };
 
@@ -24,7 +24,7 @@ const payToApi = async (payment: Payment): Promise<PaymentStatus> => {
 
 export const makeCardPayment = async (
   card: Card,
-  payment: Omit<Payment, 'currency' | 'tokenId' | 'CONNECTED_STRIPE_ACCOUNT_ID' | 'fee'>
+  payment: Omit<Payment, 'currency' | 'tokenId' | 'CONNECTED_STRIPE_ACCOUNT_ID' | 'fee'>,
 ): Promise<PaymentStatus> => {
   try {
     const token = await stripe.createTokenWithCard({
@@ -57,14 +57,14 @@ export const makeNativePayment = async (
     label: string;
     amount: string;
   },
-  payment: Omit<Payment, 'currency' | 'tokenId' | 'CONNECTED_STRIPE_ACCOUNT_ID' | 'fee'>
+  payment: Omit<Payment, 'currency' | 'tokenId' | 'CONNECTED_STRIPE_ACCOUNT_ID' | 'fee'>,
 ): Promise<PaymentStatus> => {
   try {
     const token = await stripe.paymentRequestWithNativePay(
       {
         currencyCode: Config.APPLE_CURRENCY,
       },
-      [display]
+      [display],
     );
 
     const postData: Payment = {

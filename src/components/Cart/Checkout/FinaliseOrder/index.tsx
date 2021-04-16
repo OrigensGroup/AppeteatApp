@@ -13,6 +13,8 @@ import { makeCardPayment, makeNativePayment } from '../../../../utils/payments';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
+import { PaymentStatus } from '../../../../utils/payments';
+
 import { CheckoutServices } from '../../../../types/Checkout';
 
 import { validateCheckoutService } from '../../../../screens/Cart/Checkout/validateCheckoutService';
@@ -70,6 +72,8 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
           product: cart[0].id,
         },
       );
+    } else if (checkoutService.paymentOption === 'cash') {
+      paymentRes = { paymentRes: { type: 'Charge' } } as PaymentStatus;
     } else {
       paymentRes = await makeCardPayment(
         {

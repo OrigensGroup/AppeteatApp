@@ -15,9 +15,10 @@ import cartTranslations from '../../../../translations/cart';
 import NativePay from './NativePay';
 
 import { PopUpContainer, CardModalHeader, CardModalChoice } from './styles';
+import CashPay from './CashPay';
 
 interface CardModalProps {
-  onCardUpdate: (v: Card | 'native') => void;
+  onCardUpdate: (v: Card | 'native' | 'cash') => void;
   isModalVisible: boolean;
   onClose: () => void;
 }
@@ -61,13 +62,17 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
 
     if (i === 0) {
       onCardUpdate('native');
-    } else {
+    }
+    if (i === 1) {
       onCardUpdate({
         cvc: cardStatus.values.cvc,
         number: cardStatus.values.number,
         expMonth: Number(cardStatus.values.expiry.split('/')[0]),
         expYear: Number(cardStatus.values.expiry.split('/')[1]),
       });
+    }
+    if (i === 2) {
+      onCardUpdate('cash');
     }
   };
 
@@ -105,16 +110,21 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
             {cartTranslations.checkoutPage.paymentDetails.title}
           </Text>
         </CardModalHeader>
+        <CardModalChoice active={selectedPaymentMethod === 2} onPress={changeActive(2)}>
+          <CashPay />
+        </CardModalChoice>
         {canPayWithNativePay && (
           <CardModalChoice active={selectedPaymentMethod === 0} onPress={changeActive(0)}>
             <NativePay />
           </CardModalChoice>
         )}
+
         <CardModalChoice active={selectedPaymentMethod === 1} onPress={changeActive(1)}>
           {/**
           // @ts-ignore */}
           <LiteCreditCardInput onChange={cardChange} />
         </CardModalChoice>
+
         <ViewCta onClick={done}>
           <Text bold color="fixedWhite" fontSize={14}>
             {cartTranslations.checkoutPage.paymentDetails.cta}
