@@ -53,7 +53,7 @@ export const ButtonsWrapper = styled.View`
 `;
 
 export const GoBack = styled.TouchableOpacity`
-margin: ${({ theme }) => theme.spacing.triple} 0;
+  margin: ${({ theme }) => theme.spacing.triple} 0;
 `;
 
 export const Continue = styled.TouchableOpacity``;

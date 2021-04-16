@@ -12,23 +12,17 @@ interface LoginProps {
   text: string;
   onClick: () => void;
   loading?: boolean;
-  opaqueActive?: boolean;
+  active?: boolean;
   color?: 'secondary' | 'primary' | 'tertiary' | 'quartiary' | 'errorColor' | 'fixedWhite' | 'fixedBlack';
 }
 
-const LogInButton: React.FunctionComponent<LoginProps> = ({
-  loading,
-  onClick,
-  text,
-  opaqueActive,
-  color = 'secondary',
-}) => {
+const LogInButton: React.FunctionComponent<LoginProps> = ({ loading, onClick, text, active, color = 'secondary' }) => {
   const theme = useTheme();
 
   return (
     <ButtonContainer>
       {!loading ? (
-        <IconWrapper onPress={onClick} opaqueActive={opaqueActive}>
+        <IconWrapper onPress={onClick} active={active}>
           <Text fontSize={14} color={color} bold>
             {text}
           </Text>

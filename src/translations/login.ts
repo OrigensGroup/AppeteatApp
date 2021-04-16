@@ -15,6 +15,9 @@ const loginTranslations = {
   loginButton: {
     label: 'Log In',
   },
+  orSeparator: {
+    label: 'OR',
+  },
   registerButton: {
     label: 'Registrati',
   },
@@ -41,19 +44,20 @@ const loginTranslations = {
   // SignIn Errors
   errorSignInEmail: {
     label: 'Incorrect email address',
-    message: "The email address that you've entered doesn't appear to be of a valid format. Please try again."
+    message: "The email address that you've entered doesn't appear to be of a valid format. Please try again.",
   },
   emailSent: {
     label: 'Password Reset',
-    message: "The link to reset your password has been sent to your email."
+    message: 'The link to reset your password has been sent to your email.',
   },
   errorWrongPasswordSignIn: {
     label: 'Incorrect password',
-    message: "The password that you've entered is incorrect. Please try again."
+    message: "The password that you've entered is incorrect. Please try again.",
   },
   errorUserNotFound: {
     label: 'Incorrect email address',
-    message: "The email address that you've entered doesn't appear to belong to an account. Please check your email address and try again."
+    message:
+      "The email address that you've entered doesn't appear to belong to an account. Please check your email address and try again.",
   },
 
   // SignUp Errors

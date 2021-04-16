@@ -1,9 +1,7 @@
 export interface ColorsInterface {
   active: string;
-  opaqueActive: string;
   secondaryActive: string;
   border: string;
-
   modalbackground: string;
   actionRed: string;
   textPrimary: string;
@@ -16,7 +14,6 @@ export interface ColorsInterface {
 
 const colors: ColorsInterface = {
   active: '#f69019',
-  opaqueActive: '#f5dbbc',
   secondaryActive: '#f1b8ff',
   border: '#c2c2c2',
   modalbackground: '#ebebed',
@@ -31,7 +28,6 @@ const colors: ColorsInterface = {
 
 export const darkColors: ColorsInterface = {
   active: '#1460C1',
-  opaqueActive: '#f5dbbc',
   secondaryActive: '#4D3FA1',
   border: '#484F63D9',
   modalbackground: '#f1f1f1',

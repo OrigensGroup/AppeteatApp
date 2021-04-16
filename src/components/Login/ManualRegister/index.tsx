@@ -19,14 +19,7 @@ import useUserData from '../../../hooks/useUserData';
 
 import { RegisterSchema } from './registerSchema';
 
-import {
-  ManualLogInContainer,
-  TextFieldsWrapper,
-  LogInSection,
-  PasswordsWrapper,
-  PasswordSeparator,
-  styles,
-} from './styles';
+import { ManualLogInContainer, TextFieldsWrapper, LogInSection } from './styles';
 
 interface RegisterManualProps {
   isFromModal?: boolean;

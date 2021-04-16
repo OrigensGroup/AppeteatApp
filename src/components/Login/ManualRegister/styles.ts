@@ -15,13 +15,6 @@ export const ManualLogInContainer = styled.View`
   padding: 0 ${({ theme }) => theme.spacing.multiple(4)};
 `;
 
-export const styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-  },
-});
 
 export const TextFieldsWrapper = styled.KeyboardAvoidingView`
   width: 100%;

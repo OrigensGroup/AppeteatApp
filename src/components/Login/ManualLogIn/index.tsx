@@ -166,7 +166,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
               <Line />
               <TextContainer>
                 <Text fontSize={16} color="primary">
-                  OR
+                  {loginTranslations.orSeparator.label}
                 </Text>
               </TextContainer>
               <Line />
@@ -174,7 +174,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
             <LogInButton
               onClick={register}
               text={loginTranslations.signUpSection.buttonLabel}
-              opaqueActive
+              active
               color="tertiary"
             />
             {showAnonLogin && (
