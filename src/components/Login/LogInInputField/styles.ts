@@ -23,8 +23,9 @@ export const TextFieldInput = styled.TextInput`
   font-size: ${scale(16)}px;
   border-bottom-width: 1px;
   flex: 1;
-  padding: 0;
+  padding: ${({ theme }) => theme.spacing.single} 0;
 `;
+
 
 export const TitleWrapper = styled.View``;
 

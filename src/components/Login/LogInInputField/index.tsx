@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components';
 
 import Text from '../../shared/Text';
 
-import { TextFieldWrapper, TitleWrapper, ErrorContainer, TextFieldInput } from './styles';
+import { TextFieldWrapper, TitleWrapper, ErrorContainer, TextFieldInput, TextWrapper } from './styles';
 
 interface LogInInputFieldProps extends TextInputProps {
   secondary?: boolean;
