@@ -49,7 +49,7 @@ const cartTranslations = {
     },
 
     paymentMethod: {
-      cashPayment: 'Pay cash',
+      cashPayment: 'Paga in contanti',
       nativeApplePay: 'Apple pay',
       nativeGooglePay: 'Google pay',
       cardPrefix: 'Carta **** **** **** ',
