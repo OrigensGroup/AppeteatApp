@@ -152,7 +152,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           )}
         </PriceItem>
 
-        {item.explanation && (
+        {!!item.explanation && (
           <ItemInfo
             onPress={showDescriptionModal({
               title: item.title,

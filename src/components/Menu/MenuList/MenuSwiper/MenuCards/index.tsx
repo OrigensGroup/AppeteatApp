@@ -79,7 +79,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
         </CardTitle>
         <CardMainItem>
           <Text color="quartiary" fontSize={12}>
-            {item.ingredients?.filter((_, idx) => idx < 3).join(' ')}
+            {item.description}
           </Text>
         </CardMainItem>
       </CardDescription>
