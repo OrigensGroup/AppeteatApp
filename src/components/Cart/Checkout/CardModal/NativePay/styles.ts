@@ -5,14 +5,14 @@ export const NativePayContainer = styled.View`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  height: 48px;
+  height: ${({ theme }) => theme.spacing.multiple(6)};
   position: relative;
 `;
 
 export const NativePayImage = styled.Image`
   position: absolute;
-  width: 48px;
-  height: 48px;
+  width: ${({ theme }) => theme.spacing.multiple(6)};
+  height: ${({ theme }) => theme.spacing.multiple(6)};
 `;
 
 export const NativePayText = styled.View`

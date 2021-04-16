@@ -9,11 +9,9 @@ import useUserData from '../../../../hooks/useUserData';
 
 import cartTranslations from '../../../../translations/cart';
 import type { Order } from '../../../../types/Order';
-import { makeCardPayment, makeNativePayment } from '../../../../utils/payments';
+import { makeCardPayment, makeNativePayment, PaymentStatus } from '../../../../utils/payments';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
-
-import type { PaymentStatus } from '../../../../utils/payments';
 
 import { CheckoutServices } from '../../../../types/Checkout';
 
@@ -30,7 +28,7 @@ interface FinaliseOrderProps {
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutService, onPaymentError }) => {
   const navigation = useNavigation();
-  const { cart, clearCart, pricing } = useCart();
+  const { cart, pricing, clearCart } = useCart();
   const [, setOrders] = useOrders();
   const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
@@ -60,7 +58,13 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
       return '';
     }
 
-    if (checkoutService.paymentOption === 'native') {
+    if (checkoutService.paymentOption === 'cash') {
+      paymentRes = (await {
+        paymentRes: {
+          type: 'Charge',
+        },
+      }) as PaymentStatus;
+    } else if (checkoutService.paymentOption === 'native') {
       paymentRes = await makeNativePayment(
         {
           label: 'Order',
@@ -72,8 +76,6 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
           product: cart[0].id,
         },
       );
-    } else if (checkoutService.paymentOption === 'cash') {
-      paymentRes = { paymentRes: { type: 'Charge' } } as PaymentStatus;
     } else {
       paymentRes = await makeCardPayment(
         {
@@ -91,7 +93,6 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
     }
 
     setLoadingPayment(false);
-
     if (paymentRes.paymentRes.type === 'Charge') {
       checkoutService.paymentOption === 'native' && stripe.completeNativePayRequest();
 
