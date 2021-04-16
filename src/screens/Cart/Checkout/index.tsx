@@ -43,7 +43,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
 
   const closeCardModal = () => setCardModalVisible(false);
 
-  const onCardModalUpdate = (v: Card | 'native') => {
+  const onCardModalUpdate = (v: Card | 'native' | 'cash') => {
     setCheckoutService((oldM) => ({ ...oldM, paymentOption: v }));
   };
 
@@ -169,7 +169,9 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
             icon="ios-card"
             onItemClick={showCardModal}
             title={
-              checkoutService.paymentOption === 'native'
+              checkoutService.paymentOption === 'cash'
+                ? cartTranslations.checkoutPage.paymentMethod.cashPayment
+                : checkoutService.paymentOption === 'native'
                 ? Platform.OS === 'ios'
                   ? cartTranslations.checkoutPage.paymentMethod.nativeApplePay
                   : cartTranslations.checkoutPage.paymentMethod.nativeGooglePay

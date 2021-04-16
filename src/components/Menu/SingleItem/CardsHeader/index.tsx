@@ -28,6 +28,15 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item
 
   const navigate = () => {
     if (goBackTo) {
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'MenuList',
+          },
+        ],
+      });
+
       return navigation.navigate(goBackTo);
     }
 

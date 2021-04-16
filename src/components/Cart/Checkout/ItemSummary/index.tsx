@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
 import { RowMap, SwipeListView } from 'react-native-swipe-list-view';
 import { useNavigation } from '@react-navigation/native';
@@ -18,6 +18,7 @@ interface ItemSummaryProps {
 
 const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) => {
   const navigation = useNavigation();
+  const [didAction, setDidAction] = useState(false);
   const { cart, deleteItemFromCart } = useCart();
 
   const onSwipeValueChange = (swipeData: {
@@ -30,6 +31,7 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
 
     if (value < -Dimensions.get('window').width) {
       deleteItemFromCart(key);
+      setDidAction(true);
     }
   };
 
@@ -42,6 +44,7 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
   const deleteRow = (item: OrderItem, rowMap: RowMap<OrderItem>) => {
     closeRow(rowMap, item.orderItemId);
     deleteItemFromCart(item.orderItemId);
+    setDidAction(true);
   };
 
   const renderHiddenItem = (data: unknown, rowMap: RowMap<OrderItem>) => {
@@ -56,10 +59,11 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
   };
 
   useEffect(() => {
-    if (cart.length === 0) {
+    if (cart.length === 0 && didAction) {
       navigation.goBack();
+      setDidAction(false);
     }
-  }, [cart, navigation]);
+  }, [cart, navigation, didAction]);
 
   return (
     <ItemSummaryContainer>

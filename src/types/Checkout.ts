@@ -4,7 +4,7 @@ export type ServiceOptions = 'eatin' | 'takeaway' | 'delivery';
 
 interface CheckoutService {
   allergy: string;
-  paymentOption: 'native' | Card | null;
+  paymentOption: 'native' | Card | 'cash' | null;
   type: ServiceOptions;
   [key: string]: any;
 }
