@@ -11,7 +11,6 @@ export const CartTitleContainer = styled.View`
 
 export const DeleteButton = styled.TouchableOpacity`
   position: absolute;
-  height: ${({ theme }) => theme.spacing.multiple(15)};
   background-color: ${({ theme }) => theme.colors.actionRed};
   top: 0;
   right: 0;

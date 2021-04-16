@@ -128,7 +128,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
         value={checkoutService[explanationModal.code]}
       />
       <TopBar back="MenuList" hideFilter title={cartTranslations.checkoutPage.title} />
-      <CheckoutSwiper>
+      <CheckoutSwiper showsVerticalScrollIndicator={false}>
         <ItemSummarySection>
           <ItemSummary onUpdate={toggleModal} />
         </ItemSummarySection>
