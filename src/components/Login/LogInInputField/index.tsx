@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components';
 
 import Text from '../../shared/Text';
 
-import { TextFieldWrapper, TitleWrapper, ErrorContainer, TextFieldInput } from './styles';
+import { TextFieldWrapper, ErrorContainer, TextFieldInput } from './styles';
 
 interface LogInInputFieldProps extends TextInputProps {
   secondary?: boolean;
@@ -35,11 +35,9 @@ const LogInInputField: React.FunctionComponent<LogInInputFieldProps> = ({
 
   return (
     <TextFieldWrapper secondary={secondary}>
-      <TitleWrapper>
-        <Text bold color="fixedWhite" fontSize={14}>
-          {label}
-        </Text>
-      </TitleWrapper>
+      <Text bold color="primary" fontSize={14}>
+        {label}
+      </Text>
       <TextFieldInput
         onChangeText={updateText}
         placeholderTextColor={defaultPlaceholderColor}
