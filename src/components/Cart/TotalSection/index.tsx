@@ -18,28 +18,24 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order }) => 
 
   return (
     <TotalSectionContainer>
-      {!order?.pricing && (
-        <>
-          <TotalRow>
-            <Text color="primary" fontSize={14}>
-              {cartTranslations.checkoutPage.subtotal.title}
-            </Text>
-            <Text color="primary" fontSize={14}>
-              {currencyTranslations.currencyField}
-              {pricingToShow.subtotal}
-            </Text>
-          </TotalRow>
-          <TotalRow>
-            <Text color="primary" fontSize={14}>
-              {cartTranslations.checkoutPage.serviceFee.title}
-            </Text>
-            <Text color="primary" fontSize={14}>
-              {currencyTranslations.currencyField}
-              {pricingToShow.servicefee}
-            </Text>
-          </TotalRow>
-        </>
-      )}
+      <TotalRow>
+        <Text color="primary" fontSize={14}>
+          {cartTranslations.checkoutPage.subtotal.title}
+        </Text>
+        <Text color="primary" fontSize={14}>
+          {currencyTranslations.currencyField}
+          {pricingToShow.subtotal}
+        </Text>
+      </TotalRow>
+      <TotalRow>
+        <Text color="primary" fontSize={14}>
+          {cartTranslations.checkoutPage.serviceFee.title}
+        </Text>
+        <Text color="primary" fontSize={14}>
+          {currencyTranslations.currencyField}
+          {pricingToShow.servicefee}
+        </Text>
+      </TotalRow>
       <TotalRow>
         <Text bold color="primary" fontSize={14}>
           {cartTranslations.checkoutPage.totalField.title}
