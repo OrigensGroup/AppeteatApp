@@ -10,6 +10,8 @@ import initUserData from '../../../utils/manageUserdata';
 import useUserData from '../../../hooks/useUserData';
 
 import { ButtonContainer } from './styles';
+import { Alert } from 'react-native';
+import loginTranslations from '../../../translations/login';
 
 interface FacebookButtonProps {
   isFromModal?: boolean;
@@ -21,6 +23,8 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ isFromMo
   const { login } = useUserData();
 
   async function onFacebookButtonPress() {
+    let linkedAccount: boolean | undefined | null | void = false;
+
     crashlytics().log('Facebook log in attempt.');
 
     // Attempt login with permissions
@@ -48,39 +52,47 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ isFromMo
       if (isFromModal) {
         const user = auth().currentUser;
 
-        user
+        linkedAccount = await user
           ?.linkWithCredential(facebookCredential)
           .then(async () => {
             login();
             setLoading(false);
 
             onConfirm && onConfirm();
+            return;
+          })
+          .catch((e) => {
+            if (e.code !== 'auth/credential-already-in-use') {
+              throw e;
+            }
+          });
+      }
+      if (!linkedAccount) {
+        // Sign-in the user with the credential
+        auth()
+          .signInWithCredential(facebookCredential)
+          .then(async () => {
+            setLoading(false);
+            const user = auth().currentUser;
+
+            if (user) {
+              await initUserData(user.uid);
+              login();
+            } else {
+              crashlytics().log("Couldn't setup user db");
+            }
           })
           .catch((e) => {
             throw e;
           });
-
-        return;
       }
-
-      // Sign-in the user with the credential
-      auth()
-        .signInWithCredential(facebookCredential)
-        .then(async () => {
-          setLoading(false);
-          const user = auth().currentUser;
-
-          if (user) {
-            await initUserData(user.uid);
-            login();
-          } else {
-            crashlytics().log("Couldn't setup user db");
-          }
-        })
-        .catch((e) => {
-          throw e;
-        });
     } catch (error) {
+      if (error.code === 'auth/credential-already-in-use') {
+        Alert.alert(
+          loginTranslations.errorWrongPasswordSignIn.label,
+          loginTranslations.errorWrongPasswordSignIn.message,
+        );
+      }
       crashlytics().log('Facebook log in failed.');
       crashlytics().recordError(error);
     }

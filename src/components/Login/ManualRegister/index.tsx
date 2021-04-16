@@ -159,7 +159,10 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
           </TextFieldsWrapper>
           <LogInSection>
             <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.registerButton.label} />
-            <SignUpButton buttonText={loginTranslations.signInSection.buttonLabel} onClick={loginApp} />
+            <SignUpButton
+              buttonText={!isFromModal ? loginTranslations.signInSection.buttonLabel : ''}
+              onClick={loginApp}
+            />
           </LogInSection>
         </ManualLogInContainer>
       )}
