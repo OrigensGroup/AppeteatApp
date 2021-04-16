@@ -13,7 +13,7 @@ import { makeCardPayment, makeNativePayment } from '../../../../utils/payments';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
-import { PaymentStatus } from '../../../../utils/payments';
+import type { PaymentStatus } from '../../../../utils/payments';
 
 import { CheckoutServices } from '../../../../types/Checkout';
 
@@ -112,8 +112,9 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
 
       addOrder(order);
 
-      clearCart();
       navigation.navigate('OrderDetails', { order });
+
+      clearCart();
     } else {
       checkoutService.paymentOption === 'native' && stripe.cancelNativePayRequest();
 

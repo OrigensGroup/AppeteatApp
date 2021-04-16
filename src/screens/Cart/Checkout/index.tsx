@@ -169,7 +169,9 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
             icon="ios-card"
             onItemClick={showCardModal}
             title={
-              checkoutService.paymentOption === 'native'
+              checkoutService.paymentOption === 'cash'
+                ? 'cash'
+                : checkoutService.paymentOption === 'native'
                 ? Platform.OS === 'ios'
                   ? cartTranslations.checkoutPage.paymentMethod.nativeApplePay
                   : cartTranslations.checkoutPage.paymentMethod.nativeGooglePay
