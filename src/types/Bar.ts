@@ -45,6 +45,7 @@ interface DeliverySettings {
   timeFrame: number;
   openTime: string;
   closeTime: string;
+  fee: number;
 }
 export interface Settings {
   colors: ColorsInterface;

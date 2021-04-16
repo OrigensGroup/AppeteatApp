@@ -86,6 +86,9 @@ const cartTranslations = {
       loading: 'Loading...',
       completeFields: 'Complete fields',
     },
+    deliveryFee: {
+      title: 'Delivery fee',
+    },
     serviceFee: {
       title: 'Service fee',
     },
