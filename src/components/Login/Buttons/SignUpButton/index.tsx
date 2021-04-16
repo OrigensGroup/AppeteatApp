@@ -15,12 +15,12 @@ const SignUpButton: React.FunctionComponent<SignUpButtonProps> = ({ buttonText, 
   return (
     <ButtonContainer>
       {text !== undefined && (
-        <Text color="fixedWhite" fontSize={small ? 12 : 14}>
+        <Text color="primary" fontSize={small ? 12 : 14}>
           {text}
         </Text>
       )}
       <IconWrapper onPress={onClick}>
-        <Text align="center" bold color="fixedWhite" fontSize={small ? 12 : 14}>
+        <Text align="center" bold color="primary" fontSize={small ? 12 : 14}>
           {buttonText}
         </Text>
       </IconWrapper>

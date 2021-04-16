@@ -6,7 +6,7 @@ export const SocialLoginWrapper = styled.View`
   justify-content: center;
   align-items: center;
   height: ${({ theme }) => theme.spacing.multiple(6)};
-  margin: ${({ theme }) => theme.spacing.multiple(4)} 0;
+  margin: ${({ theme }) => theme.spacing.multiple(3)} 0;
 `;
 
 export const SocialLoginButton = styled.TouchableOpacity`
