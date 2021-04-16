@@ -1,4 +1,5 @@
-import React from 'react';
+import { useNavigation } from '@react-navigation/core';
+import React, { useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import { RowMap, SwipeListView } from 'react-native-swipe-list-view';
 
@@ -16,6 +17,7 @@ interface ItemSummaryProps {
 }
 
 const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) => {
+  const navigation = useNavigation();
   const { cart, deleteItemFromCart } = useCart();
 
   const onSwipeValueChange = (swipeData: {
@@ -52,6 +54,12 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
       </DeleteButton>
     );
   };
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      navigation.goBack();
+    }
+  }, [cart, navigation]);
 
   return (
     <ItemSummaryContainer>
