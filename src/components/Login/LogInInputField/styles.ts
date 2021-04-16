@@ -26,7 +26,6 @@ export const TextFieldInput = styled.TextInput`
   padding: ${({ theme }) => theme.spacing.single} 0;
 `;
 
-
 export const TitleWrapper = styled.View``;
 
 export const ErrorContainer = styled.View`

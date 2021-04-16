@@ -1,12 +1,11 @@
 import styled from 'styled-components/native';
-import { StyleSheet } from 'react-native';
 
 interface ButtonContainerProps {
   secondary?: boolean;
 }
 
 export const ManualLogInContainer = styled.View`
- width: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Platform, Alert, View } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import { Formik } from 'formik';
 
 import { useTheme } from 'styled-components';
@@ -29,7 +29,6 @@ import {
   Line,
   TextContainer,
 } from './styles';
-import ViewCta from '../../shared/ViewCta';
 import Text from '../../shared/Text';
 
 interface ManualLogInProps {

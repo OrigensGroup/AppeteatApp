@@ -4,6 +4,7 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
+import { Alert } from 'react-native';
 import initUserData from '../../../utils/manageUserdata';
 
 import useUserData from '../../../hooks/useUserData';
@@ -11,7 +12,6 @@ import useUserData from '../../../hooks/useUserData';
 import Config from '../../../utils/config';
 
 import { ButtonContainer, GoogleImage } from './styles';
-import { Alert } from 'react-native';
 import loginTranslations from '../../../translations/login';
 
 GoogleSignin.configure({
@@ -48,7 +48,6 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
             login();
 
             onConfirm && onConfirm();
-            return;
           })
           .catch((e) => {
             if (e.code !== 'auth/credential-already-in-use') {

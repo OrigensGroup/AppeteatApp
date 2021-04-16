@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { Formik } from 'formik';
 import { useTheme } from 'styled-components';
 

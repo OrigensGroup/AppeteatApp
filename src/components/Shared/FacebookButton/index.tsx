@@ -5,12 +5,12 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
+import { Alert } from 'react-native';
 import initUserData from '../../../utils/manageUserdata';
 
 import useUserData from '../../../hooks/useUserData';
 
 import { ButtonContainer } from './styles';
-import { Alert } from 'react-native';
 import loginTranslations from '../../../translations/login';
 
 interface FacebookButtonProps {
@@ -59,7 +59,6 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ isFromMo
             setLoading(false);
 
             onConfirm && onConfirm();
-            return;
           })
           .catch((e) => {
             if (e.code !== 'auth/credential-already-in-use') {

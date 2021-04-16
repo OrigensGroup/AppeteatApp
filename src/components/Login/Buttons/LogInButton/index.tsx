@@ -1,12 +1,10 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useTheme } from 'styled-components';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import Text from '../../../shared/Text';
 
 import { ButtonContainer, IconWrapper } from './styles';
-import loginTranslations from '../../../../translations/login';
 
 interface LoginProps {
   text: string;

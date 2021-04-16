@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Platform, Alert } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import { useTheme } from 'styled-components';
 
@@ -15,7 +14,7 @@ import loginTranslations from '../../../translations/login';
 import Text from '../../shared/Text';
 import LogInButton from '../Buttons/LogInButton';
 
-import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles, GoBack } from './styles';
+import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, GoBack } from './styles';
 import { ForgotSchema } from './forgotSchema';
 
 interface ManualLogInProps {
