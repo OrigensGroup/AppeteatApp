@@ -44,7 +44,7 @@ const loginTranslations = {
   // SignIn Errors
   errorSignInEmail: {
     label: 'Incorrect email address',
-    message: "L'indirizzo email inserito non sembra corretto. Riprova",
+    message: "L'indirizzo email inserito non sembra corretto. Riprova.",
   },
   emailSent: {
     label: 'Resetta password',
@@ -53,12 +53,11 @@ const loginTranslations = {
   errorWrongPasswordSignIn: {
     label: 'Password incorretta',
     message: 'La password inserita non sembra essere corretta. Riprova.',
-    // The password that you've entered is incorrect. Please try again.
   },
   errorUserNotFound: {
     label: 'Indirizzo email invalido',
     message:
-      "L'indirizzo email inserita non sembra essere associato a nessun account. Controlla l'indirizzo mail e riprova",
+      "L'indirizzo email inserita non sembra essere associato a nessun account. Controlla l'indirizzo mail e riprova.",
   },
 
   // SignUp Errors
