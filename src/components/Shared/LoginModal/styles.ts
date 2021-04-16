@@ -30,22 +30,17 @@ export const PopUpContainer = styled.View`
   left: 0;
   right: 0;
   top: 0;
-
   width: 100%;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
-
   align-items: center;
-
-  padding-top: ${({ theme }) => theme.spacing.triple};
 `;
 
 export const CloseModal = styled.View`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-
-  margin-top: 16px;
-  margin-right: 16px;
+  margin-top: ${({ theme }) => theme.spacing.double};
+  margin-right: ${({ theme }) => theme.spacing.double};
 `;
 
 export const CloseIcon = styled.TouchableOpacity``;
