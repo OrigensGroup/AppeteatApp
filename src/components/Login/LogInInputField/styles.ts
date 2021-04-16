@@ -17,18 +17,16 @@ export const TextFieldWrapper = styled.View<ButtonContainerProps>`
   `};
 `;
 export const TextFieldInput = styled.TextInput`
-  border-bottom-color: ${({ theme }) => theme.colors.fixedWhite};
-  color: ${({ theme }) => theme.colors.fixedWhite};
+  border-bottom-color: ${({ theme }) => theme.colors.active};
+  color: ${({ theme }) => theme.colors.textPrimary};
   font-family: Comfortaa;
   font-size: ${scale(16)}px;
   border-bottom-width: 1px;
   flex: 1;
   padding: 0;
-  padding-bottom: ${({ theme }) => theme.spacing.half};
 `;
 
 export const TitleWrapper = styled.View`
-  margin-bottom: ${({ theme }) => theme.spacing.double};
 `;
 
 export const ErrorContainer = styled.View`

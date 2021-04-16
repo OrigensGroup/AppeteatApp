@@ -1,21 +1,26 @@
 import styled from 'styled-components/native';
 
+interface LoginProps {
+  opaqueActive?: boolean;
+}
+
 export const ButtonContainer = styled.View`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spacing.multiple(3)};
-  margin-bottom: ${({ theme }) => theme.spacing.multiple(1)};
 `;
 
-export const IconWrapper = styled.TouchableOpacity`
-  height: ${({ theme }) => theme.spacing.multiple(8)};
-  width: ${({ theme }) => theme.spacing.multiple(8)};
-  background-color: ${({ theme }) => theme.colors.border}69;
+export const IconWrapper = styled.TouchableOpacity<LoginProps>`
+  height: ${({ theme }) => theme.spacing.multiple(5)};
+  border-radius: ${({ theme }) => theme.spacing.single};
+  ${({ opaqueActive, theme }) =>
+    opaqueActive ? `background-color: ${theme.colors.opaqueActive}` : `background-color: ${theme.colors.active}`};
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: row;
   align-items: center;
-  border-radius: ${({ theme }) => theme.spacing.multiple(10)};
+
+  width: 100%;
 `;

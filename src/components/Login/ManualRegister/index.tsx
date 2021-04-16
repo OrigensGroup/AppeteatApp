@@ -113,74 +113,64 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
   };
 
   return (
-    <LinearGradient
-      colors={[theme.colors.active, theme.colors.secondaryActive]}
-      end={{ x: 1, y: 1 }}
-      start={{ x: 0, y: 0 }}
-      style={styles.linearGradient}
+    <Formik
+      initialValues={{
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      }}
+      onSubmit={(values) => {
+        createUser(values.username, values.email, values.password);
+      }}
+      validateOnBlur={false}
+      validateOnChange={false}
+      validationSchema={RegisterSchema}
     >
-      <Formik
-        initialValues={{
-          username: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-        }}
-        onSubmit={(values) => {
-          createUser(values.username, values.email, values.password);
-        }}
-        validateOnBlur={false}
-        validateOnChange={false}
-        validationSchema={RegisterSchema}
-      >
-        {({ errors, handleChange, handleSubmit }) => (
-          <ManualLogInContainer>
-            <TextFieldsWrapper>
-              <LogInInputField
-                error={errors.username}
-                label={loginTranslations.nameField.label}
-                placeholder={loginTranslations.nameField.placeholder}
-                textContentType="none"
-                updateValue={handleChange('username')}
-              />
-              <LogInInputField
-                autoCapitalize="none"
-                error={errors.email}
-                label={loginTranslations.emailField.label}
-                placeholder={loginTranslations.emailField.placeholder}
-                textContentType="emailAddress"
-                updateValue={handleChange('email')}
-              />
-              <PasswordsWrapper>
-                <LogInInputField
-                  error={errors.password}
-                  label={loginTranslations.passwordField.label}
-                  placeholder={loginTranslations.passwordField.placeholder}
-                  textContentType="password"
-                  updateValue={handleChange('password')}
-                />
-                <PasswordSeparator />
-                <LogInInputField
-                  error={errors.confirmPassword}
-                  label={loginTranslations.passwordField.secondaryLabel}
-                  placeholder={loginTranslations.passwordField.placeholder}
-                  textContentType="password"
-                  updateValue={handleChange('confirmPassword')}
-                />
-              </PasswordsWrapper>
-            </TextFieldsWrapper>
-            <LogInSection>
-              <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.registerButton.label} />
-              <SignUpButton
-                buttonText={loginTranslations.signInSection.buttonLabel}
-                onClick={loginApp}
-                text={loginTranslations.signInSection.label}
-              />
-            </LogInSection>
-          </ManualLogInContainer>
-        )}
-      </Formik>
-    </LinearGradient>
+      {({ errors, handleChange, handleSubmit }) => (
+        <ManualLogInContainer>
+          <TextFieldsWrapper>
+            <LogInInputField
+              error={errors.username}
+              label={loginTranslations.nameField.label}
+              placeholder={loginTranslations.nameField.placeholder}
+              placeholderTextColor={theme.colors.border}
+              textContentType="none"
+              updateValue={handleChange('username')}
+            />
+            <LogInInputField
+              autoCapitalize="none"
+              error={errors.email}
+              label={loginTranslations.emailField.label}
+              placeholder={loginTranslations.emailField.placeholder}
+              placeholderTextColor={theme.colors.border}
+              textContentType="emailAddress"
+              updateValue={handleChange('email')}
+            />
+            <LogInInputField
+              error={errors.password}
+              label={loginTranslations.passwordField.label}
+              placeholder={loginTranslations.passwordField.placeholder}
+              placeholderTextColor={theme.colors.border}
+              textContentType="password"
+              updateValue={handleChange('password')}
+            />
+            <LogInInputField
+              error={errors.confirmPassword}
+              label={loginTranslations.passwordField.secondaryLabel}
+              placeholder={loginTranslations.passwordField.placeholder}
+              placeholderTextColor={theme.colors.border}
+              textContentType="password"
+              updateValue={handleChange('confirmPassword')}
+            />
+          </TextFieldsWrapper>
+          <LogInSection>
+            <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.registerButton.label} />
+            <SignUpButton buttonText={loginTranslations.signInSection.buttonLabel} onClick={loginApp} />
+          </LogInSection>
+        </ManualLogInContainer>
+      )}
+    </Formik>
   );
 };
 
