@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import stripe, { Card, Charge, GeneratedErrors } from 'tipsi-stripe';
 
 import Config from '../utils/config';

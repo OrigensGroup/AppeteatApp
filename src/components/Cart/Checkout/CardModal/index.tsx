@@ -10,11 +10,13 @@ import type { Card } from 'tipsi-stripe';
 import ViewCta from '../../../shared/ViewCta';
 import Text from '../../../shared/Text';
 
+import withFeatureFlag from '../../../../HOC/withFeatureFlag';
+
 import cartTranslations from '../../../../translations/cart';
 
 import NativePay from './NativePay';
 
-import { PopUpContainer, CardModalHeader, CardModalChoice } from './styles';
+import { PopUpContainer, CardModalHeader, CardModalChoice, CashPayFeatureFlag } from './styles';
 import CashPay from './CashPay';
 
 interface CardModalProps {
@@ -22,6 +24,8 @@ interface CardModalProps {
   isModalVisible: boolean;
   onClose: () => void;
 }
+
+const CashPayView = withFeatureFlag(CashPayFeatureFlag, 'FEAT_BOOK');
 
 const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, onCardUpdate, onClose }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(-1);
@@ -110,9 +114,11 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
             {cartTranslations.checkoutPage.paymentDetails.title}
           </Text>
         </CardModalHeader>
-        <CardModalChoice active={selectedPaymentMethod === 2} onPress={changeActive(2)}>
-          <CashPay />
-        </CardModalChoice>
+        <CashPayView>
+          <CardModalChoice active={selectedPaymentMethod === 2} onPress={changeActive(2)}>
+            <CashPay />
+          </CardModalChoice>
+        </CashPayView>
         {canPayWithNativePay && (
           <CardModalChoice active={selectedPaymentMethod === 0} onPress={changeActive(0)}>
             <NativePay />

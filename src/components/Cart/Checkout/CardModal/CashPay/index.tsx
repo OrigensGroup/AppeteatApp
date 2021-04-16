@@ -1,8 +1,8 @@
 import React from 'react';
-import cartTranslations from '../../../../../translations/cart';
-import Text from '../../../../shared/Text';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from '@react-navigation/native';
+import cartTranslations from '../../../../../translations/cart';
+import Text from '../../../../shared/Text';
 
 import { CashPayContainer, CashPayText, CashPayIcon } from './styles';
 

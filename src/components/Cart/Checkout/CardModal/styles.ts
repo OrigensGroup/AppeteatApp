@@ -37,3 +37,5 @@ export const CardModalChoice = styled.TouchableOpacity<CardModalChoiceProps>`
 
   margin-bottom: ${({ theme }) => theme.spacing.oneAndHalf};
 `;
+
+export const CashPayFeatureFlag = styled.View``;

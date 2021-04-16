@@ -36,6 +36,7 @@ type FeatureFlags = {
   FEAT_FAVORITE_COCKTAILS: boolean;
   FEAT_ORDERING: boolean;
   FEAT_DARK_MODE: boolean;
+  FEAT_CASH_PAYMENT: boolean;
   [key: string]: boolean;
 };
 
