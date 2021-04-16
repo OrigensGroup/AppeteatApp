@@ -35,7 +35,6 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = ({
   return (
     <SearchBarWrapper>
       <SearchFieldInput
-        autoFocus
         defaultValue={text}
         onChangeText={updateText}
         placeholder={placeholder}

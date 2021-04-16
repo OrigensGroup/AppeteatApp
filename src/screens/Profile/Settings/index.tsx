@@ -71,7 +71,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
           },
         },
       ],
-      { cancelable: false }
+      { cancelable: false },
     );
 
   const updateEmail = useCallback(
@@ -83,7 +83,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
         setInfoUpdatedShow(true);
       }
     },
-    [reload, changedEmail]
+    [reload, changedEmail],
   );
 
   const updateProfile = async (name?: string, email?: string) => {
@@ -117,7 +117,6 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
       }
 
       if (e.code === 'auth/invalid-email ') {
-        return;
       }
     }
   };
@@ -146,7 +145,10 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
   return (
     <>
       <Formik
-        initialValues={{ email: user?.email ?? '', username: user?.displayName ?? '' }}
+        initialValues={{
+          email: user?.email ?? '',
+          username: user?.displayName ?? '',
+        }}
         onSubmit={(values) => {
           if (values.email && values.username) {
             updateProfile(values.username, values.email);
@@ -188,13 +190,13 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
                 </TextContainer>
                 <LoginTextField
                   defaultValue={values.username}
-                  error={errors['username']}
+                  error={errors.username}
                   textContentType="none"
                   updateValue={(value) => showSave('username', value)}
                 />
                 <LoginTextField
                   defaultValue={values.email}
-                  error={errors['email']}
+                  error={errors.email}
                   textContentType="emailAddress"
                   updateValue={(value) => showSave('email', value)}
                 />
@@ -219,7 +221,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
               {saveShow && (
                 <SaveButton>
                   <ViewCta onClick={saveChanges}>
-                    <Text bold color="fixedWhite" fontSize={18}>
+                    <Text bold color="fixedWhite" fontSize={14}>
                       {profileTranslations.settingsPage.save}
                     </Text>
                   </ViewCta>

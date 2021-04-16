@@ -77,6 +77,6 @@ export const DiscountPrice = styled.View`
 `;
 
 export const Price = styled.View<{ move: boolean }>`
-  ${({ move }) => move && `margin-top: auto`};
+  ${({ move }) => move && 'margin-top: auto'};
   margin-right: ${({ theme }) => theme.spacing.double};
 `;

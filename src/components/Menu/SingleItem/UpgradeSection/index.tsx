@@ -46,25 +46,25 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     description: '',
   });
 
-  const addNewSelection = (sections: UpgradeItem[]) => {
-    const selectionStructure: SelectionExtras = {};
+  useEffect(() => {
+    const addNewSelection = (sections: UpgradeItem[]) => {
+      const selectionStructure: SelectionExtras = {};
 
-    sections.forEach((section) => {
-      const selectionCheckbox: SelectionCheckbox = {};
+      sections.forEach((section) => {
+        const selectionCheckbox: SelectionCheckbox = {};
 
-      section.data.forEach((item) => {
-        selectionCheckbox[item.id] = item;
+        section.data.forEach((sectionItem) => {
+          selectionCheckbox[sectionItem.id] = sectionItem;
+        });
+
+        selectionStructure[section.id] = selectionCheckbox;
       });
 
-      selectionStructure[section.id] = selectionCheckbox;
-    });
+      setSelectedExtras(selectionStructure);
+    };
 
-    setSelectedExtras(selectionStructure);
-  };
-
-  useEffect(() => {
     item.upgradableItems && addNewSelection(item.upgradableItems);
-  }, [item.upgradableItems]);
+  }, [item.upgradableItems, item.id]);
 
   useEffect(() => {
     let allTruthyCustomisation: DataItem[] = [];
@@ -129,7 +129,11 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     const selectionType = section.selection === 'single' ? 'circle' : 'square';
 
     const selectionValue =
-      (selectionExtras && selectionExtras[section.id] && selectionExtras[section.id][item.id].selected) || false;
+      (selectionExtras &&
+        selectionExtras[section.id] &&
+        selectionExtras[section.id][item.id] &&
+        selectionExtras[section.id][item.id].selected) ||
+      false;
 
     return (
       <ItemRow onPress={() => updateItemSelection(section.selection, section.id, item.id)(!selectionValue)}>
@@ -148,8 +152,13 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           )}
         </PriceItem>
 
-        {item.explanation && (
-          <ItemInfo onPress={showDescriptionModal({ title: item.title, description: item.explanation })}>
+        {!!item.explanation && (
+          <ItemInfo
+            onPress={showDescriptionModal({
+              title: item.title,
+              description: item.explanation,
+            })}
+          >
             <Icon color={theme.colors.fixedBlack} name="ios-information-circle-outline" size={24} />
           </ItemInfo>
         )}

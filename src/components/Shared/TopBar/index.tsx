@@ -58,7 +58,10 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTi
         ],
       });
 
-      return navigation.navigate('App', { screen: 'Account', params: { screen: 'Orders' } });
+      return navigation.navigate('App', {
+        screen: 'Account',
+        params: { screen: 'Orders' },
+      });
     }
 
     return navigation.navigate(back);

@@ -22,7 +22,11 @@ const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = ({ promotedIt
   const [menu] = useMenu();
 
   const onCardClick = (item: MenuItem) => () => {
-    navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
+    navigation.navigate('Menu', {
+      screen: 'SingleItem',
+      params: { item },
+      initial: false,
+    });
   };
 
   const promotedItemsToShow = menu.items.filter((menuItem) => promotedItems.includes(menuItem.id));

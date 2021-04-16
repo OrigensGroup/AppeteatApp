@@ -3,8 +3,6 @@ import Modal from 'react-native-modal';
 
 import { FlatList } from 'react-native-gesture-handler';
 
-import { View } from 'react-native';
-
 import Text from '../../../shared/Text';
 
 import SearchBar from '../../../shared/SearchBar';
@@ -21,6 +19,9 @@ import {
   DivLine,
   SearchModalBottomBar,
   SearchModalBottomBarWrapper,
+  SafeAreaViewBottom,
+  SearchHeader,
+  NoResultContainer,
 } from './styles';
 
 interface SearchModalProps {
@@ -33,7 +34,7 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
   const [searchItem, setSearchItem] = useState('');
 
   const itemsToShow = menu.items.filter((item) =>
-    JSON.stringify(item).toLowerCase().includes(searchItem.toLowerCase())
+    JSON.stringify(item).toLowerCase().includes(searchItem.toLowerCase()),
   );
 
   const closeModal = () => {
@@ -55,36 +56,45 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
       }}
     >
       <SearchPopUpContainer>
-        <TitleWrapper>
-          <Text bold color="primary" fontSize={18}>
-            {menuTranslations.menuPage.searchModal.searchTitle.title}
-          </Text>
-        </TitleWrapper>
-        <SearchBar
-          onUpdateText={setSearchItem}
-          placeholder={menuTranslations.menuPage.searchModal.searchInput.title}
-          textContentType="none"
-          value={searchItem}
-        />
+        <SearchHeader>
+          <TitleWrapper>
+            <Text bold color="primary" fontSize={18}>
+              {menuTranslations.menuPage.searchModal.searchTitle.title}
+            </Text>
+          </TitleWrapper>
+          <SearchBar
+            onUpdateText={setSearchItem}
+            placeholder={menuTranslations.menuPage.searchModal.searchInput.title}
+            textContentType="none"
+            value={searchItem}
+          />
+        </SearchHeader>
         <DivLine />
         <SearchModalBottomBar>
           {searchItem !== '' ? (
-            <FlatList data={itemsToShow} renderItem={renderItem} style={{ width: '100%', paddingTop: 16 }} />
+            <FlatList
+              data={itemsToShow}
+              showsVerticalScrollIndicator={false}
+              renderItem={renderItem}
+              style={{ width: '100%' }}
+              contentContainerStyle={{ paddingBottom: 24 }}
+            />
           ) : (
-            <View style={{ width: '100%', flex: 1, display: 'flex', alignItems: 'center', marginTop: 24 }}>
+            <NoResultContainer>
               <Text bold color="primary" fontSize={18}>
                 {menuTranslations.menuPage.searchModal.noItems.title}
               </Text>
-            </View>
+            </NoResultContainer>
           )}
-          <SearchModalBottomBarWrapper>
-            <ViewCta onClick={closeModal}>
-              <Text bold color="secondary" fontSize={18}>
-                {menuTranslations.menuPage.searchModal.closeCta.title}
-              </Text>
-            </ViewCta>
-          </SearchModalBottomBarWrapper>
         </SearchModalBottomBar>
+        <SearchModalBottomBarWrapper>
+          <ViewCta onClick={closeModal}>
+            <Text bold color="secondary" fontSize={14}>
+              {menuTranslations.menuPage.searchModal.closeCta.title}
+            </Text>
+          </ViewCta>
+          <SafeAreaViewBottom />
+        </SearchModalBottomBarWrapper>
       </SearchPopUpContainer>
     </Modal>
   );

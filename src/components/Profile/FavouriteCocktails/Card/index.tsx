@@ -17,9 +17,14 @@ interface CardProps {
 const Card: React.FunctionComponent<CardProps> = ({ item }) => {
   const navigation = useNavigation();
   const theme = useTheme();
+  const goBackTo = 'Account';
 
   const onCardClick = () => {
-    navigation.navigate('Menu', { screen: 'SingleItem', params: { item }, initial: false });
+    navigation.navigate('Menu', {
+      screen: 'SingleItem',
+      params: { item, goBackTo },
+      initial: false,
+    });
   };
 
   return (

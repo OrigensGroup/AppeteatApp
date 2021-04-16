@@ -8,6 +8,6 @@ export default {
   GOOGLE_WEBCLIENT_ID: '67347102756-pf6j84o8u2tjmn2vjckl4qtpfcg5g2je.apps.googleusercontent.com',
   API_URL: 'https://appeteat-prod.herokuapp.com',
   // API_URL: 'https://appeteat-stg.herokuapp.com',
-  //API_URL:http://192.168.1.120:5000
+  // API_URL:http://192.168.1.120:5000
   EXPERIENCE: '@origens/elisir',
 };

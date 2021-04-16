@@ -1,6 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint:fix
-git add -A
-yarn test --onlyChanged
+yarn type:check
+yarn test:ci --onlyChanged

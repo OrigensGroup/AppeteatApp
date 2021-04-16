@@ -8,7 +8,7 @@ import FastImage, { Source } from 'react-native-fast-image';
 
 import stripe from 'tipsi-stripe';
 
-//@ts-ignore
+// @ts-ignore
 import { Settings } from 'react-native-fbsdk-next';
 
 import Config from './config';

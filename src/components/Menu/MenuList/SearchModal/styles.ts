@@ -23,9 +23,6 @@ export const SearchPopUpContainer = styled.View`
 
   width: 100%;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
-
-  align-items: center;
-  padding: ${({ theme }) => theme.spacing.triple};
 `;
 
 export const TitleWrapper = styled.View`
@@ -49,56 +46,40 @@ export const FlatListWrapper = styled.View`
   height: 100%;
 `;
 
-//bottom bar components
+// bottom bar components
 export const SearchModalBottomBar = styled.View`
   width: 100%;
   flex: 1;
   display: flex;
   align-items: center;
+
+  padding: 0 ${({ theme }) => theme.spacing.triple};
 `;
 
 export const SearchModalBottomBarWrapper = styled.View`
-  position: absolute;
-  bottom: 0;
+  padding: 0 ${({ theme }) => theme.spacing.triple};
+  padding-top: ${({ theme }) => theme.spacing.oneAndHalf};
+  padding-bottom: ${({ theme }) => theme.spacing.half};
+  border-top-width: 1px;
+  border-color: ${({ theme }) => theme.colors.border};
+`;
+
+export const SafeAreaViewBottom = styled.SafeAreaView`
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
+`;
+
+export const SearchHeader = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: ${({ theme }) => theme.spacing.triple};
+  padding-bottom: 0;
+`;
+
+export const NoResultContainer = styled.View`
   width: 100%;
+  flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-`;
-
-export const BottomButtonContainer = styled.TouchableOpacity`
-  width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(5)};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: ${({ theme }) => theme.spacing.single};
-  margin-top: ${({ theme }) => theme.spacing.double};
-  margin-bottom: ${({ theme }) => theme.spacing.double};
-  background-color: ${({ theme }) => theme.colors.active};
-`;
-
-export const BottomButtonWrapperLeft = styled.View`
-  height: ${({ theme }) => theme.spacing.multiple(5)};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: ${({ theme }) => theme.spacing.single};
-`;
-
-export const BottomButtonWrapperRight = styled.View`
-  height: ${({ theme }) => theme.spacing.multiple(5)};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: ${({ theme }) => theme.spacing.single};
-`;
-
-export const AllergyInfoWrapper = styled.TouchableOpacity`
-  width: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
   margin-top: ${({ theme }) => theme.spacing.triple};
 `;

@@ -4,6 +4,7 @@ import crashlytics from '@react-native-firebase/crashlytics';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
+import { Alert } from 'react-native';
 import initUserData from '../../../utils/manageUserdata';
 
 import useUserData from '../../../hooks/useUserData';
@@ -11,6 +12,7 @@ import useUserData from '../../../hooks/useUserData';
 import Config from '../../../utils/config';
 
 import { ButtonContainer, GoogleImage } from './styles';
+import loginTranslations from '../../../translations/login';
 
 GoogleSignin.configure({
   webClientId: Config.GOOGLE_WEBCLIENT_ID,
@@ -26,6 +28,8 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
   const { login } = useUserData();
 
   async function onGoogleButtonPress() {
+    let linkedAccount: boolean | undefined | null | void = false;
+
     crashlytics().log('Google log in attempt.');
     // Get the users ID token
 
@@ -38,7 +42,7 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
       if (isFromModal) {
         const user = auth().currentUser;
 
-        user
+        linkedAccount = await user
           ?.linkWithCredential(googleCredential)
           .then(async () => {
             login();
@@ -46,33 +50,39 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
             onConfirm && onConfirm();
           })
           .catch((e) => {
-            throw e;
+            if (e.code !== 'auth/credential-already-in-use') {
+              throw e;
+            }
           });
 
         setLoading(false);
-
-        return;
       }
+      if (!linkedAccount) {
+        // Sign-in the user with the credential
+        auth()
+          .signInWithCredential(googleCredential)
+          .then(async () => {
+            setLoading(false);
+            const user = auth().currentUser;
 
-      // Sign-in the user with the credential
-      auth()
-        .signInWithCredential(googleCredential)
-        .then(async () => {
-          setLoading(false);
-          const user = auth().currentUser;
-
-          if (user) {
-            await initUserData(user.uid);
-            login();
-          } else {
-            crashlytics().log("Couldn't setup user db");
-          }
-        })
-        .catch((e) => {
-          throw e;
-        });
+            if (user) {
+              await initUserData(user.uid);
+              login();
+            } else {
+              crashlytics().log("Couldn't setup user db");
+            }
+          })
+          .catch((e) => {
+            throw e;
+          });
+      }
     } catch (error) {
-      console.log('New erro', error);
+      if (error.code === 'auth/credential-already-in-use') {
+        Alert.alert(
+          loginTranslations.errorWrongPasswordSignIn.label,
+          loginTranslations.errorWrongPasswordSignIn.message,
+        );
+      }
       setLoading(false);
       crashlytics().log('Google log in failed.');
       crashlytics().recordError(error);
@@ -81,7 +91,7 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
 
   return (
     <ButtonContainer onPress={onGoogleButtonPress}>
-      <GoogleImage source={require('./../../../img/google.png')} />
+      <GoogleImage source={require('../../../img/google.png')} />
     </ButtonContainer>
   );
 };

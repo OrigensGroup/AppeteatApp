@@ -7,15 +7,12 @@ interface ButtonContainerProps {
 
 export const ManualLogInContainer = styled.View`
   width: 100%;
-  border-top-left-radius: ${({ theme }) => theme.spacing.triple};
-  border-top-right-radius: ${({ theme }) => theme.spacing.triple};
   display: flex;
   justify-content: space-between;
   align-items: center;
   bottom: 0;
   flex: 1;
   padding: 0 ${({ theme }) => theme.spacing.multiple(4)};
-  margin-bottom: ${({ theme }) => theme.spacing.double};
 `;
 
 export const styles = StyleSheet.create({
@@ -46,16 +43,17 @@ export const TitleWrapper = styled.View`
   margin-bottom: ${({ theme }) => theme.spacing.triple};
 `;
 
-///////////////////// Buttons /////////////////////
+/// ////////////////// Buttons /////////////////////
 
 export const ButtonsWrapper = styled.View`
   width: 100%;
   flex: 1;
   display: flex;
-  justify-content: space-around;
-  margin-bottom: ${({ theme }) => theme.spacing.triple};
+  margin-top: ${({ theme }) => theme.spacing.multiple(6)};
 `;
 
-export const GoBack = styled.TouchableOpacity``;
+export const GoBack = styled.TouchableOpacity`
+  margin: ${({ theme }) => theme.spacing.triple} 0;
+`;
 
 export const Continue = styled.TouchableOpacity``;

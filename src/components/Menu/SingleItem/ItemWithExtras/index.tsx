@@ -11,29 +11,36 @@ import { Discount } from '../../../../types/DiscountRules';
 
 import withFeatureFlag from '../../../../HOC/withFeatureFlag';
 
-import { ItemWithExtrasContainer, ItemContainer, MarginBottom } from './styles';
+import {
+  ItemWithExtrasContainer,
+  ItemContainer,
+  ItemWithExtraSafeAreaTop,
+  ItemWithExtraSafeAreaBottom,
+} from './styles';
 
 interface ItemWithExtrasProps {
   item: MenuItem;
   discount?: Discount;
+  goBackTo?: string;
 }
 
 const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
-const MarginBottomWithFlag = withFeatureFlag(MarginBottom, 'FEAT_ORDERING');
+const ItemWithExtraSafeAreaBottomWithFlag = withFeatureFlag(ItemWithExtraSafeAreaBottom, 'FEAT_ORDERING');
 
-const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, item }) => {
+const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, goBackTo, item }) => {
   const [extras, setExtras] = useState<DataItem[]>([]);
 
   return (
     <ItemWithExtrasContainer>
-      <CardsHeader item={item} />
-      <ItemContainer>
+      <ItemWithExtraSafeAreaTop />
+      <CardsHeader goBackTo={goBackTo} item={item} />
+      <ItemContainer showsVerticalScrollIndicator={false}>
         <ItemPicture item={item} />
         <ItemDescription discount={discount} item={item} />
         <UpgradeSection item={item} updateExtras={setExtras} />
       </ItemContainer>
-      <MarginBottomWithFlag />
       {!item.soldout && <AddToBasketWithFlag discount={discount} extras={extras} item={item} />}
+      <ItemWithExtraSafeAreaBottomWithFlag />
     </ItemWithExtrasContainer>
   );
 };

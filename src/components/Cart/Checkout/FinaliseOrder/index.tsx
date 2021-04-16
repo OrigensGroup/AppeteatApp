@@ -9,7 +9,7 @@ import useUserData from '../../../../hooks/useUserData';
 
 import cartTranslations from '../../../../translations/cart';
 import type { Order } from '../../../../types/Order';
-import { makeCardPayment, makeNativePayment } from '../../../../utils/payments';
+import { makeCardPayment, makeNativePayment, PaymentStatus } from '../../../../utils/payments';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
@@ -28,7 +28,7 @@ interface FinaliseOrderProps {
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutService, onPaymentError }) => {
   const navigation = useNavigation();
-  const { cart, clearCart, pricing } = useCart();
+  const { cart, pricing, clearCart } = useCart();
   const [, setOrders] = useOrders();
   const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
@@ -58,7 +58,13 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
       return '';
     }
 
-    if (checkoutService.paymentOption === 'native') {
+    if (checkoutService.paymentOption === 'cash') {
+      paymentRes = (await {
+        paymentRes: {
+          type: 'Charge',
+        },
+      }) as PaymentStatus;
+    } else if (checkoutService.paymentOption === 'native') {
       paymentRes = await makeNativePayment(
         {
           label: 'Order',
@@ -68,7 +74,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
           customerEmail: user.email,
           price: pricing.total,
           product: cart[0].id,
-        }
+        },
       );
     } else {
       paymentRes = await makeCardPayment(
@@ -82,12 +88,11 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
           customerEmail: user.email,
           price: pricing.total,
           product: cart[0].id,
-        }
+        },
       );
     }
 
     setLoadingPayment(false);
-
     if (paymentRes.paymentRes.type === 'Charge') {
       checkoutService.paymentOption === 'native' && stripe.completeNativePayRequest();
 
@@ -108,8 +113,15 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
 
       addOrder(order);
 
+      navigation.navigate('App', {
+        screen: 'Menu',
+        params: {
+          screen: 'Cart',
+          params: { screen: 'OrderDetails', params: { order } },
+        },
+      });
+
       clearCart();
-      navigation.navigate('OrderDetails', { order });
     } else {
       checkoutService.paymentOption === 'native' && stripe.cancelNativePayRequest();
 

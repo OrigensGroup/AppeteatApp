@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const MainCounterWrapper = styled.View`
-  height: 100%;
+  height: ${({ theme }) => theme.spacing.multiple(7)};
   align-items: center;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.modalbackground};
