@@ -128,6 +128,7 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
           <ManualLogInContainer>
             <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
               <LogInTextField
+                testID="LoginButton"
                 autoCapitalize="none"
                 error={errors.email}
                 label={loginTranslations.emailField.label}

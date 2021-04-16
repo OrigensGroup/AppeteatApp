@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import crashlytics from '@react-native-firebase/crashlytics';
 
@@ -77,10 +78,12 @@ const AppleButton: React.FunctionComponent<AppleButtonProps> = ({ isFromModal, o
     }
   }
 
-  return (
+  return Platform.OS === 'ios' ? (
     <ButtonContainer onPress={onAppleButtonPress}>
       <AntDesign color={theme.colors.fixedWhite} name="apple1" size={26} />
     </ButtonContainer>
+  ) : (
+    <></>
   );
 };
 

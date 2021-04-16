@@ -50,22 +50,19 @@ export const CartItemContainer = styled.TouchableOpacity`
 `;
 
 export const ImageWrapper = styled.View`
-  flex: 2;
-  max-width: ${({ theme }) => theme.spacing.multiple(15)};
-  max-height: ${({ theme }) => theme.spacing.multiple(15)};
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const CartItemDescription = styled.View`
-  flex: 4;
+  flex: 5;
   display: flex;
   padding: ${({ theme }) => theme.spacing.single};
 `;
 
 export const CartItemNumbers = styled.View`
-  flex: 1;
+  flex: 2;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
