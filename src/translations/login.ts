@@ -16,22 +16,22 @@ const loginTranslations = {
     label: 'Log In',
   },
   orSeparator: {
-    label: 'OR',
+    label: 'oppure',
   },
   registerButton: {
     label: 'Registrati',
   },
   signUpSection: {
     label: 'Non hai un account?',
-    buttonLabel: 'Create New Account',
+    buttonLabel: 'Crea un nuovo account',
   },
   anonSection: {
-    label: 'Continue without an account',
+    label: 'Continua senza account',
     buttonLabel: 'Registrati  > ',
   },
   signInSection: {
     label: 'Hai giá un account?',
-    buttonLabel: 'Already have an account?',
+    buttonLabel: 'Hai giá un account?',
   },
   forgotPassword: {
     goBack: 'Indietro',
@@ -44,20 +44,21 @@ const loginTranslations = {
   // SignIn Errors
   errorSignInEmail: {
     label: 'Incorrect email address',
-    message: "The email address that you've entered doesn't appear to be of a valid format. Please try again.",
+    message: "L'indirizzo email inserito non sembra corretto. Riprova",
   },
   emailSent: {
-    label: 'Password Reset',
-    message: 'The link to reset your password has been sent to your email.',
+    label: 'Resetta password',
+    message: 'Il link per resettare la password è stato mandato',
   },
   errorWrongPasswordSignIn: {
-    label: 'Incorrect password',
-    message: "The password that you've entered is incorrect. Please try again.",
+    label: 'Password incorretta',
+    message: 'La password inserita non sembra essere corretta. Riprova.',
+    // The password that you've entered is incorrect. Please try again.
   },
   errorUserNotFound: {
-    label: 'Incorrect email address',
+    label: 'Indirizzo email invalido',
     message:
-      "The email address that you've entered doesn't appear to belong to an account. Please check your email address and try again.",
+      "L'indirizzo email inserita non sembra essere associato a nessun account. Controlla l'indirizzo mail e riprova",
   },
 
   // SignUp Errors
@@ -74,7 +75,7 @@ const loginTranslations = {
     label: 'Password è obbligatoria',
   },
   invalidPasswordError: {
-    label: 'La password deve contenere almeno un numero e una lettera',
+    label: 'La password deve contenere almeno un numero e una lettera e una lettera maiuscola',
   },
   emailAlreayInUse: {
     label: 'Indirzzo email invalido',
