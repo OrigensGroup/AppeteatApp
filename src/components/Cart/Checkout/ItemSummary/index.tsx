@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/core';
 import React, { useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import { RowMap, SwipeListView } from 'react-native-swipe-list-view';
+import { useNavigation } from '@react-navigation/native';
 
 import useCart from '../../../../hooks/useCart';
 import cartTranslations from '../../../../translations/cart';
