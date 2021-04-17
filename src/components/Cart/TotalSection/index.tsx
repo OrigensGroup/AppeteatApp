@@ -19,10 +19,10 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order, check
   const checkingSection = order?.pricing.checkoutType ?? checkoutSection;
 
   useEffect(() => {
-    if (checkingSection !== checkoutSection) {
+    if (!order && pricing.checkoutType !== checkoutSection) {
       setPricingType(checkoutSection);
     }
-  }, [checkingSection, checkoutSection, setPricingType]);
+  }, [order, pricing.checkoutType, checkoutSection, setPricingType]);
 
   return (
     <TotalSectionContainer>

@@ -105,7 +105,9 @@ const cartTranslations = {
     title: 'Informazioni ordine',
     orderInfo: {
       title: 'Numero ordine',
-      deliveryEst: 'sarà pronto per le 9:00/9:30pm',
+      deliveryEst: 'sarà pronto ',
+      delivery: 'sarà pronto per le ',
+      asap: 'ASAP',
     },
 
     orderStatus: {
