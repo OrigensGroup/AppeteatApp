@@ -74,12 +74,13 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   };
 
   const discounts = findDiscounts(homepage.sections);
+  const tabsToShow = menu.tabs.filter((tab) => tab.show);
 
   const { goTo } = route.params ? (route.params as { goTo: string }) : { goTo: undefined };
 
   const [menuIndex, setMenuIndex] = useState(() => {
     if (goTo) {
-      return findIndex(menu.tabs, goTo);
+      return findIndex(tabsToShow, goTo);
     } else {
       return 0;
     }
@@ -88,9 +89,9 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   const onSwipe = (mode: 'menu' | 'swipe') => (index: number) => {
     if (ref.current && index !== menuIndex && mode !== 'swipe') {
       ref.current.scrollTo(index, true);
+    } else {
+      setMenuIndex(index);
     }
-
-    setMenuIndex(index);
   };
 
   const goToCart = () => {
@@ -112,7 +113,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   const menuTabsContent = useCallback(
     () =>
-      menu.tabs.map((tab) => {
+      tabsToShow.map((tab) => {
         const menuItemsPerSwipe = menu.items.filter((menuItems) => menuItems.belongsTo === tab.id);
 
         const possibleDiscount = discounts.filter((discount) => discount.tabToDiscount === tab.id);
@@ -121,7 +122,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
         return <SwiperPage discount={tabDiscount} key={tab.id} menuItems={menuItemsPerSwipe} />;
       }),
-    [menu.tabs, menu.items, discounts],
+    [tabsToShow, menu.items, discounts],
   );
 
   const closeModal = () => {
@@ -134,9 +135,9 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
 
   useEffect(() => {
     if (goTo) {
-      setMenuIndex(findIndex(menu.tabs, goTo));
+      setMenuIndex(findIndex(tabsToShow, goTo));
     }
-  }, [menu.tabs, goTo]);
+  }, [tabsToShow, goTo]);
 
   return (
     <MenuContainer>
@@ -144,8 +145,8 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <LoginModal isModalVisible={loginModalData.show} onClose={hideLoginModal} onConfirm={goToCart} />
       <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
       <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
-      <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
-      <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
+      <MenuTabs menuTabs={tabsToShow} onChange={onSwipe('menu')} tabActive={menuIndex} />
+      <Swiper index={menuIndex} loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
         {menuTabsContent()}
       </Swiper>
       {cart.length > 0 && <ViewBasketButton onClick={verifyUser} />}

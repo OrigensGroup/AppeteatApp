@@ -6,7 +6,7 @@ export const ButtonContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spacing.multiple(4)};
+  margin-top: ${({ theme }) => theme.spacing.multiple(2)};
 `;
 
 export const IconWrapper = styled.TouchableOpacity`

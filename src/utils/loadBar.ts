@@ -19,9 +19,11 @@ export const barInit: Bar = {
       openTime: '',
       oredersPerTimeFrame: 0,
       timeFrame: 0,
+      fee: 0,
     },
     colors,
     features: {
+      FEAT_CASH_PAYMENT: false,
       FEAT_BOOK: false,
       FEAT_CART_DELIVERY: false,
       FEAT_CART_TAKEAWAY: false,

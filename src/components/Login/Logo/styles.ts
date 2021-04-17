@@ -9,6 +9,6 @@ export const LogoContainer = styled.View`
 
 export const LogoImage = styled.Image`
   width: 100%;
-  height: ${({ theme }) => theme.spacing.multiple(25)};
+  height: ${({ theme }) => theme.spacing.multiple(20)};
   display: flex;
 `;

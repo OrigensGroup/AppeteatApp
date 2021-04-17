@@ -18,7 +18,9 @@ const MenuTabs: React.FunctionComponent<MenuTabProps> = ({ menuTabs, onChange, t
 
   useEffect(() => {
     if (menuTabsList.current) {
-      menuTabsList.current.scrollToIndex({ animated: true, index: tabActive });
+      try {
+        menuTabsList.current.scrollToIndex({ animated: true, index: tabActive });
+      } catch (e) {}
     }
   }, [tabActive]);
 

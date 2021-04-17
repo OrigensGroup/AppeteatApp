@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Platform, Alert } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { Formik } from 'formik';
 
 import { useTheme } from 'styled-components';
@@ -21,7 +20,16 @@ import { initUserData } from '../../../utils/manageUserdata';
 
 import { LoginSchema } from './loginSchema';
 
-import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, styles } from './styles';
+import {
+  ManualLogInContainer,
+  TextFieldsWrapper,
+  AnonButtonWrapper,
+  ButtonsWrapper,
+  OrSeparator,
+  Line,
+  TextContainer,
+} from './styles';
+import Text from '../../shared/Text';
 
 interface ManualLogInProps {
   showAnonLogin?: boolean;
@@ -64,12 +72,15 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
         setLoading(false);
 
         if (error.code === 'auth/invalid-email') {
-          Alert.alert(loginTranslations.errorSignInEmail.label);
+          Alert.alert(loginTranslations.errorSignInEmail.label, loginTranslations.errorSignInEmail.message);
           return;
         }
 
         if (error.code === 'auth/wrong-password') {
-          Alert.alert(loginTranslations.errorWrongPasswordSignIn.label);
+          Alert.alert(
+            loginTranslations.errorWrongPasswordSignIn.label,
+            loginTranslations.errorWrongPasswordSignIn.message,
+          );
           return;
         }
 
@@ -93,12 +104,18 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
         setLoading(false);
 
         if (error.code === 'auth/invalid-email') {
-          Alert.alert(loginTranslations.errorSignInEmail.label);
+          Alert.alert(loginTranslations.errorSignInEmail.label, loginTranslations.errorSignInEmail.message);
           return;
         }
-
+        if (error.code === 'auth/user-not-found') {
+          Alert.alert(loginTranslations.errorUserNotFound.label, loginTranslations.errorUserNotFound.message);
+          return;
+        }
         if (error.code === 'auth/wrong-password') {
-          Alert.alert(loginTranslations.errorWrongPasswordSignIn.label);
+          Alert.alert(
+            loginTranslations.errorWrongPasswordSignIn.label,
+            loginTranslations.errorWrongPasswordSignIn.message,
+          );
           return;
         }
 
@@ -109,57 +126,65 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
   };
 
   return (
-    <LinearGradient
-      colors={[theme.colors.active, theme.colors.secondaryActive]}
-      end={{ x: 1, y: 1 }}
-      start={{ x: 0, y: 0 }}
-      style={styles.linearGradient}
+    <Formik
+      initialValues={{ email: '', password: '' }}
+      onSubmit={(values) => {
+        singIn(values.email, values.password);
+      }}
+      validateOnBlur={false}
+      validateOnChange={false}
+      validationSchema={LoginSchema}
     >
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={(values) => {
-          singIn(values.email, values.password);
-        }}
-        validateOnBlur={false}
-        validateOnChange={false}
-        validationSchema={LoginSchema}
-      >
-        {({ errors, handleChange, handleSubmit }) => (
-          <ManualLogInContainer>
-            <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-              <LogInTextField
-                autoCapitalize="none"
-                error={errors.email}
-                label={loginTranslations.emailField.label}
-                placeholder={loginTranslations.emailField.placeholder}
-                textContentType="emailAddress"
-                updateValue={handleChange('email')}
-              />
-              <LogInTextField
-                error={errors.password}
-                label={loginTranslations.passwordField.label}
-                placeholder={loginTranslations.passwordField.placeholder}
-                secondary
-                textContentType="password"
-                updateValue={handleChange('password')}
-              />
-              <SignUpButton buttonText={loginTranslations.forgotPassword.cta} onClick={forgotPassword} text="" />
-            </TextFieldsWrapper>
-            <ButtonsWrapper>
-              <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.loginButton.label} />
-              <SignUpButton
-                buttonText={loginTranslations.signUpSection.buttonLabel}
-                onClick={register}
-                text={loginTranslations.signUpSection.label}
-              />
-              {showAnonLogin && (
+      {({ errors, handleChange, handleSubmit }) => (
+        <ManualLogInContainer>
+          <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+            <LogInTextField
+              testID="LoginButton"
+              autoCapitalize="none"
+              error={errors.email}
+              label={loginTranslations.emailField.label}
+              placeholder={loginTranslations.emailField.placeholder}
+              placeholderTextColor={theme.colors.border}
+              textContentType="emailAddress"
+              updateValue={handleChange('email')}
+            />
+            <LogInTextField
+              error={errors.password}
+              label={loginTranslations.passwordField.label}
+              placeholder={loginTranslations.passwordField.placeholder}
+              placeholderTextColor={theme.colors.border}
+              secondary
+              textContentType="password"
+              updateValue={handleChange('password')}
+            />
+            <SignUpButton buttonText={loginTranslations.forgotPassword.cta} onClick={forgotPassword} text="" small />
+          </TextFieldsWrapper>
+          <ButtonsWrapper>
+            <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.loginButton.label} />
+            <OrSeparator>
+              <Line />
+              <TextContainer>
+                <Text fontSize={16} color="primary">
+                  {loginTranslations.orSeparator.label}
+                </Text>
+              </TextContainer>
+              <Line />
+            </OrSeparator>
+            <LogInButton
+              onClick={register}
+              text={loginTranslations.signUpSection.buttonLabel}
+              active
+              color="tertiary"
+            />
+            {showAnonLogin && (
+              <AnonButtonWrapper>
                 <SignUpButton buttonText={loginTranslations.anonSection.label} onClick={anonSignIn} small />
-              )}
-            </ButtonsWrapper>
-          </ManualLogInContainer>
-        )}
-      </Formik>
-    </LinearGradient>
+              </AnonButtonWrapper>
+            )}
+          </ButtonsWrapper>
+        </ManualLogInContainer>
+      )}
+    </Formik>
   );
 };
 

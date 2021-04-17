@@ -43,7 +43,7 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({ it
       quantity: amount,
       customPriceReduction: customPrice,
     }),
-  );
+  ).toFixed(2);
 
   const onClick = () => {
     addItemToCart({

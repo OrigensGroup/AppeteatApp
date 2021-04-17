@@ -27,20 +27,20 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item
   const navigation = useNavigation();
 
   const navigate = () => {
-    navigation.reset({
-      index: 0,
-      routes: [
-        {
-          name: 'MenuList',
-        },
-      ],
-    });
-
     if (goBackTo) {
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'MenuList',
+          },
+        ],
+      });
+
       return navigation.navigate(goBackTo);
-    } else {
-      navigation.goBack();
     }
+
+    navigation.goBack();
   };
 
   const addNew = (newItem: MenuItem) => () => {

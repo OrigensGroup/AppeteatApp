@@ -55,8 +55,8 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
 
   const finalPrice =
     discount && discount.type === 'tabDiscount'
-      ? fixDecimals(item.price - (item.price * discount.amountForDiscount) / 100)
-      : item.price;
+      ? fixDecimals(item.price - (item.price * discount.amountForDiscount) / 100).toFixed(2)
+      : fixDecimals(item.price).toFixed(2);
 
   return (
     <CardContainer onPress={navigate}>
@@ -79,7 +79,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
         </CardTitle>
         <CardMainItem>
           <Text color="quartiary" fontSize={12}>
-            {item.ingredients?.filter((_, idx) => idx < 3).join(' ')}
+            {item.description}
           </Text>
         </CardMainItem>
       </CardDescription>

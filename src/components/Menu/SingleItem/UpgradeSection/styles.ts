@@ -43,7 +43,7 @@ export const TitleItem = styled.View`
 `;
 
 export const PriceItem = styled.View`
-  flex: 1;
+  flex: 2;
   margin-right: ${({ theme }) => theme.spacing.single};
 `;
 

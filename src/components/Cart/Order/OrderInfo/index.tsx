@@ -27,7 +27,10 @@ const OrderInfo: React.FunctionComponent<OrderInfoProps> = ({ order }) => {
       </OrderInfoNumber>
       <OrderInfoArrival>
         <Text color="quartiary" fontSize={14}>
-          {cartTranslations.orderPage.orderInfo.deliveryEst}
+          {order.orderTime
+            ? cartTranslations.orderPage.orderInfo.delivery
+            : cartTranslations.orderPage.orderInfo.deliveryEst}
+          {order.orderTime ?? cartTranslations.orderPage.orderInfo.asap}
         </Text>
       </OrderInfoArrival>
     </OrderInfoContainer>

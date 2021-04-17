@@ -15,12 +15,15 @@ const loginTranslations = {
   loginButton: {
     label: 'Log In',
   },
+  orSeparator: {
+    label: 'OR',
+  },
   registerButton: {
     label: 'Registrati',
   },
   signUpSection: {
     label: 'Non hai un account?',
-    buttonLabel: 'Registrati  > ',
+    buttonLabel: 'Create New Account',
   },
   anonSection: {
     label: 'Continue without an account',
@@ -28,22 +31,33 @@ const loginTranslations = {
   },
   signInSection: {
     label: 'Hai giá un account?',
-    buttonLabel: 'Accedi  > ',
+    buttonLabel: 'Already have an account?',
   },
   forgotPassword: {
-    goBack: 'Go Back',
+    goBack: 'Go Back to Log In',
     resetPassword: 'Reset password',
-    cta: 'Forgot password',
+    cta: 'Forgot password?',
     label: 'Email to send password reset',
     placeholder: 'mail@mail.com',
   },
 
   // SignIn Errors
   errorSignInEmail: {
-    label: 'That email address is invalid!',
+    label: 'Incorrect email address',
+    message: "The email address that you've entered doesn't appear to be of a valid format. Please try again.",
+  },
+  emailSent: {
+    label: 'Password Reset',
+    message: 'The link to reset your password has been sent to your email.',
   },
   errorWrongPasswordSignIn: {
-    label: 'Email or password invalid',
+    label: 'Incorrect password',
+    message: "The password that you've entered is incorrect. Please try again.",
+  },
+  errorUserNotFound: {
+    label: 'Incorrect email address',
+    message:
+      "The email address that you've entered doesn't appear to belong to an account. Please check your email address and try again.",
   },
 
   // SignUp Errors

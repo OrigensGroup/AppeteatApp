@@ -54,7 +54,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
         const selectionCheckbox: SelectionCheckbox = {};
 
         section.data.forEach((sectionItem) => {
-          selectionCheckbox[item.id] = sectionItem;
+          selectionCheckbox[sectionItem.id] = sectionItem;
         });
 
         selectionStructure[section.id] = selectionCheckbox;
@@ -64,7 +64,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     };
 
     item.upgradableItems && addNewSelection(item.upgradableItems);
-  }, [item]);
+  }, [item.upgradableItems, item.id]);
 
   useEffect(() => {
     let allTruthyCustomisation: DataItem[] = [];
@@ -129,7 +129,11 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     const selectionType = section.selection === 'single' ? 'circle' : 'square';
 
     const selectionValue =
-      (selectionExtras && selectionExtras[section.id] && selectionExtras[section.id][item.id].selected) || false;
+      (selectionExtras &&
+        selectionExtras[section.id] &&
+        selectionExtras[section.id][item.id] &&
+        selectionExtras[section.id][item.id].selected) ||
+      false;
 
     return (
       <ItemRow onPress={() => updateItemSelection(section.selection, section.id, item.id)(!selectionValue)}>
@@ -148,7 +152,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           )}
         </PriceItem>
 
-        {item.explanation && (
+        {!!item.explanation && (
           <ItemInfo
             onPress={showDescriptionModal({
               title: item.title,

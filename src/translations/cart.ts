@@ -49,6 +49,7 @@ const cartTranslations = {
     },
 
     paymentMethod: {
+      cashPayment: 'Pay cash',
       nativeApplePay: 'Apple pay',
       nativeGooglePay: 'Google pay',
       cardPrefix: 'Card **** **** **** ',
@@ -85,6 +86,9 @@ const cartTranslations = {
       loading: 'Loading...',
       completeFields: 'Complete fields',
     },
+    deliveryFee: {
+      title: 'Delivery fee',
+    },
     serviceFee: {
       title: 'Service fee',
     },
@@ -101,7 +105,9 @@ const cartTranslations = {
     title: 'Order info',
     orderInfo: {
       title: 'Order number',
-      deliveryEst: 'will be ready at 9:00/9:30pm',
+      deliveryEst: 'will be ready ',
+      delivery: 'will be ready at ',
+      asap: 'ASAP',
     },
 
     orderStatus: {

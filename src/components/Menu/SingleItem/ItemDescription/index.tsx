@@ -19,8 +19,8 @@ interface ItemDescriptionProps {
 const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discount, item }) => {
   const finalPrice =
     discount && discount.type === 'tabDiscount' && discount.amountForDiscount
-      ? fixDecimals(item.price - (item.price * discount.amountForDiscount) / 100)
-      : item.price;
+      ? fixDecimals(item.price - (item.price * discount.amountForDiscount) / 100).toFixed(2)
+      : fixDecimals(item.price).toFixed(2);
 
   return (
     <ItemDescriptionContainer>

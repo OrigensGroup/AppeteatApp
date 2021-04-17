@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const NativePayContainer = styled.View`
+export const CashPayContainer = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,12 +9,14 @@ export const NativePayContainer = styled.View`
   position: relative;
 `;
 
-export const NativePayImage = styled.Image`
+export const CashPayIcon = styled.View`
   position: absolute;
   width: ${({ theme }) => theme.spacing.multiple(6)};
   height: ${({ theme }) => theme.spacing.multiple(6)};
+  align-items: center;
+  justify-content: center;
 `;
 
-export const NativePayText = styled.View`
+export const CashPayText = styled.View`
   margin: auto;
 `;
