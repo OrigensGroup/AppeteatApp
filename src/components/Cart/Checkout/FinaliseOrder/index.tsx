@@ -68,7 +68,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
       paymentRes = await makeNativePayment(
         {
           label: 'Order',
-          amount: pricing.total.toString(),
+          amount: pricing.total.toFixed(2),
         },
         {
           customerEmail: user.email,

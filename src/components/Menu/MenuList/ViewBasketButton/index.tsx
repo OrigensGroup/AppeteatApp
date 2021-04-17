@@ -27,7 +27,7 @@ const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onCl
           </Text>
           <Text bold color="fixedWhite" fontSize={14}>
             {currencyTranslations.currencyField}
-            {pricing.subtotal}
+            {pricing.subtotal.toFixed(2)}
           </Text>
         </ViewCta>
       </MainButtonWrapper>
