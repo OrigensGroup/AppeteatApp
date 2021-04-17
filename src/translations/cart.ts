@@ -87,10 +87,10 @@ const cartTranslations = {
       completeFields: 'Completa i campi',
     },
     deliveryFee: {
-      title: 'Delivery fee',
+      title: 'Spesa spedizione',
     },
     serviceFee: {
-      title: 'Service fee',
+      title: 'Coperto',
     },
     updateModal: {
       price: 'Prezzo:',
