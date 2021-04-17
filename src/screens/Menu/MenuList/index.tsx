@@ -88,9 +88,9 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   const onSwipe = (mode: 'menu' | 'swipe') => (index: number) => {
     if (ref.current && index !== menuIndex && mode !== 'swipe') {
       ref.current.scrollTo(index, true);
+    } else {
+      setMenuIndex(index);
     }
-
-    setMenuIndex(index);
   };
 
   const goToCart = () => {
@@ -145,7 +145,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
       <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
       <MenuTabs menuTabs={menu.tabs} onChange={onSwipe('menu')} tabActive={menuIndex} />
-      <Swiper loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
+      <Swiper index={menuIndex} loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
         {menuTabsContent()}
       </Swiper>
       {cart.length > 0 && <ViewBasketButton onClick={verifyUser} />}

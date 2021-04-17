@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import useCart from '../../../hooks/useCart';
 import cartTranslations from '../../../translations/cart';
@@ -9,12 +9,20 @@ import Text from '../../shared/Text';
 import { TotalSectionContainer, TotalRow } from './styles';
 
 interface TotalSectionProps {
+  checkoutSection?: 'eatin' | 'takeaway' | 'delivery';
   order?: Order;
 }
 
-const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order }) => {
-  const { pricing } = useCart();
+const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order, checkoutSection = 'eatin' }) => {
+  const { pricing, setPricingType } = useCart();
   const pricingToShow = order?.pricing ?? pricing;
+  const checkingSection = order?.pricing.checkoutType ?? checkoutSection;
+
+  useEffect(() => {
+    if (pricing.checkoutType !== checkoutSection) {
+      setPricingType(checkoutSection);
+    }
+  }, [pricing, checkoutSection, setPricingType]);
 
   return (
     <TotalSectionContainer>
@@ -27,15 +35,29 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order }) => 
           {pricingToShow.subtotal}
         </Text>
       </TotalRow>
-      <TotalRow>
-        <Text color="primary" fontSize={14}>
-          {cartTranslations.checkoutPage.serviceFee.title}
-        </Text>
-        <Text color="primary" fontSize={14}>
-          {currencyTranslations.currencyField}
-          {pricingToShow.servicefee}
-        </Text>
-      </TotalRow>
+      {checkingSection === 'delivery' && (
+        <TotalRow>
+          <Text color="primary" fontSize={14}>
+            {cartTranslations.checkoutPage.deliveryFee.title}
+          </Text>
+          <Text color="primary" fontSize={14}>
+            {currencyTranslations.currencyField}
+            {pricingToShow.deliveryFee}
+          </Text>
+        </TotalRow>
+      )}
+      {checkingSection === 'takeaway' && <></>}
+      {checkingSection === 'eatin' && (
+        <TotalRow>
+          <Text color="primary" fontSize={14}>
+            {cartTranslations.checkoutPage.serviceFee.title}
+          </Text>
+          <Text color="primary" fontSize={14}>
+            {currencyTranslations.currencyField}
+            {pricingToShow.servicefee}
+          </Text>
+        </TotalRow>
+      )}
       <TotalRow>
         <Text bold color="primary" fontSize={14}>
           {cartTranslations.checkoutPage.totalField.title}

@@ -197,7 +197,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
                 : cartTranslations.checkoutPage.commentAndAllergies.title
             }
           />
-          <TotalSection />
+          <TotalSection checkoutSection={checkoutService.type} />
         </CheckoutSummarySection>
       </CheckoutSwiper>
       <FinaliseOrder checkoutService={checkoutService} onPaymentError={setShowError} />

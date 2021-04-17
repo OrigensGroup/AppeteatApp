@@ -19,6 +19,7 @@ export const barInit: Bar = {
       openTime: '',
       oredersPerTimeFrame: 0,
       timeFrame: 0,
+      fee: 0,
     },
     colors,
     features: {

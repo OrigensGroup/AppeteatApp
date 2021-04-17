@@ -4,12 +4,15 @@ import { v4 } from 'uuid';
 
 import { OrderItem } from '../../types/OrderItem';
 import { calculateItemPrice, fixDecimals } from '../../utils/priceCalculations';
+import useSettings from '../../hooks/useSettings';
 
 export type Pricing = {
   subtotal: number;
   servicefee: number;
   tip: number;
+  deliveryFee: number;
   total: number;
+  checkoutType: 'eatin' | 'delivery' | 'takeaway';
 };
 
 type AddItem = Omit<OrderItem, 'orderItemId'>;
@@ -21,6 +24,7 @@ interface CartContext {
   pricing: Pricing;
   addTips: (amount: number) => void;
   clearCart: () => void;
+  setPricingType: (p: 'eatin' | 'delivery' | 'takeaway') => void;
 }
 
 export const CartContext = React.createContext<CartContext>({
@@ -33,21 +37,27 @@ export const CartContext = React.createContext<CartContext>({
     subtotal: 0,
     tip: 0,
     total: 0,
+    deliveryFee: 0,
+    checkoutType: 'eatin',
   },
   addTips: () => {},
   clearCart: () => {},
+  setPricingType: () => {},
 });
 
 interface CartProviderProps {}
 
 const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<OrderItem[]>([]);
+  const [settings] = useSettings();
 
   const [pricing, setPricing] = useState<Pricing>({
     servicefee: 0,
     subtotal: 0,
     tip: 0,
+    deliveryFee: 0,
     total: 0,
+    checkoutType: 'eatin',
   });
 
   const addItemToCart = (item: AddItem) => {
@@ -70,15 +80,24 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
 
     const serviceCharge = Math.round(subtotal * 0.125 * 100) / 100;
 
-    const totalPlusCharge = subtotal + serviceCharge;
+    setPricing((oldPricing) => {
+      const totalPlusCharge =
+        subtotal +
+        oldPricing.tip +
+        (oldPricing.checkoutType === 'eatin'
+          ? serviceCharge
+          : oldPricing.checkoutType === 'delivery'
+          ? oldPricing.deliveryFee
+          : 0);
 
-    setPricing((oldPricing) => ({
-      ...oldPricing,
-      subtotal: fixDecimals(subtotal),
-      total: fixDecimals(totalPlusCharge + oldPricing.tip),
-      servicefee: fixDecimals(serviceCharge),
-    }));
-  }, [cart]);
+      return {
+        ...oldPricing,
+        subtotal: fixDecimals(subtotal),
+        total: fixDecimals(totalPlusCharge),
+        servicefee: fixDecimals(serviceCharge),
+      };
+    });
+  }, [cart, settings, pricing.checkoutType]);
 
   const addTips = (amount: number) => {
     setPricing((oldPricing) => ({
@@ -92,6 +111,22 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     setCart([]);
   };
 
+  useEffect(() => {
+    if (settings.deliverySettings.fee) {
+      setPricing((oldPricing) => ({
+        ...oldPricing,
+        deliveryFee: settings.deliverySettings.fee,
+      }));
+    }
+  }, [settings]);
+
+  const setPricingType = (type: 'eatin' | 'delivery' | 'takeaway') => {
+    setPricing((oldPricing) => ({
+      ...oldPricing,
+      checkoutType: type,
+    }));
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -102,6 +137,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
         pricing,
         addTips,
         clearCart,
+        setPricingType,
       }}
     >
       {children}
