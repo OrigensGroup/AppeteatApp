@@ -55,7 +55,7 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({ order }) => {
         <PriceContainer>
           <Text bold color="primary" fontSize={16}>
             {currencyTranslations.currencyField}
-            {order.pricing.total}
+            {order.pricing.total.toFixed(2)}
           </Text>
           <Button onPress={navigate}>
             <Text color="tertiary" fontSize={16}>

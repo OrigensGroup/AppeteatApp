@@ -17,7 +17,8 @@
     "android": {
       "useNextNotificationsApi": true,
       "package": "uk.co.appeteat.elisir",
-      "versionCode": 1
+      "versionCode": 1,
+      "permissions": []
     },
     "ios": {
       "bundleIdentifier": "uk.co.appeteat.elisir",
