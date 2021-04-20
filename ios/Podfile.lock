@@ -234,6 +234,9 @@ PODS:
     - UMCore
   - EXErrorRecovery (1.4.0):
     - UMCore
+  - EXFileSystem (9.3.0):
+    - UMCore
+    - UMFileSystemInterface
   - EXFont (9.0.0):
     - UMCore
     - UMFontInterface
@@ -762,6 +765,7 @@ PODS:
   - UMAppLoader (1.4.0)
   - UMConstantsInterface (5.4.0)
   - UMCore (6.0.0)
+  - UMFileSystemInterface (5.4.0)
   - UMFontInterface (5.4.0)
   - UMImageLoaderInterface (5.4.0)
   - UMPermissionsInterface (5.4.0):
@@ -778,6 +782,7 @@ DEPENDENCIES:
   - EXApplication (from `../node_modules/expo-notifications/node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
+  - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
   - EXNotifications (from `../node_modules/expo-notifications/ios`)
@@ -837,6 +842,7 @@ DEPENDENCIES:
   - UMAppLoader (from `../node_modules/unimodules-app-loader/ios`)
   - UMConstantsInterface (from `../node_modules/unimodules-constants-interface/ios`)
   - "UMCore (from `../node_modules/@unimodules/core/ios`)"
+  - UMFileSystemInterface (from `../node_modules/unimodules-file-system-interface/ios`)
   - UMFontInterface (from `../node_modules/unimodules-font-interface/ios`)
   - UMImageLoaderInterface (from `../node_modules/unimodules-image-loader-interface/ios`)
   - UMPermissionsInterface (from `../node_modules/unimodules-permissions-interface/ios`)
@@ -887,6 +893,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-constants/ios"
   EXErrorRecovery:
     :path: "../node_modules/expo-error-recovery/ios"
+  EXFileSystem:
+    :path: "../node_modules/expo-file-system/ios"
   EXFont:
     :path: "../node_modules/expo-font/ios"
   EXImageLoader:
@@ -997,6 +1005,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/unimodules-constants-interface/ios"
   UMCore:
     :path: "../node_modules/@unimodules/core/ios"
+  UMFileSystemInterface:
+    :path: "../node_modules/unimodules-file-system-interface/ios"
   UMFontInterface:
     :path: "../node_modules/unimodules-font-interface/ios"
   UMImageLoaderInterface:
@@ -1018,6 +1028,7 @@ SPEC CHECKSUMS:
   EXApplication: e3a06b6d81f94e526f029a57b2121d6cde044004
   EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
   EXErrorRecovery: b46af4b91e2b4ec598ab1fa51d2cf088aaf5511f
+  EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
   EXFont: ec06a9fb8f0d558fb7afa8540f3d932622fa85d6
   EXImageLoader: f96ec9992733a4224418bbd9382e5485c8948944
   EXNotifications: 3a88b7b898fa842cae3c5a895a255fab554bc0c8
@@ -1099,6 +1110,7 @@ SPEC CHECKSUMS:
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78
   UMConstantsInterface: 6825ea3832d26ed392ca6eff2df84edd69968fd0
   UMCore: 97ba5041c9c92317ce61739f6d126a692c8ef4a8
+  UMFileSystemInterface: ab01294ce58a3c773aefb4a5b131ce589c199559
   UMFontInterface: 85fe1b845fb7caab45e04d9ce47e1677a5ce90a5
   UMImageLoaderInterface: 18f37df089b7e6d301e3acac025a8264d26b66d6
   UMPermissionsInterface: 807e5733b4c6607f35757b1dd128f370718d2f94

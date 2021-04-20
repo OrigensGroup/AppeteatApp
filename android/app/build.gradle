@@ -234,9 +234,7 @@ dependencies {
     'expo-linear-gradient', 
     'expo-location', 
     'expo-sqlite'
-    'expo-file-system', 
     'unimodules-face-detector-interface',
-    'unimodules-file-system-interface',
     'unimodules-sensors-interface',
     'unimodules-task-manager-interface',
     'unimodules-barcode-scanner-interface',
