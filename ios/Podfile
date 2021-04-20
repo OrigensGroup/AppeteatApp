@@ -35,16 +35,9 @@ target 'OrigensTesting' do
 #     end
 # end
 
-end
-
-target 'OrigensTestingClip' do
-  use_unimodules!
-  config = use_native_modules!
-  
-  pod 'GoogleSignIn', '~> 5.0.2'
-  pod 'Stripe', '~> 21.3.1'
-
-  use_react_native!(:path => config["reactNativePath"])
+  target 'OrigensTestingClip' do
+    inherit! :complete
+  end
 
 end
 

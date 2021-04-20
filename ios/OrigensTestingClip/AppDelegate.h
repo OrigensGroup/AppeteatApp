@@ -1,14 +1,10 @@
-//
-//  AppDelegate.h
-//  OrigensTestingClip
-//
-//  Created by Leonardo Drici on 18/04/2021.
-//
-
+#import <Foundation/Foundation.h>
+#import <EXUpdates/EXUpdatesAppController.h>
+#import <React/RCTBridgeDelegate.h>
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import <UMCore/UMAppDelegateWrapper.h>
 
+@interface AppDelegate : UMAppDelegateWrapper <RCTBridgeDelegate, EXUpdatesAppControllerDelegate>
 
 @end
-
