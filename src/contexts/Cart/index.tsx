@@ -60,8 +60,25 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     checkoutType: 'eatin',
   });
 
-  const addItemToCart = (item: AddItem) => {
-    setCart((oldCart) => [...oldCart, { ...item, orderItemId: v4() }]);
+  const addItemToCart = (newItem: AddItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { quantity, ...itemKeys } = newItem;
+    if (cart.length > 0) {
+      let counter = 0;
+      cart.forEach((item: OrderItem) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { orderItemId, quantity, ...oldItemKeys } = item;
+        if (JSON.stringify(oldItemKeys) === JSON.stringify(itemKeys)) {
+          updateItemQuantity(item, newItem.quantity + item.quantity);
+          counter++;
+        }
+      });
+      if (counter === 0) {
+        setCart((oldCart) => [...oldCart, { ...newItem, orderItemId: v4() }]);
+      }
+    } else {
+      setCart((oldCart) => [...oldCart, { ...newItem, orderItemId: v4() }]);
+    }
   };
 
   const deleteItemFromCart = (itemId: string) => {
