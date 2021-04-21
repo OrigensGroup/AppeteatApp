@@ -51,6 +51,7 @@ export interface Settings {
   colors: ColorsInterface;
   features: FeatureFlags;
   deliverySettings: DeliverySettings;
+  logoImage: string;
 }
 
 export interface Bar {
