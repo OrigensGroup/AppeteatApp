@@ -230,7 +230,18 @@ dependencies {
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.flipper'
     }
-    addUnimodulesDependencies()
+    addUnimodulesDependencies([exclude: [
+        'expo-face-detector', 
+        'expo-linear-gradient', 
+        'expo-location', 
+        'expo-sqlite',
+        'unimodules-face-detector-interface',
+        'unimodules-sensors-interface',
+        'unimodules-task-manager-interface',
+        'unimodules-barcode-scanner-interface',
+        'unimodules-camera-interface', 
+        'expo-keep-awake'
+    ]])
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
