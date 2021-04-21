@@ -3,6 +3,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "ios:clip": "react-native run-ios --scheme 'OrigensTestingClip'",
     "start": "react-native start --reset-cache",
     "web": "expo start --web",
     "type-check": "tsc --noEmit",

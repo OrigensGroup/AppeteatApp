@@ -23,17 +23,7 @@ target 'OrigensTesting' do
   pod 'GoogleSignIn', '~> 5.0.2'
   pod 'Stripe', '~> 21.3.1'
 
-
-#   post_install do |pi|
-#     pi.pods_project.targets.each do |t|
-#       t.build_configurations.each do |config|
-#         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
-#       end
-#     end
-# end
-
   use_react_native!(:path => config["reactNativePath"])
-
 end
 
 target 'OrigensTestingClip' do
@@ -53,15 +43,6 @@ target 'OrigensTestingClip' do
   
   pod 'GoogleSignIn', '~> 5.0.2'
   pod 'Stripe', '~> 21.3.1'
-
-
-#   post_install do |pi|
-#     pi.pods_project.targets.each do |t|
-#       t.build_configurations.each do |config|
-#         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
-#       end
-#     end
-# end
 
   use_react_native!(:path => config["reactNativePath"])
 end
