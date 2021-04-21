@@ -23,7 +23,6 @@ target 'OrigensTesting' do
   pod 'GoogleSignIn', '~> 5.0.2'
   pod 'Stripe', '~> 21.3.1'
 
-  use_react_native!(:path => config["reactNativePath"])
 
 #   post_install do |pi|
 #     pi.pods_project.targets.each do |t|
@@ -33,10 +32,38 @@ target 'OrigensTesting' do
 #     end
 # end
 
-  target 'OrigensTestingClip' do
-    inherit! :complete
-  end
+  use_react_native!(:path => config["reactNativePath"])
 
+end
+
+target 'OrigensTestingClip' do
+  use_unimodules!(exclude: [
+    'expo-face-detector', 
+    'expo-linear-gradient', 
+    'expo-location', 
+    'expo-sqlite',
+    'unimodules-face-detector-interface',
+    'unimodules-sensors-interface',
+    'unimodules-task-manager-interface',
+    'unimodules-barcode-scanner-interface',
+    'unimodules-camera-interface',
+    'expo-keep-awake'
+  ])
+  config = use_native_modules!
+  
+  pod 'GoogleSignIn', '~> 5.0.2'
+  pod 'Stripe', '~> 21.3.1'
+
+
+#   post_install do |pi|
+#     pi.pods_project.targets.each do |t|
+#       t.build_configurations.each do |config|
+#         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+#       end
+#     end
+# end
+
+  use_react_native!(:path => config["reactNativePath"])
 end
 
 post_install do |pi|
