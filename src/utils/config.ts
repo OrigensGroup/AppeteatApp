@@ -5,7 +5,7 @@ export default {
   FEE: 0,
   CURRENCY: 'eur',
   APPLE_CURRENCY: 'EUR',
-  GOOGLE_WEBCLIENT_ID: '67347102756-pf6j84o8u2tjmn2vjckl4qtpfcg5g2je.apps.googleusercontent.com',
+  GOOGLE_WEBCLIENT_ID: '67347102756-7emre66q6inst9eas1n399akbo7t3dbm.apps.googleusercontent.com',
   API_URL: 'https://appeteat-prod.herokuapp.com',
   // API_URL: 'https://appeteat-stg.herokuapp.com',
   // API_URL:http://192.168.1.120:5000

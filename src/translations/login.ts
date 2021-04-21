@@ -74,7 +74,7 @@ const loginTranslations = {
     label: 'Password è obbligatoria',
   },
   invalidPasswordError: {
-    label: 'La password deve contenere almeno un numero e una lettera e una lettera maiuscola',
+    label: 'La password deve contenere almeno un numero e una lettera e una lettera maiuscola e minimo 8 caratteri',
   },
   emailAlreayInUse: {
     label: 'Indirzzo email invalido',
