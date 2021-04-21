@@ -31,7 +31,7 @@ URLForResource:@"main" withExtension:@"jsbundle"];
   // moduleName corresponds to the appName used for the
   // app entry point in "index.js"
   RCTRootView *rootView = [[RCTRootView alloc] 
-initWithBundleURL:jsCodeLocation moduleName:@"OrigensTesting" 
+initWithBundleURL:jsCodeLocation moduleName:@"main" 
 initialProperties:nil launchOptions:nil];
   // Default to a white background.
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f 

@@ -19,7 +19,7 @@
 		A4384A95262CB32100767749 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4384A94262CB32100767749 /* ViewController.m */; };
 		A4384A98262CB32100767749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4384A96262CB32100767749 /* Main.storyboard */; };
 		A4384A9A262CB32200767749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4384A99262CB32200767749 /* Assets.xcassets */; };
-		A4384A9D262CB32200767749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4384A9B262CB32200767749 /* LaunchScreen.storyboard */; };
+		A4384A9D262CB32200767749 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4384A9B262CB32200767749 /* SplashScreen.storyboard */; };
 		A4384AA0262CB32200767749 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4384A9F262CB32200767749 /* main.m */; };
 		A4384AA4262CB32200767749 /* OrigensTestingClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = A4384A8B262CB32100767749 /* OrigensTestingClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A4384B1E262CB4CE00767749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9691277225E44DCA0076F6C6 /* GoogleService-Info.plist */; };
@@ -80,7 +80,7 @@
 		A4384A94262CB32100767749 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4384A97262CB32100767749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A4384A99262CB32200767749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A4384A9C262CB32200767749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A4384A9C262CB32200767749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashScreen.storyboard; sourceTree = "<group>"; };
 		A4384A9E262CB32200767749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4384A9F262CB32200767749 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A4384AA1262CB32200767749 /* OrigensTestingClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OrigensTestingClip.entitlements; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				A4384A94262CB32100767749 /* ViewController.m */,
 				A4384A96262CB32100767749 /* Main.storyboard */,
 				A4384A99262CB32200767749 /* Assets.xcassets */,
-				A4384A9B262CB32200767749 /* LaunchScreen.storyboard */,
+				A4384A9B262CB32200767749 /* SplashScreen.storyboard */,
 				A4384A9E262CB32200767749 /* Info.plist */,
 				A4384A9F262CB32200767749 /* main.m */,
 				A4384AA1262CB32200767749 /* OrigensTestingClip.entitlements */,
@@ -329,7 +329,7 @@
 			files = (
 				A4384B1E262CB4CE00767749 /* GoogleService-Info.plist in Resources */,
 				A4384B1F262CB4CE00767749 /* Expo.plist in Resources */,
-				A4384A9D262CB32200767749 /* LaunchScreen.storyboard in Resources */,
+				A4384A9D262CB32200767749 /* SplashScreen.storyboard in Resources */,
 				A4384A9A262CB32200767749 /* Assets.xcassets in Resources */,
 				A4384A98262CB32100767749 /* Main.storyboard in Resources */,
 			);
@@ -673,12 +673,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		A4384A9B262CB32200767749 /* LaunchScreen.storyboard */ = {
+		A4384A9B262CB32200767749 /* SplashScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A4384A9C262CB32200767749 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = SplashScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -899,7 +899,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "OrigensTestingClip-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -931,7 +931,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OrigensTestingClip-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
