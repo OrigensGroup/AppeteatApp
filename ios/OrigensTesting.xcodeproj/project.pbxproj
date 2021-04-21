@@ -447,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=/Users/leonardod/.nvm/versions/node/v15.11.0/bin/node\n../node_modules/react-native/scripts/react-native-xcode.sh\n../node_modules/expo-constants/scripts/get-app-config-ios.sh\n../node_modules/expo-updates/scripts/create-manifest-ios.sh\n";
+			shellScript = "export NODE_BINARY=/Users/leonardod/.nvm/versions/node/v15.11.0/bin/node\nexport ENTRY_FILE=index.appclip.js\n../node_modules/react-native/scripts/react-native-xcode.sh\n../node_modules/expo-constants/scripts/get-app-config-ios.sh\n../node_modules/expo-updates/scripts/create-manifest-ios.sh\n";
 		};
 		AC60BC0F3ECC84DE44B82C37 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

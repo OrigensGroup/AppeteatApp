@@ -19,7 +19,7 @@
   // running on your development machine. "index" is the name of the
   // js file used as an entry point (don't include the extension).
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings]
-jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+jsBundleURLForBundleRoot:@"index.appclip" fallbackResource:nil];
   #else
   // For release builds we add the js bundle to the build.
   // By default the js bundler will create a file called
