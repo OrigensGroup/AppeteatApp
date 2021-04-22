@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Swiper from 'react-native-swiper';
 import auth from '@react-native-firebase/auth';
 
@@ -74,7 +74,9 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
   };
 
   const discounts = findDiscounts(homepage.sections);
-  const tabsToShow = menu.tabs.filter((tab) => tab.show);
+  const tabsToShow = useMemo(() => {
+    return menu.tabs.filter((tab) => tab.show);
+  }, [menu.tabs]);
 
   const { goTo } = route.params ? (route.params as { goTo: string }) : { goTo: undefined };
 
@@ -111,20 +113,6 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     }
   };
 
-  const menuTabsContent = useCallback(
-    () =>
-      tabsToShow.map((tab) => {
-        const menuItemsPerSwipe = menu.items.filter((menuItems) => menuItems.belongsTo === tab.id);
-
-        const possibleDiscount = discounts.filter((discount) => discount.tabToDiscount === tab.id);
-
-        const tabDiscount = possibleDiscount.length === 1 ? possibleDiscount[0] : undefined;
-
-        return <SwiperPage discount={tabDiscount} key={tab.id} menuItems={menuItemsPerSwipe} />;
-      }),
-    [tabsToShow, menu.items, discounts],
-  );
-
   const closeModal = () => {
     setModalVisible(false);
   };
@@ -137,7 +125,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
     if (goTo) {
       setMenuIndex(findIndex(tabsToShow, goTo));
     }
-  }, [tabsToShow, goTo]);
+  }, [goTo, tabsToShow]);
 
   return (
     <MenuContainer>
@@ -147,7 +135,15 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
       <MenuTabs menuTabs={tabsToShow} onChange={onSwipe('menu')} tabActive={menuIndex} />
       <Swiper index={menuIndex} loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
-        {menuTabsContent()}
+        {tabsToShow.map((tab) => {
+          const menuItemsPerSwipe = menu.items.filter((menuItems) => menuItems.belongsTo === tab.id);
+
+          const possibleDiscount = discounts.filter((discount) => discount.tabToDiscount === tab.id);
+
+          const tabDiscount = possibleDiscount.length === 1 ? possibleDiscount[0] : undefined;
+
+          return <SwiperPage discount={tabDiscount} key={tab.id} menuItems={menuItemsPerSwipe} />;
+        })}
       </Swiper>
       {cart.length > 0 && <ViewBasketButton onClick={verifyUser} />}
     </MenuContainer>
