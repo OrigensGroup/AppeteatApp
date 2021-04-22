@@ -191,7 +191,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
             <Icon color={theme.colors.fixedBlack} name="ios-information-circle-outline" size={24} />
           </ItemInfo>
         )}
-        <CheckBoxItemSection>
+        <CheckBoxItemSection fixSpacing={!!item.explanation}>
           <CheckBox
             animationDuration={0.2}
             boxType={selectionType}

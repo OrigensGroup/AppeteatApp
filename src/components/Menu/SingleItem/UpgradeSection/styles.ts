@@ -32,9 +32,9 @@ export const ItemRow = styled.TouchableOpacity`
   border-color: ${({ theme }) => theme.colors.border};
 `;
 
-export const CheckBoxItemSection = styled.View`
+export const CheckBoxItemSection = styled.View<{ fixSpacing: boolean }>`
   flex: 1;
-  margin: 0 ${({ theme }) => theme.spacing.single};
+  margin: ${({ theme, fixSpacing }) => (fixSpacing ? `0 ${theme.spacing.single}` : `${theme.spacing.half}`)};
 `;
 
 export const TitleItem = styled.View`
