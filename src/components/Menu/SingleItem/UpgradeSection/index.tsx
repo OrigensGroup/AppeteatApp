@@ -6,7 +6,14 @@ import { useTheme } from 'styled-components';
 
 import Text from '../../../shared/Text';
 
-import { MenuItem, UpgradeItem, DataItem } from '../../../../types/MenuItem';
+import {
+  MenuItem,
+  UpgradeItem,
+  DataItem,
+  SelectionExtra,
+  SelectionExtras,
+  SelectionCheckbox,
+} from '../../../../types/MenuItem';
 
 import currencyTranslations from '../../../../translations/currency';
 
@@ -22,18 +29,12 @@ import {
   ItemInfo,
   UpgradableItems,
 } from './styles';
-
-type SelectionCheckbox = {
-  [key: string]: DataItem;
-};
-
-type SelectionExtras = {
-  [key: string]: SelectionCheckbox;
-};
+import { findError } from '../../../../utils/findErrorFromSelectionExtras';
+import menuTranslations from '../../../../translations/menu';
 
 interface UpgradeSectionProps {
   item: MenuItem;
-  updateExtras: (extras: DataItem[]) => void;
+  updateExtras: (extras: SelectionExtras) => void;
 }
 
 const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, updateExtras }) => {
@@ -45,36 +46,6 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     title: '',
     description: '',
   });
-
-  useEffect(() => {
-    const addNewSelection = (sections: UpgradeItem[]) => {
-      const selectionStructure: SelectionExtras = {};
-
-      sections.forEach((section) => {
-        const selectionCheckbox: SelectionCheckbox = {};
-
-        section.data.forEach((sectionItem) => {
-          selectionCheckbox[sectionItem.id] = sectionItem;
-        });
-
-        selectionStructure[section.id] = selectionCheckbox;
-      });
-
-      setSelectedExtras(selectionStructure);
-    };
-
-    item.upgradableItems && addNewSelection(item.upgradableItems);
-  }, [item.upgradableItems, item.id]);
-
-  useEffect(() => {
-    let allTruthyCustomisation: DataItem[] = [];
-
-    Object.values(selectionExtras).forEach((extras) => {
-      allTruthyCustomisation = [...allTruthyCustomisation, ...Object.values(extras).filter((v) => v.selected)];
-    });
-
-    updateExtras(allTruthyCustomisation);
-  }, [selectionExtras, updateExtras]);
 
   const showDescriptionModal = ({ description, title }: { title: string; description: string }) => () => {
     setModalData({ show: true, title, description });
@@ -88,15 +59,51 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     });
   };
 
+  // Use effect to init the selection information
+  useEffect(() => {
+    const addNewSelection = (sections: UpgradeItem[]) => {
+      let currentSelectionsValue = 0;
+      const selectionStructure: SelectionExtras = {};
+
+      sections.forEach((section) => {
+        const selectionCheckbox: SelectionCheckbox = {};
+
+        section.data.forEach((sectionItem) => {
+          currentSelectionsValue += sectionItem.selected ? 1 : 0;
+          selectionCheckbox[sectionItem.id] = sectionItem;
+        });
+
+        selectionStructure[section.id] = { ...section, selectionCheckbox, currentSelectionsValue };
+      });
+
+      setSelectedExtras(selectionStructure);
+    };
+
+    item.upgradableItems && addNewSelection(item.upgradableItems);
+  }, [item.upgradableItems, item.id]);
+
+  useEffect(() => {
+    updateExtras(selectionExtras);
+  }, [updateExtras, selectionExtras]);
+
   const updateItemSelection = (type: 'single' | 'multiple', sectionId: string, itemId: string) => (value: boolean) => {
     if (type === 'single') {
-      setSelectedExtras((oldSelection) => {
-        const invertedValues = JSON.parse(JSON.stringify(oldSelection[sectionId]));
+      const sectionSelection = selectionExtras[sectionId];
+      const sectionRow = sectionSelection.selectionCheckbox[itemId];
 
-        Object.keys(invertedValues).forEach((key) => {
-          invertedValues[key] = {
-            ...invertedValues[key],
-            selected: false,
+      if (sectionRow.selected && sectionSelection.minSelection === 1) {
+        // Return here beacuse one item needs to be selected
+
+        return '';
+      }
+
+      setSelectedExtras((oldSelection) => {
+        const invertedValues: SelectionExtra = JSON.parse(JSON.stringify(oldSelection[sectionId])); // Clone object
+        Object.keys(invertedValues.selectionCheckbox).forEach((key) => {
+          // Put everything to false or put value if the itemId is same as key
+          invertedValues.selectionCheckbox[key] = {
+            ...invertedValues.selectionCheckbox[key],
+            selected: key === itemId ? value : false,
           };
         });
 
@@ -104,26 +111,48 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           ...oldSelection,
           [sectionId]: {
             ...invertedValues,
-            [itemId]: {
-              ...oldSelection[sectionId][itemId],
-              selected: value,
-            },
           },
         };
       });
-    } else {
-      setSelectedExtras((oldSelection) => ({
-        ...oldSelection,
-        [sectionId]: {
-          ...oldSelection[sectionId],
-          [itemId]: {
-            ...oldSelection[sectionId][itemId],
-            selected: value,
+    }
+
+    if (type === 'multiple') {
+      const sectionSelection = selectionExtras[sectionId];
+      const selectionsAfterChange = sectionSelection.currentSelectionsValue + (value ? 1 : -1);
+
+      if (sectionSelection.maxSelection) {
+        if (selectionsAfterChange > sectionSelection.maxSelection) {
+          // Return here beacuse one item needs to be selected
+
+          return '';
+        }
+      }
+
+      setSelectedExtras((oldSelection) => {
+        const invertedValues: SelectionExtra = JSON.parse(JSON.stringify(oldSelection[sectionId])); // Clone object
+
+        invertedValues.selectionCheckbox[itemId] = {
+          ...invertedValues.selectionCheckbox[itemId],
+          selected: value,
+        };
+
+        const newCurrentSelectionsValue = Object.values(invertedValues.selectionCheckbox).reduce(
+          (acc, v) => acc + (v.selected ? 1 : 0),
+          0,
+        );
+
+        return {
+          ...oldSelection,
+          [sectionId]: {
+            ...invertedValues,
+            currentSelectionsValue: newCurrentSelectionsValue,
           },
-        },
-      }));
+        };
+      });
     }
   };
+
+  const isError = findError(selectionExtras);
 
   const upgradeItemRow = ({ item, section }: { item: DataItem; index: number; section: UpgradeItem }) => {
     const selectionType = section.selection === 'single' ? 'circle' : 'square';
@@ -131,8 +160,8 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     const selectionValue =
       (selectionExtras &&
         selectionExtras[section.id] &&
-        selectionExtras[section.id][item.id] &&
-        selectionExtras[section.id][item.id].selected) ||
+        selectionExtras[section.id].selectionCheckbox[item.id] &&
+        selectionExtras[section.id].selectionCheckbox[item.id].selected) ||
       false;
 
     return (
@@ -181,12 +210,17 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     );
   };
 
-  const sectionHeader = ({ section: { title } }: { section: { title: string } }) => {
+  const sectionHeader = ({ section }: { section: UpgradeItem }) => {
     return (
       <HeaderRow>
         <Text bold color="primary" fontSize={16}>
-          {title}
+          {section.title}
         </Text>
+        {section.maxSelection && (
+          <Text color={!isError ? 'quartiary' : 'errorColor'} fontSize={10}>
+            {menuTranslations.singleItemPage.sectionMinMax.title(section.minSelection, section.maxSelection)}
+          </Text>
+        )}
       </HeaderRow>
     );
   };

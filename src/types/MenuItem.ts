@@ -11,6 +11,8 @@ export type UpgradeItem = {
   title: string;
   data: DataItem[];
   selection: 'single' | 'multiple';
+  minSelection: number;
+  maxSelection?: number;
 };
 
 export type MenuItem = {
@@ -27,4 +29,17 @@ export type MenuItem = {
   ingredients?: string[];
   upgradableItems?: UpgradeItem[];
   soldout: boolean;
+};
+
+export type SelectionCheckbox = {
+  [key: string]: DataItem;
+};
+
+export interface SelectionExtra extends UpgradeItem {
+  selectionCheckbox: SelectionCheckbox;
+  currentSelectionsValue: number;
+}
+
+export type SelectionExtras = {
+  [key: string]: SelectionExtra;
 };

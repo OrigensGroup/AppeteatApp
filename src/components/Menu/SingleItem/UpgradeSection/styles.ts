@@ -12,8 +12,8 @@ export const UpgradeItemList = styled.SectionList`
 
 export const HeaderRow = styled.View`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
   margin: 0 ${({ theme }) => theme.spacing.triple};
   padding: ${({ theme }) => theme.spacing.double} 0;
