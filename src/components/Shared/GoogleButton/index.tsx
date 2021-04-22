@@ -62,21 +62,25 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
         auth()
           .signInWithCredential(googleCredential)
           .then(async () => {
-            setLoading(false);
             const user = auth().currentUser;
 
             if (user) {
               await initUserData(user.uid);
               login();
+
+              onConfirm && onConfirm();
             } else {
               crashlytics().log("Couldn't setup user db");
             }
+
+            setLoading(false);
           })
           .catch((e) => {
             throw e;
           });
       }
     } catch (error) {
+      console.log('Err', error);
       if (error.code === 'auth/credential-already-in-use') {
         Alert.alert(
           loginTranslations.errorWrongPasswordSignIn.label,
