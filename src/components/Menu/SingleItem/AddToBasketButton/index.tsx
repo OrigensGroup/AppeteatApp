@@ -80,7 +80,6 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({
   // Use effect to pass the extras to the button
   useEffect(() => {
     if (selectionExtras) {
-      console.log(selectionExtras);
       let allTruthyCustomisation: DataItem[] = [];
 
       Object.values(selectionExtras).forEach((extras) => {
