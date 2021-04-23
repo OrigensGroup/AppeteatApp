@@ -23,7 +23,9 @@ import {
   BookATableButton,
   Circle,
   TextContainer,
+  LocationDescription,
 } from './styles';
+import useSettings from '../../../hooks/useSettings';
 
 const BookATableButtonWithFlag = withFeatureFlag(BookATableButton, 'FEAT_BOOK');
 
@@ -33,6 +35,7 @@ interface LocationCardProps {
 }
 
 const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, venue }) => {
+  const [settings] = useSettings();
   const theme = useTheme();
 
   const onShareClick = () => {
@@ -47,7 +50,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
   };
 
   return (
-    <CardContainer activeOpacity={0.9}>
+    <CardContainer activeOpacity={0.9} onPress={settings.features.FEAT_BOOK ? onClick(venue) : undefined}>
       <ImageContainer>
         <FastImage
           resizeMode={FastImage.resizeMode.cover}
@@ -61,31 +64,33 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
         />
       </ImageContainer>
       <Content>
-        <Circle />
-        <DrinkDesc>
-          <Text bold color="primary" fontSize={16}>
-            {venue.name}
-          </Text>
-          <TextContainer>
-            <Text color="primary" fontSize={12}>
-              {venue.address}
+        <LocationDescription>
+          <Circle />
+          <DrinkDesc>
+            <Text bold color="primary" fontSize={16}>
+              {venue.name}
             </Text>
-          </TextContainer>
-          <Text color="quartiary" fontSize={12}>
-            {venue.phoneNumber}
-          </Text>
-        </DrinkDesc>
+            <TextContainer>
+              <Text color="primary" fontSize={12}>
+                {venue.address}
+              </Text>
+            </TextContainer>
+            <Text color="quartiary" fontSize={12}>
+              {venue.phoneNumber}
+            </Text>
+          </DrinkDesc>
+        </LocationDescription>
+        <ButtonContainer>
+          <ShareButton onPress={onShareClick}>
+            <Icon color={theme.colors.textPrimary} name="share" size={28} />
+          </ShareButton>
+          <BookATableButtonWithFlag onPress={onClick(venue)}>
+            <Text bold color="tertiary" fontSize={12}>
+              {bookTranslations.locationsListPage.bookATableModal.cta}
+            </Text>
+          </BookATableButtonWithFlag>
+        </ButtonContainer>
       </Content>
-      <ButtonContainer>
-        <ShareButton onPress={onShareClick}>
-          <Icon color={theme.colors.textPrimary} name="share" size={28} />
-        </ShareButton>
-        <BookATableButtonWithFlag onPress={onClick(venue)}>
-          <Text bold color="tertiary" fontSize={12}>
-            {bookTranslations.locationsListPage.bookATableModal.cta}
-          </Text>
-        </BookATableButtonWithFlag>
-      </ButtonContainer>
     </CardContainer>
   );
 };

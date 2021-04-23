@@ -22,8 +22,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollView: {
+    display: 'flex',
+    flexDirection: 'row',
     position: 'absolute',
-    bottom: 16,
+    bottom: 0,
     left: 0,
     right: 0,
   },
@@ -124,11 +126,10 @@ const LocationLists: React.FunctionComponent = () => {
         index = 0;
       }
 
-      if (locationIndex !== index) setLocationIndex(index);
-
       timeoutRef.current && clearTimeout(timeoutRef.current);
 
       timeoutRef.current = setTimeout(() => {
+        setLocationIndex(index);
         if (locationIndex !== index) {
           const { latitude, longitude } = markers[index];
 
@@ -232,7 +233,18 @@ const LocationLists: React.FunctionComponent = () => {
         style={styles.scrollView}
       >
         {markers.map((marker) => (
-          <LocationCard key={marker.id} onClick={toggleModal} venue={marker} />
+          <View
+            key={marker.id}
+            style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <LocationCard onClick={toggleModal} venue={marker} />
+          </View>
         ))}
       </Animated.ScrollView>
     </View>
