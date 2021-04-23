@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
 
 import { Bar } from './types/Bar';
 
@@ -34,6 +35,7 @@ const App = () => {
         <UserProvider>
           <CartProvider>
             <CustomTheme>
+              <StatusBar style="dark" />
               <AppNavigation />
             </CustomTheme>
           </CartProvider>
