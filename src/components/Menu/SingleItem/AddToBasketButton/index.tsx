@@ -93,7 +93,8 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({
     }
   }, [selectionExtras]);
 
-  const isError = selectionExtras && findError(selectionExtras);
+  const isError =
+    item.upgradableItems && item.upgradableItems?.length > 0 && selectionExtras && findError(selectionExtras);
 
   return (
     <AddToBasketButtonWrapper>
