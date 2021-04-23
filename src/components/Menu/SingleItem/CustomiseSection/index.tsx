@@ -14,26 +14,29 @@ interface CustomiseSectionProps {
 const CustomiseSection: React.FunctionComponent<CustomiseSectionProps> = ({ item, onClick }) => {
   return (
     <CustomiseSectionContainer>
-      <TitleRow>
-        <IngredientsTitle>
-          <Text bold color="primary" fontSize={14}>
-            {menuTranslations.singleItemPage.ingredients.title}
-          </Text>
-        </IngredientsTitle>
-        <CustomiseTitle onPress={onClick}>
-          <Text color="tertiary" fontSize={14}>
-            {menuTranslations.singleItemPage.customise.title}
-          </Text>
-        </CustomiseTitle>
-      </TitleRow>
-      {item.ingredients &&
-        item.ingredients.map((ingredient) => (
-          <Ingredient key={ingredient}>
-            <Text color="quartiary" fontSize={14}>
-              {ingredient}
-            </Text>
-          </Ingredient>
-        ))}
+      {item.ingredients && (
+        <>
+          <TitleRow>
+            <IngredientsTitle>
+              <Text bold color="primary" fontSize={14}>
+                {menuTranslations.singleItemPage.ingredients.title}
+              </Text>
+            </IngredientsTitle>
+            <CustomiseTitle onPress={onClick}>
+              <Text color="tertiary" fontSize={14}>
+                {menuTranslations.singleItemPage.customise.title}
+              </Text>
+            </CustomiseTitle>
+          </TitleRow>
+          {item.ingredients.map((ingredient) => (
+            <Ingredient key={ingredient}>
+              <Text color="quartiary" fontSize={14}>
+                {ingredient}
+              </Text>
+            </Ingredient>
+          ))}
+        </>
+      )}
     </CustomiseSectionContainer>
   );
 };
