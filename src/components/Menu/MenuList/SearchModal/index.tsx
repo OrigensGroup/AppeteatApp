@@ -93,8 +93,8 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
               {menuTranslations.menuPage.searchModal.closeCta.title}
             </Text>
           </ViewCta>
-          <SafeAreaViewBottom />
         </SearchModalBottomBarWrapper>
+        <SafeAreaViewBottom />
       </SearchPopUpContainer>
     </Modal>
   );
