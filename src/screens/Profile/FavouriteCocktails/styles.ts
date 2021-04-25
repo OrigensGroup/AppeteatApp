@@ -8,5 +8,6 @@ export const FavouriteCocktailsContainer = styled.SafeAreaView`
 
 export const FavouriteCocktailsList = styled.View`
   flex: 1;
-  padding-top: ${({ theme }) => theme.spacing.double};
+  padding: ${({ theme }) => theme.spacing.single};
+  padding-top: 0;
 `;

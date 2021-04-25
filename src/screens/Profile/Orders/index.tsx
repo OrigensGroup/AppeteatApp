@@ -18,7 +18,7 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
 
   return (
     <OrdersContainer>
-      <TopBar back="back" hideFilter title={profileTranslations.ordersPage.title} />
+      <TopBar showBorder back="back" hideFilter title={profileTranslations.ordersPage.title} />
       <OrdersList>
         <FlatList
           data={userData.orders}

@@ -7,6 +7,5 @@ export const OrdersContainer = styled.SafeAreaView`
 
 export const OrdersList = styled.View`
   flex: 1;
-  padding: ${({ theme }) => theme.spacing.triple} ${({ theme }) => theme.spacing.double} 0
-    ${({ theme }) => theme.spacing.double};
+  padding: 0 ${({ theme }) => theme.spacing.double} 0 ${({ theme }) => theme.spacing.double};
 `;
