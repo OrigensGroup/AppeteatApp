@@ -103,6 +103,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
         orderedItems: cart,
         pricing,
         day: new Date().toString(),
+        name: user.displayName,
         ...checkoutService,
       };
 
