@@ -24,6 +24,9 @@ const menuTranslations = {
     },
   },
   singleItemPage: {
+    sectionMinMax: {
+      title: (min: number, max: number) => `Select minimun of ${min}, maximum of ${max}`,
+    },
     ingredients: {
       title: 'Ingredienti',
     },
@@ -33,6 +36,7 @@ const menuTranslations = {
     },
     addToBasket: {
       cta: 'Aggiungi',
+      error: 'Seleziona i campi',
     },
   },
 };

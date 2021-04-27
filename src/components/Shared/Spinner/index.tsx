@@ -12,6 +12,8 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
   const theme = useTheme();
   return (
     <InputSpinner
+      width={80}
+      height={32}
       // @ts-ignore
       buttonPressTextColor={theme.colors.textPrimary}
       buttonStyle={{
@@ -25,7 +27,7 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
         borderWidth: 1,
         width: 32,
         height: 32,
-        borderRadius: 100,
+        borderRadius: 16,
         ...(hideInput && { marginHorizontal: 8 }),
       }}
       // @ts-ignore
@@ -42,7 +44,6 @@ const Spinner: React.FunctionComponent<InputSpinnerProps> = ({ hideInput, initia
       step={1}
       textColor={theme.colors.textPrimary}
       value={initialValue}
-      width={80}
     />
   );
 };

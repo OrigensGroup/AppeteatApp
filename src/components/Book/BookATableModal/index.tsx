@@ -61,7 +61,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
   };
 
   const showMode = (currentMode: 'date' | 'time' | undefined) => {
-    setShow(true);
+    setShow((s) => !s);
     setMode(currentMode);
   };
 

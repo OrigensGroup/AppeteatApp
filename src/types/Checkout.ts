@@ -2,7 +2,7 @@ import type { Card } from 'tipsi-stripe';
 
 export type ServiceOptions = 'eatin' | 'takeaway' | 'delivery';
 
-interface CheckoutService {
+export interface CheckoutService {
   allergy: string;
   paymentOption: 'native' | Card | 'cash' | null;
   type: ServiceOptions;

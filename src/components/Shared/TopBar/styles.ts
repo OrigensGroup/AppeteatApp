@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const TopContainer = styled.View`
+export const TopContainer = styled.View<{ showBorder?: boolean }>`
   width: 100%;
 
   display: flex;
@@ -12,6 +12,10 @@ export const TopContainer = styled.View`
     ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple};
 
   ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.double}`};
+
+  ${({ showBorder, theme }) =>
+    showBorder &&
+    `border-bottom-width: 1px; border-color: ${theme.colors.border}; padding-bottom: ${theme.spacing.double}`};
 `;
 
 export const TitleWrapper = styled.View`

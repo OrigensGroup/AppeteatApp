@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 
 import Text from '../../../shared/Text';
@@ -21,6 +22,7 @@ interface UpdateModalProps {
 }
 
 const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible, item, onClose }) => {
+  const navigation = useNavigation();
   const [localQuantity, setLocalQuantity] = useState(item ? item.quantity : 1);
   const { deleteItemFromCart, updateItemQuantity } = useCart();
 
@@ -34,7 +36,10 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
   };
 
   const update = () => {
-    if (item && localQuantity === 0) deleteItemFromCart(item.orderItemId);
+    if (item && localQuantity === 0) {
+      deleteItemFromCart(item.orderItemId);
+      navigation.goBack();
+    }
 
     if (localQuantity !== 0) {
       if (item) updateItemQuantity(item, localQuantity);

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const OrderCardContainer = styled.View`
-  padding: ${({ theme }) => theme.spacing.single};
+  padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.single};
 `;
 
 export const Container = styled.TouchableOpacity`
