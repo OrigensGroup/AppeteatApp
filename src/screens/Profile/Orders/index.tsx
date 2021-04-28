@@ -14,19 +14,19 @@ interface OrdersProps {}
 const Orders: React.FunctionComponent<OrdersProps> = () => {
   const { userData } = useUserData();
 
-  const renderItem = ({ item, index }: { item: Order; index: number }) => (
-    <OrderCard key={item.id + index} order={item} />
-  );
+  const renderItem = ({ item }: { item: Order }) => <OrderCard order={item} />;
 
   return (
     <OrdersContainer>
-      <TopBar back="back" hideFilter title={profileTranslations.ordersPage.title} />
+      <TopBar showBorder back="back" hideFilter title={profileTranslations.ordersPage.title} />
       <OrdersList>
         <FlatList
           data={userData.orders}
           horizontal={false}
           renderItem={renderItem}
+          keyExtractor={(item, index) => `${item.id}/${index}`}
           showsVerticalScrollIndicator={false}
+          getItemLayout={(_, index) => ({ length: 104, offset: 104 * index, index })}
         />
       </OrdersList>
     </OrdersContainer>

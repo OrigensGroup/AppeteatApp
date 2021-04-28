@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-native-modal';
-import { Platform } from 'react-native';
+import { Platform, SafeAreaView } from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -36,6 +36,7 @@ const LoginModal: React.FunctionComponent<LoginModalProps> = ({ isModalVisible, 
       }}
     >
       <PopUpContainer>
+        <SafeAreaView />
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'position' : 'height'}>
           <LogInContainer
             alwaysBounceVertical

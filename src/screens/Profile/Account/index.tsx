@@ -86,7 +86,6 @@ const Account: React.FunctionComponent<AccountProps> = () => {
             contentContainerStyle={{
               flex: 1,
               display: 'flex',
-              justifyContent: 'space-evenly',
             }}
           >
             <NavigationContainer>

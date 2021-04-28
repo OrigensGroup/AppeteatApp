@@ -12,8 +12,8 @@ export const UpgradeItemList = styled.SectionList`
 
 export const HeaderRow = styled.View`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
   margin: 0 ${({ theme }) => theme.spacing.triple};
   padding: ${({ theme }) => theme.spacing.double} 0;
@@ -32,9 +32,9 @@ export const ItemRow = styled.TouchableOpacity`
   border-color: ${({ theme }) => theme.colors.border};
 `;
 
-export const CheckBoxItemSection = styled.View`
+export const CheckBoxItemSection = styled.View<{ fixSpacing: boolean }>`
   flex: 1;
-  margin: 0 ${({ theme }) => theme.spacing.single};
+  margin: ${({ theme, fixSpacing }) => (fixSpacing ? `0 ${theme.spacing.single}` : `${theme.spacing.half}`)};
 `;
 
 export const TitleItem = styled.View`

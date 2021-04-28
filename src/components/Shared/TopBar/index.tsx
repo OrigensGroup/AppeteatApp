@@ -14,10 +14,11 @@ interface TopBarProps {
   title: string;
   hideFilter?: boolean;
   hideTitle?: boolean;
+  showBorder?: boolean;
   back: 'HomePage' | 'MenuList' | 'Account' | 'back';
 }
 
-const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTitle, onClick, title }) => {
+const TopBar: React.FunctionComponent<TopBarProps> = ({ showBorder, back, hideFilter, hideTitle, onClick, title }) => {
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -68,7 +69,7 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ back, hideFilter, hideTi
   };
 
   return (
-    <TopContainer>
+    <TopContainer showBorder={showBorder}>
       <IconButton color={theme.colors.textPrimary} iconName="chevron-back-sharp" onClick={navigateBack} size={32} />
       {!hideTitle && (
         <TitleWrapper>

@@ -14,7 +14,7 @@ const Logo: React.FunctionComponent<LogoProps> = () => {
   const source =
     settings.features.FEAT_DARK_MODE && mode === 'dark'
       ? require('../../../img/logo.png')
-      : require('../../../img/logo2.png');
+      : { uri: settings.logoImage };
 
   return (
     <LogoContainer>

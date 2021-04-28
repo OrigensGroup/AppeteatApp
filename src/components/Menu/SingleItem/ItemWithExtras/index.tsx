@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { DataItem, MenuItem } from '../../../../types/MenuItem';
+import { MenuItem, SelectionExtras } from '../../../../types/MenuItem';
 import CardsHeader from '../CardsHeader';
 import ItemPicture from '../ItemPicture';
 import ItemDescription from '../ItemDescription';
@@ -28,7 +28,7 @@ const AddToBasketWithFlag = withFeatureFlag(AddToBasketButton, 'FEAT_ORDERING');
 const ItemWithExtraSafeAreaBottomWithFlag = withFeatureFlag(ItemWithExtraSafeAreaBottom, 'FEAT_ORDERING');
 
 const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount, goBackTo, item }) => {
-  const [extras, setExtras] = useState<DataItem[]>([]);
+  const [upgradeSelections, setUpgradeSelections] = useState<SelectionExtras>();
 
   return (
     <ItemWithExtrasContainer>
@@ -37,9 +37,9 @@ const ItemWithExtras: React.FunctionComponent<ItemWithExtrasProps> = ({ discount
       <ItemContainer showsVerticalScrollIndicator={false}>
         <ItemPicture item={item} />
         <ItemDescription discount={discount} item={item} />
-        <UpgradeSection item={item} updateExtras={setExtras} />
+        <UpgradeSection item={item} updateExtras={setUpgradeSelections} />
       </ItemContainer>
-      {!item.soldout && <AddToBasketWithFlag discount={discount} extras={extras} item={item} />}
+      {!item.soldout && <AddToBasketWithFlag discount={discount} selectionExtras={upgradeSelections} item={item} />}
       <ItemWithExtraSafeAreaBottomWithFlag />
     </ItemWithExtrasContainer>
   );
