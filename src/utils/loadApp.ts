@@ -45,7 +45,6 @@ export const loadStuff = async () => {
     const images = [
       require('../img/google.png'),
       require('../img/logo.png'),
-      require('../img/logo2.png'),
       require('../img/ApplePay.png'),
       require('../img/GooglePay.png'),
     ];
@@ -56,7 +55,7 @@ export const loadStuff = async () => {
 
     await Promise.all(cacheImages);
 
-    const alltogether = [...loadedBar.locations.list, ...loadedBar.menu.items];
+    const alltogether = [...loadedBar.locations.list, ...loadedBar.menu.items, { image: loadedBar.settings.logoImage }];
 
     const imagesToLoad = alltogether.reduce((acc, item) => {
       if (item.image) {

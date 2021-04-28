@@ -19,7 +19,7 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
   const { userData } = useUserData();
 
   const renderItem = ({ item }: { item: MenuItem }) => (
-    <View style={{ width: width / 2 }}>
+    <View style={{ flex: 1, width: width / 2 - 16 }}>
       <FavCard item={item} />
     </View>
   );
@@ -29,7 +29,7 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
 
   return (
     <FavouriteCocktailsContainer>
-      <TopBar back="back" hideFilter title={profileTranslations.favouriteCocktailsPage.title} />
+      <TopBar back="back" hideFilter title={profileTranslations.favouriteCocktailsPage.title} showBorder />
       <FavouriteCocktailsList>
         <FlatList
           data={favoriteCocktails}

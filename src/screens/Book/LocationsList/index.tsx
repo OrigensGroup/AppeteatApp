@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, Animated } from 'react-native';
+import { useTheme } from 'styled-components';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import auth from '@react-native-firebase/auth';
 
@@ -20,8 +22,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollView: {
+    display: 'flex',
+    flexDirection: 'row',
     position: 'absolute',
-    bottom: 16,
+    bottom: 0,
     left: 0,
     right: 0,
   },
@@ -30,23 +34,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   marker: {
-    width: 16,
-    height: 16,
+    width: 8,
+    height: 8,
     borderRadius: 8,
-    backgroundColor: '#F69019',
   },
   ring: {
-    width: 24,
-    height: 24,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 20,
+    height: 20,
     borderRadius: 12,
-    backgroundColor: '#F69019',
     position: 'absolute',
-    borderWidth: 1,
-    borderColor: '#F69019',
+    bottom: 26,
   },
 });
 
 const LocationLists: React.FunctionComponent = () => {
+  const theme = useTheme();
   const navigation = useNavigation();
   const mapRef = useRef<MapView>(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -121,11 +126,10 @@ const LocationLists: React.FunctionComponent = () => {
         index = 0;
       }
 
-      if (locationIndex !== index) setLocationIndex(index);
-
       timeoutRef.current && clearTimeout(timeoutRef.current);
 
       timeoutRef.current = setTimeout(() => {
+        setLocationIndex(index);
         if (locationIndex !== index) {
           const { latitude, longitude } = markers[index];
 
@@ -189,8 +193,21 @@ const LocationLists: React.FunctionComponent = () => {
               key={index}
             >
               <Animated.View style={[styles.markerWrap, opacityStyle]}>
-                <Animated.View style={[styles.ring, scaleStyle]} />
-                <View style={styles.marker} />
+                <Animated.View style={[{ backgroundColor: theme.colors.active }, styles.ring, scaleStyle]}>
+                  <MaterialCommunityIcons
+                    name="silverware-variant"
+                    color={theme.colors.backgroundColor}
+                    size={12}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      marginLeft: 1,
+                      padding: 0,
+                    }}
+                  />
+                </Animated.View>
+                <View style={[styles.marker, { backgroundColor: theme.colors.active }]} />
               </Animated.View>
             </Marker>
           );
@@ -216,7 +233,18 @@ const LocationLists: React.FunctionComponent = () => {
         style={styles.scrollView}
       >
         {markers.map((marker) => (
-          <LocationCard key={marker.id} onClick={toggleModal} venue={marker} />
+          <View
+            key={marker.id}
+            style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <LocationCard onClick={toggleModal} venue={marker} />
+          </View>
         ))}
       </Animated.ScrollView>
     </View>

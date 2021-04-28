@@ -29,7 +29,9 @@ const FeaturedItems: React.FunctionComponent<FeaturedItemsProps> = ({ promotedIt
     });
   };
 
-  const promotedItemsToShow = menu.items.filter((menuItem) => promotedItems.includes(menuItem.id));
+  const promotedItemsToShow = promotedItems
+    .map((id) => menu.items.filter((item) => item.id === id)[0])
+    .filter((item) => item);
 
   const flatlistItem = ({ item }: { item: MenuItem }) => <PromotionItemCard item={item} onClick={onCardClick(item)} />;
 

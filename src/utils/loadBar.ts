@@ -14,6 +14,7 @@ export const barInit: Bar = {
   homepage: { sections: [] },
   orders: { list: [] },
   settings: {
+    logoImage: '',
     deliverySettings: {
       closeTime: '',
       openTime: '',

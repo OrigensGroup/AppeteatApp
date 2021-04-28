@@ -1,7 +1,7 @@
 const profileTranslations = {
   accountPage: {
     myReservation: 'My Reservations',
-    myFavouriteCoctails: 'My Favourite Cocktails',
+    myFavouriteCoctails: 'My Favourites',
     showButton: 'Show all',
     myOrders: 'My Orders',
     notifications: 'Notifications',
@@ -13,7 +13,7 @@ const profileTranslations = {
     nameNotFound: 'Venue name not Found',
   },
   favouriteCocktailsPage: {
-    title: 'My Favourite Cocktails',
+    title: 'My Favourites',
   },
   ordersPage: {
     title: 'My Orders',

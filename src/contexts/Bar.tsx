@@ -26,24 +26,28 @@ const BarProvider: React.FunctionComponent<BarProviderProps> = ({ children, load
       .collection('bar')
       .doc('menu')
       .onSnapshot((documentSnapshot) => {
-        const newMenu = documentSnapshot.data() as Menu;
+        if (documentSnapshot !== null) {
+          const newMenu = documentSnapshot.data() as Menu;
 
-        setLocalBar((old) => ({
-          ...old,
-          menu: newMenu,
-        }));
+          setLocalBar((old) => ({
+            ...old,
+            menu: newMenu,
+          }));
+        }
       });
 
     const homepageSubscriber = firestore()
       .collection('bar')
       .doc('homepage')
       .onSnapshot((documentSnapshot) => {
-        const newHomepage = documentSnapshot.data() as Homepage;
+        if (documentSnapshot !== null) {
+          const newHomepage = documentSnapshot.data() as Homepage;
 
-        setLocalBar((old) => ({
-          ...old,
-          homepage: newHomepage,
-        }));
+          setLocalBar((old) => ({
+            ...old,
+            homepage: newHomepage,
+          }));
+        }
       });
 
     // Stop listening for updates when no longer required

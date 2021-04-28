@@ -71,15 +71,18 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ isFromMo
         auth()
           .signInWithCredential(facebookCredential)
           .then(async () => {
-            setLoading(false);
             const user = auth().currentUser;
 
             if (user) {
               await initUserData(user.uid);
               login();
+
+              onConfirm && onConfirm();
             } else {
               crashlytics().log("Couldn't setup user db");
             }
+
+            setLoading(false);
           })
           .catch((e) => {
             throw e;
