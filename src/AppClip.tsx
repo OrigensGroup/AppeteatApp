@@ -1,50 +1,57 @@
 import React, { useEffect, useState } from 'react';
 
-import { Bar } from './types/Bar';
+// import { Bar } from './types/Bar';
 
-import CartProvider from './contexts/Cart';
-import BarProvider from './contexts/Bar';
-import UserProvider from './contexts/User';
+// import CartProvider from './contexts/Cart';
+// import BarProvider from './contexts/Bar';
+// import UserProvider from './contexts/User';
 
-import { barInit } from './utils/loadBar';
-import { CustomTheme } from './components/shared/CustomTheme';
-import { loadStuff } from './utils/loadApp';
-import AppNavigation from './components/shared/AppNavigation';
+// import { barInit } from './utils/loadBar';
+// import { CustomTheme } from './components/shared/CustomTheme';
+// import { loadStuff } from './utils/loadApp';
+// import AppNavigation from './components/shared/AppNavigation';
+import { Text, View } from 'react-native';
 
 interface AppClipProps {}
 
 const AppClip: React.FunctionComponent<AppClipProps> = () => {
-  const [appReady, setAppReady] = useState(false);
+  // const [appReady, setAppReady] = useState(false);
 
-  const [bar, setBar] = useState<Bar>(barInit);
+  // const [bar, setBar] = useState<Bar>(barInit);
 
-  const initApp = async () => {
-    const foundBar = await loadStuff();
-    setBar(foundBar);
-  };
+  // const initApp = async () => {
+  //   const foundBar = await loadStuff();
+  //   setBar(foundBar);
+  // };
 
-  useEffect(() => {
-    const load = async () => {
-      await initApp();
-    };
+  // useEffect(() => {
+  //   const load = async () => {
+  //     await initApp();
+  //   };
 
-    load().then(() => setAppReady(true));
-  }, []);
+  //   load().then(() => setAppReady(true));
+  // }, []);
 
-  if (!appReady) {
-    return <></>;
-  }
+  // if (!appReady) {
+  //   return <></>;
+  // }
+
+  // return (
+  //   <BarProvider loadedBar={bar}>
+  //     <UserProvider>
+  //       <CartProvider>
+  //         <CustomTheme>
+  //           <AppNavigation />
+  //         </CustomTheme>
+  //       </CartProvider>
+  //     </UserProvider>
+  //   </BarProvider>
+  // );
 
   return (
-    <BarProvider loadedBar={bar}>
-      <UserProvider>
-        <CartProvider>
-          <CustomTheme>
-            <AppNavigation />
-          </CustomTheme>
-        </CartProvider>
-      </UserProvider>
-    </BarProvider>
+    <View>
+      <Text>App clip</Text>
+    </View>
   );
 };
 

@@ -32,23 +32,8 @@ target 'OrigensTestingClip' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
-  use_unimodules!(exclude: [
-    'expo-face-detector', 
-    'expo-linear-gradient', 
-    'expo-location', 
-    'expo-sqlite',
-    'unimodules-face-detector-interface',
-    'unimodules-sensors-interface',
-    'unimodules-task-manager-interface',
-    'unimodules-barcode-scanner-interface',
-    'unimodules-camera-interface',
-    'expo-keep-awake'
-  ])
   
-  pod 'GoogleSignIn', '~> 5.0.2'
   pod 'Stripe', '~> 21.3.1'
-
 end
 
 post_install do |pi|
