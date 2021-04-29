@@ -7,7 +7,12 @@ import { normalisedSource } from '../../../../utils/image';
 
 import Text from '../../../shared/Text';
 
-import { PromotionItemCardContainer, PromotionItemCardImageContainer, PromotionItemCardDescription } from './styles';
+import {
+  PromotionItemCardContainer,
+  PromotionItemCardImageContainer,
+  PromotionItemCardDescription,
+  ItemOverflow,
+} from './styles';
 
 interface PromotionItemCardProps {
   item: MenuItem;
@@ -34,9 +39,11 @@ const PromotionItemCard: React.FunctionComponent<PromotionItemCardProps> = ({ it
         <Text color="primary" fontSize={18}>
           {item.title}
         </Text>
-        <Text color="primary" fontSize={12} light>
-          {item.description}
-        </Text>
+        <ItemOverflow>
+          <Text color="primary" fontSize={12} light>
+            {item.description}
+          </Text>
+        </ItemOverflow>
       </PromotionItemCardDescription>
     </PromotionItemCardContainer>
   );

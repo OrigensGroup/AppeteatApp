@@ -11,7 +11,7 @@ export const TopContainer = styled.View<{ showBorder?: boolean }>`
   padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple}
     ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple};
 
-  ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.double}`};
+  ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.multiple(5)}`};
 
   ${({ showBorder, theme }) =>
     showBorder &&
