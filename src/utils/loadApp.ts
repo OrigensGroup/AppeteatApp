@@ -41,12 +41,7 @@ export const loadStuff = async () => {
 
     const loadedBar = await loadBar();
 
-    const images = [
-      require('../img/google.png'),
-      require('../img/logo.png'),
-      require('../img/ApplePay.png'),
-      require('../img/GooglePay.png'),
-    ];
+    const images = [require('../img/google.png'), require('../img/ApplePay.png'), require('../img/GooglePay.png')];
 
     const cacheImages = images.map((image) => {
       return Asset.fromModule(image).downloadAsync();
