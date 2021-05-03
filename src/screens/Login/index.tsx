@@ -21,7 +21,7 @@ const Login: React.FunctionComponent<LoginProps> = () => {
   return (
     <>
       <SafeAreaViewTop />
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'position' : 'height'}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'height' : 'height'}>
         <LogInContainer
           alwaysBounceVertical
           contentContainerStyle={{
