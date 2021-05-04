@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { LiteCreditCardInput } from 'react-native-credit-card-input';
@@ -52,13 +53,17 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
   const [canPayWithNativePay, setCanPayWithNativePay] = useState(false);
 
   useEffect(() => {
-    stripe
-      .canMakeNativePayPayments({
-        networks: ['american_express', 'visa', 'master_card'],
-      })
-      .then((res) => {
-        setCanPayWithNativePay(res);
-      });
+    if (Platform.OS !== 'android') {
+      stripe
+        .canMakeNativePayPayments({
+          networks: ['american_express', 'visa', 'master_card'],
+        })
+        .then((res) => {
+          setCanPayWithNativePay(res);
+        });
+    } else {
+      setCanPayWithNativePay(false);
+    }
   }, []);
 
   const changeActive = (i: number) => () => {
