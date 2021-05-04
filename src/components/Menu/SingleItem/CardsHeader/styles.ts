@@ -10,8 +10,8 @@ export const CardsHeaderContainer = styled.View`
   border-bottom-width: 1px;
   border-color: ${({ theme }) => theme.colors.border};
   padding: ${({ theme }) => theme.spacing.single} ${({ theme }) => theme.spacing.triple};
-  padding-bottom: ${({ theme }) => theme.spacing.double}
-    ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.double}`};
+  padding-bottom: ${({ theme }) => theme.spacing.double};
+  ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.multiple(5)}`};
 `;
 
 export const TitleWrapper = styled.View`

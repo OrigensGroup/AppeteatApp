@@ -27,5 +27,7 @@ export const DrinkDesc = styled.View`
 `;
 
 export const DescriptionWrapper = styled.View`
+  flex: 1;
+  overflow: hidden;
   padding-top: ${({ theme }) => theme.spacing.single};
 `;

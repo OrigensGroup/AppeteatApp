@@ -8,6 +8,7 @@ export const LogInContainer = styled.ScrollView`
 export const SafeAreaViewTop = styled.SafeAreaView`
   flex: 0;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
+  ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.multiple(5)}`};
 `;
 
 export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
