@@ -18,7 +18,7 @@ export const barInit: Bar = {
     deliverySettings: {
       closeTime: '',
       openTime: '',
-      oredersPerTimeFrame: 0,
+      ordersPerTimeFrame: 0,
       timeFrame: 0,
       fee: 0,
     },

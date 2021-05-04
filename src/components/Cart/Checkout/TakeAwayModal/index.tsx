@@ -52,7 +52,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
   };
 
   const optionsToShow = useCallback(() => {
-    const ordersPerSection = settings.deliverySettings.oredersPerTimeFrame;
+    const ordersPerSection = settings.deliverySettings.ordersPerTimeFrame;
     const orderTimeFrame = 1000 * 60 * settings.deliverySettings.timeFrame;
     let orderStart = new Date();
     const orderFinish = new Date();

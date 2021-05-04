@@ -41,7 +41,7 @@ type FeatureFlags = {
 };
 
 interface DeliverySettings {
-  oredersPerTimeFrame: number;
+  ordersPerTimeFrame: number;
   timeFrame: number;
   openTime: string;
   closeTime: string;
