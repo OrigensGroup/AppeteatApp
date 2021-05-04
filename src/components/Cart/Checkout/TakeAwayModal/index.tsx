@@ -56,11 +56,15 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
     const orderTimeFrame = 1000 * 60 * settings.deliverySettings.timeFrame;
     let orderStart = new Date();
     const orderFinish = new Date();
+    const settingsMinutes = (time: string) => Number(time.split(':')[1]);
+    const settingHours = (time: string) => Number(time.split(':')[0]);
 
-    orderStart.setHours(
-      Number(settings.deliverySettings.openTime.split(':')[0]),
-      Number(settings.deliverySettings.openTime.split(':')[1]),
-    );
+    if (orderStart.getHours() < settingHours(settings.deliverySettings.openTime)) {
+      orderStart.setHours(
+        settingHours(settings.deliverySettings.openTime),
+        settingsMinutes(settings.deliverySettings.openTime),
+      );
+    }
 
     orderFinish.setHours(
       Number(settings.deliverySettings.closeTime.split(':')[0]),
