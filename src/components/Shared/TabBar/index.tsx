@@ -50,7 +50,7 @@ const TabBar: React.FunctionComponent<TabBarProps> = () => {
         options={{
           tabBarVisible: false,
           tabBarLabel: sharedTranslations.tabs.menu,
-          tabBarIcon: ({ color, size }) => <MaterialCommunityIcons color={color} name="glass-cocktail" size={size} />,
+          tabBarIcon: ({ color, size }) => <Ionicons color={color} name="restaurant-outline" size={size} />,
         }}
       />
       <Tab.Screen

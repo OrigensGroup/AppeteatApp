@@ -22,5 +22,12 @@ export const PromotionItemCardImageContainer = styled.View`
 
 export const PromotionItemCardDescription = styled.View`
   flex: 1;
-  padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double} 0 0;
+  overflow: hidden;
+  padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.double}
+    ${({ theme }) => theme.spacing.double} 0;
+`;
+
+export const ItemOverflow = styled.View`
+  flex: 1;
+  overflow: hidden;
 `;

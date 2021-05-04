@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const SafeAreaViewBottom = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
+  ${({ theme }) => theme.os === 'android' && `padding-bottom: ${theme.spacing.double}`};
 `;
 
 export const MainButtonWrapper = styled.View`

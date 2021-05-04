@@ -24,6 +24,7 @@ import TakeAwayModal from '../../../components/Cart/Checkout/TakeAwayModal';
 import { CheckoutServices } from '../../../types/Checkout';
 
 import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper, ItemSummarySection } from './styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface CheckoutProps {}
 

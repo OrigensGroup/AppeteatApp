@@ -8,6 +8,7 @@ export const HomeContainer = styled.View`
 export const SafeArea = styled.SafeAreaView`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
+  ${({ theme }) => theme.os === 'android' && `padding-top: ${theme.spacing.multiple(5)}`};
 `;
 
 export const ComponentContainer = styled.View`

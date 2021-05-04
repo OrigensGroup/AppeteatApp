@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const LogInContainer = styled.ScrollView`
   width: 100%;
   height: 100%;
+  min-height: 100%;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
@@ -14,10 +15,12 @@ export const SafeAreaViewTop = styled.SafeAreaView`
 export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
   flex: 1;
   width: 100%;
+  height: 100%;
 `;
 
 export const EnclosingView = styled.View`
   width: 100%;
+  height: 100%;
   flex: 1;
   display: flex;
   justify-content: space-between;

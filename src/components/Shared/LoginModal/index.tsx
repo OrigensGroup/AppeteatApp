@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-native-modal';
-import { Platform, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -11,7 +11,7 @@ import SocialLogin from '../../Login/SocialLogin';
 
 import Logo from '../../Login/Logo';
 
-import { PopUpContainer, KeyboardAvoidingView, LogInContainer, EnclosingView, CloseModal, CloseIcon } from './styles';
+import { PopUpContainer, LogInContainer, EnclosingView, CloseModal, CloseIcon } from './styles';
 
 interface LoginModalProps {
   isModalVisible: boolean;
@@ -36,35 +36,30 @@ const LoginModal: React.FunctionComponent<LoginModalProps> = ({ isModalVisible, 
       }}
     >
       <PopUpContainer>
-        <SafeAreaView />
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'position' : 'height'}>
-          <LogInContainer
-            alwaysBounceVertical
-            contentContainerStyle={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexGrow: 1,
-            }}
-            showsVerticalScrollIndicator={false}
-          >
-            <EnclosingView>
-              <CloseModal>
-                <CloseIcon onPress={onClose}>
-                  <AntDesign name="close" size={32} />
-                </CloseIcon>
-              </CloseModal>
-              <Logo />
-              <SocialLogin isFromModal onConfirm={onConfirm} setLoading={setSocialLoading} />
-              {socialLoading ? (
-                <SocialLoading />
-              ) : pageToShow === 'register' ? (
-                <RegisterManual changeModule={setPageToShow} isFromModal onConfirm={onConfirm} />
-              ) : (
-                pageToShow === 'forgotPassword' && <ForgotPassword changeModule={setPageToShow} />
-              )}
-            </EnclosingView>
-          </LogInContainer>
-        </KeyboardAvoidingView>
+        <LogInContainer
+          contentContainerStyle={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+          showsVerticalScrollIndicator={false}
+        >
+          <EnclosingView>
+            <CloseModal>
+              <CloseIcon onPress={onClose}>
+                <AntDesign name="close" size={32} />
+              </CloseIcon>
+            </CloseModal>
+            <Logo />
+            <SocialLogin isFromModal onConfirm={onConfirm} setLoading={setSocialLoading} />
+            {socialLoading ? (
+              <SocialLoading />
+            ) : pageToShow === 'register' ? (
+              <RegisterManual changeModule={setPageToShow} isFromModal onConfirm={onConfirm} />
+            ) : (
+              pageToShow === 'forgotPassword' && <ForgotPassword changeModule={setPageToShow} />
+            )}
+          </EnclosingView>
+        </LogInContainer>
       </PopUpContainer>
     </Modal>
   );
