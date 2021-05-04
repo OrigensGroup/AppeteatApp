@@ -35,8 +35,8 @@ const androidAppleLogin = async () => {
 
   // Configure the request
   appleAuthAndroid.configure({
-    clientId: 'uk.co.origens.testing.appeteat',
-    redirectUri: 'https://origenstesting.firebaseapp.com/__/auth/handler',
+    clientId: 'uk.co.appeteat.infinito',
+    redirectUri: 'https://Infinito.firebaseapp.com/__/auth/handler',
     responseType: appleAuthAndroid.ResponseType.ALL,
     scope: appleAuthAndroid.Scope.ALL,
     nonce: rawNonce,

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>920158940222-1g4qse554nvga2alid2nhvc2uh0iil3v.apps.googleusercontent.com</string>
+	<string>738634765128-vnka94kse70nv5853e912bgr0rutvqpa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.920158940222-1g4qse554nvga2alid2nhvc2uh0iil3v</string>
+	<string>com.googleusercontent.apps.738634765128-vnka94kse70nv5853e912bgr0rutvqpa</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCXKHactb30kixJMfqpUtCZJ2QsPcd05A0</string>
+	<string>AIzaSyC6U_ve_9dWylI2AXoc5MUwr1JfmQ-BiSc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>920158940222</string>
+	<string>738634765128</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>uk.co.origens.testing</string>
+	<string>uk.co.appeteat.infinito</string>
 	<key>PROJECT_ID</key>
-	<string>origenstesting</string>
+	<string>infinito-4a903</string>
 	<key>STORAGE_BUCKET</key>
-	<string>origenstesting.appspot.com</string>
+	<string>infinito-4a903.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:920158940222:ios:a061896e9609ad8c71756f</string>
+	<string>1:738634765128:ios:84b53722fde2bee1c9597d</string>
 </dict>
 </plist>

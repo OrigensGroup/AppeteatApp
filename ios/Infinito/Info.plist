@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>OrigensTesting</string>
+	<string>Infinito</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -33,7 +33,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.920158940222-1g4qse554nvga2alid2nhvc2uh0iil3v</string>
+				<string>com.googleusercontent.apps.738634765128-vnka94kse70nv5853e912bgr0rutvqpa</string>
 			</array>
 		</dict>
 	</array>
@@ -42,7 +42,7 @@
 	<key>FacebookAppID</key>
 	<string>764099584494489</string>
 	<key>FacebookDisplayName</key>
-	<string>Appeteat</string>
+	<string>Infinito</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "uk.co.origens.testing",
+    package = "uk.co.appeteat.infinito",
 )
 
 android_resource(
     name = "res",
-    package = "uk.co.origens.testing",
+    package = "uk.co.appeteat.infinito",
     res = "src/main/res",
 )
 

@@ -30,7 +30,6 @@ export const loadStuff = async () => {
 
     stripe.setOptions({
       publishableKey: Config.STRIPE_ACCOUNT,
-      androidPayMode: 'test',
       merchantId: 'merchant.origens',
     });
 

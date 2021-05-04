@@ -1,4 +1,4 @@
-package uk.co.origens.testing.generated;
+package uk.co.appeteat.infinito.generated;
 
 import java.util.Arrays;
 import java.util.List;

@@ -138,7 +138,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "uk.co.origens.testing"
+        applicationId "uk.co.appeteat.infinito"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -4,8 +4,8 @@
   "apps": {
     "ios": {
       "type": "ios.app",
-      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/OrigensTesting.app",
-      "build": "xcodebuild -workspace ios/OrigensTesting.xcworkspace -scheme OrigensTesting -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Infinito.app",
+      "build": "xcodebuild -workspace ios/Infinito.xcworkspace -scheme Infinito -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
     },
     "android": {
       "type": "android.apk",

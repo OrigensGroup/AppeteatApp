@@ -1,11 +1,11 @@
 {
-  "name": "origens-testing",
-  "displayName": "Origens Testing",
+  "name": "infinito",
+  "displayName": "Infinito",
   "expo": {
     "sdkVersion": "40.0.0",
     "owner": "origens",
-    "name": "Origens Testing",
-    "slug": "origens-testing",
+    "name": "Infinito",
+    "slug": "infinito",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "icon": "./assets/icon.png",
@@ -16,12 +16,12 @@
     },
     "android": {
       "useNextNotificationsApi": true,
-      "package": "uk.co.origens.testing.appeteat",
+      "package": "uk.co.appeteat.infinito",
       "versionCode": 1,
       "permissions": []
     },
     "ios": {
-      "bundleIdentifier": "uk.co.origens.testing.appeteat",
+      "bundleIdentifier": "uk.co.appeteat.infinito",
       "buildNumber": "1.0.0"
     },
     "updates": {

@@ -1,4 +1,4 @@
-package uk.co.origens.testing;
+package uk.co.appeteat.infinito;
 
 import android.os.Bundle;
 

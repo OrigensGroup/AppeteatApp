@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "920158940222",
-    "project_id": "origenstesting",
-    "storage_bucket": "origenstesting.appspot.com"
+    "project_number": "738634765128",
+    "project_id": "infinito-4a903",
+    "storage_bucket": "infinito-4a903.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:920158940222:android:e7d3b2ff2eab53fc71756f",
+        "mobilesdk_app_id": "1:738634765128:android:0fd2e99032b96b2dc9597d",
         "android_client_info": {
-          "package_name": "uk.co.origens.testing"
+          "package_name": "uk.co.appeteat.infinito"
         }
       },
       "oauth_client": [
         {
-          "client_id": "920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com",
+          "client_id": "738634765128-154t2q11q9has003g4au5desqm1i46g4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCF9DUKo3tEKcWYKMKB2m5pPSF7YTNPqsI"
+          "current_key": "AIzaSyAFhQZ82nkZ5SEuxDWqPTRSb0nOvthxNXw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "920158940222-3acmijedst8ap8hfo3n974qfqpnad03l.apps.googleusercontent.com",
+              "client_id": "738634765128-154t2q11q9has003g4au5desqm1i46g4.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "920158940222-1g4qse554nvga2alid2nhvc2uh0iil3v.apps.googleusercontent.com",
+              "client_id": "738634765128-vnka94kse70nv5853e912bgr0rutvqpa.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "uk.co.origens.testing"
+                "bundle_id": "uk.co.appeteat.infinito"
               }
             }
           ]
