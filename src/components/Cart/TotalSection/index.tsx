@@ -63,7 +63,7 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order, check
           </Text>
         </ServiceFeeRowWithFalg>
       )}
-      {settings.features.FEAT_SERVICEFEE ? (
+      {!settings.features.FEAT_SERVICEFEE ? (
         <TotalRow>
           <Text bold color="primary" fontSize={14}>
             {cartTranslations.checkoutPage.totalField.title}

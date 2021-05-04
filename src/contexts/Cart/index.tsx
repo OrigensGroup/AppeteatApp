@@ -101,6 +101,8 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     const serviceCharge = Math.round(subtotal * 0.125 * 100) / 100;
 
     setPricing((oldPricing) => {
+      const totalPlusTip = subtotal + oldPricing.tip;
+
       const totalPlusCharge =
         subtotal +
         oldPricing.tip +
@@ -113,6 +115,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
       return {
         ...oldPricing,
         subtotal: fixDecimals(subtotal),
+        totalWithServiceFee: fixDecimals(totalPlusTip),
         total: fixDecimals(totalPlusCharge),
         servicefee: fixDecimals(serviceCharge),
       };
