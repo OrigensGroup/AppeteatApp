@@ -30,6 +30,7 @@ export interface Homepage {
 }
 
 type FeatureFlags = {
+  FEAT_SERVICEFEE: boolean;
   FEAT_BOOK: boolean;
   FEAT_CART_DELIVERY: boolean;
   FEAT_CART_TAKEAWAY: boolean;

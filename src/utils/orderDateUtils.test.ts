@@ -28,6 +28,7 @@ it('returns false if there are already too many orders', () => {
           orderedItems: [],
           paymentRes: {} as any,
           pricing: {
+            totalWithServiceFee: 0.0,
             checkoutType: 'eatin',
             deliveryFee: 0.0,
             servicefee: 0.0,

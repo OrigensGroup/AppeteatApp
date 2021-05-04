@@ -11,6 +11,7 @@ export type Pricing = {
   servicefee: number;
   tip: number;
   deliveryFee: number;
+  totalWithServiceFee: number;
   total: number;
   checkoutType: 'eatin' | 'delivery' | 'takeaway';
 };
@@ -36,6 +37,7 @@ export const CartContext = React.createContext<CartContext>({
     servicefee: 0,
     subtotal: 0,
     tip: 0,
+    totalWithServiceFee: 0,
     total: 0,
     deliveryFee: 0,
     checkoutType: 'eatin',
@@ -56,6 +58,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     subtotal: 0,
     tip: 0,
     deliveryFee: 0,
+    totalWithServiceFee: 0,
     total: 0,
     checkoutType: 'eatin',
   });
@@ -120,7 +123,8 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
     setPricing((oldPricing) => ({
       ...oldPricing,
       tip: fixDecimals(amount),
-      total: fixDecimals(oldPricing.servicefee + oldPricing.subtotal + amount),
+      totalWithServiceFee: fixDecimals(oldPricing.servicefee + oldPricing.subtotal + amount),
+      total: fixDecimals(oldPricing.subtotal + amount),
     }));
   };
 

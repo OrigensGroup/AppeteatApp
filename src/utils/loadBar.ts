@@ -26,6 +26,7 @@ export const barInit: Bar = {
     features: {
       FEAT_CASH_PAYMENT: false,
       FEAT_BOOK: false,
+      FEAT_SERVICEFEE: false,
       FEAT_CART_DELIVERY: false,
       FEAT_CART_TAKEAWAY: false,
       FEAT_FAVORITE_COCKTAILS: false,
