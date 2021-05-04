@@ -115,8 +115,8 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
       return {
         ...oldPricing,
         subtotal: fixDecimals(subtotal),
-        totalWithServiceFee: fixDecimals(totalPlusTip),
-        total: fixDecimals(totalPlusCharge),
+        totalWithServiceFee: fixDecimals(totalPlusCharge),
+        total: fixDecimals(totalPlusTip),
         servicefee: fixDecimals(serviceCharge),
       };
     });
