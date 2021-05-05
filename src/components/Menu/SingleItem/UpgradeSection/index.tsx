@@ -107,10 +107,16 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
           };
         });
 
+        const newCurrentSelectionsValue = Object.values(invertedValues.selectionCheckbox).reduce(
+          (acc, v) => acc + (v.selected ? 1 : 0),
+          0,
+        );
+
         return {
           ...oldSelection,
           [sectionId]: {
             ...invertedValues,
+            currentSelectionsValue: newCurrentSelectionsValue,
           },
         };
       });
@@ -151,6 +157,8 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
       });
     }
   };
+
+  console.log(selectionExtras);
 
   const isError = findError(selectionExtras);
 
