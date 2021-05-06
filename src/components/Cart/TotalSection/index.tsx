@@ -47,7 +47,8 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order, check
         </TotalRow>
       )}
       {checkingSection === 'takeaway' && <></>}
-      {checkingSection === 'eatin' && (
+
+      {checkingSection === 'eatin' && pricingToShow.servicefee !== 0 && (
         <TotalRow>
           <Text color="primary" fontSize={14}>
             {cartTranslations.checkoutPage.serviceFee.title}
