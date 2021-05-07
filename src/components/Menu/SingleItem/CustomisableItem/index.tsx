@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import type { MenuItem } from '../../../../types/MenuItem';
 import type { Discount } from '../../../../types/DiscountRules';
 
-import menuTranslations from '../../../../translations/menu';
-
 import CardsHeader from '../CardsHeader';
 import ItemPicture from '../ItemPicture';
 import ItemDescription from '../ItemDescription';
@@ -21,6 +19,7 @@ import {
   CustomisableItemSafeAreaTop,
   CustomisableItemSafeAreaBottom,
 } from './styles';
+import { t } from '../../../../translations';
 
 interface CustomisableItemProps {
   item: MenuItem;
@@ -56,7 +55,7 @@ const CustomisableItem: React.FunctionComponent<CustomisableItemProps> = ({ disc
       <ExplanationModal
         isVisible={modalData.show}
         onClose={closeModal}
-        placeholder={menuTranslations.singleItemPage.customise.placeholder}
+        placeholder={t('menuTranslations.singleItemPage.customise.placeholder')}
         showInput
         title={modalData.title}
         updateValue={updateValue}

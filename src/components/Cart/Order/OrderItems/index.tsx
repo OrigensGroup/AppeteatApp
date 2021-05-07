@@ -1,8 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
-import cartTranslations from '../../../../translations/cart';
+import { t } from '../../../../translations';
 
 import type { Order } from '../../../../types/Order';
 import Text from '../../../shared/Text';
@@ -21,7 +20,7 @@ const OrderItems: React.FunctionComponent<OrderItemsProps> = ({ order }) => {
       <OrderItemTitle>
         <OrderItemText>
           <Text bold color="primary" fontSize={14}>
-            {cartTranslations.orderPage.orderItems.text}
+            {t('cartTranslations.orderPage.orderItems.text')}
           </Text>
         </OrderItemText>
         <OrderItemInvoice>

@@ -1,0 +1,395 @@
+{
+  "bookTranslations": {
+    "locationsListPage": {
+      "bookATableModal": {
+        "spinner": "No of member",
+        "cta": "BOOK A TABLE",
+        "confirm": "Confirm Booking"
+      }
+    },
+    "modalMonths": {
+      "0": "January",
+      "1": "February",
+      "2": "March",
+      "3": "April",
+      "4": "May",
+      "5": "June",
+      "6": "July",
+      "7": "August",
+      "8": "September",
+      "9": "October",
+      "10": "November",
+      "11": "December"
+    },
+    "modalMinutes": {
+      "0": "12",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "11",
+      "12": "12",
+      "13": "1",
+      "14": "2",
+      "15": "3",
+      "16": "4",
+      "17": "5",
+      "18": "6",
+      "19": "7",
+      "20": "8",
+      "21": "9",
+      "22": "10",
+      "23": "11",
+      "24": "12"
+    }
+  },
+  "homeTranslations": {
+    "homePage": {
+      "showLocations": {
+        "cta": "Find us!"
+      },
+      "happyHourCard": {
+        "hourDigit": "Hours",
+        "minutesDigit": "Minutes"
+      }
+    }
+  },
+  "currencyTranslations": {
+    "currencyField": "£ "
+  },
+  "sharedTranslations": {
+    "tabs": {
+      "home": "Home",
+      "menu": "Menu",
+      "book": "Book",
+      "account": "Account"
+    }
+  },
+  "loginTranslations": {
+    "nameField": {
+      "label": "Full Name",
+      "placeholder": "Name Surname"
+    },
+    "emailField": {
+      "label": "E-mail",
+      "placeholder": "mail@mail.com"
+    },
+    "passwordField": {
+      "label": "Password",
+      "secondaryLabel": "Reinsert password",
+      "placeholder": "********"
+    },
+    "loginButton": {
+      "label": "Log In"
+    },
+    "orSeparator": {
+      "label": "OR"
+    },
+    "registerButton": {
+      "label": "Registrati"
+    },
+    "signUpSection": {
+      "label": "Non hai un account?",
+      "buttonLabel": "Create New Account"
+    },
+    "anonSection": {
+      "label": "Continue without an account",
+      "buttonLabel": "Registrati  > "
+    },
+    "signInSection": {
+      "label": "Hai giá un account?",
+      "buttonLabel": "Already have an account?"
+    },
+    "forgotPassword": {
+      "goBack": "Go Back to Log In",
+      "resetPassword": "Reset password",
+      "cta": "Forgot password?",
+      "label": "Email to send password reset",
+      "placeholder": "mail@mail.com"
+    },
+    "errorSignInEmail": {
+      "label": "Incorrect email address",
+      "message": "The email address that you've entered doesn't appear to be of a valid format. Please try again."
+    },
+    "emailSent": {
+      "label": "Password Reset",
+      "message": "The link to reset your password has been sent to your email."
+    },
+    "errorWrongPasswordSignIn": {
+      "label": "Incorrect password",
+      "message": "The password that you've entered is incorrect. Please try again."
+    },
+    "errorUserNotFound": {
+      "label": "Incorrect email address",
+      "message": "The email address that you've entered doesn't appear to belong to an account. Please check your email address and try again."
+    },
+    "usernameError": {
+      "label": "Username must be 4 chartacters long"
+    },
+    "passwordLenghtError": {
+      "label": "Password must be at least 8 digits long"
+    },
+    "confirmPasswordError": {
+      "label": "Passwords do not match"
+    },
+    "passwordRequiredError": {
+      "label": "Password is required"
+    },
+    "invalidPasswordError": {
+      "label": "Password must contain at least 1 letter and 1 number"
+    },
+    "emailAlreayInUse": {
+      "label": "That email address is already in use!"
+    },
+    "tooManyRequests": {
+      "label": "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."
+    },
+    "emailError": {
+      "label": "Email must not be empty"
+    },
+    "passwordError": {
+      "label": "Password must not be empty"
+    }
+  },
+  "menuTranslations": {
+    "menuPage": {
+      "title": "Menu",
+      "menuCard": {
+        "soldout": "SOLDOUT"
+      },
+      "searchModal": {
+        "noItems": {
+          "title": "No items found"
+        },
+        "searchTitle": {
+          "title": "Search items"
+        },
+        "searchInput": {
+          "title": "Search items..."
+        },
+        "closeCta": {
+          "title": "Close"
+        }
+      },
+      "viewBasketField": {
+        "label": "ViewBasket",
+        "placeholder": "View Basket"
+      }
+    },
+    "singleItemPage": {
+      "sectionMinMax": {
+        "min": "Select minimun of ",
+        "max": ", maximum of "
+      },
+      "ingredients": {
+        "title": "Ingredients"
+      },
+      "customise": {
+        "title": "Customise item",
+        "placeholder": "Type custom request"
+      },
+      "addToBasket": {
+        "cta": "Add To Basket",
+        "error": "Fill in all selections"
+      }
+    }
+  },
+  "profileTranslations": {
+    "accountPage": {
+      "myReservation": "My Reservations",
+      "myFavouriteCoctails": "My Favourites",
+      "showButton": "Show all",
+      "myOrders": "My Orders",
+      "notifications": "Notifications",
+      "settings": "Setting"
+    },
+    "reservationsPage": {
+      "title": "My Reservations",
+      "addressNotFound": "Address not Found",
+      "nameNotFound": "Venue name not Found"
+    },
+    "favouriteCocktailsPage": {
+      "title": "My Favourites"
+    },
+    "ordersPage": {
+      "title": "My Orders",
+      "card": {
+        "cta": "View"
+      }
+    },
+    "notificationsPage": {},
+    "settingsPage": {
+      "title": "Settings",
+      "authentication": "Authentication",
+      "myCard": "My Card",
+      "showButton": "Show all",
+      "email": "E-mail",
+      "name": "Name",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "reNewPassword": "Re enter New Password",
+      "save": "Save",
+      "logOut": "Log Out",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "yes": "Yes",
+      "logOutPromp": "Would you like to log out?",
+      "informationUpdated": "Information successfully updated",
+      "error": "Invalid information provided"
+    },
+    "personalInformationPage": {
+      "title": "Personal Information"
+    },
+    "passwordPage": {
+      "title": "Change password",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "reNewPassword": "Re enter New Password"
+    },
+    "changeNamePage": {
+      "title": "Change Email",
+      "save": "Save"
+    },
+    "changeEmailPage": {
+      "email": "E-mail",
+      "name": "Name"
+    }
+  },
+  "cartTranslations": {
+    "checkoutPage": {
+      "title": "Cart",
+      "totalField": {
+        "title": "Total"
+      },
+      "orderDetails": {
+        "title": "Order details",
+        "eatIn": "Eat in",
+        "takeAway": "Take away",
+        "delivery": "Delivery"
+      },
+      "deliveryInformation": {
+        "title": "Delivery Information"
+      },
+      "takeAwayInformation": {
+        "title": "Take Away Information"
+      },
+      "paymentDetails": {
+        "title": "Choose a payment method",
+        "cta": "Choose"
+      },
+      "tableNumber": {
+        "title": "Insert table number",
+        "label": "Table number",
+        "placeholder": "Eg. 23"
+      },
+
+      "takeAway": {
+        "title": "Insert take away details",
+        "label": "Pick up time",
+        "placeholder": "hh : mm"
+      },
+      "deliveryModal": {
+        "title": "Delivery information"
+      },
+
+      "takeAwayModal": {
+        "title": "Take away information",
+        "cta": "Confirm",
+        "telephone": "Insert phone number",
+        "address": "i.e. 2 Oriens Mews",
+        "orderTime": "Pick up time"
+      },
+      "delivery": {
+        "title": "Insert delivery details",
+        "label": "Delivery time",
+        "placeholder": "hh : mm"
+      },
+
+      "paymentMethod": {
+        "cashPayment": "Pay cash",
+        "nativeApplePay": "Apple pay",
+        "nativeGooglePay": "Google pay",
+        "cardPrefix": "Card **** **** **** ",
+        "title": "Select payment method",
+        "label": "Payment method",
+        "pay": "Pay",
+        "addNew": "Add a payement method"
+      },
+
+      "commentAndAllergies": {
+        "title": "Any allergies and/or preferences?",
+        "label": "Comment/Allergies",
+        "placeholder": "Insert any request"
+      },
+
+      "voucher": {
+        "title": "Insert discont code here",
+        "label": "Voucher",
+        "placeholder": "Insert discount code"
+      },
+
+      "removeItemSwipe": {
+        "title": "Remove"
+      },
+      "removeItemModal": {
+        "title": "Remove item"
+      },
+
+      "subtotal": {
+        "title": "Subtotal"
+      },
+      "goToCheckoutCta": {
+        "title": "Checkout",
+        "loading": "Loading...",
+        "completeFields": "Complete fields"
+      },
+      "deliveryFee": {
+        "title": "Delivery fee"
+      },
+      "serviceFee": {
+        "title": "Service fee"
+      },
+      "updateModal": {
+        "price": "Price:",
+        "cta": "Update"
+      },
+      "updateModalField": {
+        "label": "Update",
+        "placeholder": "Update"
+      }
+    },
+    "orderPage": {
+      "title": "Order info",
+      "orderInfo": {
+        "title": "Order number",
+        "deliveryEst": "will be ready ",
+        "delivery": "will be ready at ",
+        "asap": "ASAP"
+      },
+
+      "orderStatus": {
+        "received": "Order recived",
+        "preparing": "Preparing",
+        "done": "Done"
+      },
+      "orderItems": {
+        "text": "Order list"
+      }
+    },
+    "checkoutErrors": {
+      "tableError": "Table number missing",
+      "phoneError": "Phone number missing",
+      "orderTimeError": "Order time missing",
+      "cardError": "Card missing",
+      "addressError": "Address missing"
+    }
+  }
+}

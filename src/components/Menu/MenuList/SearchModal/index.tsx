@@ -11,8 +11,6 @@ import MenuCard from '../MenuSwiper/MenuCards';
 import ViewCta from '../../../shared/ViewCta';
 import { MenuItem } from '../../../../types/MenuItem';
 
-import menuTranslations from '../../../../translations/menu';
-
 import {
   SearchPopUpContainer,
   TitleWrapper,
@@ -23,6 +21,7 @@ import {
   SearchHeader,
   NoResultContainer,
 } from './styles';
+import { t } from '../../../../translations';
 
 interface SearchModalProps {
   isModalVisible: boolean;
@@ -59,12 +58,12 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
         <SearchHeader>
           <TitleWrapper>
             <Text bold color="primary" fontSize={18}>
-              {menuTranslations.menuPage.searchModal.searchTitle.title}
+              {t('menuTranslations.menuPage.searchModal.searchTitle.title')}
             </Text>
           </TitleWrapper>
           <SearchBar
             onUpdateText={setSearchItem}
-            placeholder={menuTranslations.menuPage.searchModal.searchInput.title}
+            placeholder={t('menuTranslations.menuPage.searchModal.searchInput.title')}
             textContentType="none"
             value={searchItem}
           />
@@ -82,7 +81,7 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
           ) : (
             <NoResultContainer>
               <Text bold color="primary" fontSize={18}>
-                {menuTranslations.menuPage.searchModal.noItems.title}
+                {t('menuTranslations.menuPage.searchModal.noItems.title')}
               </Text>
             </NoResultContainer>
           )}
@@ -90,7 +89,7 @@ const SearchModal: React.FunctionComponent<SearchModalProps> = ({ isModalVisible
         <SearchModalBottomBarWrapper>
           <ViewCta onClick={closeModal}>
             <Text bold color="secondary" fontSize={14}>
-              {menuTranslations.menuPage.searchModal.closeCta.title}
+              {t('menuTranslations.menuPage.searchModal.closeCta.title')}
             </Text>
           </ViewCta>
         </SearchModalBottomBarWrapper>

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import cartTranslations from '../../../../translations/cart';
+import { t } from '../../../../translations';
 
 import type { Order } from '../../../../types/Order';
 
@@ -17,7 +16,7 @@ const OrderInfo: React.FunctionComponent<OrderInfoProps> = ({ order }) => {
     <OrderInfoContainer>
       <OrderInfoText>
         <Text color="quartiary" fontSize={14}>
-          {cartTranslations.orderPage.orderInfo.title}
+          {t('cartTranslations.orderPage.orderInfo.title')}
         </Text>
       </OrderInfoText>
       <OrderInfoNumber>
@@ -28,9 +27,9 @@ const OrderInfo: React.FunctionComponent<OrderInfoProps> = ({ order }) => {
       <OrderInfoArrival>
         <Text color="quartiary" fontSize={14}>
           {order.orderTime
-            ? cartTranslations.orderPage.orderInfo.delivery
-            : cartTranslations.orderPage.orderInfo.deliveryEst}
-          {order.orderTime ?? cartTranslations.orderPage.orderInfo.asap}
+            ? t('cartTranslations.orderPage.orderInfo.delivery')
+            : t('cartTranslations.orderPage.orderInfo.deliveryEst')}
+          {order.orderTime ?? t('cartTranslations.orderPage.orderInfo.asap')}
         </Text>
       </OrderInfoArrival>
     </OrderInfoContainer>

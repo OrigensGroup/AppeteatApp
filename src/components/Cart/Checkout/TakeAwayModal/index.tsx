@@ -10,8 +10,6 @@ import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 import Picker from '../../../Book/Picker';
 
-import cartTranslations from '../../../../translations/cart';
-
 import type { CheckoutServices, CheckoutServiceValidationError } from '../../../../types/Checkout';
 
 import useOrders from '../../../../hooks/useOrders';
@@ -21,6 +19,7 @@ import { dateToOption, isAllowedToOrder } from '../../../../utils/orderDateUtils
 
 import { PopUpContainer, TakeAwayModalHeader, TakeAwayTextfieldContainer, PickerContainer } from './styles';
 import { ErrorContainer } from '../../../Login/LogInInputField/styles';
+import { t } from '../../../../translations';
 
 interface TakeAwayModalProps {
   errors?: boolean | CheckoutServiceValidationError;
@@ -104,8 +103,8 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
         <TakeAwayModalHeader>
           <Text bold color="primary" fontSize={16}>
             {delivery
-              ? cartTranslations.checkoutPage.deliveryModal.title
-              : cartTranslations.checkoutPage.takeAwayModal.title}
+              ? t('cartTranslations.checkoutPage.deliveryModal.title')
+              : t('cartTranslations.checkoutPage.takeAwayModal.title')}
           </Text>
         </TakeAwayModalHeader>
         <TakeAwayTextfieldContainer>
@@ -114,7 +113,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
               icon={<Icon color={theme.colors.fixedBlack} name="ios-time-outline" size={28} />}
               onPress={showMode}
               textValue={selectedTimeFrame}
-              title={cartTranslations.checkoutPage.takeAwayModal.orderTime}
+              title={t('cartTranslations.checkoutPage.takeAwayModal.orderTime')}
             />
           </PickerContainer>
           {show && (
@@ -138,7 +137,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
           <TextField
             error={typeof errors !== 'boolean' ? errors?.phone : undefined}
             defaultValue={value.phoneNumber}
-            placeholder={cartTranslations.checkoutPage.takeAwayModal.telephone}
+            placeholder={t('cartTranslations.checkoutPage.takeAwayModal.telephone')}
             textContentType="telephoneNumber"
             updateValue={handleChange('phoneNumber')}
             keyboardType="phone-pad"
@@ -148,7 +147,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
             <TextField
               error={typeof errors !== 'boolean' ? errors?.address : undefined}
               defaultValue={value.address}
-              placeholder={cartTranslations.checkoutPage.takeAwayModal.address}
+              placeholder={t('cartTranslations.checkoutPage.takeAwayModal.address')}
               textContentType="fullStreetAddress"
               updateValue={handleChange('address')}
             />
@@ -157,7 +156,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
 
         <ViewCta onClick={closeModal}>
           <Text bold color="fixedWhite" fontSize={14}>
-            {cartTranslations.checkoutPage.takeAwayModal.cta}
+            {t('cartTranslations.checkoutPage.takeAwayModal.cta')}
           </Text>
         </ViewCta>
       </PopUpContainer>

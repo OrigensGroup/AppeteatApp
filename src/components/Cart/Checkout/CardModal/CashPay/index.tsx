@@ -1,10 +1,10 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from '@react-navigation/native';
-import cartTranslations from '../../../../../translations/cart';
 import Text from '../../../../shared/Text';
 
 import { CashPayContainer, CashPayText, CashPayIcon } from './styles';
+import { t } from '../../../../../translations';
 
 interface CashPayProps {}
 
@@ -17,7 +17,7 @@ const CashPay: React.FunctionComponent<CashPayProps> = () => {
       </CashPayIcon>
       <CashPayText>
         <Text color="primary" fontSize={15}>
-          {cartTranslations.checkoutPage.paymentMethod.cashPayment}
+          {t('cartTranslations.checkoutPage.paymentMethod.cashPayment')}
         </Text>
       </CashPayText>
     </CashPayContainer>

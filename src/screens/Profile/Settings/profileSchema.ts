@@ -1,8 +1,9 @@
 import * as Yup from 'yup';
-
-import loginTranslations from '../../../translations/login';
+import { t } from '../../../translations';
 
 export const ProfileSchema = Yup.object().shape({
-  username: Yup.string().min(4, loginTranslations.usernameError.label).required(loginTranslations.usernameError.label),
-  email: Yup.string().email(loginTranslations.emailError.label).required(loginTranslations.emailError.label),
+  username: Yup.string()
+    .min(4, t('loginTranslations.usernameError.label'))
+    .required(t('loginTranslations.usernameError.label')),
+  email: Yup.string().email(t('loginTranslations.emailError.label')).required(t('loginTranslations.emailError.label')),
 });

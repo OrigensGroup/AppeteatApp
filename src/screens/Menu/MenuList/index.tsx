@@ -12,7 +12,6 @@ import TopBar from '../../../components/shared/TopBar';
 import useMenu from '../../../hooks/useMenu';
 import useHomepage from '../../../hooks/useHomepage';
 import useCart from '../../../hooks/useCart';
-import menuTranslations from '../../../translations/menu';
 import { HomepageComponent, CarouselPromo } from '../../../types/HomepageComponent';
 import { TabDiscount } from '../../../types/DiscountRules';
 import { Tab } from '../../../types/Tab';
@@ -21,6 +20,7 @@ import { Promotion } from '../../../types/Promotion';
 import LoginModal from '../../../components/shared/LoginModal';
 
 import { SafeAreaViewBottom, MenuContainer } from './styles';
+import { t } from '../../../translations';
 
 interface MenuProps {}
 
@@ -132,7 +132,7 @@ const Menu: React.FunctionComponent<MenuProps> = () => {
       <SafeAreaViewBottom />
       <LoginModal isModalVisible={loginModalData.show} onClose={hideLoginModal} onConfirm={goToCart} />
       <SearchModal isModalVisible={isModalVisible} onClose={closeModal} />
-      <TopBar back="HomePage" onClick={toggleModal} title={menuTranslations.menuPage.title} />
+      <TopBar back="HomePage" onClick={toggleModal} title={t('menuTranslations.menuPage.title')} />
       <MenuTabs menuTabs={tabsToShow} onChange={onSwipe('menu')} tabActive={menuIndex} />
       <Swiper index={menuIndex} loop={false} onIndexChanged={onSwipe('swipe')} ref={ref} showsPagination={false}>
         {tabsToShow.map((tab) => {

@@ -15,8 +15,6 @@ import {
   SelectionCheckbox,
 } from '../../../../types/MenuItem';
 
-import currencyTranslations from '../../../../translations/currency';
-
 import ExplanationModal from '../../../shared/ExplanationModal';
 
 import {
@@ -30,7 +28,7 @@ import {
   UpgradableItems,
 } from './styles';
 import { findError } from '../../../../utils/findErrorFromSelectionExtras';
-import menuTranslations from '../../../../translations/menu';
+import { t } from '../../../../translations';
 
 interface UpgradeSectionProps {
   item: MenuItem;
@@ -183,7 +181,7 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
         <PriceItem>
           {item.price > 0 && (
             <Text bold color="quartiary" fontSize={12}>
-              + {currencyTranslations.currencyField}
+              + {t('currencyTranslations.currencyField')}
               {item.price}
             </Text>
           )}
@@ -226,7 +224,10 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
         </Text>
         {section.maxSelection && (
           <Text color={!isError ? 'quartiary' : 'errorColor'} fontSize={10}>
-            {menuTranslations.singleItemPage.sectionMinMax.title(section.minSelection, section.maxSelection)}
+            {t('menuTranslations.singleItemPage.sectionMinMax.min') +
+              section.minSelection +
+              t('menuTranslations.singleItemPage.sectionMinMax.max') +
+              section.maxSelection}
           </Text>
         )}
       </HeaderRow>

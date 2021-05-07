@@ -7,7 +7,6 @@ import useCart from '../../../../hooks/useCart';
 import useOrders from '../../../../hooks/useOrders';
 import useUserData from '../../../../hooks/useUserData';
 
-import cartTranslations from '../../../../translations/cart';
 import type { Order } from '../../../../types/Order';
 import { makeCardPayment, makeNativePayment, PaymentStatus } from '../../../../utils/payments';
 import Text from '../../../shared/Text';
@@ -20,6 +19,7 @@ import { validateCheckoutService } from '../../../../screens/Cart/Checkout/valid
 import { generateNumberId } from './generateNumberId';
 
 import { FinaliseOrderContainer } from './styles';
+import { t } from '../../../../translations';
 
 interface FinaliseOrderProps {
   onPaymentError: (b: boolean) => void;
@@ -139,10 +139,10 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
       <ViewCta ghost={isErrorInCheckout} onClick={!loadingPayment ? finaliseOrder : undefined}>
         <Text bold color={isErrorInCheckout ? 'tertiary' : 'fixedWhite'} fontSize={14}>
           {isErrorInCheckout
-            ? cartTranslations.checkoutPage.goToCheckoutCta.completeFields
+            ? t('cartTranslations.checkoutPage.goToCheckoutCta.completeFields')
             : !loadingPayment
-            ? cartTranslations.checkoutPage.goToCheckoutCta.title
-            : cartTranslations.checkoutPage.goToCheckoutCta.loading}
+            ? t('cartTranslations.checkoutPage.goToCheckoutCta.title')
+            : t('cartTranslations.checkoutPage.goToCheckoutCta.loading')}
         </Text>
       </ViewCta>
     </FinaliseOrderContainer>

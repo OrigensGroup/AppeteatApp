@@ -5,8 +5,6 @@ import { wrapScrollView, useScrollIntoView } from 'react-native-scroll-into-view
 
 import type { Card } from 'tipsi-stripe';
 
-import cartTranslations from '../../../translations/cart';
-
 import type { OrderItem } from '../../../types/OrderItem';
 
 import ExplanationModal from '../../../components/shared/ExplanationModal';
@@ -27,6 +25,7 @@ import { CheckoutServices } from '../../../types/Checkout';
 
 import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper, ItemSummarySection } from './styles';
 import { validateCheckoutService } from './validateCheckoutService';
+import { t } from '../../../translations';
 
 const CustomScrollView = wrapScrollView(CheckoutSwiper);
 
@@ -157,11 +156,11 @@ const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
             color={showError && checkoutService.table === '' ? 'errorColor' : 'primary'}
             icon="location-outline"
             onItemClick={showDescriptionModal({
-              title: cartTranslations.checkoutPage.tableNumber.label,
-              placeholder: cartTranslations.checkoutPage.tableNumber.placeholder,
+              title: t('cartTranslations.checkoutPage.tableNumber.label'),
+              placeholder: t('cartTranslations.checkoutPage.tableNumber.placeholder'),
               code: 'table',
             })}
-            title={checkoutService.table ? checkoutService.table : cartTranslations.checkoutPage.tableNumber.title}
+            title={checkoutService.table ? checkoutService.table : t('cartTranslations.checkoutPage.tableNumber.title')}
           />
         )}
         {checkoutService.type === 'takeaway' && (
@@ -169,7 +168,9 @@ const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
             color={showError && takeAwayError ? 'errorColor' : 'primary'}
             icon="location-outline"
             onItemClick={showTakeAwayModal}
-            title={checkoutService.orderTime ? checkoutService.orderTime : cartTranslations.checkoutPage.takeAway.title}
+            title={
+              checkoutService.orderTime ? checkoutService.orderTime : t('cartTranslations.checkoutPage.takeAway.title')
+            }
           />
         )}
         {checkoutService.type === 'delivery' && (
@@ -177,7 +178,9 @@ const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
             color={showError && deliveryError ? 'errorColor' : 'primary'}
             icon="location-outline"
             onItemClick={showTakeAwayModal}
-            title={checkoutService.address ? checkoutService.address : cartTranslations.checkoutPage.delivery.title}
+            title={
+              checkoutService.address ? checkoutService.address : t('cartTranslations.checkoutPage.delivery.title')
+            }
           />
         )}
         <ValueItem
@@ -186,29 +189,31 @@ const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
           onItemClick={showCardModal}
           title={
             checkoutService.paymentOption === 'cash'
-              ? cartTranslations.checkoutPage.paymentMethod.cashPayment
+              ? t('cartTranslations.checkoutPage.paymentMethod.cashPayment')
               : checkoutService.paymentOption === 'native'
               ? Platform.OS === 'ios'
-                ? cartTranslations.checkoutPage.paymentMethod.nativeApplePay
-                : cartTranslations.checkoutPage.paymentMethod.nativeGooglePay
+                ? t('cartTranslations.checkoutPage.paymentMethod.nativeApplePay')
+                : t('cartTranslations.checkoutPage.paymentMethod.nativeGooglePay')
               : checkoutService.paymentOption === null
-              ? cartTranslations.checkoutPage.paymentMethod.title
+              ? t('cartTranslations.checkoutPage.paymentMethod.title')
               : Object.keys(checkoutService.paymentOption).length !== 0
-              ? cartTranslations.checkoutPage.paymentMethod.cardPrefix +
+              ? t('cartTranslations.checkoutPage.paymentMethod.cardPrefix') +
                 checkoutService.paymentOption.number.substr(-4, 4)
-              : cartTranslations.checkoutPage.paymentMethod.title
+              : t('cartTranslations.checkoutPage.paymentMethod.title')
           }
         />
         <ValueItem
           color="primary"
           icon="ios-chatbox-outline"
           onItemClick={showDescriptionModal({
-            title: cartTranslations.checkoutPage.commentAndAllergies.label,
-            placeholder: cartTranslations.checkoutPage.commentAndAllergies.placeholder,
+            title: t('cartTranslations.checkoutPage.commentAndAllergies.label'),
+            placeholder: t('cartTranslations.checkoutPage.commentAndAllergies.placeholder'),
             code: 'allergy',
           })}
           title={
-            checkoutService.allergy ? checkoutService.allergy : cartTranslations.checkoutPage.commentAndAllergies.title
+            checkoutService.allergy
+              ? checkoutService.allergy
+              : t('cartTranslations.checkoutPage.commentAndAllergies.title')
           }
         />
         <TotalSection checkoutSection={checkoutService.type} />
@@ -233,7 +238,7 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
 
   return (
     <CheckoutContainer>
-      <TopBar back="MenuList" hideFilter title={cartTranslations.checkoutPage.title} showBorder />
+      <TopBar back="MenuList" hideFilter title={t('cartTranslations.checkoutPage.title')} showBorder />
 
       <CustomScrollView showsVerticalScrollIndicator={false}>
         <CheckoutContent
