@@ -13,7 +13,7 @@ import { makeCardPayment, makeNativePayment, PaymentStatus } from '../../../../u
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
-import { CheckoutServices } from '../../../../types/Checkout';
+import type { CheckoutServices, CheckoutServiceValidationError } from '../../../../types/Checkout';
 
 import { validateCheckoutService } from '../../../../screens/Cart/Checkout/validateCheckoutService';
 
@@ -25,6 +25,8 @@ interface FinaliseOrderProps {
   onPaymentError: (b: boolean) => void;
   checkoutService: CheckoutServices;
 }
+
+const isError = (e: boolean | CheckoutServiceValidationError) => typeof e !== 'boolean';
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutService, onPaymentError }) => {
   const navigation = useNavigation();
@@ -46,7 +48,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
       return '';
     }
 
-    if (!validateCheckoutService(checkoutService)) {
+    if (isError(validateCheckoutService(checkoutService))) {
       onPaymentError(true);
       setLoadingPayment(false);
       return;
@@ -130,11 +132,13 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
     }
   };
 
+  const isErrorInCheckout = isError(validateCheckoutService(checkoutService));
+
   return (
     <FinaliseOrderContainer>
-      <ViewCta onClick={!loadingPayment ? finaliseOrder : undefined}>
-        <Text bold color="fixedWhite" fontSize={14}>
-          {!validateCheckoutService(checkoutService)
+      <ViewCta ghost={isErrorInCheckout} onClick={!loadingPayment ? finaliseOrder : undefined}>
+        <Text bold color={isErrorInCheckout ? 'tertiary' : 'fixedWhite'} fontSize={14}>
+          {isErrorInCheckout
             ? cartTranslations.checkoutPage.goToCheckoutCta.completeFields
             : !loadingPayment
             ? cartTranslations.checkoutPage.goToCheckoutCta.title

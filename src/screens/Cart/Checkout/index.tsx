@@ -26,6 +26,7 @@ import TakeAwayModal from '../../../components/Cart/Checkout/TakeAwayModal';
 import { CheckoutServices } from '../../../types/Checkout';
 
 import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper, ItemSummarySection } from './styles';
+import { validateCheckoutService } from './validateCheckoutService';
 
 const CustomScrollView = wrapScrollView(CheckoutSwiper);
 
@@ -121,9 +122,14 @@ const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
     }
   }, [showError, scrollIntoView]);
 
+  const takeAwayError = checkoutService.orderTime === '' || checkoutService.phoneNumber === '';
+
+  const deliveryError = takeAwayError || checkoutService.address === '';
+
   return (
     <>
       <TakeAwayModal
+        errors={showError ? validateCheckoutService(checkoutService) : false}
         delivery={checkoutService.type === 'delivery'}
         handleChange={updateModalValue}
         isModalVisible={takeAwayModal}
@@ -160,7 +166,7 @@ const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
         )}
         {checkoutService.type === 'takeaway' && (
           <ValueItem
-            color={showError && checkoutService.orderTime === '' ? 'errorColor' : 'primary'}
+            color={showError && takeAwayError ? 'errorColor' : 'primary'}
             icon="location-outline"
             onItemClick={showTakeAwayModal}
             title={checkoutService.orderTime ? checkoutService.orderTime : cartTranslations.checkoutPage.takeAway.title}
@@ -168,7 +174,7 @@ const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
         )}
         {checkoutService.type === 'delivery' && (
           <ValueItem
-            color={showError && checkoutService.address === '' ? 'errorColor' : 'primary'}
+            color={showError && deliveryError ? 'errorColor' : 'primary'}
             icon="location-outline"
             onItemClick={showTakeAwayModal}
             title={checkoutService.address ? checkoutService.address : cartTranslations.checkoutPage.delivery.title}

@@ -28,3 +28,11 @@ interface DeliveryService extends CheckoutService {
 }
 
 export type CheckoutServices = TableService | TakeAwayService | DeliveryService;
+
+export type CheckoutServiceValidationError = {
+  table?: string;
+  card?: string;
+  phone?: string;
+  orderTime?: string;
+  address?: string;
+};

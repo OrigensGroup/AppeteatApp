@@ -27,7 +27,7 @@ const cartTranslations = {
     },
 
     takeAway: {
-      title: 'Insert take away deatils',
+      title: 'Insert take away details',
       label: 'Pick up time',
       placeholder: 'hh : mm',
     },
@@ -43,7 +43,7 @@ const cartTranslations = {
       orderTime: 'Pick up time',
     },
     delivery: {
-      title: 'Insert delivery deatils',
+      title: 'Insert delivery details',
       label: 'Delivery time',
       placeholder: 'hh : mm',
     },
@@ -118,6 +118,13 @@ const cartTranslations = {
     orderItems: {
       text: 'Order list',
     },
+  },
+  checkoutErrors: {
+    tableError: 'Table number missing',
+    phoneError: 'Phone number missing',
+    orderTimeError: 'Order time missing',
+    cardError: 'Card missing',
+    addressError: 'Address missing',
   },
 };
 

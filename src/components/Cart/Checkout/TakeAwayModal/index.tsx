@@ -5,23 +5,25 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { useTheme } from 'styled-components';
 
-import LoginTextField from '../../../shared/LoginTextField';
+import TextField from '../../../shared/LoginTextField';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 import Picker from '../../../Book/Picker';
 
 import cartTranslations from '../../../../translations/cart';
 
-import { CheckoutServices } from '../../../../types/Checkout';
+import type { CheckoutServices, CheckoutServiceValidationError } from '../../../../types/Checkout';
 
 import useOrders from '../../../../hooks/useOrders';
-import { dateToOption, isAllowedToOrder } from '../../../../utils/orderDateUtils';
-
 import useSettings from '../../../../hooks/useSettings';
 
+import { dateToOption, isAllowedToOrder } from '../../../../utils/orderDateUtils';
+
 import { PopUpContainer, TakeAwayModalHeader, TakeAwayTextfieldContainer, PickerContainer } from './styles';
+import { ErrorContainer } from '../../../Login/LogInInputField/styles';
 
 interface TakeAwayModalProps {
+  errors?: boolean | CheckoutServiceValidationError;
   value: CheckoutServices;
   isModalVisible: boolean;
   onClose: () => void;
@@ -30,6 +32,7 @@ interface TakeAwayModalProps {
 }
 
 const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
+  errors,
   delivery,
   handleChange,
   isModalVisible,
@@ -43,7 +46,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
   const [selectedTimeFrame, setSelectedTimeFrame] = useState(value.orderTime);
 
   const showMode = () => {
-    setShow(true);
+    setShow((t) => !t);
   };
 
   const closeModal = () => {
@@ -125,14 +128,25 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
               {optionsToShow()}
             </OptionPicker>
           )}
-          <LoginTextField
+          {typeof errors !== 'boolean' && (
+            <ErrorContainer>
+              <Text bold color="errorColor" fontSize={14}>
+                * {errors?.orderTime}
+              </Text>
+            </ErrorContainer>
+          )}
+          <TextField
+            error={typeof errors !== 'boolean' ? errors?.phone : undefined}
             defaultValue={value.phoneNumber}
             placeholder={cartTranslations.checkoutPage.takeAwayModal.telephone}
             textContentType="telephoneNumber"
             updateValue={handleChange('phoneNumber')}
+            keyboardType="phone-pad"
+            maxLength={11}
           />
           {delivery && (
-            <LoginTextField
+            <TextField
+              error={typeof errors !== 'boolean' ? errors?.address : undefined}
               defaultValue={value.address}
               placeholder={cartTranslations.checkoutPage.takeAwayModal.address}
               textContentType="fullStreetAddress"
