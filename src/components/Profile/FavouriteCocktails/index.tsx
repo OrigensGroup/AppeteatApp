@@ -7,8 +7,6 @@ import { useNavigation } from '@react-navigation/native';
 import useMenu from '../../../hooks/useMenu';
 import useUserData from '../../../hooks/useUserData';
 import { MenuItem } from '../../../types/MenuItem';
-import accountTranslations from '../../../translations/profile';
-
 import Text from '../../shared/Text';
 
 import { findMenuItems } from '../../../utils/menuUtils';
@@ -16,6 +14,7 @@ import { findMenuItems } from '../../../utils/menuUtils';
 import Card from './Card';
 
 import { FavouriteCocktailsContainer, TitleContainer, ShowButton, TextContainer } from './styles';
+import { t } from '../../../translations';
 
 interface FavouriteCocktailsProps {}
 
@@ -37,11 +36,11 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
         <TextContainer>
           <TitleContainer>
             <Text color="primary" fontSize={18}>
-              {accountTranslations.accountPage.myFavouriteCoctails}
+              {t('profileTranslations.accountPage.myFavouriteCoctails')}
             </Text>
             <ShowButton onPress={navigate}>
               <Text color="tertiary" fontSize={16}>
-                {accountTranslations.accountPage.showButton}
+                {t('profileTranslations.accountPage.showButton')}
               </Text>
             </ShowButton>
           </TitleContainer>

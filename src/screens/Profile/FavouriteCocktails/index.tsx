@@ -5,7 +5,7 @@ import FavCard from '../../../components/Profile/FavouriteCocktails/FavCard';
 import TopBar from '../../../components/shared/TopBar';
 import useMenu from '../../../hooks/useMenu';
 import useUserData from '../../../hooks/useUserData';
-import profileTranslations from '../../../translations/profile';
+import { t } from '../../../translations';
 import { MenuItem } from '../../../types/MenuItem';
 import { findMenuItems } from '../../../utils/menuUtils';
 
@@ -29,7 +29,7 @@ const FavouriteCocktails: React.FunctionComponent<FavouriteCocktailsProps> = () 
 
   return (
     <FavouriteCocktailsContainer>
-      <TopBar back="back" hideFilter title={profileTranslations.favouriteCocktailsPage.title} showBorder />
+      <TopBar back="back" hideFilter title={t('profileTranslations.favouriteCocktailsPage.title')} showBorder />
       <FavouriteCocktailsList>
         <FlatList
           data={favoriteCocktails}

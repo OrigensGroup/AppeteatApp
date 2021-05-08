@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 interface ViewCtaProps {
   redDelete?: boolean;
+  ghost?: boolean;
 }
 
 export const MainButton = styled.TouchableOpacity<ViewCtaProps>`
@@ -17,4 +18,11 @@ export const MainButton = styled.TouchableOpacity<ViewCtaProps>`
   align-items: center;
 
   width: 100%;
+
+  ${({ ghost, theme }) =>
+    ghost &&
+    `
+      background-color: ${theme.colors.backgroundColor};
+      border: 1px solid ${theme.colors.active};
+    `}
 `;

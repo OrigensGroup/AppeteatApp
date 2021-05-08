@@ -3,13 +3,14 @@ import React from 'react';
 import { MainButton } from './styles';
 
 interface ViewCtaProps {
+  ghost?: boolean;
   onClick?: () => void;
   redDelete?: boolean;
 }
 
-const ViewCta: React.FunctionComponent<ViewCtaProps> = ({ children, onClick, redDelete }) => {
+const ViewCta: React.FunctionComponent<ViewCtaProps> = ({ ghost, children, onClick, redDelete }) => {
   return (
-    <MainButton onPress={onClick} redDelete={redDelete}>
+    <MainButton ghost={ghost} onPress={onClick} redDelete={redDelete}>
       {children}
     </MainButton>
   );

@@ -3,8 +3,8 @@ import React from 'react';
 import FastImage from 'react-native-fast-image';
 
 import { useTheme } from 'styled-components';
+import { t } from '../../../translations';
 
-import currencyTranslations from '../../../translations/currency';
 import { OrderItem } from '../../../types/OrderItem';
 import { calculateItemPrice } from '../../../utils/priceCalculations';
 import Text from '../../shared/Text';
@@ -70,7 +70,7 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item, onClick }) => 
         </CartItemQuantity>
         <CartItemPrice>
           <Text bold color="tertiary" fontSize={14}>
-            {currencyTranslations.currencyField}
+            {t('currencyTranslations.currencyField')}
             {calculateItemPrice(item)}
           </Text>
         </CartItemPrice>

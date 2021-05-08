@@ -11,12 +11,9 @@ import QuantityCounter from '../Counter';
 
 import { Discount } from '../../../../types/DiscountRules';
 
-import menuTranslations from '../../../../translations/menu';
-
-import currencyTranslations from '../../../../translations/currency';
-
 import { AddToBasketButtonWrapper, ViewCtaButton, QuantityButton } from './styles';
 import { findError } from '../../../../utils/findErrorFromSelectionExtras';
+import { t } from '../../../../translations';
 
 interface AddToBasketButtonProps {
   item: MenuItem;
@@ -105,15 +102,15 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({
         <ViewCta onClick={isError ? undefined : onClick}>
           {isError ? (
             <Text bold color="fixedWhite" fontSize={14}>
-              {menuTranslations.singleItemPage.addToBasket.error}
+              {t('menuTranslations.singleItemPage.addToBasket.error')}
             </Text>
           ) : (
             <>
               <Text bold color="fixedWhite" fontSize={14}>
-                {menuTranslations.singleItemPage.addToBasket.cta}
+                {t('menuTranslations.singleItemPage.addToBasket.cta')}
               </Text>
               <Text bold color="fixedWhite" fontSize={14}>
-                + {currencyTranslations.currencyField}
+                + {t('currencyTranslations.currencyField')}
                 {price}
               </Text>
             </>

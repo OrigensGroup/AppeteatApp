@@ -11,7 +11,7 @@ import initUserData from '../../../utils/manageUserdata';
 import useUserData from '../../../hooks/useUserData';
 
 import { ButtonContainer } from './styles';
-import loginTranslations from '../../../translations/login';
+import { t } from '../../../translations';
 
 interface FacebookButtonProps {
   isFromModal?: boolean;
@@ -91,8 +91,8 @@ const FacebookButton: React.FunctionComponent<FacebookButtonProps> = ({ isFromMo
     } catch (error) {
       if (error.code === 'auth/credential-already-in-use') {
         Alert.alert(
-          loginTranslations.errorWrongPasswordSignIn.label,
-          loginTranslations.errorWrongPasswordSignIn.message,
+          t('loginTranslations.errorWrongPasswordSignIn.label'),
+          t('loginTranslations.errorWrongPasswordSignIn.message'),
         );
       }
       crashlytics().log('Facebook log in failed.');

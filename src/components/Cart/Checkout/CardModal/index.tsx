@@ -13,12 +13,11 @@ import Text from '../../../shared/Text';
 
 import withFeatureFlag from '../../../../HOC/withFeatureFlag';
 
-import cartTranslations from '../../../../translations/cart';
-
 import NativePay from './NativePay';
 
 import { PopUpContainer, CardModalHeader, CardModalChoice, CashPayFeatureFlag } from './styles';
 import CashPay from './CashPay';
+import { t } from '../../../../translations';
 
 interface CardModalProps {
   onCardUpdate: (v: Card | 'native' | 'cash') => void;
@@ -116,7 +115,7 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
       <PopUpContainer>
         <CardModalHeader>
           <Text bold color="primary" fontSize={16}>
-            {cartTranslations.checkoutPage.paymentDetails.title}
+            {t('cartTranslations.checkoutPage.paymentDetails.title')}
           </Text>
         </CardModalHeader>
         <CashPayView>
@@ -138,7 +137,7 @@ const CardModal: React.FunctionComponent<CardModalProps> = ({ isModalVisible, on
 
         <ViewCta onClick={done}>
           <Text bold color="fixedWhite" fontSize={14}>
-            {cartTranslations.checkoutPage.paymentDetails.cta}
+            {t('cartTranslations.checkoutPage.paymentDetails.cta')}
           </Text>
         </ViewCta>
       </PopUpContainer>

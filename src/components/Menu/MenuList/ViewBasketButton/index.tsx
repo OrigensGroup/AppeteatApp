@@ -1,8 +1,7 @@
 import React from 'react';
 
 import useCart from '../../../../hooks/useCart';
-import currencyTranslations from '../../../../translations/currency';
-import menuTranslations from '../../../../translations/menu';
+import { t } from '../../../../translations';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
@@ -23,10 +22,10 @@ const ViewBasketButton: React.FunctionComponent<ViewBasketButtonProps> = ({ onCl
             ( {cart.length} )
           </Text>
           <Text bold color="fixedWhite" fontSize={14}>
-            {menuTranslations.menuPage.viewBasketField.placeholder}
+            {t('menuTranslations.menuPage.viewBasketField.placeholder')}
           </Text>
           <Text bold color="fixedWhite" fontSize={14}>
-            {currencyTranslations.currencyField}
+            {t('currencyTranslations.currencyField')}
             {pricing.subtotal.toFixed(2)}
           </Text>
         </ViewCta>

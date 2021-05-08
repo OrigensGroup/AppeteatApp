@@ -2,14 +2,12 @@ import React from 'react';
 
 import { fixDecimals } from '../../../../utils/priceCalculations';
 
-import currencyTranslations from '../../../../translations/currency';
 import { Discount } from '../../../../types/DiscountRules';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 
-import menuTranslations from '../../../../translations/menu';
-
 import { ItemDescriptionContainer, ItemDescriptionTitle, ItemDescriptionDesc, PriceSection } from './styles';
+import { t } from '../../../../translations';
 
 interface ItemDescriptionProps {
   item: MenuItem;
@@ -32,19 +30,19 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discou
           <PriceSection>
             {discount && discount.type === 'tabDiscount' && (
               <Text bold color="quartiary" fontSize={14} strike>
-                {currencyTranslations.currencyField}
+                {t('currencyTranslations.currencyField')}
                 {item.price}
               </Text>
             )}
             <Text bold color="tertiary" fontSize={18}>
-              {currencyTranslations.currencyField}
+              {t('currencyTranslations.currencyField')}
               {finalPrice}
             </Text>
           </PriceSection>
         ) : (
           <PriceSection>
             <Text bold color="tertiary" fontSize={14}>
-              {menuTranslations.menuPage.menuCard.soldout}
+              {t('menuTranslations.menuPage.menuCard.soldout')}
             </Text>
           </PriceSection>
         )}

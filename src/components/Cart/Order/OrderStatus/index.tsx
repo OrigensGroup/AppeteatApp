@@ -1,6 +1,6 @@
 import React from 'react';
+import { t } from '../../../../translations';
 
-import cartTranslations from '../../../../translations/cart';
 import Text from '../../../shared/Text';
 
 import {
@@ -29,17 +29,17 @@ const OrderStatus: React.FunctionComponent<OrderStatusProps> = ({ done }) => {
       <OrderStatusExplaination>
         <OrderStatusText>
           <Text color="primary" fontSize={10}>
-            {cartTranslations.orderPage.orderStatus.received}
+            {t('cartTranslations.orderPage.orderStatus.received')}
           </Text>
         </OrderStatusText>
         <OrderStatusText>
           <Text bold color="primary" fontSize={14}>
-            {cartTranslations.orderPage.orderStatus.preparing}
+            {t('cartTranslations.orderPage.orderStatus.preparing')}
           </Text>
         </OrderStatusText>
         <OrderStatusText>
           <Text color="primary" fontSize={10}>
-            {cartTranslations.orderPage.orderStatus.done}
+            {t('cartTranslations.orderPage.orderStatus.done')}
           </Text>
         </OrderStatusText>
       </OrderStatusExplaination>

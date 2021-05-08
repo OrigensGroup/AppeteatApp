@@ -9,13 +9,13 @@ import crashlytics from '@react-native-firebase/crashlytics';
 import { Formik } from 'formik';
 
 import LogInTextField from '../LogInInputField';
-import loginTranslations from '../../../translations/login';
 
 import Text from '../../shared/Text';
 import LogInButton from '../Buttons/LogInButton';
 
 import { ManualLogInContainer, TextFieldsWrapper, ButtonsWrapper, GoBack } from './styles';
 import { ForgotSchema } from './forgotSchema';
+import { t } from '../../../translations';
 
 interface ManualLogInProps {
   changeModule: (b: 'login' | 'register' | 'forgotPassword') => void;
@@ -38,18 +38,18 @@ const ForgotPassword: React.FunctionComponent<ManualLogInProps> = ({ changeModul
       .sendPasswordResetEmail(email)
       .then(() => {
         setLoading(false);
-        Alert.alert(loginTranslations.emailSent.label, loginTranslations.emailSent.message);
+        Alert.alert(t('loginTranslations.emailSent.label'), t('loginTranslations.emailSent.message'));
         login();
       })
       .catch((error) => {
         setLoading(false);
 
         if (error.code === 'auth/invalid-email') {
-          Alert.alert(loginTranslations.errorSignInEmail.label, loginTranslations.errorSignInEmail.message);
+          Alert.alert(t('loginTranslations.errorSignInEmail.label'), t('loginTranslations.errorSignInEmail.message'));
           return;
         }
         if (error.code === 'auth/user-not-found') {
-          Alert.alert(loginTranslations.errorUserNotFound.label, loginTranslations.errorUserNotFound.message);
+          Alert.alert(t('loginTranslations.errorUserNotFound.label'), t('loginTranslations.errorUserNotFound.message'));
           return;
         }
 
@@ -72,8 +72,8 @@ const ForgotPassword: React.FunctionComponent<ManualLogInProps> = ({ changeModul
           <TextFieldsWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <LogInTextField
               error={errors.email}
-              label={loginTranslations.forgotPassword.label}
-              placeholder={loginTranslations.forgotPassword.placeholder}
+              label={t('loginTranslations.forgotPassword.label')}
+              placeholder={t('loginTranslations.forgotPassword.placeholder')}
               placeholderTextColor={theme.colors.border}
               textContentType="emailAddress"
               updateValue={handleChange('email')}
@@ -83,11 +83,11 @@ const ForgotPassword: React.FunctionComponent<ManualLogInProps> = ({ changeModul
             <LogInButton
               loading={loading}
               onClick={handleSubmit}
-              text={loginTranslations.forgotPassword.resetPassword}
+              text={t('loginTranslations.forgotPassword.resetPassword')}
             />
             <GoBack onPress={login}>
               <Text color="primary" fontSize={12} bold>
-                {loginTranslations.forgotPassword.goBack}
+                {t('loginTranslations.forgotPassword.goBack')}
               </Text>
             </GoBack>
           </ButtonsWrapper>

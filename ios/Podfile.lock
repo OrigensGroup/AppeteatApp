@@ -337,7 +337,7 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30907.0)
-  - FirebaseInstallations (7.9.0):
+  - FirebaseInstallations (7.11.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
@@ -358,7 +358,7 @@ PODS:
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30907.0)
-  - GoogleDataTransport (8.3.0):
+  - GoogleDataTransport (8.3.1):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30907.0)
     - PromisesObjC (~> 1.2)
@@ -366,24 +366,24 @@ PODS:
     - AppAuth (~> 1.2)
     - GTMAppAuth (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleUtilities/AppDelegateSwizzler (7.3.1):
+  - GoogleUtilities/AppDelegateSwizzler (7.4.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.3.1):
+  - GoogleUtilities/Environment (7.4.0):
     - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (7.3.1):
+  - GoogleUtilities/Logger (7.4.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.3.1):
+  - GoogleUtilities/MethodSwizzler (7.4.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.3.1):
+  - GoogleUtilities/Network (7.4.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.3.1)"
-  - GoogleUtilities/Reachability (7.3.1):
+  - "GoogleUtilities/NSData+zlib (7.4.0)"
+  - GoogleUtilities/Reachability (7.4.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.3.1):
+  - GoogleUtilities/UserDefaults (7.4.0):
     - GoogleUtilities/Logger
   - "gRPC-C++ (1.28.2)":
     - "gRPC-C++/Implementation (= 1.28.2)"
@@ -409,14 +409,10 @@ PODS:
     - BoringSSL-GRPC (= 0.0.7)
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
-  - GTMAppAuth (1.1.0):
+  - GTMAppAuth (1.2.2):
     - AppAuth/Core (~> 1.4)
-    - GTMSessionFetcher (~> 1.4)
-  - GTMSessionFetcher (1.5.0):
-    - GTMSessionFetcher/Full (= 1.5.0)
+    - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.5.0)
-  - GTMSessionFetcher/Full (1.5.0):
-    - GTMSessionFetcher/Core (= 1.5.0)
   - leveldb-library (1.22.1)
   - libwebp (1.2.0):
     - libwebp/demux (= 1.2.0)
@@ -750,9 +746,9 @@ PODS:
     - React-Core
   - RNVectorIcons (8.1.0):
     - React-Core
-  - SDWebImage (5.10.4):
-    - SDWebImage/Core (= 5.10.4)
-  - SDWebImage/Core (5.10.4)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
@@ -1048,16 +1044,16 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 3d36e05da74cb8b7ce30e6594a8f201b982c725c
   FirebaseCrashlytics: d07e61d85aabc7d38a68f94ff99995f8557ea8d0
   FirebaseFirestore: f1ededef972dea136e88a7bae9732f52afe64221
-  FirebaseInstallations: 5e777e6640fa060405cc7632447b6c5ca5af4742
+  FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   GoogleAppMeasurement: 50a254ee92c1b94fbe2abea7e3da35e4c6dedce0
-  GoogleDataTransport: b006084b73915a42c28a3466961a4edda3065da6
+  GoogleDataTransport: 8b0e733ea77c9218778e5a9e34ba9508b8328939
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
-  GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
+  GoogleUtilities: 284cddc7fffc14ae1907efb6f78ab95c1fccaedc
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
-  GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
+  GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
@@ -1103,7 +1099,7 @@ SPEC CHECKSUMS:
   RNReanimated: ca4f28c765329144d68bdad126bf6b0b1afc7a5a
   RNScreens: f0d7a2a440a8ba9f4574ca1ddb3368f473891be4
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
-  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Stripe: 326a2160ac541eeffafb8b1aa0c9712e3ce8cec7
   tipsi-stripe: 262adc0a23fc0b8af1f8cb7778ee2ee681edd2b6

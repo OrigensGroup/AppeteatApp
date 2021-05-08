@@ -8,11 +8,13 @@
     {
       "filename": "SplashScreen.png",
       "idiom": "universal",
+      "filename": "splashscreen.png",
       "scale": "2x"
     },
     {
       "filename": "SplashScreen.png",
       "idiom": "universal",
+      "filename": "splashscreen.png",
       "scale": "3x"
     }
   ],

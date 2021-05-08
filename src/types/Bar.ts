@@ -52,6 +52,7 @@ export interface Settings {
   features: FeatureFlags;
   deliverySettings: DeliverySettings;
   logoImage: string;
+  serviceFee: number;
 }
 
 export interface Bar {
