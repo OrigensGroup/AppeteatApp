@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'styled-components';
+import { t } from '../../../../translations';
 
-import homeTranslations from '../../../../translations/home';
 import { PromotionCountdown } from '../../../../types/Promotion';
 
 import Text from '../../../shared/Text';
@@ -122,7 +122,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
             </DigitBackground>
             <DigitTitle>
               <Text color="fixedWhite" fontSize={16} light>
-                {homeTranslations.homePage.happyHourCard.hourDigit}
+                {t('homeTranslations.homePage.happyHourCard.hourDigit')}
               </Text>
             </DigitTitle>
           </DigitCounter>
@@ -138,7 +138,7 @@ const HappyHourPromotionCard: React.FunctionComponent<HappyHourPromotionCardProp
             </DigitBackground>
             <DigitTitle>
               <Text color="fixedWhite" fontSize={16} light>
-                {homeTranslations.homePage.happyHourCard.minutesDigit}
+                {t('homeTranslations.homePage.happyHourCard.minutesDigit')}
               </Text>
             </DigitTitle>
           </DigitCounter>

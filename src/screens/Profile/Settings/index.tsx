@@ -19,15 +19,13 @@ import Text from '../../../components/shared/Text';
 import ViewCta from '../../../components/shared/ViewCta';
 import TopBar from '../../../components/shared/TopBar';
 
-import profileTranslations from '../../../translations/profile';
-
 import ReAuthModal from '../../../components/Profile/ReAuthModal';
-import loginTranslations from '../../../translations/login';
 import InfoUpdatedCard from '../../../components/Profile/InfoUpdatedCard';
 
 import { SettingsContainer, ProfileSection, TextContainer, SaveButton, InfoUpdatedContainer } from './styles';
 
 import { ProfileSchema } from './profileSchema';
+import { t } from '../../../translations';
 
 interface SettingsProps {}
 
@@ -42,7 +40,7 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
 
   const [modalData, setModalData] = useState({
     show: false,
-    title: profileTranslations.settingsPage.authentication,
+    title: t('profileTranslations.settingsPage.authentication'),
     inputData: '',
   });
 
@@ -56,15 +54,15 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
 
   const logOutAlert = () =>
     Alert.alert(
-      profileTranslations.settingsPage.logOut,
-      profileTranslations.settingsPage.logOutPromp,
+      t('profileTranslations.settingsPage.logOut'),
+      t('profileTranslations.settingsPage.logOutPromp'),
       [
         {
-          text: profileTranslations.settingsPage.cancel,
+          text: t('profileTranslations.settingsPage.cancel'),
           style: 'cancel',
         },
         {
-          text: profileTranslations.settingsPage.yes,
+          text: t('profileTranslations.settingsPage.yes'),
           onPress: async () => {
             await auth().signOut();
             logout();
@@ -172,8 +170,8 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
                 authResult={setAuthResult}
                 isVisible={modalData.show}
                 onClose={closeModal}
-                passwordPlaceholder={loginTranslations.passwordField.placeholder}
-                placeholder={loginTranslations.emailField.placeholder}
+                passwordPlaceholder={t('loginTranslations.passwordField.placeholder')}
+                placeholder={t('loginTranslations.emailField.placeholder')}
                 title={modalData.title}
               />
               {infoUpdatedShow && (
@@ -181,11 +179,11 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
                   <InfoUpdatedCard />
                 </InfoUpdatedContainer>
               )}
-              <TopBar back="back" hideFilter title={profileTranslations.settingsPage.title} />
+              <TopBar back="back" hideFilter title={t('profileTranslations.settingsPage.title')} />
               <ProfileSection>
                 <TextContainer>
                   <Text bold color="primary" fontSize={16}>
-                    {profileTranslations.personalInformationPage.title}
+                    {t('profileTranslations.personalInformationPage.title')}
                   </Text>
                 </TextContainer>
                 <LoginTextField
@@ -204,25 +202,25 @@ const Settings: React.FunctionComponent<SettingsProps> = () => {
               <ProfileSection>
                 <TextContainer>
                   <Text bold color="primary" fontSize={16}>
-                    {profileTranslations.accountPage.settings}
+                    {t('profileTranslations.accountPage.settings')}
                   </Text>
                 </TextContainer>
                 <ListItem
                   icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
                   navigateTo="Password"
-                  title={profileTranslations.passwordPage.changePassword}
+                  title={t('profileTranslations.passwordPage.changePassword')}
                 />
                 <ListItem
                   icon2={<MaterialIcons color="#818181" name="keyboard-arrow-right" size={28} />}
                   onClick={logOutAlert}
-                  title={profileTranslations.settingsPage.logOut}
+                  title={t('profileTranslations.settingsPage.logOut')}
                 />
               </ProfileSection>
               {saveShow && (
                 <SaveButton>
                   <ViewCta onClick={saveChanges}>
                     <Text bold color="fixedWhite" fontSize={14}>
-                      {profileTranslations.settingsPage.save}
+                      {t('profileTranslations.settingsPage.save')}
                     </Text>
                   </ViewCta>
                 </SaveButton>

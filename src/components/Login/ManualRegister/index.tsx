@@ -10,8 +10,6 @@ import LogInButton from '../Buttons/LogInButton';
 import SignUpButton from '../Buttons/SignUpButton';
 import LogInInputField from '../LogInInputField';
 
-import loginTranslations from '../../../translations/login';
-
 import { initUserData } from '../../../utils/manageUserdata';
 
 import useUserData from '../../../hooks/useUserData';
@@ -19,6 +17,7 @@ import useUserData from '../../../hooks/useUserData';
 import { RegisterSchema } from './registerSchema';
 
 import { ManualLogInContainer, TextFieldsWrapper, LogInSection } from './styles';
+import { t } from '../../../translations';
 
 interface RegisterManualProps {
   isFromModal?: boolean;
@@ -84,17 +83,17 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
         setLoading(false);
 
         if (error.code === 'auth/too-many-requests') {
-          Alert.alert(loginTranslations.tooManyRequests.label);
+          Alert.alert(t('loginTranslations.tooManyRequests.label'));
           return;
         }
 
         if (error.code === 'auth/email-already-in-use') {
-          Alert.alert(loginTranslations.emailAlreayInUse.label);
+          Alert.alert(t('loginTranslations.emailAlreayInUse.label'));
           return;
         }
 
         if (error.code === 'auth/invalid-email') {
-          Alert.alert(loginTranslations.errorSignInEmail.label);
+          Alert.alert(t('loginTranslations.errorSignInEmail.label'));
           return;
         }
 
@@ -124,8 +123,8 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
           <TextFieldsWrapper>
             <LogInInputField
               error={errors.username}
-              label={loginTranslations.nameField.label}
-              placeholder={loginTranslations.nameField.placeholder}
+              label={t('loginTranslations.nameField.label')}
+              placeholder={t('loginTranslations.nameField.placeholder')}
               placeholderTextColor={theme.colors.border}
               textContentType="none"
               updateValue={handleChange('username')}
@@ -133,33 +132,33 @@ const RegisterManual: React.FunctionComponent<RegisterManualProps> = ({ changeMo
             <LogInInputField
               autoCapitalize="none"
               error={errors.email}
-              label={loginTranslations.emailField.label}
-              placeholder={loginTranslations.emailField.placeholder}
+              label={t('loginTranslations.emailField.label')}
+              placeholder={t('loginTranslations.emailField.placeholder')}
               placeholderTextColor={theme.colors.border}
               textContentType="emailAddress"
               updateValue={handleChange('email')}
             />
             <LogInInputField
               error={errors.password}
-              label={loginTranslations.passwordField.label}
-              placeholder={loginTranslations.passwordField.placeholder}
+              label={t('loginTranslations.passwordField.label')}
+              placeholder={t('loginTranslations.passwordField.placeholder')}
               placeholderTextColor={theme.colors.border}
               textContentType="password"
               updateValue={handleChange('password')}
             />
             <LogInInputField
               error={errors.confirmPassword}
-              label={loginTranslations.passwordField.secondaryLabel}
-              placeholder={loginTranslations.passwordField.placeholder}
+              label={t('loginTranslations.passwordField.secondaryLabel')}
+              placeholder={t('loginTranslations.passwordField.placeholder')}
               placeholderTextColor={theme.colors.border}
               textContentType="password"
               updateValue={handleChange('confirmPassword')}
             />
           </TextFieldsWrapper>
           <LogInSection>
-            <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.registerButton.label} />
+            <LogInButton loading={loading} onClick={handleSubmit} text={t('loginTranslations.registerButton.label')} />
             <SignUpButton
-              buttonText={!isFromModal ? loginTranslations.signInSection.buttonLabel : ''}
+              buttonText={!isFromModal ? t('loginTranslations.signInSection.buttonLabel') : ''}
               onClick={loginApp}
             />
           </LogInSection>

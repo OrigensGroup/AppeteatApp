@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
+import { t } from '../../../../translations';
 
-import currencyTranslations from '../../../../translations/currency';
 import IconButton from '../../../shared/IconButton';
 import Text from '../../../shared/Text';
 
@@ -29,7 +29,7 @@ const ValueItem: React.FunctionComponent<ValueItemProps> = ({ color, icon, onIte
       <ValueItemInfoContainer>
         {typeof value !== 'undefined' && (
           <Text color={color} fontSize={14}>
-            {currencyTranslations.currencyField}
+            {t('currencyTranslations.currencyField')}
             {value}
           </Text>
         )}

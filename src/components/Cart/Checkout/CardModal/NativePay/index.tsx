@@ -1,7 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-
-import cartTranslations from '../../../../../translations/cart';
+import { t } from '../../../../../translations';
 
 import Text from '../../../../shared/Text';
 
@@ -19,8 +18,8 @@ const NativePay: React.FunctionComponent<NativePayProps> = () => {
       <NativePayText>
         <Text color="primary" fontSize={15}>
           {isIos
-            ? cartTranslations.checkoutPage.paymentMethod.nativeApplePay
-            : cartTranslations.checkoutPage.paymentMethod.nativeGooglePay}
+            ? t('cartTranslations.checkoutPage.paymentMethod.nativeApplePay')
+            : t('cartTranslations.checkoutPage.paymentMethod.nativeGooglePay')}
         </Text>
       </NativePayText>
     </NativePayContainer>

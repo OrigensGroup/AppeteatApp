@@ -14,11 +14,12 @@ export const barInit: Bar = {
   homepage: { sections: [] },
   orders: { list: [] },
   settings: {
+    serviceFee: 0,
     logoImage: '',
     deliverySettings: {
       closeTime: '',
       openTime: '',
-      oredersPerTimeFrame: 0,
+      ordersPerTimeFrame: 0,
       timeFrame: 0,
       fee: 0,
     },

@@ -5,15 +5,14 @@ import Modal from 'react-native-modal';
 import Text from '../../../shared/Text';
 import type { OrderItem } from '../../../../types/OrderItem';
 import Spinner from '../../../shared/Spinner';
-import cartTranslations from '../../../../translations/cart';
 import useCart from '../../../../hooks/useCart';
 
 import ViewCta from '../../../shared/ViewCta';
 
-import currencyTranslations from '../../../../translations/currency';
 import { fixDecimals } from '../../../../utils/priceCalculations';
 
 import { ModalCounterContainer, DivLine, ModalTitle, PopUpContainer, ModalCounterWrapper } from './styles';
+import { t } from '../../../../translations';
 
 interface UpdateModalProps {
   item: OrderItem | null;
@@ -80,7 +79,7 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         </ModalCounterContainer>
         <ModalTitle>
           <Text color="primary" fontSize={16}>
-            {cartTranslations.checkoutPage.updateModal.price} {currencyTranslations.currencyField}
+            {t('cartTranslations.checkoutPage.updateModal.price')} {t('currencyTranslations.currencyField')}
             {fixDecimals(
               (item.price + item.extras.reduce((acc, extra) => acc + extra.price, 0)) * localQuantity,
             ).toFixed(2)}
@@ -90,8 +89,8 @@ const UpdateModal: React.FunctionComponent<UpdateModalProps> = ({ isModalVisible
         <ViewCta onClick={update} redDelete={localQuantity === 0}>
           <Text bold color="fixedWhite" fontSize={14}>
             {localQuantity === 0
-              ? cartTranslations.checkoutPage.removeItemModal.title
-              : cartTranslations.checkoutPage.updateModalField.label}
+              ? t('cartTranslations.checkoutPage.removeItemModal.title')
+              : t('cartTranslations.checkoutPage.updateModalField.label')}
           </Text>
         </ViewCta>
       </PopUpContainer>

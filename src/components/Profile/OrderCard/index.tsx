@@ -5,10 +5,8 @@ import type { Order } from '../../../types/Order';
 
 import Text from '../../shared/Text';
 
-import profileTranslations from '../../../translations/profile';
-import currencyTranslations from '../../../translations/currency';
-
 import { Container, DrinkDesc, OrderCardContainer, DateContainer, Circle, PriceContainer, Button } from './styles';
+import { t } from '../../../translations';
 
 interface OrderCardProps {
   order: Order;
@@ -54,12 +52,12 @@ const OrderCard: React.FunctionComponent<OrderCardProps> = ({ order }) => {
         </DrinkDesc>
         <PriceContainer>
           <Text bold color="primary" fontSize={16}>
-            {currencyTranslations.currencyField}
+            {t('currencyTranslations.currencyField')}
             {order.pricing.total.toFixed(2)}
           </Text>
           <Button onPress={navigate}>
             <Text color="tertiary" fontSize={16}>
-              {profileTranslations.ordersPage.card.cta}
+              {t('profileTranslations.ordersPage.card.cta')}
             </Text>
           </Button>
         </PriceContainer>

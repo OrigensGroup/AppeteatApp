@@ -3,8 +3,6 @@ import { useRoute } from '@react-navigation/native';
 
 import type { Order } from '../../../types/Order';
 
-import cartTranslations from '../../../translations/cart';
-
 import TopBar from '../../../components/shared/TopBar';
 import OrderInfo from '../../../components/Cart/Order/OrderInfo';
 import OrderStatus from '../../../components/Cart/Order/OrderStatus';
@@ -12,6 +10,7 @@ import OrderItems from '../../../components/Cart/Order/OrderItems';
 import TotalSection from '../../../components/Cart/TotalSection';
 
 import { OrderDetailsContainer } from './styles';
+import { t } from '../../../translations';
 
 interface OrderDetailsProps {}
 
@@ -25,7 +24,7 @@ const OrderDetails: React.FunctionComponent<OrderDetailsProps> = () => {
 
   return (
     <OrderDetailsContainer>
-      <TopBar back={back} hideFilter title={cartTranslations.orderPage.title} />
+      <TopBar back={back} hideFilter title={t('cartTranslations.orderPage.title')} />
       <OrderInfo order={order} />
       <OrderStatus done={back === 'Account'} />
       <OrderItems order={order} />

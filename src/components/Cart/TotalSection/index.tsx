@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 
 import useCart from '../../../hooks/useCart';
-import cartTranslations from '../../../translations/cart';
-import currencyTranslations from '../../../translations/currency';
+import { t } from '../../../translations';
 import { Order } from '../../../types/Order';
 import Text from '../../shared/Text';
 
@@ -28,42 +27,43 @@ const TotalSection: React.FunctionComponent<TotalSectionProps> = ({ order, check
     <TotalSectionContainer>
       <TotalRow>
         <Text color="primary" fontSize={14}>
-          {cartTranslations.checkoutPage.subtotal.title}
+          {t('cartTranslations.checkoutPage.subtotal.title')}
         </Text>
         <Text color="primary" fontSize={14}>
-          {currencyTranslations.currencyField}
+          {t('currencyTranslations.currencyField')}
           {pricingToShow.subtotal}
         </Text>
       </TotalRow>
       {checkingSection === 'delivery' && (
         <TotalRow>
           <Text color="primary" fontSize={14}>
-            {cartTranslations.checkoutPage.deliveryFee.title}
+            {t('cartTranslations.checkoutPage.deliveryFee.title')}
           </Text>
           <Text color="primary" fontSize={14}>
-            {currencyTranslations.currencyField}
+            {t('currencyTranslations.currencyField')}
             {pricingToShow.deliveryFee}
           </Text>
         </TotalRow>
       )}
       {checkingSection === 'takeaway' && <></>}
-      {checkingSection === 'eatin' && (
+
+      {checkingSection === 'eatin' && pricingToShow.servicefee !== 0 && (
         <TotalRow>
           <Text color="primary" fontSize={14}>
-            {cartTranslations.checkoutPage.serviceFee.title}
+            {t('cartTranslations.checkoutPage.serviceFee.title')}
           </Text>
           <Text color="primary" fontSize={14}>
-            {currencyTranslations.currencyField}
+            {t('currencyTranslations.currencyField')}
             {pricingToShow.servicefee}
           </Text>
         </TotalRow>
       )}
       <TotalRow>
         <Text bold color="primary" fontSize={14}>
-          {cartTranslations.checkoutPage.totalField.title}
+          {t('cartTranslations.checkoutPage.totalField.title')}
         </Text>
         <Text bold color="primary" fontSize={14}>
-          {currencyTranslations.currencyField}
+          {t('currencyTranslations.currencyField')}
           {pricingToShow.total}
         </Text>
       </TotalRow>

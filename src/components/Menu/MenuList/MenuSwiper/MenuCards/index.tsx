@@ -3,9 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 
 import FastImage from 'react-native-fast-image';
-
-import currencyTranslations from '../../../../../translations/currency';
-import menuTranslations from '../../../../../translations/menu';
+import { t } from '../../../../../translations';
 
 import Text from '../../../../shared/Text';
 import IconButton from '../../../../shared/IconButton';
@@ -94,7 +92,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
               </DiscountTag>
               <DiscountPrice>
                 <Text bold color="quartiary" fontSize={12} strike>
-                  {currencyTranslations.currencyField}
+                  {t('currencyTranslations.currencyField')}
                   {item.price}
                 </Text>
               </DiscountPrice>
@@ -108,7 +106,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
           )}
           <Price move={!discount}>
             <Text bold color="tertiary" fontSize={14}>
-              {currencyTranslations.currencyField}
+              {t('currencyTranslations.currencyField')}
               {finalPrice}
             </Text>
           </Price>
@@ -117,7 +115,7 @@ const MenuCard: React.FunctionComponent<CardProps> = ({ discount, item, onClick 
         <CardPrice>
           <Price move={!discount}>
             <Text bold color="tertiary" fontSize={10}>
-              {menuTranslations.menuPage.menuCard.soldout}
+              {t('menuTranslations.menuPage.menuCard.soldout')}
             </Text>
           </Price>
         </CardPrice>

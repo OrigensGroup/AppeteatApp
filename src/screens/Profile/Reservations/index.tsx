@@ -6,7 +6,7 @@ import TopBar from '../../../components/shared/TopBar';
 
 import useLocations from '../../../hooks/useLocations';
 import useUserData from '../../../hooks/useUserData';
-import profileTranslations from '../../../translations/profile';
+import { t } from '../../../translations';
 
 import type { Booking } from '../../../types/Booking';
 import type { Venue } from '../../../types/Venue';
@@ -24,18 +24,18 @@ const Reservations: React.FunctionComponent<ReservationsProps> = () => {
 
     return (
       <ReservationCard
-        address={selectedVenue?.address || profileTranslations.reservationsPage.addressNotFound}
+        address={selectedVenue?.address || t('profileTranslations.reservationsPage.addressNotFound')}
         date={item.date}
         people={item.people}
         time={item.time}
-        venue={selectedVenue?.name || profileTranslations.reservationsPage.nameNotFound}
+        venue={selectedVenue?.name || t('profileTranslations.reservationsPage.nameNotFound')}
       />
     );
   };
 
   return (
     <ReservationsContainer>
-      <TopBar back="back" hideFilter title={profileTranslations.reservationsPage.title} />
+      <TopBar back="back" hideFilter title={t('profileTranslations.reservationsPage.title')} />
       <ReservationsList>
         <FlatList data={userData.bookings} horizontal={false} renderItem={renderItem} />
       </ReservationsList>

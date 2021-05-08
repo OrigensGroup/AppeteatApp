@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import withFeatureFlag from '../../../../HOC/withFeatureFlag';
+import { t } from '../../../../translations';
 
-import cartTranslations from '../../../../translations/cart';
 import { CheckoutServices } from '../../../../types/Checkout';
 
 import Text from '../../../shared/Text';
@@ -27,7 +27,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ selectServ
     <SelectServiceWrapper>
       <TitleWrapper>
         <Text bold color="primary" fontSize={14}>
-          {cartTranslations.checkoutPage.orderDetails.title}
+          {t('cartTranslations.checkoutPage.orderDetails.title')}
         </Text>
       </TitleWrapper>
       <ButtonsWrapper>
@@ -43,7 +43,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ selectServ
 
             setIndex(0);
           }}
-          title={cartTranslations.checkoutPage.orderDetails.eatIn}
+          title={t('cartTranslations.checkoutPage.orderDetails.eatIn')}
         />
         <EmptyDivWithFlagTA />
         <TakeAwayWithFlag
@@ -63,7 +63,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ selectServ
 
             setIndex(1);
           }}
-          title={cartTranslations.checkoutPage.orderDetails.takeAway}
+          title={t('cartTranslations.checkoutPage.orderDetails.takeAway')}
         />
         <EmptyDivWithFlagDEL />
         <DeliveryWithFlag
@@ -84,7 +84,7 @@ const SelectService: React.FunctionComponent<SelectServiceProps> = ({ selectServ
 
             setIndex(2);
           }}
-          title={cartTranslations.checkoutPage.orderDetails.delivery}
+          title={t('cartTranslations.checkoutPage.orderDetails.delivery')}
         />
       </ButtonsWrapper>
     </SelectServiceWrapper>
