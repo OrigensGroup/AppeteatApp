@@ -31,7 +31,7 @@ const isError = (e: boolean | CheckoutServiceValidationError) => typeof e !== 'b
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutService, onPaymentError }) => {
   const navigation = useNavigation();
   const { cart, pricing, clearCart } = useCart();
-  const [, setOrders] = useOrders();
+  const { addNewOrder } = useOrders();
   const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
   // const [settings] = useSettings();
@@ -109,10 +109,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
         ...checkoutService,
       };
 
-      setOrders((oldOrders) => ({
-        ...oldOrders,
-        list: [...oldOrders.list, order],
-      }));
+      await addNewOrder(order);
 
       addOrder(order);
 

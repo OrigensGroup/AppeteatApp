@@ -39,7 +39,7 @@ const TakeAwayModal: React.FunctionComponent<TakeAwayModalProps> = ({
   value,
 }) => {
   const theme = useTheme();
-  const [orders] = useOrders();
+  const { orders } = useOrders();
   const [settings] = useSettings();
   const [show, setShow] = useState(false);
   const [selectedTimeFrame, setSelectedTimeFrame] = useState(value.orderTime);

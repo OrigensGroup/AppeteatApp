@@ -6,6 +6,7 @@ import { ValueOf } from 'react-native-gesture-handler/lib/typescript/typeUtils';
 import { Bar } from '../types/Bar';
 
 import colors from '../theme/colors';
+import { Order } from '../types/Order';
 
 export const barInit: Bar = {
   bookings: { list: [] },
@@ -59,6 +60,20 @@ const loadBar = async () => {
       // @ts-ignore
       bar[doc.id] = doc.data;
     });
+
+    const orderCollection = await firestore().collection('bar').doc('orders').collection('list').get();
+
+    const loadedOrders = await Promise.all(
+      orderCollection.docs.map(
+        async (doc): Promise<Order> => {
+          const data = (await doc.data()) as Order;
+
+          return data;
+        },
+      ),
+    );
+
+    bar.orders.list = loadedOrders;
 
     return bar;
   } catch (error) {
