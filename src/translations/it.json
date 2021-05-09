@@ -349,7 +349,8 @@
       "goToCheckoutCta": {
         "title": "Checkout",
         "loading": "Caricamento...",
-        "completeFields": "Completa i campi"
+        "completeFields": "Completa i campi",
+        "noInternet": "Connessione a intenet assente"
       },
       "deliveryFee": {
         "title": "Spesa spedizione"
