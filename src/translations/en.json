@@ -349,7 +349,8 @@
       "goToCheckoutCta": {
         "title": "Checkout",
         "loading": "Loading...",
-        "completeFields": "Complete fields"
+        "completeFields": "Complete fields",
+        "noInternet": "No internet connection"
       },
       "deliveryFee": {
         "title": "Delivery fee"

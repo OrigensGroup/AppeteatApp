@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
 import stripe from 'tipsi-stripe';
+import { useNetInfo } from '@react-native-community/netinfo';
 
 import useCart from '../../../../hooks/useCart';
 import useOrders from '../../../../hooks/useOrders';
@@ -29,12 +30,14 @@ interface FinaliseOrderProps {
 const isError = (e: boolean | CheckoutServiceValidationError) => typeof e !== 'boolean';
 
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutService, onPaymentError }) => {
+  const netInfo = useNetInfo();
   const navigation = useNavigation();
   const { cart, pricing, clearCart } = useCart();
-  const [, setOrders] = useOrders();
+  const { addNewOrder } = useOrders();
   const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
-  // const [settings] = useSettings();
+
+  console.log(netInfo);
 
   const finaliseOrder = async () => {
     let paymentRes = null;
@@ -109,10 +112,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
         ...checkoutService,
       };
 
-      setOrders((oldOrders) => ({
-        ...oldOrders,
-        list: [...oldOrders.list, order],
-      }));
+      await addNewOrder(order);
 
       addOrder(order);
 
@@ -142,6 +142,8 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
             ? t('cartTranslations.checkoutPage.goToCheckoutCta.completeFields')
             : !loadingPayment
             ? t('cartTranslations.checkoutPage.goToCheckoutCta.title')
+            : !netInfo.isInternetReachable
+            ? t('cartTranslations.checkoutPage.goToCheckoutCta.noInternet')
             : t('cartTranslations.checkoutPage.goToCheckoutCta.loading')}
         </Text>
       </ViewCta>

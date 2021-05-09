@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 
 export const OrderCardContainer = styled.View`
+  height: ${({ theme }) => theme.spacing.multiple(13)};
+  min-height: ${({ theme }) => theme.spacing.multiple(11)};
   padding: ${({ theme }) => theme.spacing.double} ${({ theme }) => theme.spacing.single};
 `;
 

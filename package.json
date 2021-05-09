@@ -21,8 +21,7 @@
     "clean": "yarn clean:ios && yarn clean:android",
     "clean:ios": "cd ios && pod cache clean --all && rm -rf build && cd ..",
     "clean:android": "cd android && ./gradlew cleanBuildCache && cd ..",
-    "publish:stg": "expo publish --release-channel staging --target bare",
-    "publish:prod": "expo publish --release-channel prod --target bare",
+    "publish:js": "expo publish --release-channel prod --target bare",
     "detox-setup": "detox clean-framework-cache && detox build-framework-cache",
     "build:test:e2e": "detox build -c ios && detox test -c ios",
     "test:e2e": "detox test -c ios"
@@ -32,6 +31,7 @@
     "@react-native-community/checkbox": "^0.5.7",
     "@react-native-community/datetimepicker": "^3.0.9",
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/netinfo": "^6.0.0",
     "@react-native-firebase/analytics": "^11.1.2",
     "@react-native-firebase/app": "^11.1.2",
     "@react-native-firebase/auth": "^11.1.2",
