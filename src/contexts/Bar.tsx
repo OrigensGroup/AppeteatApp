@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
 
 import { Bar } from '../types/Bar';
+import loadBar from '../utils/loadBar';
 
 export const BarContext = React.createContext<
   <T extends ValueOf<Bar>>(document: keyof Bar) => [T, (v: T | ((newV: T) => T)) => void]
@@ -25,23 +26,7 @@ const BarProvider: React.FunctionComponent<BarProviderProps> = ({ children, load
     const barUnsubscribe = firestore()
       .collection('bar')
       .onSnapshot(async (bar) => {
-        const loadedDocs = await Promise.all(
-          bar.docs.map(
-            async (doc): Promise<{ id: keyof Bar; data: ValueOf<Bar> }> => {
-              const data = (await doc.data()) as ValueOf<Bar>;
-              const id = doc.id as keyof Bar;
-
-              return { id, data };
-            },
-          ),
-        );
-
-        const newBar = {} as Bar;
-
-        loadedDocs.forEach((doc) => {
-          // @ts-ignore
-          newBar[doc.id] = doc.data;
-        });
+        const newBar = await loadBar(bar);
         setLocalBar(newBar);
       });
 
