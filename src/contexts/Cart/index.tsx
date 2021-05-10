@@ -95,7 +95,7 @@ const CartProvider: React.FunctionComponent<CartProviderProps> = ({ children }) 
   useEffect(() => {
     const subtotal = cart.reduce((acc, item) => acc + calculateItemPrice(item), 0);
 
-    const serviceCharge = Math.round(subtotal * 0.125 * 100) / 100;
+    const serviceCharge = Math.round(subtotal * settings.serviceFee) / 100;
 
     setPricing((oldPricing) => {
       const totalPlusCharge =

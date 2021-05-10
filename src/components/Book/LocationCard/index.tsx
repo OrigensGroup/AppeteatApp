@@ -9,7 +9,6 @@ import withFeatureFlag from '../../../HOC/withFeatureFlag';
 
 import Text from '../../shared/Text';
 import type { Venue } from '../../../types/Venue';
-import bookTranslations from '../../../translations/book';
 
 import { normalisedSource } from '../../../utils/image';
 
@@ -26,6 +25,7 @@ import {
   LocationDescription,
 } from './styles';
 import useSettings from '../../../hooks/useSettings';
+import { t } from '../../../translations';
 
 const BookATableButtonWithFlag = withFeatureFlag(BookATableButton, 'FEAT_BOOK');
 
@@ -86,7 +86,7 @@ const LocationCard: React.FunctionComponent<LocationCardProps> = ({ onClick, ven
           </ShareButton>
           <BookATableButtonWithFlag onPress={onClick(venue)}>
             <Text bold color="tertiary" fontSize={12}>
-              {bookTranslations.locationsListPage.bookATableModal.cta}
+              {t('bookTranslations.locationsListPage.bookATableModal.cta')}
             </Text>
           </BookATableButtonWithFlag>
         </ButtonContainer>

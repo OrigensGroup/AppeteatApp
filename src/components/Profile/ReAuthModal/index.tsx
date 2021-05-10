@@ -10,7 +10,6 @@ import LoginTextField from '../../shared/LoginTextField';
 import Text from '../../shared/Text';
 import useUserData from '../../../hooks/useUserData';
 
-import profileTranslations from '../../../translations/profile';
 import InfoUpdatedCard from '../InfoUpdatedCard';
 
 import {
@@ -22,6 +21,7 @@ import {
   SumbmitButtonWrapper,
   InfoUpdatedContainer,
 } from './styles';
+import { t } from '../../../translations';
 
 interface ReAuthModalProps {
   isVisible: boolean;
@@ -116,7 +116,7 @@ const ReAuthModal: React.FunctionComponent<ReAuthModalProps> = ({
                 )}
                 <SumbmitButtonWrapper onPress={handleSubmit}>
                   <Text bold color="secondary" fontSize={18}>
-                    {profileTranslations.settingsPage.confirm}
+                    {t('profileTranslations.settingsPage.confirm')}
                   </Text>
                 </SumbmitButtonWrapper>
               </ModalDescription>

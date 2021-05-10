@@ -1,4 +1,5 @@
 export default {
+  lang: 'en',
   STRIPE_ACCOUNT:
     'pk_test_51IXoayHjmBwwWLCdGtfw6jG2J4BopyV7zYewSs1QnZ8oLa6B7lBn4jRSsEydrLuhmzIKcVpQjjpKXuV2uwgvmiYf00raAa3MDs',
   CONNECTED_ACCOUNT_ID: 'acct_1IZ0PIIEXsFuf8rg',

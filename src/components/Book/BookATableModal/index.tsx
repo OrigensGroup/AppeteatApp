@@ -22,8 +22,6 @@ import ViewCta from '../../shared/ViewCta';
 import { Booking } from '../../../types/Booking';
 import { Venue } from '../../../types/Venue';
 
-import bookTranslations, { minutes, months } from '../../../translations/book';
-
 import {
   SpinnerContainer,
   PopUpContainer,
@@ -33,6 +31,7 @@ import {
   PickerContainer,
   Space,
 } from './styles';
+import { t } from '../../../translations';
 
 interface BookATableModalProps {
   venue: Venue | undefined;
@@ -125,7 +124,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
               <Picker
                 icon={<CalendarIcon color={theme.colors.fixedBlack} name="calendar" size={28} />}
                 onPress={showDatepicker}
-                textValue={`${date.getDate()} ${months[date.getMonth()]}`}
+                textValue={`${date.getDate()} ${t('bookTranslations.modalMonths')[date.getMonth()]}`}
                 title="Date"
               />
             </PickerContainer>
@@ -136,8 +135,8 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
                 onPress={showTimepicker}
                 textValue={
                   date.getHours() > 11
-                    ? `${minutes[date.getHours()]}:${date.getMinutes()} PM`
-                    : `${minutes[date.getHours()]}:${date.getMinutes()} AM`
+                    ? `${t('bookTranslations.modalMinutes')[date.getHours()]}:${date.getMinutes()} PM`
+                    : `${t('bookTranslations.modalMinutes')[date.getHours()]}:${date.getMinutes()} AM`
                 }
                 title="Time"
               />
@@ -159,13 +158,13 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
           <Spinner
             initialValue={localQuantity}
             onChange={updateQuantity}
-            title={bookTranslations.locationsListPage.bookATableModal.spinner}
+            title={t('bookTranslations.locationsListPage.bookATableModal.spinner')}
           />
         </SpinnerContainer>
         <ConfirmButton>
           <ViewCta onClick={onSubmit}>
             <Text bold color="fixedWhite" fontSize={14}>
-              {bookTranslations.locationsListPage.bookATableModal.confirm}
+              {t('bookTranslations.locationsListPage.bookATableModal.confirm')}
             </Text>
           </ViewCta>
         </ConfirmButton>

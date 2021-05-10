@@ -4,13 +4,13 @@ import { RowMap, SwipeListView } from 'react-native-swipe-list-view';
 import { useNavigation } from '@react-navigation/native';
 
 import useCart from '../../../../hooks/useCart';
-import cartTranslations from '../../../../translations/cart';
 import type { OrderItem } from '../../../../types/OrderItem';
 import Text from '../../../shared/Text';
 
 import CartItem from '../../CartItem';
 
 import { ItemSummaryContainer, DeleteButton } from './styles';
+import { t } from '../../../../translations';
 
 interface ItemSummaryProps {
   onUpdate: (orderItem: OrderItem) => () => void;
@@ -52,7 +52,7 @@ const ItemSummary: React.FunctionComponent<ItemSummaryProps> = ({ onUpdate }) =>
     return (
       <DeleteButton onPress={() => deleteRow(itemData, rowMap)}>
         <Text bold color="fixedWhite" fontSize={18}>
-          {cartTranslations.checkoutPage.removeItemSwipe.title}
+          {t('cartTranslations.checkoutPage.removeItemSwipe.title')}
         </Text>
       </DeleteButton>
     );

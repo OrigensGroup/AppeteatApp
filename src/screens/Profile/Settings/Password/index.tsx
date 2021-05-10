@@ -8,8 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 
 import useUserData from '../../../../hooks/useUserData';
 
-import profileTranslations from '../../../../translations/profile';
-
 import LoginTextField from '../../../../components/shared/LoginTextField';
 
 import TopBar from '../../../../components/shared/TopBar';
@@ -21,6 +19,7 @@ import InfoUpdatedCard from '../../../../components/Profile/InfoUpdatedCard';
 import { PasswordSchema } from './passwordSchema';
 
 import { PasswordContainer, PasswordFieldContainer, SaveButton, InfoUpdateContainer } from './styles';
+import { t } from '../../../../translations';
 
 interface PasswordProps {}
 
@@ -105,23 +104,23 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
     >
       {({ errors, handleChange, handleSubmit }) => (
         <PasswordContainer>
-          <TopBar back="back" hideFilter title={profileTranslations.passwordPage.title} />
+          <TopBar back="back" hideFilter title={t('profileTranslations.passwordPage.title')} />
           <PasswordFieldContainer>
             <LoginTextField
               error={errors.password}
-              placeholder={profileTranslations.passwordPage.currentPassword}
+              placeholder={t('profileTranslations.passwordPage.currentPassword')}
               textContentType="password"
               updateValue={handleChange('password')}
             />
             <LoginTextField
               error={errors.newPassword}
-              placeholder={profileTranslations.passwordPage.newPassword}
+              placeholder={t('profileTranslations.passwordPage.newPassword')}
               textContentType="password"
               updateValue={handleChange('newPassword')}
             />
             <LoginTextField
               error={errors.reNewPassword}
-              placeholder={profileTranslations.passwordPage.reNewPassword}
+              placeholder={t('profileTranslations.passwordPage.reNewPassword')}
               textContentType="password"
               updateValue={handleChange('reNewPassword')}
             />
@@ -140,7 +139,7 @@ const Password: React.FunctionComponent<PasswordProps> = () => {
           <SaveButton>
             <ViewCta onClick={handleSubmit}>
               <Text bold color="fixedWhite" fontSize={14}>
-                {profileTranslations.settingsPage.save}
+                {t('profileTranslations.settingsPage.save')}
               </Text>
             </ViewCta>
           </SaveButton>

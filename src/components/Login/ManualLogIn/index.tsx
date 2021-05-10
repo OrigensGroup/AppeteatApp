@@ -12,8 +12,6 @@ import LogInTextField from '../LogInInputField';
 import SignUpButton from '../Buttons/SignUpButton';
 import LogInButton from '../Buttons/LogInButton';
 
-import loginTranslations from '../../../translations/login';
-
 import useUserData from '../../../hooks/useUserData';
 
 import { initUserData } from '../../../utils/manageUserdata';
@@ -30,6 +28,7 @@ import {
   TextContainer,
 } from './styles';
 import Text from '../../shared/Text';
+import { t } from '../../../translations';
 
 interface ManualLogInProps {
   showAnonLogin?: boolean;
@@ -72,14 +71,14 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
         setLoading(false);
 
         if (error.code === 'auth/invalid-email') {
-          Alert.alert(loginTranslations.errorSignInEmail.label, loginTranslations.errorSignInEmail.message);
+          Alert.alert(t('loginTranslations.errorSignInEmail.label'), t('loginTranslations.errorSignInEmail.message'));
           return;
         }
 
         if (error.code === 'auth/wrong-password') {
           Alert.alert(
-            loginTranslations.errorWrongPasswordSignIn.label,
-            loginTranslations.errorWrongPasswordSignIn.message,
+            t('loginTranslations.errorWrongPasswordSignIn.label'),
+            t('loginTranslations.errorWrongPasswordSignIn.message'),
           );
           return;
         }
@@ -104,17 +103,17 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
         setLoading(false);
 
         if (error.code === 'auth/invalid-email') {
-          Alert.alert(loginTranslations.errorSignInEmail.label, loginTranslations.errorSignInEmail.message);
+          Alert.alert(t('loginTranslations.errorSignInEmail.label'), t('loginTranslations.errorSignInEmail.message'));
           return;
         }
         if (error.code === 'auth/user-not-found') {
-          Alert.alert(loginTranslations.errorUserNotFound.label, loginTranslations.errorUserNotFound.message);
+          Alert.alert(t('loginTranslations.errorUserNotFound.label'), t('loginTranslations.errorUserNotFound.message'));
           return;
         }
         if (error.code === 'auth/wrong-password') {
           Alert.alert(
-            loginTranslations.errorWrongPasswordSignIn.label,
-            loginTranslations.errorWrongPasswordSignIn.message,
+            t('loginTranslations.errorWrongPasswordSignIn.label'),
+            t('loginTranslations.errorWrongPasswordSignIn.message'),
           );
           return;
         }
@@ -142,43 +141,48 @@ const ManualLogIn: React.FunctionComponent<ManualLogInProps> = ({ changeModule, 
               testID="LoginButton"
               autoCapitalize="none"
               error={errors.email}
-              label={loginTranslations.emailField.label}
-              placeholder={loginTranslations.emailField.placeholder}
+              label={t('loginTranslations.emailField.label')}
+              placeholder={t('loginTranslations.emailField.placeholder')}
               placeholderTextColor={theme.colors.border}
               textContentType="emailAddress"
               updateValue={handleChange('email')}
             />
             <LogInTextField
               error={errors.password}
-              label={loginTranslations.passwordField.label}
-              placeholder={loginTranslations.passwordField.placeholder}
+              label={t('loginTranslations.passwordField.label')}
+              placeholder={t('loginTranslations.passwordField.placeholder')}
               placeholderTextColor={theme.colors.border}
               secondary
               textContentType="password"
               updateValue={handleChange('password')}
             />
-            <SignUpButton buttonText={loginTranslations.forgotPassword.cta} onClick={forgotPassword} text="" small />
+            <SignUpButton
+              buttonText={t('loginTranslations.forgotPassword.cta')}
+              onClick={forgotPassword}
+              text=""
+              small
+            />
           </TextFieldsWrapper>
           <ButtonsWrapper>
-            <LogInButton loading={loading} onClick={handleSubmit} text={loginTranslations.loginButton.label} />
+            <LogInButton loading={loading} onClick={handleSubmit} text={t('loginTranslations.loginButton.label')} />
             <OrSeparator>
               <Line />
               <TextContainer>
                 <Text fontSize={16} color="primary">
-                  {loginTranslations.orSeparator.label}
+                  {t('loginTranslations.orSeparator.label')}
                 </Text>
               </TextContainer>
               <Line />
             </OrSeparator>
             <LogInButton
               onClick={register}
-              text={loginTranslations.signUpSection.buttonLabel}
+              text={t('loginTranslations.signUpSection.buttonLabel')}
               active
               color="tertiary"
             />
             {showAnonLogin && (
               <AnonButtonWrapper>
-                <SignUpButton buttonText={loginTranslations.anonSection.label} onClick={anonSignIn} small />
+                <SignUpButton buttonText={t('loginTranslations.anonSection.label')} onClick={anonSignIn} small />
               </AnonButtonWrapper>
             )}
           </ButtonsWrapper>

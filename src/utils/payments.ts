@@ -9,6 +9,7 @@ export type PaymentStatus = {
 };
 
 const payToApi = async (payment: Payment): Promise<PaymentStatus> => {
+  console.log('pay');
   const res = await fetch(`${Config.API_URL}/api/payments`, {
     headers: {
       'Content-Type': 'application/json',

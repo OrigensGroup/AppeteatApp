@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 import OrderCard from '../../../components/Profile/OrderCard';
 import TopBar from '../../../components/shared/TopBar';
 import useUserData from '../../../hooks/useUserData';
-import profileTranslations from '../../../translations/profile';
+import { t } from '../../../translations';
 import { Order } from '../../../types/Order';
 
 import { OrdersContainer, OrdersList } from './styles';
@@ -18,7 +18,7 @@ const Orders: React.FunctionComponent<OrdersProps> = () => {
 
   return (
     <OrdersContainer>
-      <TopBar showBorder back="back" hideFilter title={profileTranslations.ordersPage.title} />
+      <TopBar showBorder back="back" hideFilter title={t('profileTranslations.ordersPage.title')} />
       <OrdersList>
         <FlatList
           data={userData.orders}

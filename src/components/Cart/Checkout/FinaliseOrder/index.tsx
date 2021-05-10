@@ -2,37 +2,42 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
 import stripe from 'tipsi-stripe';
+import { useNetInfo } from '@react-native-community/netinfo';
 
 import useCart from '../../../../hooks/useCart';
 import useOrders from '../../../../hooks/useOrders';
 import useUserData from '../../../../hooks/useUserData';
 
-import cartTranslations from '../../../../translations/cart';
 import type { Order } from '../../../../types/Order';
 import { makeCardPayment, makeNativePayment, PaymentStatus } from '../../../../utils/payments';
 import Text from '../../../shared/Text';
 import ViewCta from '../../../shared/ViewCta';
 
-import { CheckoutServices } from '../../../../types/Checkout';
+import type { CheckoutServices, CheckoutServiceValidationError } from '../../../../types/Checkout';
 
 import { validateCheckoutService } from '../../../../screens/Cart/Checkout/validateCheckoutService';
 
 import { generateNumberId } from './generateNumberId';
 
 import { FinaliseOrderContainer } from './styles';
+import { t } from '../../../../translations';
 
 interface FinaliseOrderProps {
   onPaymentError: (b: boolean) => void;
   checkoutService: CheckoutServices;
 }
 
+const isError = (e: boolean | CheckoutServiceValidationError) => typeof e !== 'boolean';
+
 const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutService, onPaymentError }) => {
+  const netInfo = useNetInfo();
   const navigation = useNavigation();
   const { cart, pricing, clearCart } = useCart();
-  const [, setOrders] = useOrders();
+  const { addNewOrder } = useOrders();
   const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
-  // const [settings] = useSettings();
+
+  console.log(netInfo);
 
   const finaliseOrder = async () => {
     let paymentRes = null;
@@ -46,7 +51,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
       return '';
     }
 
-    if (!validateCheckoutService(checkoutService)) {
+    if (isError(validateCheckoutService(checkoutService))) {
       onPaymentError(true);
       setLoadingPayment(false);
       return;
@@ -107,10 +112,7 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
         ...checkoutService,
       };
 
-      setOrders((oldOrders) => ({
-        ...oldOrders,
-        list: [...oldOrders.list, order],
-      }));
+      await addNewOrder(order);
 
       addOrder(order);
 
@@ -130,15 +132,19 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
     }
   };
 
+  const isErrorInCheckout = isError(validateCheckoutService(checkoutService));
+
   return (
     <FinaliseOrderContainer>
-      <ViewCta onClick={!loadingPayment ? finaliseOrder : undefined}>
-        <Text bold color="fixedWhite" fontSize={14}>
-          {!validateCheckoutService(checkoutService)
-            ? cartTranslations.checkoutPage.goToCheckoutCta.completeFields
+      <ViewCta ghost={isErrorInCheckout} onClick={!loadingPayment ? finaliseOrder : undefined}>
+        <Text bold color={isErrorInCheckout ? 'tertiary' : 'fixedWhite'} fontSize={14}>
+          {isErrorInCheckout
+            ? t('cartTranslations.checkoutPage.goToCheckoutCta.completeFields')
             : !loadingPayment
-            ? cartTranslations.checkoutPage.goToCheckoutCta.title
-            : cartTranslations.checkoutPage.goToCheckoutCta.loading}
+            ? t('cartTranslations.checkoutPage.goToCheckoutCta.title')
+            : !netInfo.isInternetReachable
+            ? t('cartTranslations.checkoutPage.goToCheckoutCta.noInternet')
+            : t('cartTranslations.checkoutPage.goToCheckoutCta.loading')}
         </Text>
       </ViewCta>
     </FinaliseOrderContainer>

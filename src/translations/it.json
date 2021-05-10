@@ -1,0 +1,396 @@
+{
+  "bookTranslations": {
+    "locationsListPage": {
+      "bookATableModal": {
+        "spinner": "No di membri",
+        "cta": "Prenota",
+        "confirm": "Conferma prenotazione"
+      }
+    },
+    "modalMonths": {
+      "0": "Gennaio",
+      "1": "Febbraio",
+      "2": "Marzo",
+      "3": "Aprile",
+      "4": "Maggio",
+      "5": "Giugno",
+      "6": "Luglio",
+      "7": "Agosto",
+      "8": "Settembre",
+      "9": "Ottobre",
+      "10": "Novembre",
+      "11": "Dicembre"
+    },
+    "modalMinutes": {
+      "0": "12",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "11",
+      "12": "12",
+      "13": "1",
+      "14": "2",
+      "15": "3",
+      "16": "4",
+      "17": "5",
+      "18": "6",
+      "19": "7",
+      "20": "8",
+      "21": "9",
+      "22": "10",
+      "23": "11",
+      "24": "12"
+    }
+  },
+  "homeTranslations": {
+    "homePage": {
+      "showLocations": {
+        "cta": "Trovaci!"
+      },
+      "happyHourCard": {
+        "hourDigit": "Ore",
+        "minutesDigit": "Minuti"
+      }
+    }
+  },
+  "currencyTranslations": {
+    "currencyField": "€ "
+  },
+  "sharedTranslations": {
+    "tabs": {
+      "home": "Home",
+      "menu": "Menu",
+      "book": "Prenota",
+      "account": "Account"
+    }
+  },
+  "loginTranslations": {
+    "nameField": {
+      "label": "Nome",
+      "placeholder": "Nome Cognome"
+    },
+    "emailField": {
+      "label": "E-mail",
+      "placeholder": "mail@mail.com"
+    },
+    "passwordField": {
+      "label": "Password",
+      "secondaryLabel": "Conferma password",
+      "placeholder": "********"
+    },
+    "loginButton": {
+      "label": "Log In"
+    },
+    "orSeparator": {
+      "label": "oppure"
+    },
+    "registerButton": {
+      "label": "Registrati"
+    },
+    "signUpSection": {
+      "label": "Non hai un account?",
+      "buttonLabel": "Crea un nuovo account"
+    },
+    "anonSection": {
+      "label": "Continua senza account",
+      "buttonLabel": "Registrati  > "
+    },
+    "signInSection": {
+      "label": "Hai giá un account?",
+      "buttonLabel": "Hai giá un account?"
+    },
+    "forgotPassword": {
+      "goBack": "Indietro",
+      "resetPassword": "Resetta password",
+      "cta": "Password dimenticata?",
+      "label": "Email del login",
+      "placeholder": "mail@mail.com"
+    },
+    "errorSignInEmail": {
+      "label": "Indirizzon email incorretto",
+      "message": "L'indirizzo email inserito non sembra corretto. Riprova."
+    },
+    "emailSent": {
+      "label": "Resetta password",
+      "message": "Il link per resettare la password è stato mandato"
+    },
+    "errorWrongPasswordSignIn": {
+      "label": "Password incorretta",
+      "message": "La password inserita non sembra essere corretta. Riprova."
+    },
+    "errorUserNotFound": {
+      "label": "Indirizzo email invalido",
+      "message": "L'indirizzo email inserita non sembra essere associato a nessun account. Controlla l'indirizzo mail e riprova."
+    },
+    "usernameError": {
+      "label": "Username deve essere maggiore di 4 caratteri"
+    },
+    "passwordLenghtError": {
+      "label": "Passoword maggiore di 8 caratteri"
+    },
+    "confirmPasswordError": {
+      "label": "Le password non combaciano"
+    },
+    "passwordRequiredError": {
+      "label": "Password è obbligatoria"
+    },
+    "invalidPasswordError": {
+      "label": "La password deve contenere almeno un numero e una lettera e una lettera maiuscola e minimo 8 caratteri"
+    },
+    "emailAlreayInUse": {
+      "label": "Indirzzo email invalido"
+    },
+    "tooManyRequests": {
+      "label": "Accesso disabilitato troppi accessi effetutati per lo stesso account. Resetta la password o riprova più tardi"
+    },
+    "emailError": {
+      "label": "Email non può essere vuota"
+    },
+    "passwordError": {
+      "label": "Password non può essere vuota"
+    }
+  },
+  "menuTranslations": {
+    "menuPage": {
+      "title": "Menu",
+      "menuCard": {
+        "soldout": "Esaurito"
+      },
+      "searchModal": {
+        "noItems": {
+          "title": "Nessun risultato"
+        },
+        "searchTitle": {
+          "title": "Cerca"
+        },
+        "searchInput": {
+          "title": "Cerca..."
+        },
+        "closeCta": {
+          "title": "Chiudi"
+        }
+      },
+      "viewBasketField": {
+        "label": "Carrello",
+        "placeholder": "Carrello"
+      }
+    },
+    "singleItemPage": {
+      "sectionMinMax": {
+        "min": "Seleziona un minimo di ",
+        "max": ", e un massimo di "
+      },
+      "ingredients": {
+        "title": "Ingredienti"
+      },
+      "customise": {
+        "title": "Personalizza",
+        "placeholder": "Inserisci richesta"
+      },
+      "addToBasket": {
+        "cta": "Aggiungi",
+        "error": "Seleziona i campi"
+      }
+    }
+  },
+  "profileTranslations": {
+    "accountPage": {
+      "myReservation": "Le mie prenotazioni",
+      "myFavouriteCoctails": "Preferiti",
+      "showButton": "Vedi tutto",
+      "myOrders": "I miei ordini",
+      "notifications": "Notifiche",
+      "settings": "Impostazioni"
+    },
+    "reservationsPage": {
+      "title": "Le mie prenotazioni",
+      "addressNotFound": "Indirizzo non trovato",
+      "nameNotFound": "Località non trovata"
+    },
+    "favouriteCocktailsPage": {
+      "title": "Preferiti"
+    },
+    "ordersPage": {
+      "title": "I miei ordini",
+      "card": {
+        "cta": "Vedi"
+      }
+    },
+    "notificationsPage": {},
+    "settingsPage": {
+      "title": "Impostazioni",
+      "authentication": "Autenticazione",
+      "myCard": "Le mie carte",
+      "showButton": "Vedi tutto",
+      "email": "E-mail",
+      "name": "Nome",
+      "changePassword": "Cambia password",
+      "currentPassword": "Password attuale",
+      "newPassword": "Nuova password",
+      "reNewPassword": "Re inserisci password",
+      "save": "Salva",
+      "logOut": "Log Out",
+      "cancel": "Cancella",
+      "confirm": "Conferma",
+      "yes": "Si",
+      "logOutPromp": "Vuoi uscire dall'app?",
+      "informationUpdated": "Informazioni aggiornate con successo",
+      "error": "Informazioni invalide"
+    },
+    "personalInformationPage": {
+      "title": "Informazioni personali"
+    },
+    "passwordPage": {
+      "title": "Cambia password",
+      "changePassword": "Cambia password",
+      "currentPassword": "Password corrente",
+      "newPassword": "Nuova password",
+      "reNewPassword": "Re inserisci password"
+    },
+    "changeNamePage": {
+      "title": "Cambia email",
+      "save": "Salva"
+    },
+    "changeEmailPage": {
+      "email": "E-mail",
+      "name": "Nome"
+    }
+  },
+  "cartTranslations": {
+    "checkoutPage": {
+      "title": "Carrello",
+      "totalField": {
+        "title": "Totale"
+      },
+      "orderDetails": {
+        "title": "Dettagli ordine",
+        "eatIn": "A tavola",
+        "takeAway": "D'asporto",
+        "delivery": "Consegna"
+      },
+      "deliveryInformation": {
+        "title": "Informazioni consegna"
+      },
+      "takeAwayInformation": {
+        "title": "Informazioni d'asporto"
+      },
+      "paymentDetails": {
+        "title": "Scegli metodo di pagamento",
+        "cta": "Scegli"
+      },
+      "tableNumber": {
+        "title": "Inserisci numero del tavolo",
+        "label": "Numero del tavolo",
+        "placeholder": "Ex. 23"
+      },
+
+      "takeAway": {
+        "title": "Dettagli per l'asporto",
+        "label": "Ritiro",
+        "placeholder": "hh : mm"
+      },
+      "deliveryModal": {
+        "title": "Informazioni consegna"
+      },
+
+      "takeAwayModal": {
+        "title": "Informazioni per l'asporto",
+        "cta": "Conferma",
+        "telephone": "Inserisci numero di telefono",
+        "address": "i.e. 2 Oriens Mews",
+        "orderTime": "Ritiro"
+      },
+      "delivery": {
+        "title": "Inserisci dettagli per la consegna",
+        "label": "Orario consegna",
+        "placeholder": "hh : mm"
+      },
+
+      "paymentMethod": {
+        "cashPayment": "Paga in contanti",
+        "nativeApplePay": "Apple pay",
+        "nativeGooglePay": "Google pay",
+        "cardPrefix": "Carta **** **** **** ",
+        "title": "Scegli metodo di pagamento",
+        "label": "Metodo di pagamento",
+        "pay": "Paga",
+        "addNew": "Aggiungi metodo di pagamento"
+      },
+
+      "commentAndAllergies": {
+        "title": "Qualche allergia/commento?",
+        "label": "Commento/Allergie",
+        "placeholder": "Inserisci richiesta"
+      },
+
+      "voucher": {
+        "title": "Inserisci codice sconto",
+        "label": "Voucher",
+        "placeholder": "Inserisci codice sconto"
+      },
+
+      "removeItemSwipe": {
+        "title": "Rimuovi"
+      },
+      "removeItemModal": {
+        "title": "Rimuovi elemento"
+      },
+
+      "subtotal": {
+        "title": "Subtotale"
+      },
+      "goToCheckoutCta": {
+        "title": "Checkout",
+        "loading": "Caricamento...",
+        "completeFields": "Completa i campi",
+        "noInternet": "Connessione a intenet assente"
+      },
+      "deliveryFee": {
+        "title": "Spesa spedizione"
+      },
+      "serviceFee": {
+        "title": "Coperto"
+      },
+      "updateModal": {
+        "price": "Prezzo:",
+        "cta": "Aggiorna"
+      },
+      "updateModalField": {
+        "label": "Aggiorna",
+        "placeholder": "Aggiorna"
+      }
+    },
+    "orderPage": {
+      "title": "Informazioni ordine",
+      "orderInfo": {
+        "title": "Numero ordine",
+        "deliveryEst": "sarà pronto ",
+        "delivery": "sarà pronto per le ",
+        "asap": "ASAP"
+      },
+
+      "orderStatus": {
+        "received": "Ordine ricevuto",
+        "preparing": "Preparando",
+        "done": "Fatto"
+      },
+      "orderItems": {
+        "text": "Lista ordini"
+      }
+    },
+    "checkoutErrors": {
+      "tableError": "Manca il numero del tavolo",
+      "phoneError": "Manca il numero di telefono",
+      "orderTimeError": "Manca l'ora dell'ordine",
+      "cardError": "Manca la carta",
+      "addressError": "Manca l'indirizzo"
+    }
+  }
+}

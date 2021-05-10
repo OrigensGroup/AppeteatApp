@@ -8,7 +8,7 @@ import { TextFieldContainer, TextFieldInput, ErrorContainer, Container } from '.
 
 interface LoginTextFieldProps extends TextInputProps {
   updateValue?: (value: string) => void;
-  error?: string | null;
+  error?: string;
 }
 
 const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ error, updateValue, ...rest }) => {
@@ -36,7 +36,7 @@ const LoginTextField: React.FunctionComponent<LoginTextFieldProps> = ({ error, u
       {error && (
         <ErrorContainer>
           <Text bold color="errorColor" fontSize={14}>
-            *{error}
+            * {error}
           </Text>
         </ErrorContainer>
       )}

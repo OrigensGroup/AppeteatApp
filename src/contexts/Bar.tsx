@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
 
-import { Bar, Homepage, Menu } from '../types/Bar';
+import { Bar } from '../types/Bar';
 
 export const BarContext = React.createContext<
   <T extends ValueOf<Bar>>(document: keyof Bar) => [T, (v: T | ((newV: T) => T)) => void]
@@ -22,38 +22,32 @@ const BarProvider: React.FunctionComponent<BarProviderProps> = ({ children, load
   }, [loadedBar]);
 
   useEffect(() => {
-    const menuSubscriber = firestore()
+    const barUnsubscribe = firestore()
       .collection('bar')
-      .doc('menu')
-      .onSnapshot((documentSnapshot) => {
-        if (documentSnapshot !== null) {
-          const newMenu = documentSnapshot.data() as Menu;
+      .onSnapshot(async (bar) => {
+        const loadedDocs = await Promise.all(
+          bar.docs.map(
+            async (doc): Promise<{ id: keyof Bar; data: ValueOf<Bar> }> => {
+              const data = (await doc.data()) as ValueOf<Bar>;
+              const id = doc.id as keyof Bar;
 
-          setLocalBar((old) => ({
-            ...old,
-            menu: newMenu,
-          }));
-        }
-      });
+              return { id, data };
+            },
+          ),
+        );
 
-    const homepageSubscriber = firestore()
-      .collection('bar')
-      .doc('homepage')
-      .onSnapshot((documentSnapshot) => {
-        if (documentSnapshot !== null) {
-          const newHomepage = documentSnapshot.data() as Homepage;
+        const newBar = {} as Bar;
 
-          setLocalBar((old) => ({
-            ...old,
-            homepage: newHomepage,
-          }));
-        }
+        loadedDocs.forEach((doc) => {
+          // @ts-ignore
+          newBar[doc.id] = doc.data;
+        });
+        setLocalBar(newBar);
       });
 
     // Stop listening for updates when no longer required
     return () => {
-      menuSubscriber();
-      homepageSubscriber();
+      barUnsubscribe();
     };
   }, []);
 

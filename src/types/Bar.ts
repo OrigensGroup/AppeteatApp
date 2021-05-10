@@ -41,7 +41,7 @@ type FeatureFlags = {
 };
 
 interface DeliverySettings {
-  oredersPerTimeFrame: number;
+  ordersPerTimeFrame: number;
   timeFrame: number;
   openTime: string;
   closeTime: string;
@@ -52,6 +52,7 @@ export interface Settings {
   features: FeatureFlags;
   deliverySettings: DeliverySettings;
   logoImage: string;
+  serviceFee: number;
 }
 
 export interface Bar {

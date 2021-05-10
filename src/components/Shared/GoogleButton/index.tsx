@@ -12,7 +12,7 @@ import useUserData from '../../../hooks/useUserData';
 import Config from '../../../utils/config';
 
 import { ButtonContainer, GoogleImage } from './styles';
-import loginTranslations from '../../../translations/login';
+import { t } from '../../../translations';
 
 GoogleSignin.configure({
   webClientId: Config.GOOGLE_WEBCLIENT_ID,
@@ -83,8 +83,8 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
       console.log('Err', error);
       if (error.code === 'auth/credential-already-in-use') {
         Alert.alert(
-          loginTranslations.errorWrongPasswordSignIn.label,
-          loginTranslations.errorWrongPasswordSignIn.message,
+          t('loginTranslations.errorWrongPasswordSignIn.label'),
+          t(' loginTranslations.errorWrongPasswordSignIn.message'),
         );
       }
       setLoading(false);

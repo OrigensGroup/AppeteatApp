@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
-
-import loginTranslations from '../../../translations/login';
+import { t } from '../../../translations';
 
 export const ForgotSchema = Yup.object().shape({
-  email: Yup.string().email().required(loginTranslations.emailError.label),
+  email: Yup.string().email().required(t('loginTranslations.emailError.label')),
 });

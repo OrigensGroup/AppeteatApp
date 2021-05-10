@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Platform } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Platform, View } from 'react-native';
+
+import { wrapScrollView, useScrollIntoView } from 'react-native-scroll-into-view';
 
 import type { Card } from 'tipsi-stripe';
-
-import cartTranslations from '../../../translations/cart';
 
 import type { OrderItem } from '../../../types/OrderItem';
 
@@ -24,17 +24,26 @@ import TakeAwayModal from '../../../components/Cart/Checkout/TakeAwayModal';
 import { CheckoutServices } from '../../../types/Checkout';
 
 import { CheckoutContainer, CheckoutSummarySection, CheckoutSwiper, ItemSummarySection } from './styles';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { validateCheckoutService } from './validateCheckoutService';
+import { t } from '../../../translations';
+
+const CustomScrollView = wrapScrollView(CheckoutSwiper);
 
 interface CheckoutProps {}
 
-const Checkout: React.FunctionComponent<CheckoutProps> = () => {
-  const [checkoutService, setCheckoutService] = useState<CheckoutServices>({
-    type: 'eatin',
-    allergy: '',
-    paymentOption: null,
-    table: '',
-  });
+interface CheckoutContent {
+  showError: boolean;
+  checkoutService: CheckoutServices;
+  setCheckoutService: React.Dispatch<React.SetStateAction<CheckoutServices>>;
+}
+
+const CheckoutContent: React.FunctionComponent<CheckoutContent> = ({
+  showError,
+  checkoutService,
+  setCheckoutService,
+}) => {
+  const scrollIntoView = useScrollIntoView();
+  const viewRef = useRef<View>(null);
 
   // START - CARD MODAL STATE
 
@@ -57,8 +66,6 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
   };
 
   const [takeAwayModal, setTakeAwayModal] = useState(false);
-
-  const [showError, setShowError] = useState(false);
 
   const showTakeAwayModal = () => {
     setTakeAwayModal(true);
@@ -108,9 +115,20 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
     });
   };
 
+  useEffect(() => {
+    if (showError) {
+      viewRef.current && scrollIntoView(viewRef.current);
+    }
+  }, [showError, scrollIntoView]);
+
+  const takeAwayError = checkoutService.orderTime === '' || checkoutService.phoneNumber === '';
+
+  const deliveryError = takeAwayError || checkoutService.address === '';
+
   return (
-    <CheckoutContainer>
+    <>
       <TakeAwayModal
+        errors={showError ? validateCheckoutService(checkoutService) : false}
         delivery={checkoutService.type === 'delivery'}
         handleChange={updateModalValue}
         isModalVisible={takeAwayModal}
@@ -128,80 +146,108 @@ const Checkout: React.FunctionComponent<CheckoutProps> = () => {
         updateValue={updateModalValue(explanationModal.code)}
         value={checkoutService[explanationModal.code]}
       />
-      <TopBar back="MenuList" hideFilter title={cartTranslations.checkoutPage.title} showBorder />
-      <CheckoutSwiper showsVerticalScrollIndicator={false}>
-        <ItemSummarySection>
-          <ItemSummary onUpdate={toggleModal} />
-        </ItemSummarySection>
-        <SelectService selectService={setCheckoutService} />
-        <CheckoutSummarySection>
-          {checkoutService.type === 'eatin' && (
-            <ValueItem
-              color={showError && checkoutService.table === '' ? 'errorColor' : 'primary'}
-              icon="location-outline"
-              onItemClick={showDescriptionModal({
-                title: cartTranslations.checkoutPage.tableNumber.label,
-                placeholder: cartTranslations.checkoutPage.tableNumber.placeholder,
-                code: 'table',
-              })}
-              title={checkoutService.table ? checkoutService.table : cartTranslations.checkoutPage.tableNumber.title}
-            />
-          )}
-          {checkoutService.type === 'takeaway' && (
-            <ValueItem
-              color={showError && checkoutService.orderTime === '' ? 'errorColor' : 'primary'}
-              icon="location-outline"
-              onItemClick={showTakeAwayModal}
-              title={
-                checkoutService.orderTime ? checkoutService.orderTime : cartTranslations.checkoutPage.takeAway.title
-              }
-            />
-          )}
-          {checkoutService.type === 'delivery' && (
-            <ValueItem
-              color={showError && checkoutService.address === '' ? 'errorColor' : 'primary'}
-              icon="location-outline"
-              onItemClick={showTakeAwayModal}
-              title={checkoutService.address ? checkoutService.address : cartTranslations.checkoutPage.delivery.title}
-            />
-          )}
+      <ItemSummarySection>
+        <ItemSummary onUpdate={toggleModal} />
+      </ItemSummarySection>
+      <SelectService selectService={setCheckoutService} />
+      <CheckoutSummarySection ref={viewRef}>
+        {checkoutService.type === 'eatin' && (
           <ValueItem
-            color={showError && checkoutService.paymentOption === null ? 'errorColor' : 'primary'}
-            icon="ios-card"
-            onItemClick={showCardModal}
-            title={
-              checkoutService.paymentOption === 'cash'
-                ? cartTranslations.checkoutPage.paymentMethod.cashPayment
-                : checkoutService.paymentOption === 'native'
-                ? Platform.OS === 'ios'
-                  ? cartTranslations.checkoutPage.paymentMethod.nativeApplePay
-                  : cartTranslations.checkoutPage.paymentMethod.nativeGooglePay
-                : checkoutService.paymentOption === null
-                ? cartTranslations.checkoutPage.paymentMethod.title
-                : Object.keys(checkoutService.paymentOption).length !== 0
-                ? cartTranslations.checkoutPage.paymentMethod.cardPrefix +
-                  checkoutService.paymentOption.number.substr(-4, 4)
-                : cartTranslations.checkoutPage.paymentMethod.title
-            }
-          />
-          <ValueItem
-            color="primary"
-            icon="ios-chatbox-outline"
+            color={showError && checkoutService.table === '' ? 'errorColor' : 'primary'}
+            icon="location-outline"
             onItemClick={showDescriptionModal({
-              title: cartTranslations.checkoutPage.commentAndAllergies.label,
-              placeholder: cartTranslations.checkoutPage.commentAndAllergies.placeholder,
-              code: 'allergy',
+              title: t('cartTranslations.checkoutPage.tableNumber.label'),
+              placeholder: t('cartTranslations.checkoutPage.tableNumber.placeholder'),
+              code: 'table',
             })}
+            title={checkoutService.table ? checkoutService.table : t('cartTranslations.checkoutPage.tableNumber.title')}
+          />
+        )}
+        {checkoutService.type === 'takeaway' && (
+          <ValueItem
+            color={showError && takeAwayError ? 'errorColor' : 'primary'}
+            icon="location-outline"
+            onItemClick={showTakeAwayModal}
             title={
-              checkoutService.allergy
-                ? checkoutService.allergy
-                : cartTranslations.checkoutPage.commentAndAllergies.title
+              checkoutService.orderTime ? checkoutService.orderTime : t('cartTranslations.checkoutPage.takeAway.title')
             }
           />
-          <TotalSection checkoutSection={checkoutService.type} />
-        </CheckoutSummarySection>
-      </CheckoutSwiper>
-      <FinaliseOrder checkoutService={checkoutService} onPaymentError={setShowError} />
+        )}
+        {checkoutService.type === 'delivery' && (
+          <ValueItem
+            color={showError && deliveryError ? 'errorColor' : 'primary'}
+            icon="location-outline"
+            onItemClick={showTakeAwayModal}
+            title={
+              checkoutService.address ? checkoutService.address : t('cartTranslations.checkoutPage.delivery.title')
+            }
+          />
+        )}
+        <ValueItem
+          color={showError && checkoutService.paymentOption === null ? 'errorColor' : 'primary'}
+          icon="ios-card"
+          onItemClick={showCardModal}
+          title={
+            checkoutService.paymentOption === 'cash'
+              ? t('cartTranslations.checkoutPage.paymentMethod.cashPayment')
+              : checkoutService.paymentOption === 'native'
+              ? Platform.OS === 'ios'
+                ? t('cartTranslations.checkoutPage.paymentMethod.nativeApplePay')
+                : t('cartTranslations.checkoutPage.paymentMethod.nativeGooglePay')
+              : checkoutService.paymentOption === null
+              ? t('cartTranslations.checkoutPage.paymentMethod.title')
+              : Object.keys(checkoutService.paymentOption).length !== 0
+              ? t('cartTranslations.checkoutPage.paymentMethod.cardPrefix') +
+                checkoutService.paymentOption.number.substr(-4, 4)
+              : t('cartTranslations.checkoutPage.paymentMethod.title')
+          }
+        />
+        <ValueItem
+          color="primary"
+          icon="ios-chatbox-outline"
+          onItemClick={showDescriptionModal({
+            title: t('cartTranslations.checkoutPage.commentAndAllergies.label'),
+            placeholder: t('cartTranslations.checkoutPage.commentAndAllergies.placeholder'),
+            code: 'allergy',
+          })}
+          title={
+            checkoutService.allergy
+              ? checkoutService.allergy
+              : t('cartTranslations.checkoutPage.commentAndAllergies.title')
+          }
+        />
+        <TotalSection checkoutSection={checkoutService.type} />
+      </CheckoutSummarySection>
+    </>
+  );
+};
+
+const Checkout: React.FunctionComponent<CheckoutProps> = () => {
+  const [checkoutService, setCheckoutService] = useState<CheckoutServices>({
+    type: 'eatin',
+    allergy: '',
+    paymentOption: null,
+    table: '',
+  });
+
+  const [showError, setShowError] = useState(false);
+
+  const onPaymentError = (b: boolean) => {
+    setShowError(b);
+  };
+
+  return (
+    <CheckoutContainer>
+      <TopBar back="MenuList" hideFilter title={t('cartTranslations.checkoutPage.title')} showBorder />
+
+      <CustomScrollView showsVerticalScrollIndicator={false}>
+        <CheckoutContent
+          checkoutService={checkoutService}
+          setCheckoutService={setCheckoutService}
+          showError={showError}
+        />
+      </CustomScrollView>
+      <FinaliseOrder checkoutService={checkoutService} onPaymentError={onPaymentError} />
     </CheckoutContainer>
   );
 };

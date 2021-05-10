@@ -5,7 +5,7 @@
     "ios": {
       "type": "ios.app",
       "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/OrigensTesting.app",
-      "build": "xcodebuild -workspace ios/OrigensTesting.xcworkspace -scheme OrigensTesting -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+      "build": "yarn ios --udid 66A1CFE7-F9AA-48C1-B375-E4160923D0AF --configuration Release"
     },
     "android": {
       "type": "android.apk",
@@ -16,7 +16,8 @@
     "simulator": {
       "type": "ios.simulator",
       "device": {
-        "type": "iPhone 11"
+        "type": "iPhone 11",
+        "os": "iOS 13.5"
       }
     },
     "emulator": {
