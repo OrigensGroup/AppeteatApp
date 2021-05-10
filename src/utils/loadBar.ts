@@ -1,4 +1,4 @@
-import firestore from '@react-native-firebase/firestore';
+import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 import { ValueOf } from 'react-native-gesture-handler/lib/typescript/typeUtils';
@@ -37,13 +37,15 @@ export const barInit: Bar = {
   },
 };
 
-const loadBar = async () => {
+const loadBar = async (
+  barCollectionInput?: FirebaseFirestoreTypes.QuerySnapshot<FirebaseFirestoreTypes.DocumentData>,
+) => {
   const bar = barInit;
 
   try {
     crashlytics().log('Bar data loading attempt.');
 
-    const barCollection = await firestore().collection('bar').get();
+    const barCollection = barCollectionInput || (await firestore().collection('bar').get());
 
     const loadedDocs = await Promise.all(
       barCollection.docs.map(
