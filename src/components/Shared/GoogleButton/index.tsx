@@ -80,7 +80,6 @@ const GoogleButton: React.FunctionComponent<GoogleButtonProps> = ({ isFromModal,
           });
       }
     } catch (error) {
-      console.log('Err', error);
       if (error.code === 'auth/credential-already-in-use') {
         Alert.alert(
           t('loginTranslations.errorWrongPasswordSignIn.label'),

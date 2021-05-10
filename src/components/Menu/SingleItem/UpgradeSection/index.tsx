@@ -156,8 +156,6 @@ const UpgradeSection: React.FunctionComponent<UpgradeSectionProps> = ({ item, up
     }
   };
 
-  console.log(selectionExtras);
-
   const isError = findError(selectionExtras);
 
   const upgradeItemRow = ({ item, section }: { item: DataItem; index: number; section: UpgradeItem }) => {
