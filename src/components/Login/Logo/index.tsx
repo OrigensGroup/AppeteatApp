@@ -1,24 +1,28 @@
 import React from 'react';
-import { useColorScheme } from 'react-native';
+import { useTheme } from 'styled-components/native';
+import FastImage from 'react-native-fast-image';
 
 import useSettings from '../../../hooks/useSettings';
+import { normalisedSource } from '../../../utils/image';
 
-import { LogoContainer, LogoImage } from './styles';
+import { LogoContainer } from './styles';
 
 interface LogoProps {}
 
 const Logo: React.FunctionComponent<LogoProps> = () => {
   const [settings] = useSettings();
-  const mode = useColorScheme();
-
-  const source =
-    settings.features.FEAT_DARK_MODE && mode === 'dark'
-      ? require('../../../img/logo.png')
-      : { uri: settings.logoImage };
+  const theme = useTheme();
 
   return (
     <LogoContainer>
-      <LogoImage resizeMode="contain" source={source} />
+      <FastImage
+        resizeMode={FastImage.resizeMode.contain}
+        source={normalisedSource(settings.logoImage)}
+        style={{
+          width: '100%',
+          height: Number(theme.spacing.multiple(20).replace('px', '')),
+        }}
+      />
     </LogoContainer>
   );
 };

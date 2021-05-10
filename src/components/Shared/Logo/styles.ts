@@ -6,8 +6,3 @@ export const HomeLogoContainer = styled.View`
   border-color: ${({ theme }) => theme.colors.border};
   align-items: center;
 `;
-
-export const HomeLogoImage = styled.Image`
-  width: ${({ theme }) => theme.spacing.multiple(25)};
-  height: ${({ theme }) => theme.spacing.multiple(10)};
-`;
