@@ -90,6 +90,11 @@ const AddToBasketButton: React.FunctionComponent<AddToBasketButtonProps> = ({
     }
   }, [selectionExtras]);
 
+  // useEffect for customisable item
+  useEffect(() => {
+    setExtrasToAdd(extras);
+  }, [extras]);
+
   const isError =
     item.upgradableItems && item.upgradableItems?.length > 0 && selectionExtras && findError(selectionExtras);
 
