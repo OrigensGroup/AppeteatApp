@@ -7,6 +7,7 @@ import { Bar } from '../types/Bar';
 
 import colors from '../theme/colors';
 import { Order } from '../types/Order';
+import { Booking } from '../types/Booking';
 
 export const barInit: Bar = {
   bookings: { list: [] },
@@ -76,6 +77,20 @@ const loadBar = async (
     );
 
     bar.orders.list = loadedOrders;
+
+    const bookingCollection = await firestore().collection('bar').doc('bookings').collection('list').get();
+
+    const loadedBooking = await Promise.all(
+      bookingCollection.docs.map(
+        async (doc): Promise<Booking> => {
+          const data = (await doc.data()) as Booking;
+
+          return data;
+        },
+      ),
+    );
+
+    bar.bookings.list = loadedBooking;
 
     return bar;
   } catch (error) {
