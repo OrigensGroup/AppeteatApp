@@ -37,8 +37,6 @@ const FinaliseOrder: React.FunctionComponent<FinaliseOrderProps> = ({ checkoutSe
   const { addOrder, user } = useUserData();
   const [loadingPayment, setLoadingPayment] = useState(false);
 
-  console.log(netInfo);
-
   const finaliseOrder = async () => {
     let paymentRes = null;
     setLoadingPayment(true);

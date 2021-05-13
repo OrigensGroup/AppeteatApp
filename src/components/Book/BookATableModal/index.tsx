@@ -42,7 +42,7 @@ interface BookATableModalProps {
 const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModalVisible, onClose, venue }) => {
   const { user } = useUserData();
   const theme = useTheme();
-  const [bookings, setBookings] = useBookings();
+  const { addNewBooking } = useBookings();
   const { addBooking } = useUserData();
 
   const [localQuantity, setLocalQuantity] = useState('1');
@@ -87,10 +87,7 @@ const BookATableModal: React.FunctionComponent<BookATableModalProps> = ({ isModa
         comment: '',
       };
 
-      setBookings({
-        ...bookings,
-        list: [...bookings.list, newBooking],
-      });
+      addNewBooking(newBooking);
 
       addBooking(newBooking);
       onClose();

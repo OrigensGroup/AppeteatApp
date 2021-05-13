@@ -1,4 +1,4 @@
-import firestore from '@react-native-firebase/firestore';
+import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 import { ValueOf } from 'react-native-gesture-handler/lib/typescript/typeUtils';
@@ -7,6 +7,7 @@ import { Bar } from '../types/Bar';
 
 import colors from '../theme/colors';
 import { Order } from '../types/Order';
+import { Booking } from '../types/Booking';
 
 export const barInit: Bar = {
   bookings: { list: [] },
@@ -37,13 +38,15 @@ export const barInit: Bar = {
   },
 };
 
-const loadBar = async () => {
+const loadBar = async (
+  barCollectionInput?: FirebaseFirestoreTypes.QuerySnapshot<FirebaseFirestoreTypes.DocumentData>,
+) => {
   const bar = barInit;
 
   try {
     crashlytics().log('Bar data loading attempt.');
 
-    const barCollection = await firestore().collection('bar').get();
+    const barCollection = barCollectionInput || (await firestore().collection('bar').get());
 
     const loadedDocs = await Promise.all(
       barCollection.docs.map(
@@ -74,6 +77,20 @@ const loadBar = async () => {
     );
 
     bar.orders.list = loadedOrders;
+
+    const bookingCollection = await firestore().collection('bar').doc('bookings').collection('list').get();
+
+    const loadedBooking = await Promise.all(
+      bookingCollection.docs.map(
+        async (doc): Promise<Booking> => {
+          const data = (await doc.data()) as Booking;
+
+          return data;
+        },
+      ),
+    );
+
+    bar.bookings.list = loadedBooking;
 
     return bar;
   } catch (error) {
