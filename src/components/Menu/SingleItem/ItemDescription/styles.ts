@@ -18,8 +18,13 @@ export const ItemDescriptionDesc = styled.View`
 `;
 
 export const PriceSection = styled.View`
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+`;
+
+export const ItemDescriptionTitleText = styled.View`
+  flex: 5;
 `;

@@ -6,7 +6,13 @@ import { Discount } from '../../../../types/DiscountRules';
 import { MenuItem } from '../../../../types/MenuItem';
 import Text from '../../../shared/Text';
 
-import { ItemDescriptionContainer, ItemDescriptionTitle, ItemDescriptionDesc, PriceSection } from './styles';
+import {
+  ItemDescriptionContainer,
+  ItemDescriptionTitle,
+  ItemDescriptionDesc,
+  PriceSection,
+  ItemDescriptionTitleText,
+} from './styles';
 import { t } from '../../../../translations';
 
 interface ItemDescriptionProps {
@@ -23,9 +29,11 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({ discou
   return (
     <ItemDescriptionContainer>
       <ItemDescriptionTitle>
-        <Text bold color="primary" fontSize={18}>
-          {item.title}
-        </Text>
+        <ItemDescriptionTitleText>
+          <Text bold color="primary" fontSize={18}>
+            {item.title}
+          </Text>
+        </ItemDescriptionTitleText>
         {!item.soldout ? (
           <PriceSection>
             {discount && discount.type === 'tabDiscount' && (
