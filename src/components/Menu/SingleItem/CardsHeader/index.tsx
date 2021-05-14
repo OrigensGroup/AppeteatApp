@@ -54,7 +54,7 @@ const CardsHeader: React.FunctionComponent<CardsHeaderProps> = ({ goBackTo, item
       <IconButton color={theme.colors.textPrimary} iconName="ios-close" onClick={navigate} size={24} />
       <TitleWrapper>
         <Text bold color="primary" fontSize={20}>
-          {item.title}
+          {item.title.substr(0, 20)}...
         </Text>
       </TitleWrapper>
       <FavouriteIconWithFlag
